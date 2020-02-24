@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>杂谈/996 - 超时工作的异化问题 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    5.8k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      19 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="996-超时工作与异化问题"><a href="#996-超时工作与异化问题" class="headerlink" title="996 - 超时工作与异化问题"></a>996 - 超时工作与异化问题</h1><h5 id="1-感性认识"><a href="#1-感性认识" class="headerlink" title="1.感性认识"></a>1.感性认识</h5><p>我国现阶段各行业超时工作现象十分普遍，有的互联网公司晚上十一二点整个大楼还灯火通明，有的公司虽然晚上按时下班，但回家后仍然要求有工作输出，很多岗位还要求7*24小时on call。</p>
+<p>我前些年所在的公司就有制度要求员工每月加班22天以上才算考核达标，而我经常需要加班27天才能完成工作，每晚九点离开公司后经一小时通勤才能到家，洗洗漱漱刚好十一点上床，十二点入睡，第二天早上6点50分起床后经过一小时通勤抵达公司，在公司门口的快餐店里缩着身子与其他同事挤在餐桌上潦草进食后便赶往工位，开始一天的埋头苦干。算上通勤时间，我的工作强度是7107。高强度劳动和了无希望所积累的疲劳深入骨髓，在此期间我感到生命力与灵魂的飞速流逝。</p>
+<p>深夜的华为大楼</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1305_42_222.png" alt=""></p>
+<p>早上五点半排队等公交上班的年轻人</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1306_00_748.png" alt=""></p>
+<h5 id="2-八小时工作制的来由"><a href="#2-八小时工作制的来由" class="headerlink" title="2.八小时工作制的来由"></a>2.八小时工作制的来由</h5><p>八小时工作制国家法律规定的工作日长度为8小时的工作制度。目前世界各国普遍实行八小时工作制。正常一天工作时间为早上九点至下午五点为8小时。</p>
+<p>理论起源</p>
+<p>八小时工作制最早由社会主义者<a href="https://baike.baidu.com/item/%E7%BD%97%E4%BC%AF%E7%89%B9%C2%B7%E6%AC%A7%E6%96%87" target="_blank" rel="noopener">罗伯特·欧文</a>于1817年8月提出。他还发明了一个口号， “8小时劳动， 8小时休闲， 8个小时休息”1833年，在<a href="https://baike.baidu.com/item/%E6%AC%A7%E6%96%87" target="_blank" rel="noopener">欧文</a>的支持下，具有同情心的工厂主约翰·多赫尔蒂等人发动了一场争取八小时工作制的运动。1866年，第一国际<a href="https://baike.baidu.com/item/%E6%97%A5%E5%86%85%E7%93%A6" target="_blank" rel="noopener">日内瓦</a>代表大会提出了“8小时工作，8小时自己支配，8 小时休息”的口号，要求各国制定法律给予确认。</p>
+<p>历史延革</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1313_15_391.png" alt=""></p>
+<p>19世纪80年代的美国工人运动。当时，美国和欧洲的许多国家，逐步由<a href="https://baike.baidu.com/item/%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89" target="_blank" rel="noopener">资本主义</a>发展到帝国主义阶段，为了刺激经济的高速发展，榨取更多的剩余价值，以维护这个高速运转的资本主义机器，资本家不断采取增加劳动时间和劳动强度的办法来残酷地剥削工人。</p>
+<p>在美国，工人们每天要劳动14至16个小时，有的甚至长达18个小时，但工资却很低。马萨诸塞州一个鞋厂的监工说：“让一个身强力壮体格健全的18岁小伙子，在这里的任何一架机器旁边工作，我能够使他在22岁时头发变成灰白。”沉重的阶级压迫激起了无产者巨大的愤怒。他们知道，要争取生存的条件，就只有团结起来，通过罢工运动与资本家作斗争。工人们提出的罢工口号，就是要求实行八小时工作制。</p>
+<p>1877年，美国历史上第一次全国罢工开始了。工人阶级走向街头游行示威，向政府提出改善劳动与生活条件，要求缩短工时，实行八小时工作制。罢工不久，队伍日渐扩大，工会会员人数激增，各地工人也纷纷参加罢工运动。</p>
+<p>在工人运动的强大压力下，美国国会被迫制定了八小时工作制的法律。但是，狠毒的资本家根本不予理睬，这项法律只不过是一纸空文，工人们仍然是生活在水深火热之中，倍受资本家的折磨。忍无可忍的工人们决定将这场争取生存权利的斗争，推向一个新的高潮，准备举行更大规模的罢工运动。</p>
+<p>1884年10月，美国和加拿大的八个国际性和全国性工人团体，在<a href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E8%8A%9D%E5%8A%A0%E5%93%A5" target="_blank" rel="noopener">美国芝加哥</a>举行一个集会，决定于1886年5月1日举行总罢工，迫使资本家实施八小时工作制。这一天终于来到了。5月1日，美国2万多个企业的35万工人停工上街，举行了声势浩大的示威游行，各种肤色，各个工种的工人一齐进行总罢工。仅<a href="https://baike.baidu.com/item/%E8%8A%9D%E5%8A%A0%E5%93%A5" target="_blank" rel="noopener">芝加哥</a>一个城市，就有4．5万名工人涌上街头。这下，美国的主要工业部门处于瘫痪状态，火车变成了僵蛇，商店更是鸦雀无声，所有的仓库也都关门并贴上封条。</p>
+<p>1889年7月14日，各国马克思主义者召集的社会主义者代表大会在法国巴黎隆重开幕。这次大会上，法国代表拉文提议：把1886年5月1日美国工人争取八小时工作制的斗争日，定为国际无产阶级的共同节日。与会代表一致同意，通过了这项具有历史意义的决议。</p>
+<h5 id="3-996的起因"><a href="#3-996的起因" class="headerlink" title="3.996的起因"></a>3.996的起因</h5><p>行业特征与恶性竞争</p>
+<p>互联网本身时效性极强，如果其他所有公司都能很快推出自己的产品，唯独自己的公司不行，那就会很快被市场淘汰。所以各公司都会延长员工的工作时间，以实现产品产出的最大化。当然，在这种严酷的加班制度下，资方并没有好心地将超时工作的时长以假期或补贴的形式返还给员工，也没有扩招人手来降低人均工作强度。资方常常采取的策略是拼命地使用员工，当员工不再年富力强或疾病缠身时就果断抛弃，反正每年都有大把的应届毕业生兴高采烈地加入被剥削大军。</p>
+<h5 id="4-996本质是剥削"><a href="#4-996本质是剥削" class="headerlink" title="4.996本质是剥削"></a>4.996本质是剥削</h5><p>强迫人超时劳动本质是剥削，剥削的坏处是让一个完整的人变得不完整，这个长期超时工作的人会工具化和异化。</p>
+<p>上班的人在出卖自己的劳动力换得薪水，劳动力是要再生产的。再生产的方式是吃东西，充足的睡眠，维持与家人的健康关系，发展自己的业务爱好，让自己保持身心愉悦，这样才能源源不断产生充沛的劳动力。</p>
+<p>本身人工作8小时后剩下的16个小时是用于恢复劳动力的，但是老板拿掉了剩下恢复生产力的时间，平常8-11，周末只放一天假也用来补平常缺的觉了。长期这样以来人的正常劳动力再生产过程就会被破坏掉，这样人的劳动表现就不会好，跟不上高压的工作节奏，这样以来人干个五年十年身体与灵魂都会垮掉。这个人垮掉之后当然会被炒掉，资方只用再换一个年轻力壮的就OK了。</p>
+<h5 id="5-深刻认识剥削"><a href="#5-深刻认识剥削" class="headerlink" title="5.深刻认识剥削"></a>5.深刻认识剥削</h5><p>作者：李劼</p>
+<p>链接：<a href="https://www.zhihu.com/question/320073567/answer/777226626" target="_blank" rel="noopener">https://www.zhihu.com/question/320073567/answer/777226626</a></p>
+<p>来源：知乎</p>
+<p>如果大家认为“剥削”就是自己挣10块钱，资本家抽走7块，只给留3块。那这个话题就没有讨论的必要了。</p>
+<p>因为这掩盖了剥削的残酷本质。</p>
+<p>资本主义的核心并不在“私有制”（其实在原始社会末期就已经有私有财产了，封建时代也是，但都称不上资本主义）。而在于“资本做主才是第一要义”，简称“资本主义”。</p>
+<p>由此导致的局面就是，资本凌驾于人类之上，人类为资本服务。而并非人类拥有资本，资本听命于人。虽然资本主义环境下有财产私有制度，但这极具迷惑性，容易让人误以为资本家是资本的主人（财产所有人）。但实际上，资本家只是傀儡，人形外壳，传声筒，使魔，皮囊，英灵（随便你们叫什么吧），资本本身才是真正的“主人”和“灵魂”。</p>
+<p>到了这一步，资本即将展现它真正的杀伤力――异化。</p>
+<p>上面那一大坨文字看不懂没关系，下面讲点简单的，举个例子。</p>
+<p>比如你是一个老板，搞到（甭管是捡的研发的还是买的）一把超级牛逼的镐头，能让矿工挖矿的产量提高到原先的10倍。假如你面前有两个人，一个是超级矿工，即便不用这把超级镐头，他也能挖10个单位的矿（用镐头将会是100）。另一个是包身工，他只能挖1个单位的矿（用镐头就会变为10）。</p>
+<p>现在，包身工在你面前跪下来了，他儿子得了白血病，他恳求你把超级镐头分配给他，他不介意被剥削，他愿意挖出来的矿你得7，他得3（换钱给儿子治病），实在是不行，你8他2也行。</p>
+<p>超级矿工的辞职报告也递上来了，他的兴趣是做菜（虽然他的天赋是挖矿），他想改行当厨师。</p>
+<p>你把镐头分配给谁？（无视人情，也无视另一人的天赋）</p>
+<p>别想多了，犹豫必将败北。作为称职的资本家，你给超级矿工跪下了。</p>
+<p>你求他拿上超级镐头去挖矿，你许诺跟他五五开分成，如有必要，你还可以只拿100个单位中的40，他拿60，折成股份也行。你甚至允许他每天只挖半天矿，另外半天可以兼职做厨师。至于那个可怜的包身工，谁叫他不努力呢，是吧。又或者，等超级矿工挣到钱，你的企业也成功上市，你再用财税渠道和福利政策“转移支付”给包身工，那样，你，包身工（和他倒霉儿子），超级矿工，就“共赢”了，是吧。</p>
+<p>怎么样，如此温情脉脉，优胜劣汰，按劳分配，是不是很市场经济，很效率优先，很兼顾公平？是不是跟政治（或政治经济学）教科书里讲的剥削不一样？</p>
+<p>不一样就对了，教科书太仁慈，不敢告诉大家剥削的残酷本质。</p>
+<p>好，再回到前面说的“以资本为主”，“异化”。</p>
+<p>上文就是“以资本为主”，“异化”的例子。</p>
+<p>――“以资本为主”，所以，资本不是分配给最需要它的人，而是分配给最能实现他价值的人。</p>
+<p>――“异化”，所以“劳动”（其实喜欢做菜）被扭曲为“就业”（挖矿最出成果）。</p>
+<p>而就在这“以资本为主”和“异化”的过程中，“剥削”粉墨登场。</p>
+<p>再次强调一遍，剥削并不（或不仅）表现为对成果分配的掠夺（如各种三七开，二八开，“剩余价值”），它真正残忍的面貌在于对时间与自由的剥夺。</p>
+<p>本来，自由与时间对每一个人都是（或应该是）平等的，谁都是一天24小时（就算马云资产是我的一亿倍，他的一天也变不成24亿小时）。</p>
+<p>然而，一旦进入“以资本为主”的“异化”过程，你的自由将不再是你的自由，你的时间将不再是你的时间。</p>
+<p>你不能自由的，随心所欲的去“劳动”，你只能有目标有任务的去“就业”，并为此消耗时间。</p>
+<p>但，第一，时间是不能重叠的（虽然资本允许重复投资）。</p>
+<p>你花时间学习使用超级镐头，就不能同时陪伴白血病儿子或做菜，正所谓“放下砖头没钱养你，抱起砖头没时间陪你”。</p>
+<p>第二，时间是不会倒流的（虽然投资可以撤回）。</p>
+<p>当某一天，你花光了挖矿换来的钱，儿子依然死在了病榻上，又或者经济危机，你就是花时间学了怎么使用超级镐头但依然找不到工作的时候，你为此耗费的时间照样流逝，永不回头。</p>
+<p>这才是剥削的真谛――你必须为了实现资本的价值（而非直接满足自身需要）来消耗时间（然后再诉诸于市场交换），而且，不论你的消耗能否换来自身需要的满足和自身价值的实现，时间都被实打实的消耗了，不可重叠，不可倒流，不可撤回，不可再生，不可增殖。</p>
+<p>现在，我们可以回答问题了。</p>
+<p>为什么资本家明明拥有大量资产，却还要剥削无产阶级？</p>
+<p>因为还需要时间啊！</p>
+<p>资本要实现自身价值（增殖），就必须通过运作（生产，经营，市场交换）的过程才能实现，而维持这一运作过程，需要包括资本家在内的全人类全身心投入，而“私有”却偏偏能保证大家死心塌地去投入。因为“私有”能划分出“所拥有的”和“所需要的”。要满足“所需要的”，就必须提供“所拥有的”来交换。</p>
+<p>作为资本代言人的资本家，他们打开了名为“市场”的炉盖。</p>
+<p>无产阶级，他们往熔炉里投入了名为“时间”（也可写作“花时间做事”）的燃料。</p>
+<p>从此，他们的时间不为自己而生，而为资本支配。</p>
+<p>资本家？就一烧锅炉的。</p>
+<p>这就是为什么马克思主义者的终极追求是“解放全人类”，而非“打倒资本家”。</p>
+<h5 id="6-探究异化"><a href="#6-探究异化" class="headerlink" title="6.探究异化"></a>6.探究异化</h5><p>作者：雾雨之灵</p>
+<p>链接：<a href="https://www.zhihu.com/question/297726264/answer/608965993" target="_blank" rel="noopener">https://www.zhihu.com/question/297726264/answer/608965993</a></p>
+<p>来源：知乎</p>
+<p><img src="!%5B%5D(http://bqlab-pic.test.upcdn.net/pic/20191207_1313_37_944.png)" alt="mark"></p>
+<p>这个问题，马克思早就预言过了，在我们中学的课本也提过了无数次。这就是资本对劳动的异化！同时也是对人的异化！</p>
+<p>劳动，本来是人的本质属性。何为本质属性？就是这个属性不像吃喝拉撒睡，饱暖思淫欲去啪啪啪一样，这个属性别的动物都没有，唯独人有。人是无法不劳动的，让一个人休息一星期、一个月可能会很开心，但让他一直闲着，他就总要找一点事情去实现自己的价值，创造价值就是劳动，价值就是凝结于商品中的人类劳动。</p>
+<p>所以劳动本来应该是快乐的，因为劳动创造价值嘛，劳动是自己本质属性的表达嘛。如果想找这样快乐的劳动者聊聊，就来北京打一辆出租车。北京开出租的本地人好多都不差这几个钱，为啥还要开出租？有一次我出差，出租车司机师傅特别贫，一直和我说“现在好多人都看重钱，我才不在乎，我一分存款都没有，我儿子我也不打算给他一分钱…”我一听就赶紧打住，师傅您先说说自己有几套房吧。师傅说也不多，就两套，不过有一套快拆了，拆了我能再买八套。我边听边带上耳机说，师傅我有些晕车，不说话了啊我眯一会儿……</p>
+<p>同样，马云说他不喜欢钱，我也觉得他是真心的。他犯得着撒谎吗？</p>
+<p>但现在呢？很显然没有年轻人觉得劳动是快乐的，除非你有出租车师傅那样的资本。现在年轻人劳动仅仅是为了活下去，这就是异化。强调一点，异化不是指一个东西失去了他的本义，异化是指，本来是客体的存在却反客为主，进而控制了主体。本来劳动是人实现价值的手段，劳动是客体，现在却成了人不得不劳动，劳动成了主体。本来金钱是为了方便人的生活，现在却是人的生活为了获取金钱。本来是人在玩手机，现在却是手机在玩人…这些才是异化。</p>
+<p>过去的国企工人，虽然钱不多，但是单位有食堂，有房子，国家管了教育、养老和医疗，自己挣多少花多少，可不就“咱们工人有力量”了？现在的年轻人，哪怕在互联网这种高薪行业，工资扣个知道自己一时半会用不上的五险一金，再交一交房租水电，真的也不剩几个子儿了。可不就自嘲是社畜、肥宅？这不是开玩笑，调查一下当年的工人幸福指数绝对爆现在年轻人几条街不止。</p>
+<p>这还没有完，因为马克思说资本是有自己的意志的，它的意志就是实现自己的最大化。所以劳动和价值开始完全脱钩，10年前有个房子，现在抵得上别人一辈子的劳动，另一方面，是分工越来越细，人越来越原子化。我那些进互联网的同学，一个个都是名校研究生毕业，可他们觉得自己的工作随便一个本科生来学段时间就把自己取代了。</p>
+<p>再者，就是加班时间越来越长，八小时工作制和双休日就是个笑话。什么叫“对剩余价值的剥削”？就是劳动者一天劳动所得，仅仅够他恢复劳动力进行第二天的再次劳动。这下好了，广大年轻人累死累活，忙到晚上连性生活都不想有，结果却发现没有多少时间是属于自己的。本来以为自己赚钱就可以想买什么买什么，本来以为工作没有人管，周末时间可以自由支配，但是现实却是下了班累得只想躺在床上，点个外卖刷刷手机。</p>
+<p>另外，资本可以自己进行增殖，即马太效应，强者愈强，弱者愈弱。有了京户，就有了学区房，然后又有了区重点和市重点…一个阶层强者为了巩固和展现自己的优势自然会集中资源再打造一个阶层，于是阶层层层化分。据我了解，去年北京海淀区某区重点高中——按理说也是北京二流学校——的理科状元的分数只能去哈工大。更何况还有多少当年从高考独木桥冲过来的精英，他们的孩子连区重点都没得上？</p>
+<p>这就是所谓的阶级天花板。随着楼上的人越来越多，楼上的人不但拼命踹想要往上爬的人，还要在楼上再起一层高楼，楼下的空间自然越来越小，天花板越来越低。之前当一名工人也挺滋润，现在当个小领导都焦头烂额。之前的孩子放了学扔了书包就可以去玩，现在的孩子放了学就要去补习班。所以现在人们觉得努力没有希望并不是没有道理，而是源自于我们对周围这个世界长时间的认识而得出的结论。</p>
+<p>最后，资本还要做一件事，就是登堂入室，为自己合理化，占领舆论的高地。为这样的不平等冠以各种堂而皇之的理由。宣传各种奋斗实现财务自由、阶级跃升的例子，让年轻人普遍焦虑，觉得自己活成这个样子完全是因为自己不努力；另一方面，资本又是需要市场的，为了扩大市场资本再次鼓吹消费主义，如网红餐厅之类，并且给年轻的脑力劳动者一个华丽丽的名词——白领，中产阶层。让年轻人误以为自己相比父辈们，相比工人农民地位有了本质的提高，而为了配得上这个地位，必须有相应的消费。这就是小资产阶级，这就是小布尔乔亚。</p>
+<p>什么是小资产阶级？明明没有掌握任何生产资料，却把自己当成了资产阶级，明明还是个劳动人民，却总觉得自己比劳动人民要优越。</p>
+<p>最后的最后，马克思的追求是什么？就是人的解放，解放生产力，发展生产力。一个疲于奔命的人是不会有劳动的动力的，你找不到一个奴隶会兴高采烈地为奴隶主干活，就算你举出有的奴隶通过自身的奋斗而当上了宰相，也改变不了这个事实。当然，个人的奋斗还是很重要的，虽然个人的奋斗常常敌不过历史的进程，但是个人的奋斗总会或多或少决定着自己的命运。所以，但行好事，莫问前程!</p>
+<p>It’s not your fault!</p>
+<p>小结：</p>
+<p>资本本身是主，资本家是管家，工人是slave，资本的意志是让自己增殖，增殖需要人类大量投入时间。时间不可再生，我的时间提供给资本增殖，就必定不能提供给自己的天赋，不能提供给心之所向。我应该把时间投入到自己真正感兴趣的地方，而且是straight forward去做。 </p>
+<p>劳动本身该是快乐的，因为创造了价值，也符合人的天性，但是我们的劳动常常被迫超时超量奉献给资本增殖，同时忽略天赋与inner voice，则变得痛苦不堪。上学同理。保持内心的愉悦与平和，如果不能保持，反思问题，付出代价，解决问题。</p>
+<p>不要透支自己的劳动力。如果干的事情符合天赋与内心认知并且干的快乐，工作时间长一点无所谓。如果干的很痛苦，干的过程中需要付出意志力硬抗，则一定严控工作时长，工作之余好好休息放松，必须认清劳动力不是无限供应的资源这一事实。考研废掉/做事无恒心其实就是没有设计好劳动力再造的过程,我不懒而是勤奋地过了头透支了劳动力,以后要要注意劳逸结合。</p>
+<p>警惕消费主义和小资的陷阱，不要买太贵的东西，不要高消费。高消费不能实现阶级跃迁，明明是个在格子间办公鸽子笼睡觉的被剥削的劳动人民，却觉得自己比劳动人民优越，这是精心设计的认知错位陷阱，注意堤防。</p>
+<p>找准研究方向，既要符合自己的天赋，也要考虑历史的进程！</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%80%9D%E8%80%83">思考</a>
+                
+                  <a class="hover-with-bg" href="/tags/996">996</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "杂谈/996 - 超时工作的异化问题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

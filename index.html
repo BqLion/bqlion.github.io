@@ -136,14 +136,14 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/test/">
-        <p class="h4 index-header">test</p>
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/BaseLine%E7%B2%BE%E8%AF%BB/">
+        <p class="h4 index-header">谷歌QA比赛/BaseLine精读</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1"></div>
+          <div class="index-text mb-1">Baseline</div>
         </div>
       </a>
 
@@ -152,6 +152,16 @@
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
         
       </div>
     </div>
@@ -161,22 +171,395 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/hello-world/">
-        <p class="h4 index-header">Hello World</p>
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Transformer/">
+        <p class="h4 index-header">谷歌QA比赛/Transformer</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server$ hexo server
-More info: Server
-Generate static files$ hexo generate
-More info: Generating
-Deploy to remote sites$ hexo deploy
-More info: Deployment
+          <div class="index-text mb-1">TransformerTransformer改进了RNN的训练慢的缺点，加入了自注意机制，充分发挥了DNN的优点，提升模型准确率。Transformer由论文《Attention is All you need》提出。有Tensorflow和Pytorch版本。
+宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。
+
+拆开这个黑箱，发现里边是由编码和解码组件构成。
+
+编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。
+1.编码器详解像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
+
+词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
+
+开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
+2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+        <p class="h4 index-header">谷歌QA比赛/1基本概念</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.基本概念1.本比赛数据截屏如下
+
+
+1.question_id
+1
+
+
+
+2.question_title
+What am I losing when using extension tubes in…
+
+
+3.question_body
+After playing around with macro photography on…
+
+
+4.question_username
+ysap
+
+
+5.question_user_page
+https://photo.stackexchange.com/users/1024
+
+
+6.answer
+I just got extension tubes, so here’s the skin…
+
+
+7.answer_user_name
+rfusca
+
+
+8.answer_user_page
+https://photo.stackexchange.com/users/1917
+
+
+9.url
+http://photo.stackexchange.com/questions/9169/…
+
+
+10.category
+LIFE_ARTS
+
+
+11.q</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+        <p class="h4 index-header">计算机网络/3-数据链路层</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">3.数据链路层3.0概述数据链路层使用的信道主要有以下两类
+
+点对点信道
+这种信道使用一对一的点对点通信方式
+
+
+广播信道
+这种信道使用一对多的广播通信方式，因此过程较为复杂，广播信道上的链接主机很多，因此必须使用专门的共享信道协议来协调这些数据的转发
+
+
+
+3.1 数据链路和帧链路是一条无源的点到点的物理线路，中间没有任何的其他交换节点。数据链路是除了物理线路之外，还得有通信协议来控制这些数据的传输，若把实现了这些协议的软硬件加到链路上，就构成了数据链路。
+现在最常用的办法是使用适配器（网卡）来实现这些协议的硬件和软件，一般的适配器都包括了数据链路层和物理层这两层的功能。
+数据链路层传输的是帧。
+
+三个基本问题
+
+封装成帧
+透明传输
+差错控制
+
+
+封装成帧：
+
+在一段数据的前后分别打上首部和尾部，首部尾部可以确定帧的界限。
+
+
+透明传输问题：
+
+类似于我想在markdown文件中打出[]()字符缺被误以为是超连接一样，需要在[]()字符之前加上转义字符\。
+
+
+CRC差错检测
+传输过程中可能出现比特差错，1变成0或者0变成1。一段时间内传输错误的比特与总比特比值称谓误码率。为保证数据</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1-%E6%A6%82%E8%BF%B0/">
+        <p class="h4 index-header">计算机网络/1-概述</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.计算机网络概述1.1局域网​        覆盖范围小（１００ｍ）,自己花钱买设备,贷款固定
+​        接入层的交换机们星形连接到汇聚层交换机,这样分散IO
+​        接入层交换机们不该串联,不然最后一台交换机那里IO压力太大
+1.2Internet和广域网​    Internet ISP :有自己的机房,对网民提供internet访问
+　广域网：距离较远，花钱租带宽，
+1.3 数据包和数据帧在一个计算机想把数据发给另一个计算机时,需要在发送信息里携带ip地址和mac地址,其中ip地址是最终目地,mac地址是下一跳的目的地,ip地址不变,mac地址每次经过路由器都刷新.下一跳的目的地由迪杰斯特拉或其他寻路算法确定.
+1.4 OSI参考模型 应用层:所有能产生网络流量的程序
+表示层:在传输之前是否进行加密或压缩处理
+会话层:查木马,netstat -n
+传输层:可靠传输,流量控制,不可靠传输
+网络层:负责选择最佳路径,规划ip地址
+数据链路层:帧的开始和结束,透明传输,差错校验
+物理层:接口标准,电器标准,如何在物理链路层上传输的更快
+
+osi参考模型对网络排错指导</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          
+            <a href="/tags/OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B">OSI参考模型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2-%E7%89%A9%E7%90%86%E5%B1%82/">
+        <p class="h4 index-header">计算机网络/2-物理层</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.物理层2.1物理层的基本概念物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。
+物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：
+
+机械特性：接口形状，大小，引线数目
+
+
+电器特性：电压范围
+
+功能特性，过程特性等
+
+
+2.2数据通信的基本模型
+相关术语：
+
+数据：运送消息的实体
+信号：数据的电器或电磁表现
+模拟信号：消息的参数取值是连续的
+数字信号：消息的参数取值是离散的
+
+
+
+信道信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道
+单向信道：信息只能单向流动
+双向交替信道：信息可双向流动，但不能同时流动
+双向同时信道：信息科双向，同时流动
+基带信号和带通信号
+基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号
+
+基带数字信号的几种调制方法
+
+
+
+
+带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输
+
+在传输范围较大的时候，计算机网络必须通过带通信号传输
+
+
+
+曼彻斯特编码：由低到高是0，高到低是1
+
+差分曼彻斯特编码
+
+
+2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          
+            <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/1_%E6%A6%82%E8%AE%BA/">
+        <p class="h4 index-header">统计学习方法/1_概论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.概论介绍基本概念，是对全书的概括。
+首先叙述统计学习的定义、研究对象和方法，然后叙述监督学习。
+然后提出统计学习方法的三要素：模型，策略和算法。
+介绍模型选择，包括正则化、交叉验证和学习的泛化能力。
+介绍生成模型和判别模型
+介绍监督学习方法的应用： 分类问题，标注问题，回归问题。
+1.1统计学习定义
+统计学习是关于计算机基于数据构建概率统计模型并运用模型对数据进行预测和分析的学科。
+统计学习是概率论，统计学，信息论，计算理论，最优化理论，计算机科学等领域的交叉学科。在发展中逐步有了自己的理论体系和方法论。
+目的
+统计学习用于对未知数据预测和分析。
+对数据的预测可以使计算机更加智能化/计算机的性能提升。
+对数据的分析可以使人们获取新的知识。
+方法
+统计学习的方法是基于数据构建统计模型进而对数据进行预测和分析，统计学习由监督学习，半监督学习，无监督学习和强化学习等组成。
+本书主要讨论的是监督学习，这种情况统计学习的方法可以概括如下：
+从给定的有限的训练数据集出发（training set）,假设数据是独立同分布产生的；
+假设要学习的模型属于某个函数的集合，称为假设空间。
+把模型应用于某</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95">统计学习方法</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95">统计学习方法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%89%B9%E5%BE%81%E5%80%BC%E5%92%8C%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/">
+        <p class="h4 index-header">线性代数/特征值和特征向量计算</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">特征值特征向量计算省略理论部分，一个例子讲清：
+
 </div>
         </div>
       </a>
@@ -186,12 +569,139 @@ More info: Deployment
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E6%A6%82%E5%BF%B5s/">
+        <p class="h4 index-header">线性代数/概念s</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">转自知乎学习笔记:
+https://www.matongxue.com/madocs/555.html
+概念
+2范数
+
+范数有长度的意思
+
+向量的2范数:就是x中各元素平方和相加再开根号
+矩阵的2范数:A的转置乘以A矩阵特征根的最大值的开根号
+
+
+
+
+
+
+可逆矩阵
+
+矩阵A为n阶方阵，若存在n阶矩阵B，使得矩阵A、B的乘积为单位阵，则称A为可逆阵，B为A的逆矩阵。若方阵的逆阵存在，则称为可逆矩阵或非奇异矩阵，且其逆矩阵唯一。
+
+求可逆矩阵的方法如下图
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
+        <p class="h4 index-header">线性代数/奇异值分解</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">奇异值分解1.应用：影像压缩2.应用：过滤噪声
+左图是原始图片。右图是经过SVD分解处理的图片，丢失了一些精确度，但是呈现效果更好，很可能丢失的精确度恰好是噪声。
+具体做法是我们对15*25的矩阵做奇异值分解（SVD），然后得到如下15个特征值，其中前三个特征是比较重要，为了压缩数据和过滤噪声，我们只取前三个特征值，后边的全部丢弃。
+
+
+5.计算例子​    
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+            <a href="/tags/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3">奇异值分解</a>&nbsp;
+          
         
       </div>
     </div>
   </div>
 
 
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 

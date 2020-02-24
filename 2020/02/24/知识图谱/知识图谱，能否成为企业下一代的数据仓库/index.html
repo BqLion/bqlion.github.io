@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>知识图谱/知识图谱，能否成为企业下一代的数据仓库 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      8 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="知识图谱，能否成为企业下一代的数据仓库？"><a href="#知识图谱，能否成为企业下一代的数据仓库？" class="headerlink" title="知识图谱，能否成为企业下一代的数据仓库？"></a>知识图谱，能否成为企业下一代的数据仓库？</h2><p>原创： camel <a href="javascript:void(0);">AI科技评论</a> <em>前天</em></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/vJe7ErxcLmiaWq1S6RBibQVnqoy9s665ecYBVO0cfD1oZsAEibu5eJZYIsUqghAcCiaEreFO1eqFLT3feYrme7To5A/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><strong>作者 | camel</strong><br><strong>编辑 | 唐里</strong></p>
+<blockquote>
+<p>“我认为，知识图谱是企业下一代管理数据的一种新的组织方式，能够更高效的连接上游的大数据和下游的AI建模任务。</p>
+<p>企业最初数据量少、结构单一的时候，用MySQL这样的结构化数据库就够了；再后来数据量越来越多、业务系统越来越复杂，就需要分布式数据库、数据仓库、数据集市来管理数据资产。这类数据都需要事先定义好结构。但在大数据时代，你不可能事先将数据的结构定义好，于是很多企业开始利用像 Hadoop 等来搭建大数据平台，以NOSQL的方式存储那些事先无法定义的数据。但这些数据之间如何有效关联？例如，当一些查找稍微深度（例如四、五度或出现隐形关系），这就需要利用知识图谱进行数据组织了。”</p>
+</blockquote>
+<p>在近期AI科技评论对张杰博士进行的采访中，张杰如是回答了他对知识图谱未来发展的看法。</p>
+<p>​       <img src="https://mmbiz.qpic.cn/mmbiz_jpg/vJe7ErxcLmiaWq1S6RBibQVnqoy9s665ecJHjm2ZQHkPXjgpoap1YkIxL7ClGwibZJODsdBJPT3A5RTcAdAKiauSGQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img">      </p>
+<p>张杰博士是明略科技资深科学家，明略科学院知识工程实验室主任，加入明略科技后便一直在负责明略科技“行业知识图谱”的研究和搭建工作，在此之前曾在华为中央研究院从事机器学习方面的研究工作。 </p>
+<p>张杰提到：“在我们内部，我们认为知识图谱是企业下一代的数据仓库。它的优点除了能够高效地进行深度关系查询外，还能图谱基础之上做一些推广，通过引入常识知识和领域知识，由已有的知识产生新的知识。” </p>
+<p>AI科技评论认为这是一个有趣的观点。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/vJe7ErxcLmiaWq1S6RBibQVnqoy9s665ecSLnhRdpo9Cq8pP3iaIMjM9vXp2DibYsrxWUA0jLiaJIyGsvS8uO0zZ8Mg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<h2 id="1、-数仓"><a href="#1、-数仓" class="headerlink" title="1、**数仓**"></a><strong>1、**</strong>数仓**</h2><p>数据仓库的概念最早是在1990年由    比尔·恩门（Bill Inmon）提出。这里需要区别数据库和数据仓库之间的不同。 </p>
+<p>数据库是一种逻辑概念，用来存放数据，由多表组成，目前市面上流行的数据库例如有 Oracle、DB2、MySQL、Sybase、MS SQL Server等。 </p>
+<p>而数据仓库则是数据库概念的升级。从逻辑上理解，数据库和数据仓库没有区别，都是通过数据库软件实现存放数据的地方；只不过从数据量来说，数据仓库要比数据库更庞大得多。数据仓库主要用于数据挖掘和数据分析，支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果。 </p>
+<p>在比尔的著作《Building the Data Warehouse》一书中，他将数据仓库定义为：</p>
+<blockquote>
+<p>数据仓库是一个面向主题的、集成的、相对稳定的、反映历史变化的数据集合，用于支持管理决策。</p>
+</blockquote>
+<p>这种组织数据方式（即面向业务过程的数据组织方式），通俗来说，就是将数据物理集中在一起。从存储的角度来看，数据就是一张张独立的表结构，如常用的会员表、订单表等，表与表之间无法在数据层面整合到一起，需要通过外在的辅助工具才能进行逻辑与数据梳理，因此这种形式又被称为物理集中，而不是逻辑集中。 </p>
+<p>这种传统的数据仓库，其优势在于统计性报表，能够高效地进行数据统计。</p>
+<p>但其缺点正如前面张杰博士所提到的： </p>
+<p>1）对于这种结构化的数据，需要提前定义好结构（清楚地知道数据的格式和关系），且在添加数据的过程中很难改变结构。这种结构化的数据价值密度比较高，但在大数据时代我们不可能把所有的数据事先定义好，因此也就无法利用目前互联网中出现的大量非结构化的数据。 </p>
+<p>2）针对1）中的情况，目前也有很多企业使用像Hadoop这种分布式处理框架来开发大数据平台，这可以存储一些事先定义不好的、量特别大的、或结构化数据库不好索引的数据。但这些数据之间如何有效关联，如何进行深度查询依然存在困难。例如通过结构化的或大数据平台的数仓，可以胜任一度关系、二度关系的查询，但涉及到四度、五度或者隐形关系查询时，就会非常困难。 </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/vJe7ErxcLmiaWq1S6RBibQVnqoy9s665ecRF4KAceicsfrTpicCo2JBVIITiaZddCMibuhicZLnCuZmAicgbM4jLe2eGPQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<h2 id="2、知识图谱"><a href="#2、知识图谱" class="headerlink" title="2、知识图谱"></a><strong>2、知识图谱</strong></h2><p>知识图谱最早是在2012年由谷歌提出的一个概念，但事实上在很早就已经有了相关的研究（称为知识工程）。</p>
+<p>知识图谱本质上是语义网络，是一种基于图的数据结构，由节点(Point)和边(Edge)组成。在知识图谱里，每个节点表示现实世界中存在的“实体”，每条边为实体与实体之间的“关系”。知识图谱也是“关系”的最有效的表示方式。通俗地讲，知识图谱就是把所有不同种类的信息（Heterogeneous Information）连接在一起而得到的一个关系网络。 </p>
+<p>张杰表示：“在知识组织层面上，图谱化将是企业进行数据管理的未来趋势。” </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/vJe7ErxcLmiaWq1S6RBibQVnqoy9s665ecQUwBsvrWDsM8vsed6r8tvPr700ovVlc20xceAiaicnKfQgMNl9plPunQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p>一方面，它便于将客户已有的结构化知识做更深的度数上的关联，同时保证查询效率，深度关联是传统数仓的技术框架下不善于实现的。另一方面可以帮助客户从来自于物联网、互联网等海量的非结构化数据中抽取出知识片段，从而拓展客户的数据维度，增大知识储量，释放出大数据红利。</p>
+<p>而在知识表示层面上，知识图谱则是上游大数据和下游AI任务的有效连接。图谱化之后的知识便于进一步的语义化，知识碎片关联起来形成图谱之后，更多关联信息意味着更加丰富的语义信息。 </p>
+<p>经过适当的引入常识知识和领域知识，可以对图谱中的节点和关系做向量化处理，进而突破以往基于字符串匹配的浅层语义，更加便利、有效的帮助客户组织领域知识，为流程优化、辅助决策、预测分析等下游应用提供基础服务。 </p>
+<p>明略科技在这方面有足够多的构想和实践。例如在知识表示方面，目前明略科技聚焦于如下几个研究问题：带有部分属性和标签的静态图谱如何向量化表示，如何从动态变化且不符合马尔可夫性的图谱中挖掘出事件间的因果关系，常识知识、领域知识、非结构化碎片知识如何映射到相同的语义空间中，如何用统一的知识表示框架为下游的分类、检索、推荐、问答等任务提供知识服务。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/vJe7ErxcLmiaWq1S6RBibQVnqoy9s665ecOrMSmCekJf8boXQZETnd3nibZOklrbQBvUbCrlBpk2a3fIGCzObtnng/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<h2 id="3、困难"><a href="#3、困难" class="headerlink" title="3、困难"></a><strong>3、困难</strong></h2><p>然而目前为止知识图谱在成为数仓的过程中，依然存在着研究上的和产业上的问题。 </p>
+<p>在研究方面，有人曾对近几年国际顶会上的相关工作做了全方位分析，他们发现在知识图谱落地过程中的每个环节都还存在各自的问题：构建层面，目前比较关注的包括弱监督、远程监督、自监督、小样本等抽取方案；推理层面，主要集中在图神经网络、基于图表示学习的研究等；知识建模层面，则有一些事理图谱（这个是由哈工大首先提出的一种概念）、动态知识图谱、时序点过程的探索。 </p>
+<p>其次在产业应用方面： </p>
+<p>首先，对于构建知识图谱的“数仓”，眼下最主要的问题是大规模、低时延下的效率问题。目前企业所能掌握的关系数据一般都在千万到百亿节点的规模，未来随着5G和物联网的普及，其规模会更大，而且很多场景下要求在秒级甚至毫秒级返回查询结果。这不光是对底层图数据库的挑战，很多上层AI任务的算法要配合中层的图挖掘算法和更底层的图数据库操作算子一起做跨层联合的并行化优化。 </p>
+<p>另外一个挑战是知识完备性问题，使用知识图谱的目的，除了让它做为一种中间态的数据服务之外，还期待能引入常识知识和领域知识，在大规模数据中做自动推理和补全，当图谱中的知识未达到一定的量级和丰富度之前，推理的准确度很难保证甚至难以开展，两者之间不是线性关系。 </p>
+<p>此外，也有人提到，现在越来越多的应用，其输入不仅限于文本，还会有图片、音频、视频等多模态的内容，如何为多模态的知识图谱构建提供一个比较好的解决方案，在未来一段时间里依然是一个具有挑战性的问题。 </p>
+<p>因此，张杰博士作为补充也指出，“知识图谱不是替换数据仓库，而是作为数据仓库的有效互补。”</p>
+<p><strong>参考文献：</strong></p>
+<p>[1] 百度百科, <a href="https://baike.baidu.com/item/数据仓库" target="_blank" rel="noopener">https://baike.baidu.com/item/数据仓库</a></p>
+<p>[2] 数据库 与 数据仓库的本质区别是什么？,知乎问答，<a href="https://www.zhihu.com/question/20623931" target="_blank" rel="noopener">https://www.zhihu.com/question/20623931</a></p>
+<p>[3] 机器之心 Pro, <a href="https://www.jiqizhixin.com/graph/technologies/6e896233-3f15-47a4-9b2e-479d7cc5478b" target="_blank" rel="noopener">https://www.jiqizhixin.com/graph/technologies/6e896233-3f15-47a4-9b2e-479d7cc5478b</a></p>
+<p>[4] 知识图谱的下一步：知识指导的预训练模型和图神经网络, 作者：蔡芳芳,  <a href="https://www.infoq.cn/article/OfDP3jgOaZlg7ogmfEwk" target="_blank" rel="noopener">https://www.infoq.cn/article/OfDP3jgOaZlg7ogmfEwk</a></p>
+<p>[5] 知识图谱 + 数据中台，会是未来中台战略的答案吗？, 作者：佘磊, <a href="https://www.infoq.cn/article/DGJb0z4jKw8jzyf90dAE" target="_blank" rel="noopener">https://www.infoq.cn/article/DGJb0z4jKw8jzyf90dAE</a></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1">知识图谱</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1">知识图谱</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "知识图谱/知识图谱，能否成为企业下一代的数据仓库&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

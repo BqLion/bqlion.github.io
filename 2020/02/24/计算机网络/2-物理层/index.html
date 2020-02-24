@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>计算机网络/2-物理层 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.7k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="2-物理层"><a href="#2-物理层" class="headerlink" title="2.物理层"></a>2.物理层</h1><h3 id="2-1物理层的基本概念"><a href="#2-1物理层的基本概念" class="headerlink" title="2.1物理层的基本概念"></a>2.1物理层的基本概念</h3><p>物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。</p>
+<p>物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：</p>
+<ul>
+<li><p>机械特性：接口形状，大小，引线数目</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1241_35_978.png" alt=""></p>
+</li>
+<li><p>电器特性：电压范围</p>
+</li>
+<li><p>功能特性，过程特性等</p>
+</li>
+</ul>
+<h3 id="2-2数据通信的基本模型"><a href="#2-2数据通信的基本模型" class="headerlink" title="2.2数据通信的基本模型"></a>2.2数据通信的基本模型</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1241_43_905.png" alt=""></p>
+<p>相关术语：</p>
+<ul>
+<li>数据：运送消息的实体</li>
+<li>信号：数据的电器或电磁表现<ul>
+<li>模拟信号：消息的参数取值是连续的</li>
+<li>数字信号：消息的参数取值是离散的</li>
+</ul>
+</li>
+</ul>
+<h4 id="信道"><a href="#信道" class="headerlink" title="信道"></a>信道</h4><p>信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道</p>
+<p>单向信道：信息只能单向流动</p>
+<p>双向交替信道：信息可双向流动，但不能同时流动</p>
+<p>双向同时信道：信息科双向，同时流动</p>
+<h4 id="基带信号和带通信号"><a href="#基带信号和带通信号" class="headerlink" title="基带信号和带通信号"></a>基带信号和带通信号</h4><ul>
+<li><p>基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号</p>
+<ul>
+<li><p>基带数字信号的几种调制方法</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1242_08_655.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输</p>
+<ul>
+<li>在传输范围较大的时候，计算机网络必须通过带通信号传输</li>
+</ul>
+</li>
+</ul>
+<p>曼彻斯特编码：由低到高是0，高到低是1</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1242_37_192.png" alt=""></p>
+<p>差分曼彻斯特编码</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1242_47_991.png" alt=""></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1242_56_962.png" alt=""></p>
+<h3 id="2-3奈氏准则"><a href="#2-3奈氏准则" class="headerlink" title="2.3奈氏准则"></a>2.3奈氏准则</h3><p>给出了在理想条件下，为了避免码间串扰，码元的传输速率的上限值</p>
+<p>在任何信道中，码元的传输速率需有限制，否则会出现码间串扰的问题，使接收端对码元的判决（识别）成为不可能</p>
+<p>如果信道的带宽很宽，也就能通过的信号的高频分量越多，那就可以用更高的速率传送码元不出现串扰</p>
+<h4 id="信噪比"><a href="#信噪比" class="headerlink" title="信噪比"></a>信噪比</h4><p>香农的信息论推导了带宽受限，有高斯白噪声干扰的信道的极限，无差错的信息传输速率</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1243_14_228.png" alt=""></p>
+<p>如果频带带宽已经确定了的信道，如果信噪比和带宽都不能提高了，还有一种突破方式就是用编码的方式让一个码元携带更多比特量的信息</p>
+<h4 id="2-4物理层的导向传输媒体"><a href="#2-4物理层的导向传输媒体" class="headerlink" title="2.4物理层的导向传输媒体"></a>2.4物理层的导向传输媒体</h4><ul>
+<li><p>双绞线</p>
+<ul>
+<li>屏蔽双绞线</li>
+<li>无屏蔽双绞线</li>
+</ul>
+</li>
+<li><p>同轴电缆</p>
+</li>
+<li><p>光缆</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1243_29_412.png" alt=""></p>
+</li>
+</ul>
+<h4 id="2-5物理层的非导向传输媒体"><a href="#2-5物理层的非导向传输媒体" class="headerlink" title="2.5物理层的非导向传输媒体"></a>2.5物理层的非导向传输媒体</h4><p>无线短波：靠电离层的反射，通信质量较差</p>
+<p>微波：在空间中主要是直线传播（地面微波接力通信，卫星通信）</p>
+<h4 id="2-6信道复用技术"><a href="#2-6信道复用技术" class="headerlink" title="2.6信道复用技术"></a>2.6信道复用技术</h4><p>复用是通信技术的基本概念</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1243_41_204.png" alt=""></p>
+<ul>
+<li>频分复用</li>
+</ul>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1243_57_759.png" alt=""></p>
+<ul>
+<li><p>时分复用</p>
+<p>将时间划分为一段段等长的时分复用帧（TDM帧），每一个时分复用的用户在每一个TDM帧里占用固定序号的时隙</p>
+<p>每一个用户占用的时隙是周期性出现的，周期就是TDM帧的长度</p>
+<p>TDM信号也称为等时信号</p>
+<p>时分复用的所有用户在不同的时间占用同样的带宽频率</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1244_30_908.png" alt=""></p>
+</li>
+</ul>
+<p>时分复用可能造成资源浪费，优化方案是采用统计时分复用</p>
+<ul>
+<li>波分复用</li>
+</ul>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1245_07_550.png" alt=""></p>
+<ul>
+<li>码分复用</li>
+</ul>
+<p>各用户采取特殊挑选的不同码型，因此彼此不会造成干扰，这种系统发出的信号有很强的抗干扰能力</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1245_36_782.png" alt=""></p>
+<h3 id="2-8数字传输系统"><a href="#2-8数字传输系统" class="headerlink" title="2.8数字传输系统"></a>2.8数字传输系统</h3><ul>
+<li><p>脉码调制PCM体制</p>
+<ul>
+<li><p>脉码调制PCM体制最初是为了在电话局之间的中继线上传送多路的电话</p>
+</li>
+<li><p>由于历史原因PCM有两个不兼容的国际标准，北美的24路PCM和欧洲的30路PCM，我国采用欧洲的30路PCM</p>
+</li>
+<li><p>同步光纤网SONET和同步数字系列SDH</p>
+<ul>
+<li>旧的数字传输系统存在许多缺点，其中主要的是以下两个方面：<ul>
+<li>速率标准不统一，如果速率无法统一，国际范围的高速数据传输就很难实现</li>
+</ul>
+</li>
+<li>不是同步传输<ul>
+<li>过去相当长时间内，为了节约经费，各国的数字网主要是采用准同步方式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>同步光纤网详细介绍</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1245_47_582.png" alt=""></p>
+<p>SONET标准定义了四个光接口层</p>
+</li>
+</ul>
+</li>
+<li><p>光子层</p>
+<ul>
+<li>处理跨越光缆的比特传送</li>
+</ul>
+</li>
+<li><p>段层</p>
+<ul>
+<li>在光缆上传送STS-N帧</li>
+</ul>
+</li>
+<li><p>线路层</p>
+<ul>
+<li>负责路径层的同步和复用</li>
+</ul>
+</li>
+<li><p>路径层</p>
+<ul>
+<li>处理路径端接设备PTE（path terminating element）之间的业务传输</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-9宽带介入技术"><a href="#2-9宽带介入技术" class="headerlink" title="2.9宽带介入技术"></a>2.9宽带介入技术</h4><ul>
+<li>xDSL技术就是用数字技术对现有的模拟电话用户线进行改造，使他能够承载宽带业务</li>
+<li>虽然标准模拟电话的频带被限制在300-3400khz的范围内，但用户线本身实际可通过的信号频率仍然超过1mhz</li>
+<li>xDSL技术就是把0-4khz低端频谱留给传统电话业务，把原来设备中没有利用的高端频谱留给用户上网使用</li>
+<li>DSL就是数字用户线的缩写，DSL的前缀x则表示在数字用户线上实现的不同带宽方案</li>
+</ul>
+<ul>
+<li><p>ADSL的极限传输距离</p>
+<ul>
+<li>ADSL的极限传输距离与数据率以及用户线的路径有很大关系，用户线越细，信号传输时候的衰减就越大，而所能得到的最高数据传输速录与实际的用户线上的信噪比密切相关</li>
+<li>例如0.5毫米的用户线，在网速为2.0Mb/s的时候可以传输5.5公里，传输速率提高到6.1Mb/s时，传输距离缩短为3.7公里</li>
+<li>如果把用户线直径减少到0.4毫米，传输距离就缩小为2.7公里</li>
+</ul>
+</li>
+<li><p>ADSL的特点</p>
+<ul>
+<li>上行和下行带宽做成不对称的</li>
+<li>上行是用户到网络服务商，下行是反过来</li>
+<li>ADSL在用户线（铜线）两端各安装一个ADSL调制解调器，目前我国采用的多为DMT调制技术</li>
+</ul>
+</li>
+<li><p>ADSL的数据率</p>
+<ul>
+<li><p>当ADSL启动时，用户线的两端ADSL调制解调器就测试可用的频率，各子信道受到的干扰情况，以及在每一个频率上测试信号的传输质量</p>
+</li>
+<li><p>ADSL不能保证固定的数据率，对于质量比较差的用户甚至无法开通ADSL</p>
+</li>
+<li><p>通常下行速率在32kb到6.4mb之间，而上行速度一般在32kb到640kb之间</p>
+</li>
+</ul>
+</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "计算机网络/2-物理层&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

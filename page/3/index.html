@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.3-%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">数据结构/排序/7.3-计数排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.3计数排序适用范围：
+数据量很大但是取值范围很小
+适用案例：
+对某企业三万员工的年龄排序，快速取得高考成绩等
+桶排序的思想：
+以年龄排序为例子：
+假设年龄以0-60为区间
+创建一个新的数组，长度为61，遍历待排序数组，将出现的数字频率记录在以本数字为下标的计数数组中，
+
+然后按照计数数组记录的频率值输出数字就OK了
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/categories/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
+          
+            <a href="/tags/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F">计数排序</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/7.%E5%AD%97%E5%85%B8%E6%A0%91Trie/">
+        <p class="h4 index-header">数据结构/7.字典树Trie</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.字典树在实际的搜索引擎中，当我们在数据库中搜索一个关键字的时候，如何快速准确的进行定位是一个关键的问题，在面临大规模数据的时候，使用暴力的手段往往会造成检索和查找性能的低下，因此我们需要更加高效的数据结构。
+这时候我们引入一种新的数据结构：Trie树（字典树）。
+又称单词查找树，Trie树，是一种树形结构，是一种哈希树的变种。典型应用是用于统计，排序和保存大量的字符串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：利用字符串的公共前缀来减少查询时间，最大限度地减少无谓的字符串比较，查询效率比哈希树高。
+字典树每一个节点代表一个字符,有相同前缀的树就有相同的根节点,每个节点结束的时候用一个特殊的标记来表示(-1)
+
+从图中可以看出：
+1.每一个节点代表一个字符
+2.有相同前缀的单词在树中就有公共的前缀节点，由于一共有26个小写英文字母（在这篇文章中，我们主要讨论小写的英文字母查询），因此每个节点最多有26个子节点。
+3.整棵树的根节点是空的（这里我们设置根节点为root=0），这便于查找和插入，可以通过根节点快速的进入树结构，稍后就会明白。
+4.每个节点结束</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91">字典树</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.1-%E5%BF%AB%E6%8E%92/">
+        <p class="h4 index-header">数据结构/排序/7.1-快排</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.排序7.1快速排序快排是对冒泡排序的改进.
+基本思想:
+通过一趟排序将数据分割成独立的两部分,其中一部分的数据要小于另一部分
+然后用同样方法递归地对这两部分数据做快速排序,直到整个数据都变成有序序列.
+如下图所示
+7.1.左指针放最左,右指针放最右,Basic指针随机放
+7.2.左指针向右移动,遇见比basic大的停下来右指针向左移动,遇见比basic小的停下来左右指针指的对象交换位置
+
+7.3.交换位置后重复刚才步骤,直到左右指针相碰
+7.4.相碰后交换本对象和basic所指对象的位置
+7.5.于是将数据一分为二,可递归地操作剩下数据
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/categories/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
+          
+            <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">快速排序</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3.%E6%A0%91/">
+        <p class="h4 index-header">数据结构/3.树</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">树
+树的特征
+树是非线性结构
+树是由一个集合以及在集合上定义的一种关系构成的
+集合的元素称树的节点
+定义的关系成为父子关系
+父子关系在树的节点之间建立了一个层次关系
+
+
+
+
+
+
+二叉树的定义
+
+递归定义:二叉树或者是一个空树,或者是由一个根节点和两颗互不相交分别为根的左子树和右子树钩构成的
+
+
+遍历
+
+先序
+中序
+后序
+
+
+
+
+
+
+
+
+
+
+哈弗曼树
+
+哈弗曼编码
+
+在一个字符集的编码过程中,为了避免出现前缀歧义的情况,通常把待编码的项都安排在树的叶子节点上,因为没有任何一个叶子节点与其他叶子节点共享到根节点的路径,遂可保证无歧义性
+
+把待编码的项目根据使用频率可赋值一个”权”,权大的使用频率高,放在更靠近根节点的位置,这样它的编码就较短,可拉低整体编码的长度.
+
+哈弗曼树的构建过程如下图所示,代码在study项目中
+
+
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%A0%91">树</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91">二叉树</a>&nbsp;
+          
+            <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91">哈夫曼树</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4.%E5%9B%BE/">
+        <p class="h4 index-header">数据结构/4.图</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4.图图是一种网状数据结构,由顶点和边构成,Graph = (V,E)
+4.1子图
+4.2强连通分量:
+构造镜像图G’
+
+对G 和 G’中s的可达分量求并集既可得强连通分量
+
+
+
+
+4.3图的存储方式首先,从图的逻辑结构定义来看,无法将图的顶点排列成唯一的线性序列,在图中任意顶点都可以是图的第一个顶点.
+对任意顶点来说他的邻接点也不存在顺序关系
+所以顶点在图中的位置就是指该顶点在图中[人为]确定的序列的位置
+由于图的结构比较复杂,任意两个顶点之间都可能存在联系,所以无法将数据元素存储区的位置来表示元素之间的关系,即图没有顺序映像的存储结构,但可借助数组来表示数据元素之间的关系
+4.3.1邻接矩阵图的邻接矩阵表示法就是用数组来存放图的结构,也成为[数组表示法],采用两个数组来表示图
+
+存储所有顶点信息的一维数组
+
+存储图中顶点之间关系的二维数组,这个关联数组也叫邻接矩阵
+邻接矩阵的示意图(∞代表没有相连)
+
+
+
+4.3.2邻接表临接矩阵的问题:空间使用效率低,因为大量的单元所对应的边可能没有在图中出现
+按照改进空间使用效率的思路想,可以将静态数组的存储结构改成链式存储结构
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%9B%BE">图</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5.%E5%A0%86/">
+        <p class="h4 index-header">数据结构/5.堆</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">5.堆
+堆中存储的值是偏序
+
+堆属于完全二叉树
+
+大顶堆：父节点的值小于或等于子节点的值
+
+小顶堆：父节点的值大于或等于子节点的值
+
+
+
+1.堆的存储一般都用数组来表示堆，i节点的父节点下标就是（i - 1）/ 2,它的左右节点的下标分别是2 * i + 1和2 * i + 2。
+
+2.堆的操作：insert插入元素时，新元素被加到heap的末尾，然后更新树以恢复堆的次序。从新加元素到根节点之间必为一个有序数列，现在的任务是将这个新数据插入到原来的有序数列中，使数列仍保持有序。
+
+3.堆的操作：删除以大顶堆为例，删除元素时，每次都删除堆的第0个元素，为了便于重建堆，实际的操作是将堆的最后一个数据的值赋给根节点，然后从根节点开始依次从上往下调整。调整时先在左右儿子中找到最小的，若父节点比小子节点还还小就不交换，完成。如果不是就和大子节点交换位置，一直到交换不了为止。
+
+4.堆的操作：堆化数组堆化数组就是把数组从头到尾过一遍，把不满足大/小顶堆要求的数据依次交换。
+需注意叶子节点一律不用处理，应该从非叶子节点的右下角开始处理，处理时将本节点与下方节点比较，不符合要求的直接交换。本次交换后下</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%A0%86">堆</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2.%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97-/">
+        <p class="h4 index-header">数据结构/2.栈与队列-</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4.1栈
+栈的定义
+
+栈又称堆栈,是运算首先的线性表,仅允许从表的一端进行插入和删除.
+
+插入,删除的一端称为栈顶(top),另外一端称为栈底(bottom)
+
+
+栈的顺序存储和链式存储和线性表一模一样,只是在栈顶加上了增删元素的限制.
+
+有后进先出的特征
+
+
+
+
+4.2队列
+队列的定义
+队列和栈一样,是运算受限制的线性表,仅允许从一头插入元素(rear),从另一头读取(head)
+有先进先出的特征
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%A0%88">栈</a>&nbsp;
+          
+            <a href="/tags/%E9%98%9F%E5%88%97">队列</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.%E6%95%B0%E7%BB%84,%E9%93%BE%E8%A1%A8/">
+        <p class="h4 index-header">数据结构/1.数组,链表</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">数组
+数组是用来存放一组有相同数据类型的数据结构,通过整形下标来访问数组中的值
+如果越过数据的下标访问数据,会返回ArrayIndexOutOfBoundException
+Java中数组是一个类:所以两个数组变量可以指向同一个数组
+
+线性表
+顺序存储结构
+用数组实现
+插入元素的平均时间复杂度是O(n)
+查找的平均时间复杂度是O(1)
+适合多查找的场景
+
+
+链式存储结构
+典型的node节点由[data]和[next]两个域组成
+插入元素的平均时间复杂度是O(1)
+查找的平均时间复杂度是O(n)
+适合多增删的场景
+
+
+
+迭代器迭代器是程序设计模式中的行为模式,功能是提供一种方法顺序访问一个聚集对象中各个元素,又不暴露该对象的内部表示.
+简单来说迭代器就是对遍历操作的抽象.
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%95%B0%E7%BB%84">数组</a>&nbsp;
+          
+            <a href="/tags/%E9%93%BE%E8%A1%A8">链表</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/0.%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/">
+        <p class="h4 index-header">数据结构/0.常见算法总览</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">十大排序算法
+
+简单排序：插入排序、选择排序、冒泡排序（必学）
+分治排序：快速排序、归并排序（必学，快速排序还要关注中轴的选取方式）
+分配排序：桶排序、基数排序
+树状排序：堆排序（必学）
+其他：计数排序（必学）、希尔排序
+
+对于十大算法的学习，假如你不大懂的话，那么我还是挺推荐你去看书的，因为看了书，你可能不仅仅知道这个算法怎么写，还能知道他是怎么来的。推荐书籍是《算法第四版》，这本书讲的很详细，而且配了很多图演示，还是挺好懂的。
+推荐文章：
+必学十大经典排序算法，看这篇就够了(附完整代码/动图/优质文章)(修订版)
+2、图论算法
+
+图的表示：邻接矩阵和邻接表
+遍历算法：深度搜索和广度搜索(必学)
+最短路径算法：Floyd，Dijkstra（必学）
+最小生成树算法：Prim，Kruskal（必学）
+实际常用算法：关键路径、拓扑排序（原理与应用）
+二分图匹配：配对、匈牙利算法（原理与应用）
+拓展：中心性算法、社区发现算法（原理与应用）
+
+图还是比较难的，不过我觉得图涉及到的挺多算法都是挺实用的，例如最短路径的计算等，图相关的，我这里还是建议看书的，可以看《算法第四版》。
+漫画：什么是 “</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%87%8D%E8%A3%85Git%E5%92%8C%E5%8D%9A%E5%AE%A2/">
+        <p class="h4 index-header">安装调试记录/重装Git和博客</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">重装Git和博客：Git下载安装git.exe，官网速度慢就从腾讯下载
+git bash
+
+git config –global user.name “yubin（自定义用户名）”
+
+git config –global user.email “488459564@qq.com（自定义邮箱）”
+
+ssh-keygen -t rsa -C “你的邮箱”　
+三个回车
+
+
+在C:\users\bqlion\.ssh找到公钥，复制，粘贴到github里的new sshkey中
+git clone git@github.com::BqLion/_post.git
+推送时若报转义问题：warning: LF will be replaced by CRLF in 字典树.md.The file will have its original line endings in your working directory
+输入git config –global core.autocrlf false解决
+hexo下载安装node：https://nodejs.org/en/download/
+检查是否</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "暗影疾行&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

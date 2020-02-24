@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>CS224n/9 - 机翻,高级RNN,LSTM,GRU ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      8 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="Lecture9-高级RNN-LSTM-GRU-机翻"><a href="#Lecture9-高级RNN-LSTM-GRU-机翻" class="headerlink" title="Lecture9 - 高级RNN,LSTM,GRU,机翻"></a>Lecture9 - 高级RNN,LSTM,GRU,机翻</h1><p>本节继续讲循环神经网络以及LSTM和GRU这两个本课程最重要的深度学习模型，几乎你能看到的所有深度学习论文都是以这两个模型为基础。</p>
+<h4 id="1-机翻"><a href="#1-机翻" class="headerlink" title="1.机翻"></a>1.机翻</h4><p>对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。</p>
+<p>我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。</p>
+<p><strong>基于统计的机翻模型介绍</strong></p>
+<p>源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1407_40_006.png" alt=""></p>
+<p>如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项里找一个简单流畅的句子。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1413_18_341.png" alt=""></p>
+<p>其中的一个模块，翻译模型中，第一件要做的事情是匹配两种语言的单词，匹配所面临的困难使用法语英语互译来展示。其实英法是相似度很高的语言，换成其他相似度低的语言则难度会进一步上升。</p>
+<p><strong>选词</strong></p>
+<p>首先是有些单词在法语里有，英语里不存在，翻译的时候要把这种词汇取出掉，比如le japon在英语里对应的就是japan，没有冠词，如图一。然后还有多对一或者一对多的情况，如图二。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1418_10_267.png" alt=""></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1419_07_809.png" alt=""></p>
+<p><strong>语序对齐</strong>：A语言的正序是B语言的倒装。如下是德语和英语的例子。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1421_48_691.png" alt=""></p>
+<p><strong>搜索最优options</strong></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1422_49_424.png" alt=""></p>
+<p>老师对深度学习的阐述：</p>
+<p>深度学习他最喜欢的一个属性是，不仅仅是机翻问题，甚至上升到NLP或者AI，深度学习模型试图构建一个端到端的可训练模型，你只需要关心最终的目标函数即可。所有的东西都在一个模型里共同学习，从某种角度看，我们现在说的机器学习模型和这个比起来是相反的，你有匹配模型，你需要先优化它，然后可能需要重新排序模型，然后会有分布在不同系统的不同模型，你不能将所有的模型得到一致的训练。</p>
+<h4 id="2-使用RNN的机器翻译模型"><a href="#2-使用RNN的机器翻译模型" class="headerlink" title="2.使用RNN的机器翻译模型"></a>2.使用RNN的机器翻译模型</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1453_39_342.png" alt=""></p>
+<p>编码器和解码器如图所示，目标函数就是最小化交叉熵。</p>
+<h4 id="3-GRU模型"><a href="#3-GRU模型" class="headerlink" title="3.GRU模型"></a>3.GRU模型</h4><p>GRU模型的主要思想是，我们希望能够保存一些记忆，能够捕获一些较长的依赖，需要有一个模型去学习何时以及如何去做，同时还得允许错误消息流转。基于输入，这些流转会向不同的方向以不同的强度传递。</p>
+<p><strong>对GRU的介绍从标准的RNN开始</strong></p>
+<p>循环神经网络RNN基本上直接计算下一步的隐层，同样的，之前的隐状态会回归给向量，我们不是去计算GRU数值，而是先要计算其中各个门，这些门和h(t)一样，就是一些连续的隐状态长度一致的向量。这些门包括更新门和重置门。</p>
+<p>计算更新门时主要是基于当前输入的词向量和隐藏状态</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1611_59_836.png" alt=""></p>
+<p>计算重置门方法类似但是使用的是不同的权重</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1612_26_600.png" alt=""></p>
+<p>通过一个直观例子来认识<strong>重置门</strong>的作用：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1614_04_663.png" alt=""></p>
+<p>详细分析上图的公式和重置门的作用：假如这是一个语义的情感分析任务，前边都是对一个电影长篇累牍的剧情讨论，最后一句话是it`s a really boring movie.那么其实只要最后这个boring就OK了，前边的都可以舍弃。所以这里重置门就可以置为0，把计算累计的东西都清理掉，只是记录词向量Xt而已。</p>
+<p>直观例子认识<strong>更新门</strong>的作用：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1621_08_398.png" alt=""></p>
+<p>因为重置门和更新门都是经过了西格玛函数，最终输出的结果在0到1之间。如上图的公式，如果更新门Zt是1，那么最终的记忆内容ht就是直接复制h(t-1)，反之就是抛弃h(t-1)，继承之前所有的。直观例子还是语义情感分析任务，你上来就说这个电影我太喜欢了，然后后文是一堆对他细节的讨论。这时只用设置更新门确保不要丢失第一句话就好了。</p>
+<p><strong>图示GRU模型</strong></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1636_02_643.png" alt=""></p>
+<p>更新门和重置门在内存步进更新时起的作用。</p>
+<p>电路设计视角;</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1639_28_543.png" alt=""></p>
+<h4 id="4-LSTM"><a href="#4-LSTM" class="headerlink" title="4.LSTM"></a>4.LSTM</h4><p>LSTM是一个更复杂的基于RNN的模型，如下图的数学公式列出了LSTM的几个主要单元，包括输入们，输出门，遗忘门，新的内存单元，最终内存单元，最终隐藏层。</p>
+<ul>
+<li><p>输入门，基本上决定了关心当前向量的强度，或者说当前的cell或者当前输入的词能起多少作用</p>
+</li>
+<li><p>遗忘门，是一种分离机制，告诉cell有些时候需要忘记信息或者保留信息。这种情况看起来可能有一些不直观，通常定义遗忘门时0代表忘记过去。</p>
+</li>
+<li><p>输出门，用于分离那些与预测相关的内容和那些在该时点上需要保留在RNN中的内容。因此可以说，在当前时点上，这个特定的细胞单元并不重要，不过随后会变得很重要，比如现在不会输出最终的softmax但是还是希望保留这一信息，这就是另一个分离机制，会去学习何时输出。</p>
+</li>
+<li><p>新的记忆cell，跟GRU中的作用类似。在数学形式上和上文提到的输入们，遗忘门，输出门也类似，只不过那些门使用的是西格玛函数，这个cell使用的是tan函数。</p>
+<p><strong>以上四个是单层神经网络</strong></p>
+</li>
+<li><p>最终记忆cell，分离了输入门和遗忘门。就是遗忘门乘以上一次的记忆细胞，加上输入门乘以新的记忆细胞。这里会再次决定，多大程度上希望保存或者忘记过去的内容。</p>
+</li>
+<li><p>最终隐状态，如图是输出乘以tan(最终记忆cell）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1656_51_956.png" alt=""></p>
+</li>
+</ul>
+<p>LSTM的图示</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1700_27_862.png" alt=""></p>
+<p>大的矩形块就是LSTM，x是词向量输入，头上的h是输出。肚子里边的三个西格玛函数就是上文提到的各种门，tan就是新的记忆cell了，然后几个组件之间的加法或者乘法关系也表示地非常明确。</p>
+<p>图片之间的对比</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1703_05_453.png" alt=""></p>
+<p><strong>这是LSTM源论文中的配图。我第一次看这个图片的时候看了半天也不明白是什么意思。和前张图片比起来表达力高下立判。其实所有的模型或者概念或者新的ida真的都很简单。之所以对一些东西感觉登天难，有时候就是学者的表达力欠佳，或者学者故意装逼扔钉子拖慢后辈的进步速度。以后再遇到上图这种表达力实在难顶的玩意儿，比如高级数据结构/可读性巨差的数学公式等，认识这类已经提出了很久的模型或者固定知识时，动作要敏捷，不要在一个具体的点上耗费太多精力。过于难顶的点一定是老师的表达方法有问题/和自己不搭。一定注意时间和passion的消耗问题,路一直都明确地在脚下，失败是因为停止行路，停止的原因排除过劳无非就只有一个passion消耗殆尽。创造性工作例如构思未来或设计实验时，虽然时间用的多但是passion不会消耗。认识死概念被卡住时最容易passion大消耗，这时必须提高警惕，迅速改变思路，通过大牛的技术博客或者其他靠谱信息源去理解它，横看成岭侧成峰，现成的概念一定有一个角度是非常好理解的，苏式教育让我对学者的烂表达容忍力过高，警戒之。</strong></p>
+<p>​    </p>
+<h4 id="助教分享：建立一个更好的语言模型"><a href="#助教分享：建立一个更好的语言模型" class="headerlink" title="助教分享：建立一个更好的语言模型"></a>助教分享：建立一个更好的语言模型</h4><p>语言模型是NLP中最经典的任务，这里有三种方式可以让其变得更好，第一是更好的输入表达，第二是更好的正则化或者预处理，第三是有更好的模型。</p>
+<p>第一种是改进输入，例如Glove是一个词层面的表示，事实上可以把单词进一步编码为子词阶段，可以采用语素解码方式，可以采用BPE，最终也可以采用字母级的嵌入，他的作用是大大减少所用到的词汇量，让模型预测变得更简单，如下图展示的论文就是对输入端的改进。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1558_58_194.png" alt=""></p>
+<p>第二种办法是采用正则化技巧，来改善过拟合的问题，有一堆论文在讲如何做正则化，今天聚焦的点是在预处理阶段，通过和计算机视觉类似的替换技巧来构建更合理的语料库，比如把频繁和罕见的词语的评率都往平均值上拉一拉，就会使得曲线更显平滑，平滑的分布能让系统获得更好的语言模型和更好的实验结果。</p>
+<p>第三是更好的模型，etc。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/CS224n">CS224n</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CS224n/9 - 机翻,高级RNN,LSTM,GRU&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>计算机网络/3-数据链路层 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.9k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      6 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="3-数据链路层"><a href="#3-数据链路层" class="headerlink" title="3.数据链路层"></a>3.数据链路层</h1><h4 id="3-0概述"><a href="#3-0概述" class="headerlink" title="3.0概述"></a>3.0概述</h4><p>数据链路层使用的信道主要有以下两类</p>
+<ul>
+<li>点对点信道<ul>
+<li>这种信道使用一对一的点对点通信方式</li>
+</ul>
+</li>
+<li>广播信道<ul>
+<li>这种信道使用一对多的广播通信方式，因此过程较为复杂，广播信道上的链接主机很多，因此必须使用专门的共享信道协议来协调这些数据的转发</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-1-数据链路和帧"><a href="#3-1-数据链路和帧" class="headerlink" title="3.1 数据链路和帧"></a>3.1 数据链路和帧</h4><p>链路是一条无源的点到点的物理线路，中间没有任何的其他交换节点。数据链路是除了物理线路之外，还得有通信协议来控制这些数据的传输，若把实现了这些协议的软硬件加到链路上，就构成了数据链路。</p>
+<p>现在最常用的办法是使用适配器（网卡）来实现这些协议的硬件和软件，一般的适配器都包括了数据链路层和物理层这两层的功能。</p>
+<p>数据链路层传输的是<strong>帧</strong>。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1248_20_314.png" alt=""></p>
+<p>三个基本问题</p>
+<ul>
+<li>封装成帧</li>
+<li>透明传输</li>
+<li>差错控制</li>
+</ul>
+<ul>
+<li>封装成帧：</li>
+</ul>
+<p>在一段数据的前后分别打上首部和尾部，首部尾部可以确定帧的界限。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1248_33_763.png" alt=""></p>
+<ul>
+<li>透明传输问题：</li>
+</ul>
+<p>类似于我想在markdown文件中打出[]()字符缺被误以为是超连接一样，需要在[]()字符之前加上转义字符\。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1249_02_535.png" alt=""></p>
+<ul>
+<li><p>CRC差错检测</p>
+<p>传输过程中可能出现比特差错，1变成0或者0变成1。一段时间内传输错误的比特与总比特比值称谓误码率。为保证数据传输的可靠性，必须采用各种差错检测机制。</p>
+</li>
+</ul>
+<p>  CRC差错检验算法就是让一串字符串加上几位0，然后将其除以某个固定的字符串，最后得出余数。然后根据二进制的数学特征，将余数取代之前几个0的位置，然后将这个字符串+余数的串发送出去。接收端收到后将这个大串除以某个固定的字符串，最后要是得到的余数为0就说明传输正确，如果不得0就错误要丢弃。<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1249_31_389.png" alt=""></p>
+<h4 id="3-2点对点协议PPP"><a href="#3-2点对点协议PPP" class="headerlink" title="3.2点对点协议PPP"></a>3.2点对点协议PPP</h4><p>全世界用的最多的数据链路层协议是PPP（Point to Point）</p>
+<p>PPP协议满足的要求：简单，封装成帧，透明性，多种网络层协议，差错检测，网络地址协商等等</p>
+<p>PPP协议不需要的功能：纠错，流量控制，序号，多点线路，半双工或单工链路</p>
+<p>PPP协议的三个组成部分</p>
+<ul>
+<li>一个将IP数据报封装到串行链路的方法</li>
+<li>链路控制协议LCP</li>
+<li>网络控制协议NCP</li>
+</ul>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1249_51_947.png" alt=""></p>
+<p>​    </p>
+<p>PPP协议的工作状态</p>
+<p>当用户对ISP拨号上网时，路由器的调制解调器对拨号进行确认，并建立一条物理连接。</p>
+<p>PC机向路由器发送一系列LCP分组（封装成多个PPP帧），这些分组和响应选择一些PPP参数，和进行网络层配置，NCP给新接入的的PC机分配一个临时的IP地址，通信完毕后，NCP收回临时IP，释放网络层连接，LCP释放数据链路层和物理层的连接。</p>
+<h4 id="3-3局域网的数据链路层"><a href="#3-3局域网的数据链路层" class="headerlink" title="3.3局域网的数据链路层"></a>3.3局域网的数据链路层</h4><p>局域网最主要特点是，网络为一个单位所有，且地理范围和站点数目有限。</p>
+<p>局域网的优点：</p>
+<p>广播，一个站点可以方便地访问全网，局域网的主机可以共享连接在局域网上的各种硬件和资源。</p>
+<p>可扩展性良好。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1250_02_184.png" alt=""></p>
+<h4 id="3-4适配器的作用"><a href="#3-4适配器的作用" class="headerlink" title="3.4适配器的作用"></a>3.4适配器的作用</h4><p>网络接口板又称为通信适配器，或网络接口卡（网卡），网卡的重要功能是</p>
+<ul>
+<li><p>进行串行/并行转换</p>
+</li>
+<li><p>对数据进行存储</p>
+</li>
+<li><p>在计算机的操作系统安装设备驱动程序</p>
+</li>
+<li><p>实现以太网协议</p>
+</li>
+</ul>
+<p>计算机通过适配器(网卡与局域网通信)</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1250_11_401.png" alt=""></p>
+<h4 id="3-5数据链路层的mac子层"><a href="#3-5数据链路层的mac子层" class="headerlink" title="3.5数据链路层的mac子层"></a>3.5数据链路层的mac子层</h4><p>mac层就是媒体接入控制层（medium access control）。所有与传输媒体有关的内容都放在mac层。</p>
+<p>局域网中，硬件地址又称为物理地址，或者mac地址。适配器从网络接收到mac帧后就首先使用硬件检查mac帧中的mac地址。</p>
+<p>如果是发往本站的帧就收下，否则丢弃。</p>
+<p>mac帧格式</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1251_26_001.png" alt=""></p>
+<h4 id="3-5-1数据链路层的llc子层"><a href="#3-5-1数据链路层的llc子层" class="headerlink" title="3.5.1数据链路层的llc子层"></a>3.5.1数据链路层的llc子层</h4><p>llc层与传输媒体无关，不管采用何种协议的局域网对llc层来说都是透明的。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1252_33_876.png" alt=""></p>
+<h4 id="3-6扩展局域网"><a href="#3-6扩展局域网" class="headerlink" title="3.6扩展局域网"></a>3.6扩展局域网</h4><ul>
+<li>物理层扩展</li>
+</ul>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1252_43_362.png" alt=""></p>
+<p>使用集线器扩展局域网的优劣势：</p>
+<p>优势：扩大了通信范围</p>
+<p>劣势：碰撞域变大，总吞吐量未变。</p>
+<ul>
+<li>数据链路层扩展</li>
+</ul>
+<p>数据链路层扩展局域网的思路是使用网桥。</p>
+<p>网桥工作在数据链路层，它根据mac帧的目的地址对收到的帧进行转发。</p>
+<p>网桥能过滤帧，当收到帧后，并不向所有的接口转发此帧，而是先检查此帧的目的mac地址，然后确定将帧转发到哪个接口。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1253_13_860.png" alt=""></p>
+<p>使用网桥的好处：</p>
+<p>过滤了通信量，扩大了物理范围，提高了可靠性，可互联不同物理层，不同mac子层和不同速率的局域网</p>
+<p>网桥的劣势：</p>
+<p>存储转发增加了时延，在mac子层并没有流量控制功能。网桥只适用于用户数量不太多的局域网，否则会因为过多的广播造成网络拥塞。</p>
+<h4 id="3-7网桥"><a href="#3-7网桥" class="headerlink" title="3.7网桥"></a>3.7网桥</h4><p>网桥按照如下步骤处理收到的帧和建立转发表</p>
+<ul>
+<li>若从A发出的帧从接口X进入某网桥，那么这个接口出发反向一定可以把一个帧传回A</li>
+<li>网桥每收到一个帧，就记录下其源地址和进入网桥的接口，作为转发表的一个项目</li>
+<li>在建立转发表时把帧首部中的源地址写在地址这一栏的下方</li>
+<li>转发帧时吗，根据帧的首部中的目的地地址来转发。</li>
+</ul>
+<p>网桥转发表的建立图示</p>
+<p><img src="http://q0u9fsub0.bkt.clouddn.com///20191119/2EsnQOcgjqNl.png?imageslim" alt="mark">)<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1253_25_956.png" alt=""></p>
+<p>透明网桥使用了 生成树算法</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1253_42_576.png" alt=""></p>
+<p>互联在一起的网桥在彼此通信时吗，能够找出原来网络拓扑的一个子集，在这个子集里，整个网络中不存在回路，在任何两个网桥之间只有一条路径。</p>
+<p>这样避免了某个转发的帧不停在回路中兜圈子。</p>
+<h4 id="3-8交换机"><a href="#3-8交换机" class="headerlink" title="3.8交换机"></a>3.8交换机</h4><p>多接口网桥-交换机，以太交换机通常有十几个接口，以太网交换机其实就是一个多接口的网桥。交换机工作在链路层。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1255_19_111.png" alt=""></p>
+<p>小结：</p>
+<p>数据链路层的三大问题是解决将信息压缩为帧，透明传输（用转移符防止提前截断），误差控制（CRC检测算法）。</p>
+<p>注意帧的格式分报头报尾和内容。</p>
+<p>通过数据链路层扩展局域网的思路是在网与网之间增加网桥，网桥可以根据帧里的地址对各个主机进行转发操作。每个网桥都要维持一个自己的转发表，里边写的是目的地主机的地址和端口号。使用网桥时要注意maintain图的最小生成树，避免转发帧的时候掉进途中的回路不停兜圈子。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "计算机网络/3-数据链路层&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

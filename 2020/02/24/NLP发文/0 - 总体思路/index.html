@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>NLP发文/0 - 总体思路 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.5k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="0-总体思路"><a href="#0-总体思路" class="headerlink" title="0 - 总体思路"></a>0 - 总体思路</h1><ul>
+<li>基础 ： Speech and Language Processing（完成）</li>
+<li>早年经典NLP论文：遍历论文库（进行中）</li>
+<li>了解机器学习的基本模型：<ul>
+<li>CS229（完成）</li>
+<li>Pattern Recognition and Machine Learning</li>
+</ul>
+</li>
+<li>了解NLP其他子领域(MT,信息抽取,parsing,tagging,情感分析,MRC等)（进行中）</li>
+<li>了解CV和数据挖掘领域的进展</li>
+</ul>
+<ol>
+<li>学科调研：构建阅读列表和论文库；读近五年survey，近三年顶会，感兴趣方向热门论文和经典书单；输出互引DAG图，输出专有名词词典，输出调研文档。</li>
+</ol>
+<p>   *<em>构建文献库时遇到的困难：flood。目前资料：知识图谱80 + 深度学习100 + 生物医学CRF70 + ACL660 = 910篇论文，以及7本大部头。这还不包括所谓的5年survery100 + 三年顶会3000共约3100篇论文。 *</em></p>
+<p>   <strong>我需要的：迅速了解整个学科发展大致现状，选择自己感兴趣的+有前途做的人少的领域迅速构建论文库精读切入</strong></p>
+<p>   <strong>初步解决方案：控制工作量，看优质survey，大部头只挑一本看，其余当工具书，迅速对学科整体建模。积极寻求所有论文的互引网络图，然后只阅读高引论文 + 感兴趣细分领域的施引文献，根据CheBio论文list启发，面向“方法”构建相似论文库。</strong></p>
+<p>   <strong>当下任务：阅读speech and language processing</strong></p>
+<ol start="2">
+<li><p>计划：工作示意图 + excel详表。</p>
+</li>
+<li><p>选题：刚入门不要有开创道路的想法，第一篇论文可新颖度略低。</p>
+<p>最好能找到一起讨论的同学/小老板（科研伙伴），在前辈的带领下快速从一个小方向切入进去。</p>
+</li>
+<li><p>模型设计：模型设计和下边的代码、实验、调参、写文都可以从模仿起步。把和你工作最相关的文章 好好读几遍，从结构到段落到句子都可以模型。当年王鸿伟的第一篇论文就是吃透并模仿了好几篇参考文献而已，得到了老师的表扬。</p>
+</li>
+<li><p>代码实现</p>
+</li>
+<li><p>实验环节：设计实验，做实验，调参，记录结果</p>
+</li>
+<li><p>了解科研论文的组成结构。[Done]</p>
+</li>
+<li><p>开始写文，确定发文目标:列出顶会清单。查看其字数和格式限制，论文一旦超长很难缩短。</p>
+</li>
+<li><p>逻辑第一，这种逻辑是贯穿全文的，段落层面的逻辑、句子层面的逻辑、甚至一句话里的逻辑，都是非常关键的。一篇好的论文要循循善诱，有理有据，让人读起来不要废太多脑子，就觉得你说的很有道理。这里面要着重注意各种句子层面的关系：转折、因果、递进等。一句话可以有无数种表达方式，你要做的就是在脑子里把各种方式过滤一遍，选择最流畅的那一种。</p>
+</li>
+<li><p>简单构造：不要试图在一篇论文中提出太多的概念。专注于简单的构造，并围绕它构建您的论点。</p>
+</li>
+<li><p>使其有趣，学术论文不必很无聊。如果您想让自己的知识传播开来，请花些时间以使读者易于理解的方式来构造您的叙述。介绍您的概念，告诉它为什么很有趣，这个想法，它如何工作以及如何解决问题。</p>
+</li>
+<li><p>请一位导师</p>
+</li>
+<li><p>注意格式：始终以标准格式的单词以及双倍间距书写。</p>
+</li>
+<li><p>版本控制：每天另存为新草稿。您可以使用以下命名约定“ yyyymmdd-xxx work-draft”。</p>
+</li>
+<li><p>摘要最后写。当您完成研究论文时，您将更好地掌握所谈论的内容。在最后写摘要比在开始写摘要要容易得多。用您的文字来质疑自己的假设和推论。这样，您的写作可以使您的内容变得更好。</p>
+</li>
+<li><p>查重，语法检测</p>
+</li>
+<li><p>与已经发布的人联系，了解发布需要什么。与您信任的审稿人分享您的论文。特别是如果这是您的第一篇论文，您可能会花更多时间在不重要的论文方面。优秀的审稿人可以帮助您使您的论文格式更好。</p>
+</li>
+<li><p>善用工具</p>
+<table>
+<thead>
+<tr>
+<th>工具名称</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Paperpile</td>
+<td>在线研究工作流</td>
+<td><a href="https://paperpile.com/app" target="_blank" rel="noopener">https://paperpile.com/app</a></td>
+</tr>
+<tr>
+<td>sci-hub</td>
+<td>黑文献</td>
+<td><a href="http://tool.yovisun.com/scihub/" target="_blank" rel="noopener">http://tool.yovisun.com/scihub/</a>    ww1.sci-hub.tv</td>
+</tr>
+<tr>
+<td>Grammerly</td>
+<td>语法矫正</td>
+<td></td>
+</tr>
+<tr>
+<td>Turnitin</td>
+<td>查重</td>
+<td></td>
+</tr>
+<tr>
+<td>Inkscape</td>
+<td>工作示意图</td>
+<td></td>
+</tr>
+<tr>
+<td>Power Point</td>
+<td>工作示意图</td>
+<td></td>
+</tr>
+<tr>
+<td>Adobe illustrator</td>
+<td>工作示意图</td>
+<td></td>
+</tr>
+<tr>
+<td>Readcube</td>
+<td>Ref Control</td>
+<td></td>
+</tr>
+<tr>
+<td>Endnote</td>
+<td>Ref Control</td>
+<td>找投稿官网;自动匹配8个推荐投稿地;可按照期刊自动调整style;Endnote online免费，可绑定web of science账号</td>
+</tr>
+<tr>
+<td>Zotero</td>
+<td>Ref Control</td>
+<td><a href="https://www.zotero.org" target="_blank" rel="noopener">https://www.zotero.org</a></td>
+</tr>
+<tr>
+<td>Mendeley</td>
+<td>Ref Control</td>
+<td><a href="https://www.mendeley.com/" target="_blank" rel="noopener">https://www.mendeley.com/</a></td>
+</tr>
+<tr>
+<td>Google Scholar</td>
+<td>查阅论文</td>
+<td><a href="https://scholar.google.co.in/" target="_blank" rel="noopener">https://scholar.google.co.in/</a></td>
+</tr>
+<tr>
+<td>LaTeX</td>
+<td>插入图片、数学公式等</td>
+<td><a href="https://www.latex-project.org/" target="_blank" rel="noopener">https://www.latex-project.org/</a></td>
+</tr>
+<tr>
+<td>TypeSet</td>
+<td>多人协作，各期刊格式管理</td>
+<td><a href="https://typ.st/2st78LG" target="_blank" rel="noopener">https://typ.st/2st78LG</a></td>
+</tr>
+<tr>
+<td>ShareLaTexX</td>
+<td>多人协作</td>
+<td><a href="https://www.sharelatex.com/" target="_blank" rel="noopener">https://www.sharelatex.com/</a></td>
+</tr>
+<tr>
+<td>OverLeaf</td>
+<td>各期刊模板和格式</td>
+<td></td>
+</tr>
+<tr>
+<td>web of science</td>
+<td>学科跟踪服务</td>
+<td>使用邮箱创建学科跟踪服务，新动态可自动发送</td>
+</tr>
+<tr>
+<td>mjl.clarivate</td>
+<td>查看被期刊收录情况</td>
+<td><a href="https://mjl.clarivate.com" target="_blank" rel="noopener">https://mjl.clarivate.com</a></td>
+</tr>
+<tr>
+<td>publons/publons academy</td>
+<td>寻找审稿人/同行评议</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>注意事项</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保证有效工作时间8h/day。</td>
+<td>工作低效的标志：老看时间，察觉到时间的流逝。这时不可硬看，通过散步/睡觉/健身及时调整。</td>
+</tr>
+<tr>
+<td>张弛有度</td>
+<td>保证work-life-balance。每天必须要高质量地玩，天天紧绷很快就疲了，拉低生命体验本末倒置，且走不远。</td>
+</tr>
+<tr>
+<td>冷静思考，摒弃急躁和蛮力</td>
+<td>科研是优雅的脑力劳动，是艺术创作。不是体育比赛，不是谁力气大谁能忍受痛苦谁就厉害。遇到困难(which一定会)心情焦躁的时候时往回拉一拉，想想Andrew Ng,Manning,Percy Liang,Einstein这些偶像会怎么做。</td>
+</tr>
+<tr>
+<td>长期solo，注意maintain精神状态</td>
+<td>多健身，尝试回到绿茵场。心怀善念，别忘了初心是make the world a better place。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Times</p>
+<p>ACL2019 : 7.28</p>
+<p>EMNLP : 11.3</p>
+<p>NAACL : 6.2</p>
+</li>
+<li></li>
+</ol>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "NLP发文/0 - 总体思路&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

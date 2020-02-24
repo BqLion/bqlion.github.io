@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>CS224n/8 - RNN和语言模式 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      11 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="Lecture8-RNN和语言模式"><a href="#Lecture8-RNN和语言模式" class="headerlink" title="Lecture8 RNN和语言模式"></a>Lecture8 RNN和语言模式</h1><p>本节讲简单的循环神经网络模型，这个模型家族是大多数人现在在实际训练环境中使用的。</p>
+<p> 概览：</p>
+<p>1.传统的语言模型</p>
+<p>2.RNNs</p>
+<p>3.语言模型建模来驱动循环神经网络（RNN）</p>
+<p>4.重要的训练时的问题和技巧</p>
+<p>​    梯度消失问题</p>
+<p>​    梯度爆炸问题</p>
+<p>5.用于队列处理的RNN</p>
+<p>6.双向深度RNN</p>
+<h4 id="1-传统的语言模型和现在的词向量模型对比"><a href="#1-传统的语言模型和现在的词向量模型对比" class="headerlink" title="1. 传统的语言模型和现在的词向量模型对比"></a>1. 传统的语言模型和现在的词向量模型对比</h4><p>传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1423_54_634.png" alt=""></p>
+<p>如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。</p>
+<p>如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效。</p>
+<p>我们发明了很多种不同的途径来规避这些问题。例如由于4元统计模型出现频率过低根本不使用4-gram。那么我会尝试使用3元统计模型，或者再没有充足的计数，则会再次退而求其次，在上下文大小范围内使用较少的字组预估概率。但总的来说没如果你希望至少获取存储的3元或者4元统计模型的话，相关的内存需求会非常非常大。</p>
+<p>通过深度学习模型和传统nlp模型进行大量比较，自然会注意到上述现象。而这些模型大都围绕着特定类别的字组进行计数。通常模型越强大，内存的需求会增长地更快。</p>
+<h4 id="2-RNN"><a href="#2-RNN" class="headerlink" title="2.RNN"></a>2.RNN</h4><p>我们目前回避这种内存需求爆炸的问题的方法是，RNN，循环神经网络。</p>
+<p>循环神经网络在不同时间步长之间绑定相应的权重，在你通过这条路径时，其实你在使用同一个线性和非线性的层，至少从理论层面上来说，我们可以根据所有前序字组来进行预测。如此以来，内存需求只会取决于字词的数量规模，而不受我们想依据的序列长度的影响。也就是十万就是十万，没有十万的平方或者立方。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0918_21_529.png" alt=""></p>
+<p>假设我们有一个词汇向量表x,假设这些词汇向量均是固定的，我们在后续环节中放宽此假设并将其去除。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0927_58_435.png" alt=""></p>
+<p>紧接着，计算每个时间步长的隐状态，这个步骤中我们只有两个线性层和矩阵向量结果：W（hh）和W（hx）。我们会把这个两个矩阵相加。</p>
+<p>其中x[t]是在第t个时间步长中出现的字组向量。 </p>
+<p>如上这个公式将时间步长t-1和t处的词汇向量串联起来。同时也将这两个矩阵串联起来。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0928_11_626.png" alt=""></p>
+<p>我们可以将h(t)用作特征向量或者作为softmax函数分类层的输入，来获取概率输出（比如所有字组的概率）。</p>
+<p>几个矩阵W的含义：</p>
+<p>我们通常使用上标来识别现存的矩阵，W（hh）表示本W是输入h（t-1）后计算出的隐层h；W（hx）表示刚计算的h层有一个h_x,h_x将x映射到已有的相同向量空间。 </p>
+<p>x[t]是第t个时间步长出现的字组向量。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0933_51_156.png" alt=""></p>
+<p>如下就是在特异指标j的约束下，下一个特定字组的概率。所有前序字组本质上都是该大规模输出向量的第j个元素。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0934_34_205.png" alt=""></p>
+<h4 id="3-探究梯度消失-爆炸问题"><a href="#3-探究梯度消失-爆炸问题" class="headerlink" title="3.探究梯度消失/爆炸问题"></a>3.探究梯度消失/爆炸问题</h4><p>训练上文讲的循环神经网络事实上是一件非常困难的事情，这也是后边的课程我们会引入更优质的神经网络的原因。</p>
+<p>下文是对困难的描述</p>
+<p>基本上我们是让每个时间步长上相同的矩阵相乘，这可以看作是一个在所有时间步长上反复方法某些特定模式的过程。在理想情况下，我们很乐意看到多个时间步长中的输入值可以在后续的时间步长中继续修正我们一直努力预测的目标字组。尝试对W求导，如果你只有两三个字组序列的话，这将会是一项非常行之有效的训练，在正向传播过程中，我们想成了每个时间步长上相同的矩阵，而在反向传播期间我们也同样要这样做，我们必须时刻记住增量、空中讯号、以及各种梯度方向的全局元素。本质上讲，每个时间步长上的全局元素都会通过这个网络向后流动。所以当我们处理交叉熵损失函数时 ，通常会利用导数，我们需要回过头重新传播增量。第一个接近输出值的时间步长就会有效执行更新操作。并且字组向量也有可能得到合理的更新。</p>
+<p>随着时间的推移，你的讯号有可能变得过于强烈或者过于微弱。这就是所谓的梯度消失问题。随着时间的推移，你尝试在时间步长t处发送空中讯号，但由于此前已经存在很多时间步长，这样你就会遭遇梯度消失问题。</p>
+<ul>
+<li><p>简化的RNN模型来研究爆炸/消失问题。h(t)剥离西格玛，yt剥离softmax</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1019_48_100.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>所有时间步长中的误差W是分步误差的加和，如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1028_39_394.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>接下来我们要核算的是总误差的时间标记t中的元素，我们只需要核算单个时间步长以及单个时间步长上的单向误差。而现在即使计算也需要我们有一个非常大的链式求导法则。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1031_02_913.png" alt=""></p>
+<ul>
+<li><p>主要分析这个求导法则中的第三项</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1859_39_756.png" alt=""></p>
+</li>
+<li><p>记住ht的定义</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1900_20_207.png" alt=""></p>
+</li>
+<li><p>基本上每个方向的前序时间步长的ht的偏导数都已经给出，为了计算ht的所有偏导数，又要使用链式求导法则。如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1905_20_004.png" alt=""></p>
+</li>
+<li><p>这就意味着向量相对于另一个向量的偏导数是存在的。其实假如我们可以灵活运用反向传播的定义，那就没必要再进行实际计算。实际上，在将计算与流程图以及增量信息有效结合之前，我们并不需要计算清楚这些雅克比矩阵，但是为了分析其中的数学问题，我们还是需要计算所有的导数。</p>
+<p>每一个方向的ht的偏导数都是一个雅克比矩阵</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1907_42_256.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>  这么多雅克比行列式最终得到的结果也相当大，为了简化它，我们可以设定一个上限。相对于hj我们还要设定h的导数。事实上，在这一系列简单定义的基础上，所有的h都可以通过这种方式来计算。我们还可以设定矩阵的范数上限，这个上限就是这些方程的乘积。也就是Wt，我们可以将其算作一个已知的对角线，而非元素级结果。一般情况下，我们会将元素归置到一个较大矩阵的对角线上，在0路径中一切都是非对角线分布的。接下来我们将两个范数相乘，并将beta_W和beta_h定义为上限.那么每一个数值和单个标量，都能达到自身的最大值。</p>
+<p>  <img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1918_58_863.png" alt=""></p>
+<p>  已知W我们可轻松算出W的任意一种范数。我们只需要一个矩阵就可以计算出一个矩阵范数，当把这些范数全部列出来后，我们就发现这些雅克比行列式的上限实际上被用作这些元素的乘积。就其上限beta而言，假如我们定义了所有元素，那就等于拥有了计算t-k幂的乘积beta。所以序列越长t值越大。它真的取决于测试的t值究竟是变大还是变小。例如当前矩阵范数就是上述范数，那就意味着你已经控制了该范数。在开始训练之前，你将等待矩阵W,初始化为一些小的随机值，如果将其初始化为一个范数大于1的矩阵，那么在反向传播过程中，时间序列就会变得更长，由于你采用了大于1的值，最终你会得到一个爆发的梯度。例如数值为100，但现有的范数只有两个，那么在该梯度的上限就在这两个范数到100之间。反之亦然，假如在开始的时候，你将矩阵W初始化为一群小的随机值，那么W的范数就会小于1，那么最终ht发送到hk的最终梯度可能会缩小为一个十分小的数值，差不多是第100个范数的一半。总体来讲，这一过程不会有任何误差。同时这一过程也不会有误差讯号，随着时间推移，梯度消失或者爆炸也会越来越严重。</p>
+<p>  假如现有的梯度面临激增或者突然减少，是否意味着较远的数组最较近的数组有较大影响呢？答案是，当梯度激增或者突减时，在短时间内你便无法获得数字。这些数字并非字面意义上的数字，因为他们的数值实在太大了，我们根本无法计算。因此上述问题并非实际问题，我们必须设法回归。事实证明，梯度爆炸问题的确包含一些很强势的非法入侵，相比这些梯度消失问题，解决这些非法入侵问题其实要简单的多。</p>
+<p>  <img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1931_18_003.png" alt=""></p>
+<p>  在语言模型或者问答模型的情况下，一些时间序列间隔较大的语句，通常在预测下一个词是什么的时候不被考虑进去，这是梯度消失问题的一种。我们通过如下一个语言建模的例子来了解梯度消失问题。</p>
+<p>  Jane walk into the room,John walked in too,It was late in the day,Jane said hi to ___.</p>
+<p>  人类会觉得几乎概率是100%的下一个单词应该是John，但是现在每个单词都有词向量，你需要将他们全部输入到隐状态上，然后进行计算。接下来会希望模型可以筛选出一个特定的模型，在该模式中，一个人遇见另一个人，然后两个人互相问好，然后介绍姓名等等等等。但是实际上你无法命令模型将中间这个错误讯号收回，你需要手动修改隐状态，将John这个答案设置为较高的概率。中间的这个it was late in the day是一个打乱了时间序列的句子。</p>
+<h4 id="4-python笔记本演示简单的梯度消失问题"><a href="#4-python笔记本演示简单的梯度消失问题" class="headerlink" title="4.python笔记本演示简单的梯度消失问题"></a>4.python笔记本演示简单的梯度消失问题</h4><p>展示的时候用的是一个简单的两层神经网络，并没有用完整的周期性实体网络。在这个网络中会看到从顶部开始的误差，会随着你在网络中的搜索，梯度范数已经会变得越来越小了。如下的方程能解释这个现象，这两个方程在代码中也得到体现。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1311_03_191.png" alt=""></p>
+<p>代码对数学公式的实现格式非常规整，值得好好学习。</p>
+<pre><code>小结:
+1.传统语言模型是使用条件概率公式，遍历前n-1个词汇，预测第n个词汇出现的概率。这种方式cost太大
+2.后来改进，根据1-gram，2-gram，3-gram模型预测下一个词出现概率。本质还是使用条件概率公式，这种方式内存开销仍然太大。
+3.为了解决开销问题，引入RNN网络，RNN定义由上文方程式和图片清晰定义。
+4.RNN又有新的麻烦，就是梯度爆炸or消失问题。因为RNN基本上就是在时间序列上连续传导特定的模式，随着时间的积累这种模式一定会变得过于强烈或者过于微弱。</code></pre>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/CS224n">CS224n</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CS224n/8 - RNN和语言模式&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
