@@ -136,6 +136,240 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/JAVA/6.jetty%E5%92%8Ctomcat/">
+        <p class="h4 index-header">JAVA/6.jetty和tomcat</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.jetty和tomcat1.Jetty是什么
+​    jetty是一个开源的HTTP服务器和Servlet引擎,可以为JSP和Servlet提供运行时环境,相对与Tomcat,,jetty更加轻量级,更加简易和灵活
+2.jetty特点
+
+异步,支持更高的并发量
+灵活,更加轻量,更容易定制,更高的资源利用率
+Jetty采用默认的NIO模型,jetty很好地支持长链接
+
+3.应用场景
+
+企业级应用tomcat占据了绝对优势
+jetty默认使用NIO,在轻量级的,保持长连接的场景下使用很有优势,比如客服的聊天
+
+4.jetty原理
+
+提供了两种handlder
+handlerWrapper
+可以将一个Handler委托给另一个类执行,将handler加载到jetty中就是通过handler委托给server执行的
+
+
+handlerCollection
+将多个handler组装成handler链,可以方便地做扩展
+
+
+
+
+
+2.tomcat
+为了服务器生成动态页面,需要运行java Servlet,那么就需要提供Servlet容器
+Tomcat正式支持运行Servlet/JSP应用程序</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/java">java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/jetty">jetty</a>&nbsp;
+          
+            <a href="/tags/tomcat">tomcat</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/JAVA/7.%E5%8F%8D%E5%B0%84/">
+        <p class="h4 index-header">JAVA/7.反射</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">反射
+反射的定义
+
+行状态中,能知道任何一个类的属性和方法
+能调用任何一个对象的属性和方法
+这种动态获取信息以及动态调用对象方法的功能称谓java的反射机制
+
+
+反射的用途
+
+第三方应用开发时,会遇到某个类的变量或方法是私有的,只对系统应用开放,这时候就利用java的反射机制通过反射来获取所需要的私有成员或者方法.
+
+
+反射的相关类
+
+
+class类
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/java">java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/java">java</a>&nbsp;
+          
+            <a href="/tags/%E5%8F%8D%E5%B0%84">反射</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/JAVA/2.ClassLoader/">
+        <p class="h4 index-header">JAVA/2.ClassLoader</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.ClassLoader类加载器classloader作用:
+
+负责将class加载到JVM中
+审查每个类由谁加载
+将class字节码重新编译成JVM统一要求的对象格式
+
+2.1类加载时机与过程类从被加载到虚拟机内存开始,到卸载出内存为止,整个生命周期包括了七个部分:
+加载,验证,准备,解析,初始化,使用,卸载
+
+如下几种情况会对类进行初始化
+
+创建类的实例
+对类进行反射调用
+当初始化类,发现父类没有没初始化
+jvm启动,用户指定一个要执行的主类,虚拟机会先初始化这个主类
+java.lang.invoke.MethodHandle实例最后的解析结果REF_getstatic,REF_putstatic,REF_invokeStatic的方法句柄，并且这个方法句柄所对应的类没有进行初始化，则需要先出触发其初始化。
+
+2.2类加载器的双亲委派模型
+
+双亲委派模型好处
+
+避免重复加载,当父类已经加载了该类的时候,就没有必要classloader再加载一次考虑到安全因素，我们试想一下，如果不使用这种委托模式，那我们就可以随时使用自定义的String来动态替代java核心api中定义的类型，这</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/java">java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/java">java</a>&nbsp;
+          
+            <a href="/tags/classLoader">classLoader</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/JAVA/3.%E6%B3%9B%E5%9E%8B/">
+        <p class="h4 index-header">JAVA/3.泛型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">泛型泛型就是扩展了方法的适用范围:
+例子:
+原本有一个SUM(y) = (a + b)的两元素相加的方法
+
+在两数字相加或两字符串拼接的场景下本来都可以用它
+
+但是如果y提前规定了数据类型就不能用了,两个场景必有其一要重写
+
+这时候使用泛型,&lt;T&gt;当做占位符,就可以实现代码复用了 
+
+
+之所以不用Object实现参数的任意化是因为要做显式的强制转换,这种转换是要求开发者对实际参数可预知的情况下进行的,而很多时候开发者不能预知程序运行时有哪样的类型需要强转
+如果强转错误,程序员也无从得知,是一个安全隐患
+引入泛型不用object后所有任意化的参数类型都是隐式自动进行的,保证了效率和安全性
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/java">java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/java">java</a>&nbsp;
+          
+            <a href="/tags/%E6%B3%9B%E5%9E%8B">泛型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/JAVA/4.%E8%A1%A8%E9%93%BE%E6%8E%A5/">
         <p class="h4 index-header">JAVA/4.表链接</p>
         
@@ -220,50 +454,6 @@ select * from TableA cross join TableB
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Docker/Docker%E5%85%A5%E9%97%A8/">
-        <p class="h4 index-header">Docker/Docker入门</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">DockerDocker是个虚拟机，主要运行在linux上，和VMware Workstation Pro有很多相似的地方。
-
-镜像，是创建虚拟机之前需要下载的系统镜像文件，比如iso和img文件等
-容器，是正在运行中的虚拟机
-tar文件，就是镜像的压缩文件，压缩传送解压缩安装
-dockerfile，配置文件，写完后通过docker bulid指令将dockerfile构建成一个镜像
-仓库，类似于github，和镜像是pull和push的关系，里边有做好的ubuntu，mysql，tomcat镜像等
-
-基本操作安装docker
-docker pull nginx : 从仓库下载nginx
-docker images : 查看本地镜像
-docker run -d -p 80:80 nginx 后台将镜像运行为容器nginx，端口映射80-80
-docker ps查看正在运行的容器有哪些，例如它会输出正在运行的容器是nginx，id是92a68b3fe02e
-docker exec -it 92,进入运行的id开头是92的容器
-cd /usr/share/nginx/html/,进入ngi</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Docker">Docker</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/D3NER/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%92%8C%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
         <p class="h4 index-header">D3NER/知识图谱和推荐系统</p>
         
@@ -309,6 +499,50 @@ W3C标准
           <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Docker/Docker%E5%85%A5%E9%97%A8/">
+        <p class="h4 index-header">Docker/Docker入门</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">DockerDocker是个虚拟机，主要运行在linux上，和VMware Workstation Pro有很多相似的地方。
+
+镜像，是创建虚拟机之前需要下载的系统镜像文件，比如iso和img文件等
+容器，是正在运行中的虚拟机
+tar文件，就是镜像的压缩文件，压缩传送解压缩安装
+dockerfile，配置文件，写完后通过docker bulid指令将dockerfile构建成一个镜像
+仓库，类似于github，和镜像是pull和push的关系，里边有做好的ubuntu，mysql，tomcat镜像等
+
+基本操作安装docker
+docker pull nginx : 从仓库下载nginx
+docker images : 查看本地镜像
+docker run -d -p 80:80 nginx 后台将镜像运行为容器nginx，端口映射80-80
+docker ps查看正在运行的容器有哪些，例如它会输出正在运行的容器是nginx，id是92a68b3fe02e
+docker exec -it 92,进入运行的id开头是92的容器
+cd /usr/share/nginx/html/,进入ngi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Docker">Docker</a>&nbsp;
           &nbsp;
         
         
@@ -388,66 +622,6 @@ java中的线程分两种
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/D3NER/embedding/">
-        <p class="h4 index-header">D3NER/embedding</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">embedding
-embedding是用一个[低维的向量]表示物体(词语,商品,电影等),这个向量的性质是能使距离相近的向量
-对应的物品有相近的含义
-
-例如embedding(复仇者联盟)和embedding(钢铁侠)的距离就很近
-embedding(复仇者联盟)和embedding(乱世佳人)的距离就较远
-
-
-embedding还有数学运算的关系
-
-例如Embedding(马德里)-Embedding(西班牙)+Embedding(法国)≈Embedding(巴黎)
-
-
-embedding从另一个空间表达物体,甚至揭露了物体之间的潜在关系,具备一定的本体论哲学意义
-
-本体论(Ontology)
-斯坦福Gruber对本体论定义:概念化的精确描述,本体论用于描述事物的本质
-实现上:一个ontology就是一个词汇表,核心作用是定义某领域的专业词汇和他们之间的关系(数据与数据结构).这一系列的概念如 一座大厦的基石,为交流各方提供了统一的认识,知识的搜索/积累/共享的效率大大提高.
-统一专业词汇为知识复用提供可能
-统一代码style为代码复用提供可能
-等价于秦王统一度量衡和货币
-
-
-xm</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/D3NER">D3NER</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/D3NER">D3NER</a>&nbsp;
-          
-            <a href="/tags/embedding">embedding</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/D3NER/D3NER/">
         <p class="h4 index-header">D3NER/D3NER</p>
         
@@ -494,9 +668,9 @@ Named En</div>
           
             <a href="/tags/CRF">CRF</a>&nbsp;
           
-            <a href="/tags/embedding">embedding</a>&nbsp;
-          
             <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
+            <a href="/tags/embedding">embedding</a>&nbsp;
           
         
       </div>
@@ -543,202 +717,6 @@ input: “学习出一个模型，然后再预测出一条指定”expected outp
             <a href="/tags/CRF">CRF</a>&nbsp;
           
             <a href="/tags/LSTM">LSTM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CrowdFlower/n-gram/">
-        <p class="h4 index-header">CrowdFlower/n-gram</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">n-gram语言模型1.Statistical Language Model
-在自然语言处理中的一个基本问题,如何计算一段文本序列在某某种语言下出现的概率?
-例子
-
-我经常会去图书馆＿＿＿？
-预测该句后面的词，我们通常会根据已有的语料的上下文，来统计预测这句话可以填某个词汇的概率，将最大的概率作为结果返回
-
-
-机器翻译中,I like  Tomc so much,将单词逐个翻译—-{我,喜欢,汤姆,非常},这个集合中的字词排列组合成句子,然后用语言模型去计算组成句子概率的大小,概率越大越流畅
-
-2.n-gram语言模型
-理解:
-n-gram语言模型的思想,可以追溯到香农的问题:给定一串字母,比如”for ex”,下一个最可能出现的字母是什么?从训练语料中,我们可以通过极大似然估计的方法,得到N个概率分布,是”a”的概率是0.4,是”b”的概率是0.0001,是c的概率是….,and 别忘记约束条件:所有N个概率的分布总和为1
-如下图,运用条件概率和乘法公式推倒:
-直接这么计算比较困难,需要引入马尔科夫假设,即,一个item的出现,只与前m个items有关,m = 0时,就是unigra</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/n-gram">n-gram</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/D3NER/CRF/">
-        <p class="h4 index-header">D3NER/CRF</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">条件随机场
-概率统计图概览
-
-
-马尔科夫假设/马尔科夫性
-
-马尔科夫假设
-马尔科夫链  里的  总是只受  一个人的影响。马尔科夫假设这里相当于就是个2-gram。
-马尔科夫过程
-在一个过程中，每个状态的转移只依赖于前n个状态
-
-
-
-
-马尔科夫性
-马尔科夫性是保证或者判断概率图是否为概率无向图的条件
-成对性
-局部性
-全局性
-
-
-
-
-
-
-条件随机场定义
-
-条件随机场是在给定的随机变量 （具体，对应观测序列  ）条件下，随机变量  （具体，对应隐状态序列  的马尔科夫随机场。
-广义的CRF的定义是： 满足  的马尔科夫随机场叫做条件随机场（CRF）
-条件随机场是一种特殊的马尔科夫随机场
-马尔科夫随机场
-首先我们有无向图G=(V,E)， 图G中每个节点v上都有一个随机变量y，这样所有的节点上的随机变量就构成一组随机变量Y，图G上有联合概率分布P(Y)。边e表示相邻节点的变量存在某种神秘的联系。
-图G上的随机变量Y满足马尔科夫性，即两个不相邻的节点上的随机变量yi，yj条件独立。这就是马尔科夫随机场。
-
-
-
-
-CRF建模公式
-
-
-CRF特征函数
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/D3NER">D3NER</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/D3NER">D3NER</a>&nbsp;
-          
-            <a href="/tags/CRF">CRF</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CrowdFlower/%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/">
-        <p class="h4 index-header">CrowdFlower/文本特征提取</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.概述1.1特征提取与特征选择这两者的效果是一样的，都是试图去减少特征数据集中的属性（特征）的数目，但是两者采用的方法不同，
-特征提取的方法是通过属性之间的关系，通过组合不同的属性得到新的属性，改变了特征空间
-特征选择的方法是选择出特征集的子集，是一种包含的关系，没有改变特征空间
-1.2特征提取的主要方法PCA,LDA,SVD等
-1.3特征选择的主要方法1.fliter方法
-对每个特征打分，即给出每一维的特征赋予权重，该权重代表了特征的重要性，然后根据权重排序。
-主要的方法：卡方，信息增益，相关系数
-2.Wrapper方法
-主要思想：将子集的选择看成一个搜索寻优问题，生成不同的组合，对组合进行评论
-可看做一个优化问题，有很多优化算法可供使用
-尤其是启发式算法GA，PSO,DE,ABC等等
-主要方法：递归特征消除方法
-3.Embedded方法
-主要思想：在模型既定的情况下，学习出对提高模型准确性最好的属性，即在确定模型的过程中，挑选出哪些对模型训练有重要意义的属性
-主要方法：正则化，如岭回归就是在回归的基础上加上了正则化项
-1.4总结1.特征提取是从杂乱无章的世界中，去到更高的世界俯瞰</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-            <a href="/tags/%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96">文本特征提取</a>&nbsp;
           
         
       </div>

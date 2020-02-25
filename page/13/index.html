@@ -136,6 +136,273 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E6%A2%AF%E6%AE%B5%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">CS229/梯段下降算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">梯度下降算法
+特点：梯度下降算法可以自动将代价函数J最小化
+问题描述:有一个代价函数，它有两个参数，想让这个代价函数的值最小化。
+做法：持续把这个两个参数向着梯度下降最快的方向迭代。
+
+
+
+梯度下降算法的学习率α设置:
+α过小,收敛太慢
+α过大,在最小值附近震荡
+
+
+梯度下降缺点:可能求的是局部最优解，解决办法是多次随机初始化起点。
+
+1.多特征值的回归问题
+
+单特征回归:只有房子面积一个特征,求预测房价
+
+单特征回归的假设函数:h(x) = θ0 + θ1x
+
+
+多特征回归:有房子面积,卧室数量,几层高,使用年限四个特征,求预测房价
+
+四特征回归的假设函数:h(x) = θ0 + θ1x1+θ2x2+θ3x3+θ4x4    —-&gt;   缩写h = θ(XT) :向量θ乘以向量X的转置
+只考虑最简单的一次线性多项式
+
+
+多特征回归的梯度下降算法:
+
+每次对一个参数求偏导,并对其迭代.
+所有参数都迭代这么一圈算完成一个回合.
+多参数迭代过程如下图
+
+
+
+
+
+
+2.梯度下降实用技巧–特征缩放(feature scaling)
+如果参数 θ1和θ2大小相差太远,那么θ1的轻微改变都可</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95">梯度下降算法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/9.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
+        <p class="h4 index-header">CS229/9.支持向量机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">9.支持向量机9.1SVM的优化目标从逻辑回归展示如何一点点修改得到本质上的支持向量机
+
+逻辑回归的假设函数
+
+
+
+
+
+9.2核函数对支持向量机算法做一些修改,以构造复杂的非线性分类器
+我们用”核函数”来达到此目的
+问题的提出:
+使用高级数的多项式模型来解决无法使用直线进行分割的分类问题,如何确定模式中的每一项的参数?
+支持向量机的假设函数和代价函数
+
+9.3 SVM的使用不建议自己写代码求解参数θ,就像没有人会写代码自己去求解平方根一样,可以直接调用现有的库
+除了高斯核函数之外还有其他核函数可以用:
+多项式核函数（Polynomial Kernel）
+字符串核函数（String kernel）
+卡方核函数（ chi-square kernel）
+直方图交集核函数（histogram intersection kernel）
+等等
+SVM模型 和 逻辑回归模型之间的取舍:
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/SVM">SVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">判定模型和生成模型的区别
+机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
+
+判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
+生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
+
+一个生动的例子说明两者的区别:
+
+判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
+生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
+          
+            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/8.%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
+        <p class="h4 index-header">CS229/8.应用机器学习的建议</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8.应用机器学习的建议8.1如何提高一个算法/机器学习模型的性能问题:预测房价的机器学习模型性能遇见瓶颈,如何提升性能?
+
+很多人是凭感觉去解决问题,他们有如下猜想并随便选一个去做
+
+随便某个猜想都是耗时耗力巨大的项目,人们常常选择的是一条不归路
+
+如何尽量排除无效的道路?
+
+
+
+获得更多的训练样本——解决高方差   
+尝试减少特征的数量——解决高方差
+尝试获得更多的特征——解决高偏差
+尝试增加多项式特征——解决高偏差
+尝试减少正则化程度λ——解决高偏差
+尝试增加正则化程度λ——解决高方差
+
+8.2如何评估一个模型表现
+模型的代价函数非常小未必是好事,因为可能存在过拟合的现象
+为了检验模型是否过拟合,可以采用交叉验证的方法
+可以把数据集分为训练集和测试集,然后重复洗牌交叉验证
+
+高偏差与高方差
+
+高偏差是欠拟合
+
+高方差是过拟合
+
+
+
+
+增加模型的多项式次数导致的过/欠拟合问题
+
+训练集上:
+增加模型多项式的次数会导致代价函数单调递减
+
+
+交叉验证集上:
+增加模型多项式的次数会导致代价函数先减后增
+先减是改善了欠拟合的问题
+后增就是过拟合越来越严重
+
+
+结论:
+交叉验证是评估过/欠拟合</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0">评估模型表现</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
         <p class="h4 index-header">CS229/5.过拟合和正则化</p>
         
@@ -180,6 +447,73 @@
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
+        <p class="h4 index-header">CS229/6.神经网络(表述)</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">#
+6.神经网络(表述)6.1问题的由来
+特征爆炸无法处理
+例如,智能识别一个图片是不是汽车的问题
+假设使用50*50小黑白照片
+那么就有2500个像素灰度作为特征
+2500个特征两两组合就是3000000项,这的多项式处理不了
+这时候就需要神经网络
+
+
+
+6.2直观理解和逻辑运算符的构建
+直观理解
+
+神经网络能够通过自身学习得到一些列特征,这些特征是使用数据的原始特征经过拆分组合和一系列逻辑运算得到的
+这样的一系列特征比普通的逻辑回归的表层特征要深刻的多
+最后做决定的神经元依据上一层传进来的特征,这些特征已经经过多层传导,内化为自己的特征了
+
+
+神经元可以通过增加一个固定权重神经元构建逻辑运算符(与,非,或,抑或等)
+
+如下图
+
+
+
+
+6.3神经网络的形态
+6.4神经网络基本概念的定义from CS224N如图，神经网络有输入，有偏置单元，有激活函数，以及对后续神经网络的输出。
+输入x，w是乘以输入的权重，b是偏置值，f是sigmod函数。
+输入乘以权重加上偏置值后，进入sigmod函数，输出一个分类值。
+有了神经网络，让我们再回到之前的单窗口分类器。代替之前直接将softmax应用</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
           
         
       </div>
@@ -268,186 +602,6 @@ a(2)是第二层神经元的输出项,共五项,是z(2)五项经过第二层神�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
-        <p class="h4 index-header">CS229/6.神经网络(表述)</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">#
-6.神经网络(表述)6.1问题的由来
-特征爆炸无法处理
-例如,智能识别一个图片是不是汽车的问题
-假设使用50*50小黑白照片
-那么就有2500个像素灰度作为特征
-2500个特征两两组合就是3000000项,这的多项式处理不了
-这时候就需要神经网络
-
-
-
-6.2直观理解和逻辑运算符的构建
-直观理解
-
-神经网络能够通过自身学习得到一些列特征,这些特征是使用数据的原始特征经过拆分组合和一系列逻辑运算得到的
-这样的一系列特征比普通的逻辑回归的表层特征要深刻的多
-最后做决定的神经元依据上一层传进来的特征,这些特征已经经过多层传导,内化为自己的特征了
-
-
-神经元可以通过增加一个固定权重神经元构建逻辑运算符(与,非,或,抑或等)
-
-如下图
-
-
-
-
-6.3神经网络的形态
-6.4神经网络基本概念的定义from CS224N如图，神经网络有输入，有偏置单元，有激活函数，以及对后续神经网络的输出。
-输入x，w是乘以输入的权重，b是偏置值，f是sigmod函数。
-输入乘以权重加上偏置值后，进入sigmod函数，输出一个分类值。
-有了神经网络，让我们再回到之前的单窗口分类器。代替之前直接将softmax应用</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/11.%E9%99%8D%E7%BB%B4/">
-        <p class="h4 index-header">CS229/11.降维</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">11.降维11.1 动机一：数据压缩例如有两个特征，一个是厘米，一个是英寸，这个时候可以抛弃其中一个特征，将二维降成一维
-利用投影的方法可以将数据降低为任意想要的维度
-11.2主成分分析问题PCA主成分分析是最常见的降维算法
-步骤：
-找到一个方向向量，当所有的数据投射到该向量时，我们希望投射的平均均方误差最小，方向向量是一个经过原点的向量，而投射误差是从特征向量向该方向作垂线的长度
-左边是线性回归，右边是PSA
-
-计算方法
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E9%99%8D%E7%BB%B4">降维</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
-        <p class="h4 index-header">CS229/2.正规方程</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">CS229—正规方程1.定义
-​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
-
-正规方程求解参数矩阵的公式:
-
-2.正规方程法和梯度下降法的对比
-
-梯度下降的特点
-
-要设置学习率α
-多次迭代
-工作地非常均衡
-适合特征变量很多的时候用
-要求参数归一化
-
-
-正规方程法
-
-不用设置学习率
-不用迭代
-需要计算
-适合特征变量不超过1000时用
-不要求参数归一化,如下图
-
-
-
-有些较复杂问题不能使用正规方程法,只能使用梯度下降
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/10.%E8%81%9A%E7%B1%BBClustering/">
         <p class="h4 index-header">CS229/10.聚类Clustering</p>
         
@@ -502,6 +656,52 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
             <a href="/tags/%E8%81%9A%E7%B1%BB">聚类</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/11.%E9%99%8D%E7%BB%B4/">
+        <p class="h4 index-header">CS229/11.降维</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">11.降维11.1 动机一：数据压缩例如有两个特征，一个是厘米，一个是英寸，这个时候可以抛弃其中一个特征，将二维降成一维
+利用投影的方法可以将数据降低为任意想要的维度
+11.2主成分分析问题PCA主成分分析是最常见的降维算法
+步骤：
+找到一个方向向量，当所有的数据投射到该向量时，我们希望投射的平均均方误差最小，方向向量是一个经过原点的向量，而投射误差是从特征向量向该方向作垂线的长度
+左边是线性回归，右边是PSA
+
+计算方法
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E9%99%8D%E7%BB%B4">降维</a>&nbsp;
           
         
       </div>
@@ -575,179 +775,6 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
             <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">逻辑回归</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/9%20-%20%E6%9C%BA%E7%BF%BB,%E9%AB%98%E7%BA%A7RNN,LSTM,GRU/">
-        <p class="h4 index-header">CS224n/9 - 机翻,高级RNN,LSTM,GRU</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture9 - 高级RNN,LSTM,GRU,机翻本节继续讲循环神经网络以及LSTM和GRU这两个本课程最重要的深度学习模型，几乎你能看到的所有深度学习论文都是以这两个模型为基础。
-1.机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
-我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
-基于统计的机翻模型介绍
-源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
-
-如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/1.%E7%BB%AA%E8%AE%BA/">
-        <p class="h4 index-header">CS229/1.绪论</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">CS229–绪论,梯度下降算法1.监督学习和无监督学习
-监督学习定义
-部分数据集已经有答案.比如房价信息集,知道了正确的房价,需要预测出更多的房价
-回归问题,预测连续值的输出(房价)
-聚类问题,预测离散值的输出(肿瘤是良性还是恶性?)
-
-
-
-
-无监督学习
-
-无监督学习没有答案,自动聚类:比如google搜索BP油井泄露,会把CNN,ABC,BBC新闻放一起
-
-
-
-2.线性回归算法
-监督学习的典型过程
-
-Training set –[喂食给]—&gt;Learning Algorithm –[生成]–&gt;hypothesis(假设函数)
-
-size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate price
-
-
-
-
-
-线性回归
-
-预测房价的假设函数:h(x) = θ0 + θ1x
-根据训练集生成一元一次方程,输入房间大小得到房价预测
-
-
-
-3.代价函数
-代价函数有利于弄清楚如何把最有可能的直线与我们的数据相拟合
-
-最小化代价函数就可得到最好的预测函数
-
-如何选择假设函数hypothesis “h(x) = θ0 + θ1x”</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/6%20-%20%E4%BE%9D%E5%AD%98%E5%88%86%E6%9E%90/">
-        <p class="h4 index-header">CS224n/6 - 依存分析</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture6 依存分析本节课综述
-
-这节课主要讲句法 + 语法 + 依存分析
-基于转移的依存关系分析语法
-神经网络内容
-TensorFlow + 实际的nlp内容例如构建神经依存关系分析器
-
-1.依存分析的概念和一个例子句子或句子的一部分有一种结构，人们可以用特定的方式将他们组合起来，我们可以从非常简单的并不构成句子的东西入手。
-
-一个冠词 + 名字 通常被语言学家称为名词短语
-
-
-
-有一些规则可以用来扩展他们：比如在冠词和名词之间加一个形容词
-the large cat
-a beautiful dog等
-
-你也可以在名词后边添加介词短语
-the large cat in a crate
-the barking dog on the table等
-
-
-传统上，语言学家和自然语言处理器想做的是描述人类语言结构，人们过去有两个关键工具来做到这点，一种是上下文无关文法的方法，这种方法经常被语言学家引用为短语结构文法。我们现在要做的就是写出这些上下文无关文法的规则。
-
-还有一种了解语言结构的不同角度，就是依存句法结构。它通过找到句子当中每一个词所依赖的部分来描述句子结构。如果一个词修饰另一</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>

@@ -136,6 +136,198 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/8%20-%20Speech%20Synthesis/">
+        <p class="h4 index-header">Speech and language processing/8 - Speech Synthesis</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8. Speech Synthesis - 语音合成（文字转语音）Speech Synthesis detail is as following:
+
+本单元讲解如何将文本转换成语音，主要分成如下四个任务：
+
+text normalization  文本标准化
+phonetic analysis 语音分析（把token化的词汇转换成音标）
+prosodic analysis 韵律分析( 把音标组成的集合拼凑地和谐一点)
+
+
+waveform synthesis 波形合成（让拼凑好的音标们-IR转wave-发音）
+
+8.1) Text NormalizationText normalization was combined as follwoing:
+
+sentence tokenization
+non-standard words
+homograph disambiguation
+
+8.1.1)Sentence tokenizationtokenization理解为把句子拆分成小块（token），token之间可以是被空格键分隔，也可以是被句号，逗号，或者单纯是被语义分隔，被token化</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/6%20-%20HMM%20&%20HEMM/">
+        <p class="h4 index-header">Speech and language processing/6 - HMM &amp; HEMM</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">6.Hidden Markov and Maximum Entropy Models（HMM,MEMM）HMM and HEMM are both sequence classifiers.
+Sequence classifier or sequence labeler is a model whose job is to assign some label or class to each unit in a sequence.The FST we studied in Chapter 3 is a kind of non-probabilisitic sequence classifier.
+We have seen on important sequence classification task:POS tagging.
+This chapter is roughtly divided into 2 section:HMM , MEMM.
+6.1) Markov Chains - 马尔科夫链 - 详见概念6 - 马尔科夫链
+6.2)The Hidden Markov Model</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/5%20-%20Part-of-Speech%20Tagging/">
+        <p class="h4 index-header">Speech and language processing/5 - Part-of-Speech Tagging</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">5.Part-of-Speech TaggingIntroduce three algorithms:
+
+rule-based tagging
+HMM tagging
+transformation-based tagging
+
+词性标注是一项消歧任务，很多情况下词具有多于一个的意思，我们的工作是为这种情况找到正确的标签。
+5.2）Tagset for EnglishThere are 3 different tagset.
+
+45-tag Penn Treebank tagset
+61-tag C5 tagset
+87-tag tagset 
+
+
+Small Tagset:
+
+
+
+Middle Tagset
+
+
+
+Large Tagset
+
+
+
+5.3) Part-of-Speech TaggingSometimes,tagging can be difficult（unambiguous）,For example ,book is ambiguous.Book can be a noun as a read book,or be a verb, as booking a hotel.</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/3%20-%20Word%20&%20Transducers/">
+        <p class="h4 index-header">Speech and language processing/3 - Word &amp; Transducers</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">3.Word &amp; Transducers3.1)Word
+Before processing, words in speech should be Stemming、lemmatization and tokenization.
+Tokenization means put”New York”in one word,separate “I`m” into “I” and “am”。
+Using FSA to build Stemming net of words
+
+3.2)FST : Finite state transducers.
+I define it my way:
+If you input “aa”,”b”will be output,and the state in still “q0”,if you input “b”,”a or b”will out put,state will be “q1”.For example,if you input “aa aa b a”，output is “b b a ba”.
+
+Defination with details </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Speech%20and%20language%20processing/4%20-%20N-Grams/">
         <p class="h4 index-header">Speech and language processing/4 - N-Grams</p>
         
@@ -345,68 +537,6 @@ Sheep language can be described as fol</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/11%20-%20Computational%20Phonology/">
-        <p class="h4 index-header">Speech and language processing/11 - Computational Phonology</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">11. Computational Phonology本章较艰涩，对NLP发文帮助不大，Skip，以后需用再补。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/12%20-%2016,17%20-%2021%E8%AF%AD%E6%B3%95%E5%AD%A6%EF%BC%8C%E8%AF%AD%E4%B9%89%E8%AF%AD%E7%94%A8%E5%AD%A6/">
-        <p class="h4 index-header">Speech and language processing/12 - 16,17 - 21语法学，语义语用学</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">12 - 16语法学，17 - 21语义语用学以上几章主要侧重于对英语这门语言本身的讲解，对发表论文帮助不大。先跳过，回头需用再补。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Speech%20and%20language%20processing/10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/">
         <p class="h4 index-header">Speech and language processing/10 - Automatic Speech RecongnitionAdvanced Topics</p>
         
@@ -439,107 +569,6 @@ Sheep language can be described as fol</div>
             <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/1%20-%20Introdution/">
-        <p class="h4 index-header">Speech and language processing/1 - Introdution</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.Introduction1.1) Required knowledge for NLP:
-
-Phonetics and Phonology : knowledge about linguistic sounds
-Morphology : knowledge of meaningful components of words
-Syntax :knowledge of the structural relationships between words
-Pragmatics :knowledge of the relationship of meaning to the goals and intentions of speaker(what is )
-Semantics :knowledge of meaning(what is said)
-Discourse : knowledge about linguistic units larger than a single utterance
-
-1.2) Key task : Disambiguation at variety leve</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Python/%E7%88%AC%E8%99%AB/">
-        <p class="h4 index-header">Python/爬虫</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">爬虫目的:掌握定向网络数据爬取和网页解析的基本能力
-传达的理念:website is the API
-基本内容介绍
-
-request库  自动爬取HTML页面,自动网络请求提交
-robots.txt  网络爬虫排除标准
-Beautiful Soup解析HTML页面
-实战项目
-正则表达式
-Scrapy专业爬虫框架
-
-1.Request库
-安装request:pip install requests
-import requestsr = requests.get(“http://www.baidu.com&quot;)r.status_code
-r.encoding = ‘utf-8’r.text
-
-Request库的七个主要方法
-
-requests.request()    构造请求,支撑如下方法的基础方法
-requests.get()              获取HTML的主要方法,对应HTTP的GET
-requests.head()          获取HTML的网页头信息
-requests.post()            向HTML网页提交POST请求
-requests.p</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/python">python</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%88%AC%E8%99%AB">爬虫</a>&nbsp;
-          
         
       </div>
     </div>

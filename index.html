@@ -136,6 +136,176 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/25/PyTorch/Untitled%201/">
+        <p class="h4 index-header">PyTorch/Untitled 1</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">s
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/25/PyTorch/3.%E5%9B%9E%E5%BD%92/">
+        <p class="h4 index-header">PyTorch/3.回归</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">3.回归</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/25/PyTorch/2.%E6%BF%80%E5%8A%B1%E5%87%BD%E6%95%B0/">
+        <p class="h4 index-header">PyTorch/2.激励函数</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">激励函数
+如上，激励函数是一个非线性的函数，是神经网络中非线性化的手段。每一层神经网络的输出结果都进入激励函数，激励函数将它们映射到下一层的输入中。
+from torch.autograd import Variable
+import matplotlib.pyplot as plt
+
+#fake data
+x = torch.linspace(-5,5,200) #linspace可以将-5到5之间均匀的取200个点
+x = Variable(x)   #将x从点集转换为Variable
+x_np = x.data.numpy()
+
+y_relu = F.relu(x).data.numpy()
+y_sigmoid = F.sigmoid(x).data.numpy()
+y_tanh = F.tanh(x).data.numpy()
+y_softplus = F.softplus(x).data.numpy()
+#y_softmax = F.softmax(x)
+# 分别求出各激励函数的y值list
+
+plt.figure(1,figsize=(8,6))
+plt.subplot(2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/25/PyTorch/1.Variable%E5%8F%98%E9%87%8F/">
+        <p class="h4 index-header">PyTorch/1.Variable变量</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.Variable变量variable可以想象成是篮子，tensor是鸡蛋。鸡蛋从一个篮子pass到另一个篮子时，就会构建一个计算图纸。
+目前的深度学习框架大部分都基于计算图
+一张计算图谱就是一个有向无环图，图中的节点主要是Variable。
+想要让tensor作为一个神经网络的参数，首要就是把tensor转换为Variable类型。
+只有variable节点可以被神经网络反向传播优化到，其他的占位符和常亮节点不可以被优化到。
+如下代码中，requires_grad 这个参数代表此节点是需要反向传播优化，通常都选True。
+import torch
+from torch.autograd import Variable
+
+tensor = torch.FloatTensor([[1,2],[3,4]])
+variable = Variable(tensor,requires_grad=True)
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/BaseLine%E7%B2%BE%E8%AF%BB/">
         <p class="h4 index-header">谷歌QA比赛/BaseLine精读</p>
         
@@ -296,6 +466,87 @@ LIFE_ARTS
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2-%E7%89%A9%E7%90%86%E5%B1%82/">
+        <p class="h4 index-header">计算机网络/2-物理层</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.物理层2.1物理层的基本概念物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。
+物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：
+
+机械特性：接口形状，大小，引线数目
+
+
+电器特性：电压范围
+
+功能特性，过程特性等
+
+
+2.2数据通信的基本模型
+相关术语：
+
+数据：运送消息的实体
+信号：数据的电器或电磁表现
+模拟信号：消息的参数取值是连续的
+数字信号：消息的参数取值是离散的
+
+
+
+信道信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道
+单向信道：信息只能单向流动
+双向交替信道：信息可双向流动，但不能同时流动
+双向同时信道：信息科双向，同时流动
+基带信号和带通信号
+基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号
+
+基带数字信号的几种调制方法
+
+
+
+
+带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输
+
+在传输范围较大的时候，计算机网络必须通过带通信号传输
+
+
+
+曼彻斯特编码：由低到高是0，高到低是1
+
+差分曼彻斯特编码
+
+
+2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          
+            <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
         <p class="h4 index-header">计算机网络/3-数据链路层</p>
         
@@ -407,282 +658,6 @@ osi参考模型对网络排错指导</div>
             <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
           
             <a href="/tags/OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B">OSI参考模型</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2-%E7%89%A9%E7%90%86%E5%B1%82/">
-        <p class="h4 index-header">计算机网络/2-物理层</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.物理层2.1物理层的基本概念物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。
-物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：
-
-机械特性：接口形状，大小，引线数目
-
-
-电器特性：电压范围
-
-功能特性，过程特性等
-
-
-2.2数据通信的基本模型
-相关术语：
-
-数据：运送消息的实体
-信号：数据的电器或电磁表现
-模拟信号：消息的参数取值是连续的
-数字信号：消息的参数取值是离散的
-
-
-
-信道信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道
-单向信道：信息只能单向流动
-双向交替信道：信息可双向流动，但不能同时流动
-双向同时信道：信息科双向，同时流动
-基带信号和带通信号
-基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号
-
-基带数字信号的几种调制方法
-
-
-
-
-带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输
-
-在传输范围较大的时候，计算机网络必须通过带通信号传输
-
-
-
-曼彻斯特编码：由低到高是0，高到低是1
-
-差分曼彻斯特编码
-
-
-2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-            <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/1_%E6%A6%82%E8%AE%BA/">
-        <p class="h4 index-header">统计学习方法/1_概论</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.概论介绍基本概念，是对全书的概括。
-首先叙述统计学习的定义、研究对象和方法，然后叙述监督学习。
-然后提出统计学习方法的三要素：模型，策略和算法。
-介绍模型选择，包括正则化、交叉验证和学习的泛化能力。
-介绍生成模型和判别模型
-介绍监督学习方法的应用： 分类问题，标注问题，回归问题。
-1.1统计学习定义
-统计学习是关于计算机基于数据构建概率统计模型并运用模型对数据进行预测和分析的学科。
-统计学习是概率论，统计学，信息论，计算理论，最优化理论，计算机科学等领域的交叉学科。在发展中逐步有了自己的理论体系和方法论。
-目的
-统计学习用于对未知数据预测和分析。
-对数据的预测可以使计算机更加智能化/计算机的性能提升。
-对数据的分析可以使人们获取新的知识。
-方法
-统计学习的方法是基于数据构建统计模型进而对数据进行预测和分析，统计学习由监督学习，半监督学习，无监督学习和强化学习等组成。
-本书主要讨论的是监督学习，这种情况统计学习的方法可以概括如下：
-从给定的有限的训练数据集出发（training set）,假设数据是独立同分布产生的；
-假设要学习的模型属于某个函数的集合，称为假设空间。
-把模型应用于某</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95">统计学习方法</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95">统计学习方法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%89%B9%E5%BE%81%E5%80%BC%E5%92%8C%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/">
-        <p class="h4 index-header">线性代数/特征值和特征向量计算</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">特征值特征向量计算省略理论部分，一个例子讲清：
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E6%A6%82%E5%BF%B5s/">
-        <p class="h4 index-header">线性代数/概念s</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">转自知乎学习笔记:
-https://www.matongxue.com/madocs/555.html
-概念
-2范数
-
-范数有长度的意思
-
-向量的2范数:就是x中各元素平方和相加再开根号
-矩阵的2范数:A的转置乘以A矩阵特征根的最大值的开根号
-
-
-
-
-
-
-可逆矩阵
-
-矩阵A为n阶方阵，若存在n阶矩阵B，使得矩阵A、B的乘积为单位阵，则称A为可逆阵，B为A的逆矩阵。若方阵的逆阵存在，则称为可逆矩阵或非奇异矩阵，且其逆矩阵唯一。
-
-求可逆矩阵的方法如下图
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
-        <p class="h4 index-header">线性代数/奇异值分解</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">奇异值分解1.应用：影像压缩2.应用：过滤噪声
-左图是原始图片。右图是经过SVD分解处理的图片，丢失了一些精确度，但是呈现效果更好，很可能丢失的精确度恰好是噪声。
-具体做法是我们对15*25的矩阵做奇异值分解（SVD），然后得到如下15个特征值，其中前三个特征是比较重要，为了压缩数据和过滤噪声，我们只取前三个特征值，后边的全部丢弃。
-
-
-5.计算例子​    
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
-          
-            <a href="/tags/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3">奇异值分解</a>&nbsp;
           
         
       </div>

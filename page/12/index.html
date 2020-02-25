@@ -136,6 +136,262 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/embedding/">
+        <p class="h4 index-header">D3NER/embedding</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">embedding
+embedding是用一个[低维的向量]表示物体(词语,商品,电影等),这个向量的性质是能使距离相近的向量
+对应的物品有相近的含义
+
+例如embedding(复仇者联盟)和embedding(钢铁侠)的距离就很近
+embedding(复仇者联盟)和embedding(乱世佳人)的距离就较远
+
+
+embedding还有数学运算的关系
+
+例如Embedding(马德里)-Embedding(西班牙)+Embedding(法国)≈Embedding(巴黎)
+
+
+embedding从另一个空间表达物体,甚至揭露了物体之间的潜在关系,具备一定的本体论哲学意义
+
+本体论(Ontology)
+斯坦福Gruber对本体论定义:概念化的精确描述,本体论用于描述事物的本质
+实现上:一个ontology就是一个词汇表,核心作用是定义某领域的专业词汇和他们之间的关系(数据与数据结构).这一系列的概念如 一座大厦的基石,为交流各方提供了统一的认识,知识的搜索/积累/共享的效率大大提高.
+统一专业词汇为知识复用提供可能
+统一代码style为代码复用提供可能
+等价于秦王统一度量衡和货币
+
+
+xm</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/embedding">embedding</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CrowdFlower/n-gram/">
+        <p class="h4 index-header">CrowdFlower/n-gram</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">n-gram语言模型1.Statistical Language Model
+在自然语言处理中的一个基本问题,如何计算一段文本序列在某某种语言下出现的概率?
+例子
+
+我经常会去图书馆＿＿＿？
+预测该句后面的词，我们通常会根据已有的语料的上下文，来统计预测这句话可以填某个词汇的概率，将最大的概率作为结果返回
+
+
+机器翻译中,I like  Tomc so much,将单词逐个翻译—-{我,喜欢,汤姆,非常},这个集合中的字词排列组合成句子,然后用语言模型去计算组成句子概率的大小,概率越大越流畅
+
+2.n-gram语言模型
+理解:
+n-gram语言模型的思想,可以追溯到香农的问题:给定一串字母,比如”for ex”,下一个最可能出现的字母是什么?从训练语料中,我们可以通过极大似然估计的方法,得到N个概率分布,是”a”的概率是0.4,是”b”的概率是0.0001,是c的概率是….,and 别忘记约束条件:所有N个概率的分布总和为1
+如下图,运用条件概率和乘法公式推倒:
+直接这么计算比较困难,需要引入马尔科夫假设,即,一个item的出现,只与前m个items有关,m = 0时,就是unigra</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/n-gram">n-gram</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/CRF/">
+        <p class="h4 index-header">D3NER/CRF</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">条件随机场
+概率统计图概览
+
+
+马尔科夫假设/马尔科夫性
+
+马尔科夫假设
+马尔科夫链  里的  总是只受  一个人的影响。马尔科夫假设这里相当于就是个2-gram。
+马尔科夫过程
+在一个过程中，每个状态的转移只依赖于前n个状态
+
+
+
+
+马尔科夫性
+马尔科夫性是保证或者判断概率图是否为概率无向图的条件
+成对性
+局部性
+全局性
+
+
+
+
+
+
+条件随机场定义
+
+条件随机场是在给定的随机变量 （具体，对应观测序列  ）条件下，随机变量  （具体，对应隐状态序列  的马尔科夫随机场。
+广义的CRF的定义是： 满足  的马尔科夫随机场叫做条件随机场（CRF）
+条件随机场是一种特殊的马尔科夫随机场
+马尔科夫随机场
+首先我们有无向图G=(V,E)， 图G中每个节点v上都有一个随机变量y，这样所有的节点上的随机变量就构成一组随机变量Y，图G上有联合概率分布P(Y)。边e表示相邻节点的变量存在某种神秘的联系。
+图G上的随机变量Y满足马尔科夫性，即两个不相邻的节点上的随机变量yi，yj条件独立。这就是马尔科夫随机场。
+
+
+
+
+CRF建模公式
+
+
+CRF特征函数
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CrowdFlower/%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/">
+        <p class="h4 index-header">CrowdFlower/文本特征提取</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.概述1.1特征提取与特征选择这两者的效果是一样的，都是试图去减少特征数据集中的属性（特征）的数目，但是两者采用的方法不同，
+特征提取的方法是通过属性之间的关系，通过组合不同的属性得到新的属性，改变了特征空间
+特征选择的方法是选择出特征集的子集，是一种包含的关系，没有改变特征空间
+1.2特征提取的主要方法PCA,LDA,SVD等
+1.3特征选择的主要方法1.fliter方法
+对每个特征打分，即给出每一维的特征赋予权重，该权重代表了特征的重要性，然后根据权重排序。
+主要的方法：卡方，信息增益，相关系数
+2.Wrapper方法
+主要思想：将子集的选择看成一个搜索寻优问题，生成不同的组合，对组合进行评论
+可看做一个优化问题，有很多优化算法可供使用
+尤其是启发式算法GA，PSO,DE,ABC等等
+主要方法：递归特征消除方法
+3.Embedded方法
+主要思想：在模型既定的情况下，学习出对提高模型准确性最好的属性，即在确定模型的过程中，挑选出哪些对模型训练有重要意义的属性
+主要方法：正则化，如岭回归就是在回归的基础上加上了正则化项
+1.4总结1.特征提取是从杂乱无章的世界中，去到更高的世界俯瞰</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96">文本特征提取</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CrowdFlower/2.%E6%A6%82%E5%BF%B5/">
         <p class="h4 index-header">CrowdFlower/2.概念</p>
         
@@ -516,273 +772,6 @@ SOP:
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
             <a href="/tags/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">极大似然估计</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/%E6%A2%AF%E6%AE%B5%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">CS229/梯段下降算法</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">梯度下降算法
-特点：梯度下降算法可以自动将代价函数J最小化
-问题描述:有一个代价函数，它有两个参数，想让这个代价函数的值最小化。
-做法：持续把这个两个参数向着梯度下降最快的方向迭代。
-
-
-
-梯度下降算法的学习率α设置:
-α过小,收敛太慢
-α过大,在最小值附近震荡
-
-
-梯度下降缺点:可能求的是局部最优解，解决办法是多次随机初始化起点。
-
-1.多特征值的回归问题
-
-单特征回归:只有房子面积一个特征,求预测房价
-
-单特征回归的假设函数:h(x) = θ0 + θ1x
-
-
-多特征回归:有房子面积,卧室数量,几层高,使用年限四个特征,求预测房价
-
-四特征回归的假设函数:h(x) = θ0 + θ1x1+θ2x2+θ3x3+θ4x4    —-&gt;   缩写h = θ(XT) :向量θ乘以向量X的转置
-只考虑最简单的一次线性多项式
-
-
-多特征回归的梯度下降算法:
-
-每次对一个参数求偏导,并对其迭代.
-所有参数都迭代这么一圈算完成一个回合.
-多参数迭代过程如下图
-
-
-
-
-
-
-2.梯度下降实用技巧–特征缩放(feature scaling)
-如果参数 θ1和θ2大小相差太远,那么θ1的轻微改变都可</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95">梯度下降算法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/9.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
-        <p class="h4 index-header">CS229/9.支持向量机</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">9.支持向量机9.1SVM的优化目标从逻辑回归展示如何一点点修改得到本质上的支持向量机
-
-逻辑回归的假设函数
-
-
-
-
-
-9.2核函数对支持向量机算法做一些修改,以构造复杂的非线性分类器
-我们用”核函数”来达到此目的
-问题的提出:
-使用高级数的多项式模型来解决无法使用直线进行分割的分类问题,如何确定模式中的每一项的参数?
-支持向量机的假设函数和代价函数
-
-9.3 SVM的使用不建议自己写代码求解参数θ,就像没有人会写代码自己去求解平方根一样,可以直接调用现有的库
-除了高斯核函数之外还有其他核函数可以用:
-多项式核函数（Polynomial Kernel）
-字符串核函数（String kernel）
-卡方核函数（ chi-square kernel）
-直方图交集核函数（histogram intersection kernel）
-等等
-SVM模型 和 逻辑回归模型之间的取舍:
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/SVM">SVM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
-        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">判定模型和生成模型的区别
-机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
-
-判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
-生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
-
-一个生动的例子说明两者的区别:
-
-判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
-生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
-          
-            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/8.%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
-        <p class="h4 index-header">CS229/8.应用机器学习的建议</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">8.应用机器学习的建议8.1如何提高一个算法/机器学习模型的性能问题:预测房价的机器学习模型性能遇见瓶颈,如何提升性能?
-
-很多人是凭感觉去解决问题,他们有如下猜想并随便选一个去做
-
-随便某个猜想都是耗时耗力巨大的项目,人们常常选择的是一条不归路
-
-如何尽量排除无效的道路?
-
-
-
-获得更多的训练样本——解决高方差   
-尝试减少特征的数量——解决高方差
-尝试获得更多的特征——解决高偏差
-尝试增加多项式特征——解决高偏差
-尝试减少正则化程度λ——解决高偏差
-尝试增加正则化程度λ——解决高方差
-
-8.2如何评估一个模型表现
-模型的代价函数非常小未必是好事,因为可能存在过拟合的现象
-为了检验模型是否过拟合,可以采用交叉验证的方法
-可以把数据集分为训练集和测试集,然后重复洗牌交叉验证
-
-高偏差与高方差
-
-高偏差是欠拟合
-
-高方差是过拟合
-
-
-
-
-增加模型的多项式次数导致的过/欠拟合问题
-
-训练集上:
-增加模型多项式的次数会导致代价函数单调递减
-
-
-交叉验证集上:
-增加模型多项式的次数会导致代价函数先减后增
-先减是改善了欠拟合的问题
-后增就是过拟合越来越严重
-
-
-结论:
-交叉验证是评估过/欠拟合</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0">评估模型表现</a>&nbsp;
           
         
       </div>
