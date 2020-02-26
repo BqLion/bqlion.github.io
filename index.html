@@ -136,15 +136,256 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/25/PyTorch/Untitled%201/">
-        <p class="h4 index-header">PyTorch/Untitled 1</p>
+      <a href="/2020/02/26/PyTorch/8.Optimizer%E5%8A%A0%E9%80%9F%E8%AE%AD%E7%BB%83/">
+        <p class="h4 index-header">PyTorch/8.Optimizer加速训练</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">s
+          <div class="index-text mb-1">8.Optimizer
+如图，SGD并不是效果最好的优化器。
 </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/26/PyTorch/7.%E6%89%B9%E8%AE%AD%E7%BB%83/">
+        <p class="h4 index-header">PyTorch/7.批训练</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.批训练神经网络有时候需要训练的数据量太大，所以把数据量分割成小batch再训练，效果会好很多。 
+import 
+import torch.utils.data as Data
+# data就是进行小批训练的模块
+
+BATCH_SIZE = 5
+#定义批的大小
+
+x = torch.linspace(1,10,10)
+y = torch.linsapce(10,1,10)
+#x和y都是数据，从1到10，分均十份的数据
+
+torch_dataset = Data.TensorDataset(data_tensor = x,target_tensor = y)
+# data_tensor是要算的tensor，target_tensor是计算目标的时候对比用的tensor
+loader =  Data.DataLoader(
+    dataset = torch_dataset,
+    batch_size = BATCH_SIZE,
+    shuffle = True            #shuffle决定每次训练是否打乱顺序
+)
+
+for epoch in range(3)</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/26/PyTorch/6.%E4%BF%9D%E5%AD%98%E6%8F%90%E5%8F%96/">
+        <p class="h4 index-header">PyTorch/6.保存提取</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">6.保存和提取假设现在已经快速搭建并且训练好了神经网络。接下来想做的就是提取并保存现在的状态，以便以后继续训练。（不可能让电脑一直开着神经网络hold在那里）。
+要实现的是
+
+保存功能def save（）
+提取功能def restore_net()
+提取功能def restore_params()
+
+import lib
+import torch
+from torch.autograd import Variable
+import matplotlib.pyplot as plt
+生成随机数种子，构造数据
+torch.manual_seed(1)
+
+x = torch.unsqueeze(torch.linspace(-1,1,100),dim=1)
+y = x.pow(2) + 0.2*torch.rand(x.size())
+x,y = Variable(x,requires_grad = False),Variable(y,requires_grad=False)
+构造保存功能def save（）
+def save():
+net1 = torch.nn.Sequential(  </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/26/Python/PyCharm%E8%AE%BE%E7%BD%AE/">
+        <p class="h4 index-header">Python/PyCharm设置</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">PyCharm设置1.修改配色:setting - Editor -Color scheme -python -schem - warmNeon
+2.设置解释器：setting - project name - project interpreter - project interpreter - 找到Anaconda根目录下的python.exe
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/python">python</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/26/PyTorch/5.%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+        <p class="h4 index-header">PyTorch/5.快速搭建神经网络</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">5.快速搭建神经网络两个代码块对比，做的事情是一样的，明显第二个代码块简单的多。torch.nn.Linear(2,10)就是一个输入10，输出2的神经网络层,torch.nn.ReLU()就是一层激励函数
+# method 1
+class Net(torch.nn.Module):
+    def __init__(self,n_features,n_hidden,n_output)；
+    super(Net,self).__init__()
+    self.hidden = torch.nn.Linear(n_feature,n_hidden)
+    self.predict = torch.nn.Linear(n_hidden,n_output)
+
+    def forward(self,x):
+    x = F.relu(self.hidden(x))
+    x = self.predict(x)
+    return x
+
+net1 = Net(2,10,2)
+net2 = torch.nn.Sequential(    #Sequential的意思是在这个括号</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/25/PyTorch/4.%E5%88%86%E7%B1%BB/">
+        <p class="h4 index-header">PyTorch/4.分类</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4.分类import torch
+import torch.autograd import Variable
+import torch.nn.functional as F
+import matplotlib.pyplot as plt
+
+x,y = Variable(x),Variable(y)
+n_data = torch.ones(100,2)   # 初始矩阵，全部是ones
+x0 = torch.normal(2*n_data,1) # 初始化，图中上堆数据都在这里了
+y0 = torch.zeros(100) # x0分类标签，初始值都是0
+x1 = torch.normal(-2*n_data,1) # 初始化，图中下堆数据都在这里了
+y1 = torch.zeros(100) # x1分类标签，初始值都是1
+x = torch.cat((x0,x1),0).type(torch.FloatTensor)
+y = torch.cat((y0,y1),).type(torch.LongTensor)
+
+x,y = Variable(x),Variable(y)
+#把数据都放</div>
         </div>
       </a>
 
@@ -179,7 +420,28 @@
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">3.回归</div>
+          <div class="index-text mb-1">3.回归import torch
+from torch.autograd import Variable
+import torch.nn.functional as F
+import matplotlib.pyplot as plt
+
+x = torch.unsqueeze(torch.linspace(-1,1,100),dim=1)
+#为什么要用.unsqueeze？因为torch只能处理二维的数据，unsqueeze可以把一维的数据转换成二维的
+
+y = x.pow(2) + 0.2*torch.rand(x.size())
+#y是x的二次方加上一些随机噪声
+
+x,y = Variable(x),Variable(y)
+# x和y都只能转换成Variable才能被torch处理
+# 新版torch已经不需要转换成Variable了，可以直接处理
+
+plt.scatter(x.data.numpy(),y.data.numpy())
+#plt.scatter就是打印散点图
+plt.show()
+
+#定义神经网络的层
+class Net(torch.nn.Module):
+    d</div>
         </div>
       </a>
 
@@ -214,7 +476,7 @@
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">激励函数
+          <div class="index-text mb-1">2.激励函数
 如上，激励函数是一个非线性的函数，是神经网络中非线性化的手段。每一层神经网络的输出结果都进入激励函数，激励函数将它们映射到下一层的输入中。
 from torch.autograd import Variable
 import matplotlib.pyplot as plt
@@ -232,7 +494,7 @@ y_softplus = F.softplus(x).data.numpy()
 # 分别求出各激励函数的y值list
 
 plt.figure(1,figsize=(8,6))
-plt.subplot(2</div>
+plt.subplot</div>
         </div>
       </a>
 
@@ -337,338 +599,11 @@ variable = Variable(tensor,requires_grad=True)
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Transformer/">
-        <p class="h4 index-header">谷歌QA比赛/Transformer</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">TransformerTransformer改进了RNN的训练慢的缺点，加入了自注意机制，充分发挥了DNN的优点，提升模型准确率。Transformer由论文《Attention is All you need》提出。有Tensorflow和Pytorch版本。
-宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。
-
-拆开这个黑箱，发现里边是由编码和解码组件构成。
-
-编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。
-1.编码器详解像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
-
-词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
-
-开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
-2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
-        <p class="h4 index-header">谷歌QA比赛/1基本概念</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.基本概念1.本比赛数据截屏如下
-
-
-1.question_id
-1
-
-
-
-2.question_title
-What am I losing when using extension tubes in…
-
-
-3.question_body
-After playing around with macro photography on…
-
-
-4.question_username
-ysap
-
-
-5.question_user_page
-https://photo.stackexchange.com/users/1024
-
-
-6.answer
-I just got extension tubes, so here’s the skin…
-
-
-7.answer_user_name
-rfusca
-
-
-8.answer_user_page
-https://photo.stackexchange.com/users/1917
-
-
-9.url
-http://photo.stackexchange.com/questions/9169/…
-
-
-10.category
-LIFE_ARTS
-
-
-11.q</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2-%E7%89%A9%E7%90%86%E5%B1%82/">
-        <p class="h4 index-header">计算机网络/2-物理层</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.物理层2.1物理层的基本概念物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。
-物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：
-
-机械特性：接口形状，大小，引线数目
-
-
-电器特性：电压范围
-
-功能特性，过程特性等
-
-
-2.2数据通信的基本模型
-相关术语：
-
-数据：运送消息的实体
-信号：数据的电器或电磁表现
-模拟信号：消息的参数取值是连续的
-数字信号：消息的参数取值是离散的
-
-
-
-信道信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道
-单向信道：信息只能单向流动
-双向交替信道：信息可双向流动，但不能同时流动
-双向同时信道：信息科双向，同时流动
-基带信号和带通信号
-基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号
-
-基带数字信号的几种调制方法
-
-
-
-
-带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输
-
-在传输范围较大的时候，计算机网络必须通过带通信号传输
-
-
-
-曼彻斯特编码：由低到高是0，高到低是1
-
-差分曼彻斯特编码
-
-
-2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-            <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
-        <p class="h4 index-header">计算机网络/3-数据链路层</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">3.数据链路层3.0概述数据链路层使用的信道主要有以下两类
-
-点对点信道
-这种信道使用一对一的点对点通信方式
-
-
-广播信道
-这种信道使用一对多的广播通信方式，因此过程较为复杂，广播信道上的链接主机很多，因此必须使用专门的共享信道协议来协调这些数据的转发
-
-
-
-3.1 数据链路和帧链路是一条无源的点到点的物理线路，中间没有任何的其他交换节点。数据链路是除了物理线路之外，还得有通信协议来控制这些数据的传输，若把实现了这些协议的软硬件加到链路上，就构成了数据链路。
-现在最常用的办法是使用适配器（网卡）来实现这些协议的硬件和软件，一般的适配器都包括了数据链路层和物理层这两层的功能。
-数据链路层传输的是帧。
-
-三个基本问题
-
-封装成帧
-透明传输
-差错控制
-
-
-封装成帧：
-
-在一段数据的前后分别打上首部和尾部，首部尾部可以确定帧的界限。
-
-
-透明传输问题：
-
-类似于我想在markdown文件中打出[]()字符缺被误以为是超连接一样，需要在[]()字符之前加上转义字符\。
-
-
-CRC差错检测
-传输过程中可能出现比特差错，1变成0或者0变成1。一段时间内传输错误的比特与总比特比值称谓误码率。为保证数据</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1-%E6%A6%82%E8%BF%B0/">
-        <p class="h4 index-header">计算机网络/1-概述</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.计算机网络概述1.1局域网​        覆盖范围小（１００ｍ）,自己花钱买设备,贷款固定
-​        接入层的交换机们星形连接到汇聚层交换机,这样分散IO
-​        接入层交换机们不该串联,不然最后一台交换机那里IO压力太大
-1.2Internet和广域网​    Internet ISP :有自己的机房,对网民提供internet访问
-　广域网：距离较远，花钱租带宽，
-1.3 数据包和数据帧在一个计算机想把数据发给另一个计算机时,需要在发送信息里携带ip地址和mac地址,其中ip地址是最终目地,mac地址是下一跳的目的地,ip地址不变,mac地址每次经过路由器都刷新.下一跳的目的地由迪杰斯特拉或其他寻路算法确定.
-1.4 OSI参考模型 应用层:所有能产生网络流量的程序
-表示层:在传输之前是否进行加密或压缩处理
-会话层:查木马,netstat -n
-传输层:可靠传输,流量控制,不可靠传输
-网络层:负责选择最佳路径,规划ip地址
-数据链路层:帧的开始和结束,透明传输,差错校验
-物理层:接口标准,电器标准,如何在物理链路层上传输的更快
-
-osi参考模型对网络排错指导</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-            <a href="/tags/OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B">OSI参考模型</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

@@ -136,6 +136,326 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CrowdFlower/4.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/">
+        <p class="h4 index-header">CrowdFlower/4.特征提取</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4.CrowdFlower特征提取特征提取有四大部分
+
+​    
+
+Counting Features –词数的统计
+
+DIstance Features –数据集query,desc,counting之间的的距离  :  
+
+TF - IDF Features –  词频–逆文本频率指数(一个词在本文频率越高,在语料库中出现在文件中频率越低,说明越有标识度)
+
+例如”母牛”在本文出现三次,本文一百个单词,则在本文词频0.03
+
+“母牛”在语料库中出现在1000份文件中,语料库共有1000,0000文件,逆向文件频率就是
+ lg(1000,0000 / 1000)=4
+
+“母牛的”TF-IDF = 0.03*4 = 0.12    
+
+
+
+Query ID  –  给primary key换成独热编码
+
+
+1.Query ID特征:把primary key转换为one hot encoding
+2.Counting特征-基本Counting特征
+
+Count of n-gram
+count of ngram(query,n),ngram(title,n),and ngram(desc</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96">特征提取</a>&nbsp;
+          
+            <a href="/tags/tf-idf">tf-idf</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CrowdFlower/3.%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%B8%85%E6%B4%97/">
+        <p class="h4 index-header">CrowdFlower/3.数据探索与清洗</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">3.CrowdFLower代码分析3.1数据探索
+查看一眼文件头
+
+查看列信息
+
+查看有多少行
+
+查看感兴趣的列信息去重后有多少项
+
+查看感兴趣的信息去重后前一百项是什么
+
+查看两个文件中,感兴趣的同一列有多少个是相同的,多少是不同的
+
+对感兴趣的某一列信息,根据重复数画出柱状图
+
+
+# -*- coding: utf-8 -*-
+import pandas as pd
+import numpy as np
+import nltk
+
+train = pd.read_csv(&quot;filePath&quot;)
+test = pd.read_csv(&quot;filePath&quot;)
+
+train.head()
+test.head()
+#查看文件头
+
+train.columns
+test.columns
+#查看文件的列信息
+
+len(train)
+len(test)
+#查看文件有多少行
+
+train[&#39;query&#39;].unique()[0:100]
+#查看train这个文件中query的去重的前一百个数据
+
+train[&#39;product_title&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CrowdFlower/1.%E6%A6%82%E8%AE%BA/">
+        <p class="h4 index-header">CrowdFlower/1.概论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.机器学习常见算法与工具介绍1.1主要内容介绍
+机器学习应用领域
+机器学习常见算法
+常用工具
+建模与问题解决流程
+数据处理
+特征工程
+模型选择
+寻找最佳超参数:交叉验证
+模型分析与模型融合
+
+
+kaggle wiki
+简单案例讲解
+
+1.2机器学习常见算法
+1.3机器学习常见工具
+
+scikit - learn :速度不快,但是全面,封装的好,只需要造出来基本参数就可以自动去跑
+gensim - 自然语言处理会用
+NUmPy - 科学计算(封装到其他工具里了)
+matplotlib - 绘图
+pandas - 数据清洗,产出特征,缺省值,填充等
+xgboost - 基于boost的库,分类和回归都可以完成
+Natural Language Toolkit多用于英文的自然语言处理,中文用的很少
+Jieba - 多用于中文语言处理
+TensorFlow - 深度学习库,对显存的占用较高,速度不算太快
+Caffe -深度学习库, 图像用的很多
+Keras - 深度学习库,接口简单,本视频deep learning部分用Keras
+
+1.4解决问题流程
+了解场景和目标
+了解评估准则
+认识数据</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS230/1%20-%20%E5%AF%BC%E8%AE%BA/">
+        <p class="h4 index-header">CS230/1 - 导论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.导论
+第一个图是DL/ML领域，近几年突飞猛进（在数据规模，算法，资本的三重加持下）。
+剩下的是概率图模型，规划算法，搜索算法，知识图谱(在学术界被低估，但吴恩达提了很多嘴)，博弈论。近几年的性能表现都在稳步上升。
+as leader如何做正确决定：
+也许大数据的概念被过度宣传，人们通常忽略了搜集数据需要付出时间的事实。如果team leader能在花一周时间搜索超参数还是花一周时间搜索更多的数据这种事情上能做出正确决定，通常可以5到10倍地提高团队的效率。作为一个leader，仅仅了解C++,JAVA是如何works是不够的。
+互联网公司与非互联网公司的区别
+吴恩达举例说几年前美国有一个巨大零售商与他聊天，说他们有零售业务，他们有网站，亚马逊也有零售业务，也有网站，所以他们做的是一样的事情都是互联网公司。但现在这家零售商的业务被亚马逊抢走了很多，其实他根本不是互联网公司。
+
+A/B test
+互联网公司通常会做A/B test，可以推出两个不同版本的网站看看哪个更好，所以互联网公司学习地块很多。
+传统行业（以零售行业举例）不可能同时推出两个购物中心看看哪个更好。
+
+短时性
+互联网</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS230">CS230</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
+        <p class="h4 index-header">CS229/极大似然估计</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">极大似然估计极大似然估计是确定机器学习模型的参数的一种办法。确定参数值的过程，是找到能最大化“模型产生真实观察数据可能性“的那一组参数，略抽象，如下是一个例子：
+从某过程观察了如下十个数据点，每个数据点代表了学生回答问题使用的秒数。
+
+这些数据的生成过程可以使用高斯分布（正态分布）进行充分描述。高斯分布有两个参数，西格玛和μ，如何确定参数？如下示意图表示了使用不同参数的不同高斯分布（方差大的中心函数更扁平）。
+注：蓝色曲线是正确曲线N(10,2.25)
+
+OK，如何反编译确定正确参数？我们把这个例子再次简化，同样的情境，这次只存在三个数据点：9,9.5,11
+如何使用最大似然估计确定这个高斯分布的参数？
+高斯分布中，单个数据点x的边缘概率如下
+
+同时观察到上边所提三个点（9,9.5,11）的联合概率是带入上边三个数据的连乘积：
+
+我们只要能找到最大化上述连乘积的参数μ和西格玛就ok了。也就是说，最大似然估计是一个通过确定参数得到函数最大值的优化问题。
+那么，如何求出上述函数的最大值？
+easy，二元函数求偏导标准步骤，加以两边套上对数等数学小技巧就完事儿了。
+SOP:
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">极大似然估计</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/%E6%A2%AF%E6%AE%B5%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95/">
         <p class="h4 index-header">CS229/梯段下降算法</p>
         
@@ -272,56 +592,6 @@ SVM模型 和 逻辑回归模型之间的取舍:
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
-        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">判定模型和生成模型的区别
-机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
-
-判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
-生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
-
-一个生动的例子说明两者的区别:
-
-判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
-生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
-          
-            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/8.%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
         <p class="h4 index-header">CS229/8.应用机器学习的建议</p>
         
@@ -403,6 +673,56 @@ SVM模型 和 逻辑回归模型之间的取舍:
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">判定模型和生成模型的区别
+机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
+
+判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
+生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
+
+一个生动的例子说明两者的区别:
+
+判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
+生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
+          
+            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
         <p class="h4 index-header">CS229/5.过拟合和正则化</p>
         
@@ -453,339 +773,11 @@ SVM模型 和 逻辑回归模型之间的取舍:
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
-        <p class="h4 index-header">CS229/6.神经网络(表述)</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">#
-6.神经网络(表述)6.1问题的由来
-特征爆炸无法处理
-例如,智能识别一个图片是不是汽车的问题
-假设使用50*50小黑白照片
-那么就有2500个像素灰度作为特征
-2500个特征两两组合就是3000000项,这的多项式处理不了
-这时候就需要神经网络
-
-
-
-6.2直观理解和逻辑运算符的构建
-直观理解
-
-神经网络能够通过自身学习得到一些列特征,这些特征是使用数据的原始特征经过拆分组合和一系列逻辑运算得到的
-这样的一系列特征比普通的逻辑回归的表层特征要深刻的多
-最后做决定的神经元依据上一层传进来的特征,这些特征已经经过多层传导,内化为自己的特征了
-
-
-神经元可以通过增加一个固定权重神经元构建逻辑运算符(与,非,或,抑或等)
-
-如下图
-
-
-
-
-6.3神经网络的形态
-6.4神经网络基本概念的定义from CS224N如图，神经网络有输入，有偏置单元，有激活函数，以及对后续神经网络的输出。
-输入x，w是乘以输入的权重，b是偏置值，f是sigmod函数。
-输入乘以权重加上偏置值后，进入sigmod函数，输出一个分类值。
-有了神经网络，让我们再回到之前的单窗口分类器。代替之前直接将softmax应用</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/7.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E5%AD%A6%E4%B9%A0)/">
-        <p class="h4 index-header">CS229/7.神经网络(学习)</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.神经网络(学习)7.1神经网络的代价函数
-
-第一项是在K个输出项上(比如四分类就是K=4),累加逻辑回归的代价函数
-第二项就是更高维的罚函数
-
-代价函数的目的:找到使得J(θ)最小化的θ
-7.2单个训练数据如何通过神经网络    
-
-z(2) = θ(1)a(1) 
-
-z(2)是第二层神经元的输入项,共五项,是a(1)的三项经过θ(1)矩阵拆分后的结果
-
-
-a(2) = g[z(2)]
-
-a(2)是第二层神经元的输出项,共五项,是z(2)五项经过第二层神经元的sigmod函数变换后的结果
-
-
-
-后边的几层同理
-7.3反向传播算法
-定义
-
-反向传播算法是利用链式法则递归计算表达式梯度的方法
-理解反向传播过程的精妙之处,对理解/实现/设计/调试神经网络非常关键
-
-
-理解
-
-反向传播就是先正向走一遍,得到各个节点的计算结果
-
-从最后一个节点开始,设置梯度是1
-
-反向计算各个上层节点对他的局部梯度
-
-[dz/dx                                 ]  = [dz/dy]   *  [dy/dx]
-[最终结果与本层的梯度]  =上层梯度*本层局部梯度
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/10.%E8%81%9A%E7%B1%BBClustering/">
-        <p class="h4 index-header">CS229/10.聚类Clustering</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
-如图就是聚类问题
-左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
-10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
-
-K-均值是一个迭代算法
-
-设想我们将数据聚集成n组,选择k个随机的点为聚类中心
-
-对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
-
-然后开始迭代:
-
-每次计算一个组的平均值,将中心点移动到平均值的位置
-如此反复几次中心点的位置就不再变化
-如下图所示
-
-
-
-
-
-10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
-因此K均值的代价函数为:
-
-10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
-1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
-2.随机选择K个训练实例,然后令K个聚类中心等于他们
-K-均值算法的一个问题在于,他可能停留在某个</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E8%81%9A%E7%B1%BB">聚类</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/11.%E9%99%8D%E7%BB%B4/">
-        <p class="h4 index-header">CS229/11.降维</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">11.降维11.1 动机一：数据压缩例如有两个特征，一个是厘米，一个是英寸，这个时候可以抛弃其中一个特征，将二维降成一维
-利用投影的方法可以将数据降低为任意想要的维度
-11.2主成分分析问题PCA主成分分析是最常见的降维算法
-步骤：
-找到一个方向向量，当所有的数据投射到该向量时，我们希望投射的平均均方误差最小，方向向量是一个经过原点的向量，而投射误差是从特征向量向该方向作垂线的长度
-左边是线性回归，右边是PSA
-
-计算方法
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E9%99%8D%E7%BB%B4">降维</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/4.%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
-        <p class="h4 index-header">CS229/4.逻辑回归</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">4.逻辑回归(logistics regression)1.逻辑回归模型
-分类问题输出一个结果”正确”或者”错误”
-
-逻辑回归模型:
-
-
-
-
-当hθ(x) 在区间[0.5,1]时,预测是”正确”,越贴近1越确信
-当hθ(x) 在区间[0,0.5)时,预测是”错误”,越贴近0越确信
-
-2.逻辑回归的代价函数
-
-简单点一句话讲:
-答案是1,你预测了1,无误差
-答案是1,你预测的数字离0越近误差就越大,完全是0误差就是无限大(不可能情况)
-答案是0的情况与答案是1的情况同理
-
-
-
-3.对逻辑回归的代价函数使用梯度下降算法,以得到最优参数/最优解
-4.高级优化
-一些建议
-
-不需要写代码实现代价函数的迭代
-
-从技术来讲,其实我们不需要自己手动写程序来计算刚才提到的梯度下降算法的代价函数以及其迭代过程,就像我们不需要自己手动写求平方根和创建数组一样,这些问题早都有非常成熟的库来调用
-
-
-更高级的算法
-
-除了梯度下降算法,还有共轭梯度法 BFGS (变尺度法) 和L-BFGS (限制变尺度法)这种更高级算法可调用
-吴恩达本人已经使用如上提到的算法很多年了,也才是最近才搞清楚他们的内部实现细节
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">逻辑回归</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/12/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/12/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

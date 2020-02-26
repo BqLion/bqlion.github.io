@@ -136,6 +136,279 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%92%8C%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+        <p class="h4 index-header">D3NER/知识图谱和推荐系统</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.知识图谱知识图谱是语义网络semantic network的知识库，可理解为理解为多关系图，多关系图一般包含多种类型的节点和边。
+知识图谱的场景
+
+社交网络，人和公司都可以是实体，人是节点，公司是节点的集合，人与人之间的关系是边，边可以是朋友也可是同事等，关系可以是单向也可以是双向的
+
+数据库是结构化数据，网页是非结构化数据，处理非结构化数据是信息抽取的难点。
+四个难点
+
+实体命名识别  
+关系抽取()
+实体统一(武汉,江城)
+指代消解  (it)
+
+知识图谱的存储方式
+RDF
+
+存储三元组(triple)
+推理引擎
+W3C标准
+易于发布数据,多为学术界场景
+
+2.推荐系统评分预测:系统预测用户对电影的评分,根据此给用户推荐,这种是显示反馈
+还有一种是点击率预测,新闻类应用中,根据用户点击某概率来优化推荐方案,这种场景下用户反馈信息的行为特征,而不能反映用户的喜爱成都,这是隐式反馈
+传统的推系统只能使用用户和物品的历史交互信息,作为输入,有两个问题:
+用户和物品之间的交互信息是非常稀疏的,几万个电影只看了几个可能过拟合,
+或者新用户没有看过电影,这问题也叫冷启动问题
+解决冷启动问题</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Docker/Docker%E5%85%A5%E9%97%A8/">
+        <p class="h4 index-header">Docker/Docker入门</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">DockerDocker是个虚拟机，主要运行在linux上，和VMware Workstation Pro有很多相似的地方。
+
+镜像，是创建虚拟机之前需要下载的系统镜像文件，比如iso和img文件等
+容器，是正在运行中的虚拟机
+tar文件，就是镜像的压缩文件，压缩传送解压缩安装
+dockerfile，配置文件，写完后通过docker bulid指令将dockerfile构建成一个镜像
+仓库，类似于github，和镜像是pull和push的关系，里边有做好的ubuntu，mysql，tomcat镜像等
+
+基本操作安装docker
+docker pull nginx : 从仓库下载nginx
+docker images : 查看本地镜像
+docker run -d -p 80:80 nginx 后台将镜像运行为容器nginx，端口映射80-80
+docker ps查看正在运行的容器有哪些，例如它会输出正在运行的容器是nginx，id是92a68b3fe02e
+docker exec -it 92,进入运行的id开头是92的容器
+cd /usr/share/nginx/html/,进入ngi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Docker">Docker</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/JAVA/1.JVM,%E6%96%B9%E6%B3%95%E5%8C%BA,%E5%A0%86/">
+        <p class="h4 index-header">JAVA/1.JVM,方法区,堆</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">JVM
+JAVA虚拟机的生命周期
+java虚拟机用于执行java程序,一个java程序对应一个虚拟机
+java虚拟机总是开始于一个main方法,返回void,接受一个args[]参数
+main()方法是程序的起点,他被执行的线程初始化为程序的初始线程
+java中的线程分两种
+守护线程daemon:java虚拟机自己使用的,比如垃圾回收
+非守护线程:non-daemon:包含main()方法的初始线程不是守护线程
+
+
+
+
+
+
+运行时数据区域
+
+
+1.程序计数器
+内存空间小,线程私有,字节码解释器就是依赖程序计数器工作的:改变计数器的值来选取下一条需要执行的指令,分支,循环,跳转,异常处理等.
+如果线程正在执行一个java方法,这个计数器就记录正在执行的虚拟机字节码地址.
+如果这个方法是native方法,则计数器的值为underfined
+
+
+程序计数器这个区域是java虚拟机中唯一没有规定任何OutOfMemoryError情况的区域
+
+
+2.java虚拟机栈
+线程私有,生命周期和线程一致
+线程(thread)
+是操作系统能够进行运算调度的最小单位
+被包含在进程中,是进程的实际运作单位
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/java">java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/java">java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/LSTM/">
+        <p class="h4 index-header">D3NER/LSTM</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LSTM+CRF1、perspectively
+LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
+但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
+2、LSTM+CRF
+既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
+因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
+
+input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/D3NER/">
+        <p class="h4 index-header">D3NER/D3NER</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">D3NER:biomedical named entity recognition using CRF-biLSTM improved with fine-tuned embedding of various linguistic information找有代码的论文读，复现作者的工作
+1.标题D3NER:一种使用[被精细调整过”多种语言信息embedding”所提升性能的条件随机场-双向长短时记忆网络]的生物医学命名实体识别工具
+
+embedding
+
+CRF
+
+biLSTM
+均另起文章讨论
+
+
+2.abstract2.1Motivation
+生物医学命名实体识别技术,是从生物医学文本信息(unstructured text)中提取知识的先决条件,最近LSTM网络被应用到这个问题上,表现很好,不过我们有更改进的地方.
+2.2Result
+我们使用D3NER,一种使用了CRF+biLSTM网络+精调语言信息embedding的生物医学命名实体识别技术
+D3NER和同方向的七种实体识别技术做了充分对比,结论是性能确实有提高
+3.Introduction
+特征工程做NER
+Named En</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
+            <a href="/tags/embedding">embedding</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/D3NER/embedding/">
         <p class="h4 index-header">D3NER/embedding</p>
         
@@ -458,331 +731,11 @@ Word Replacement:然后要把拼写错误的单词</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CrowdFlower/4.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/">
-        <p class="h4 index-header">CrowdFlower/4.特征提取</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">4.CrowdFlower特征提取特征提取有四大部分
-
-​    
-
-Counting Features –词数的统计
-
-DIstance Features –数据集query,desc,counting之间的的距离  :  
-
-TF - IDF Features –  词频–逆文本频率指数(一个词在本文频率越高,在语料库中出现在文件中频率越低,说明越有标识度)
-
-例如”母牛”在本文出现三次,本文一百个单词,则在本文词频0.03
-
-“母牛”在语料库中出现在1000份文件中,语料库共有1000,0000文件,逆向文件频率就是
- lg(1000,0000 / 1000)=4
-
-“母牛的”TF-IDF = 0.03*4 = 0.12    
-
-
-
-Query ID  –  给primary key换成独热编码
-
-
-1.Query ID特征:把primary key转换为one hot encoding
-2.Counting特征-基本Counting特征
-
-Count of n-gram
-count of ngram(query,n),ngram(title,n),and ngram(desc</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-            <a href="/tags/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96">特征提取</a>&nbsp;
-          
-            <a href="/tags/tf-idf">tf-idf</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CrowdFlower/3.%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%B8%85%E6%B4%97/">
-        <p class="h4 index-header">CrowdFlower/3.数据探索与清洗</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">3.CrowdFLower代码分析3.1数据探索
-查看一眼文件头
-
-查看列信息
-
-查看有多少行
-
-查看感兴趣的列信息去重后有多少项
-
-查看感兴趣的信息去重后前一百项是什么
-
-查看两个文件中,感兴趣的同一列有多少个是相同的,多少是不同的
-
-对感兴趣的某一列信息,根据重复数画出柱状图
-
-
-# -*- coding: utf-8 -*-
-import pandas as pd
-import numpy as np
-import nltk
-
-train = pd.read_csv(&quot;filePath&quot;)
-test = pd.read_csv(&quot;filePath&quot;)
-
-train.head()
-test.head()
-#查看文件头
-
-train.columns
-test.columns
-#查看文件的列信息
-
-len(train)
-len(test)
-#查看文件有多少行
-
-train[&#39;query&#39;].unique()[0:100]
-#查看train这个文件中query的去重的前一百个数据
-
-train[&#39;product_title&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CrowdFlower/1.%E6%A6%82%E8%AE%BA/">
-        <p class="h4 index-header">CrowdFlower/1.概论</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.机器学习常见算法与工具介绍1.1主要内容介绍
-机器学习应用领域
-机器学习常见算法
-常用工具
-建模与问题解决流程
-数据处理
-特征工程
-模型选择
-寻找最佳超参数:交叉验证
-模型分析与模型融合
-
-
-kaggle wiki
-简单案例讲解
-
-1.2机器学习常见算法
-1.3机器学习常见工具
-
-scikit - learn :速度不快,但是全面,封装的好,只需要造出来基本参数就可以自动去跑
-gensim - 自然语言处理会用
-NUmPy - 科学计算(封装到其他工具里了)
-matplotlib - 绘图
-pandas - 数据清洗,产出特征,缺省值,填充等
-xgboost - 基于boost的库,分类和回归都可以完成
-Natural Language Toolkit多用于英文的自然语言处理,中文用的很少
-Jieba - 多用于中文语言处理
-TensorFlow - 深度学习库,对显存的占用较高,速度不算太快
-Caffe -深度学习库, 图像用的很多
-Keras - 深度学习库,接口简单,本视频deep learning部分用Keras
-
-1.4解决问题流程
-了解场景和目标
-了解评估准则
-认识数据</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS230/1%20-%20%E5%AF%BC%E8%AE%BA/">
-        <p class="h4 index-header">CS230/1 - 导论</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.导论
-第一个图是DL/ML领域，近几年突飞猛进（在数据规模，算法，资本的三重加持下）。
-剩下的是概率图模型，规划算法，搜索算法，知识图谱(在学术界被低估，但吴恩达提了很多嘴)，博弈论。近几年的性能表现都在稳步上升。
-as leader如何做正确决定：
-也许大数据的概念被过度宣传，人们通常忽略了搜集数据需要付出时间的事实。如果team leader能在花一周时间搜索超参数还是花一周时间搜索更多的数据这种事情上能做出正确决定，通常可以5到10倍地提高团队的效率。作为一个leader，仅仅了解C++,JAVA是如何works是不够的。
-互联网公司与非互联网公司的区别
-吴恩达举例说几年前美国有一个巨大零售商与他聊天，说他们有零售业务，他们有网站，亚马逊也有零售业务，也有网站，所以他们做的是一样的事情都是互联网公司。但现在这家零售商的业务被亚马逊抢走了很多，其实他根本不是互联网公司。
-
-A/B test
-互联网公司通常会做A/B test，可以推出两个不同版本的网站看看哪个更好，所以互联网公司学习地块很多。
-传统行业（以零售行业举例）不可能同时推出两个购物中心看看哪个更好。
-
-短时性
-互联网</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS230">CS230</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
-        <p class="h4 index-header">CS229/极大似然估计</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">极大似然估计极大似然估计是确定机器学习模型的参数的一种办法。确定参数值的过程，是找到能最大化“模型产生真实观察数据可能性“的那一组参数，略抽象，如下是一个例子：
-从某过程观察了如下十个数据点，每个数据点代表了学生回答问题使用的秒数。
-
-这些数据的生成过程可以使用高斯分布（正态分布）进行充分描述。高斯分布有两个参数，西格玛和μ，如何确定参数？如下示意图表示了使用不同参数的不同高斯分布（方差大的中心函数更扁平）。
-注：蓝色曲线是正确曲线N(10,2.25)
-
-OK，如何反编译确定正确参数？我们把这个例子再次简化，同样的情境，这次只存在三个数据点：9,9.5,11
-如何使用最大似然估计确定这个高斯分布的参数？
-高斯分布中，单个数据点x的边缘概率如下
-
-同时观察到上边所提三个点（9,9.5,11）的联合概率是带入上边三个数据的连乘积：
-
-我们只要能找到最大化上述连乘积的参数μ和西格玛就ok了。也就是说，最大似然估计是一个通过确定参数得到函数最大值的优化问题。
-那么，如何求出上述函数的最大值？
-easy，二元函数求偏导标准步骤，加以两边套上对数等数学小技巧就完事儿了。
-SOP:
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">极大似然估计</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/11/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/13/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/11/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

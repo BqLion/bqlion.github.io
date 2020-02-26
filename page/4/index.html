@@ -136,6 +136,311 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/7.%E5%AD%97%E5%85%B8%E6%A0%91Trie/">
+        <p class="h4 index-header">数据结构/7.字典树Trie</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.字典树在实际的搜索引擎中，当我们在数据库中搜索一个关键字的时候，如何快速准确的进行定位是一个关键的问题，在面临大规模数据的时候，使用暴力的手段往往会造成检索和查找性能的低下，因此我们需要更加高效的数据结构。
+这时候我们引入一种新的数据结构：Trie树（字典树）。
+又称单词查找树，Trie树，是一种树形结构，是一种哈希树的变种。典型应用是用于统计，排序和保存大量的字符串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：利用字符串的公共前缀来减少查询时间，最大限度地减少无谓的字符串比较，查询效率比哈希树高。
+字典树每一个节点代表一个字符,有相同前缀的树就有相同的根节点,每个节点结束的时候用一个特殊的标记来表示(-1)
+
+从图中可以看出：
+1.每一个节点代表一个字符
+2.有相同前缀的单词在树中就有公共的前缀节点，由于一共有26个小写英文字母（在这篇文章中，我们主要讨论小写的英文字母查询），因此每个节点最多有26个子节点。
+3.整棵树的根节点是空的（这里我们设置根节点为root=0），这便于查找和插入，可以通过根节点快速的进入树结构，稍后就会明白。
+4.每个节点结束</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91">字典树</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.1-%E5%BF%AB%E6%8E%92/">
+        <p class="h4 index-header">数据结构/排序/7.1-快排</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.排序7.1快速排序快排是对冒泡排序的改进.
+基本思想:
+通过一趟排序将数据分割成独立的两部分,其中一部分的数据要小于另一部分
+然后用同样方法递归地对这两部分数据做快速排序,直到整个数据都变成有序序列.
+如下图所示
+7.1.左指针放最左,右指针放最右,Basic指针随机放
+7.2.左指针向右移动,遇见比basic大的停下来右指针向左移动,遇见比basic小的停下来左右指针指的对象交换位置
+
+7.3.交换位置后重复刚才步骤,直到左右指针相碰
+7.4.相碰后交换本对象和basic所指对象的位置
+7.5.于是将数据一分为二,可递归地操作剩下数据
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/categories/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
+          
+            <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">快速排序</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3.%E6%A0%91/">
+        <p class="h4 index-header">数据结构/3.树</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">树
+树的特征
+树是非线性结构
+树是由一个集合以及在集合上定义的一种关系构成的
+集合的元素称树的节点
+定义的关系成为父子关系
+父子关系在树的节点之间建立了一个层次关系
+
+
+
+
+
+
+二叉树的定义
+
+递归定义:二叉树或者是一个空树,或者是由一个根节点和两颗互不相交分别为根的左子树和右子树钩构成的
+
+
+遍历
+
+先序
+中序
+后序
+
+
+
+
+
+
+
+
+
+
+哈弗曼树
+
+哈弗曼编码
+
+在一个字符集的编码过程中,为了避免出现前缀歧义的情况,通常把待编码的项都安排在树的叶子节点上,因为没有任何一个叶子节点与其他叶子节点共享到根节点的路径,遂可保证无歧义性
+
+把待编码的项目根据使用频率可赋值一个”权”,权大的使用频率高,放在更靠近根节点的位置,这样它的编码就较短,可拉低整体编码的长度.
+
+哈弗曼树的构建过程如下图所示,代码在study项目中
+
+
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%A0%91">树</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91">二叉树</a>&nbsp;
+          
+            <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91">哈夫曼树</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4.%E5%9B%BE/">
+        <p class="h4 index-header">数据结构/4.图</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4.图图是一种网状数据结构,由顶点和边构成,Graph = (V,E)
+4.1子图
+4.2强连通分量:
+构造镜像图G’
+
+对G 和 G’中s的可达分量求并集既可得强连通分量
+
+
+
+
+4.3图的存储方式首先,从图的逻辑结构定义来看,无法将图的顶点排列成唯一的线性序列,在图中任意顶点都可以是图的第一个顶点.
+对任意顶点来说他的邻接点也不存在顺序关系
+所以顶点在图中的位置就是指该顶点在图中[人为]确定的序列的位置
+由于图的结构比较复杂,任意两个顶点之间都可能存在联系,所以无法将数据元素存储区的位置来表示元素之间的关系,即图没有顺序映像的存储结构,但可借助数组来表示数据元素之间的关系
+4.3.1邻接矩阵图的邻接矩阵表示法就是用数组来存放图的结构,也成为[数组表示法],采用两个数组来表示图
+
+存储所有顶点信息的一维数组
+
+存储图中顶点之间关系的二维数组,这个关联数组也叫邻接矩阵
+邻接矩阵的示意图(∞代表没有相连)
+
+
+
+4.3.2邻接表临接矩阵的问题:空间使用效率低,因为大量的单元所对应的边可能没有在图中出现
+按照改进空间使用效率的思路想,可以将静态数组的存储结构改成链式存储结构
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%9B%BE">图</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5.%E5%A0%86/">
+        <p class="h4 index-header">数据结构/5.堆</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">5.堆
+堆中存储的值是偏序
+
+堆属于完全二叉树
+
+大顶堆：父节点的值小于或等于子节点的值
+
+小顶堆：父节点的值大于或等于子节点的值
+
+
+
+1.堆的存储一般都用数组来表示堆，i节点的父节点下标就是（i - 1）/ 2,它的左右节点的下标分别是2 * i + 1和2 * i + 2。
+
+2.堆的操作：insert插入元素时，新元素被加到heap的末尾，然后更新树以恢复堆的次序。从新加元素到根节点之间必为一个有序数列，现在的任务是将这个新数据插入到原来的有序数列中，使数列仍保持有序。
+
+3.堆的操作：删除以大顶堆为例，删除元素时，每次都删除堆的第0个元素，为了便于重建堆，实际的操作是将堆的最后一个数据的值赋给根节点，然后从根节点开始依次从上往下调整。调整时先在左右儿子中找到最小的，若父节点比小子节点还还小就不交换，完成。如果不是就和大子节点交换位置，一直到交换不了为止。
+
+4.堆的操作：堆化数组堆化数组就是把数组从头到尾过一遍，把不满足大/小顶堆要求的数据依次交换。
+需注意叶子节点一律不用处理，应该从非叶子节点的右下角开始处理，处理时将本节点与下方节点比较，不符合要求的直接交换。本次交换后下</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%A0%86">堆</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.%E6%95%B0%E7%BB%84,%E9%93%BE%E8%A1%A8/">
         <p class="h4 index-header">数据结构/1.数组,链表</p>
         
@@ -188,65 +493,6 @@ Java中数组是一个类:所以两个数组变量可以指向同一个数组
             <a href="/tags/%E6%95%B0%E7%BB%84">数组</a>&nbsp;
           
             <a href="/tags/%E9%93%BE%E8%A1%A8">链表</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/0.%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/">
-        <p class="h4 index-header">数据结构/0.常见算法总览</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">十大排序算法
-
-简单排序：插入排序、选择排序、冒泡排序（必学）
-分治排序：快速排序、归并排序（必学，快速排序还要关注中轴的选取方式）
-分配排序：桶排序、基数排序
-树状排序：堆排序（必学）
-其他：计数排序（必学）、希尔排序
-
-对于十大算法的学习，假如你不大懂的话，那么我还是挺推荐你去看书的，因为看了书，你可能不仅仅知道这个算法怎么写，还能知道他是怎么来的。推荐书籍是《算法第四版》，这本书讲的很详细，而且配了很多图演示，还是挺好懂的。
-推荐文章：
-必学十大经典排序算法，看这篇就够了(附完整代码/动图/优质文章)(修订版)
-2、图论算法
-
-图的表示：邻接矩阵和邻接表
-遍历算法：深度搜索和广度搜索(必学)
-最短路径算法：Floyd，Dijkstra（必学）
-最小生成树算法：Prim，Kruskal（必学）
-实际常用算法：关键路径、拓扑排序（原理与应用）
-二分图匹配：配对、匈牙利算法（原理与应用）
-拓展：中心性算法、社区发现算法（原理与应用）
-
-图还是比较难的，不过我觉得图涉及到的挺多算法都是挺实用的，例如最短路径的计算等，图相关的，我这里还是建议看书的，可以看《算法第四版》。
-漫画：什么是 “</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
           
         
       </div>
@@ -318,30 +564,36 @@ Java中数组是一个类:所以两个数组变量可以指向同一个数组
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%87%8D%E8%A3%85Git%E5%92%8C%E5%8D%9A%E5%AE%A2/">
-        <p class="h4 index-header">安装调试记录/重装Git和博客</p>
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/0.%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/">
+        <p class="h4 index-header">数据结构/0.常见算法总览</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">重装Git和博客：Git下载安装git.exe，官网速度慢就从腾讯下载
-git bash
+          <div class="index-text mb-1">十大排序算法
 
-git config –global user.name “yubin（自定义用户名）”
+简单排序：插入排序、选择排序、冒泡排序（必学）
+分治排序：快速排序、归并排序（必学，快速排序还要关注中轴的选取方式）
+分配排序：桶排序、基数排序
+树状排序：堆排序（必学）
+其他：计数排序（必学）、希尔排序
 
-git config –global user.email “488459564@qq.com（自定义邮箱）”
+对于十大算法的学习，假如你不大懂的话，那么我还是挺推荐你去看书的，因为看了书，你可能不仅仅知道这个算法怎么写，还能知道他是怎么来的。推荐书籍是《算法第四版》，这本书讲的很详细，而且配了很多图演示，还是挺好懂的。
+推荐文章：
+必学十大经典排序算法，看这篇就够了(附完整代码/动图/优质文章)(修订版)
+2、图论算法
 
-ssh-keygen -t rsa -C “你的邮箱”　
-三个回车
+图的表示：邻接矩阵和邻接表
+遍历算法：深度搜索和广度搜索(必学)
+最短路径算法：Floyd，Dijkstra（必学）
+最小生成树算法：Prim，Kruskal（必学）
+实际常用算法：关键路径、拓扑排序（原理与应用）
+二分图匹配：配对、匈牙利算法（原理与应用）
+拓展：中心性算法、社区发现算法（原理与应用）
 
-
-在C:\users\bqlion\.ssh找到公钥，复制，粘贴到github里的new sshkey中
-git clone git@github.com::BqLion/_post.git
-推送时若报转义问题：warning: LF will be replaced by CRLF in 字典树.md.The file will have its original line endings in your working directory
-输入git config –global core.autocrlf false解决
-hexo下载安装node：https://nodejs.org/en/download/
-检查是否</div>
+图还是比较难的，不过我觉得图涉及到的挺多算法都是挺实用的，例如最短路径的计算等，图相关的，我这里还是建议看书的，可以看《算法第四版》。
+漫画：什么是 “</div>
         </div>
       </a>
 
@@ -352,9 +604,16 @@ hexo下载安装node：https://nodejs.org/en/download/
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
           &nbsp;
         
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
         
       </div>
     </div>
@@ -418,131 +677,30 @@ github new SSH KEY
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%A6%82%E8%AE%BA/">
-        <p class="h4 index-header">数据库/概论</p>
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%87%8D%E8%A3%85Git%E5%92%8C%E5%8D%9A%E5%AE%A2/">
+        <p class="h4 index-header">安装调试记录/重装Git和博客</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.数据库的四个基本概念
-数据语义
+          <div class="index-text mb-1">重装Git和博客：Git下载安装git.exe，官网速度慢就从腾讯下载
+git bash
 
-“93”的语义
-可以是年龄
-也可以是班级人数
+git config –global user.name “yubin（自定义用户名）”
 
+git config –global user.email “488459564@qq.com（自定义邮箱）”
 
-
-
-
-
-数据和自然语言
-
-自然语言可以通过上下文完整描述事物
-
-数据是计算机的记录:
-
-(李明,男,199005,江苏南京,计算机,自行车协会)
-记录不能完整表达事物内容,因缺少语义(列信息)
+ssh-keygen -t rsa -C “你的邮箱”　
+三个回车
 
 
-
-
-
-
-
-什么是数据库
-长期储存在计算机内,有组织的,可共享的大量数据集合
-
-
-为什么要建立数据库
-可收集所需的大量数据,然后进一步加工处理,转换为有用的知识
-
-
-数据库的基本特征
-数据按照一定的数据模型(结构)存储,组织,描述
-冗余度小,可扩展
-数据独立性高
-
-
-什么是数据库管理系统DBMS
-位于用户和操作系统之间的一层数据管理软件
-基础软件,也是一层服务
-
-
-DBMS的用途
-科学的组织和存储数据,高效的获取和维护数据 
-
-
-DBMS的主要功能
-数据定义功能
-提供数据定义语言DDL
-定于数据库中的数据对象
-
-
-数据组织/存储/管理
-管理数据
-确定数据在存储级别上的结构和存取方式
-实现数据之间的联系
-提供多种存储方法提高存储效率
-
-
-数据操纵功能
-增删改查
-提供数据操纵语言(DML)
-关系代数
-关系演算
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>&nbsp;
-          
-            <a href="/tags/sql">sql</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
-        <p class="h4 index-header">安装调试记录/更新图床+截屏工作流</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.七牛云的试用域名只能用一个月，过期后要用自己已备案的域名。不管是否有备案域名所有已上传图片都要改链接，坑。
-2.改用sm.ms图床，username:bqlion,email:398703917@qq.com,password:8
-3.sm.ms限流，改用又拍云。
-4.又拍云的shareX配置信息如下，密码用又拍云操作员控制台生成。
-
-4.shareX简直神器。可以取代Snipaste+mpic。
-5.ShareX更改快捷键：
-
-捕捉矩形区域为F1
-设置“上传至”为FTP，
-动作设置-高级设置 - after upload - chipboardContentFormat  - 修改为![]($result)
-
-</div>
+在C:\users\bqlion\.ssh找到公钥，复制，粘贴到github里的new sshkey中
+git clone git@github.com::BqLion/_post.git
+推送时若报转义问题：warning: LF will be replaced by CRLF in 字典树.md.The file will have its original line endings in your working directory
+输入git config –global core.autocrlf false解决
+hexo下载安装node：https://nodejs.org/en/download/
+检查是否</div>
         </div>
       </a>
 
@@ -556,162 +714,6 @@ DBMS的主要功能
             <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
           &nbsp;
         
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%9B%BE%E5%BA%8A">图床</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">安装调试记录/博客建站记录</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">windows环境下使用hexo搭建博客记录搭建步骤
-购买域名
-
-github创建个人仓库
-
-安装node.js
-
-安装hexo
-
-推送网站
-
-域名解析
-
-更换主题
-
-更改配置
-
-发布文章
-
-使用图床
-
-
-1.域名购买godaddy.com: 域名很全但价格较高，首年年费均价￥60左右,往后每年续费￥120左右。
-阿里云：价格适中但个性化后缀较少,cc后缀域名无法备案
-namesilo.com: 域名较全,价格最低,bqlab.cc十年￥280,最终在此购买。 
-2.github创建仓库仓库名命名为bqlion.github.io，亲测改成其他域名网站不能正常访问，
-3.安装node.js下载地址：https://nodejs.org/en/download/
-安装完成后检测是否成功：node -v
-检测npm是否一起安装成功: npm - v
-4.安装hexo创建名为bqlion.github.io的文件夹，在这里打开cmd命令行
-输入
-npm install -g hexo-cli初始化博客
-hexo bqlion.github.io检查网站雏形
-cd bqlion.github.</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/pytorch%E5%AE%89%E8%A3%85/">
-        <p class="h4 index-header">安装调试记录/pytorch安装</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">安装pytorch记录Anaconda Prompt创建conda环境：conda create -n torch
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple –trusted-host pypi.tuna.tsinghua.edu.cn pytorch-1.1.0-py3.6_cuda100_cudnn7_1.tar.bz2
-报错：
-FileNotFoundError: [Errno 2] No such file or directory: ‘C:\Users\LIUBIN1\AppData\Local\Temp\pip-req-build-fcnjgryd\setup.py’Command “python setup.py egg_info” failed with error code 1 in C:\Users\LIUBIN1\AppData\Local\Temp\pip-req-build-fcnjgryd\
-pip install msgpack
-pip install –upgrade setuptoo</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux">linux</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/win%E5%AE%89%E8%A3%85linux%E5%AD%90%E7%B3%BB%E7%BB%9F/">
-        <p class="h4 index-header">安装调试记录/win安装linux子系统</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.安装​    win10设置-针对开发者人员-勾选开发人员模式
-​    控制面板-程序-程序和功能-启动或关闭windows功能-勾选适用于linux的windows子系统
-​    windows appstore下载ubuntu
-2.优化​    备份源路径文件sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-​    编辑源路径文件sudo vim  /etc/apt/sources.list
-​    切换镜像源    vim删除当前文件所有内容：ggdG
-deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse 
-deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main r</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux">linux</a>&nbsp;
-          
         
       </div>
     </div>
@@ -721,7 +723,7 @@ deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main r</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

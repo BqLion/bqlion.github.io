@@ -136,6 +136,334 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
+        <p class="h4 index-header">CS229/6.神经网络(表述)</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">#
+6.神经网络(表述)6.1问题的由来
+特征爆炸无法处理
+例如,智能识别一个图片是不是汽车的问题
+假设使用50*50小黑白照片
+那么就有2500个像素灰度作为特征
+2500个特征两两组合就是3000000项,这的多项式处理不了
+这时候就需要神经网络
+
+
+
+6.2直观理解和逻辑运算符的构建
+直观理解
+
+神经网络能够通过自身学习得到一些列特征,这些特征是使用数据的原始特征经过拆分组合和一系列逻辑运算得到的
+这样的一系列特征比普通的逻辑回归的表层特征要深刻的多
+最后做决定的神经元依据上一层传进来的特征,这些特征已经经过多层传导,内化为自己的特征了
+
+
+神经元可以通过增加一个固定权重神经元构建逻辑运算符(与,非,或,抑或等)
+
+如下图
+
+
+
+
+6.3神经网络的形态
+6.4神经网络基本概念的定义from CS224N如图，神经网络有输入，有偏置单元，有激活函数，以及对后续神经网络的输出。
+输入x，w是乘以输入的权重，b是偏置值，f是sigmod函数。
+输入乘以权重加上偏置值后，进入sigmod函数，输出一个分类值。
+有了神经网络，让我们再回到之前的单窗口分类器。代替之前直接将softmax应用</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/7.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E5%AD%A6%E4%B9%A0)/">
+        <p class="h4 index-header">CS229/7.神经网络(学习)</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.神经网络(学习)7.1神经网络的代价函数
+
+第一项是在K个输出项上(比如四分类就是K=4),累加逻辑回归的代价函数
+第二项就是更高维的罚函数
+
+代价函数的目的:找到使得J(θ)最小化的θ
+7.2单个训练数据如何通过神经网络    
+
+z(2) = θ(1)a(1) 
+
+z(2)是第二层神经元的输入项,共五项,是a(1)的三项经过θ(1)矩阵拆分后的结果
+
+
+a(2) = g[z(2)]
+
+a(2)是第二层神经元的输出项,共五项,是z(2)五项经过第二层神经元的sigmod函数变换后的结果
+
+
+
+后边的几层同理
+7.3反向传播算法
+定义
+
+反向传播算法是利用链式法则递归计算表达式梯度的方法
+理解反向传播过程的精妙之处,对理解/实现/设计/调试神经网络非常关键
+
+
+理解
+
+反向传播就是先正向走一遍,得到各个节点的计算结果
+
+从最后一个节点开始,设置梯度是1
+
+反向计算各个上层节点对他的局部梯度
+
+[dz/dx                                 ]  = [dz/dy]   *  [dy/dx]
+[最终结果与本层的梯度]  =上层梯度*本层局部梯度
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/10.%E8%81%9A%E7%B1%BBClustering/">
+        <p class="h4 index-header">CS229/10.聚类Clustering</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
+如图就是聚类问题
+左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
+10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
+
+K-均值是一个迭代算法
+
+设想我们将数据聚集成n组,选择k个随机的点为聚类中心
+
+对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
+
+然后开始迭代:
+
+每次计算一个组的平均值,将中心点移动到平均值的位置
+如此反复几次中心点的位置就不再变化
+如下图所示
+
+
+
+
+
+10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
+因此K均值的代价函数为:
+
+10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
+1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
+2.随机选择K个训练实例,然后令K个聚类中心等于他们
+K-均值算法的一个问题在于,他可能停留在某个</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E8%81%9A%E7%B1%BB">聚类</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/11.%E9%99%8D%E7%BB%B4/">
+        <p class="h4 index-header">CS229/11.降维</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">11.降维11.1 动机一：数据压缩例如有两个特征，一个是厘米，一个是英寸，这个时候可以抛弃其中一个特征，将二维降成一维
+利用投影的方法可以将数据降低为任意想要的维度
+11.2主成分分析问题PCA主成分分析是最常见的降维算法
+步骤：
+找到一个方向向量，当所有的数据投射到该向量时，我们希望投射的平均均方误差最小，方向向量是一个经过原点的向量，而投射误差是从特征向量向该方向作垂线的长度
+左边是线性回归，右边是PSA
+
+计算方法
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E9%99%8D%E7%BB%B4">降维</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/4.%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
+        <p class="h4 index-header">CS229/4.逻辑回归</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4.逻辑回归(logistics regression)1.逻辑回归模型
+分类问题输出一个结果”正确”或者”错误”
+
+逻辑回归模型:
+
+
+
+
+当hθ(x) 在区间[0.5,1]时,预测是”正确”,越贴近1越确信
+当hθ(x) 在区间[0,0.5)时,预测是”错误”,越贴近0越确信
+
+2.逻辑回归的代价函数
+
+简单点一句话讲:
+答案是1,你预测了1,无误差
+答案是1,你预测的数字离0越近误差就越大,完全是0误差就是无限大(不可能情况)
+答案是0的情况与答案是1的情况同理
+
+
+
+3.对逻辑回归的代价函数使用梯度下降算法,以得到最优参数/最优解
+4.高级优化
+一些建议
+
+不需要写代码实现代价函数的迭代
+
+从技术来讲,其实我们不需要自己手动写程序来计算刚才提到的梯度下降算法的代价函数以及其迭代过程,就像我们不需要自己手动写求平方根和创建数组一样,这些问题早都有非常成熟的库来调用
+
+
+更高级的算法
+
+除了梯度下降算法,还有共轭梯度法 BFGS (变尺度法) 和L-BFGS (限制变尺度法)这种更高级算法可调用
+吴恩达本人已经使用如上提到的算法很多年了,也才是最近才搞清楚他们的内部实现细节
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">逻辑回归</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
         <p class="h4 index-header">CS229/2.正规方程</p>
         
@@ -317,6 +645,53 @@ size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate p
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/">
+        <p class="h4 index-header">CS224n/8 - RNN和语言模式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture8 RNN和语言模式本节讲简单的循环神经网络模型，这个模型家族是大多数人现在在实际训练环境中使用的。
+ 概览：
+1.传统的语言模型
+2.RNNs
+3.语言模型建模来驱动循环神经网络（RNN）
+4.重要的训练时的问题和技巧
+​    梯度消失问题
+​    梯度爆炸问题
+5.用于队列处理的RNN
+6.双向深度RNN
+1. 传统的语言模型和现在的词向量模型对比传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。
+如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。
+如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS224n/6%20-%20%E4%BE%9D%E5%AD%98%E5%88%86%E6%9E%90/">
         <p class="h4 index-header">CS224n/6 - 依存分析</p>
         
@@ -372,274 +747,11 @@ the barking dog on the table等
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/">
-        <p class="h4 index-header">CS224n/8 - RNN和语言模式</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture8 RNN和语言模式本节讲简单的循环神经网络模型，这个模型家族是大多数人现在在实际训练环境中使用的。
- 概览：
-1.传统的语言模型
-2.RNNs
-3.语言模型建模来驱动循环神经网络（RNN）
-4.重要的训练时的问题和技巧
-​    梯度消失问题
-​    梯度爆炸问题
-5.用于队列处理的RNN
-6.双向深度RNN
-1. 传统的语言模型和现在的词向量模型对比传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。
-如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。
-如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/7%20-%20Tensorflow/">
-        <p class="h4 index-header">CS224n/7 - Tensorflow</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture7 TensorFlow为什么要使用深度学习框架？
-
-有助于扩展机器学习代码
-自动计算梯度（通常梯度计算并不重要，这些框架可以自动处理梯度，使得我们把重点放在更高层次的数学上）
-在很多领域使机器学习更标准化
-这些框架提供了GPU接口
-
-1.TensorFlow是什么？是一个谷歌开发的深度学习框架，使用流式图进行数值计算的开源软件库。TensorFlow是用于表示机器学习算法的接口，以及用于执行这种算法的实现。
-TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图的节点是操作，每个节点都有一个输入和输出，节点之间的边表示他们之间流动的张量，在实践中最好的方法就是认为，张量是一个n维数组。
-使用流式图作为深度学习框架主干的优点在于它允许你使用小而简单的操作建立复杂的模型，当我们这样做的时候，会使得梯度计算变得极其简单。
-此框架可以自动求导，而且图方法的每一个操作都是可以在其所在点被评估的一个函数。变量将成为输出其当前值的有状态节点。
-占位符是那些在执行期间才会接收值的节点，如果在你的网络中有依赖外部数据的一些输入，你并不想在建立图时依赖任何实际的值。</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/2,-%20%E6%B3%A8%E9%87%8A%E4%B9%8Bsoftmax/">
-        <p class="h4 index-header">CS224n/2,- 注释之softmax</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">softmax定义：
-假如有一个数组V，Vi表示V中的第i个元素，这个元素的softmax值如下，也就是该元素的指数值和所有元素指数值之和的比值。softmax通常希望特征对概率的影响是乘性的。
-
-softmax VS k个二元分类器：如果你在开发一个音乐分类的应用，需要对k种类型的音乐进行识别，那么是选择使用 softmax 分类器呢，还是使用 logistic 回归算法建立 k 个独立的二元分类器呢？这一选择取决于你的类别之间是否互斥，例如，如果你有四个类别的音乐，分别为：古典音乐、乡村音乐、摇滚乐和爵士乐，那么你可以假设每个训练样本只会被打上一个标签（即：一首歌只能属于这四种音乐类型的其中一种），此时你应该使用类别数 k = 4 的softmax回归。（如果在你的数据集中，有的歌曲不属于以上四类的其中任何一类，那么你可以添加一个“其他类”，并将类别数 k 设为5。）如果你的四个类别如下：人声音乐、舞曲、影视原声、流行歌曲，那么这些类别之间并不是互斥的。例如：一首歌曲可以来源于影视原声，同时也包含人声 。这种情况下，使用4个二分类的 logistic 回归分类器更为合适。这样，对于</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/4%20-%20wordWindow%E5%92%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-        <p class="h4 index-header">CS224n/4 - wordWindow和神经网络</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture4  wordWindow和神经网络1.分类背景知识对分类的直觉感受是什么？在机器学习领域，在还没有达到深度学习领域的情况下，我们通常将分类理解为简单的逻辑回归，也就是定义一个简单的决策边界。
-
-2.窗口分类在一般的机器学习中，我们假设输入是固定的。输入X都是固定的，我们只训练参数W，也就是softmax的权值，然后计算给定输入X时输出Y的概率。
-3.交叉熵我们假设正确类别的概率为1，其余的概率为0.举个例子，假设共有5个类别，正确类别是中间的第三个，那么第三个的概率为1，其他都是0.我们把理想的概率定义为p，softmax计算的概率为q，这里给出了交叉熵的定义，就是对所有类别的求和
-正则化项：里边包含的参数θ如果是标准逻辑回归中的矩阵W，实际上目标函数加入这个正则化项的目的就是是为了鼓励模型中的所有权值尽可能地小。
-可以假设你想要一个贝叶斯模型，你可以有一个先验的高斯分布，理想情况下这些参数的值都很小，但是如果没有这个正则化项，通常情况下你得到的模型参数会爆炸，他会越来越过拟合。如果没有正则化项，我们会专注于如何拟合我们的模型。
-通常的机器学习优化就是只优化模型的参数W</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/5%20-%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD+%E9%A1%B9%E7%9B%AE%E5%BB%BA%E8%AE%AE/">
-        <p class="h4 index-header">CS224n/5 - 反向传播+项目建议</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture5 反向传播 + 项目建议1.一层神经网络过渡到多层神经网络
-2.反向传播为了解耦，反向传播的笔记已整合到cs229 - 7中。
-3.项目建议老师推荐的文章和会议
-
-1.定义你的任务：
-例如：summarization
-2.定义数据集：
-最好使用现成的数据集，因为他们已经有baselines
-3.建立baseline
-他可以是一个非常简单的一元线性回归，然后在你的训练数据集上计算你的评价标准，看看模型是过拟合还是欠拟合
-4.选做题：自己发明新的模型
-首先，你需要做好以上说的几个步骤.
-
-然后你需要知道已经存在的模型上有哪些问题。然后你就可以设计出自己的模型。如果你想要这样做的话，你真的需要和你的导师和其他研究者保持沟通，除非你自己就是研究者并且已经获得了博士文凭。
-
-你需要实现你的模型，然后根据你的新点子去对它快速迭代。（也许在某个位置新加一层？然后看看他起不起作用？）
-
-那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。
-
-建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/16%20-%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9C%A8NLP%E4%B8%AD%E7%9A%84%E9%99%90%E5%88%B6/">
-        <p class="h4 index-header">CS224n/16 - 深度学习在NLP中的限制</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture16 - 深度学习在NLP中的限制对于语言，如果你想要一个合适的语言系统，你可能需要一些对于输入的情感理解，在逻辑上推理某些事实，在数据库中检索一些事实，或者基于数据库中的逻辑原因，再做一些内存检索。还有一些时候，你需要对谈论的内容做一些奖励。在现实世界中这些过程是由很多不同的成分组成的。我们想要一个更好的理解语言的系统，理想情况下这个系统应该包括很多内容，以一种更科学的方式呈现。
-现在联合多任务学习仍然非常困难，迄今为止，人们谈论多任务学习时，他们假设有一个源任务和一个目标任务，他们希望神经网络在源任务的预训练可以加强另一个目标任务的表现。就我而言，理想的情况是让他们共同训练，而不是分开训练不同的解码器。例如不同语言中，不同的分类问题。理想情况下，我们只有一个很大的不同种类的数据集，我们想根据输入来预测，他们有完全一样的解码器，但是很多时候人们做多任务学习的时候他们只是共享低层的参数，共同训练他们，但是不能共享高层的参数。
-也就是说，在自然语言处理的过程中，我们通常只是共享了词向量，我们没有共享其他高层的比如LSTM层，这种层能解决更多的任务，其实计算机视觉在这方面有挺</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/13/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/15/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/13/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/15/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

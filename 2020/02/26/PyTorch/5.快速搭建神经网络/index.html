@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>PyTorch/Untitled 1 ~ 刘秉乾的技术博客 :)</title>
+  <title>PyTorch/5.快速搭建神经网络 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期二, 二月 25日 2020, 8:32 晚上
+                  星期三, 二月 26日 2020, 1:30 下午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1 字
+                    159 字
                   </span>&nbsp;
                 
 
@@ -167,7 +167,25 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>s</p>
+            <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="5-快速搭建神经网络"><a href="#5-快速搭建神经网络" class="headerlink" title="5.快速搭建神经网络"></a>5.快速搭建神经网络</h1><p>两个代码块对比，做的事情是一样的，明显第二个代码块简单的多。torch.nn.Linear(2,10)就是一个输入10，输出2的神经网络层,torch.nn.ReLU()就是一层激励函数</p>
+<pre><code class="python"># method 1
+class Net(torch.nn.Module):
+    def __init__(self,n_features,n_hidden,n_output)；
+    super(Net,self).__init__()
+    self.hidden = torch.nn.Linear(n_feature,n_hidden)
+    self.predict = torch.nn.Linear(n_hidden,n_output)
+
+    def forward(self,x):
+    x = F.relu(self.hidden(x))
+    x = self.predict(x)
+    return x
+
+net1 = Net(2,10,2)</code></pre>
+<pre><code class="python">net2 = torch.nn.Sequential(    #Sequential的意思是在这个括号里一层一层的累神经层就OK了
+    torch.nn.Linear(2,10),
+    torch.nn.ReLU(),
+    torch.nn.Linear(10,2)
+) </code></pre>
 
             <hr>
           </div>
@@ -337,7 +355,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "PyTorch/Untitled 1&nbsp;",
+        "PyTorch/5.快速搭建神经网络&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

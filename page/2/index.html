@@ -136,6 +136,333 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Transformer/">
+        <p class="h4 index-header">谷歌QA比赛/Transformer</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">TransformerTransformer改进了RNN的训练慢的缺点，加入了自注意机制，充分发挥了DNN的优点，提升模型准确率。Transformer由论文《Attention is All you need》提出。有Tensorflow和Pytorch版本。
+宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。
+
+拆开这个黑箱，发现里边是由编码和解码组件构成。
+
+编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。
+1.编码器详解像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
+
+词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
+
+开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
+2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+        <p class="h4 index-header">谷歌QA比赛/1基本概念</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.基本概念1.本比赛数据截屏如下
+
+
+1.question_id
+1
+
+
+
+2.question_title
+What am I losing when using extension tubes in…
+
+
+3.question_body
+After playing around with macro photography on…
+
+
+4.question_username
+ysap
+
+
+5.question_user_page
+https://photo.stackexchange.com/users/1024
+
+
+6.answer
+I just got extension tubes, so here’s the skin…
+
+
+7.answer_user_name
+rfusca
+
+
+8.answer_user_page
+https://photo.stackexchange.com/users/1917
+
+
+9.url
+http://photo.stackexchange.com/questions/9169/…
+
+
+10.category
+LIFE_ARTS
+
+
+11.q</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2-%E7%89%A9%E7%90%86%E5%B1%82/">
+        <p class="h4 index-header">计算机网络/2-物理层</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.物理层2.1物理层的基本概念物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。
+物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：
+
+机械特性：接口形状，大小，引线数目
+
+
+电器特性：电压范围
+
+功能特性，过程特性等
+
+
+2.2数据通信的基本模型
+相关术语：
+
+数据：运送消息的实体
+信号：数据的电器或电磁表现
+模拟信号：消息的参数取值是连续的
+数字信号：消息的参数取值是离散的
+
+
+
+信道信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道
+单向信道：信息只能单向流动
+双向交替信道：信息可双向流动，但不能同时流动
+双向同时信道：信息科双向，同时流动
+基带信号和带通信号
+基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号
+
+基带数字信号的几种调制方法
+
+
+
+
+带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输
+
+在传输范围较大的时候，计算机网络必须通过带通信号传输
+
+
+
+曼彻斯特编码：由低到高是0，高到低是1
+
+差分曼彻斯特编码
+
+
+2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          
+            <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+        <p class="h4 index-header">计算机网络/3-数据链路层</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">3.数据链路层3.0概述数据链路层使用的信道主要有以下两类
+
+点对点信道
+这种信道使用一对一的点对点通信方式
+
+
+广播信道
+这种信道使用一对多的广播通信方式，因此过程较为复杂，广播信道上的链接主机很多，因此必须使用专门的共享信道协议来协调这些数据的转发
+
+
+
+3.1 数据链路和帧链路是一条无源的点到点的物理线路，中间没有任何的其他交换节点。数据链路是除了物理线路之外，还得有通信协议来控制这些数据的传输，若把实现了这些协议的软硬件加到链路上，就构成了数据链路。
+现在最常用的办法是使用适配器（网卡）来实现这些协议的硬件和软件，一般的适配器都包括了数据链路层和物理层这两层的功能。
+数据链路层传输的是帧。
+
+三个基本问题
+
+封装成帧
+透明传输
+差错控制
+
+
+封装成帧：
+
+在一段数据的前后分别打上首部和尾部，首部尾部可以确定帧的界限。
+
+
+透明传输问题：
+
+类似于我想在markdown文件中打出[]()字符缺被误以为是超连接一样，需要在[]()字符之前加上转义字符\。
+
+
+CRC差错检测
+传输过程中可能出现比特差错，1变成0或者0变成1。一段时间内传输错误的比特与总比特比值称谓误码率。为保证数据</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1-%E6%A6%82%E8%BF%B0/">
+        <p class="h4 index-header">计算机网络/1-概述</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.计算机网络概述1.1局域网​        覆盖范围小（１００ｍ）,自己花钱买设备,贷款固定
+​        接入层的交换机们星形连接到汇聚层交换机,这样分散IO
+​        接入层交换机们不该串联,不然最后一台交换机那里IO压力太大
+1.2Internet和广域网​    Internet ISP :有自己的机房,对网民提供internet访问
+　广域网：距离较远，花钱租带宽，
+1.3 数据包和数据帧在一个计算机想把数据发给另一个计算机时,需要在发送信息里携带ip地址和mac地址,其中ip地址是最终目地,mac地址是下一跳的目的地,ip地址不变,mac地址每次经过路由器都刷新.下一跳的目的地由迪杰斯特拉或其他寻路算法确定.
+1.4 OSI参考模型 应用层:所有能产生网络流量的程序
+表示层:在传输之前是否进行加密或压缩处理
+会话层:查木马,netstat -n
+传输层:可靠传输,流量控制,不可靠传输
+网络层:负责选择最佳路径,规划ip地址
+数据链路层:帧的开始和结束,透明传输,差错校验
+物理层:接口标准,电器标准,如何在物理链路层上传输的更快
+
+osi参考模型对网络排错指导</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          
+            <a href="/tags/OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B">OSI参考模型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/1_%E6%A6%82%E8%AE%BA/">
         <p class="h4 index-header">统计学习方法/1_概论</p>
         
@@ -285,50 +612,6 @@ https://www.matongxue.com/madocs/555.html
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%EF%BC%8C%E8%83%BD%E5%90%A6%E6%88%90%E4%B8%BA%E4%BC%81%E4%B8%9A%E4%B8%8B%E4%B8%80%E4%BB%A3%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">
-        <p class="h4 index-header">知识图谱/知识图谱，能否成为企业下一代的数据仓库</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">知识图谱，能否成为企业下一代的数据仓库？原创： camel AI科技评论 前天
-
-作者 | camel编辑 | 唐里
-
-“我认为，知识图谱是企业下一代管理数据的一种新的组织方式，能够更高效的连接上游的大数据和下游的AI建模任务。
-企业最初数据量少、结构单一的时候，用MySQL这样的结构化数据库就够了；再后来数据量越来越多、业务系统越来越复杂，就需要分布式数据库、数据仓库、数据集市来管理数据资产。这类数据都需要事先定义好结构。但在大数据时代，你不可能事先将数据的结构定义好，于是很多企业开始利用像 Hadoop 等来搭建大数据平台，以NOSQL的方式存储那些事先无法定义的数据。但这些数据之间如何有效关联？例如，当一些查找稍微深度（例如四、五度或出现隐形关系），这就需要利用知识图谱进行数据组织了。”
-
-在近期AI科技评论对张杰博士进行的采访中，张杰如是回答了他对知识图谱未来发展的看法。
-​             
-张杰博士是明略科技资深科学家，明略科学院知识工程实验室主任，加入明略科技后便一直在负责明略科技“行业知识图谱”的研究和搭建工作，在此之前曾在华为中央研究院从事机器学习方面的研究工</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1">知识图谱</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1">知识图谱</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
         <p class="h4 index-header">线性代数/奇异值分解</p>
         
@@ -375,16 +658,23 @@ https://www.matongxue.com/madocs/555.html
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
-        <p class="h4 index-header">杂谈/王威廉对博士生的要求</p>
+      <a href="/2020/02/24/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%EF%BC%8C%E8%83%BD%E5%90%A6%E6%88%90%E4%B8%BA%E4%BC%81%E4%B8%9A%E4%B8%8B%E4%B8%80%E4%BB%A3%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">
+        <p class="h4 index-header">知识图谱/知识图谱，能否成为企业下一代的数据仓库</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Hiring PhD students
-Q: What’s your research interest? 
-A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
+          <div class="index-text mb-1">知识图谱，能否成为企业下一代的数据仓库？原创： camel AI科技评论 前天
+
+作者 | camel编辑 | 唐里
+
+“我认为，知识图谱是企业下一代管理数据的一种新的组织方式，能够更高效的连接上游的大数据和下游的AI建模任务。
+企业最初数据量少、结构单一的时候，用MySQL这样的结构化数据库就够了；再后来数据量越来越多、业务系统越来越复杂，就需要分布式数据库、数据仓库、数据集市来管理数据资产。这类数据都需要事先定义好结构。但在大数据时代，你不可能事先将数据的结构定义好，于是很多企业开始利用像 Hadoop 等来搭建大数据平台，以NOSQL的方式存储那些事先无法定义的数据。但这些数据之间如何有效关联？例如，当一些查找稍微深度（例如四、五度或出现隐形关系），这就需要利用知识图谱进行数据组织了。”
+
+在近期AI科技评论对张杰博士进行的采访中，张杰如是回答了他对知识图谱未来发展的看法。
+​             
+张杰博士是明略科技资深科学家，明略科学院知识工程实验室主任，加入明略科技后便一直在负责明略科技“行业知识图谱”的研究和搭建工作，在此之前曾在华为中央研究院从事机器学习方面的研究工</div>
         </div>
       </a>
 
@@ -395,235 +685,13 @@ A: My research interests are in the broad areas of Artificial Intelligence. I am
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
+            <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1">知识图谱</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/phd%E7%94%B3%E8%AF%B7">phd申请</a>&nbsp;
-          
-            <a href="/tags/UCSB">UCSB</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E9%98%BF-%E7%94%B3%E8%AF%B7phd%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">杂谈/王阿-申请phd思路</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">我是如何申请到phd的转载自知乎–王阿的阿
-谢谢你们。
-在这篇经验贴里，我会告诉你我当时申请时面临的处境、我的决策过程，以及申请当中各个环节最精华的经验和技巧，我都毫无保留地贡献在这里了。
-读完这篇文章，除了我介绍的各种申请技巧以外，我希望能让你认识到申请过程中决策和心态的重要意义：
-
-想成功申请美国的PhD，除了自己软硬件要出色，还有很重要的一点是对自己的定位，包括认识到自己的目标、兴趣以及自己的长处和缺陷。不论你是申请哪个学科的PhD，请重点关注我做决策时的思考内容和思考方向，这也许会对你有所启发。
-心理韧性、抗打击能力也是申请成功的一个重要因素。如果你知道GradCafe这个北美grad school申请论坛，你会发现上面有很多人诉说自己第二次、第三次才申请成功的经历。我就是其中一员。
-
-我的故事是这样婶儿的……
-2017一整年是我这辈子最难熬的一年，这一年我第一次（也只申请了这一次）申请美国的临床心理学PhD（clinical psychology），申了13所学校。2017年的头四个月陆续收到13封拒信，无一录取，甚至连一个面试都没有。当时的我：
-
-已经在纽约市生活了三年；
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
-          
-            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">杂谈/996 - 超时工作的异化问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">996 - 超时工作与异化问题1.感性认识我国现阶段各行业超时工作现象十分普遍，有的互联网公司晚上十一二点整个大楼还灯火通明，有的公司虽然晚上按时下班，但回家后仍然要求有工作输出，很多岗位还要求7*24小时on call。
-我前些年所在的公司就有制度要求员工每月加班22天以上才算考核达标，而我经常需要加班27天才能完成工作，每晚九点离开公司后经一小时通勤才能到家，洗洗漱漱刚好十一点上床，十二点入睡，第二天早上6点50分起床后经过一小时通勤抵达公司，在公司门口的快餐店里缩着身子与其他同事挤在餐桌上潦草进食后便赶往工位，开始一天的埋头苦干。算上通勤时间，我的工作强度是7107。高强度劳动和了无希望所积累的疲劳深入骨髓，在此期间我感到生命力与灵魂的飞速流逝。
-深夜的华为大楼
-
-早上五点半排队等公交上班的年轻人
-
-2.八小时工作制的来由八小时工作制国家法律规定的工作日长度为8小时的工作制度。目前世界各国普遍实行八小时工作制。正常一天工作时间为早上九点至下午五点为8小时。
-理论起源
-八小时工作制最早由社会主义者罗伯特·欧文于1817年8月提出。他还发明了一个口号， “8小时劳动， 8小时休闲， </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
-          
-            <a href="/tags/996">996</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/">
-        <p class="h4 index-header">杂谈/博士这五年-李沐</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">转自知乎-李沐
-前言12年8月提着一个行李箱降落在匹兹堡机场。没找住的地方，也不知道CMU应该怎么去。对未来一片迷茫，但充满乐观。 现在，刚完成了博士期间最后的一场报告，在同样的机场，不过是在等待离开的航班。
-回想过去的五年，是折腾的五年，也是自我感悟和提升的五年。这里我尝试记录这五年主要做过的事情和其中的感想，希望对大家有所启发。
-第0年：3/11-8/12我第一次申请美国的博士是在11年，但拿到的offer并没有特别合适的导师，于是就北上投奔文渊去了。 我当时在百度商务搜索部门做广告的点击预估。具体是使用机器学习来预测一个广告是不是会被用户点击。 这时候离“大数据”这个词流行还有两年，但百度那时候的数据即使现在来看仍然是大的。我的任务是如何高效的利用数百台机器快速的在数十T的数据上训练出模型。
-当时产品用的算法基于LBFGS，我于是想是不是可以换个收敛更快的算法。没几天就找到个不错 。但实现上发现了各种问题，包括性能，收敛，和稳定性。而且那时有的就是一个裸的Linux和很老版本的GCC，什么都是需要从头开始写。花了大量时间做系统优化，算法改动，和线上实验，最后一年后在整个广告流量上</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
-          
-            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%8C%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%8C%E5%AD%97%E5%85%B8%E6%A0%91/">
-        <p class="h4 index-header">数据结构/网络流，最短路径，字典树</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.最短路径:迪杰斯特拉算法7.1释义迪杰斯特拉算法就是求一个顶点到其他所有顶点的最短路径
-需要维持两个数据集,一个最开始只有顶点,另一个最开始有除了顶点之外的所有点
-然后每次都把距离顶点最近的点放入前一个数据集,然后遍历一次顶点到和前一个数据集接触的点的最短路径,有更近的就更新一次
-
-
-8.网络流建模8.1几个概念
-原点:起点
-
-汇点:目标点
-
-流:从原点到汇点的一条路径
-
-流量:通过一条边的水的体积
-
-容量:每条管道允许通过的最大流量
-
-()实际流量:取决于流上最小的容量,最小流量是流的短板
-
-最小割:如下图,切断哪些管道后,源头的水就不能流向汇点了?
-
-最小割=最大流
-
-
-
-
-
-9.哈希表9.1什么是哈希表举例说明
-去商场停车,有三种策略
-
-随机停,然后找车的时候从头到尾顺序搜索,时间复杂度是O(N)
-所有车辆按照牌照顺序停,然后每次二分查找找车,时间复杂度是log(n)
-每个车都有一个与牌照对应的停车位,专车专位,时间复杂度是O(1)
-这种策略时间复杂度确实低,但是空间开销过大,每个车牌照都需要分配一个存储空间
-
-
-
-所以在时间复杂度和空间复杂度之间做个取舍，降低专车专位的空间</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">最小生成树</a>&nbsp;
-          
-            <a href="/tags/Kruskal">Kruskal</a>&nbsp;
-          
-            <a href="/tags/Prim">Prim</a>&nbsp;
-          
-            <a href="/tags/%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95">迪杰斯特拉算法</a>&nbsp;
-          
-            <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8">哈希表</a>&nbsp;
-          
-            <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91">字典树</a>&nbsp;
-          
-            <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91">后缀树</a>&nbsp;
+            <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1">知识图谱</a>&nbsp;
           
         
       </div>
@@ -634,7 +702,7 @@ A: My research interests are in the broad areas of Artificial Intelligence. I am
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

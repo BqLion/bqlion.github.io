@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    3 字
+                    437 字
                   </span>&nbsp;
                 
 
@@ -167,7 +167,58 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="3-回归"><a href="#3-回归" class="headerlink" title="3.回归"></a>3.回归</h1>
+            <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="3-回归"><a href="#3-回归" class="headerlink" title="3.回归"></a>3.回归</h1><pre><code class="python">import torch
+from torch.autograd import Variable
+import torch.nn.functional as F
+import matplotlib.pyplot as plt
+
+x = torch.unsqueeze(torch.linspace(-1,1,100),dim=1)
+#为什么要用.unsqueeze？因为torch只能处理二维的数据，unsqueeze可以把一维的数据转换成二维的
+
+y = x.pow(2) + 0.2*torch.rand(x.size())
+#y是x的二次方加上一些随机噪声
+
+x,y = Variable(x),Variable(y)
+# x和y都只能转换成Variable才能被torch处理
+# 新版torch已经不需要转换成Variable了，可以直接处理
+
+plt.scatter(x.data.numpy(),y.data.numpy())
+#plt.scatter就是打印散点图
+plt.show()
+</code></pre>
+<pre><code class="python">#定义神经网络的层
+class Net(torch.nn.Module):
+    def __init__(self,n_features,n_hidden,n_output):
+    #self后边三个参数分别是输入、隐藏层、输出个数
+        super(Net,self).__init__()
+        self.hidden = torch.nn.Linear(n_features,n_hidden)
+        self.predict = torch.nn.Linear(n_hidden,n_output) 
+        #预测是接受hidden层的输入，输出1个值就是y    </code></pre>
+<pre><code class="python">#具体搭建步骤在这里，接上代码
+    def forward(self,x):
+    x = F.relu(self.hidden(x)) #接受隐藏层输出，然后套进激励函数
+    x = self.predict(x)
+    return x</code></pre>
+<pre><code class="python">net = Net(1,10,1)  #如init函数的参数结构，输入值1个，隐藏层10层，输出值1个
+print(net) 
+# print是pytorch的一个功能，可以这接打印出来神经网络的结构，如下图所示</code></pre>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200226_1224_32_431.png" alt=""></p>
+<pre><code>#优化
+optimizer = torch.optim.SGD(net.parameters(),lr=0.5)
+#lr是学习率，一般小于1，越大学越快。SGD是随机梯度下降法，是求解方法中最简单适用的一种
+loss_func = torch.nn.MESLoss()
+#误差函数是torch中计算误差的手段，这里用MSELoss均方差，来处理回归问题
+#多提一句，分类问题的误差函数通常是交叉熵
+for t in range(100):
+    prediction = net(x)
+
+    loss = loss_func(prediction,y)
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+</code></pre>
             <hr>
           </div>
           <br>
