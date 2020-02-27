@@ -136,22 +136,20 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/">
-        <p class="h4 index-header">Speech and language processing/概念_5_FSD状态传感器</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/9%20-%20Automatic%20Speech%20Recognition/">
+        <p class="h4 index-header">Speech and language processing/9 - Automatic Speech Recognition</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">状态传感器FST概念状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。
-他是一种类似于字典树/自动机的数据结构。
-转自豆瓣-巴扎黑
-有限状态转移机在自然语言处理上的应用
-原文地址：
-http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/
-在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。
-首先，先来大概的了解一下有限状态机（FSM）
-有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of</div>
+          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
+影响语音转文字系统性能表现的几个参数：
+
+需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
+speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
+声音质量：apparently，噪音少识别起来容易。
+讲话者的类型：apparently，nat</div>
         </div>
       </a>
 
@@ -165,50 +163,6 @@ http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-proc
             <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
-          
-            <a href="/tags/%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8">状态传感器</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%80%BB%E7%BB%93/">
-        <p class="h4 index-header">Speech and language processing/总结</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
-自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
         
       </div>
     </div>
@@ -361,20 +315,68 @@ Sym</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/9%20-%20Automatic%20Speech%20Recognition/">
-        <p class="h4 index-header">Speech and language processing/9 - Automatic Speech Recognition</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">Speech and language processing/总结</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
-影响语音转文字系统性能表现的几个参数：
+          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
+自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
+</div>
+        </div>
+      </a>
 
-需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
-speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
-声音质量：apparently，噪音少识别起来容易。
-讲话者的类型：apparently，nat</div>
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/8%20-%20Speech%20Synthesis/">
+        <p class="h4 index-header">Speech and language processing/8 - Speech Synthesis</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8. Speech Synthesis - 语音合成（文字转语音）Speech Synthesis detail is as following:
+
+本单元讲解如何将文本转换成语音，主要分成如下四个任务：
+
+text normalization  文本标准化
+phonetic analysis 语音分析（把token化的词汇转换成音标）
+prosodic analysis 韵律分析( 把音标组成的集合拼凑地和谐一点)
+
+
+waveform synthesis 波形合成（让拼凑好的音标们-IR转wave-发音）
+
+8.1) Text NormalizationText normalization was combined as follwoing:
+
+sentence tokenization
+non-standard words
+homograph disambiguation
+
+8.1.1)Sentence tokenizationtokenization理解为把句子拆分成小块（token），token之间可以是被空格键分隔，也可以是被句号，逗号，或者单纯是被语义分隔，被token化</div>
         </div>
       </a>
 
@@ -435,53 +437,6 @@ Also briefly touch on phonology音韵学
           
             <a href="/tags/Phonetics">Phonetics</a>&nbsp;
           
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/8%20-%20Speech%20Synthesis/">
-        <p class="h4 index-header">Speech and language processing/8 - Speech Synthesis</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">8. Speech Synthesis - 语音合成（文字转语音）Speech Synthesis detail is as following:
-
-本单元讲解如何将文本转换成语音，主要分成如下四个任务：
-
-text normalization  文本标准化
-phonetic analysis 语音分析（把token化的词汇转换成音标）
-prosodic analysis 韵律分析( 把音标组成的集合拼凑地和谐一点)
-
-
-waveform synthesis 波形合成（让拼凑好的音标们-IR转wave-发音）
-
-8.1) Text NormalizationText normalization was combined as follwoing:
-
-sentence tokenization
-non-standard words
-homograph disambiguation
-
-8.1.1)Sentence tokenizationtokenization理解为把句子拆分成小块（token），token之间可以是被空格键分隔，也可以是被句号，逗号，或者单纯是被语义分隔，被token化</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
         
       </div>
     </div>
@@ -671,6 +626,45 @@ means  P(w1w2</div>
           
             <a href="/tags/NLP">NLP</a>&nbsp;
           
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/23%20-%20QA/">
+        <p class="h4 index-header">Speech and language processing/23 - QA</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">23 - Question Answering and Summarization本章介绍基于事实的回答问题系统+文章的总结系统。如果我们查找的是结构化的数据，可用上一章介绍的信息提取算法来词查找。如果查找的是非结构化的信息，则需要用本章介绍的“回答问题系统”处理，非结构化信息的查找就是一种“使用非正式的单词或句子”来表达查找需求的场景，这种场景下客户通常期望能返回一些回答or一些文本，或something in between。
+第一个session介绍向量空间模型，第二个session介绍基于事实的一问一答系统。第六个session介绍基于句子的总结系统/基于注意力机制的总结系统。
+23.1 Information Retrieval 信息检索术语定义
+文档document指的是一个有索引的，可被检索系统直接定位的最小单元，对应到web就是一个网页
+集合collection指的是一系列用来满足用户需求的文档documents
+term指的是一个词汇元素。
+query指的是一系列terms
+
+词向量空间
+词义相近的在向量空间中距也近，概念在CS224N中学过了。空间和点积的直观图如下</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
         
       </div>
     </div>

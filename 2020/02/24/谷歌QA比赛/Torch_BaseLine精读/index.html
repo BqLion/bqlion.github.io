@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>谷歌QA比赛/1基本概念 ~ 刘秉乾的技术博客 :)</title>
+  <title>谷歌QA比赛/Torch_BaseLine精读 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    406 字
+                    630 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -167,253 +167,95 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h1><h4 id="1-本比赛数据截屏如下"><a href="#1-本比赛数据截屏如下" class="headerlink" title="1.本比赛数据截屏如下"></a>1.本比赛数据截屏如下</h4><table>
-<thead>
-<tr>
-<th>1.question_id</th>
-<th>1</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2.question_title</td>
-<td>What am I losing when using extension tubes in…</td>
-</tr>
-<tr>
-<td>3.question_body</td>
-<td>After playing around with macro photography on…</td>
-</tr>
-<tr>
-<td>4.question_username</td>
-<td>ysap</td>
-</tr>
-<tr>
-<td>5.question_user_page</td>
-<td><a href="https://photo.stackexchange.com/users/1024" target="_blank" rel="noopener">https://photo.stackexchange.com/users/1024</a></td>
-</tr>
-<tr>
-<td>6.answer</td>
-<td>I just got extension tubes, so here’s the skin…</td>
-</tr>
-<tr>
-<td>7.answer_user_name</td>
-<td>rfusca</td>
-</tr>
-<tr>
-<td>8.answer_user_page</td>
-<td><a href="https://photo.stackexchange.com/users/1917" target="_blank" rel="noopener">https://photo.stackexchange.com/users/1917</a></td>
-</tr>
-<tr>
-<td>9.url</td>
-<td><a href="http://photo.stackexchange.com/questions/9169/" target="_blank" rel="noopener">http://photo.stackexchange.com/questions/9169/</a>…</td>
-</tr>
-<tr>
-<td>10.category</td>
-<td>LIFE_ARTS</td>
-</tr>
-<tr>
-<td>11.question_well_written</td>
-<td>1.000000</td>
-</tr>
-<tr>
-<td>12.answer_helpful</td>
-<td>1.000000</td>
-</tr>
-<tr>
-<td>13.answer_level_of_information</td>
-<td>0.666667</td>
-</tr>
-<tr>
-<td>14.answer_plausible</td>
-<td>1.000000</td>
-</tr>
-<tr>
-<td>15.answer_relevance</td>
-<td>1.000000</td>
-</tr>
-<tr>
-<td>16.answer_satisfaction</td>
-<td>0.800000</td>
-</tr>
-<tr>
-<td>17.answer_type_instructions</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>18.answer_type_procedure</td>
-<td>0.000000</td>
-</tr>
-<tr>
-<td>19.answer_type_reason_explanation</td>
-<td>0.000000</td>
-</tr>
-<tr>
-<td>20.answer_well_written</td>
-<td>1.000000</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>qa_id</th>
-<th>翻译</th>
-<th>答案</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>question_asker_intent_understanding</td>
-<td>提问者意图理解</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_body_critical</td>
-<td>对问题主体的批判</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_conversational</td>
-<td>问题的对话性</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_expect_short_answer</td>
-<td>问题期望简短的回答的程度</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_fact_seeking</td>
-<td>询问事实</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_has_commonly_accepted_answer</td>
-<td>被普遍回答了的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_interestingness_others</td>
-<td>问题让他人感兴趣</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_interestingness_self</td>
-<td>问题自己感兴趣</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_multi_intent</td>
-<td>多问题意图</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_not_really_a_question</td>
-<td>不是个问题的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_opinion_seeking</td>
-<td>寻求意见的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_type_choice</td>
-<td>选择的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_type_compare</td>
-<td>比较的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_type_consequence</td>
-<td>结果的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_type_definition</td>
-<td>定义的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_type_entity</td>
-<td>实体的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_type_instructions</td>
-<td>说明的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_type_procedure</td>
-<td>程序的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_type_reason_explanation</td>
-<td>解释reason的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_type_spelling</td>
-<td>拼写的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>question_well_written</td>
-<td>优秀书写的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>answer_helpful</td>
-<td>有用的回答</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>answer_level_of_information</td>
-<td>回答的信息level</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>answer_plausible</td>
-<td>是似而非的回答</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>answer_relevance</td>
-<td>回答相关性</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>answer_satisfaction</td>
-<td>回答满意度</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>answer_type_instructions</td>
-<td>建议类型的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>answer_type_procedure</td>
-<td>程序类型的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>answer_type_reason_explanation</td>
-<td>解释reason的问题</td>
-<td>0.00308</td>
-</tr>
-<tr>
-<td>answer_well_written</td>
-<td>写的好的问题</td>
-<td>0.00308</td>
-</tr>
-</tbody></table>
+            <h1 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h1><p>import Lib</p>
+<pre><code class="python">import numpy as np
+#numpy是主要用于数组计算，线性代数，傅里叶变换等。
+
+import pandas as pd
+#pandas基于numpy，可以处理高纬数据
+
+from sklean.manifold import TSNE
+#sklearn是机器学习中常用的第三方模块，对常见的机器学习算法进行了封装，包括回归、降维、分类、聚类等
+#sklearn.manifold是流形学习，非线性降维的手段。最简单的降维手段是随机投影，但是会导致结构丢失。
+#manifold learning是一种类似主成分分析（PCA）的线性框架，不会错失数据结构中的非线性项
+# TSNE提供了一种画图方式，让高维的数据降低为二维画出来
+
+import seaborn as sns
+# 基于matplotlib的画图工具
+
+import glob
+# glob是查找模块。支持空格 ，问号？，方括号[]这三个通配符。
+# 空格代表0个或者多个字符，问号？代表一个字符，[]代表范围，例如0-9.
+# glob主要是两个方法，glob方法获（取全部匹配路径）和iglob方法（逐个获取满足路径）。
+from urlib.parse import urlparse
+# url.parse定义了URL的标准接口，实现了对url的解析，合并，编码，解码等
+
+%matplotlib inline
+#这一句在pycharm和spyder中可以注释掉，主要是在jupter notebook中用于打印图像的
+
+import re
+# 正则表达式
+
+from category_encoders.ordinal import OrdinalEncoder
+# category_encoders.ordinal可以将非数值型数据比如语言，转换成类别变量例如独热编码
+
+import spacy
+# 最快的工业级自然语言处理工具，主要功能是分词，词干化，命名实体识别，名词短语提取等
+
+import gc
+
+import genism
+from nltk.tokenize import TweetTokenizer
+import datetime
+from scipy import stats
+from scipy.sparse import hstack,csr_matrix
+from sklearn.model_selection import train_test_split,cross_val_score,KFold
+from wordcloud import WordCloud
+from collections import Counter
+from nltk.corpus import stopwords
+from nltk.util import ngrams
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.preprocessing import     StandardScaler
+from sklearn.linear_model import LogisticRegression,LinearRegression,Ridge
+from sklearn.svm import LinearSVC
+from sklearn.multiclass import OneVsRestClassifier
+import time
+pd.set_option(&#39;max_colwidth&#39;,400)
+from scipy.stats import spearmanr
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+
+import scipy as sp
+import random
+from sklearn.preprocessing import OneHotEncoder
+import os
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.functional as F
+from torch.utils.data import Dataset,DataLoader
+from torch.nn.utils.rnn import pack_padded_sequence,pad_packed_sequence
+from torch.autograd import Variable
+import torch.utils.data
+
+import torch.utils.data
+from torch.optim import lr_scheduler
+from scipy.stats import spearmanr
+import numpy as np
+import time
+from tqdm import tqdm
+import pickle
+from nltk.stem import PorterStemmer
+ps = PorterStemmer()
+from nltk.stem import SnowballStemmer
+sb = SnowballStemmer(&quot;english&quot;)
+import tensorflow_hub as hub
+import keras.backend as K
+import sys
+!pip install ..  / / /  &gt; del/null
+sys.path.insert(0,/ / /)
+import transformers
+</code></pre>
 
             <hr>
           </div>
@@ -583,7 +425,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "谷歌QA比赛/1基本概念&nbsp;",
+        "谷歌QA比赛/Torch_BaseLine精读&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

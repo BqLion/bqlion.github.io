@@ -187,71 +187,6 @@ public interface UserMapper {
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/libingteam+%E8%AE%BA%E5%9D%9B/RestfulApi%E7%BC%96%E7%A8%8B/">
-        <p class="h4 index-header">libingteam+论坛/RestfulApi编程</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.相关概念RESTful API:可重新表达的状态迁移的API
-在这种编程风格里，所有东西都是资源，每个资源带有唯一全局定位符（URL），对URL的操作（POST,DELETE,PUT,GET）实现对资源的增删改查。所有操作都是无状态的，不要使用session。
-1.1 RESTful API URI示例
-URL: http://somehost/tvseries
-
-GET /tvseries 获取电视剧列表
-
-POST /tvseries 创建一个新电视剧
-
-GET /tvseries/101 创建编号为101的电视剧信息
-
-PUT /tvseries/101 修改编号为101的电视剧信息
-
-DELETE /tvseries/101 删除编号为101的电视剧
-
-GET /tvseries/101/characters 获取编号为101的电视剧的人物列表
-
-
-
-POST /authorization 登录
-
-DELETE /authorization退出
-
-
-1.2 Spring Boot简介
-大量使用注解，自动配置，无需配置xml
-自带嵌入式web服务器
-带系统监控功能，便于开发
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/libingteam+%E8%AE%BA%E5%9D%9B">libingteam+论坛</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/RESTful%20API">RESTful API</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/flink/%E6%80%9D%E8%B7%AF/">
         <p class="h4 index-header">flink/思路</p>
         
@@ -295,45 +230,6 @@ planner engines              </div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/calcite">calcite</a>&nbsp;
-          
-            <a href="/tags/flink">flink</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/flink/%E8%B0%83%E5%8F%82%E5%A4%A7%E6%B3%95/">
-        <p class="h4 index-header">flink/调参大法</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">jm内存 + tm内存 = 26分别是[2,24]  [4,22],[3+25]要挂
-每个tm的slot :1 – 8 ,[1,8,4,2]    
-并发度: 1-9,[3,7,1,5] 
-打包命令:
-cp ~/.m2/repository/org/apache/parquet/parquet-column/1.8.2/parquet-column-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-hadoop/1.8.2/parquet-hadoop-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-common/1.8.2/parquet-common-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-encoding/1.8.2/parquet-encoding-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/flink">flink</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
           
             <a href="/tags/flink">flink</a>&nbsp;
           
@@ -391,52 +287,18 @@ The server time zone value &#39;�й���׼ʱ��&#39; is unrecognized or
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/flink/hadoop,Storm%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">
-        <p class="h4 index-header">flink/hadoop,Storm相关概念</p>
+      <a href="/2020/02/24/flink/%E8%B0%83%E5%8F%82%E5%A4%A7%E6%B3%95/">
+        <p class="h4 index-header">flink/调参大法</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.hadoop概念
-大数据概念
-无法在一定时间范围内用常规的工具进行捕捉管理和处理数据的集合
-需要用新的处理模式才能有更强的决策力洞察力的海量高增长的多样化的信息资产
-
-
-mysql:只能储存千万条数据,不能搭建大量的集群.处理海量数据时速度极慢
-
-
-MapReduce定义
-是一个分布式运算程序的编程框架
-是用户基于hadoop的数据分析应用的核心框架
-Mapreduce核心功能是将用户编写的业务逻辑代码和自带默认组件整合成一个完整的分布式运算程序,并发运行在一个hadoop集群上
-
-
-MapReduce优点
-易于编程
-简单实现一些接口,就可以完成一个分布式程序,跟写一个串行程序一样
-
-
-扩展性
-计算资源得不到满足时,增加机器扩展计算能力
-
-
-高容错性
-其中一台机器down了,可把上边的计算任务转移到其他节点上去,不至于导致任务失败
-
-
-适合PB级数据的离线处理
-
-
-MapReduce缺点
-不擅长实时计算
-不能像mysql一样在毫秒内返回计算结果
-
-
-不擅长流式计算
-流计算的输入数据是动态的,MapReduce输入数据是静态的.这由MapReduce自身的设计特点决定
-不擅长做DAG</div>
+          <div class="index-text mb-1">jm内存 + tm内存 = 26分别是[2,24]  [4,22],[3+25]要挂
+每个tm的slot :1 – 8 ,[1,8,4,2]    
+并发度: 1-9,[3,7,1,5] 
+打包命令:
+cp ~/.m2/repository/org/apache/parquet/parquet-column/1.8.2/parquet-column-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-hadoop/1.8.2/parquet-hadoop-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-common/1.8.2/parquet-common-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-encoding/1.8.2/parquet-encoding-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/</div>
         </div>
       </a>
 
@@ -452,8 +314,6 @@ MapReduce缺点
         
         
           <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/calcite">calcite</a>&nbsp;
           
             <a href="/tags/flink">flink</a>&nbsp;
           
@@ -558,6 +418,81 @@ planner rule            </div>
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/flink/hadoop,Storm%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">
+        <p class="h4 index-header">flink/hadoop,Storm相关概念</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.hadoop概念
+大数据概念
+无法在一定时间范围内用常规的工具进行捕捉管理和处理数据的集合
+需要用新的处理模式才能有更强的决策力洞察力的海量高增长的多样化的信息资产
+
+
+mysql:只能储存千万条数据,不能搭建大量的集群.处理海量数据时速度极慢
+
+
+MapReduce定义
+是一个分布式运算程序的编程框架
+是用户基于hadoop的数据分析应用的核心框架
+Mapreduce核心功能是将用户编写的业务逻辑代码和自带默认组件整合成一个完整的分布式运算程序,并发运行在一个hadoop集群上
+
+
+MapReduce优点
+易于编程
+简单实现一些接口,就可以完成一个分布式程序,跟写一个串行程序一样
+
+
+扩展性
+计算资源得不到满足时,增加机器扩展计算能力
+
+
+高容错性
+其中一台机器down了,可把上边的计算任务转移到其他节点上去,不至于导致任务失败
+
+
+适合PB级数据的离线处理
+
+
+MapReduce缺点
+不擅长实时计算
+不能像mysql一样在毫秒内返回计算结果
+
+
+不擅长流式计算
+流计算的输入数据是动态的,MapReduce输入数据是静态的.这由MapReduce自身的设计特点决定
+不擅长做DAG</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/flink">flink</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/calcite">calcite</a>&nbsp;
+          
+            <a href="/tags/flink">flink</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/flink/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">
         <p class="h4 index-header">flink/培训笔记</p>
         
@@ -620,6 +555,83 @@ Batch analytics
             <a href="/tags/flink">flink</a>&nbsp;
           
             <a href="/tags/%E6%B5%81%E8%AE%A1%E7%AE%97">流计算</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Spring%E7%B3%BB%E5%88%97/2.IOC%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">
+        <p class="h4 index-header">Spring系列/2.IOC入门案例</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.入门案例IOC2.2目标类
+
+提供UserService接口和实现类
+
+UserService.java – 接口
+
+
+获得UserService实现类的实例
+
+UserServiceImpl.java –实现 
+
+
+配置文件
+
+位置:任意,一般在classpath下
+名称:任意,开发中常用applicationContext.xml
+内容:添加schema约束
+beans.xml
+&lt;bean id=”userServiceId” class=”a_ioc.UserServiceImpl”&gt;&lt;/bean&gt;
+id :bean的名称
+class:bean的全类型地址
+
+
+
+
+测试
+
+@Test 是测试入口,类似于main()函数的程序接口
+
+Spring之前和Spring之后对比
+
+之前
+
+@Test
+    public void demo01(){
+        //之前开发
+          UserService userService = new UserServiceImpl();
+        userService.addUser();
+}</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/spring%E7%B3%BB%E5%88%97">spring系列</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/java">java</a>&nbsp;
+          
+            <a href="/tags/spring">spring</a>&nbsp;
+          
+            <a href="/tags/IOC">IOC</a>&nbsp;
           
         
       </div>
@@ -708,52 +720,19 @@ Data Access:数据库</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Spring%E7%B3%BB%E5%88%97/2.IOC%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">
-        <p class="h4 index-header">Spring系列/2.IOC入门案例</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+        <p class="h4 index-header">Speech and language processing/概念_6_动态规划</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">2.入门案例IOC2.2目标类
-
-提供UserService接口和实现类
-
-UserService.java – 接口
-
-
-获得UserService实现类的实例
-
-UserServiceImpl.java –实现 
-
-
-配置文件
-
-位置:任意,一般在classpath下
-名称:任意,开发中常用applicationContext.xml
-内容:添加schema约束
-beans.xml
-&lt;bean id=”userServiceId” class=”a_ioc.UserServiceImpl”&gt;&lt;/bean&gt;
-id :bean的名称
-class:bean的全类型地址
-
-
-
-
-测试
-
-@Test 是测试入口,类似于main()函数的程序接口
-
-Spring之前和Spring之后对比
-
-之前
-
-@Test
-    public void demo01(){
-        //之前开发
-          UserService userService = new UserServiceImpl();
-        userService.addUser();
-}</div>
+          <div class="index-text mb-1">动态规划1. 贪心策略的不足先来看看生活中经常遇到的事吧——假设您是个土豪，身上带了足够的1、5、10、20、50、100元面值的钞票。现在您的目标是凑出某个金额w，需要用到尽量少的钞票。
+依据生活经验，我们显然可以采取这样的策略：能用100的就尽量用100的，否则尽量用50的……依次类推。在这种策略下，666=6×100+1×50+1×10+1×5+1×1，共使用了10张钞票。
+这种策略称为“贪心”：假设我们面对的局面是“需要凑出w”，贪心策略会尽快让w变得更小。能让w少100就尽量让它少100，这样我们接下来面对的局面就是凑出w-100。长期的生活经验表明，贪心策略是正确的。
+贪心策略的翻车
+但是，如果我们换一组钞票的面值，贪心策略就也许不成立了。如果一个奇葩国家的钞票面额分别是1、5、11，那么我们在凑出15的时候，贪心策略会出错：15=1×11+4×1    （贪心策略使用了5张钞票）15=3×5               （正确的策略，只用3张钞票）为什么会这样呢？贪心策略错在了哪里？
+鼠目寸光刚刚已经说过，贪心策略的纲领是：“尽量使接下来面对的w更小”。这样，贪心策略在w</div>
         </div>
       </a>
 
@@ -764,17 +743,15 @@ Spring之前和Spring之后对比
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/spring%E7%B3%BB%E5%88%97">spring系列</a>&nbsp;
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java">java</a>&nbsp;
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
-            <a href="/tags/spring">spring</a>&nbsp;
-          
-            <a href="/tags/IOC">IOC</a>&nbsp;
+            <a href="/tags/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91">一阶逻辑</a>&nbsp;
           
         
       </div>

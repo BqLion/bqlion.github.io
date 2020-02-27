@@ -136,62 +136,6 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/D3NER/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%92%8C%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
-        <p class="h4 index-header">D3NER/知识图谱和推荐系统</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.知识图谱知识图谱是语义网络semantic network的知识库，可理解为理解为多关系图，多关系图一般包含多种类型的节点和边。
-知识图谱的场景
-
-社交网络，人和公司都可以是实体，人是节点，公司是节点的集合，人与人之间的关系是边，边可以是朋友也可是同事等，关系可以是单向也可以是双向的
-
-数据库是结构化数据，网页是非结构化数据，处理非结构化数据是信息抽取的难点。
-四个难点
-
-实体命名识别  
-关系抽取()
-实体统一(武汉,江城)
-指代消解  (it)
-
-知识图谱的存储方式
-RDF
-
-存储三元组(triple)
-推理引擎
-W3C标准
-易于发布数据,多为学术界场景
-
-2.推荐系统评分预测:系统预测用户对电影的评分,根据此给用户推荐,这种是显示反馈
-还有一种是点击率预测,新闻类应用中,根据用户点击某概率来优化推荐方案,这种场景下用户反馈信息的行为特征,而不能反映用户的喜爱成都,这是隐式反馈
-传统的推系统只能使用用户和物品的历史交互信息,作为输入,有两个问题:
-用户和物品之间的交互信息是非常稀疏的,几万个电影只看了几个可能过拟合,
-或者新用户没有看过电影,这问题也叫冷启动问题
-解决冷启动问题</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/D3NER">D3NER</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Docker/Docker%E5%85%A5%E9%97%A8/">
         <p class="h4 index-header">Docker/Docker入门</p>
         
@@ -725,6 +669,84 @@ Word Replacement:然后要把拼写错误的单词</div>
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
             <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CrowdFlower/3.%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%B8%85%E6%B4%97/">
+        <p class="h4 index-header">CrowdFlower/3.数据探索与清洗</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">3.CrowdFLower代码分析3.1数据探索
+查看一眼文件头
+
+查看列信息
+
+查看有多少行
+
+查看感兴趣的列信息去重后有多少项
+
+查看感兴趣的信息去重后前一百项是什么
+
+查看两个文件中,感兴趣的同一列有多少个是相同的,多少是不同的
+
+对感兴趣的某一列信息,根据重复数画出柱状图
+
+
+# -*- coding: utf-8 -*-
+import pandas as pd
+import numpy as np
+import nltk
+
+train = pd.read_csv(&quot;filePath&quot;)
+test = pd.read_csv(&quot;filePath&quot;)
+
+train.head()
+test.head()
+#查看文件头
+
+train.columns
+test.columns
+#查看文件的列信息
+
+len(train)
+len(test)
+#查看文件有多少行
+
+train[&#39;query&#39;].unique()[0:100]
+#查看train这个文件中query的去重的前一百个数据
+
+train[&#39;product_title&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
+          
+            <a href="/tags/python">python</a>&nbsp;
           
         
       </div>

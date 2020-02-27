@@ -136,48 +136,6 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-        <p class="h4 index-header">Speech and language processing/概念_6_动态规划</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">动态规划1. 贪心策略的不足先来看看生活中经常遇到的事吧——假设您是个土豪，身上带了足够的1、5、10、20、50、100元面值的钞票。现在您的目标是凑出某个金额w，需要用到尽量少的钞票。
-依据生活经验，我们显然可以采取这样的策略：能用100的就尽量用100的，否则尽量用50的……依次类推。在这种策略下，666=6×100+1×50+1×10+1×5+1×1，共使用了10张钞票。
-这种策略称为“贪心”：假设我们面对的局面是“需要凑出w”，贪心策略会尽快让w变得更小。能让w少100就尽量让它少100，这样我们接下来面对的局面就是凑出w-100。长期的生活经验表明，贪心策略是正确的。
-贪心策略的翻车
-但是，如果我们换一组钞票的面值，贪心策略就也许不成立了。如果一个奇葩国家的钞票面额分别是1、5、11，那么我们在凑出15的时候，贪心策略会出错：15=1×11+4×1    （贪心策略使用了5张钞票）15=3×5               （正确的策略，只用3张钞票）为什么会这样呢？贪心策略错在了哪里？
-鼠目寸光刚刚已经说过，贪心策略的纲领是：“尽量使接下来面对的w更小”。这样，贪心策略在w</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
-          
-            <a href="/tags/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91">一阶逻辑</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92_%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95/">
         <p class="h4 index-header">Speech and language processing/概念_6_动态规划_维特比算法</p>
         
@@ -210,55 +168,6 @@
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
             <a href="/tags/%E7%8A%B6%E6%80%81%E6%9C%BA">状态机</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/">
-        <p class="h4 index-header">Speech and language processing/概念_6_HMM_马尔科夫链</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">马尔科夫链马尔可夫链是一个模型，告诉我们关于随机变量序列的概率，状态。每个状态都可以从某个集合中获取值。 这些集合可以是单词，标签或代表任何东西的符号，例如天气。 下图左边是天气转换，右边是生成句子的单词序列。
-
-考虑状态变量  ,HMM核心假设是:当预测未来时，过去并不重要，重要的是现在。
-
-上图显示了一个马尔可夫链，用于为一系列天气事件分配概率，其中词汇表包括HOT, COLD,和 WARM，状态表示为图中的节点，转换以其概率表示为边。 转换是概率：离开给定状态的弧的值必须总和为1。上图右边用于为单词序列  分配一个概率，他其实是一个bigram的语言模型，每条边表示概率  。
-在形式上，马尔可夫链由以下组件指定:
-
-
- ，N个状态的集合
-A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概率  ,  
- ，状态上的初始概率分布(某一时刻的所有可能的隐藏状态的分布(可能性))。是马尔可夫链从状态i开始的概率。一些状态j可能有  ，这意味着它们不可能是初始状态。  
-
-马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关：如果我们得到了这个稳定</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
-          
-            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
@@ -302,6 +211,55 @@ HMM模型将标注看做是马尔科夫链，一阶马尔科夫链式针对相�
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/HMM">HMM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/">
+        <p class="h4 index-header">Speech and language processing/概念_6_HMM_马尔科夫链</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">马尔科夫链马尔可夫链是一个模型，告诉我们关于随机变量序列的概率，状态。每个状态都可以从某个集合中获取值。 这些集合可以是单词，标签或代表任何东西的符号，例如天气。 下图左边是天气转换，右边是生成句子的单词序列。
+
+考虑状态变量  ,HMM核心假设是:当预测未来时，过去并不重要，重要的是现在。
+
+上图显示了一个马尔可夫链，用于为一系列天气事件分配概率，其中词汇表包括HOT, COLD,和 WARM，状态表示为图中的节点，转换以其概率表示为边。 转换是概率：离开给定状态的弧的值必须总和为1。上图右边用于为单词序列  分配一个概率，他其实是一个bigram的语言模型，每条边表示概率  。
+在形式上，马尔可夫链由以下组件指定:
+
+
+ ，N个状态的集合
+A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概率  ,  
+ ，状态上的初始概率分布(某一时刻的所有可能的隐藏状态的分布(可能性))。是马尔可夫链从状态i开始的概率。一些状态j可能有  ，这意味着它们不可能是初始状态。  
+
+马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关：如果我们得到了这个稳定</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
@@ -367,24 +325,22 @@ HMM模型将标注看做是马尔科夫链，一阶马尔科夫链式针对相�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">Speech and language processing/概念_6_HMM_三个问题</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_EM%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">Speech and language processing/概念_6_EM算法</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">HMM的三个核心问题的解本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。
-1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别有如下递进定义
+          <div class="index-text mb-1">2. EM算法推导2.1 基础知识2.1.1 凸函数设是定义在实数域上的函数，如果对于任意的实数，都有： 那么是凸函数。若不是单个实数，而是由实数组成的向量，此时，如果函数的 Hesse 矩阵是半正定的，即 是凸函数。特别地，如果  或者   ，称为严格凸函数。
+2.1.2 Jensen不等式如下图，如果函数  是凸函数，  是随机变量，有 0.5 的概率是 a，有 0.5 的概率是 b，  的期望值就是 a 和 b 的中值了那么： 其中， ，这里 a 和 b 的权值为 0.5,    与 a 的权值相等， 与 b 的权值相等。
+特别地，如果函数   是严格凸函数，当且仅当：   (即随机变量是常量) 时等号成立。
 
-将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个网络
-若该网络是有向无环图，则称这个网络为贝叶斯网络
-如果这个图退化成线性链的方式，则得到马尔科夫模型，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是马尔科夫过程。
-若上述网络是无向的，则是无向图模型，又称马尔科夫随机场或者马尔科夫网络。
-若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。
-如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
-
-2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
+注：若函数    是凹函数，Jensen不等式符号相反。
+2.1.3 期望对于离散型随机变量 X 的概率分布为   ，数学期望   为： 
+ 是权值，满足两个条件   。
+若连续型随机变量X的概率密度函数为  ，则数学期望  为： 设 ， 若  是离散型随机变量，则： 若    是连续型随机变量，则：  
+2.2 EM算法的推导对于  个相互独立的样本  ，对应的隐含数据</div>
         </div>
       </a>
 
@@ -393,12 +349,17 @@ HMM模型将标注看做是马尔科夫链，一阶马尔科夫链式针对相�
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
         
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
-            <a href="/tags/HMM">HMM</a>&nbsp;
+            <a href="/tags/EM%E7%AE%97%E6%B3%95">EM算法</a>&nbsp;
           
         
       </div>
@@ -454,22 +415,24 @@ A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_EM%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">Speech and language processing/概念_6_EM算法</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">Speech and language processing/概念_6_HMM_三个问题</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">2. EM算法推导2.1 基础知识2.1.1 凸函数设是定义在实数域上的函数，如果对于任意的实数，都有： 那么是凸函数。若不是单个实数，而是由实数组成的向量，此时，如果函数的 Hesse 矩阵是半正定的，即 是凸函数。特别地，如果  或者   ，称为严格凸函数。
-2.1.2 Jensen不等式如下图，如果函数  是凸函数，  是随机变量，有 0.5 的概率是 a，有 0.5 的概率是 b，  的期望值就是 a 和 b 的中值了那么： 其中， ，这里 a 和 b 的权值为 0.5,    与 a 的权值相等， 与 b 的权值相等。
-特别地，如果函数   是严格凸函数，当且仅当：   (即随机变量是常量) 时等号成立。
+          <div class="index-text mb-1">HMM的三个核心问题的解本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。
+1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别有如下递进定义
 
-注：若函数    是凹函数，Jensen不等式符号相反。
-2.1.3 期望对于离散型随机变量 X 的概率分布为   ，数学期望   为： 
- 是权值，满足两个条件   。
-若连续型随机变量X的概率密度函数为  ，则数学期望  为： 设 ， 若  是离散型随机变量，则： 若    是连续型随机变量，则：  
-2.2 EM算法的推导对于  个相互独立的样本  ，对应的隐含数据</div>
+将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个网络
+若该网络是有向无环图，则称这个网络为贝叶斯网络
+如果这个图退化成线性链的方式，则得到马尔科夫模型，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是马尔科夫过程。
+若上述网络是无向的，则是无向图模型，又称马尔科夫随机场或者马尔科夫网络。
+若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。
+如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
+
+2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
         </div>
       </a>
 
@@ -478,17 +441,12 @@ A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
         
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
-            <a href="/tags/EM%E7%AE%97%E6%B3%95">EM算法</a>&nbsp;
+            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
@@ -534,6 +492,51 @@ A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
             <a href="/tags/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91">一阶逻辑</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/">
+        <p class="h4 index-header">Speech and language processing/概念_5_FSD状态传感器</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">状态传感器FST概念状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。
+他是一种类似于字典树/自动机的数据结构。
+转自豆瓣-巴扎黑
+有限状态转移机在自然语言处理上的应用
+原文地址：
+http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/
+在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。
+首先，先来大概的了解一下有限状态机（FSM）
+有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8">状态传感器</a>&nbsp;
           
         
       </div>
