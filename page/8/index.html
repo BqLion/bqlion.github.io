@@ -136,20 +136,16 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/9%20-%20Automatic%20Speech%20Recognition/">
-        <p class="h4 index-header">Speech and language processing/9 - Automatic Speech Recognition</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">Speech and language processing/总结</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
-影响语音转文字系统性能表现的几个参数：
-
-需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
-speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
-声音质量：apparently，噪音少识别起来容易。
-讲话者的类型：apparently，nat</div>
+          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
+自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
+</div>
         </div>
       </a>
 
@@ -163,6 +159,11 @@ speech的流畅度：如果是切分好的单个单词，容易。流畅长篇�
             <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
         
       </div>
     </div>
@@ -315,68 +316,20 @@ Sym</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%80%BB%E7%BB%93/">
-        <p class="h4 index-header">Speech and language processing/总结</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/9%20-%20Automatic%20Speech%20Recognition/">
+        <p class="h4 index-header">Speech and language processing/9 - Automatic Speech Recognition</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
-自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
-</div>
-        </div>
-      </a>
+          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
+影响语音转文字系统性能表现的几个参数：
 
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/8%20-%20Speech%20Synthesis/">
-        <p class="h4 index-header">Speech and language processing/8 - Speech Synthesis</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">8. Speech Synthesis - 语音合成（文字转语音）Speech Synthesis detail is as following:
-
-本单元讲解如何将文本转换成语音，主要分成如下四个任务：
-
-text normalization  文本标准化
-phonetic analysis 语音分析（把token化的词汇转换成音标）
-prosodic analysis 韵律分析( 把音标组成的集合拼凑地和谐一点)
-
-
-waveform synthesis 波形合成（让拼凑好的音标们-IR转wave-发音）
-
-8.1) Text NormalizationText normalization was combined as follwoing:
-
-sentence tokenization
-non-standard words
-homograph disambiguation
-
-8.1.1)Sentence tokenizationtokenization理解为把句子拆分成小块（token），token之间可以是被空格键分隔，也可以是被句号，逗号，或者单纯是被语义分隔，被token化</div>
+需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
+speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
+声音质量：apparently，噪音少识别起来容易。
+讲话者的类型：apparently，nat</div>
         </div>
       </a>
 
@@ -437,6 +390,53 @@ Also briefly touch on phonology音韵学
           
             <a href="/tags/Phonetics">Phonetics</a>&nbsp;
           
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/8%20-%20Speech%20Synthesis/">
+        <p class="h4 index-header">Speech and language processing/8 - Speech Synthesis</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8. Speech Synthesis - 语音合成（文字转语音）Speech Synthesis detail is as following:
+
+本单元讲解如何将文本转换成语音，主要分成如下四个任务：
+
+text normalization  文本标准化
+phonetic analysis 语音分析（把token化的词汇转换成音标）
+prosodic analysis 韵律分析( 把音标组成的集合拼凑地和谐一点)
+
+
+waveform synthesis 波形合成（让拼凑好的音标们-IR转wave-发音）
+
+8.1) Text NormalizationText normalization was combined as follwoing:
+
+sentence tokenization
+non-standard words
+homograph disambiguation
+
+8.1.1)Sentence tokenizationtokenization理解为把句子拆分成小块（token），token之间可以是被空格键分隔，也可以是被句号，逗号，或者单纯是被语义分隔，被token化</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
         
       </div>
     </div>

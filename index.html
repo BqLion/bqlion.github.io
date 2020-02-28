@@ -568,33 +568,25 @@ variable = Variable(tensor,requires_grad=True)
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Torch_BaseLine%E7%B2%BE%E8%AF%BB/">
-        <p class="h4 index-header">谷歌QA比赛/Torch_BaseLine精读</p>
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Transformer/">
+        <p class="h4 index-header">谷歌QA比赛/Transformer</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Baselineimport Lib
-import numpy as np
-#numpy是主要用于数组计算，线性代数，傅里叶变换等。
+          <div class="index-text mb-1">TransformerTransformer改进了RNN的训练慢的缺点，加入了自注意机制，充分发挥了DNN的优点，提升模型准确率。Transformer由论文《Attention is All you need》提出。有Tensorflow和Pytorch版本。
+宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。
 
-import pandas as pd
-#pandas基于numpy，可以处理高纬数据
+拆开这个黑箱，发现里边是由编码和解码组件构成。
 
-from sklean.manifold import TSNE
-#sklearn是机器学习中常用的第三方模块，对常见的机器学习算法进行了封装，包括回归、降维、分类、聚类等
-#sklearn.manifold是流形学习，非线性降维的手段。最简单的降维手段是随机投影，但是会导致结构丢失。
-#manifold learning是一种类似主成分分析（PCA）的线性框架，不会错失数据结构中的非线性项
-# TSNE提供了一种画图方式，让高维的数据降低为二维画出来
+编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。
+1.编码器详解像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
 
-import seaborn as sns
-# 基于matplotlib的画图工具
+词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
 
-import glob
-# glob是查找模块。支持空格 ，问号？，方括号[]这三个通配符。
-# 空格代表0个或者多个字符，问号？代表一个字符，[]代表范围，例如0-9.
-# glob主要是两个方法，glob方法获（取全部匹配路</div>
+开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
+2</div>
         </div>
       </a>
 

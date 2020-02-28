@@ -535,56 +535,6 @@ SOP:
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
-        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">判定模型和生成模型的区别
-机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
-
-判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
-生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
-
-一个生动的例子说明两者的区别:
-
-判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
-生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
-          
-            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/9.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
         <p class="h4 index-header">CS229/9.支持向量机</p>
         
@@ -645,31 +595,23 @@ SVM模型 和 逻辑回归模型之间的取舍:
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
-        <p class="h4 index-header">CS229/5.过拟合和正则化</p>
+      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
+          <div class="index-text mb-1">判定模型和生成模型的区别
+机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
 
+判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
+生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
 
-解决办法:
-过拟合就丢弃不能正确预测的特征,欠拟合就加特征
-2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
+一个生动的例子说明两者的区别:
 
-
-
-给高维项设置惩罚项
-
-代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
-
-增加了惩罚项的代价函数
-
-
-
-
+判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
+生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
 
 </div>
         </div>
@@ -689,6 +631,10 @@ SVM模型 和 逻辑回归模型之间的取舍:
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
+          
+            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
           
         
       </div>
@@ -767,6 +713,60 @@ a(2)是第二层神经元的输出项,共五项,是z(2)五项经过第二层神�
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
             <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
+        <p class="h4 index-header">CS229/5.过拟合和正则化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
+
+
+解决办法:
+过拟合就丢弃不能正确预测的特征,欠拟合就加特征
+2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
+
+
+
+给高维项设置惩罚项
+
+代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
+
+增加了惩罚项的代价函数
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
         
       </div>

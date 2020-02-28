@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    630 字
+                    793 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -203,13 +203,27 @@ import spacy
 # 最快的工业级自然语言处理工具，主要功能是分词，词干化，命名实体识别，名词短语提取等
 
 import gc
+# gc是垃圾回收机制，gc.collect()是核心函数
 
 import genism
+# genism模块中有word2vec，可以把词汇转换成向量
+
 from nltk.tokenize import TweetTokenizer
+# nltk.tokenize就是把句子令牌化
+# tweetTokenize就是按照空格进行分词，同时针对推文特性，去除@用户名，保留表情符号
+
 import datetime
+# datetime是python处理时间和日期的标准库
+
 from scipy import stats
+# scipy的stats是统计学的各种分布，stats.chi2是卡方分布，stats.norm是正态分布，还有t和f分布。
+
 from scipy.sparse import hstack,csr_matrix
-from sklearn.model_selection import train_test_split,cross_val_score,KFold
+# vstack，hstack分别是横向合并和纵向合并。
+# csr_matrix是压缩稀疏行格式的矩阵
+# sparse matrix (稀疏矩阵) ，sparse就是scipy模块中负责处理稀疏矩阵的模块
+from sklearn.model_selection import train_test_split,cross_val_score,KFold、
+# 
 from wordcloud import WordCloud
 from collections import Counter
 from nltk.corpus import stopwords

@@ -313,6 +313,73 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
+        <p class="h4 index-header">CS229/2.正规方程</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">CS229—正规方程1.定义
+​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
+
+正规方程求解参数矩阵的公式:
+
+2.正规方程法和梯度下降法的对比
+
+梯度下降的特点
+
+要设置学习率α
+多次迭代
+工作地非常均衡
+适合特征变量很多的时候用
+要求参数归一化
+
+
+正规方程法
+
+不用设置学习率
+不用迭代
+需要计算
+适合特征变量不超过1000时用
+不要求参数归一化,如下图
+
+
+
+有些较复杂问题不能使用正规方程法,只能使用梯度下降
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/4.%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
         <p class="h4 index-header">CS229/4.逻辑回归</p>
         
@@ -386,114 +453,6 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
-        <p class="h4 index-header">CS229/2.正规方程</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">CS229—正规方程1.定义
-​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
-
-正规方程求解参数矩阵的公式:
-
-2.正规方程法和梯度下降法的对比
-
-梯度下降的特点
-
-要设置学习率α
-多次迭代
-工作地非常均衡
-适合特征变量很多的时候用
-要求参数归一化
-
-
-正规方程法
-
-不用设置学习率
-不用迭代
-需要计算
-适合特征变量不超过1000时用
-不要求参数归一化,如下图
-
-
-
-有些较复杂问题不能使用正规方程法,只能使用梯度下降
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/9%20-%20%E6%9C%BA%E7%BF%BB,%E9%AB%98%E7%BA%A7RNN,LSTM,GRU/">
-        <p class="h4 index-header">CS224n/9 - 机翻,高级RNN,LSTM,GRU</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture9 - 高级RNN,LSTM,GRU,机翻本节继续讲循环神经网络以及LSTM和GRU这两个本课程最重要的深度学习模型，几乎你能看到的所有深度学习论文都是以这两个模型为基础。
-1.机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
-我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
-基于统计的机翻模型介绍
-源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
-
-如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/1.%E7%BB%AA%E8%AE%BA/">
         <p class="h4 index-header">CS229/1.绪论</p>
         
@@ -557,6 +516,47 @@ size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate p
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/9%20-%20%E6%9C%BA%E7%BF%BB,%E9%AB%98%E7%BA%A7RNN,LSTM,GRU/">
+        <p class="h4 index-header">CS224n/9 - 机翻,高级RNN,LSTM,GRU</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture9 - 高级RNN,LSTM,GRU,机翻本节继续讲循环神经网络以及LSTM和GRU这两个本课程最重要的深度学习模型，几乎你能看到的所有深度学习论文都是以这两个模型为基础。
+1.机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
+我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
+基于统计的机翻模型介绍
+源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
+
+如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>

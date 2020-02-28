@@ -278,6 +278,68 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4.%E5%9B%BE/">
+        <p class="h4 index-header">数据结构/4.图</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4.图图是一种网状数据结构,由顶点和边构成,Graph = (V,E)
+4.1子图
+4.2强连通分量:
+构造镜像图G’
+
+对G 和 G’中s的可达分量求并集既可得强连通分量
+
+
+
+
+4.3图的存储方式首先,从图的逻辑结构定义来看,无法将图的顶点排列成唯一的线性序列,在图中任意顶点都可以是图的第一个顶点.
+对任意顶点来说他的邻接点也不存在顺序关系
+所以顶点在图中的位置就是指该顶点在图中[人为]确定的序列的位置
+由于图的结构比较复杂,任意两个顶点之间都可能存在联系,所以无法将数据元素存储区的位置来表示元素之间的关系,即图没有顺序映像的存储结构,但可借助数组来表示数据元素之间的关系
+4.3.1邻接矩阵图的邻接矩阵表示法就是用数组来存放图的结构,也成为[数组表示法],采用两个数组来表示图
+
+存储所有顶点信息的一维数组
+
+存储图中顶点之间关系的二维数组,这个关联数组也叫邻接矩阵
+邻接矩阵的示意图(∞代表没有相连)
+
+
+
+4.3.2邻接表临接矩阵的问题:空间使用效率低,因为大量的单元所对应的边可能没有在图中出现
+按照改进空间使用效率的思路想,可以将静态数组的存储结构改成链式存储结构
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%9B%BE">图</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5.%E5%A0%86/">
         <p class="h4 index-header">数据结构/5.堆</p>
         
@@ -333,39 +395,36 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4.%E5%9B%BE/">
-        <p class="h4 index-header">数据结构/4.图</p>
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/0.%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/">
+        <p class="h4 index-header">数据结构/0.常见算法总览</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">4.图图是一种网状数据结构,由顶点和边构成,Graph = (V,E)
-4.1子图
-4.2强连通分量:
-构造镜像图G’
+          <div class="index-text mb-1">十大排序算法
 
-对G 和 G’中s的可达分量求并集既可得强连通分量
+简单排序：插入排序、选择排序、冒泡排序（必学）
+分治排序：快速排序、归并排序（必学，快速排序还要关注中轴的选取方式）
+分配排序：桶排序、基数排序
+树状排序：堆排序（必学）
+其他：计数排序（必学）、希尔排序
 
+对于十大算法的学习，假如你不大懂的话，那么我还是挺推荐你去看书的，因为看了书，你可能不仅仅知道这个算法怎么写，还能知道他是怎么来的。推荐书籍是《算法第四版》，这本书讲的很详细，而且配了很多图演示，还是挺好懂的。
+推荐文章：
+必学十大经典排序算法，看这篇就够了(附完整代码/动图/优质文章)(修订版)
+2、图论算法
 
+图的表示：邻接矩阵和邻接表
+遍历算法：深度搜索和广度搜索(必学)
+最短路径算法：Floyd，Dijkstra（必学）
+最小生成树算法：Prim，Kruskal（必学）
+实际常用算法：关键路径、拓扑排序（原理与应用）
+二分图匹配：配对、匈牙利算法（原理与应用）
+拓展：中心性算法、社区发现算法（原理与应用）
 
-
-4.3图的存储方式首先,从图的逻辑结构定义来看,无法将图的顶点排列成唯一的线性序列,在图中任意顶点都可以是图的第一个顶点.
-对任意顶点来说他的邻接点也不存在顺序关系
-所以顶点在图中的位置就是指该顶点在图中[人为]确定的序列的位置
-由于图的结构比较复杂,任意两个顶点之间都可能存在联系,所以无法将数据元素存储区的位置来表示元素之间的关系,即图没有顺序映像的存储结构,但可借助数组来表示数据元素之间的关系
-4.3.1邻接矩阵图的邻接矩阵表示法就是用数组来存放图的结构,也成为[数组表示法],采用两个数组来表示图
-
-存储所有顶点信息的一维数组
-
-存储图中顶点之间关系的二维数组,这个关联数组也叫邻接矩阵
-邻接矩阵的示意图(∞代表没有相连)
-
-
-
-4.3.2邻接表临接矩阵的问题:空间使用效率低,因为大量的单元所对应的边可能没有在图中出现
-按照改进空间使用效率的思路想,可以将静态数组的存储结构改成链式存储结构
-</div>
+图还是比较难的，不过我觉得图涉及到的挺多算法都是挺实用的，例如最短路径的计算等，图相关的，我这里还是建议看书的，可以看《算法第四版》。
+漫画：什么是 “</div>
         </div>
       </a>
 
@@ -384,7 +443,7 @@
           
             <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
           
-            <a href="/tags/%E5%9B%BE">图</a>&nbsp;
+            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
           
         
       </div>
@@ -457,65 +516,6 @@ Java中数组是一个类:所以两个数组变量可以指向同一个数组
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/0.%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/">
-        <p class="h4 index-header">数据结构/0.常见算法总览</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">十大排序算法
-
-简单排序：插入排序、选择排序、冒泡排序（必学）
-分治排序：快速排序、归并排序（必学，快速排序还要关注中轴的选取方式）
-分配排序：桶排序、基数排序
-树状排序：堆排序（必学）
-其他：计数排序（必学）、希尔排序
-
-对于十大算法的学习，假如你不大懂的话，那么我还是挺推荐你去看书的，因为看了书，你可能不仅仅知道这个算法怎么写，还能知道他是怎么来的。推荐书籍是《算法第四版》，这本书讲的很详细，而且配了很多图演示，还是挺好懂的。
-推荐文章：
-必学十大经典排序算法，看这篇就够了(附完整代码/动图/优质文章)(修订版)
-2、图论算法
-
-图的表示：邻接矩阵和邻接表
-遍历算法：深度搜索和广度搜索(必学)
-最短路径算法：Floyd，Dijkstra（必学）
-最小生成树算法：Prim，Kruskal（必学）
-实际常用算法：关键路径、拓扑排序（原理与应用）
-二分图匹配：配对、匈牙利算法（原理与应用）
-拓展：中心性算法、社区发现算法（原理与应用）
-
-图还是比较难的，不过我觉得图涉及到的挺多算法都是挺实用的，例如最短路径的计算等，图相关的，我这里还是建议看书的，可以看《算法第四版》。
-漫画：什么是 “</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2.%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97-/">
         <p class="h4 index-header">数据结构/2.栈与队列-</p>
         
@@ -577,52 +577,6 @@ Java中数组是一个类:所以两个数组变量可以指向同一个数组
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%87%8D%E8%A3%85Git%E5%92%8C%E5%8D%9A%E5%AE%A2/">
-        <p class="h4 index-header">安装调试记录/重装Git和博客</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">重装Git和博客：Git下载安装git.exe，官网速度慢就从腾讯下载
-git bash
-
-git config –global user.name “yubin（自定义用户名）”
-
-git config –global user.email “488459564@qq.com（自定义邮箱）”
-
-ssh-keygen -t rsa -C “你的邮箱”　
-三个回车
-
-
-在C:\users\bqlion\.ssh找到公钥，复制，粘贴到github里的new sshkey中
-git clone git@github.com::BqLion/_post.git
-推送时若报转义问题：warning: LF will be replaced by CRLF in 字典树.md.The file will have its original line endings in your working directory
-输入git config –global core.autocrlf false解决
-hexo下载安装node：https://nodejs.org/en/download/
-检查是否</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/">
         <p class="h4 index-header">安装调试记录/网站部署记录</p>
         
@@ -668,6 +622,52 @@ github new SSH KEY
           
             <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
           
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%87%8D%E8%A3%85Git%E5%92%8C%E5%8D%9A%E5%AE%A2/">
+        <p class="h4 index-header">安装调试记录/重装Git和博客</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">重装Git和博客：Git下载安装git.exe，官网速度慢就从腾讯下载
+git bash
+
+git config –global user.name “yubin（自定义用户名）”
+
+git config –global user.email “488459564@qq.com（自定义邮箱）”
+
+ssh-keygen -t rsa -C “你的邮箱”　
+三个回车
+
+
+在C:\users\bqlion\.ssh找到公钥，复制，粘贴到github里的new sshkey中
+git clone git@github.com::BqLion/_post.git
+推送时若报转义问题：warning: LF will be replaced by CRLF in 字典树.md.The file will have its original line endings in your working directory
+输入git config –global core.autocrlf false解决
+hexo下载安装node：https://nodejs.org/en/download/
+检查是否</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+          &nbsp;
+        
         
       </div>
     </div>

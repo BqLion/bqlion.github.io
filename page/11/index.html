@@ -136,31 +136,37 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-        <p class="h4 index-header">JAVA/快捷键</p>
+      <a href="/2020/02/24/JAVA/Git/">
+        <p class="h4 index-header">JAVA/Git</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">7ChromeCTRL + SHIFT + N = 打开匿名窗口
-CTRL + SHIFT + I =  检查
-CTRL + W  = 关闭当前标签页
-CTRL + fn  + PgUp/PgDn = 上翻/下翻当前标签页
-IDEACTRL + SHIFT + F12 =  编程窗口最大化
-CTRL + SHIFT+ N = 查找文件
-SHIFT + F6 = 全局替换
-CTRL + ALT + L = 格式化代码
-CTRL + ALT + V =快速赋值
-Cookie[] cookeis数组遍历便捷写法  = cookies.for = for(Cookie cookie : cookies)
-SHIFT + F6  = 文件重命名
-CTRL + SHIFT + C = 拷贝文件路径
-CTRL + D = 拷贝一行
-SHIFT + ENTER = 换行
-CTRL + P = 查看参数
-CTRL + N = 查找代码行例:QutsitonMapper.java:31  可直接定位到该文件31行
-CRTL + E 切换到最近页面
-数据库consolo:CTRL+ENTER:执行当前mys</div>
+          <div class="index-text mb-1">Git1.四个区域Workplace : 工作区，自己的电脑存放代码的地方
+Index，Stage ： 暂存区，存放临时的改动，事实上它是一个文件，保存即将提交到文件列表的信息
+Repository  :  仓库区（版本库），存放数据的地方，有所有提交版本的地方，其中head指向最新放入仓库的版本
+Remote ：远程仓库，托管代码的服务器，可以简单理解为项目组的一台用于远程数据交换的电脑
+四者关系如下
+
+2.常用命令常用
+# 本地推至暂存区
+git add .
+# 删除暂存区/分支，但本地保留文件（不被版本控制）
+git rm --cached file_path
+# 为本地代码切换版本
+git checkout
+# 暂存区代码推至版本库
+git commit -m &quot;提交说明&quot;
+# 移除暂存区文件
+git reset HEAD 文件名
+# 去掉上次的提交(变成add前状态)
+git reset HEAD^
+# 去掉上次的提交(变成commit前状态)
+git reset --soft HEAD^
+# 显示当前git配置
+git config --lsit
+# 编</div>
         </div>
       </a>
 
@@ -177,7 +183,7 @@ CRTL + E 切换到最近页面
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a>&nbsp;
+            <a href="/tags/Git">Git</a>&nbsp;
           
         
       </div>
@@ -234,37 +240,31 @@ Pattern Recognition and Machine Learning
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/Git/">
-        <p class="h4 index-header">JAVA/Git</p>
+      <a href="/2020/02/24/JAVA/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+        <p class="h4 index-header">JAVA/快捷键</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Git1.四个区域Workplace : 工作区，自己的电脑存放代码的地方
-Index，Stage ： 暂存区，存放临时的改动，事实上它是一个文件，保存即将提交到文件列表的信息
-Repository  :  仓库区（版本库），存放数据的地方，有所有提交版本的地方，其中head指向最新放入仓库的版本
-Remote ：远程仓库，托管代码的服务器，可以简单理解为项目组的一台用于远程数据交换的电脑
-四者关系如下
-
-2.常用命令常用
-# 本地推至暂存区
-git add .
-# 删除暂存区/分支，但本地保留文件（不被版本控制）
-git rm --cached file_path
-# 为本地代码切换版本
-git checkout
-# 暂存区代码推至版本库
-git commit -m &quot;提交说明&quot;
-# 移除暂存区文件
-git reset HEAD 文件名
-# 去掉上次的提交(变成add前状态)
-git reset HEAD^
-# 去掉上次的提交(变成commit前状态)
-git reset --soft HEAD^
-# 显示当前git配置
-git config --lsit
-# 编</div>
+          <div class="index-text mb-1">7ChromeCTRL + SHIFT + N = 打开匿名窗口
+CTRL + SHIFT + I =  检查
+CTRL + W  = 关闭当前标签页
+CTRL + fn  + PgUp/PgDn = 上翻/下翻当前标签页
+IDEACTRL + SHIFT + F12 =  编程窗口最大化
+CTRL + SHIFT+ N = 查找文件
+SHIFT + F6 = 全局替换
+CTRL + ALT + L = 格式化代码
+CTRL + ALT + V =快速赋值
+Cookie[] cookeis数组遍历便捷写法  = cookies.for = for(Cookie cookie : cookies)
+SHIFT + F6  = 文件重命名
+CTRL + SHIFT + C = 拷贝文件路径
+CTRL + D = 拷贝一行
+SHIFT + ENTER = 换行
+CTRL + P = 查看参数
+CTRL + N = 查找代码行例:QutsitonMapper.java:31  可直接定位到该文件31行
+CRTL + E 切换到最近页面
+数据库consolo:CTRL+ENTER:执行当前mys</div>
         </div>
       </a>
 
@@ -281,7 +281,119 @@ git config --lsit
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Git">Git</a>&nbsp;
+            <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/JAVA/5.%E7%B4%A2%E5%BC%95,%E8%B0%83%E4%BC%98/">
+        <p class="h4 index-header">JAVA/5.索引,调优</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">5.sql索引,调优索引相关概念
+
+索引原理
+DBMS索引一般用b tree或者b+tree实现
+
+
+
+带主键的数据库表的存储结构(正常查找)
+
+构建索引后从非聚集索引直接查找
+
+Sql语句执行流程
+create index index_birthday on user_info(birthday)   //构建索引
+select user_name from user_info where birthday = ‘1991-01-01’      //正常查找数据
+create index index_birthday_and_user_name on user_info(birthday,user_name);   //构建双字段的覆盖索引
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/java">java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%B4%A2%E5%BC%95">索引</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/JAVA/7.%E5%8F%8D%E5%B0%84/">
+        <p class="h4 index-header">JAVA/7.反射</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">反射
+反射的定义
+
+行状态中,能知道任何一个类的属性和方法
+能调用任何一个对象的属性和方法
+这种动态获取信息以及动态调用对象方法的功能称谓java的反射机制
+
+
+反射的用途
+
+第三方应用开发时,会遇到某个类的变量或方法是私有的,只对系统应用开放,这时候就利用java的反射机制通过反射来获取所需要的私有成员或者方法.
+
+
+反射的相关类
+
+
+class类
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/java">java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/java">java</a>&nbsp;
+          
+            <a href="/tags/%E5%8F%8D%E5%B0%84">反射</a>&nbsp;
           
         
       </div>
@@ -358,36 +470,35 @@ Tomcat正式支持运行Servlet/JSP应用程序</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/7.%E5%8F%8D%E5%B0%84/">
-        <p class="h4 index-header">JAVA/7.反射</p>
+      <a href="/2020/02/24/JAVA/2.ClassLoader/">
+        <p class="h4 index-header">JAVA/2.ClassLoader</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">反射
-反射的定义
+          <div class="index-text mb-1">2.ClassLoader类加载器classloader作用:
 
-行状态中,能知道任何一个类的属性和方法
-能调用任何一个对象的属性和方法
-这种动态获取信息以及动态调用对象方法的功能称谓java的反射机制
+负责将class加载到JVM中
+审查每个类由谁加载
+将class字节码重新编译成JVM统一要求的对象格式
 
+2.1类加载时机与过程类从被加载到虚拟机内存开始,到卸载出内存为止,整个生命周期包括了七个部分:
+加载,验证,准备,解析,初始化,使用,卸载
 
-反射的用途
+如下几种情况会对类进行初始化
 
-第三方应用开发时,会遇到某个类的变量或方法是私有的,只对系统应用开放,这时候就利用java的反射机制通过反射来获取所需要的私有成员或者方法.
+创建类的实例
+对类进行反射调用
+当初始化类,发现父类没有没初始化
+jvm启动,用户指定一个要执行的主类,虚拟机会先初始化这个主类
+java.lang.invoke.MethodHandle实例最后的解析结果REF_getstatic,REF_putstatic,REF_invokeStatic的方法句柄，并且这个方法句柄所对应的类没有进行初始化，则需要先出触发其初始化。
 
+2.2类加载器的双亲委派模型
 
-反射的相关类
+双亲委派模型好处
 
-
-class类
-
-
-
-
-
-</div>
+避免重复加载,当父类已经加载了该类的时候,就没有必要classloader再加载一次考虑到安全因素，我们试想一下，如果不使用这种委托模式，那我们就可以随时使用自定义的String来动态替代java核心api中定义的类型，这</div>
         </div>
       </a>
 
@@ -406,60 +517,7 @@ class类
           
             <a href="/tags/java">java</a>&nbsp;
           
-            <a href="/tags/%E5%8F%8D%E5%B0%84">反射</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/5.%E7%B4%A2%E5%BC%95,%E8%B0%83%E4%BC%98/">
-        <p class="h4 index-header">JAVA/5.索引,调优</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">5.sql索引,调优索引相关概念
-
-索引原理
-DBMS索引一般用b tree或者b+tree实现
-
-
-
-带主键的数据库表的存储结构(正常查找)
-
-构建索引后从非聚集索引直接查找
-
-Sql语句执行流程
-create index index_birthday on user_info(birthday)   //构建索引
-select user_name from user_info where birthday = ‘1991-01-01’      //正常查找数据
-create index index_birthday_and_user_name on user_info(birthday,user_name);   //构建双字段的覆盖索引
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/java">java</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%B4%A2%E5%BC%95">索引</a>&nbsp;
+            <a href="/tags/classLoader">classLoader</a>&nbsp;
           
         
       </div>
@@ -511,64 +569,6 @@ create index index_birthday_and_user_name on user_info(birthday,user_name);   //
             <a href="/tags/java">java</a>&nbsp;
           
             <a href="/tags/%E6%B3%9B%E5%9E%8B">泛型</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/2.ClassLoader/">
-        <p class="h4 index-header">JAVA/2.ClassLoader</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.ClassLoader类加载器classloader作用:
-
-负责将class加载到JVM中
-审查每个类由谁加载
-将class字节码重新编译成JVM统一要求的对象格式
-
-2.1类加载时机与过程类从被加载到虚拟机内存开始,到卸载出内存为止,整个生命周期包括了七个部分:
-加载,验证,准备,解析,初始化,使用,卸载
-
-如下几种情况会对类进行初始化
-
-创建类的实例
-对类进行反射调用
-当初始化类,发现父类没有没初始化
-jvm启动,用户指定一个要执行的主类,虚拟机会先初始化这个主类
-java.lang.invoke.MethodHandle实例最后的解析结果REF_getstatic,REF_putstatic,REF_invokeStatic的方法句柄，并且这个方法句柄所对应的类没有进行初始化，则需要先出触发其初始化。
-
-2.2类加载器的双亲委派模型
-
-双亲委派模型好处
-
-避免重复加载,当父类已经加载了该类的时候,就没有必要classloader再加载一次考虑到安全因素，我们试想一下，如果不使用这种委托模式，那我们就可以随时使用自定义的String来动态替代java核心api中定义的类型，这</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/java">java</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/classLoader">classLoader</a>&nbsp;
           
         
       </div>
