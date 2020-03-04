@@ -136,52 +136,19 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Spring%E7%B3%BB%E5%88%97/2.IOC%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">
-        <p class="h4 index-header">Spring系列/2.IOC入门案例</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92_%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">Speech and language processing/概念_6_动态规划_维特比算法</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">2.入门案例IOC2.2目标类
+          <div class="index-text mb-1">维特比算法HMMs的解码算法为Viterbi算法，如图8.5所示。作为动态规划的一个实例，维特比类似于动态规划最小距离算法。维特比算法是一个通用的求序列最短路径的动态规划算法，维特比算法可以将HMM的状态序列作为一个整体来考虑，求给定观测序列O条件下，最可能出现的对应的状态序列  ,即  要最大化，从后向前计算的
+用于寻找最优标签序列的维特比算法。给定一个观察序列和一个HMM λ= (A;B)，算法通过HMM返回状态路径，该状态路径为观察序列分配最大似然值。
+维特比算法首先建立一个概率矩阵( ) )，每个观察  有一列，状态图中的每个状态有一行。因此，在单个组合自动机中，每个列都有一个用于每个状态  的单元。图8.6显示了这个格子的直觉，因为Janet will back the bill这句话。
+网格的每个单元格 表示在看到第一个t观察值并且在给定HMM λ的情况下经过最可能的状态序列  之后HMM处于状态j的概率。 每个单元  的值通过递归地获取可能导致我们到达该单元的最可能路径来计算。 形式上，每个cell表达概率:
 
-提供UserService接口和实现类
-
-UserService.java – 接口
-
-
-获得UserService实现类的实例
-
-UserServiceImpl.java –实现 
-
-
-配置文件
-
-位置:任意,一般在classpath下
-名称:任意,开发中常用applicationContext.xml
-内容:添加schema约束
-beans.xml
-&lt;bean id=”userServiceId” class=”a_ioc.UserServiceImpl”&gt;&lt;/bean&gt;
-id :bean的名称
-class:bean的全类型地址
-
-
-
-
-测试
-
-@Test 是测试入口,类似于main()函数的程序接口
-
-Spring之前和Spring之后对比
-
-之前
-
-@Test
-    public void demo01(){
-        //之前开发
-          UserService userService = new UserServiceImpl();
-        userService.addUser();
-}</div>
+我们通过对所有可能的先前状态序列  取最大值来表示最可能的路</div>
         </div>
       </a>
 
@@ -192,17 +159,15 @@ Spring之前和Spring之后对比
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/spring%E7%B3%BB%E5%88%97">spring系列</a>&nbsp;
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java">java</a>&nbsp;
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
-            <a href="/tags/spring">spring</a>&nbsp;
-          
-            <a href="/tags/IOC">IOC</a>&nbsp;
+            <a href="/tags/%E7%8A%B6%E6%80%81%E6%9C%BA">状态机</a>&nbsp;
           
         
       </div>
@@ -255,19 +220,26 @@ Spring之前和Spring之后对比
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92_%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">Speech and language processing/概念_6_动态规划_维特比算法</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/">
+        <p class="h4 index-header">Speech and language processing/概念_6_HMM_马尔科夫链</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">维特比算法HMMs的解码算法为Viterbi算法，如图8.5所示。作为动态规划的一个实例，维特比类似于动态规划最小距离算法。维特比算法是一个通用的求序列最短路径的动态规划算法，维特比算法可以将HMM的状态序列作为一个整体来考虑，求给定观测序列O条件下，最可能出现的对应的状态序列  ,即  要最大化，从后向前计算的
-用于寻找最优标签序列的维特比算法。给定一个观察序列和一个HMM λ= (A;B)，算法通过HMM返回状态路径，该状态路径为观察序列分配最大似然值。
-维特比算法首先建立一个概率矩阵( ) )，每个观察  有一列，状态图中的每个状态有一行。因此，在单个组合自动机中，每个列都有一个用于每个状态  的单元。图8.6显示了这个格子的直觉，因为Janet will back the bill这句话。
-网格的每个单元格 表示在看到第一个t观察值并且在给定HMM λ的情况下经过最可能的状态序列  之后HMM处于状态j的概率。 每个单元  的值通过递归地获取可能导致我们到达该单元的最可能路径来计算。 形式上，每个cell表达概率:
+          <div class="index-text mb-1">马尔科夫链马尔可夫链是一个模型，告诉我们关于随机变量序列的概率，状态。每个状态都可以从某个集合中获取值。 这些集合可以是单词，标签或代表任何东西的符号，例如天气。 下图左边是天气转换，右边是生成句子的单词序列。
 
-我们通过对所有可能的先前状态序列  取最大值来表示最可能的路</div>
+考虑状态变量  ,HMM核心假设是:当预测未来时，过去并不重要，重要的是现在。
+
+上图显示了一个马尔可夫链，用于为一系列天气事件分配概率，其中词汇表包括HOT, COLD,和 WARM，状态表示为图中的节点，转换以其概率表示为边。 转换是概率：离开给定状态的弧的值必须总和为1。上图右边用于为单词序列  分配一个概率，他其实是一个bigram的语言模型，每条边表示概率  。
+在形式上，马尔可夫链由以下组件指定:
+
+
+ ，N个状态的集合
+A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概率  ,  
+ ，状态上的初始概率分布(某一时刻的所有可能的隐藏状态的分布(可能性))。是马尔可夫链从状态i开始的概率。一些状态j可能有  ，这意味着它们不可能是初始状态。  
+
+马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关：如果我们得到了这个稳定</div>
         </div>
       </a>
 
@@ -286,7 +258,7 @@ Spring之前和Spring之后对比
           
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
-            <a href="/tags/%E7%8A%B6%E6%80%81%E6%9C%BA">状态机</a>&nbsp;
+            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
@@ -330,55 +302,6 @@ HMM模型将标注看做是马尔科夫链，一阶马尔科夫链式针对相�
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
-          
-            <a href="/tags/HMM">HMM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/">
-        <p class="h4 index-header">Speech and language processing/概念_6_HMM_马尔科夫链</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">马尔科夫链马尔可夫链是一个模型，告诉我们关于随机变量序列的概率，状态。每个状态都可以从某个集合中获取值。 这些集合可以是单词，标签或代表任何东西的符号，例如天气。 下图左边是天气转换，右边是生成句子的单词序列。
-
-考虑状态变量  ,HMM核心假设是:当预测未来时，过去并不重要，重要的是现在。
-
-上图显示了一个马尔可夫链，用于为一系列天气事件分配概率，其中词汇表包括HOT, COLD,和 WARM，状态表示为图中的节点，转换以其概率表示为边。 转换是概率：离开给定状态的弧的值必须总和为1。上图右边用于为单词序列  分配一个概率，他其实是一个bigram的语言模型，每条边表示概率  。
-在形式上，马尔可夫链由以下组件指定:
-
-
- ，N个状态的集合
-A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概率  ,  
- ，状态上的初始概率分布(某一时刻的所有可能的隐藏状态的分布(可能性))。是马尔可夫链从状态i开始的概率。一些状态j可能有  ，这意味着它们不可能是初始状态。  
-
-马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关：如果我们得到了这个稳定</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
@@ -489,6 +412,48 @@ A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">Speech and language processing/概念_6_HMM_三个问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">HMM的三个核心问题的解本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。
+1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别有如下递进定义
+
+将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个网络
+若该网络是有向无环图，则称这个网络为贝叶斯网络
+如果这个图退化成线性链的方式，则得到马尔科夫模型，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是马尔科夫过程。
+若上述网络是无向的，则是无向图模型，又称马尔科夫随机场或者马尔科夫网络。
+若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。
+如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
+
+2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/HMM">HMM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">
         <p class="h4 index-header">Speech and language processing/概念_6_HMM_马尔科夫模型</p>
         
@@ -517,48 +482,6 @@ A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边
           
             <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
-          
-            <a href="/tags/HMM">HMM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">Speech and language processing/概念_6_HMM_三个问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">HMM的三个核心问题的解本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。
-1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别有如下递进定义
-
-将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个网络
-若该网络是有向无环图，则称这个网络为贝叶斯网络
-如果这个图退化成线性链的方式，则得到马尔科夫模型，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是马尔科夫过程。
-若上述网络是无向的，则是无向图模型，又称马尔科夫随机场或者马尔科夫网络。
-若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。
-如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
-
-2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
         
         
           <i class="iconfont icon-tag"></i>
@@ -611,6 +534,51 @@ A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
             <a href="/tags/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91">一阶逻辑</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/">
+        <p class="h4 index-header">Speech and language processing/概念_5_FSD状态传感器</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">状态传感器FST概念状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。
+他是一种类似于字典树/自动机的数据结构。
+转自豆瓣-巴扎黑
+有限状态转移机在自然语言处理上的应用
+原文地址：
+http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/
+在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。
+首先，先来大概的了解一下有限状态机（FSM）
+有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8">状态传感器</a>&nbsp;
           
         
       </div>

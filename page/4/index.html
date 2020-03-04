@@ -136,63 +136,6 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
-        <p class="h4 index-header">数据结构/搜索/贪心算法与最小生成树</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">贪心算法贪心算法是指，在对问题求解时，总是做出当前来看最好的选择，比较短视，不从总体上考虑最优解，每一步都在向局部最优解迈进（类似于梯度下降算法）
-贪心算法并不能总是得到最优解，关键是贪心策略的选择，选择贪心策略必须具备无后效性，即某个状态以前的过程只与当前状态有关，不会影响到以后的状态。
-引入找零问题尽可能用少的硬币和纸币加出一个指定金额总数。思路是从尽可能大的面额的货币开始处理，附上代码
-denom = [10000, 5000, 2000, 1000, 500, 200, 100, 50, 25, 10, 5, 1]
-owed = 9876
-payed = []
-for d in denom:
-    while owed &gt;= d:
-        owed -= d
-        payed.append(d)
-
-print(sum(payed))
-print(payed)
-输出如下结果
-9876
-[5000, 2000, 2000, 500, 200, 100, 50, 25, 1]
-引入背包问题背包问题可视为纸币找零问题的泛化版，背包问题是组合优化的NP完全问题，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/categories/%E6%90%9C%E7%B4%A2">搜索</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/Kruskal">Kruskal</a>&nbsp;
-          
-            <a href="/tags/Prim">Prim</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.2-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
         <p class="h4 index-header">数据结构/排序/7.2-归并排序</p>
         
@@ -479,6 +422,61 @@ print(payed)
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5.%E5%A0%86/">
+        <p class="h4 index-header">数据结构/5.堆</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">5.堆
+堆中存储的值是偏序
+
+堆属于完全二叉树
+
+大顶堆：父节点的值小于或等于子节点的值
+
+小顶堆：父节点的值大于或等于子节点的值
+
+
+
+1.堆的存储一般都用数组来表示堆，i节点的父节点下标就是（i - 1）/ 2,它的左右节点的下标分别是2 * i + 1和2 * i + 2。
+
+2.堆的操作：insert插入元素时，新元素被加到heap的末尾，然后更新树以恢复堆的次序。从新加元素到根节点之间必为一个有序数列，现在的任务是将这个新数据插入到原来的有序数列中，使数列仍保持有序。
+
+3.堆的操作：删除以大顶堆为例，删除元素时，每次都删除堆的第0个元素，为了便于重建堆，实际的操作是将堆的最后一个数据的值赋给根节点，然后从根节点开始依次从上往下调整。调整时先在左右儿子中找到最小的，若父节点比小子节点还还小就不交换，完成。如果不是就和大子节点交换位置，一直到交换不了为止。
+
+4.堆的操作：堆化数组堆化数组就是把数组从头到尾过一遍，把不满足大/小顶堆要求的数据依次交换。
+需注意叶子节点一律不用处理，应该从非叶子节点的右下角开始处理，处理时将本节点与下方节点比较，不符合要求的直接交换。本次交换后下</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%A0%86">堆</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4.%E5%9B%BE/">
         <p class="h4 index-header">数据结构/4.图</p>
         
@@ -541,61 +539,6 @@ print(payed)
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5.%E5%A0%86/">
-        <p class="h4 index-header">数据结构/5.堆</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">5.堆
-堆中存储的值是偏序
-
-堆属于完全二叉树
-
-大顶堆：父节点的值小于或等于子节点的值
-
-小顶堆：父节点的值大于或等于子节点的值
-
-
-
-1.堆的存储一般都用数组来表示堆，i节点的父节点下标就是（i - 1）/ 2,它的左右节点的下标分别是2 * i + 1和2 * i + 2。
-
-2.堆的操作：insert插入元素时，新元素被加到heap的末尾，然后更新树以恢复堆的次序。从新加元素到根节点之间必为一个有序数列，现在的任务是将这个新数据插入到原来的有序数列中，使数列仍保持有序。
-
-3.堆的操作：删除以大顶堆为例，删除元素时，每次都删除堆的第0个元素，为了便于重建堆，实际的操作是将堆的最后一个数据的值赋给根节点，然后从根节点开始依次从上往下调整。调整时先在左右儿子中找到最小的，若父节点比小子节点还还小就不交换，完成。如果不是就和大子节点交换位置，一直到交换不了为止。
-
-4.堆的操作：堆化数组堆化数组就是把数组从头到尾过一遍，把不满足大/小顶堆要求的数据依次交换。
-需注意叶子节点一律不用处理，应该从非叶子节点的右下角开始处理，处理时将本节点与下方节点比较，不符合要求的直接交换。本次交换后下</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E5%A0%86">堆</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/0.%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/">
         <p class="h4 index-header">数据结构/0.常见算法总览</p>
         
@@ -645,6 +588,68 @@ print(payed)
             <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
           
             <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.%E6%95%B0%E7%BB%84,%E9%93%BE%E8%A1%A8/">
+        <p class="h4 index-header">数据结构/1.数组,链表</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">数组
+数组是用来存放一组有相同数据类型的数据结构,通过整形下标来访问数组中的值
+如果越过数据的下标访问数据,会返回ArrayIndexOutOfBoundException
+Java中数组是一个类:所以两个数组变量可以指向同一个数组
+
+线性表
+顺序存储结构
+用数组实现
+插入元素的平均时间复杂度是O(n)
+查找的平均时间复杂度是O(1)
+适合多查找的场景
+
+
+链式存储结构
+典型的node节点由[data]和[next]两个域组成
+插入元素的平均时间复杂度是O(1)
+查找的平均时间复杂度是O(n)
+适合多增删的场景
+
+
+
+迭代器迭代器是程序设计模式中的行为模式,功能是提供一种方法顺序访问一个聚集对象中各个元素,又不暴露该对象的内部表示.
+简单来说迭代器就是对遍历操作的抽象.
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%95%B0%E7%BB%84">数组</a>&nbsp;
+          
+            <a href="/tags/%E9%93%BE%E8%A1%A8">链表</a>&nbsp;
           
         
       </div>
