@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>安装调试记录/网站部署记录 ~ 刘秉乾的技术博客 :)</title>
+  <title>谷歌QA比赛/Torch_BL_2_Preprocessing ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 二月 24日 2020, 12:04 中午
+                  星期三, 三月 4日 2020, 12:39 凌晨
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    577 字
+                    1.3k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      7 分钟
                   </span>&nbsp;
                 
 
@@ -167,88 +167,140 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h4 id="1-获取root权限"><a href="#1-获取root权限" class="headerlink" title="1.获取root权限"></a>1.获取root权限</h4><p>-sudo passwd</p>
-<p>-su root</p>
-<h4 id="2-云主机安装git"><a href="#2-云主机安装git" class="headerlink" title="2.云主机安装git"></a>2.云主机安装git</h4><p>-yum update</p>
-<p>-yum install git</p>
-<p>-mkdir App</p>
-<p>-cd App</p>
-<h4 id="3-云主机与github建立sshkey连接"><a href="#3-云主机与github建立sshkey连接" class="headerlink" title="3.云主机与github建立sshkey连接"></a>3.云主机与github建立sshkey连接</h4><p>返回：Permissiondenied (publickey)，fatal:Could not read from remote repository.</p>
-<p>cd ~/.ssh ls  //查看是否有ssh key</p>
-<p>ssh-keygen -t rsa -C “<a href="mailto:youremail@example.com">youremail@example.com</a>“    //一路回车</p>
-<p>ssh -v <a href="mailto:git@github.com">git@github.com</a> </p>
-<p>ssh-agent -s</p>
-<p>ssh-add ~/.ssh/ github new SSH KEY</p>
-<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
-<p>若出错：“Could not open a connection to your authentication agent”</p>
-<p>eval `ssh-agent -s``</p>
-<p>ssh-add ~/.ssh/id_rsa，</p>
-<p>github new SSH KEY</p>
-<h3 id="4-克隆项目，安装maven"><a href="#4-克隆项目，安装maven" class="headerlink" title="4.克隆项目，安装maven"></a>4.克隆项目，安装maven</h3><pre><code>git clone https://git@github.com:BqLion/SpringBoot_HelloWorld.git
+            <h1 id="Preprocessing"><a href="#Preprocessing" class="headerlink" title="Preprocessing"></a>Preprocessing</h1><pre><code class="python"># 定义钟形函数
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
 
-ls //显示名称
+#无效字符
+puncts = [&#39;,&#39;, &#39;.&#39;, &#39;&quot;&#39;, &#39;:&#39;, &#39;)&#39;, &#39;(&#39;, &#39;-&#39;, &#39;!&#39;, &#39;?&#39;, &#39;|&#39;, &#39;;&#39;, &quot;&#39;&quot;, &#39;$&#39;, &#39;&amp;&#39;, &#39;/&#39;, &#39;[&#39;, &#39;]&#39;, &#39;&gt;&#39;, &#39;%&#39;, &#39;=&#39;, &#39;#&#39;, &#39;*&#39;, &#39;+&#39;, &#39;\\&#39;, &#39;•&#39;,  &#39;~&#39;, &#39;@&#39;, &#39;£&#39;,
+ &#39;·&#39;, &#39;_&#39;, &#39;{&#39;, &#39;}&#39;, &#39;©&#39;, &#39;^&#39;, &#39;®&#39;, &#39;`&#39;,  &#39;&lt;&#39;, &#39;→&#39;, &#39;°&#39;, &#39;€&#39;, &#39;™&#39;, &#39;›&#39;,  &#39;♥&#39;, &#39;←&#39;, &#39;×&#39;, &#39;§&#39;, &#39;″&#39;, &#39;′&#39;, &#39;Â&#39;, &#39;█&#39;, &#39;½&#39;, &#39;à&#39;, &#39;…&#39;, &#39;\n&#39;, &#39;\xa0&#39;, &#39;\t&#39;,
+ &#39;“&#39;, &#39;★&#39;, &#39;”&#39;, &#39;–&#39;, &#39;●&#39;, &#39;â&#39;, &#39;►&#39;, &#39;−&#39;, &#39;¢&#39;, &#39;²&#39;, &#39;¬&#39;, &#39;░&#39;, &#39;¶&#39;, &#39;↑&#39;, &#39;±&#39;, &#39;¿&#39;, &#39;▾&#39;, &#39;═&#39;, &#39;¦&#39;, &#39;║&#39;, &#39;―&#39;, &#39;¥&#39;, &#39;▓&#39;, &#39;—&#39;, &#39;‹&#39;, &#39;─&#39;, &#39;\u3000&#39;, &#39;\u202f&#39;,
+ &#39;▒&#39;, &#39;：&#39;, &#39;¼&#39;, &#39;⊕&#39;, &#39;▼&#39;, &#39;▪&#39;, &#39;†&#39;, &#39;■&#39;, &#39;’&#39;, &#39;▀&#39;, &#39;¨&#39;, &#39;▄&#39;, &#39;♫&#39;, &#39;☆&#39;, &#39;é&#39;, &#39;¯&#39;, &#39;♦&#39;, &#39;¤&#39;, &#39;▲&#39;, &#39;è&#39;, &#39;¸&#39;, &#39;¾&#39;, &#39;Ã&#39;, &#39;⋅&#39;, &#39;‘&#39;, &#39;∞&#39;, &#39;«&#39;,
+ &#39;∙&#39;, &#39;）&#39;, &#39;↓&#39;, &#39;、&#39;, &#39;│&#39;, &#39;（&#39;, &#39;»&#39;, &#39;，&#39;, &#39;♪&#39;, &#39;╩&#39;, &#39;╚&#39;, &#39;³&#39;, &#39;・&#39;, &#39;╦&#39;, &#39;╣&#39;, &#39;╔&#39;, &#39;╗&#39;, &#39;▬&#39;, &#39;❤&#39;, &#39;ï&#39;, &#39;Ø&#39;, &#39;¹&#39;, &#39;≤&#39;, &#39;‡&#39;, &#39;√&#39;, ]
 
-cd SpringBoot_HelloWorld
+mispell_dict = {&quot;aren&#39;t&quot; : &quot;are not&quot;,
+&quot;can&#39;t&quot; : &quot;cannot&quot;,
+&quot;couldn&#39;t&quot; : &quot;could not&quot;,
+&quot;couldnt&quot; : &quot;could not&quot;,
+&quot;didn&#39;t&quot; : &quot;did not&quot;,
+&quot;doesn&#39;t&quot; : &quot;does not&quot;,
+&quot;doesnt&quot; : &quot;does not&quot;,
+&quot;don&#39;t&quot; : &quot;do not&quot;,
+&quot;hadn&#39;t&quot; : &quot;had not&quot;,
+&quot;hasn&#39;t&quot; : &quot;has not&quot;,
+&quot;haven&#39;t&quot; : &quot;have not&quot;,
+&quot;havent&quot; : &quot;have not&quot;,
+&quot;he&#39;d&quot; : &quot;he would&quot;,
+&quot;he&#39;ll&quot; : &quot;he will&quot;,
+&quot;he&#39;s&quot; : &quot;he is&quot;,
+&quot;i&#39;d&quot; : &quot;I would&quot;,
+&quot;i&#39;d&quot; : &quot;I had&quot;,
+&quot;i&#39;ll&quot; : &quot;I will&quot;,
+&quot;i&#39;m&quot; : &quot;I am&quot;,
+&quot;isn&#39;t&quot; : &quot;is not&quot;,
+&quot;it&#39;s&quot; : &quot;it is&quot;,
+&quot;it&#39;ll&quot;:&quot;it will&quot;,
+&quot;i&#39;ve&quot; : &quot;I have&quot;,
+&quot;let&#39;s&quot; : &quot;let us&quot;,
+&quot;mightn&#39;t&quot; : &quot;might not&quot;,
+&quot;mustn&#39;t&quot; : &quot;must not&quot;,
+&quot;shan&#39;t&quot; : &quot;shall not&quot;,
+&quot;she&#39;d&quot; : &quot;she would&quot;,
+&quot;she&#39;ll&quot; : &quot;she will&quot;,
+&quot;she&#39;s&quot; : &quot;she is&quot;,
+&quot;shouldn&#39;t&quot; : &quot;should not&quot;,
+&quot;shouldnt&quot; : &quot;should not&quot;,
+&quot;that&#39;s&quot; : &quot;that is&quot;,
+&quot;thats&quot; : &quot;that is&quot;,
+&quot;there&#39;s&quot; : &quot;there is&quot;,
+&quot;theres&quot; : &quot;there is&quot;,
+&quot;they&#39;d&quot; : &quot;they would&quot;,
+&quot;they&#39;ll&quot; : &quot;they will&quot;,
+&quot;they&#39;re&quot; : &quot;they are&quot;,
+&quot;theyre&quot;:  &quot;they are&quot;,
+&quot;they&#39;ve&quot; : &quot;they have&quot;,
+&quot;we&#39;d&quot; : &quot;we would&quot;,
+&quot;we&#39;re&quot; : &quot;we are&quot;,
+&quot;weren&#39;t&quot; : &quot;were not&quot;,
+&quot;we&#39;ve&quot; : &quot;we have&quot;,
+&quot;what&#39;ll&quot; : &quot;what will&quot;,
+&quot;what&#39;re&quot; : &quot;what are&quot;,
+&quot;what&#39;s&quot; : &quot;what is&quot;,
+&quot;what&#39;ve&quot; : &quot;what have&quot;,
+&quot;where&#39;s&quot; : &quot;where is&quot;,
+&quot;who&#39;d&quot; : &quot;who would&quot;,
+&quot;who&#39;ll&quot; : &quot;who will&quot;,
+&quot;who&#39;re&quot; : &quot;who are&quot;,
+&quot;who&#39;s&quot; : &quot;who is&quot;,
+&quot;who&#39;ve&quot; : &quot;who have&quot;,
+&quot;won&#39;t&quot; : &quot;will not&quot;,
+&quot;wouldn&#39;t&quot; : &quot;would not&quot;,
+&quot;you&#39;d&quot; : &quot;you would&quot;,
+&quot;you&#39;ll&quot; : &quot;you will&quot;,
+&quot;you&#39;re&quot; : &quot;you are&quot;,
+&quot;you&#39;ve&quot; : &quot;you have&quot;,
+&quot;&#39;re&quot;: &quot; are&quot;,
+&quot;wasn&#39;t&quot;: &quot;was not&quot;,
+&quot;we&#39;ll&quot;:&quot; will&quot;,
+&quot;didn&#39;t&quot;: &quot;did not&quot;,
+&quot;tryin&#39;&quot;:&quot;trying&quot;}
+
+def clean_text(x):
+    x = str(x)
+    for punct in puncts:
+        x = x.replace(punct,f&#39;{punct}&#39;)
+    return x
+# replace函数就是把第一个old变量换成第二个new变量
+# f格式化字符串使用举例：
+# &gt;&gt;&gt; name = &#39;Eric&#39;
+# &gt;&gt;&gt; f&#39;Hello, my name is {name}&#39;
+# &#39;Hello, my name is Eric&#39;
 
 
-yum install maven
+def clean_numbers(x):
+    x = re.sub(&#39;[0-9]{5,}&#39;, &#39;#####&#39;, x)
+# 正则表达式，sub是替换函数，[0-9]是全体数字，{5，}是长度大于等于5的所有字符串
+# 这一句的意思就是把所有长度大于等于5的所有数字都替换成五个井号，下面的就是替换成1-4的长度的字符
+    x = re.sub(&#39;[0-9]{4}&#39;, &#39;####&#39;, x)
+    x = re.sub(&#39;[0-9]{3}&#39;, &#39;###&#39;, x)
+    x = re.sub(&#39;[0-9]{2}&#39;, &#39;##&#39;, x)
+    return x
 
-mvn -v
 
-mvn complie package</code></pre><h4 id="5-编译，运行"><a href="#5-编译，运行" class="headerlink" title="5.编译，运行"></a>5.编译，运行</h4><p>more src/main/resources/application.properties</p>
-<p>cp src/main/resources/application.properties src/main/resources/application-production.properties</p>
-<p>vim src/main/resources/application.properties</p>
-<p>vim src/main/resources/application-production.properties</p>
-<p>【修改配置文件为服务端配置】</p>
-<p>【编译】mvn package</p>
-<p>报错后改用：mvn clean compile package</p>
-<p>报错后改用：mvn compile package</p>
-<p>查看端口号netstat -a -n</p>
-<p>【运行】</p>
-<p>本次启动：</p>
-<p>java -jar -Dspring.profiles.active=production target/springboothellloworld-0.0.1-SNAPSHOT.jar</p>
-<p>直接启动：</p>
-<p>java -jar springboothellloworld-0.0.1-SNAPSHOT.jar</p>
-<hr>
-<h4 id="6-服务器连接mysql数据库"><a href="#6-服务器连接mysql数据库" class="headerlink" title="6.服务器连接mysql数据库"></a>6.服务器连接mysql数据库</h4><p>1.谷歌云sql，用Cloud Shell远端操作本机</p>
-<p>2.mysql -u root -p </p>
-<p>​    报错：Access denied</p>
-<p>3.尝试mysql -h 127.0.0.1 -P 3306 -u root -p</p>
-<p>​    报错：RROR 2002 (HY000): Can’t connect to local MySQL server through socket ‘/var/run/mysqld/mysqld.sock’</p>
-<p>4.apt-get update</p>
-<p>5.sudo apt-get install mysql-server</p>
-<p>​    如果不能sudo：  sudo passwd root重置密码</p>
-<p>6.RROR 2002没有解决</p>
-<pre><code class="sql">sudo /etc/init.d/mysqld sto</code></pre>
-<pre><code class="sql">sudo mysqld_safe --skip-grant-tables &amp;</code></pre>
-<pre><code class="sql">mysql -uroot</code></pre>
-<pre><code class="sql">use mysql;</code></pre>
-<pre><code class="sql">update user set password=PASSWORD(&quot;math1122&quot;) where User=&#39;root&#39;;</code></pre>
-<p>flush privileges;</p>
-<pre><code class="sql">quit</code></pre>
-<pre><code class="sql">sudo /etc/init.d/mysql stop
-...
-sudo /etc/init.d/mysql start</code></pre>
-<p>7.解决</p>
-<h4 id="7-检查端口号是否打开："><a href="#7-检查端口号是否打开：" class="headerlink" title="7.检查端口号是否打开："></a>7.检查端口号是否打开：</h4><p>1.控制面板-程序-打开或关闭windows功能 -勾选telent</p>
-<p>2.cmd - telent 192.168.1.1 3306</p>
-<h4 id="8-远程连接sql："><a href="#8-远程连接sql：" class="headerlink" title="8.远程连接sql："></a>8.远程连接sql：</h4><p>首先要在谷歌控制台SQL-用户-创建用户账号</p>
-<p>创建一个不限制ip的账号和密码，之后才能连接</p>
-<h4 id="9-项目在服务端持久运行"><a href="#9-项目在服务端持久运行" class="headerlink" title="9.项目在服务端持久运行"></a>9.项目在服务端持久运行</h4><p>nohup java -jar springboothellloworld-0.0.1-SNAPSHOT.jar&amp; &gt;/dev/null 2&gt;&amp;1 &amp;</p>
-<p>exit</p>
-<p>PID:2385</p>
-<p><code>ps</code> <code>-p 2385 -o etime</code>查看运行时间</p>
-<p>​    </p>
-<p>chmod +x springboothellloworld-0.0.1-SNAPSHOT.jar</p>
-<p>nohup java -jar -Dspring.profiles.active=production springboothellloworld-0.0.1-SNAPSHOT.jar &gt; /dev/null 2&gt; /dev/null &amp;</p>
-<h3 id="10-数据库连接不上："><a href="#10-数据库连接不上：" class="headerlink" title="10.数据库连接不上："></a>10.数据库连接不上：</h3><ol>
-<li>进入数据库的shell<ol>
-<li>grant all privileges on <em>.</em> to ‘root’@’%’ identified by ‘password’ with grant option;</li>
-</ol>
-</li>
-<li>flush privileges;</li>
-<li>关了VPN!!!!!</li>
-</ol>
+def _get_mispell(mispell_dict):
+    mispell_re = re.compile(&#39;(%s)&#39; % &#39;|&#39;.join(mispell_dict.keys()))
+    return mispell_dict, mispell_re
+# 获取拼写错误的词
+# re.compile函数：编译一个正则表达式模板，返回一个正则表达式对象，多个正则表达式模板用&#39;|&#39;链接
+# join函数：把join前的符号依次链接到join后的各个词的间隙中，如下所示：
+# str = &quot;-&quot;;
+# seq = (&quot;a&quot;, &quot;b&quot;, &quot;c&quot;); # 字符串序列
+# print str.join( seq );
+
+
+def replace_typical_misspell(text):
+    mispellings, mispellings_re = _get_mispell(mispell_dict)
+
+    def replace(match):
+        return mispellings[match.group(0)]
+
+    return mispellings_re.sub(replace, text)
+
+# 将拼写有误的词替换掉的函数
+# .group(0) 返回母串中与子串匹配的第一个
+
+
+def clean_data(df,columns:list):
+    for col in columns:
+        df[col] = df[col].apply(lambda x : clean_numnbers(x))
+        df[col] = df[col].apply(lambda x : clean_text(x.lower()))
+        df[col] = df[col].apply(lambda x : replace_typical_misspell(x))
+
+    return df
+
+# 总的清洗函数：
+# df是pandas的数据框架，就是excel表。col是数据行。
+# .apply是对df的操作。lambda x基本泛指所有的数据</code></pre>
 
             <hr>
           </div>
@@ -259,7 +311,7 @@ sudo /etc/init.d/mysql start</code></pre>
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>
+                  <a class="hover-with-bg" href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -268,9 +320,7 @@ sudo /etc/init.d/mysql start</code></pre>
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>
-                
-                  <a class="hover-with-bg" href="/tags/java">java</a>
+                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
                 
               </span>
             
@@ -420,7 +470,7 @@ sudo /etc/init.d/mysql start</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "安装调试记录/网站部署记录&nbsp;",
+        "谷歌QA比赛/Torch_BL_2_Preprocessing&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

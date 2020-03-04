@@ -136,15 +136,20 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/2%20-%20%E8%AE%A1%E5%88%92/">
-        <p class="h4 index-header">NLP发文/2 - 计划</p>
+      <a href="/2020/02/24/CS224n/4%20-%20wordWindow%E5%92%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+        <p class="h4 index-header">CS224n/4 - wordWindow和神经网络</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">2.计划[]
-</div>
+          <div class="index-text mb-1">Lecture4  wordWindow和神经网络1.分类背景知识对分类的直觉感受是什么？在机器学习领域，在还没有达到深度学习领域的情况下，我们通常将分类理解为简单的逻辑回归，也就是定义一个简单的决策边界。
+
+2.窗口分类在一般的机器学习中，我们假设输入是固定的。输入X都是固定的，我们只训练参数W，也就是softmax的权值，然后计算给定输入X时输出Y的概率。
+3.交叉熵我们假设正确类别的概率为1，其余的概率为0.举个例子，假设共有5个类别，正确类别是中间的第三个，那么第三个的概率为1，其他都是0.我们把理想的概率定义为p，softmax计算的概率为q，这里给出了交叉熵的定义，就是对所有类别的求和
+正则化项：里边包含的参数θ如果是标准逻辑回归中的矩阵W，实际上目标函数加入这个正则化项的目的就是是为了鼓励模型中的所有权值尽可能地小。
+可以假设你想要一个贝叶斯模型，你可以有一个先验的高斯分布，理想情况下这些参数的值都很小，但是如果没有这个正则化项，通常情况下你得到的模型参数会爆炸，他会越来越过拟合。如果没有正则化项，我们会专注于如何拟合我们的模型。
+通常的机器学习优化就是只优化模型的参数W</div>
         </div>
       </a>
 
@@ -155,13 +160,13 @@
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -172,30 +177,33 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/0%20-%20%E6%80%BB%E4%BD%93%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">NLP发文/0 - 总体思路</p>
+      <a href="/2020/02/24/CS224n/5%20-%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD+%E9%A1%B9%E7%9B%AE%E5%BB%BA%E8%AE%AE/">
+        <p class="h4 index-header">CS224n/5 - 反向传播+项目建议</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">0 - 总体思路
-基础 ： Speech and Language Processing（完成）
-早年经典NLP论文：遍历论文库（进行中）
-了解机器学习的基本模型：
-CS229（完成）
-Pattern Recognition and Machine Learning
+          <div class="index-text mb-1">Lecture5 反向传播 + 项目建议1.一层神经网络过渡到多层神经网络
+2.反向传播为了解耦，反向传播的笔记已整合到cs229 - 7中。
+3.项目建议老师推荐的文章和会议
 
+1.定义你的任务：
+例如：summarization
+2.定义数据集：
+最好使用现成的数据集，因为他们已经有baselines
+3.建立baseline
+他可以是一个非常简单的一元线性回归，然后在你的训练数据集上计算你的评价标准，看看模型是过拟合还是欠拟合
+4.选做题：自己发明新的模型
+首先，你需要做好以上说的几个步骤.
 
-了解NLP其他子领域(MT,信息抽取,parsing,tagging,情感分析,MRC等)（进行中）
-了解CV和数据挖掘领域的进展
+然后你需要知道已经存在的模型上有哪些问题。然后你就可以设计出自己的模型。如果你想要这样做的话，你真的需要和你的导师和其他研究者保持沟通，除非你自己就是研究者并且已经获得了博士文凭。
 
+你需要实现你的模型，然后根据你的新点子去对它快速迭代。（也许在某个位置新加一层？然后看看他起不起作用？）
 
-学科调研：构建阅读列表和论文库；读近五年survey，近三年顶会，感兴趣方向热门论文和经典书单；输出互引DAG图，输出专有名词词典，输出调研文档。
+那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。
 
-   *构建文献库时遇到的困难：flood。目前资料：知识图谱80 + 深度学习100 + 生物医学CRF70 + ACL660 = 910篇论文，以及7本大部头。这还不包括所谓的5年survery100 + 三年顶会3000共约3100篇论文。 *
-   我需要的：迅速了解整个学科发展大致现状，选择自己感兴趣的+有前途做的人少的领域迅速构建论文库精读切入
-   初步解决方案：控制工作量，看优质survey，大部头只挑一本看，其余当工具书</div>
+建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型</div>
         </div>
       </a>
 
@@ -206,66 +214,13 @@ Pattern Recognition and Machine Learning
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/Git/">
-        <p class="h4 index-header">JAVA/Git</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Git1.四个区域Workplace : 工作区，自己的电脑存放代码的地方
-Index，Stage ： 暂存区，存放临时的改动，事实上它是一个文件，保存即将提交到文件列表的信息
-Repository  :  仓库区（版本库），存放数据的地方，有所有提交版本的地方，其中head指向最新放入仓库的版本
-Remote ：远程仓库，托管代码的服务器，可以简单理解为项目组的一台用于远程数据交换的电脑
-四者关系如下
-
-2.常用命令常用
-# 本地推至暂存区
-git add .
-# 删除暂存区/分支，但本地保留文件（不被版本控制）
-git rm --cached file_path
-# 为本地代码切换版本
-git checkout
-# 暂存区代码推至版本库
-git commit -m &quot;提交说明&quot;
-# 移除暂存区文件
-git reset HEAD 文件名
-# 去掉上次的提交(变成add前状态)
-git reset HEAD^
-# 去掉上次的提交(变成commit前状态)
-git reset --soft HEAD^
-# 显示当前git配置
-git config --lsit
-# 编</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/java">java</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Git">Git</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -276,31 +231,16 @@ git config --lsit
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-        <p class="h4 index-header">JAVA/快捷键</p>
+      <a href="/2020/02/24/CS224n/16%20-%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9C%A8NLP%E4%B8%AD%E7%9A%84%E9%99%90%E5%88%B6/">
+        <p class="h4 index-header">CS224n/16 - 深度学习在NLP中的限制</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">7ChromeCTRL + SHIFT + N = 打开匿名窗口
-CTRL + SHIFT + I =  检查
-CTRL + W  = 关闭当前标签页
-CTRL + fn  + PgUp/PgDn = 上翻/下翻当前标签页
-IDEACTRL + SHIFT + F12 =  编程窗口最大化
-CTRL + SHIFT+ N = 查找文件
-SHIFT + F6 = 全局替换
-CTRL + ALT + L = 格式化代码
-CTRL + ALT + V =快速赋值
-Cookie[] cookeis数组遍历便捷写法  = cookies.for = for(Cookie cookie : cookies)
-SHIFT + F6  = 文件重命名
-CTRL + SHIFT + C = 拷贝文件路径
-CTRL + D = 拷贝一行
-SHIFT + ENTER = 换行
-CTRL + P = 查看参数
-CTRL + N = 查找代码行例:QutsitonMapper.java:31  可直接定位到该文件31行
-CRTL + E 切换到最近页面
-数据库consolo:CTRL+ENTER:执行当前mys</div>
+          <div class="index-text mb-1">Lecture16 - 深度学习在NLP中的限制对于语言，如果你想要一个合适的语言系统，你可能需要一些对于输入的情感理解，在逻辑上推理某些事实，在数据库中检索一些事实，或者基于数据库中的逻辑原因，再做一些内存检索。还有一些时候，你需要对谈论的内容做一些奖励。在现实世界中这些过程是由很多不同的成分组成的。我们想要一个更好的理解语言的系统，理想情况下这个系统应该包括很多内容，以一种更科学的方式呈现。
+现在联合多任务学习仍然非常困难，迄今为止，人们谈论多任务学习时，他们假设有一个源任务和一个目标任务，他们希望神经网络在源任务的预训练可以加强另一个目标任务的表现。就我而言，理想的情况是让他们共同训练，而不是分开训练不同的解码器。例如不同语言中，不同的分类问题。理想情况下，我们只有一个很大的不同种类的数据集，我们想根据输入来预测，他们有完全一样的解码器，但是很多时候人们做多任务学习的时候他们只是共享低层的参数，共同训练他们，但是不能共享高层的参数。
+也就是说，在自然语言处理的过程中，我们通常只是共享了词向量，我们没有共享其他高层的比如LSTM层，这种层能解决更多的任务，其实计算机视觉在这方面有挺</div>
         </div>
       </a>
 
@@ -311,13 +251,13 @@ CRTL + E 切换到最近页面
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/java">java</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -328,32 +268,24 @@ CRTL + E 切换到最近页面
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/5.%E7%B4%A2%E5%BC%95,%E8%B0%83%E4%BC%98/">
-        <p class="h4 index-header">JAVA/5.索引,调优</p>
+      <a href="/2020/02/24/CS224n/2%20-%20%E8%AF%8D%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA/">
+        <p class="h4 index-header">CS224n/2 - 词向量表示</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">5.sql索引,调优索引相关概念
+          <div class="index-text mb-1">Lecture2 - 词向量表示（上）这节课我们将深入语言的底层，做一些向量和计算，这节课提到的数学是后边内容的基础。这节课将用很慢的速度来仔细讲解一些基础，以便大家可以使用神经网络来学习词语表征这样的简单任务。下周将会继续从基础开始讲解很多的数学。
+1.语言学和NLP对词语释义的不同做法语言学用如下词典释义来解释“meaning”这个词的意思
 
-索引原理
-DBMS索引一般用b tree或者b+tree实现
+the idea that is represented by a word,phrase,etc
+the idea that i person wants to express by using words,signs,etc
+the idea that is expressed in a work of writing,art,etc
 
-
-
-带主键的数据库表的存储结构(正常查找)
-
-构建索引后从非聚集索引直接查找
-
-Sql语句执行流程
-create index index_birthday on user_info(birthday)   //构建索引
-select user_name from user_info where birthday = ‘1991-01-01’      //正常查找数据
-create index index_birthday_and_user_name on user_info(birthday,user_name);   //构建双字段的覆盖索引
-
-
-
-</div>
+NLP用多用分类资源处理词义。
+比较著名的分类资源是WordNet，它提供很多词汇相关的分类信息。
+如下图左侧，用一段代码演示nltk如何抓取wordnet中”panda“这个词的分类信息，panda是一种肉食动物，一种有胎盘的哺乳动物，再往上上溯可抽象为动物，物体，物理实体等等。
+如下图右侧，抓取“go</div>
         </div>
       </a>
 
@@ -364,13 +296,13 @@ create index index_birthday_and_user_name on user_info(birthday,user_name);   //
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/java">java</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%B4%A2%E5%BC%95">索引</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -381,36 +313,19 @@ create index index_birthday_and_user_name on user_info(birthday,user_name);   //
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/7.%E5%8F%8D%E5%B0%84/">
-        <p class="h4 index-header">JAVA/7.反射</p>
+      <a href="/2020/02/24/CS224n/15%20-%20NLP%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E5%8F%AF%E8%83%BD%E6%80%A7%E6%9E%B6%E6%9E%84/">
+        <p class="h4 index-header">CS224n/15 - NLP的问题和可能性架构</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">反射
-反射的定义
-
-行状态中,能知道任何一个类的属性和方法
-能调用任何一个对象的属性和方法
-这种动态获取信息以及动态调用对象方法的功能称谓java的反射机制
-
-
-反射的用途
-
-第三方应用开发时,会遇到某个类的变量或方法是私有的,只对系统应用开放,这时候就利用java的反射机制通过反射来获取所需要的私有成员或者方法.
-
-
-反射的相关类
-
-
-class类
-
-
-
-
-
-</div>
+          <div class="index-text mb-1">Lecture15 - NLP的问题和可能性架构1.NLP问题视觉研究以前在深度学习中占主导地位，但是三巨头Yann LeCun,Geoff Hinton,Yoshua Bengio都把他们的研究方向转向NLP(也就是说深度学习三巨头的研究方向有风向标的意义)
+Bengio在采访中表示，实验论证深度学习技术应用与新应用的可能性，这些新应用包括了计算机视觉，对话系统，虚拟助手，语音识别，NLP,机器翻译以及其他应用。
+这世界上有太多不同的语言现象和相对应的任务要完成，所以解决NLP问题不能像解决计算机视觉那样，某个人构建出一个足够复杂的深度神经网络就vans了.NLP问题们并不同源，不能说解决了其中一个，就可以宣布全部解决。
+在传统NLP问题中丢失了的东西：
+将现在和过去对比是一件很有趣的事情，在70和80年代的那批从事NLP研究的人员里，他们有着非常崇高的目标，他们想要达到人类级别的语言理解能力，但是他们最终达到的是非常骨感的现实。
+不论上述对比的结果如何，我们现在所处的环境，我们能比他们当时更好地实现目标，但是，达到目标的途径却开始变得不那么明朗。作为实践，我们可以在这个语料数据上运</div>
         </div>
       </a>
 
@@ -421,15 +336,13 @@ class类
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/java">java</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/%E5%8F%8D%E5%B0%84">反射</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -440,43 +353,18 @@ class类
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/6.jetty%E5%92%8Ctomcat/">
-        <p class="h4 index-header">JAVA/6.jetty和tomcat</p>
+      <a href="/2020/02/24/CS224n/13%20-%20%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+        <p class="h4 index-header">CS224n/13 - 卷积神经网络</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">7.jetty和tomcat1.Jetty是什么
-​    jetty是一个开源的HTTP服务器和Servlet引擎,可以为JSP和Servlet提供运行时环境,相对与Tomcat,,jetty更加轻量级,更加简易和灵活
-2.jetty特点
+          <div class="index-text mb-1">Lecture13 - 卷积神经网络递归神经网络非常棒棒，其效率通常是其他模型的几倍，但他的问题是，它不能分离地捕获短语，它只能捕获上下文中左侧的短语，比如我在句子里只想表达my birth,循环网路将始终从左往右，所以my birth上边的向量不会只捕获my birth还会把前边的the country of  也包含进来。有些时候你有简单的分类问题，但你实际上可能只是确定在整个文章当中是否存在某个单词或者短语，并试图证明在这个文档中存在这个短语。
 
-异步,支持更高的并发量
-灵活,更加轻量,更容易定制,更高的资源利用率
-Jetty采用默认的NIO模型,jetty很好地支持长链接
-
-3.应用场景
-
-企业级应用tomcat占据了绝对优势
-jetty默认使用NIO,在轻量级的,保持长连接的场景下使用很有优势,比如客服的聊天
-
-4.jetty原理
-
-提供了两种handlder
-handlerWrapper
-可以将一个Handler委托给另一个类执行,将handler加载到jetty中就是通过handler委托给server执行的
-
-
-handlerCollection
-将多个handler组装成handler链,可以方便地做扩展
-
-
-
-
-
-2.tomcat
-为了服务器生成动态页面,需要运行java Servlet,那么就需要提供Servlet容器
-Tomcat正式支持运行Servlet/JSP应用程序</div>
+即使你的RNN是双向的，仍然会有这个问题，因为从右往左，中间的词汇也可能丢失。
+当然LSTM在这方面做的很好，他有遗忘门可以参与process，有时候可以选择不打开遗忘门，保持一些东西在周围，在你看到某些事情的时候保持一些特定单元的打开，但是lstm要求很多模型才能平稳运行。lstm也很难在不同的时间步中保持关系的稳定性。
+所以上述问题就是卷积神经网络想要解决的问题，main idea是捕获左侧的上下文以代替在每个时间步计算单个向量的表示。我们可以为句中的每一个单词计算一个短语向量， 比如这句短语the  country of my b</div>
         </div>
       </a>
 
@@ -487,15 +375,13 @@ Tomcat正式支持运行Servlet/JSP应用程序</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/java">java</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/jetty">jetty</a>&nbsp;
-          
-            <a href="/tags/tomcat">tomcat</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -506,35 +392,17 @@ Tomcat正式支持运行Servlet/JSP应用程序</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/2.ClassLoader/">
-        <p class="h4 index-header">JAVA/2.ClassLoader</p>
+      <a href="/2020/02/24/CS224n/14%20-%20%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/">
+        <p class="h4 index-header">CS224n/14 - 问答系统</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">2.ClassLoader类加载器classloader作用:
-
-负责将class加载到JVM中
-审查每个类由谁加载
-将class字节码重新编译成JVM统一要求的对象格式
-
-2.1类加载时机与过程类从被加载到虚拟机内存开始,到卸载出内存为止,整个生命周期包括了七个部分:
-加载,验证,准备,解析,初始化,使用,卸载
-
-如下几种情况会对类进行初始化
-
-创建类的实例
-对类进行反射调用
-当初始化类,发现父类没有没初始化
-jvm启动,用户指定一个要执行的主类,虚拟机会先初始化这个主类
-java.lang.invoke.MethodHandle实例最后的解析结果REF_getstatic,REF_putstatic,REF_invokeStatic的方法句柄，并且这个方法句柄所对应的类没有进行初始化，则需要先出触发其初始化。
-
-2.2类加载器的双亲委派模型
-
-双亲委派模型好处
-
-避免重复加载,当父类已经加载了该类的时候,就没有必要classloader再加载一次考虑到安全因素，我们试想一下，如果不使用这种委托模式，那我们就可以随时使用自定义的String来动态替代java核心api中定义的类型，这</div>
+          <div class="index-text mb-1">Lecture14 - 问答系统1.实现问答系统的联合模型：动态记忆网络
+从下边开始看，输入都是词向量，比如word2vec或者glove之类。基本会有一个循环的神经序列模型，比如GRU,他为每个输入单词计算一个隐藏层。
+在右下角的问题模块中也有处理问题的GRU,用于计算输入的问题的向量。
+以右下角输入的问题为例，“足球在哪里？”我们会认为足球被提及的事实的这个问题储存在上一次GRU隐藏层的某个地方，我们称之为Q，我们使用Q从本质引发所有潜在输入的注意力机制，每当有一个特定的句子被强烈关注，我们将把这个句子作为另一个GRU的输入，那就是情节记忆模块。基本上只要有上图蓝色的线存在，那基本就是一种循环的神经网络序列模型。所以基本上，一个问题促发一个注意力机制。遍历所有输入的所有隐藏层，现在基本上说这个事实似乎与这个问题有关。基本上说，一个问题引发一个注意力机制，然后遍历所有输入的所有隐藏层，也就是说在输入模块，我们认为最后一次提到“足球”肯定和现在问的问题是相关的，于是GRU的隐藏层捕捉到了这一点，然后经过上边的记忆模块中的GRU（fliter）过滤，现在只聚合与当前问题相关的句子。 图上</div>
         </div>
       </a>
 
@@ -545,15 +413,13 @@ java.lang.invoke.MethodHandle实例最后的解析结果REF_getstatic,REF_putsta
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/java">java</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/classLoader">classLoader</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -564,28 +430,23 @@ java.lang.invoke.MethodHandle实例最后的解析结果REF_getstatic,REF_putsta
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/3.%E6%B3%9B%E5%9E%8B/">
-        <p class="h4 index-header">JAVA/3.泛型</p>
+      <a href="/2020/02/24/CS224n/11%20-%20GRU2,NMT/">
+        <p class="h4 index-header">CS224n/11 - GRU2,NMT</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">泛型泛型就是扩展了方法的适用范围:
-例子:
-原本有一个SUM(y) = (a + b)的两元素相加的方法
+          <div class="index-text mb-1">Lecture11 - GRU,NMT这部分集中讲如何使用循环模型和和seq2seq架构。
+1.对RNN的补充阐述RNN到底在做什么？
+在时间t时有一些随着时间变化的东西（图的左边开始端），然后到了时间t+n的时候它发生了变化（图的右边结束端）。我们要研究的就是在时间t时看到的东西是如何影响到t+n时刻的。我们要测量比如现在看到的单词是如何影响到接下里的6个或者8个单词的。
 
-在两数字相加或两字符串拼接的场景下本来都可以用它
+我们要如何实现RNN？我们要做的是，在基本RNN的每个时间点，我们已经获得了一些隐藏的状态，我们用矩阵去乘他们，然后我们增加一些东西去处理输入，然后我们进入下一个时间，我们将隐藏状态再次乘以相同的矩阵，然后多次重复这个过程就会遇到梯度消失的问题。
 
-但是如果y提前规定了数据类型就不能用了,两个场景必有其一要重写
+这个问题其实是由如下的朴素的transition函数导致的。
 
-这时候使用泛型,&lt;T&gt;当做占位符,就可以实现代码复用了 
-
-
-之所以不用Object实现参数的任意化是因为要做显式的强制转换,这种转换是要求开发者对实际参数可预知的情况下进行的,而很多时候开发者不能预知程序运行时有哪样的类型需要强转
-如果强转错误,程序员也无从得知,是一个安全隐患
-引入泛型不用object后所有任意化的参数类型都是隐式自动进行的,保证了效率和安全性
-</div>
+门控制单元GRU的阐述
+在朴素的翻译函数中，我们在序列中执行矩阵乘法，我们每一步乘以一个矩阵U，这样代表着我们正在学习这其中对我们的决策会起到多大的影响。我们通过在整个序列的中间节点做反向传播，这也就是说，整个GRU单元的思路中，我们希望能够获得更多直接的证据证明前期步骤对后续步骤有影响，但是不用做长序列</div>
         </div>
       </a>
 
@@ -596,15 +457,13 @@ java.lang.invoke.MethodHandle实例最后的解析结果REF_getstatic,REF_putsta
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/java">java</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/%E6%B3%9B%E5%9E%8B">泛型</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -615,63 +474,26 @@ java.lang.invoke.MethodHandle实例最后的解析结果REF_getstatic,REF_putsta
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/JAVA/4.%E8%A1%A8%E9%93%BE%E6%8E%A5/">
-        <p class="h4 index-header">JAVA/4.表链接</p>
+      <a href="/2020/02/24/CS224n/12%20-%20%E8%AF%AD%E9%9F%B3%E5%A4%84%E7%90%86%E7%9A%84%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%A8%A1%E5%9E%8B/">
+        <p class="h4 index-header">CS224n/12 - 语音处理的端到端模型</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">5.表链接5.1外链接外链接就是A B两个表,以左右链接的方式选择一个主表,然后附表加入主表的过程
-AB两个表的图示
+          <div class="index-text mb-1">Lecture12 - 语音处理的端到端模型
+介绍传统的语音识别系统
+引出语音识别的端到端模型，并给出描述（CTC,LAS）
+端到端模型的改进版
+语言模型如何影响语音识别的
+语音识别模型中的解码工作的改进
 
+1.传统语音识别系统自动语音识别的基本定义是把语音信号自动转换为文字呈现，语音识别系统的经典实现方法是使用生成模型（generate model），后来被简单的神经网络模型取代。
+如下图最右，你从语言模型（n-gram）中生成了一个由单词组成的特定序列。然后到右二，每个单词都有一个读音模型，也就是每个单词都有自己的指定发音方法（音标），读音模型可以将文本序列转换为读音token序列，然后将这些模型传递给给右三声学模型（acoustic models），声学模型基本上给出一个token听起来是什么样，一般由高斯混合模型来构建，然后这个声学模型会输出一组一组的声音features，一般这些features是由信号处理专家定义的，就像是被捕捉到的声音的评率成分的特征一样（又被称为频谱图或者钟形滤波器组频图）。
 
-左外链接
+如下图，应用神经网络，同架构，performance提升较大
 
-select * from TableA left join TableB on TableA.id=TableB.id
-
-
-
-
-
-
-右外链接
-
-select * from TableA right join TableB on TableA.id=TableB.id
-
-
-
-
-
-
-全外链接
-
-select * from TableA full join TableB on TableA.id=TableB.id
-
-
-
-
-内链接
-
-select * from TableA JOIN TableB on TableA.id=TableB.id
-结果是只链接两者共有的数据
-
-
-
-
-
-
-交叉链接
-
-select * from TableA cross join TableB
-
-结果是两个表以基础序号为乘积的笛卡尔积的排列
-
-
-
-
-
-</div>
+2.端到端模</div>
         </div>
       </a>
 
@@ -682,13 +504,55 @@ select * from TableA cross join TableB
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/java">java</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%A1%A8%E8%BF%9E%E6%8E%A5">表连接</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/10%20-%20%E6%9C%BA%E7%BF%BB2%EF%BC%8C%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A8%A1%E5%9E%8B/">
+        <p class="h4 index-header">CS224n/10 - 机翻2，注意力模型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture10 - 机翻2，注意力模型神经网络机翻通常是指，构造一个大型神经网络，我们可以在上边以端到端的方式对这个网络进行训练和优化。如下图所示，我们使用一个大型神经网络，他接受输入文本并将其编码为神经网络内部传递的向量，然后通过解码器解码，输出是文本。
+
+早期机翻模型如下，结构相对简单，由认知学家和心理学家们设计
+
+
+这些模型的设计应该遵循一定的规则，特别是昨天学的LSTM内部的各种门和电路设计感觉是同一种思路，找到这门系统设计的学科并从头到尾过一遍，
+神经网络曾经是一个非常沉寂的边缘细分学科，以前都是心理学家和认知科学家们在这里耕耘，直到算力和网络技术发展成熟，大量CS科学家和资本入场，这里才变得热闹起来。做科研也需要赶时髦，因为如果当下一个科研方向很热门，说明在这个历史时期科学正在往这个方向发展。本身科学家做研究就需要互相引用他人的成果，使用他们的公式和仪器，站在巨人肩膀上做事，scientist,as a part of science,必须顺应时代的潮流，甚至要能预判时代的走向打一个提前量，这样对自己的职业发展最有利，也对推动世界进步最有利。
+深度学习这一块提升性能最突</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -699,7 +563,7 @@ select * from TableA cross join TableB
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/10/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/10/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

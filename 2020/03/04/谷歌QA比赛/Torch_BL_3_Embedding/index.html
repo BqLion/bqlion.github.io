@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>安装调试记录/网站部署记录 ~ 刘秉乾的技术博客 :)</title>
+  <title>谷歌QA比赛/Torch_BL_3_Embedding ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 二月 24日 2020, 12:04 中午
+                  星期三, 三月 4日 2020, 3:25 下午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    577 字
+                    941 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      5 分钟
                   </span>&nbsp;
                 
 
@@ -167,88 +167,183 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h4 id="1-获取root权限"><a href="#1-获取root权限" class="headerlink" title="1.获取root权限"></a>1.获取root权限</h4><p>-sudo passwd</p>
-<p>-su root</p>
-<h4 id="2-云主机安装git"><a href="#2-云主机安装git" class="headerlink" title="2.云主机安装git"></a>2.云主机安装git</h4><p>-yum update</p>
-<p>-yum install git</p>
-<p>-mkdir App</p>
-<p>-cd App</p>
-<h4 id="3-云主机与github建立sshkey连接"><a href="#3-云主机与github建立sshkey连接" class="headerlink" title="3.云主机与github建立sshkey连接"></a>3.云主机与github建立sshkey连接</h4><p>返回：Permissiondenied (publickey)，fatal:Could not read from remote repository.</p>
-<p>cd ~/.ssh ls  //查看是否有ssh key</p>
-<p>ssh-keygen -t rsa -C “<a href="mailto:youremail@example.com">youremail@example.com</a>“    //一路回车</p>
-<p>ssh -v <a href="mailto:git@github.com">git@github.com</a> </p>
-<p>ssh-agent -s</p>
-<p>ssh-add ~/.ssh/ github new SSH KEY</p>
-<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
-<p>若出错：“Could not open a connection to your authentication agent”</p>
-<p>eval `ssh-agent -s``</p>
-<p>ssh-add ~/.ssh/id_rsa，</p>
-<p>github new SSH KEY</p>
-<h3 id="4-克隆项目，安装maven"><a href="#4-克隆项目，安装maven" class="headerlink" title="4.克隆项目，安装maven"></a>4.克隆项目，安装maven</h3><pre><code>git clone https://git@github.com:BqLion/SpringBoot_HelloWorld.git
+            <h1 id="Embedding-Matrix"><a href="#Embedding-Matrix" class="headerlink" title="Embedding_Matrix"></a>Embedding_Matrix</h1><pre><code class="python">def get_coefs(word,*arr):
+    return word,np.asarray(arr,dtype=&#39;float32&#39;)
 
-ls //显示名称
+def load_embeddings(path):
+    with open(path,&#39;rb&#39;) as f:
+        emb_arr = pickle.load(f)
+    return emb_arr
+# pickle.load(f)是python的标准导入数据的格式
 
-cd SpringBoot_HelloWorld
+def build_matrix_adv(embedding_path : str = &#39;&#39;,
+                     embedding_path_spellcheck: str = r&#39;f:\embeddings\wiki-news-300d-1M\wiki-news-300d-1M.vec&#39;,
+                     word_dict : dict None,
+                     lemma_dict : dict = None,
+                     max_features : int = 100000,
+                     embed_size: int = 300, ):
+    spell_model = gensim.models.KeyedVectors.load_word2vec_format(embedding_path_spellcheck)
+    # 调用维基字典,字典的用途是训练词向量（本文件目的）
+    words = spell_model.index2word
+    # index转换成词
+    w_rank = {}
+    for i,word in enumrate(words):
+        w_rank[word] = i
+    WORDS = w_rank
+
+    def P(word):
+        &quot;word的概率&quot;
+        # 使用逆秩作为代理
+        return - WORDS.get(word,0)
+
+    def correction(word):
+        &quot;最可能的单次拼写的更正：&quot;
+        return max(candidates(word),key = P)
+
+    def candidates(word):
+        &quot;为word参数 生成可能的拼写更正&quot;
+        return (known([word])  or known(edits1(word))or [word])
+
+    def known(words):
+        &quot;在字典WORD中出现的words参数的子集&quot;
+        # 如26行所示，WORD是一个数组，words是训练集训练出来的word2vec矩阵？
+        # 不可以留疑问，这个文件写完后单步调试进去看看做的是什么事情
+        return set(w for w in words if w in WORDS)
+
+    def edits1(word):
+        &quot;与word相距离一次编辑的所有编辑&quot;
+        letters = &#39;abcdefghijklmnopqrstuuvwxyz&#39;
+        splits = [(word[:i], word[i:]) for i in range(len(word) + 1)]
+        deletes = [L + R[1:] for L, R in splits if R]
+        transposes = [L + R[1] + R[0] + R[2:] for L, R in splits if len(R) &gt; 1]
+        replaces = [L + c + R[1:] for L, R in splits if R for c in letters]
+        inserts = [L + c + R for L, R in splits for c in letters]
+        return set(deletes + transposes + replaces + inserts)
+### L 和 R这里需要单帧步进研究一下
+
+    def edits2(word):
+        &quot;与word相距离两次编辑的所有编辑&quot;
+        return (e2 for e1 in edits1(word) for e2 in edits1(e1))
+
+    def singlify(word):
+        return &quot;&quot;.join([letter for i,letter in enumerate(word) if i == 0 or letter != word[i - 1]])
+
+# embedding_index = dict(get_coefs(*o.strip().split(&quot; &quot;)) for o in open(embedding_path, encoding=&#39;utf-8&#39;))
+# embedding_index = dict(get_coefs(*o.strip().split(&quot; &quot;)) for o in open(embedding_path, encoding=&#39;utf-8&#39;, errors=&#39;ignore&#39;))
+
+    embedding_index = load_embeddings(embedding_path)
+    nb_words = min(max_features,len(word_dict))
+    embedding_matrix = np.zeros((nb_words + 1,embed_size))
+    uknown_words = []
+    for word, i in word_dict.items():
+        key = word
+        embedding_vector = embedding_index.get(word)
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
+            continue
+        embedding_vector = embedding_index.get(word.lower())
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
+            continue
+        embedding_vector = embedding_index.get(word.upper())
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
+            continue
+        embedding_vector = embedding_index.get(word.capitalize())
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
+            continue
+        word = ps.stem(key)
+        embedding_vector = embedding_index.get(word)
+        if embedding_vector is not None:
+            embedding_matrix[word_dict[key]] = embedding_vector
+            continue
+        word = lc.stem(key)
+        embedding_vector = embedding_index.get(word)
+        if embedding_vector is not None:
+            embedding_matrix[word_dict[key]] = embedding_vector
+            continue
+        word = sb.stem(key)
+        embedding_vector = embedding_index.get(word)
+        if embedding_vector is not None:
+            embedding_matrix[word_dict[key]] = embedding_vector
+            continue
+        word = lemma_dict[key]
+        embedding_vector = embedding_index.get(word)
+        if embedding_vector is not None:
+            embedding_matrix[word_dict[key]] = embedding_vector
+            continue
+        if len(key) &gt; 1:
+            word = correction(key)
+            embedding_vector = embedding_index.get(word)
+            if embedding_vector is not None:
+                embedding_matrix[word_dict[key]] = embedding_vector
+                continue
+        unknown_words.append(key)
+
+    print(f&#39;{len(unknown_words) * 100 / len(word_dict):.4f}% words are not in embeddings&#39;)
+    return embedding_matrix, nb_words, unknown_words
 
 
-yum install maven
+def get_word_lemma_dict(full_text: list = None, ):
+    nlp = spacy.load(&#39;en_core_web_lg&#39;, disable=[&#39;parser&#39;,&#39;ner&#39;,&#39;tagger&#39;])
+    nlp.vocab.add_flag(lambda s: s.lower() in spacy.lang.en.stop_words.STOP_WORDS, spacy.attrs.IS_STOP)
+    word_dict = {}
+    word_index = 1
+    lemma_dict = {}
+    docs = nlp.pipe(full_text, n_threads = os.cpu_count())
+    for doc in docs:
+        for token in doc:
+            if (token.text not in word_dict) and (token.pos_ is not &quot;PUNCT&quot;):
+                word_dict[token.text] = word_index
+                word_index += 1
+                lemma_dict[token.text] = token.lemma_
 
-mvn -v
+    return lemma_dict, word_dict
 
-mvn complie package</code></pre><h4 id="5-编译，运行"><a href="#5-编译，运行" class="headerlink" title="5.编译，运行"></a>5.编译，运行</h4><p>more src/main/resources/application.properties</p>
-<p>cp src/main/resources/application.properties src/main/resources/application-production.properties</p>
-<p>vim src/main/resources/application.properties</p>
-<p>vim src/main/resources/application-production.properties</p>
-<p>【修改配置文件为服务端配置】</p>
-<p>【编译】mvn package</p>
-<p>报错后改用：mvn clean compile package</p>
-<p>报错后改用：mvn compile package</p>
-<p>查看端口号netstat -a -n</p>
-<p>【运行】</p>
-<p>本次启动：</p>
-<p>java -jar -Dspring.profiles.active=production target/springboothellloworld-0.0.1-SNAPSHOT.jar</p>
-<p>直接启动：</p>
-<p>java -jar springboothellloworld-0.0.1-SNAPSHOT.jar</p>
-<hr>
-<h4 id="6-服务器连接mysql数据库"><a href="#6-服务器连接mysql数据库" class="headerlink" title="6.服务器连接mysql数据库"></a>6.服务器连接mysql数据库</h4><p>1.谷歌云sql，用Cloud Shell远端操作本机</p>
-<p>2.mysql -u root -p </p>
-<p>​    报错：Access denied</p>
-<p>3.尝试mysql -h 127.0.0.1 -P 3306 -u root -p</p>
-<p>​    报错：RROR 2002 (HY000): Can’t connect to local MySQL server through socket ‘/var/run/mysqld/mysqld.sock’</p>
-<p>4.apt-get update</p>
-<p>5.sudo apt-get install mysql-server</p>
-<p>​    如果不能sudo：  sudo passwd root重置密码</p>
-<p>6.RROR 2002没有解决</p>
-<pre><code class="sql">sudo /etc/init.d/mysqld sto</code></pre>
-<pre><code class="sql">sudo mysqld_safe --skip-grant-tables &amp;</code></pre>
-<pre><code class="sql">mysql -uroot</code></pre>
-<pre><code class="sql">use mysql;</code></pre>
-<pre><code class="sql">update user set password=PASSWORD(&quot;math1122&quot;) where User=&#39;root&#39;;</code></pre>
-<p>flush privileges;</p>
-<pre><code class="sql">quit</code></pre>
-<pre><code class="sql">sudo /etc/init.d/mysql stop
-...
-sudo /etc/init.d/mysql start</code></pre>
-<p>7.解决</p>
-<h4 id="7-检查端口号是否打开："><a href="#7-检查端口号是否打开：" class="headerlink" title="7.检查端口号是否打开："></a>7.检查端口号是否打开：</h4><p>1.控制面板-程序-打开或关闭windows功能 -勾选telent</p>
-<p>2.cmd - telent 192.168.1.1 3306</p>
-<h4 id="8-远程连接sql："><a href="#8-远程连接sql：" class="headerlink" title="8.远程连接sql："></a>8.远程连接sql：</h4><p>首先要在谷歌控制台SQL-用户-创建用户账号</p>
-<p>创建一个不限制ip的账号和密码，之后才能连接</p>
-<h4 id="9-项目在服务端持久运行"><a href="#9-项目在服务端持久运行" class="headerlink" title="9.项目在服务端持久运行"></a>9.项目在服务端持久运行</h4><p>nohup java -jar springboothellloworld-0.0.1-SNAPSHOT.jar&amp; &gt;/dev/null 2&gt;&amp;1 &amp;</p>
-<p>exit</p>
-<p>PID:2385</p>
-<p><code>ps</code> <code>-p 2385 -o etime</code>查看运行时间</p>
-<p>​    </p>
-<p>chmod +x springboothellloworld-0.0.1-SNAPSHOT.jar</p>
-<p>nohup java -jar -Dspring.profiles.active=production springboothellloworld-0.0.1-SNAPSHOT.jar &gt; /dev/null 2&gt; /dev/null &amp;</p>
-<h3 id="10-数据库连接不上："><a href="#10-数据库连接不上：" class="headerlink" title="10.数据库连接不上："></a>10.数据库连接不上：</h3><ol>
-<li>进入数据库的shell<ol>
-<li>grant all privileges on <em>.</em> to ‘root’@’%’ identified by ‘password’ with grant option;</li>
-</ol>
-</li>
-<li>flush privileges;</li>
-<li>关了VPN!!!!!</li>
-</ol>
+
+def build_matrix(embedding_path: str = &#39;&#39;,
+                 embedding_path_spellcheck: str = r&#39;f:\embeddings\wiki-news-300d-1M\wiki-news-300d-1M.vec&#39;,
+                 word_dict: dict = None, max_features: int = 100000,
+                 embed_size: int= 300, ):
+
+    # embedding_index = dict(get_coefs(*o.strip().split(&quot; &quot;)) for o in open(embedding_path, encoding=&#39;utf-8&#39;))
+    embedding_index = load_embeddings(embedding_path)
+
+    nb_words = min(max_features, len(word_dict))
+    embedding_matrix = np.zeros((nb_words + 1, embed_size))
+    unknown_words = []
+    for word, i in word_dict.items():
+        key = word
+        embedding_vector = embedding_index.get(word)
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
+            continue
+        embedding_vector = embedding_index.get(word.lower())
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
+            continue
+        embedding_vector = embedding_index.get(word.upper())
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
+            continue
+        embedding_vector = embedding_index.get(word.capitalize())
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
+            continue
+        unknown_words.append(key)
+
+    print(f&#39;{len(unknown_words) * 100 / len(word_dict):.4f}% words are not in embeddings&#39;)
+    return embedding_matrix, nb_words, unknown_words
+
+
+def seed_everything(seed=1234):
+    random.seed(seed)
+    os.environ[&#39;PYTHONHASHSEED&#39;] = str(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True</code></pre>
 
             <hr>
           </div>
@@ -259,7 +354,7 @@ sudo /etc/init.d/mysql start</code></pre>
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>
+                  <a class="hover-with-bg" href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -268,9 +363,7 @@ sudo /etc/init.d/mysql start</code></pre>
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>
-                
-                  <a class="hover-with-bg" href="/tags/java">java</a>
+                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
                 
               </span>
             
@@ -420,7 +513,7 @@ sudo /etc/init.d/mysql start</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "安装调试记录/网站部署记录&nbsp;",
+        "谷歌QA比赛/Torch_BL_3_Embedding&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

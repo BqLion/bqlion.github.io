@@ -136,23 +136,21 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/23%20-%20QA/">
-        <p class="h4 index-header">Speech and language processing/23 - QA</p>
+      <a href="/2020/02/24/D3NER/LSTM/">
+        <p class="h4 index-header">D3NER/LSTM</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">23 - Question Answering and Summarization本章介绍基于事实的回答问题系统+文章的总结系统。如果我们查找的是结构化的数据，可用上一章介绍的信息提取算法来词查找。如果查找的是非结构化的信息，则需要用本章介绍的“回答问题系统”处理，非结构化信息的查找就是一种“使用非正式的单词或句子”来表达查找需求的场景，这种场景下客户通常期望能返回一些回答or一些文本，或something in between。
-第一个session介绍向量空间模型，第二个session介绍基于事实的一问一答系统。第六个session介绍基于句子的总结系统/基于注意力机制的总结系统。
-23.1 Information Retrieval 信息检索术语定义
-文档document指的是一个有索引的，可被检索系统直接定位的最小单元，对应到web就是一个网页
-集合collection指的是一系列用来满足用户需求的文档documents
-term指的是一个词汇元素。
-query指的是一系列terms
+          <div class="index-text mb-1">LSTM+CRF1、perspectively
+LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
+但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
+2、LSTM+CRF
+既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
+因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
 
-词向量空间
-词义相近的在向量空间中距也近，概念在CS224N中学过了。空间和点积的直观图如下</div>
+input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
         </div>
       </a>
 
@@ -163,134 +161,17 @@ query指的是一系列terms
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/24%20-%20%E5%AF%B9%E8%AF%9Dagent/">
-        <p class="h4 index-header">Speech and language processing/24 - 对话agent</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">24 - Dialogue and Conversational Agents这一章介绍问答助手的基本结构+算法。Session24.1介绍人类对话的基本概念，如对话的交替，表达技巧，grounding，对话结构等。Session24.2介绍口语系统的组件和评价标准。Session24.5和Session24.6介绍信息状态架构和马尔科夫对话代理模型，以及高阶话题如BDI范式（belief - desire -intention）信念 - 渴望 - 意图范式。
-24.1 人类对话的Properties24.1.1 Turns and turn-talking人类对话的模式是一个人说完了之后另一人说，交替进行，通常情况下，两人对话的重叠部分不超过5%。两个人交替间的停顿时间在100ms左右。为了实现这种模式，人类对话通常有如下三个规律来规范交替的进行，非常显而易见。
-
-通常一个比正常情况更长的听读怒会有额外的表达效果，如下所示一个长停顿代表了不想积极回应问题。
-
-24.1.2 Language as Action:Speech Acts 语言是会产生后果的行动语言能对现实世界产生具体影响</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/22%20-%20Information%20Extraction/">
-        <p class="h4 index-header">Speech and language processing/22 - Information Extraction</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">22 - Information Extraction本章主要概念：
-
-NER：命名实体识别
-relation detection and classification：关系检测与分类
-event detection and classification：事件检测与分类
-temporal expression recognition：事件表达式识别
-template filling：模板填充
-
-22.1)NER : 命名实体识别命名实体识别分类的举例
-
-22.1.2）NER as Sequence Labeling
-标准的命名实体识别的步骤是使用word-by-word sequence labeling任务。其实进行NER的方法与第五章的POS tagging和十三章的syntactic chunking方法相同。
-PS：提一下第五章的POS tagging：使用的还是HMM base 的 维特比算法（decoding）。
-
-问题的本质如下所示，观察到句子/词语，猜测对应的词性/NER类型。也就是观察到结果，猜测其隐状态。
-
-
-具体的 word-by-word IOB-style t</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/2%20-%20Regular%20expressions%20and%20automata/">
-        <p class="h4 index-header">Speech and language processing/2 - Regular expressions and automata</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2 - Regular expressions and automata2.2) Relationship between FSA and RE
-Any regular expression(RE) can be implemented as a finite state automata(FSA),symmetrically,any finite-state automata can be described with a regular expression.
-Both RE and FSA can be used to describe regular languages:
-
-Using FSA to understand sheep talk
-sheep language can be defined as any string from the following set:
-baa!
-baaaa!
-baaaaa!
-baaaaaa!
-baaaaaaa!
-baaaaaaaa!
-baaaaaaaaa!
-…
-Sheep language can be described as fol</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
           
         
       </div>
@@ -301,14 +182,65 @@ Sheep language can be described as fol</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/11%20-%20Computational%20Phonology/">
-        <p class="h4 index-header">Speech and language processing/11 - Computational Phonology</p>
+      <a href="/2020/02/24/D3NER/CRF/">
+        <p class="h4 index-header">D3NER/CRF</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">11. Computational Phonology本章较艰涩，对NLP发文帮助不大，Skip，以后需用再补。
+          <div class="index-text mb-1">条件随机场
+概率统计图概览
+
+
+马尔科夫假设/马尔科夫性
+
+马尔科夫假设
+马尔科夫链  里的  总是只受  一个人的影响。马尔科夫假设这里相当于就是个2-gram。
+马尔科夫过程
+在一个过程中，每个状态的转移只依赖于前n个状态
+
+
+
+
+马尔科夫性
+马尔科夫性是保证或者判断概率图是否为概率无向图的条件
+成对性
+局部性
+全局性
+
+
+
+
+
+
+条件随机场定义
+
+条件随机场是在给定的随机变量 （具体，对应观测序列  ）条件下，随机变量  （具体，对应隐状态序列  的马尔科夫随机场。
+广义的CRF的定义是： 满足  的马尔科夫随机场叫做条件随机场（CRF）
+条件随机场是一种特殊的马尔科夫随机场
+马尔科夫随机场
+首先我们有无向图G=(V,E)， 图G中每个节点v上都有一个随机变量y，这样所有的节点上的随机变量就构成一组随机变量Y，图G上有联合概率分布P(Y)。边e表示相邻节点的变量存在某种神秘的联系。
+图G上的随机变量Y满足马尔科夫性，即两个不相邻的节点上的随机变量yi，yj条件独立。这就是马尔科夫随机场。
+
+
+
+
+CRF建模公式
+
+
+CRF特征函数
+
+
+
+
+
+
+
+
+
+
+
 </div>
         </div>
       </a>
@@ -320,9 +252,16 @@ Sheep language can be described as fol</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
           &nbsp;
         
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
         
       </div>
     </div>
@@ -332,25 +271,53 @@ Sheep language can be described as fol</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/">
-        <p class="h4 index-header">Speech and language processing/10 - Automatic Speech RecongnitionAdvanced Topics</p>
+      <a href="/2020/02/24/CS229/%E6%A2%AF%E6%AE%B5%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">CS229/梯段下降算法</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">10. Auto Speech Recognition Advanced Topic ：语音转文字进阶话题之前企图对输入的语音转换成音素的处理办法是：构建一个由全体语言组成的HMM状态网络，然后在网络中采用维特比算法进行全局搜索。这种算法太expensive了。
-改进思路是采用多路编码的decoding技术，使用新的上下文相关声学模型(triphone)。本章还会介绍判别训练(discriminative training)和模型的一些变体；
-10.1）多路编码decoding : N-Best List and Lattices
-首先，维特比算法在进行对语音输入的decoding的时候，有如下两个问题：
+          <div class="index-text mb-1">梯度下降算法
+特点：梯度下降算法可以自动将代价函数J最小化
+问题描述:有一个代价函数，它有两个参数，想让这个代价函数的值最小化。
+做法：持续把这个两个参数向着梯度下降最快的方向迭代。
 
-在应对一词多音/一音多词的语言时，维特比算法表现很差
-维特比算法很难take advantage of 复杂的语言模型：2-gram还行，3-gram就不行了。因为3-gram violates the dynamic programming invariant
 
-改进如上两个问题的思路有：
 
-改进维特比算法，将原本只返回单一值，变成返回多值。以改进一词多音的问题。
-使用其他的的d</div>
+梯度下降算法的学习率α设置:
+α过小,收敛太慢
+α过大,在最小值附近震荡
+
+
+梯度下降缺点:可能求的是局部最优解，解决办法是多次随机初始化起点。
+
+1.多特征值的回归问题
+
+单特征回归:只有房子面积一个特征,求预测房价
+
+单特征回归的假设函数:h(x) = θ0 + θ1x
+
+
+多特征回归:有房子面积,卧室数量,几层高,使用年限四个特征,求预测房价
+
+四特征回归的假设函数:h(x) = θ0 + θ1x1+θ2x2+θ3x3+θ4x4    —-&gt;   缩写h = θ(XT) :向量θ乘以向量X的转置
+只考虑最简单的一次线性多项式
+
+
+多特征回归的梯度下降算法:
+
+每次对一个参数求偏导,并对其迭代.
+所有参数都迭代这么一圈算完成一个回合.
+多参数迭代过程如下图
+
+
+
+
+
+
+2.梯度下降实用技巧–特征缩放(feature scaling)
+如果参数 θ1和θ2大小相差太远,那么θ1的轻微改变都可</div>
         </div>
       </a>
 
@@ -361,9 +328,16 @@ Sheep language can be described as fol</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+            <a href="/categories/CS229">CS229</a>&nbsp;
           &nbsp;
         
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95">梯度下降算法</a>&nbsp;
+          
         
       </div>
     </div>
@@ -373,14 +347,31 @@ Sheep language can be described as fol</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/12%20-%2016,17%20-%2021%E8%AF%AD%E6%B3%95%E5%AD%A6%EF%BC%8C%E8%AF%AD%E4%B9%89%E8%AF%AD%E7%94%A8%E5%AD%A6/">
-        <p class="h4 index-header">Speech and language processing/12 - 16,17 - 21语法学，语义语用学</p>
+      <a href="/2020/02/24/CS229/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
+        <p class="h4 index-header">CS229/极大似然估计</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">12 - 16语法学，17 - 21语义语用学以上几章主要侧重于对英语这门语言本身的讲解，对发表论文帮助不大。先跳过，回头需用再补。
+          <div class="index-text mb-1">极大似然估计极大似然估计是确定机器学习模型的参数的一种办法。确定参数值的过程，是找到能最大化“模型产生真实观察数据可能性“的那一组参数，略抽象，如下是一个例子：
+从某过程观察了如下十个数据点，每个数据点代表了学生回答问题使用的秒数。
+
+这些数据的生成过程可以使用高斯分布（正态分布）进行充分描述。高斯分布有两个参数，西格玛和μ，如何确定参数？如下示意图表示了使用不同参数的不同高斯分布（方差大的中心函数更扁平）。
+注：蓝色曲线是正确曲线N(10,2.25)
+
+OK，如何反编译确定正确参数？我们把这个例子再次简化，同样的情境，这次只存在三个数据点：9,9.5,11
+如何使用最大似然估计确定这个高斯分布的参数？
+高斯分布中，单个数据点x的边缘概率如下
+
+同时观察到上边所提三个点（9,9.5,11）的联合概率是带入上边三个数据的连乘积：
+
+我们只要能找到最大化上述连乘积的参数μ和西格玛就ok了。也就是说，最大似然估计是一个通过确定参数得到函数最大值的优化问题。
+那么，如何求出上述函数的最大值？
+easy，二元函数求偏导标准步骤，加以两边套上对数等数学小技巧就完事儿了。
+SOP:
+
+
 </div>
         </div>
       </a>
@@ -392,65 +383,15 @@ Sheep language can be described as fol</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Python/%E7%88%AC%E8%99%AB/">
-        <p class="h4 index-header">Python/爬虫</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">爬虫目的:掌握定向网络数据爬取和网页解析的基本能力
-传达的理念:website is the API
-基本内容介绍
-
-request库  自动爬取HTML页面,自动网络请求提交
-robots.txt  网络爬虫排除标准
-Beautiful Soup解析HTML页面
-实战项目
-正则表达式
-Scrapy专业爬虫框架
-
-1.Request库
-安装request:pip install requests
-import requestsr = requests.get(“http://www.baidu.com&quot;)r.status_code
-r.encoding = ‘utf-8’r.text
-
-Request库的七个主要方法
-
-requests.request()    构造请求,支撑如下方法的基础方法
-requests.get()              获取HTML的主要方法,对应HTTP的GET
-requests.head()          获取HTML的网页头信息
-requests.post()            向HTML网页提交POST请求
-requests.p</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/python">python</a>&nbsp;
+            <a href="/categories/CS229">CS229</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%88%AC%E8%99%AB">爬虫</a>&nbsp;
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">极大似然估计</a>&nbsp;
           
         
       </div>
@@ -461,23 +402,37 @@ requests.p</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/1%20-%20Introdution/">
-        <p class="h4 index-header">Speech and language processing/1 - Introdution</p>
+      <a href="/2020/02/24/CS229/9.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
+        <p class="h4 index-header">CS229/9.支持向量机</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.Introduction1.1) Required knowledge for NLP:
+          <div class="index-text mb-1">9.支持向量机9.1SVM的优化目标从逻辑回归展示如何一点点修改得到本质上的支持向量机
 
-Phonetics and Phonology : knowledge about linguistic sounds
-Morphology : knowledge of meaningful components of words
-Syntax :knowledge of the structural relationships between words
-Pragmatics :knowledge of the relationship of meaning to the goals and intentions of speaker(what is )
-Semantics :knowledge of meaning(what is said)
-Discourse : knowledge about linguistic units larger than a single utterance
+逻辑回归的假设函数
 
-1.2) Key task : Disambiguation at variety leve</div>
+
+
+
+
+9.2核函数对支持向量机算法做一些修改,以构造复杂的非线性分类器
+我们用”核函数”来达到此目的
+问题的提出:
+使用高级数的多项式模型来解决无法使用直线进行分割的分类问题,如何确定模式中的每一项的参数?
+支持向量机的假设函数和代价函数
+
+9.3 SVM的使用不建议自己写代码求解参数θ,就像没有人会写代码自己去求解平方根一样,可以直接调用现有的库
+除了高斯核函数之外还有其他核函数可以用:
+多项式核函数（Polynomial Kernel）
+字符串核函数（String kernel）
+卡方核函数（ chi-square kernel）
+直方图交集核函数（histogram intersection kernel）
+等等
+SVM模型 和 逻辑回归模型之间的取舍:
+
+</div>
         </div>
       </a>
 
@@ -488,13 +443,15 @@ Discourse : knowledge about linguistic units larger than a single utterance
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+            <a href="/categories/CS229">CS229</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/SVM">SVM</a>&nbsp;
           
         
       </div>
@@ -505,26 +462,58 @@ Discourse : knowledge about linguistic units larger than a single utterance
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/%E8%AF%BE%E9%A2%98%E7%BB%84%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">
-        <p class="h4 index-header">NLP发文/课题组信息搜集</p>
+      <a href="/2020/02/24/CS229/8.%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
+        <p class="h4 index-header">CS229/8.应用机器学习的建议</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">NLP课题组信息搜集20191218作者：cstghitpku
-链接：https://zhuanlan.zhihu.com/p/48529628
-来源：知乎
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-根据这几年的积累，整理了一份国内外学术界和工业界的牛人和大牛团队，供大家申请硕士、博士、博士后和找工作参考。
-学校（排名不分先后）：
-哈工大社会计算与信息检索实验室：刘挺老师坐镇，教师包括：秦兵、张宇、车万翔、赵妍妍、刘铭、张伟男、丁效等老师，实验室共7个组，另外王海峰老师也是实验室兼职博导。
-哈工大智能技术与自然语言处理实验室：王晓龙老师坐镇，教师包括刘秉权、刘远超、孙承杰等老师
-哈工大机器智能与翻译研究室：赵铁军老师坐镇，教师包括杨沐昀、郑德权、徐冰老师等，另外周明老师是实验室兼职博导。
-哈工大深圳智能计算研究中心：王晓龙老师坐镇，包括陈清才、汤步洲、徐睿峰、刘滨等老师，实力很强。
-哈工大深圳人类语言技术组：徐睿峰老师坐镇，情感原因发现做的比较好。
-哈工大另外做NLP的老师包括：关毅、王轩等。
-清华大学自然语言处理与社会人文计算实验室：孙茂松老师坐镇，包括刘</div>
+          <div class="index-text mb-1">8.应用机器学习的建议8.1如何提高一个算法/机器学习模型的性能问题:预测房价的机器学习模型性能遇见瓶颈,如何提升性能?
+
+很多人是凭感觉去解决问题,他们有如下猜想并随便选一个去做
+
+随便某个猜想都是耗时耗力巨大的项目,人们常常选择的是一条不归路
+
+如何尽量排除无效的道路?
+
+
+
+获得更多的训练样本——解决高方差   
+尝试减少特征的数量——解决高方差
+尝试获得更多的特征——解决高偏差
+尝试增加多项式特征——解决高偏差
+尝试减少正则化程度λ——解决高偏差
+尝试增加正则化程度λ——解决高方差
+
+8.2如何评估一个模型表现
+模型的代价函数非常小未必是好事,因为可能存在过拟合的现象
+为了检验模型是否过拟合,可以采用交叉验证的方法
+可以把数据集分为训练集和测试集,然后重复洗牌交叉验证
+
+高偏差与高方差
+
+高偏差是欠拟合
+
+高方差是过拟合
+
+
+
+
+增加模型的多项式次数导致的过/欠拟合问题
+
+训练集上:
+增加模型多项式的次数会导致代价函数单调递减
+
+
+交叉验证集上:
+增加模型多项式的次数会导致代价函数先减后增
+先减是改善了欠拟合的问题
+后增就是过拟合越来越严重
+
+
+结论:
+交叉验证是评估过/欠拟合</div>
         </div>
       </a>
 
@@ -535,13 +524,264 @@ Discourse : knowledge about linguistic units larger than a single utterance
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
+            <a href="/categories/CS229">CS229</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%AF%BE%E9%A2%98%E7%BB%84%E4%BF%A1%E6%81%AF">课题组信息</a>&nbsp;
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0">评估模型表现</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">判定模型和生成模型的区别
+机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
+
+判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
+生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
+
+一个生动的例子说明两者的区别:
+
+判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
+生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
+          
+            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
+        <p class="h4 index-header">CS229/5.过拟合和正则化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
+
+
+解决办法:
+过拟合就丢弃不能正确预测的特征,欠拟合就加特征
+2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
+
+
+
+给高维项设置惩罚项
+
+代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
+
+增加了惩罚项的代价函数
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
+        <p class="h4 index-header">CS229/6.神经网络(表述)</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">#
+6.神经网络(表述)6.1问题的由来
+特征爆炸无法处理
+例如,智能识别一个图片是不是汽车的问题
+假设使用50*50小黑白照片
+那么就有2500个像素灰度作为特征
+2500个特征两两组合就是3000000项,这的多项式处理不了
+这时候就需要神经网络
+
+
+
+6.2直观理解和逻辑运算符的构建
+直观理解
+
+神经网络能够通过自身学习得到一些列特征,这些特征是使用数据的原始特征经过拆分组合和一系列逻辑运算得到的
+这样的一系列特征比普通的逻辑回归的表层特征要深刻的多
+最后做决定的神经元依据上一层传进来的特征,这些特征已经经过多层传导,内化为自己的特征了
+
+
+神经元可以通过增加一个固定权重神经元构建逻辑运算符(与,非,或,抑或等)
+
+如下图
+
+
+
+
+6.3神经网络的形态
+6.4神经网络基本概念的定义from CS224N如图，神经网络有输入，有偏置单元，有激活函数，以及对后续神经网络的输出。
+输入x，w是乘以输入的权重，b是偏置值，f是sigmod函数。
+输入乘以权重加上偏置值后，进入sigmod函数，输出一个分类值。
+有了神经网络，让我们再回到之前的单窗口分类器。代替之前直接将softmax应用</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/7.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E5%AD%A6%E4%B9%A0)/">
+        <p class="h4 index-header">CS229/7.神经网络(学习)</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.神经网络(学习)7.1神经网络的代价函数
+
+第一项是在K个输出项上(比如四分类就是K=4),累加逻辑回归的代价函数
+第二项就是更高维的罚函数
+
+代价函数的目的:找到使得J(θ)最小化的θ
+7.2单个训练数据如何通过神经网络    
+
+z(2) = θ(1)a(1) 
+
+z(2)是第二层神经元的输入项,共五项,是a(1)的三项经过θ(1)矩阵拆分后的结果
+
+
+a(2) = g[z(2)]
+
+a(2)是第二层神经元的输出项,共五项,是z(2)五项经过第二层神经元的sigmod函数变换后的结果
+
+
+
+后边的几层同理
+7.3反向传播算法
+定义
+
+反向传播算法是利用链式法则递归计算表达式梯度的方法
+理解反向传播过程的精妙之处,对理解/实现/设计/调试神经网络非常关键
+
+
+理解
+
+反向传播就是先正向走一遍,得到各个节点的计算结果
+
+从最后一个节点开始,设置梯度是1
+
+反向计算各个上层节点对他的局部梯度
+
+[dz/dx                                 ]  = [dz/dy]   *  [dy/dx]
+[最终结果与本层的梯度]  =上层梯度*本层局部梯度
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
           
         
       </div>
@@ -552,7 +792,7 @@ Discourse : knowledge about linguistic units larger than a single utterance
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/8/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/8/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

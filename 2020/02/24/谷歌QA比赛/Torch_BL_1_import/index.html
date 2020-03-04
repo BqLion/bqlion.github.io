@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>安装调试记录/网站部署记录 ~ 刘秉乾的技术博客 :)</title>
+  <title>谷歌QA比赛/Torch_BL_1_import ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    577 字
+                    1.5k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      6 分钟
                   </span>&nbsp;
                 
 
@@ -167,88 +167,153 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h4 id="1-获取root权限"><a href="#1-获取root权限" class="headerlink" title="1.获取root权限"></a>1.获取root权限</h4><p>-sudo passwd</p>
-<p>-su root</p>
-<h4 id="2-云主机安装git"><a href="#2-云主机安装git" class="headerlink" title="2.云主机安装git"></a>2.云主机安装git</h4><p>-yum update</p>
-<p>-yum install git</p>
-<p>-mkdir App</p>
-<p>-cd App</p>
-<h4 id="3-云主机与github建立sshkey连接"><a href="#3-云主机与github建立sshkey连接" class="headerlink" title="3.云主机与github建立sshkey连接"></a>3.云主机与github建立sshkey连接</h4><p>返回：Permissiondenied (publickey)，fatal:Could not read from remote repository.</p>
-<p>cd ~/.ssh ls  //查看是否有ssh key</p>
-<p>ssh-keygen -t rsa -C “<a href="mailto:youremail@example.com">youremail@example.com</a>“    //一路回车</p>
-<p>ssh -v <a href="mailto:git@github.com">git@github.com</a> </p>
-<p>ssh-agent -s</p>
-<p>ssh-add ~/.ssh/ github new SSH KEY</p>
-<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
-<p>若出错：“Could not open a connection to your authentication agent”</p>
-<p>eval `ssh-agent -s``</p>
-<p>ssh-add ~/.ssh/id_rsa，</p>
-<p>github new SSH KEY</p>
-<h3 id="4-克隆项目，安装maven"><a href="#4-克隆项目，安装maven" class="headerlink" title="4.克隆项目，安装maven"></a>4.克隆项目，安装maven</h3><pre><code>git clone https://git@github.com:BqLion/SpringBoot_HelloWorld.git
+            <h1 id="Baseline-import"><a href="#Baseline-import" class="headerlink" title="Baseline_import"></a>Baseline_import</h1><p>import Lib</p>
+<pre><code class="python">import numpy as np
+#numpy是主要用于数组计算，线性代数，傅里叶变换等。
+import pandas as pd
+#pandas基于numpy，可以处理高纬数据
+from sklearn.manifold import TSNE
+#sklearn是机器学习中常用的第三方模块，对常见的机器学习算法进行了封装，包括回归、降维、分类、聚类等
+#sklearn.manifold是流形学习，非线性降维的手段。最简单的降维手段是随机投影，但是会导致结构丢失。
+#manifold learning是一种类似主成分分析（PCA）的线性框架，不会错失数据结构中的非线性项
+# TSNE提供了一种画图方式，让高维的数据降低为二维画出来
+import seaborn as sns
+# 基于matplotlib的画图工具
+import glob
+# glob是查找模块。支持空格 ，问号？，方括号[]这三个通配符。
+# 空格代表0个或者多个字符，问号？代表一个字符，[]代表范围，例如0-9.
+# glob主要是两个方法，glob方法获（取全部匹配路径）和iglob方法（逐个获取满足路径）。
+from urllib.parse import urlparse
+# url.parse定义了URL的标准接口，实现了对url的解析，合并，编码，解码等
+# %matplotlib inline
+#这一句在pycharm和spyder中可以注释掉，主要是在jupter notebook中用于打印图像的
+import re
+# 正则表达式
+from category_encoders.ordinal import OrdinalEncoder
+# category_encoders.ordinal可以将非数值型数据比如语言，转换成类别变量例如独热编码
+# A collection sklearn transformers to encode categorical variables as numeric
+import spacy
+# 最快的工业级自然语言处理工具，主要功能是分词，词干化，命名实体识别，名词短语提取等
+import gc
+# gc是垃圾回收机制，gc.collect()是核心函数
+import gensim
+# genism模块中有word2vec，可以把词汇转换成向量
+from nltk.tokenize import TweetTokenizer
+# nltk.tokenize就是把句子令牌化
+# tweetTokenize就是按照空格进行分词，同时针对推文特性，去除@用户名，保留表情符号
+import datetime
+# datetime是python处理时间和日期的标准库
+from scipy import stats
+# scipy的stats是统计学的各种分布，stats.chi2是卡方分布，stats.norm是正态分布，还有t和f分布。
+from scipy.sparse import hstack,csr_matrix
+# vstack，hstack分别是横向合并和纵向合并。
+# csr_matrix是压缩稀疏行格式的矩阵
+# sparse matrix (稀疏矩阵) ，sparse就是scipy模块中负责处理稀疏矩阵的模块
+from sklearn.model_selection import train_test_split,cross_val_score,KFold
+# sklearn中的model_selection用于交叉验证，三个包分别是数据集分割，交叉验证，K折交叉验证器
+from wordcloud import WordCloud
+# 词云
+from collections import Counter
+# 计数器
+from nltk.corpus import stopwords
+# 停止词
+from nltk.util import ngrams
+# ngram
+from sklearn.feature_extraction.text import TfidfVectorizer
+# sklearn的词频-逆向文件频率
+from sklearn.preprocessing import StandardScaler
+# StandardScaler是数据归一化和标准化的类。所谓归一化就是使得数据方差为1，均值为0
+from sklearn.linear_model import LogisticRegression,LinearRegression,Ridge# 逻辑回归模型
+from sklearn.svm import LinearSVC
+# 线性分类支持向量机
+from sklearn.multiclass import OneVsRestClassifier
+# 多分类问题的分类器
+import time
+pd.set_option(&#39;max_colwidth&#39;,400)
+# 设置列长度400
+from scipy.stats import spearmanr
+# stats是统计函数库，spearmanr是斯皮尔曼等级相关系数
+from keras.preprocessing.text import Tokenizer
+# 令牌化
+from keras.preprocessing.sequence import pad_sequences
+# keras只能接受相同长度的序列输入，pad_sequences()序列填充让序列长度一致。
+import scipy as sp
+# scipy用于数学科学工程领域，可以处插值、积分、优化、图像处理、常微分方程、信号处理等问题。
+import random
+# 随机模块
+from sklearn.preprocessing import OneHotEncoder
+# 独热码
+import os
+# 不同的操作系统目录不同，os模块可以处理此问题
+import torch
+# pytorch框架
+import torch.nn as nn
+# nn是循环神经网络
+import torch.optim as optim
+# 实现各种优化算法的库
+import torch.nn.functional as F
+# torch的nn网络里边的函数库，比如距离函数、损失函数、正则化函数等
+from torch.utils.data import Dataset,DataLoader
+# Dataset定义torch的数据格式。loader有如下参数:(dataset, batch_size=1, shuffle=False, sampler=None, batch_sampler=None, num_workers=0, collate_fn=, pin_memory=False, drop_last=False, timeout=0, worker_init_fn=None)
+from torch.nn.utils.rnn import pack_padded_sequence,pad_packed_sequence
+# 长度不同的句子们打包成一条线/一条线拆分成几个长度不同的句子
+from torch.autograd import Variable
+# Variable是torch的基本构件
+import torch.utils.data
+# 如上上import，定义了torch的数据格式
+from torch.optim import lr_scheduler
+# lr_scheduler模块提供了根据epoch训练次数来调整学习率的方法
+from tqdm import tqdm
+# 进度条
+import pickle
+# 普通数据和python数据之间互相转换，dump是普通换python，load是反过来
+# pickle是类似于json的一种标准数据格式
+from nltk.stem import PorterStemmer
+# stem是词干提取，PorterStemmer是其中一种提取算法
+ps = PorterStemmer()
+from nltk.stem import SnowballStemmer
+# SnowballStemmer另一种词干提取算法
+sb = SnowballStemmer(&quot;english&quot;)
+import tensorflow_hub as hub
+# tensorflow_hub是tensorflow的hub库，里边有很多训练好的hub模型
+# module = hub.Module(&lt;&lt;Module URL as string&gt;&gt;, trainable=True)
+import keras.backend as K
+# keras可作为tensorflow，CNTK,Theano的应用程序接口。通过keras.json传递数据
+import sys
+# sys就是python和解释器打交道的系统。sys.argv是系统带入的参数，sys.version查看版本信息
 
-ls //显示名称
+# pip install ..  / / /  &gt; del/null
+# sys.path.insert(0,/ / /)
+import transformers
+# transformer模型</code></pre>
+<p>debug when import</p>
+<pre><code class="shell">Anaconda Prompt：
 
-cd SpringBoot_HelloWorld
+conda env list
+conda remove -n kaggle1 --all
+conda create -n kaggle1
+##conda install -n kag1 pytorch==1.2.0 torchvision==0.4.0 cudatoolkit=10.0 -c pytorch
+conda install -n kag1 pytorch==1.2.0 torchvision==0.4.0
+conda install -n kag1 tensorflow==1.15
 
+pip install keras==2.2.5
+# (conda安装会有bug，安装完keras==2.2.5之后报【&gt;set &quot;KERAS_BACKEND=&quot;】的问题:
+# “在D:\Anaconda3\envs\tensorflow\etc\conda\”目录下找到“activate.d\keras_activate.bat”和 
+# “deactivate.d\keras_deactivate.bat”文件，在每一行的开头都加上::全部注释掉)
 
-yum install maven
+conda install -n kag1 tensorflow-hub
+conda install -n kag1 spacy
+conda install -n kag1 gensim
+conda install -n kag1 wordcloud
+conda install -n kag1 category_encoders==1.2.6 
+conda install -n kag1 seaborn
+conda install -n kag1 nltk
+conda install -n kag1 transformers
 
-mvn -v
-
-mvn complie package</code></pre><h4 id="5-编译，运行"><a href="#5-编译，运行" class="headerlink" title="5.编译，运行"></a>5.编译，运行</h4><p>more src/main/resources/application.properties</p>
-<p>cp src/main/resources/application.properties src/main/resources/application-production.properties</p>
-<p>vim src/main/resources/application.properties</p>
-<p>vim src/main/resources/application-production.properties</p>
-<p>【修改配置文件为服务端配置】</p>
-<p>【编译】mvn package</p>
-<p>报错后改用：mvn clean compile package</p>
-<p>报错后改用：mvn compile package</p>
-<p>查看端口号netstat -a -n</p>
-<p>【运行】</p>
-<p>本次启动：</p>
-<p>java -jar -Dspring.profiles.active=production target/springboothellloworld-0.0.1-SNAPSHOT.jar</p>
-<p>直接启动：</p>
-<p>java -jar springboothellloworld-0.0.1-SNAPSHOT.jar</p>
-<hr>
-<h4 id="6-服务器连接mysql数据库"><a href="#6-服务器连接mysql数据库" class="headerlink" title="6.服务器连接mysql数据库"></a>6.服务器连接mysql数据库</h4><p>1.谷歌云sql，用Cloud Shell远端操作本机</p>
-<p>2.mysql -u root -p </p>
-<p>​    报错：Access denied</p>
-<p>3.尝试mysql -h 127.0.0.1 -P 3306 -u root -p</p>
-<p>​    报错：RROR 2002 (HY000): Can’t connect to local MySQL server through socket ‘/var/run/mysqld/mysqld.sock’</p>
-<p>4.apt-get update</p>
-<p>5.sudo apt-get install mysql-server</p>
-<p>​    如果不能sudo：  sudo passwd root重置密码</p>
-<p>6.RROR 2002没有解决</p>
-<pre><code class="sql">sudo /etc/init.d/mysqld sto</code></pre>
-<pre><code class="sql">sudo mysqld_safe --skip-grant-tables &amp;</code></pre>
-<pre><code class="sql">mysql -uroot</code></pre>
-<pre><code class="sql">use mysql;</code></pre>
-<pre><code class="sql">update user set password=PASSWORD(&quot;math1122&quot;) where User=&#39;root&#39;;</code></pre>
-<p>flush privileges;</p>
-<pre><code class="sql">quit</code></pre>
-<pre><code class="sql">sudo /etc/init.d/mysql stop
-...
-sudo /etc/init.d/mysql start</code></pre>
-<p>7.解决</p>
-<h4 id="7-检查端口号是否打开："><a href="#7-检查端口号是否打开：" class="headerlink" title="7.检查端口号是否打开："></a>7.检查端口号是否打开：</h4><p>1.控制面板-程序-打开或关闭windows功能 -勾选telent</p>
-<p>2.cmd - telent 192.168.1.1 3306</p>
-<h4 id="8-远程连接sql："><a href="#8-远程连接sql：" class="headerlink" title="8.远程连接sql："></a>8.远程连接sql：</h4><p>首先要在谷歌控制台SQL-用户-创建用户账号</p>
-<p>创建一个不限制ip的账号和密码，之后才能连接</p>
-<h4 id="9-项目在服务端持久运行"><a href="#9-项目在服务端持久运行" class="headerlink" title="9.项目在服务端持久运行"></a>9.项目在服务端持久运行</h4><p>nohup java -jar springboothellloworld-0.0.1-SNAPSHOT.jar&amp; &gt;/dev/null 2&gt;&amp;1 &amp;</p>
-<p>exit</p>
-<p>PID:2385</p>
-<p><code>ps</code> <code>-p 2385 -o etime</code>查看运行时间</p>
-<p>​    </p>
-<p>chmod +x springboothellloworld-0.0.1-SNAPSHOT.jar</p>
-<p>nohup java -jar -Dspring.profiles.active=production springboothellloworld-0.0.1-SNAPSHOT.jar &gt; /dev/null 2&gt; /dev/null &amp;</p>
-<h3 id="10-数据库连接不上："><a href="#10-数据库连接不上：" class="headerlink" title="10.数据库连接不上："></a>10.数据库连接不上：</h3><ol>
-<li>进入数据库的shell<ol>
-<li>grant all privileges on <em>.</em> to ‘root’@’%’ identified by ‘password’ with grant option;</li>
-</ol>
-</li>
-<li>flush privileges;</li>
-<li>关了VPN!!!!!</li>
-</ol>
+python 
+import nltk
+nltk.download(&#39;stopwords&#39;)
+</code></pre>
 
             <hr>
           </div>
@@ -259,7 +324,7 @@ sudo /etc/init.d/mysql start</code></pre>
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>
+                  <a class="hover-with-bg" href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -268,9 +333,7 @@ sudo /etc/init.d/mysql start</code></pre>
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>
-                
-                  <a class="hover-with-bg" href="/tags/java">java</a>
+                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
                 
               </span>
             
@@ -420,7 +483,7 @@ sudo /etc/init.d/mysql start</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "安装调试记录/网站部署记录&nbsp;",
+        "谷歌QA比赛/Torch_BL_1_import&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

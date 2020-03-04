@@ -136,30 +136,31 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/libingteam+%E8%AE%BA%E5%9D%9B/%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">libingteam+论坛/思路</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/8%20-%20Speech%20Synthesis/">
+        <p class="h4 index-header">Speech and language processing/8 - Speech Synthesis</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.思路1.处理用户权限思路利用@permission注解
-就把一个处理器放在dispatch servlet后边
-处理器会把打了主节点的请求按照相应配置存在请求处理器里，注入redis或者数据库，打到某个interface上，根据请求查询redis是否有正确的可以访问接口的data
-类@permission
-接口@permissionlimit
-@prehandler
-隔离了dispatch
-有两个注解
-@permissionlimit，有个参数是用来限制interface
-servlet封装一个请求的来和回，包装是http 包装tcp
-一个请求进来分到servlet
-现在是到dispachter
-@interface
-//前端发送请求给后端，如果有permisiion和permissionlimit的注解，就调用这个方法
-    //首先是precheck ，因为首先前端发送token和userid，如果无，抛出异常说没有登录
-    //user  role permit 等等ppt上有张图，利用五个表查出本用户权限
-    //掉完上文函数，就把权限放在request请求域里边</div>
+          <div class="index-text mb-1">8. Speech Synthesis - 语音合成（文字转语音）Speech Synthesis detail is as following:
+
+本单元讲解如何将文本转换成语音，主要分成如下四个任务：
+
+text normalization  文本标准化
+phonetic analysis 语音分析（把token化的词汇转换成音标）
+prosodic analysis 韵律分析( 把音标组成的集合拼凑地和谐一点)
+
+
+waveform synthesis 波形合成（让拼凑好的音标们-IR转wave-发音）
+
+8.1) Text NormalizationText normalization was combined as follwoing:
+
+sentence tokenization
+non-standard words
+homograph disambiguation
+
+8.1.1)Sentence tokenizationtokenization理解为把句子拆分成小块（token），token之间可以是被空格键分隔，也可以是被句号，逗号，或者单纯是被语义分隔，被token化</div>
         </div>
       </a>
 
@@ -170,13 +171,48 @@ servlet封装一个请求的来和回，包装是http 包装tcp
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/libingteam+%E8%AE%BA%E5%9D%9B">libingteam+论坛</a>&nbsp;
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/6%20-%20HMM%20&%20HEMM/">
+        <p class="h4 index-header">Speech and language processing/6 - HMM &amp; HEMM</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">6.Hidden Markov and Maximum Entropy Models（HMM,MEMM）HMM and HEMM are both sequence classifiers.
+Sequence classifier or sequence labeler is a model whose job is to assign some label or class to each unit in a sequence.The FST we studied in Chapter 3 is a kind of non-probabilisitic sequence classifier.
+We have seen on important sequence classification task:POS tagging.
+This chapter is roughtly divided into 2 section:HMM , MEMM.
+6.1) Markov Chains - 马尔科夫链 - 详见概念6 - 马尔科夫链
+6.2)The Hidden Markov Model</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java">java</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -187,28 +223,40 @@ servlet封装一个请求的来和回，包装是http 包装tcp
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/libingteam+%E8%AE%BA%E5%9D%9B/%E8%AE%BA%E5%9D%9B%E9%A1%B9%E7%9B%AE%E7%9F%A5%E8%AF%86%E7%82%B9/">
-        <p class="h4 index-header">libingteam+论坛/论坛项目知识点</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/5%20-%20Part-of-Speech%20Tagging/">
+        <p class="h4 index-header">Speech and language processing/5 - Part-of-Speech Tagging</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">SpringBootHelloWorldProject Struct1.controller–控制页面组织数据
-2.model–按照数据库的数据结构设置的对象
-3.mapper–mybatis控制model对数据库的crud
-4.service：组装数据库中不同的表格（mapper）
-5.dto：类和类之间传输数据
-4.html – 控制前端页面的装修
-5.migrate–flyway控制数据库的版本
-mybatis持久层框架，java操作数据库的工具
-通常在mapper文件夹中使用
-@Mapper
-public interface UserMapper {
-    @Insert(&quot;insert into user(name,account_id,token,gmt_create,gmt_modified) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified})&quot;)
-    void insert(User user);
+          <div class="index-text mb-1">5.Part-of-Speech TaggingIntroduce three algorithms:
 
-@Select(&quot;select * from user </div>
+rule-based tagging
+HMM tagging
+transformation-based tagging
+
+词性标注是一项消歧任务，很多情况下词具有多于一个的意思，我们的工作是为这种情况找到正确的标签。
+5.2）Tagset for EnglishThere are 3 different tagset.
+
+45-tag Penn Treebank tagset
+61-tag C5 tagset
+87-tag tagset 
+
+
+Small Tagset:
+
+
+
+Middle Tagset
+
+
+
+Large Tagset
+
+
+
+5.3) Part-of-Speech TaggingSometimes,tagging can be difficult（unambiguous）,For example ,book is ambiguous.Book can be a noun as a read book,or be a verb, as booking a hotel.</div>
         </div>
       </a>
 
@@ -219,15 +267,13 @@ public interface UserMapper {
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/libingteam+%E8%AE%BA%E5%9D%9B">libingteam+论坛</a>&nbsp;
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/springboot">springboot</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -238,32 +284,23 @@ public interface UserMapper {
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/flink/%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">flink/思路</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/3%20-%20Word%20&%20Transducers/">
+        <p class="h4 index-header">Speech and language processing/3 - Word &amp; Transducers</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">flink学习思路:
-tpcds
+          <div class="index-text mb-1">3.Word &amp; Transducers3.1)Word
+Before processing, words in speech should be Stemming、lemmatization and tokenization.
+Tokenization means put”New York”in one word,separate “I`m” into “I” and “am”。
+Using FSA to build Stemming net of words
 
-sql
+3.2)FST : Finite state transducers.
+I define it my way:
+If you input “aa”,”b”will be output,and the state in still “q0”,if you input “b”,”a or b”will out put,state will be “q1”.For example,if you input “aa aa b a”，output is “b b a ba”.
 
-parser and validator   –&gt;把sql构建为operator expression tree
-
-adapter                                    –&gt;包含不同数据源
-
-model                              –&gt;数据源物理属性
-schema                            –&gt;在model中找到的关于数据格式和布局的定义
-schema factory              –&gt;从model中获得源数据信息,构建schema
-
-
-优化器optimizer                  —-&gt;优化器的组件是可扩展的(关系算子,规则,cost模型,数据)
-
-planner rule                  —&gt;to transform operator expression tree 
-metadata providers
-planner engines              </div>
+Defination with details </div>
         </div>
       </a>
 
@@ -274,15 +311,13 @@ planner engines              </div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/flink">flink</a>&nbsp;
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/calcite">calcite</a>&nbsp;
-          
-            <a href="/tags/flink">flink</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -293,22 +328,23 @@ planner engines              </div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/libingteam+%E8%AE%BA%E5%9D%9B/Debug%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">libingteam+论坛/Debug记录</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/4%20-%20N-Grams/">
+        <p class="h4 index-header">Speech and language processing/4 - N-Grams</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">0.问题解决记录0.1链接不上下文远程数据库–建立本地数据库，修改了application-dev.yml,
-  datasource:
-#    url: jdbc:mysql://127.0.0.1:3306/libingteam?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC
-##    url: jdbc:log4jdbc:mysql://120.78.150.152:3306/checky?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC
-#    username: root
-#    password: 123456
-0.2链接本地数据库之后时区报错报错信息如下
-The server time zone value &#39;�й���׼ʱ��&#39; is unrecognized or represents more than one time zone
-–参考之前数据库配置，在配置语句最后加上?use</div>
+          <div class="index-text mb-1">4 - N-GramsN-gram is a language model,is a N-token sequence of words.
+1.the way to calculate conditional probability.For example,how can we calculate P(the|its water is so transparent that) ?
+Method1): counting 2 sentences
+Counting the times of “its water is so transparent that the” and “its water is so transparent that” in the whole corpus.It works sometime,but language is creative,many sentences is not exist.
+ 
+Method2): chain rule of probability,then use method 1.
+
+notice that:
+
+means  P(w1w2</div>
         </div>
       </a>
 
@@ -319,15 +355,13 @@ The server time zone value &#39;�й���׼ʱ��&#39; is unrecognized or
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/libingteam+%E8%AE%BA%E5%9D%9B">libingteam+论坛</a>&nbsp;
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE">后端项目</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -338,18 +372,23 @@ The server time zone value &#39;�й���׼ʱ��&#39; is unrecognized or
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/flink/%E8%B0%83%E5%8F%82%E5%A4%A7%E6%B3%95/">
-        <p class="h4 index-header">flink/调参大法</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/23%20-%20QA/">
+        <p class="h4 index-header">Speech and language processing/23 - QA</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">jm内存 + tm内存 = 26分别是[2,24]  [4,22],[3+25]要挂
-每个tm的slot :1 – 8 ,[1,8,4,2]    
-并发度: 1-9,[3,7,1,5] 
-打包命令:
-cp ~/.m2/repository/org/apache/parquet/parquet-column/1.8.2/parquet-column-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-hadoop/1.8.2/parquet-hadoop-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-common/1.8.2/parquet-common-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-encoding/1.8.2/parquet-encoding-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/</div>
+          <div class="index-text mb-1">23 - Question Answering and Summarization本章介绍基于事实的回答问题系统+文章的总结系统。如果我们查找的是结构化的数据，可用上一章介绍的信息提取算法来词查找。如果查找的是非结构化的信息，则需要用本章介绍的“回答问题系统”处理，非结构化信息的查找就是一种“使用非正式的单词或句子”来表达查找需求的场景，这种场景下客户通常期望能返回一些回答or一些文本，或something in between。
+第一个session介绍向量空间模型，第二个session介绍基于事实的一问一答系统。第六个session介绍基于句子的总结系统/基于注意力机制的总结系统。
+23.1 Information Retrieval 信息检索术语定义
+文档document指的是一个有索引的，可被检索系统直接定位的最小单元，对应到web就是一个网页
+集合collection指的是一系列用来满足用户需求的文档documents
+term指的是一个词汇元素。
+query指的是一系列terms
+
+词向量空间
+词义相近的在向量空间中距也近，概念在CS224N中学过了。空间和点积的直观图如下</div>
         </div>
       </a>
 
@@ -360,13 +399,134 @@ cp ~/.m2/repository/org/apache/parquet/parquet-column/1.8.2/parquet-column-1.8.2
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/flink">flink</a>&nbsp;
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/24%20-%20%E5%AF%B9%E8%AF%9Dagent/">
+        <p class="h4 index-header">Speech and language processing/24 - 对话agent</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">24 - Dialogue and Conversational Agents这一章介绍问答助手的基本结构+算法。Session24.1介绍人类对话的基本概念，如对话的交替，表达技巧，grounding，对话结构等。Session24.2介绍口语系统的组件和评价标准。Session24.5和Session24.6介绍信息状态架构和马尔科夫对话代理模型，以及高阶话题如BDI范式（belief - desire -intention）信念 - 渴望 - 意图范式。
+24.1 人类对话的Properties24.1.1 Turns and turn-talking人类对话的模式是一个人说完了之后另一人说，交替进行，通常情况下，两人对话的重叠部分不超过5%。两个人交替间的停顿时间在100ms左右。为了实现这种模式，人类对话通常有如下三个规律来规范交替的进行，非常显而易见。
+
+通常一个比正常情况更长的听读怒会有额外的表达效果，如下所示一个长停顿代表了不想积极回应问题。
+
+24.1.2 Language as Action:Speech Acts 语言是会产生后果的行动语言能对现实世界产生具体影响</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/22%20-%20Information%20Extraction/">
+        <p class="h4 index-header">Speech and language processing/22 - Information Extraction</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">22 - Information Extraction本章主要概念：
+
+NER：命名实体识别
+relation detection and classification：关系检测与分类
+event detection and classification：事件检测与分类
+temporal expression recognition：事件表达式识别
+template filling：模板填充
+
+22.1)NER : 命名实体识别命名实体识别分类的举例
+
+22.1.2）NER as Sequence Labeling
+标准的命名实体识别的步骤是使用word-by-word sequence labeling任务。其实进行NER的方法与第五章的POS tagging和十三章的syntactic chunking方法相同。
+PS：提一下第五章的POS tagging：使用的还是HMM base 的 维特比算法（decoding）。
+
+问题的本质如下所示，观察到句子/词语，猜测对应的词性/NER类型。也就是观察到结果，猜测其隐状态。
+
+
+具体的 word-by-word IOB-style t</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/2%20-%20Regular%20expressions%20and%20automata/">
+        <p class="h4 index-header">Speech and language processing/2 - Regular expressions and automata</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2 - Regular expressions and automata2.2) Relationship between FSA and RE
+Any regular expression(RE) can be implemented as a finite state automata(FSA),symmetrically,any finite-state automata can be described with a regular expression.
+Both RE and FSA can be used to describe regular languages:
+
+Using FSA to understand sheep talk
+sheep language can be defined as any string from the following set:
+baa!
+baaaa!
+baaaaa!
+baaaaaa!
+baaaaaaa!
+baaaaaaaa!
+baaaaaaaaa!
+…
+Sheep language can be described as fol</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/flink">flink</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -377,69 +537,15 @@ cp ~/.m2/repository/org/apache/parquet/parquet-column/1.8.2/parquet-column-1.8.2
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/flink/Calcite/">
-        <p class="h4 index-header">flink/Calcite</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/11%20-%20Computational%20Phonology/">
+        <p class="h4 index-header">Speech and language processing/11 - Computational Phonology</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Apache Calcitecalcite是数据库的解析器+优化器。
-数据库的三大组件：
-
-解析器
-
-执行引擎
-
-优化器—–&gt;数据库把关系表达式转换为执行计划的组件,决定数据库性能
-
-基于规则的优化器
-
-根据规则优化关系表达式,产生最终执行计划
-只认规则,对数据不敏感,易局部优全局差
-
-
-基于代价的优化器
-
-根据规则优化关系表达式,产生多个执行计划,计算各计划cost,择优而动
-
-灵活智能,多被采用
-
-
-
-
-
-
-Calcite优化器是:
-
-基于代价的优化器
-组件有：
-JDBC Client
-JDBC Server
-SQL Parser and validator
-Operator Expression 
-Query Optimizer
-两个插拔组件
-Metadata provider
-Pluginable Rules
-
-
-
-
-
-
-
-
-
-
-Calcite理解
-是编程框架，因为有可插拔的优化rules，有对接底层数据源的Adaptor模式
-是工具库，因为flink把它嵌入自身的sql处理流程中
-
-
-
-优化器Optimizer的三个元件
-planner rule            </div>
+          <div class="index-text mb-1">11. Computational Phonology本章较艰涩，对NLP发文帮助不大，Skip，以后需用再补。
+</div>
         </div>
       </a>
 
@@ -450,318 +556,9 @@ planner rule            </div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/flink">flink</a>&nbsp;
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/calcite">calcite</a>&nbsp;
-          
-            <a href="/tags/flink">flink</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/flink/hadoop,Storm%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">
-        <p class="h4 index-header">flink/hadoop,Storm相关概念</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.hadoop概念
-大数据概念
-无法在一定时间范围内用常规的工具进行捕捉管理和处理数据的集合
-需要用新的处理模式才能有更强的决策力洞察力的海量高增长的多样化的信息资产
-
-
-mysql:只能储存千万条数据,不能搭建大量的集群.处理海量数据时速度极慢
-
-
-MapReduce定义
-是一个分布式运算程序的编程框架
-是用户基于hadoop的数据分析应用的核心框架
-Mapreduce核心功能是将用户编写的业务逻辑代码和自带默认组件整合成一个完整的分布式运算程序,并发运行在一个hadoop集群上
-
-
-MapReduce优点
-易于编程
-简单实现一些接口,就可以完成一个分布式程序,跟写一个串行程序一样
-
-
-扩展性
-计算资源得不到满足时,增加机器扩展计算能力
-
-
-高容错性
-其中一台机器down了,可把上边的计算任务转移到其他节点上去,不至于导致任务失败
-
-
-适合PB级数据的离线处理
-
-
-MapReduce缺点
-不擅长实时计算
-不能像mysql一样在毫秒内返回计算结果
-
-
-不擅长流式计算
-流计算的输入数据是动态的,MapReduce输入数据是静态的.这由MapReduce自身的设计特点决定
-不擅长做DAG</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/flink">flink</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/calcite">calcite</a>&nbsp;
-          
-            <a href="/tags/flink">flink</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/flink/%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">
-        <p class="h4 index-header">flink/培训笔记</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.1为什么要学习Apache FLink讲师:陈守元 阿里巴巴高级产品专家 
-
-概念
-
-framework框架定义:只写业务逻辑,其他交给框架就可以执行
-
-有状态流计算
-当前的计算需根据之前沉淀的数据进行,沉淀的数据就是状态
-
-例如select操作就是无状态的,进来–计算–输出–下一个
-例如计算一个小时内某商品的点击量就是有状态的计算
-例如机器学习的训练等操作就是有状态的计算
-
-
-四层flink API                (越往下越贴近底层)
-
-SQL
-Table  Api(dynamic tables)
-DataStream Aip(streams,windows)
-ProcessFunction(event,time,state)
-
-
-flink和storm对比
-
-fllink把含状态的计算完全抽象在了系统中,storm想要含状态计算需要在引擎外套reddis或Hbase     
-
-
-Batch analytics
-
-处理批数据时提到类似mapreduce        
-
-
-学习方法
-
-先实践再理论。尝试构建复杂的Flink Application项目
-性学习更适</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/flink">flink</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/flink">flink</a>&nbsp;
-          
-            <a href="/tags/%E6%B5%81%E8%AE%A1%E7%AE%97">流计算</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Spring%E7%B3%BB%E5%88%97/1%E6%A6%82%E8%BF%B0/">
-        <p class="h4 index-header">Spring系列/1概述</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1概述1.1 Spring框架的优点
-spring的核心是IOC(控制反转)和AOP(面向切面编程)
-解耦,方便开发
-Spring是个大工厂,可以创建各种对象,可以维护对象之间的依赖关系
-
-
-AOP编程的支持
-面向切面编程可以方便的实现权限控制,监控等功能
-
-
-声明式事务的支持
-只需要通过配置就可以完成对事务的管理,无需手动编程
-
-
-方便程序的测试
-支持Junit
-
-
-方便与其他框架集成
-Spring不排除各种框架,内部提供了(Struts,Hibernate,MyBatis,Quartz等)
-
-
-降低了JAVA  EE API的使用难度
-Spring对 JavaEE 开发中非常难用的API(JDBC,JavaMail,远程调用等)提供了封装,降低了使用难度
-
-
-
-1.2 Spring体系结构
-Core Container
-Beans:管理Beans
-Core核心
-Context上下文
-Expression Language :EL表达式,表达形语言
-
-
-AOP
-AOP:切面编程
-Aspects:AOP框架
-Instrumentation:本视频不学
-
-
-Data Access:数据库</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/spring%E7%B3%BB%E5%88%97">spring系列</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/spring">spring</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Spring%E7%B3%BB%E5%88%97/2.IOC%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">
-        <p class="h4 index-header">Spring系列/2.IOC入门案例</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.入门案例IOC2.2目标类
-
-提供UserService接口和实现类
-
-UserService.java – 接口
-
-
-获得UserService实现类的实例
-
-UserServiceImpl.java –实现 
-
-
-配置文件
-
-位置:任意,一般在classpath下
-名称:任意,开发中常用applicationContext.xml
-内容:添加schema约束
-beans.xml
-&lt;bean id=”userServiceId” class=”a_ioc.UserServiceImpl”&gt;&lt;/bean&gt;
-id :bean的名称
-class:bean的全类型地址
-
-
-
-
-测试
-
-@Test 是测试入口,类似于main()函数的程序接口
-
-Spring之前和Spring之后对比
-
-之前
-
-@Test
-    public void demo01(){
-        //之前开发
-          UserService userService = new UserServiceImpl();
-        userService.addUser();
-}</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/spring%E7%B3%BB%E5%88%97">spring系列</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/spring">spring</a>&nbsp;
-          
-            <a href="/tags/IOC">IOC</a>&nbsp;
-          
         
       </div>
     </div>
@@ -771,7 +568,7 @@ Spring之前和Spring之后对比
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/5/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

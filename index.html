@@ -136,6 +136,102 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/04/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Concept_EmbeddingMatrix/">
+        <p class="h4 index-header">谷歌QA比赛/Concept_EmbeddingMatrix</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">embeddingembedding就是用向量表示概念，也就是CS224N开篇讲了很久的word2vec思想。
+如下各个颜色都是三原色的RGB向量表示，语料库中的词汇也可以用向量表示。
+
+颜色用RGB表示，是有物理解释的，但语料库中的词汇没有，语料库中的词汇的向量表示该怎么求？
+使用语料和模型来训练词向量，把嵌入矩阵embedding matrix当成模型参数的一部分，通过词语词之间的共现或者上下文关系来优化模型参数，最终得到的矩阵就是所有词的词向量。
+那么，“最初的词向量如何来的？”其实最初的词向量都是瞎鸡巴填的，随机初始化–前向传播计算损失函数–反向传播求嵌入矩阵里各个参数的导数，然后梯度下降更新之。这个训练过程和一般的模型没有区别。
+表意接近的向量数值上也接近，表意满足加减关系的向量基本也满足。
+
+embedding(复仇者联盟)和embedding(钢铁侠)的距离就很近
+
+Embedding(马德里)-Embedding(西班牙)+Embedding(法国)≈Embedding(巴黎)
+
+embedding能用低维向量对概念进行编码还能保留含义的特点适合深度学习。
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/04/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Torch_BL_3_Embedding/">
+        <p class="h4 index-header">谷歌QA比赛/Torch_BL_3_Embedding</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Embedding_Matrixdef get_coefs(word,*arr):
+    return word,np.asarray(arr,dtype=&#39;float32&#39;)
+
+def load_embeddings(path):
+    with open(path,&#39;rb&#39;) as f:
+        emb_arr = pickle.load(f)
+    return emb_arr
+# pickle.load(f)是python的标准导入数据的格式
+
+def build_matrix_adv(embedding_path : str = &#39;&#39;,
+                     embedding_path_spellcheck: str = r&#39;f:\embeddings\wiki-news-300d-1M\wiki-news-300d-1M.vec&#39;,
+                     word_dict : dict None,
+                     lemma_d</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/04/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%90%8D%E7%9A%84%E6%96%B9%E5%BC%8F/">
         <p class="h4 index-header">安装调试记录/批量修改文件后缀名的方式</p>
         
@@ -170,20 +266,20 @@ ren *.java *.md
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/04/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Torch_BaseLine_Embed/">
-        <p class="h4 index-header">谷歌QA比赛/Torch_BaseLine_Embed</p>
+      <a href="/2020/03/04/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Torch_BL_2_Preprocessing/">
+        <p class="h4 index-header">谷歌QA比赛/Torch_BL_2_Preprocessing</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Baseline_import_Embed# 定义钟形函数
+          <div class="index-text mb-1">Preprocessing# 定义钟形函数
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 #无效字符
 puncts = [&#39;,&#39;, &#39;.&#39;, &#39;&quot;&#39;, &#39;:&#39;, &#39;)&#39;, &#39;(&#39;, &#39;-&#39;, &#39;!&#39;, &#39;?&#39;, &#39;|&#39;, &#39;;&#39;, &quot;&#39;&quot;, &#39;$&#39;, &#39;&amp;&#39;, &#39;/&#39;, &#39;[&#39;, &#39;]&#39;, &#39;&gt;&#39;, &#39;%&#39;, &#39;=&#39;, &#39;#&#39;, &#39;*&#39;, &#39;+&#39;, &#39;\\&#39;, &#39;•&#39;,  &#39;~&#39;, &#39;@&#39;, &#39;£&#39;,
- &#39;·&#39;, &#39;_&</div>
+ &#39;·&#39;, &#39;_&#39;, &#</div>
         </div>
       </a>
 
@@ -243,152 +339,6 @@ index-url = https://pypi.tuna.tsinghua</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/26/PyTorch/8.Optimizer%E5%8A%A0%E9%80%9F%E8%AE%AD%E7%BB%83/">
-        <p class="h4 index-header">PyTorch/8.Optimizer加速训练</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">8.Optimizer
-如图，SGD并不是效果最好的优化器。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/26/PyTorch/7.%E6%89%B9%E8%AE%AD%E7%BB%83/">
-        <p class="h4 index-header">PyTorch/7.批训练</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.批训练神经网络有时候需要训练的数据量太大，所以把数据量分割成小batch再训练，效果会好很多。 
-import 
-import torch.utils.data as Data
-# data就是进行小批训练的模块
-
-BATCH_SIZE = 5
-#定义批的大小
-
-x = torch.linspace(1,10,10)
-y = torch.linsapce(10,1,10)
-#x和y都是数据，从1到10，分均十份的数据
-
-torch_dataset = Data.TensorDataset(data_tensor = x,target_tensor = y)
-# data_tensor是要算的tensor，target_tensor是计算目标的时候对比用的tensor
-loader =  Data.DataLoader(
-    dataset = torch_dataset,
-    batch_size = BATCH_SIZE,
-    shuffle = True            #shuffle决定每次训练是否打乱顺序
-)
-
-for epoch in range(3)</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/26/PyTorch/6.%E4%BF%9D%E5%AD%98%E6%8F%90%E5%8F%96/">
-        <p class="h4 index-header">PyTorch/6.保存提取</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">6.保存和提取假设现在已经快速搭建并且训练好了神经网络。接下来想做的就是提取并保存现在的状态，以便以后继续训练。（不可能让电脑一直开着神经网络hold在那里）。
-要实现的是
-
-保存功能def save（）
-提取功能def restore_net()
-提取功能def restore_params()
-
-import lib
-import torch
-from torch.autograd import Variable
-import matplotlib.pyplot as plt
-生成随机数种子，构造数据
-torch.manual_seed(1)
-
-x = torch.unsqueeze(torch.linspace(-1,1,100),dim=1)
-y = x.pow(2) + 0.2*torch.rand(x.size())
-x,y = Variable(x,requires_grad = False),Variable(y,requires_grad=False)
-构造保存功能def save（）
-def save():
-net1 = torch.nn.Sequential(  </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/26/Python/PyCharm%E8%AE%BE%E7%BD%AE/">
         <p class="h4 index-header">Python/PyCharm设置</p>
         
@@ -423,134 +373,27 @@ net1 = torch.nn.Sequential(  </div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/26/PyTorch/5.%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-        <p class="h4 index-header">PyTorch/5.快速搭建神经网络</p>
+      <a href="/2020/02/25/Python/Pytorch%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+        <p class="h4 index-header">Python/Pytorch基本操作</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">5.快速搭建神经网络两个代码块对比，做的事情是一样的，明显第二个代码块简单的多。torch.nn.Linear(2,10)就是一个输入10，输出2的神经网络层,torch.nn.ReLU()就是一层激励函数
-# method 1
-class Net(torch.nn.Module):
-    def __init__(self,n_features,n_hidden,n_output)；
-    super(Net,self).__init__()
-    self.hidden = torch.nn.Linear(n_feature,n_hidden)
-    self.predict = torch.nn.Linear(n_hidden,n_output)
-
-    def forward(self,x):
-    x = F.relu(self.hidden(x))
-    x = self.predict(x)
-    return x
-
-net1 = Net(2,10,2)
-net2 = torch.nn.Sequential(    #Sequential的意思是在这个括号</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/25/PyTorch/4.%E5%88%86%E7%B1%BB/">
-        <p class="h4 index-header">PyTorch/4.分类</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">4.分类import torch
-import torch.autograd import Variable
-import torch.nn.functional as F
-import matplotlib.pyplot as plt
-
-x,y = Variable(x),Variable(y)
-n_data = torch.ones(100,2)   # 初始矩阵，全部是ones
-x0 = torch.normal(2*n_data,1) # 初始化，图中上堆数据都在这里了
-y0 = torch.zeros(100) # x0分类标签，初始值都是0
-x1 = torch.normal(-2*n_data,1) # 初始化，图中下堆数据都在这里了
-y1 = torch.zeros(100) # x1分类标签，初始值都是1
-x = torch.cat((x0,x1),0).type(torch.FloatTensor)
-y = torch.cat((y0,y1),).type(torch.LongTensor)
-
-x,y = Variable(x),Variable(y)
-#把数据都放</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-25&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/25/PyTorch/3.%E5%9B%9E%E5%BD%92/">
-        <p class="h4 index-header">PyTorch/3.回归</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">3.回归import torch
+          <div class="index-text mb-1">1.Variable变量variable可以想象成是篮子，tensor是鸡蛋。鸡蛋从一个篮子pass到另一个篮子时，就会构建一个计算图纸。
+目前的深度学习框架大部分都基于计算图
+一张计算图谱就是一个有向无环图，图中的节点主要是Variable。
+想要让tensor作为一个神经网络的参数，首要就是把tensor转换为Variable类型。
+只有variable节点可以被神经网络反向传播优化到，其他的占位符和常亮节点不可以被优化到。
+如下代码中，requires_grad 这个参数代表此节点是需要反向传播优化，通常都选True。
+import torch
 from torch.autograd import Variable
-import torch.nn.functional as F
-import matplotlib.pyplot as plt
 
-x = torch.unsqueeze(torch.linspace(-1,1,100),dim=1)
-#为什么要用.unsqueeze？因为torch只能处理二维的数据，unsqueeze可以把一维的数据转换成二维的
-
-y = x.pow(2) + 0.2*torch.rand(x.size())
-#y是x的二次方加上一些随机噪声
-
-x,y = Variable(x),Variable(y)
-# x和y都只能转换成Variable才能被torch处理
-# 新版torch已经不需要转换成Variable了，可以直接处理
-
-plt.scatter(x.data.numpy(),y.data.numpy())
-#plt.scatter就是打印散点图
-plt.show()
-
-#定义神经网络的层
-class Net(torch.nn.Module):
-    d</div>
+tensor = torch.FloatTensor([[1,2],[3,4]])
+variable = Variable(tensor,requires_grad=True)
+2.激励函数
+如上，激励函数是一个非线性的函数，是神经网络中非线性化的手段。每一层神经网络的输出结果都进入激励函数，激励函数将它们映射到下一层的输入中。
+from torch.autogra</div>
         </div>
       </a>
 
@@ -561,13 +404,148 @@ class Net(torch.nn.Module):
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+            <a href="/categories/python">python</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Concept_Transformer/">
+        <p class="h4 index-header">谷歌QA比赛/Concept_Transformer</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">TransformerTransformer改进了RNN的训练慢的缺点，加入了自注意机制，充分发挥了DNN的优点，提升模型准确率。Transformer由论文《Attention is All you need》提出。有Tensorflow和Pytorch版本。
+宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。
+
+拆开这个黑箱，发现里边是由编码和解码组件构成。
+
+编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。
+1.编码器详解像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
+
+词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
+
+开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
+2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Torch_BL_1_import/">
+        <p class="h4 index-header">谷歌QA比赛/Torch_BL_1_import</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Baseline_importimport Lib
+import numpy as np
+#numpy是主要用于数组计算，线性代数，傅里叶变换等。
+import pandas as pd
+#pandas基于numpy，可以处理高纬数据
+from sklearn.manifold import TSNE
+#sklearn是机器学习中常用的第三方模块，对常见的机器学习算法进行了封装，包括回归、降维、分类、聚类等
+#sklearn.manifold是流形学习，非线性降维的手段。最简单的降维手段是随机投影，但是会导致结构丢失。
+#manifold learning是一种类似主成分分析（PCA）的线性框架，不会错失数据结构中的非线性项
+# TSNE提供了一种画图方式，让高维的数据降低为二维画出来
+import seaborn as sns
+# 基于matplotlib的画图工具
+import glob
+# glob是查找模块。支持空格 ，问号？，方括号[]这三个通配符。
+# 空格代表0个或者多个字符，问号？代表一个字符，[]代表范围，例如0-9.
+# glob主要是两个方法，glob方法获（取全</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
+        <p class="h4 index-header">杂谈/王威廉对博士生的要求</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Hiring PhD students
+Q: What’s your research interest? 
+A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/phd%E7%94%B3%E8%AF%B7">phd申请</a>&nbsp;
+          
+            <a href="/tags/UCSB">UCSB</a>&nbsp;
           
         
       </div>
@@ -578,7 +556,7 @@ class Net(torch.nn.Module):
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

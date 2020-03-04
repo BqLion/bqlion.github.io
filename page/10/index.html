@@ -136,29 +136,107 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Python/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-        <p class="h4 index-header">Python/正则表达式</p>
+      <a href="/2020/02/24/CS229/10.%E8%81%9A%E7%B1%BBClustering/">
+        <p class="h4 index-header">CS229/10.聚类Clustering</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">正则表达式定义:简洁表达一组字符串的表达式
-优势:简洁,一行胜千言
-用途:
+          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
+如图就是聚类问题
+左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
+10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
 
-文本处理
+K-均值是一个迭代算法
+
+设想我们将数据聚集成n组,选择k个随机的点为聚类中心
+
+对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
+
+然后开始迭代:
+
+每次计算一个组的平均值,将中心点移动到平均值的位置
+如此反复几次中心点的位置就不再变化
+如下图所示
 
 
-表达文本信息特征
-查找/替换字符串
-匹配字符串的全部或者部分
-
-常用符号（百度百科版）
 
 
 
-常用操作符正则表达式实例
+10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
+因此K均值的代价函数为:
+
+10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
+1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
+2.随机选择K个训练实例,然后令K个聚类中心等于他们
+K-均值算法的一个问题在于,他可能停留在某个</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E8%81%9A%E7%B1%BB">聚类</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
+        <p class="h4 index-header">CS229/2.正规方程</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">CS229—正规方程1.定义
+​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
+
+正规方程求解参数矩阵的公式:
+
+2.正规方程法和梯度下降法的对比
+
+梯度下降的特点
+
+要设置学习率α
+多次迭代
+工作地非常均衡
+适合特征变量很多的时候用
+要求参数归一化
+
+
+正规方程法
+
+不用设置学习率
+不用迭代
+需要计算
+适合特征变量不超过1000时用
+不要求参数归一化,如下图
+
+
+
+有些较复杂问题不能使用正规方程法,只能使用梯度下降
+
+
+
 </div>
         </div>
       </a>
@@ -170,15 +248,15 @@
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/python">python</a>&nbsp;
+            <a href="/categories/CS229">CS229</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/python">python</a>&nbsp;
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
-            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a>&nbsp;
+            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
           
         
       </div>
@@ -189,86 +267,23 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E4%BF%AE%E6%94%B9conda%E6%BA%90_%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">安装调试记录/修改conda源_下载问题</p>
+      <a href="/2020/02/24/CS229/11.%E9%99%8D%E7%BB%B4/">
+        <p class="h4 index-header">CS229/11.降维</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">首次改为国内源：打开cmd
-conda config –add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/conda config –add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forgeconda config –add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/conda config –add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/conda config –add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/conda config –add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forg</div>
-        </div>
-      </a>
+          <div class="index-text mb-1">11.降维11.1 动机一：数据压缩例如有两个特征，一个是厘米，一个是英寸，这个时候可以抛弃其中一个特征，将二维降成一维
+利用投影的方法可以将数据降低为任意想要的维度
+11.2主成分分析问题PCA主成分分析是最常见的降维算法
+步骤：
+找到一个方向向量，当所有的数据投射到该向量时，我们希望投射的平均均方误差最小，方向向量是一个经过原点的向量，而投射误差是从特征向量向该方向作垂线的长度
+左边是线性回归，右边是PSA
 
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
+计算方法
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/WebScience%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/">
-        <p class="h4 index-header">NLP发文/WebScience讲座笔记</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Web Science讲座笔记
-写论文步骤
-在感兴趣的方向提出问题和假设
-验证前人是否已经做过？
-设计实验
-做实验,收集数据
-写论文
-
-
-开题案例
-案例:人工智能
-阅读中科院，工程院前沿报告,阅读各种综述，阅读下文专项报告
-两个月更新一次:ESI Reaserach front专项报告
-在web产品里找到,网页右边可以关键词聚类
-AI子课题:自然语言处理,主页可显示高被引用论文(数据结构网络的核心)
-能顺便找到本学科的raising star
-
-在web science里写检索式,如何寻找文章引用网络
-https://www.clarivate.com.cn/e-clarivate/wos_video_wos_research.htm
-
-
-
-如何在上行的检索之后筛选自己需要的信息?(上个结果返回30w+文章)
-
-检索结果:
-这个功能能找到哪些基金在资助哪些项目
-哪些导师在做,找导师/合伙人利器
-
-分析机构:
-能找到哪些机构近几年发表了哪些文章
-
-分析机构中的作者
-
-
-
-
-
-
-
-
-几个产品按钮
-在网页上方有个文章被引用次数的功能,发布在哪个期刊
-
-
-
-左侧功能栏:
-review是学科综述</div>
+</div>
         </div>
       </a>
 
@@ -279,38 +294,16 @@ review是学科综述</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
+            <a href="/categories/CS229">CS229</a>&nbsp;
           &nbsp;
         
         
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/%E8%AF%AD%E8%A8%80%E5%AD%A6%E8%8D%90%E4%B9%A6/">
-        <p class="h4 index-header">NLP发文/语言学荐书</p>
-        
-        
+          <i class="iconfont icon-tag"></i>
           
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">语言学方向书籍推荐–Serena Gao首先，做nlp不一定要很懂语言学，也不一定要跟语言学扯上关系。nlp可以仅是data mining，features engineering, 也的确有很多work目前在用文本或者对话做为数据集，然后用统计学方法实现目的，比如deep learning 。在某些任务上统计学模型功不可没，比如machine translation, speech recognition, question answering, etc. 
-如果题主只是对nlp的应用感兴趣，想泛泛了解一下目前进展的话，以上几个回答已经非常详细了，我接下来的回答可以不用看。许多主流大公司目前的力度都在deep learning, 学好nlp基本知识，做工程就够了(当然你还需要cs的background)， 语言学的东西不用太深入研究。
-————————————-3.17 update——————————-
-看了一下其他答案，大家的讨论和见解都很有趣，上来更新一点。
-大多数人对nlp和语言学联系的了解，在于认为rule-based的nlp就是基于语言学。的确rule-based是语言学</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E9%99%8D%E7%BB%B4">降维</a>&nbsp;
+          
         
       </div>
     </div>
@@ -320,20 +313,50 @@ review是学科综述</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%9B%86%5BDone%5D/">
-        <p class="h4 index-header">NLP发文/深度学习论文集[Done]</p>
+      <a href="/2020/02/24/CS229/4.%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
+        <p class="h4 index-header">CS229/4.逻辑回归</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">作者：风雨兼程
-链接：https://zhuanlan.zhihu.com/p/25549497
-来源：知乎
-1 深度学习历史和基础1.0 书籍█[0] Bengio, Yoshua, Ian J. Goodfellow, and Aaron Courville. “Deep learning.” An MIT Press book. (2015). [pdf] (Ian Goodfellow 等大牛所著的教科书，乃深度学习圣经。你可以同时研习这本书以及以下论文) ★★★★★
-地址：https://github.com/HFTrader/DeepLearningBook/raw/master/DeepLearningBook.pdf
-1.1 调查█[1] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. “Deep learning.” Nature 521.7553 (2015): 436-444. [pdf] (三巨头做的调查)  ★★★★★
-地址：http://www.cs.toronto.edu/~hinton/absps/Nat</div>
+          <div class="index-text mb-1">4.逻辑回归(logistics regression)1.逻辑回归模型
+分类问题输出一个结果”正确”或者”错误”
+
+逻辑回归模型:
+
+
+
+
+当hθ(x) 在区间[0.5,1]时,预测是”正确”,越贴近1越确信
+当hθ(x) 在区间[0,0.5)时,预测是”错误”,越贴近0越确信
+
+2.逻辑回归的代价函数
+
+简单点一句话讲:
+答案是1,你预测了1,无误差
+答案是1,你预测的数字离0越近误差就越大,完全是0误差就是无限大(不可能情况)
+答案是0的情况与答案是1的情况同理
+
+
+
+3.对逻辑回归的代价函数使用梯度下降算法,以得到最优参数/最优解
+4.高级优化
+一些建议
+
+不需要写代码实现代价函数的迭代
+
+从技术来讲,其实我们不需要自己手动写程序来计算刚才提到的梯度下降算法的代价函数以及其迭代过程,就像我们不需要自己手动写求平方根和创建数组一样,这些问题早都有非常成熟的库来调用
+
+
+更高级的算法
+
+除了梯度下降算法,还有共轭梯度法 BFGS (变尺度法) 和L-BFGS (限制变尺度法)这种更高级算法可调用
+吴恩达本人已经使用如上提到的算法很多年了,也才是最近才搞清楚他们的内部实现细节
+
+
+
+</div>
         </div>
       </a>
 
@@ -344,13 +367,15 @@ review是学科综述</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
+            <a href="/categories/CS229">CS229</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">逻辑回归</a>&nbsp;
           
         
       </div>
@@ -361,64 +386,52 @@ review是学科综述</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/3%20-%20%E9%80%89%E9%A2%98/">
-        <p class="h4 index-header">NLP发文/3 - 选题</p>
+      <a href="/2020/02/24/CS229/1.%E7%BB%AA%E8%AE%BA/">
+        <p class="h4 index-header">CS229/1.绪论</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">3.论文选题
-经过调研，已对本领域有基本认识，具备了得到idea的条件。
-idea要新颖，要能推动科学的发展，同时要有可复现性和可实现性。
-把握好与现存结果之间的delta
-要因时而动，像语音识别和人脸识别这种已经落地的项目，可能已经没有什么突破的空间了，现在在业界拼的是数据和算力。而常识，知识推理，复杂语境，跨模态理解，可解释智能。这些点目测不能通过数据驱动的方式解决。更高层次的联想、创造、顿悟等认知能力，更是连边还没碰到。这些问题是有远见的研究者应该关注的方向。
-
-补全了相关知识，阅读了大量的文献，走访了各位前辈，观察了各圈风向标，调整首文合理预期后，
-我的idea是：_____.
-建议2：如何选择第一个好题目？
-什么算是好的idea作者：刘知远 
-2015年，我在微博上写过一个调侃的小段子：
-
-ML派坐落美利坚合众山中，百年来武学奇才辈出，隐然成江湖第一大名门正派，门内有三套入门武功，曰：图模型加圈，神经网加层，优化目标加正则。有童谣为证：熟练ML入门功，不会作文也会诌。
-
-到了2018年，我又续了一小段：
-
-不期数年，北方DL神教异军突起，内修表示学习，外练神经网络，心法众多，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/7%20-%20%E8%AE%BA%E6%96%87%E7%BB%93%E6%9E%84/">
-        <p class="h4 index-header">NLP发文/7 - 论文结构</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.论文结构学术研究是一项系统工程
-在这个系统工程中，论文的作用则是，向学术界同行清晰准确地描述成果的创新点、技术思路、算法细节和验证结果。明白这一点，才能正确的对待论文写作：一项乏善可陈的工作，很难通过写作变得众星捧月；一项充满创新的成果，却有可能因为糟糕的写作而无法向审稿人准确传递重要价值所在，延误成果发表。
+          <div class="index-text mb-1">CS229–绪论,梯度下降算法1.监督学习和无监督学习
+监督学习定义
+部分数据集已经有答案.比如房价信息集,知道了正确的房价,需要预测出更多的房价
+回归问题,预测连续值的输出(房价)
+聚类问题,预测离散值的输出(肿瘤是良性还是恶性?)
 
 
-一篇NLP论文的典型结构
-NLP学术会议（甚至包括期刊）论文已经形成比较固定的结构。绝大部分论文由以下六大部分构成：摘要（Abstract）、介绍（Introduction）、相关工作（Related Work）、方法（Method）、实验（Experiment）、结论（Conclusion）。少数论文会根据创新成果形式不同而略有不同，例如提出新数据集的论文，可能会把Method部分调整为Dataset的标注与分析，但不影响论文整体构成。每个部分作用不同：
 
-摘要：用100-200词简介研究任务与挑战、解决思路与方法、实验效果与结论。
-介绍：用1页左右篇幅，比摘要更详细地介绍研究任务、已有方法、主要挑战、解决思路、具体方法、实验结果。
-相关工作：用0.5-1页左右篇幅介绍</div>
+
+无监督学习
+
+无监督学习没有答案,自动聚类:比如google搜索BP油井泄露,会把CNN,ABC,BBC新闻放一起
+
+
+
+2.线性回归算法
+监督学习的典型过程
+
+Training set –[喂食给]—&gt;Learning Algorithm –[生成]–&gt;hypothesis(假设函数)
+
+size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate price
+
+
+
+
+
+线性回归
+
+预测房价的假设函数:h(x) = θ0 + θ1x
+根据训练集生成一元一次方程,输入房间大小得到房价预测
+
+
+
+3.代价函数
+代价函数有利于弄清楚如何把最有可能的直线与我们的数据相拟合
+
+最小化代价函数就可得到最好的预测函数
+
+如何选择假设函数hypothesis “h(x) = θ0 + θ1x”</div>
         </div>
       </a>
 
@@ -429,13 +442,13 @@ NLP学术会议（甚至包括期刊）论文已经形成比较固定的结构�
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
+            <a href="/categories/CS229">CS229</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
         
       </div>
@@ -446,23 +459,20 @@ NLP学术会议（甚至包括期刊）论文已经形成比较固定的结构�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/4%20-%20%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1/">
-        <p class="h4 index-header">NLP发文/4 - 模型设计</p>
+      <a href="/2020/02/24/CS224n/9%20-%20%E6%9C%BA%E7%BF%BB,%E9%AB%98%E7%BA%A7RNN,LSTM,GRU/">
+        <p class="h4 index-header">CS224n/9 - 机翻,高级RNN,LSTM,GRU</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">4 - 模型设计确定进入____领域后，如何快速学会第一个技能？仔细研究一般现有的主要工具，流派和方法，先入门。我的建议是：找到一个开源项目，比如机器翻译或者深度学习的项目。理解开源项目的任务，编译通过该项目发布的示范程序，得到与项目示范程序一致的结果。然后再深入理解开源项目示范程序的算法。自己编程实现一下这个示范程序的算法。再按照项目提供的标准测试集测试自己实现的程序。如果输出的结果与项目中出现的结果不一致，就要仔细查验自己的程序，反复修改，直到结果与示范程序基本一致。如果还是不行，就大胆给项目的作者写信请教。在此基础上，再看看自己能否进一步完善算法或者实现，取得比示范程序更好的结果。
-如何改进别人的模型
-反复阅读本领域最新发表的文章，多阅读本领域牛人发表的文章。在深入了解已有工作的基础上，探讨还有没有一些地方可以推翻、改进、综合、迁移。注意做实验的时候，不要贪多，每次实验只需要验证一个想法。
+          <div class="index-text mb-1">Lecture9 - 高级RNN,LSTM,GRU,机翻本节继续讲循环神经网络以及LSTM和GRU这两个本课程最重要的深度学习模型，几乎你能看到的所有深度学习论文都是以这两个模型为基础。
+1.机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
+我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
+基于统计的机翻模型介绍
+源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
 
-每次实验之后必须要进行分析存在的错误，找出原因。
-
-
-
-对成功的实验，进一步探讨如何改进算法。注意实验数据必须是业界公认的数据。
-与已有的算法进行比较，体会能够得出比较一般性的结论。如果有，</div>
+如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项</div>
         </div>
       </a>
 
@@ -473,13 +483,13 @@ NLP学术会议（甚至包括期刊）论文已经形成比较固定的结构�
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -490,119 +500,38 @@ NLP学术会议（甚至包括期刊）论文已经形成比较固定的结构�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/1%20-%20A%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E8%B5%84%E6%96%99%E5%BA%93/">
-        <p class="h4 index-header">NLP发文/1 - A学科调研资料库</p>
+      <a href="/2020/02/24/CS224n/6%20-%20%E4%BE%9D%E5%AD%98%E5%88%86%E6%9E%90/">
+        <p class="h4 index-header">CS224n/6 - 依存分析</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.阅读列表+文献库想当GrandMaster，以下提到的所有材料都绕不过去。在还没入行时间紧迫的情况下，须有所取舍。具体取舍规则办法见2 - 计划.md
-阅读列表
+          <div class="index-text mb-1">Lecture6 依存分析本节课综述
 
+这节课主要讲句法 + 语法 + 依存分析
+基于转移的依存关系分析语法
+神经网络内容
+TensorFlow + 实际的nlp内容例如构建神经依存关系分析器
 
+1.依存分析的概念和一个例子句子或句子的一部分有一种结构，人们可以用特定的方式将他们组合起来，我们可以从非常简单的并不构成句子的东西入手。
 
+一个冠词 + 名字 通常被语言学家称为名词短语
 
 
 
+有一些规则可以用来扩展他们：比如在冠词和名词之间加一个形容词
+the large cat
+a beautiful dog等
 
-CS224N - 自然语言处理
+你也可以在名词后边添加介词短语
+the large cat in a crate
+the barking dog on the table等
 
 
+传统上，语言学家和自然语言处理器想做的是描述人类语言结构，人们过去有两个关键工具来做到这点，一种是上下文无关文法的方法，这种方法经常被语言学家引用为短语结构文法。我们现在要做的就是写出这些上下文无关文法的规则。
 
-CS229 - 机器学习（核心课）
-
-
-
-CS229A - 机器学习应用课，数学少，应用多
-
-
-
-CS231N - 计算机视觉
-
-
-
-CS230 - 专注深度学习，只包含一点点机器学习（which最难的那一部分）
-
-
-
-CS221 - AI导论
-
-
-
-CS228 - 概率图模型
-
-
-
-机器之心
-
-
-
-PaperWeekly
-
-
-
-NeurIPS 2019公布获奖论文
-
-
-
-深度学习所需数学知识
-
-
-
-EE转CS成功案例
-
-
-
-Jeff Dean谈2020机器学习趋势
-
-
-
-从Word2Vec到BERT
-
-
-
-kaggle竞赛宝典
-
-
-
-NIPS2019
-
-
-
-斯坦福2019全球AI报告
-
-
-
-2020学术会议list
-
-
-
-因果推演
-
-
-
-ACL2019知识图谱总结
-
-
-
-概率论与数理统计
-
-
-
-线性代数
-
-
-
-高等数学
-
-
-
-优化理论
-
-
-
-Bubeck：《Convex</div>
+还有一种了解语言结构的不同角度，就是依存句法结构。它通过找到句子当中每一个词所依赖的部分来描述句子结构。如果一个词修饰另一</div>
         </div>
       </a>
 
@@ -613,13 +542,13 @@ Bubeck：《Convex</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -630,23 +559,25 @@ Bubeck：《Convex</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/1%20-%20B%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E7%BB%93%E8%AE%BA/">
-        <p class="h4 index-header">NLP发文/1 - B学科调研结论</p>
+      <a href="/2020/02/24/CS224n/7%20-%20Tensorflow/">
+        <p class="h4 index-header">CS224n/7 - Tensorflow</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.学科调研结论简要结论经过对上文阅读列表+论文库的调研，得出如下结论，可以开始选题。
+          <div class="index-text mb-1">Lecture7 TensorFlow为什么要使用深度学习框架？
 
-近年来,我感兴趣的关于_____的研究方向,全球呈现__趋势,其中较多的论文来自\国家\地区,发表相关论文的研究机构有___.蓝海领域比较新，容易出成果，我选择的这个方向是否是蓝海领域_____.
-为了充分了解这个领域目前的发展状况，需要如下几个方面的调研：方法方面，是否有一套比较清晰的数学体系和机器学习体系_；数据方面，有没有一个大家公认的标准训练集和测试集__；研究团队，是否有著名团队和人士参加___。如果以上几个方面的调研结论不是太清晰，作为初学者可能不要轻易进入。
-全球的研究人员主要从____等领域对课题进行研究,同时我们也注意到___等领域的研究可能会给我们带来不一样的视角和灵感
-相关课题的研究成果目前主要发表在____等期刊上,在相关研究领域中,_____等几位学者有较多的论文产出.
-影响力较高的几篇论文分别来自于___(国家/地区)的_(机构)的___学者
-近半年来___方向引起了较多科研人员的关注
-选择____综述文章作为快速了解这个课题的切入点
-最新的研究进展指出,该研究方向__</div>
+有助于扩展机器学习代码
+自动计算梯度（通常梯度计算并不重要，这些框架可以自动处理梯度，使得我们把重点放在更高层次的数学上）
+在很多领域使机器学习更标准化
+这些框架提供了GPU接口
+
+1.TensorFlow是什么？是一个谷歌开发的深度学习框架，使用流式图进行数值计算的开源软件库。TensorFlow是用于表示机器学习算法的接口，以及用于执行这种算法的实现。
+TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图的节点是操作，每个节点都有一个输入和输出，节点之间的边表示他们之间流动的张量，在实践中最好的方法就是认为，张量是一个n维数组。
+使用流式图作为深度学习框架主干的优点在于它允许你使用小而简单的操作建立复杂的模型，当我们这样做的时候，会使得梯度计算变得极其简单。
+此框架可以自动求导，而且图方法的每一个操作都是可以在其所在点被评估的一个函数。变量将成为输出其当前值的有状态节点。
+占位符是那些在执行期间才会接收值的节点，如果在你的网络中有依赖外部数据的一些输入，你并不想在建立图时依赖任何实际的值。</div>
         </div>
       </a>
 
@@ -657,13 +588,98 @@ Bubeck：《Convex</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/">
+        <p class="h4 index-header">CS224n/8 - RNN和语言模式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture8 RNN和语言模式本节讲简单的循环神经网络模型，这个模型家族是大多数人现在在实际训练环境中使用的。
+ 概览：
+1.传统的语言模型
+2.RNNs
+3.语言模型建模来驱动循环神经网络（RNN）
+4.重要的训练时的问题和技巧
+​    梯度消失问题
+​    梯度爆炸问题
+5.用于队列处理的RNN
+6.双向深度RNN
+1. 传统的语言模型和现在的词向量模型对比传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。
+如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。
+如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/2,-%20%E6%B3%A8%E9%87%8A%E4%B9%8Bsoftmax/">
+        <p class="h4 index-header">CS224n/2,- 注释之softmax</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">softmax定义：
+假如有一个数组V，Vi表示V中的第i个元素，这个元素的softmax值如下，也就是该元素的指数值和所有元素指数值之和的比值。softmax通常希望特征对概率的影响是乘性的。
+
+softmax VS k个二元分类器：如果你在开发一个音乐分类的应用，需要对k种类型的音乐进行识别，那么是选择使用 softmax 分类器呢，还是使用 logistic 回归算法建立 k 个独立的二元分类器呢？这一选择取决于你的类别之间是否互斥，例如，如果你有四个类别的音乐，分别为：古典音乐、乡村音乐、摇滚乐和爵士乐，那么你可以假设每个训练样本只会被打上一个标签（即：一首歌只能属于这四种音乐类型的其中一种），此时你应该使用类别数 k = 4 的softmax回归。（如果在你的数据集中，有的歌曲不属于以上四类的其中任何一类，那么你可以添加一个“其他类”，并将类别数 k 设为5。）如果你的四个类别如下：人声音乐、舞曲、影视原声、流行歌曲，那么这些类别之间并不是互斥的。例如：一首歌曲可以来源于影视原声，同时也包含人声 。这种情况下，使用4个二分类的 logistic 回归分类器更为合适。这样，对于</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -674,7 +690,7 @@ Bubeck：《Convex</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
