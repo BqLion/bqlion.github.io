@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>安装调试记录/TensorFlow安装 ~ 刘秉乾的技术博客 :)</title>
+  <title>谷歌QA比赛/Torch_BaseLine_Embed ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 二月 24日 2020, 12:04 中午
+                  星期三, 三月 4日 2020, 12:39 凌晨
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    567 字
+                    1.3k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      7 分钟
                   </span>&nbsp;
                 
 
@@ -167,56 +167,140 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="安装TensorFlow记录"><a href="#安装TensorFlow记录" class="headerlink" title="安装TensorFlow记录"></a>安装TensorFlow记录</h1><ol>
-<li><h4 id="安装anaconda"><a href="#安装anaconda" class="headerlink" title="安装anaconda"></a>安装anaconda</h4><p>安装过程中如果出现failed to create anacoda menu，先忽略让其安装完成，然后在安装的根目录输入如下命令即可。</p>
-<p>C:\Program Files\Anaconda3&gt;python .\Lib_nsis.py mkmenus</p>
-</li>
-<li><h4 id="卸载之前版本"><a href="#卸载之前版本" class="headerlink" title="卸载之前版本"></a>卸载之前版本</h4><p>TensorFlow2.0改了语法，与斯坦福课程教的1.x不同，于是卸载。下次安装这种大型框架时要在版本号上多做一些功课。</p>
-</li>
-<li><h4 id="TensorFlow，cuda，cudnn，python版本对应关系"><a href="#TensorFlow，cuda，cudnn，python版本对应关系" class="headerlink" title="TensorFlow，cuda，cudnn，python版本对应关系"></a>TensorFlow，cuda，cudnn，python版本对应关系</h4><p>win:</p>
-<h4 id=""><a href="#" class="headerlink" title=""></a><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1213_24_654.png" alt=""></h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1213_48_629.png" alt=""> <img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1214_01_338.png" alt=""></p>
-</li>
-<li><h4 id="安装anaconda对应python3-5版，设置anaconda环境变量"><a href="#安装anaconda对应python3-5版，设置anaconda环境变量" class="headerlink" title="安装anaconda对应python3.5版，设置anaconda环境变量"></a>安装anaconda对应python3.5版，设置anaconda环境变量</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1214_29_949.png" alt=""></p>
-</li>
-<li><h4 id="安装cuda9"><a href="#安装cuda9" class="headerlink" title="安装cuda9"></a>安装cuda9</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1214_44_397.png" alt=""></p>
-<p>安装时提示我有更新版的驱动，我自己发现PhysX也有更新的，所以选择不安装。Visual Studio Intergration也不安装，不然会报错。如下图所示</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1214_57_822.png" alt=""></p>
-<p>安装完后在命令号输入nvcc -V 检测是否安装成功</p>
-</li>
-<li><h4 id="安装cudnn7"><a href="#安装cudnn7" class="headerlink" title="安装cudnn7"></a>安装cudnn7</h4><p>官网找到发布历史</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1215_11_643.png" alt=""></p>
-</li>
-</ol>
-<p>   需要账号密码398730 / 字母和数字间有:</p>
-<p>   将解压包中三个文件夹拖入CUDA根目录下即可</p>
-<ol start="7">
-<li><h4 id="将pip切换回国内源"><a href="#将pip切换回国内源" class="headerlink" title="将pip切换回国内源"></a>将pip切换回国内源</h4><p><strong>pip国内的一些镜像</strong></p>
-<p>  阿里云 <a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/</a><br>  中国科技大学 <a href="https://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.mirrors.ustc.edu.cn/simple/</a><br>  豆瓣(douban) <a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a><br>  清华大学 <a href="https://pypi.tuna.tsinghua.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/</a><br>  中国科学技术大学 <a href="http://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">http://pypi.mirrors.ustc.edu.cn/simple/</a></p>
-<p><strong>修改源方法：</strong></p>
-<p><strong>临时使用：</strong><br>可以在使用pip的时候在后面加上-i参数，指定pip源<br>eg: pip install scrapy -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a>   –trusted-host  <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">pypi.tuna.tsinghua.edu.cn</a></p>
-<p><strong>永久修改：</strong><br><strong>linux:</strong><br>修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：</p>
-<pre><code>[global]
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple</code></pre></li>
-</ol>
-<p>   <strong>windows:</strong><br>   直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下</p>
-<pre><code>   [global]
-   index-url = https://pypi.tuna.tsinghua.edu.cn/simple</code></pre><ol start="8">
-<li><h4 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h4><p>打开 Anaconda prompt</p>
-<p>conda create -n tensorflow pip python=3.5</p>
-<p>pip install –upgrade –ignore-installed tensorflow_gpu==1.8.0 -i <a href="http://pypi.douban.com/simple" target="_blank" rel="noopener">http://pypi.douban.com/simple</a> –trusted-host pypi.douban.com</p>
-</li>
-</ol>
-<p>   卸载tensorflow：</p>
-<p>   activate tensorflow</p>
-<p>   pip uninstall tensorflow-gpu</p>
-<ol start="9">
-<li><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>激活环境：activate tensorflow</p>
-<p>关闭环境：deactivate</p>
-</li>
-</ol>
-<p>结论：</p>
-<p>他妈的不要在windows上装tensorflow坑的要死，新装一个linux或者虚拟机然后在里边装tensorflow耗时都比这短。</p>
-<p>最后win还是用不成在ubuntu上装的，ubuntu就一个conda就完事儿了。最后发现最近版的cs224n已经不用tensorflow改用pytorch了，淦。</p>
+            <h1 id="Baseline-import-Embed"><a href="#Baseline-import-Embed" class="headerlink" title="Baseline_import_Embed"></a>Baseline_import_Embed</h1><pre><code class="python"># 定义钟形函数
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+#无效字符
+puncts = [&#39;,&#39;, &#39;.&#39;, &#39;&quot;&#39;, &#39;:&#39;, &#39;)&#39;, &#39;(&#39;, &#39;-&#39;, &#39;!&#39;, &#39;?&#39;, &#39;|&#39;, &#39;;&#39;, &quot;&#39;&quot;, &#39;$&#39;, &#39;&amp;&#39;, &#39;/&#39;, &#39;[&#39;, &#39;]&#39;, &#39;&gt;&#39;, &#39;%&#39;, &#39;=&#39;, &#39;#&#39;, &#39;*&#39;, &#39;+&#39;, &#39;\\&#39;, &#39;•&#39;,  &#39;~&#39;, &#39;@&#39;, &#39;£&#39;,
+ &#39;·&#39;, &#39;_&#39;, &#39;{&#39;, &#39;}&#39;, &#39;©&#39;, &#39;^&#39;, &#39;®&#39;, &#39;`&#39;,  &#39;&lt;&#39;, &#39;→&#39;, &#39;°&#39;, &#39;€&#39;, &#39;™&#39;, &#39;›&#39;,  &#39;♥&#39;, &#39;←&#39;, &#39;×&#39;, &#39;§&#39;, &#39;″&#39;, &#39;′&#39;, &#39;Â&#39;, &#39;█&#39;, &#39;½&#39;, &#39;à&#39;, &#39;…&#39;, &#39;\n&#39;, &#39;\xa0&#39;, &#39;\t&#39;,
+ &#39;“&#39;, &#39;★&#39;, &#39;”&#39;, &#39;–&#39;, &#39;●&#39;, &#39;â&#39;, &#39;►&#39;, &#39;−&#39;, &#39;¢&#39;, &#39;²&#39;, &#39;¬&#39;, &#39;░&#39;, &#39;¶&#39;, &#39;↑&#39;, &#39;±&#39;, &#39;¿&#39;, &#39;▾&#39;, &#39;═&#39;, &#39;¦&#39;, &#39;║&#39;, &#39;―&#39;, &#39;¥&#39;, &#39;▓&#39;, &#39;—&#39;, &#39;‹&#39;, &#39;─&#39;, &#39;\u3000&#39;, &#39;\u202f&#39;,
+ &#39;▒&#39;, &#39;：&#39;, &#39;¼&#39;, &#39;⊕&#39;, &#39;▼&#39;, &#39;▪&#39;, &#39;†&#39;, &#39;■&#39;, &#39;’&#39;, &#39;▀&#39;, &#39;¨&#39;, &#39;▄&#39;, &#39;♫&#39;, &#39;☆&#39;, &#39;é&#39;, &#39;¯&#39;, &#39;♦&#39;, &#39;¤&#39;, &#39;▲&#39;, &#39;è&#39;, &#39;¸&#39;, &#39;¾&#39;, &#39;Ã&#39;, &#39;⋅&#39;, &#39;‘&#39;, &#39;∞&#39;, &#39;«&#39;,
+ &#39;∙&#39;, &#39;）&#39;, &#39;↓&#39;, &#39;、&#39;, &#39;│&#39;, &#39;（&#39;, &#39;»&#39;, &#39;，&#39;, &#39;♪&#39;, &#39;╩&#39;, &#39;╚&#39;, &#39;³&#39;, &#39;・&#39;, &#39;╦&#39;, &#39;╣&#39;, &#39;╔&#39;, &#39;╗&#39;, &#39;▬&#39;, &#39;❤&#39;, &#39;ï&#39;, &#39;Ø&#39;, &#39;¹&#39;, &#39;≤&#39;, &#39;‡&#39;, &#39;√&#39;, ]
+
+mispell_dict = {&quot;aren&#39;t&quot; : &quot;are not&quot;,
+&quot;can&#39;t&quot; : &quot;cannot&quot;,
+&quot;couldn&#39;t&quot; : &quot;could not&quot;,
+&quot;couldnt&quot; : &quot;could not&quot;,
+&quot;didn&#39;t&quot; : &quot;did not&quot;,
+&quot;doesn&#39;t&quot; : &quot;does not&quot;,
+&quot;doesnt&quot; : &quot;does not&quot;,
+&quot;don&#39;t&quot; : &quot;do not&quot;,
+&quot;hadn&#39;t&quot; : &quot;had not&quot;,
+&quot;hasn&#39;t&quot; : &quot;has not&quot;,
+&quot;haven&#39;t&quot; : &quot;have not&quot;,
+&quot;havent&quot; : &quot;have not&quot;,
+&quot;he&#39;d&quot; : &quot;he would&quot;,
+&quot;he&#39;ll&quot; : &quot;he will&quot;,
+&quot;he&#39;s&quot; : &quot;he is&quot;,
+&quot;i&#39;d&quot; : &quot;I would&quot;,
+&quot;i&#39;d&quot; : &quot;I had&quot;,
+&quot;i&#39;ll&quot; : &quot;I will&quot;,
+&quot;i&#39;m&quot; : &quot;I am&quot;,
+&quot;isn&#39;t&quot; : &quot;is not&quot;,
+&quot;it&#39;s&quot; : &quot;it is&quot;,
+&quot;it&#39;ll&quot;:&quot;it will&quot;,
+&quot;i&#39;ve&quot; : &quot;I have&quot;,
+&quot;let&#39;s&quot; : &quot;let us&quot;,
+&quot;mightn&#39;t&quot; : &quot;might not&quot;,
+&quot;mustn&#39;t&quot; : &quot;must not&quot;,
+&quot;shan&#39;t&quot; : &quot;shall not&quot;,
+&quot;she&#39;d&quot; : &quot;she would&quot;,
+&quot;she&#39;ll&quot; : &quot;she will&quot;,
+&quot;she&#39;s&quot; : &quot;she is&quot;,
+&quot;shouldn&#39;t&quot; : &quot;should not&quot;,
+&quot;shouldnt&quot; : &quot;should not&quot;,
+&quot;that&#39;s&quot; : &quot;that is&quot;,
+&quot;thats&quot; : &quot;that is&quot;,
+&quot;there&#39;s&quot; : &quot;there is&quot;,
+&quot;theres&quot; : &quot;there is&quot;,
+&quot;they&#39;d&quot; : &quot;they would&quot;,
+&quot;they&#39;ll&quot; : &quot;they will&quot;,
+&quot;they&#39;re&quot; : &quot;they are&quot;,
+&quot;theyre&quot;:  &quot;they are&quot;,
+&quot;they&#39;ve&quot; : &quot;they have&quot;,
+&quot;we&#39;d&quot; : &quot;we would&quot;,
+&quot;we&#39;re&quot; : &quot;we are&quot;,
+&quot;weren&#39;t&quot; : &quot;were not&quot;,
+&quot;we&#39;ve&quot; : &quot;we have&quot;,
+&quot;what&#39;ll&quot; : &quot;what will&quot;,
+&quot;what&#39;re&quot; : &quot;what are&quot;,
+&quot;what&#39;s&quot; : &quot;what is&quot;,
+&quot;what&#39;ve&quot; : &quot;what have&quot;,
+&quot;where&#39;s&quot; : &quot;where is&quot;,
+&quot;who&#39;d&quot; : &quot;who would&quot;,
+&quot;who&#39;ll&quot; : &quot;who will&quot;,
+&quot;who&#39;re&quot; : &quot;who are&quot;,
+&quot;who&#39;s&quot; : &quot;who is&quot;,
+&quot;who&#39;ve&quot; : &quot;who have&quot;,
+&quot;won&#39;t&quot; : &quot;will not&quot;,
+&quot;wouldn&#39;t&quot; : &quot;would not&quot;,
+&quot;you&#39;d&quot; : &quot;you would&quot;,
+&quot;you&#39;ll&quot; : &quot;you will&quot;,
+&quot;you&#39;re&quot; : &quot;you are&quot;,
+&quot;you&#39;ve&quot; : &quot;you have&quot;,
+&quot;&#39;re&quot;: &quot; are&quot;,
+&quot;wasn&#39;t&quot;: &quot;was not&quot;,
+&quot;we&#39;ll&quot;:&quot; will&quot;,
+&quot;didn&#39;t&quot;: &quot;did not&quot;,
+&quot;tryin&#39;&quot;:&quot;trying&quot;}
+
+def clean_text(x):
+    x = str(x)
+    for punct in puncts:
+        x = x.replace(punct,f&#39;{punct}&#39;)
+    return x
+# replace函数就是把第一个old变量换成第二个new变量
+# f格式化字符串使用举例：
+# &gt;&gt;&gt; name = &#39;Eric&#39;
+# &gt;&gt;&gt; f&#39;Hello, my name is {name}&#39;
+# &#39;Hello, my name is Eric&#39;
+
+
+def clean_numbers(x):
+    x = re.sub(&#39;[0-9]{5,}&#39;, &#39;#####&#39;, x)
+# 正则表达式，sub是替换函数，[0-9]是全体数字，{5，}是长度大于等于5的所有字符串
+# 这一句的意思就是把所有长度大于等于5的所有数字都替换成五个井号，下面的就是替换成1-4的长度的字符
+    x = re.sub(&#39;[0-9]{4}&#39;, &#39;####&#39;, x)
+    x = re.sub(&#39;[0-9]{3}&#39;, &#39;###&#39;, x)
+    x = re.sub(&#39;[0-9]{2}&#39;, &#39;##&#39;, x)
+    return x
+
+
+def _get_mispell(mispell_dict):
+    mispell_re = re.compile(&#39;(%s)&#39; % &#39;|&#39;.join(mispell_dict.keys()))
+    return mispell_dict, mispell_re
+# 获取拼写错误的词
+# re.compile函数：编译一个正则表达式模板，返回一个正则表达式对象，多个正则表达式模板用&#39;|&#39;链接
+# join函数：把join前的符号依次链接到join后的各个词的间隙中，如下所示：
+# str = &quot;-&quot;;
+# seq = (&quot;a&quot;, &quot;b&quot;, &quot;c&quot;); # 字符串序列
+# print str.join( seq );
+
+
+def replace_typical_misspell(text):
+    mispellings, mispellings_re = _get_mispell(mispell_dict)
+
+    def replace(match):
+        return mispellings[match.group(0)]
+
+    return mispellings_re.sub(replace, text)
+
+# 将拼写有误的词替换掉的函数
+# .group(0) 返回母串中与子串匹配的第一个
+
+
+def clean_data(df,columns:list):
+    for col in columns:
+        df[col] = df[col].apply(lambda x : clean_numnbers(x))
+        df[col] = df[col].apply(lambda x : clean_text(x.lower()))
+        df[col] = df[col].apply(lambda x : replace_typical_misspell(x))
+
+    return df
+
+# 总的清洗函数：
+# df是pandas的数据框架，就是excel表。col是数据行。
+# .apply是对df的操作。lambda x基本泛指所有的数据</code></pre>
 
             <hr>
           </div>
@@ -227,7 +311,7 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple</code></pre></li>
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>
+                  <a class="hover-with-bg" href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -236,7 +320,7 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple</code></pre></li>
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/tensorflow">tensorflow</a>
+                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
                 
               </span>
             
@@ -386,7 +470,7 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple</code></pre></li>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "安装调试记录/TensorFlow安装&nbsp;",
+        "谷歌QA比赛/Torch_BaseLine_Embed&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

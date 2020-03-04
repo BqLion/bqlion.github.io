@@ -136,6 +136,113 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/JAVA/3.%E6%B3%9B%E5%9E%8B/">
+        <p class="h4 index-header">JAVA/3.泛型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">泛型泛型就是扩展了方法的适用范围:
+例子:
+原本有一个SUM(y) = (a + b)的两元素相加的方法
+
+在两数字相加或两字符串拼接的场景下本来都可以用它
+
+但是如果y提前规定了数据类型就不能用了,两个场景必有其一要重写
+
+这时候使用泛型,&lt;T&gt;当做占位符,就可以实现代码复用了 
+
+
+之所以不用Object实现参数的任意化是因为要做显式的强制转换,这种转换是要求开发者对实际参数可预知的情况下进行的,而很多时候开发者不能预知程序运行时有哪样的类型需要强转
+如果强转错误,程序员也无从得知,是一个安全隐患
+引入泛型不用object后所有任意化的参数类型都是隐式自动进行的,保证了效率和安全性
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/java">java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/java">java</a>&nbsp;
+          
+            <a href="/tags/%E6%B3%9B%E5%9E%8B">泛型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%92%8C%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+        <p class="h4 index-header">D3NER/知识图谱和推荐系统</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.知识图谱知识图谱是语义网络semantic network的知识库，可理解为理解为多关系图，多关系图一般包含多种类型的节点和边。
+知识图谱的场景
+
+社交网络，人和公司都可以是实体，人是节点，公司是节点的集合，人与人之间的关系是边，边可以是朋友也可是同事等，关系可以是单向也可以是双向的
+
+数据库是结构化数据，网页是非结构化数据，处理非结构化数据是信息抽取的难点。
+四个难点
+
+实体命名识别  
+关系抽取()
+实体统一(武汉,江城)
+指代消解  (it)
+
+知识图谱的存储方式
+RDF
+
+存储三元组(triple)
+推理引擎
+W3C标准
+易于发布数据,多为学术界场景
+
+2.推荐系统评分预测:系统预测用户对电影的评分,根据此给用户推荐,这种是显示反馈
+还有一种是点击率预测,新闻类应用中,根据用户点击某概率来优化推荐方案,这种场景下用户反馈信息的行为特征,而不能反映用户的喜爱成都,这是隐式反馈
+传统的推系统只能使用用户和物品的历史交互信息,作为输入,有两个问题:
+用户和物品之间的交互信息是非常稀疏的,几万个电影只看了几个可能过拟合,
+或者新用户没有看过电影,这问题也叫冷启动问题
+解决冷启动问题</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Docker/Docker%E5%85%A5%E9%97%A8/">
         <p class="h4 index-header">Docker/Docker入门</p>
         
@@ -248,52 +355,6 @@ java中的线程分两种
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/D3NER/LSTM/">
-        <p class="h4 index-header">D3NER/LSTM</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">LSTM+CRF1、perspectively
-LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
-但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
-2、LSTM+CRF
-既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
-因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
-
-input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/D3NER">D3NER</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/D3NER">D3NER</a>&nbsp;
-          
-            <a href="/tags/CRF">CRF</a>&nbsp;
-          
-            <a href="/tags/LSTM">LSTM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/D3NER/D3NER/">
         <p class="h4 index-header">D3NER/D3NER</p>
         
@@ -343,6 +404,52 @@ Named En</div>
             <a href="/tags/LSTM">LSTM</a>&nbsp;
           
             <a href="/tags/embedding">embedding</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/LSTM/">
+        <p class="h4 index-header">D3NER/LSTM</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LSTM+CRF1、perspectively
+LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
+但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
+2、LSTM+CRF
+既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
+因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
+
+input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
           
         
       </div>
@@ -403,6 +510,62 @@ xm</div>
             <a href="/tags/D3NER">D3NER</a>&nbsp;
           
             <a href="/tags/embedding">embedding</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CrowdFlower/%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/">
+        <p class="h4 index-header">CrowdFlower/文本特征提取</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.概述1.1特征提取与特征选择这两者的效果是一样的，都是试图去减少特征数据集中的属性（特征）的数目，但是两者采用的方法不同，
+特征提取的方法是通过属性之间的关系，通过组合不同的属性得到新的属性，改变了特征空间
+特征选择的方法是选择出特征集的子集，是一种包含的关系，没有改变特征空间
+1.2特征提取的主要方法PCA,LDA,SVD等
+1.3特征选择的主要方法1.fliter方法
+对每个特征打分，即给出每一维的特征赋予权重，该权重代表了特征的重要性，然后根据权重排序。
+主要的方法：卡方，信息增益，相关系数
+2.Wrapper方法
+主要思想：将子集的选择看成一个搜索寻优问题，生成不同的组合，对组合进行评论
+可看做一个优化问题，有很多优化算法可供使用
+尤其是启发式算法GA，PSO,DE,ABC等等
+主要方法：递归特征消除方法
+3.Embedded方法
+主要思想：在模型既定的情况下，学习出对提高模型准确性最好的属性，即在确定模型的过程中，挑选出哪些对模型训练有重要意义的属性
+主要方法：正则化，如岭回归就是在回归的基础上加上了正则化项
+1.4总结1.特征提取是从杂乱无章的世界中，去到更高的世界俯瞰</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96">文本特征提取</a>&nbsp;
           
         
       </div>
@@ -543,210 +706,6 @@ CRF特征函数
             <a href="/tags/D3NER">D3NER</a>&nbsp;
           
             <a href="/tags/CRF">CRF</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CrowdFlower/%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/">
-        <p class="h4 index-header">CrowdFlower/文本特征提取</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.概述1.1特征提取与特征选择这两者的效果是一样的，都是试图去减少特征数据集中的属性（特征）的数目，但是两者采用的方法不同，
-特征提取的方法是通过属性之间的关系，通过组合不同的属性得到新的属性，改变了特征空间
-特征选择的方法是选择出特征集的子集，是一种包含的关系，没有改变特征空间
-1.2特征提取的主要方法PCA,LDA,SVD等
-1.3特征选择的主要方法1.fliter方法
-对每个特征打分，即给出每一维的特征赋予权重，该权重代表了特征的重要性，然后根据权重排序。
-主要的方法：卡方，信息增益，相关系数
-2.Wrapper方法
-主要思想：将子集的选择看成一个搜索寻优问题，生成不同的组合，对组合进行评论
-可看做一个优化问题，有很多优化算法可供使用
-尤其是启发式算法GA，PSO,DE,ABC等等
-主要方法：递归特征消除方法
-3.Embedded方法
-主要思想：在模型既定的情况下，学习出对提高模型准确性最好的属性，即在确定模型的过程中，挑选出哪些对模型训练有重要意义的属性
-主要方法：正则化，如岭回归就是在回归的基础上加上了正则化项
-1.4总结1.特征提取是从杂乱无章的世界中，去到更高的世界俯瞰</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-            <a href="/tags/%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96">文本特征提取</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CrowdFlower/2.%E6%A6%82%E5%BF%B5/">
-        <p class="h4 index-header">CrowdFlower/2.概念</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.CrowdFlower Search Results Relevance1.目的​    衡量搜索结果的相关性
-
-比赛数据集
-CrowdFlower平台丰富的查询结果配对创建的
-为了评估搜索相关性,CrowdFlower已经将261个搜索词与产品列表放在一起,要求人群对每个搜索结果评分,1,2,3,4分别表示搜索结果从完全不相关到完全相关
-
-
-
-2.数据集
-train.csv训练集数据
-id 产品id
-query 搜索词语
-product_title 产品标题
-product_description 产品描述文本
-median_relevance 三位评分员的相关性评分中位数
-relevance_variance 评分员的相关性评分方差
-
-
-test.csv
-id 产品id
-query 搜索词语
-product_description 产品描述文本
-
-
-目标变量
-median_relevance
-
-
-
-3.数据预处理
-
-首先本数据以文字为主,文字只能输入进分类树模型,所以首先要把文字转换成数字
-Dropping HTML标签
-Word Replacement:然后要把拼写错误的单词</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CrowdFlower/3.%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%B8%85%E6%B4%97/">
-        <p class="h4 index-header">CrowdFlower/3.数据探索与清洗</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">3.CrowdFLower代码分析3.1数据探索
-查看一眼文件头
-
-查看列信息
-
-查看有多少行
-
-查看感兴趣的列信息去重后有多少项
-
-查看感兴趣的信息去重后前一百项是什么
-
-查看两个文件中,感兴趣的同一列有多少个是相同的,多少是不同的
-
-对感兴趣的某一列信息,根据重复数画出柱状图
-
-
-# -*- coding: utf-8 -*-
-import pandas as pd
-import numpy as np
-import nltk
-
-train = pd.read_csv(&quot;filePath&quot;)
-test = pd.read_csv(&quot;filePath&quot;)
-
-train.head()
-test.head()
-#查看文件头
-
-train.columns
-test.columns
-#查看文件的列信息
-
-len(train)
-len(test)
-#查看文件有多少行
-
-train[&#39;query&#39;].unique()[0:100]
-#查看train这个文件中query的去重的前一百个数据
-
-train[&#39;product_title&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CrowdFlower">CrowdFlower</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B">特征工程</a>&nbsp;
-          
-            <a href="/tags/python">python</a>&nbsp;
           
         
       </div>

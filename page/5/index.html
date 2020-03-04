@@ -136,26 +136,93 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
-        <p class="h4 index-header">安装调试记录/更新图床+截屏工作流</p>
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.%E6%95%B0%E7%BB%84,%E9%93%BE%E8%A1%A8/">
+        <p class="h4 index-header">数据结构/1.数组,链表</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.七牛云的试用域名只能用一个月，过期后要用自己已备案的域名。不管是否有备案域名所有已上传图片都要改链接，坑。
-2.改用sm.ms图床，username:bqlion,email:398703917@qq.com,password:8
-3.sm.ms限流，改用又拍云。
-4.又拍云的shareX配置信息如下，密码用又拍云操作员控制台生成。
+          <div class="index-text mb-1">数组
+数组是用来存放一组有相同数据类型的数据结构,通过整形下标来访问数组中的值
+如果越过数据的下标访问数据,会返回ArrayIndexOutOfBoundException
+Java中数组是一个类:所以两个数组变量可以指向同一个数组
 
-4.shareX简直神器。可以取代Snipaste+mpic。
-5.ShareX更改快捷键：
+线性表
+顺序存储结构
+用数组实现
+插入元素的平均时间复杂度是O(n)
+查找的平均时间复杂度是O(1)
+适合多查找的场景
 
-捕捉矩形区域为F1
-设置“上传至”为FTP，
-动作设置-高级设置 - after upload - chipboardContentFormat  - 修改为![]($result)
 
+链式存储结构
+典型的node节点由[data]和[next]两个域组成
+插入元素的平均时间复杂度是O(1)
+查找的平均时间复杂度是O(n)
+适合多增删的场景
+
+
+
+迭代器迭代器是程序设计模式中的行为模式,功能是提供一种方法顺序访问一个聚集对象中各个元素,又不暴露该对象的内部表示.
+简单来说迭代器就是对遍历操作的抽象.
 </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%95%B0%E7%BB%84">数组</a>&nbsp;
+          
+            <a href="/tags/%E9%93%BE%E8%A1%A8">链表</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/">
+        <p class="h4 index-header">安装调试记录/网站部署记录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.获取root权限-sudo passwd
+-su root
+2.云主机安装git-yum update
+-yum install git
+-mkdir App
+-cd App
+3.云主机与github建立sshkey连接返回：Permissiondenied (publickey)，fatal:Could not read from remote repository.
+cd ~/.ssh ls  //查看是否有ssh key
+ssh-keygen -t rsa -C “youremail@example.com“    //一路回车
+ssh -v git@github.com 
+ssh-agent -s
+ssh-add ~/.ssh/ github new SSH KEY
+ssh -T git@github.com
+若出错：“Could not open a connection to your authentication agent”
+eval `ssh-agent -s``
+ssh-add ~/.ssh/id_rsa，
+github new SSH KEY
+4.克隆项目，安</div>
         </div>
       </a>
 
@@ -172,8 +239,161 @@
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%9B%BE%E5%BA%8A">图床</a>&nbsp;
+            <a href="/tags/java">java</a>&nbsp;
           
+            <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%A6%82%E8%AE%BA/">
+        <p class="h4 index-header">数据库/概论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.数据库的四个基本概念
+数据语义
+
+“93”的语义
+可以是年龄
+也可以是班级人数
+
+
+
+
+
+
+数据和自然语言
+
+自然语言可以通过上下文完整描述事物
+
+数据是计算机的记录:
+
+(李明,男,199005,江苏南京,计算机,自行车协会)
+记录不能完整表达事物内容,因缺少语义(列信息)
+
+
+
+
+
+
+
+什么是数据库
+长期储存在计算机内,有组织的,可共享的大量数据集合
+
+
+为什么要建立数据库
+可收集所需的大量数据,然后进一步加工处理,转换为有用的知识
+
+
+数据库的基本特征
+数据按照一定的数据模型(结构)存储,组织,描述
+冗余度小,可扩展
+数据独立性高
+
+
+什么是数据库管理系统DBMS
+位于用户和操作系统之间的一层数据管理软件
+基础软件,也是一层服务
+
+
+DBMS的用途
+科学的组织和存储数据,高效的获取和维护数据 
+
+
+DBMS的主要功能
+数据定义功能
+提供数据定义语言DDL
+定于数据库中的数据对象
+
+
+数据组织/存储/管理
+管理数据
+确定数据在存储级别上的结构和存取方式
+实现数据之间的联系
+提供多种存储方法提高存储效率
+
+
+数据操纵功能
+增删改查
+提供数据操纵语言(DML)
+关系代数
+关系演算
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>&nbsp;
+          
+            <a href="/tags/sql">sql</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%87%8D%E8%A3%85Git%E5%92%8C%E5%8D%9A%E5%AE%A2/">
+        <p class="h4 index-header">安装调试记录/重装Git和博客</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">重装Git和博客：Git下载安装git.exe，官网速度慢就从腾讯下载
+git bash
+
+git config –global user.name “yubin（自定义用户名）”
+
+git config –global user.email “488459564@qq.com（自定义邮箱）”
+
+ssh-keygen -t rsa -C “你的邮箱”　
+三个回车
+
+
+在C:\users\bqlion\.ssh找到公钥，复制，粘贴到github里的new sshkey中
+git clone git@github.com::BqLion/_post.git
+推送时若报转义问题：warning: LF will be replaced by CRLF in 字典树.md.The file will have its original line endings in your working directory
+输入git config –global core.autocrlf false解决
+hexo下载安装node：https://nodejs.org/en/download/
+检查是否</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+          &nbsp;
+        
         
       </div>
     </div>
@@ -251,19 +471,26 @@ cd bqlion.github.</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/pytorch%E5%AE%89%E8%A3%85/">
-        <p class="h4 index-header">安装调试记录/pytorch安装</p>
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+        <p class="h4 index-header">安装调试记录/更新图床+截屏工作流</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">安装pytorch记录Anaconda Prompt创建conda环境：conda create -n torch
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple –trusted-host pypi.tuna.tsinghua.edu.cn pytorch-1.1.0-py3.6_cuda100_cudnn7_1.tar.bz2
-报错：
-FileNotFoundError: [Errno 2] No such file or directory: ‘C:\Users\LIUBIN1\AppData\Local\Temp\pip-req-build-fcnjgryd\setup.py’Command “python setup.py egg_info” failed with error code 1 in C:\Users\LIUBIN1\AppData\Local\Temp\pip-req-build-fcnjgryd\
-pip install msgpack
-pip install –upgrade setuptoo</div>
+          <div class="index-text mb-1">1.七牛云的试用域名只能用一个月，过期后要用自己已备案的域名。不管是否有备案域名所有已上传图片都要改链接，坑。
+2.改用sm.ms图床，username:bqlion,email:398703917@qq.com,password:8
+3.sm.ms限流，改用又拍云。
+4.又拍云的shareX配置信息如下，密码用又拍云操作员控制台生成。
+
+4.shareX简直神器。可以取代Snipaste+mpic。
+5.ShareX更改快捷键：
+
+捕捉矩形区域为F1
+设置“上传至”为FTP，
+动作设置-高级设置 - after upload - chipboardContentFormat  - 修改为![]($result)
+
+</div>
         </div>
       </a>
 
@@ -280,7 +507,7 @@ pip install –upgrade setuptoo</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/linux">linux</a>&nbsp;
+            <a href="/tags/%E5%9B%BE%E5%BA%8A">图床</a>&nbsp;
           
         
       </div>
@@ -324,64 +551,6 @@ deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main r</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/linux">linux</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/TensorFlow%E5%AE%89%E8%A3%85/">
-        <p class="h4 index-header">安装调试记录/TensorFlow安装</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">安装TensorFlow记录
-安装anaconda安装过程中如果出现failed to create anacoda menu，先忽略让其安装完成，然后在安装的根目录输入如下命令即可。
-C:\Program Files\Anaconda3&gt;python .\Lib_nsis.py mkmenus
-
-卸载之前版本TensorFlow2.0改了语法，与斯坦福课程教的1.x不同，于是卸载。下次安装这种大型框架时要在版本号上多做一些功课。
-
-TensorFlow，cuda，cudnn，python版本对应关系win:
- 
-
-安装anaconda对应python3.5版，设置anaconda环境变量
-
-安装cuda9
-安装时提示我有更新版的驱动，我自己发现PhysX也有更新的，所以选择不安装。Visual Studio Intergration也不安装，不然会报错。如下图所示
-
-安装完后在命令号输入nvcc -V 检测是否安装成功
-
-安装cudnn7官网找到发布历史
-
-
-
-   需要账号密码398730 / 字母和数字间有:
-   将解压包中三个文件夹拖入CUDA根目录下即可
-
-将pip切</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/tensorflow">tensorflow</a>&nbsp;
           
         
       </div>
@@ -470,13 +639,7 @@ sudo yu</div>
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.恢复博客
-2.破解 pycharm，idea
-3.构建启动项+windows界面快捷方式
-5.备份（打包放到硬盘+云备份+windows备份功能）
-git
-博客vpn
-</div>
+          <div class="index-text mb-1"></div>
         </div>
       </a>
 
@@ -494,108 +657,6 @@ git
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/test">test</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/libingteam+%E8%AE%BA%E5%9D%9B/%E8%AE%BA%E5%9D%9B%E9%A1%B9%E7%9B%AE%E7%9F%A5%E8%AF%86%E7%82%B9/">
-        <p class="h4 index-header">libingteam+论坛/论坛项目知识点</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">SpringBootHelloWorldProject Struct1.controller–控制页面组织数据
-2.model–按照数据库的数据结构设置的对象
-3.mapper–mybatis控制model对数据库的crud
-4.service：组装数据库中不同的表格（mapper）
-5.dto：类和类之间传输数据
-4.html – 控制前端页面的装修
-5.migrate–flyway控制数据库的版本
-mybatis持久层框架，java操作数据库的工具
-通常在mapper文件夹中使用
-@Mapper
-public interface UserMapper {
-    @Insert(&quot;insert into user(name,account_id,token,gmt_create,gmt_modified) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified})&quot;)
-    void insert(User user);
-
-@Select(&quot;select * from user </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/libingteam+%E8%AE%BA%E5%9D%9B">libingteam+论坛</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/java">java</a>&nbsp;
-          
-            <a href="/tags/springboot">springboot</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/libingteam+%E8%AE%BA%E5%9D%9B/%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">libingteam+论坛/思路</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.思路1.处理用户权限思路利用@permission注解
-就把一个处理器放在dispatch servlet后边
-处理器会把打了主节点的请求按照相应配置存在请求处理器里，注入redis或者数据库，打到某个interface上，根据请求查询redis是否有正确的可以访问接口的data
-类@permission
-接口@permissionlimit
-@prehandler
-隔离了dispatch
-有两个注解
-@permissionlimit，有个参数是用来限制interface
-servlet封装一个请求的来和回，包装是http 包装tcp
-一个请求进来分到servlet
-现在是到dispachter
-@interface
-//前端发送请求给后端，如果有permisiion和permissionlimit的注解，就调用这个方法
-    //首先是precheck ，因为首先前端发送token和userid，如果无，抛出异常说没有登录
-    //user  role permit 等等ppt上有张图，利用五个表查出本用户权限
-    //掉完上文函数，就把权限放在request请求域里边</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/libingteam+%E8%AE%BA%E5%9D%9B">libingteam+论坛</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/java">java</a>&nbsp;
           
         
       </div>

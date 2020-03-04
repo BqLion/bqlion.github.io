@@ -136,33 +136,230 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Torch_BaseLine%E7%B2%BE%E8%AF%BB/">
-        <p class="h4 index-header">谷歌QA比赛/Torch_BaseLine精读</p>
+      <a href="/2020/02/25/PyTorch/3.%E5%9B%9E%E5%BD%92/">
+        <p class="h4 index-header">PyTorch/3.回归</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Baselineimport Lib
+          <div class="index-text mb-1">3.回归import torch
+from torch.autograd import Variable
+import torch.nn.functional as F
+import matplotlib.pyplot as plt
+
+x = torch.unsqueeze(torch.linspace(-1,1,100),dim=1)
+#为什么要用.unsqueeze？因为torch只能处理二维的数据，unsqueeze可以把一维的数据转换成二维的
+
+y = x.pow(2) + 0.2*torch.rand(x.size())
+#y是x的二次方加上一些随机噪声
+
+x,y = Variable(x),Variable(y)
+# x和y都只能转换成Variable才能被torch处理
+# 新版torch已经不需要转换成Variable了，可以直接处理
+
+plt.scatter(x.data.numpy(),y.data.numpy())
+#plt.scatter就是打印散点图
+plt.show()
+
+#定义神经网络的层
+class Net(torch.nn.Module):
+    d</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/25/PyTorch/2.%E6%BF%80%E5%8A%B1%E5%87%BD%E6%95%B0/">
+        <p class="h4 index-header">PyTorch/2.激励函数</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.激励函数
+如上，激励函数是一个非线性的函数，是神经网络中非线性化的手段。每一层神经网络的输出结果都进入激励函数，激励函数将它们映射到下一层的输入中。
+from torch.autograd import Variable
+import matplotlib.pyplot as plt
+
+#fake data
+x = torch.linspace(-5,5,200) #linspace可以将-5到5之间均匀的取200个点
+x = Variable(x)   #将x从点集转换为Variable
+x_np = x.data.numpy()
+
+y_relu = F.relu(x).data.numpy()
+y_sigmoid = F.sigmoid(x).data.numpy()
+y_tanh = F.tanh(x).data.numpy()
+y_softplus = F.softplus(x).data.numpy()
+#y_softmax = F.softmax(x)
+# 分别求出各激励函数的y值list
+
+plt.figure(1,figsize=(8,6))
+plt.subplot</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/25/PyTorch/1.Variable%E5%8F%98%E9%87%8F/">
+        <p class="h4 index-header">PyTorch/1.Variable变量</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.Variable变量variable可以想象成是篮子，tensor是鸡蛋。鸡蛋从一个篮子pass到另一个篮子时，就会构建一个计算图纸。
+目前的深度学习框架大部分都基于计算图
+一张计算图谱就是一个有向无环图，图中的节点主要是Variable。
+想要让tensor作为一个神经网络的参数，首要就是把tensor转换为Variable类型。
+只有variable节点可以被神经网络反向传播优化到，其他的占位符和常亮节点不可以被优化到。
+如下代码中，requires_grad 这个参数代表此节点是需要反向传播优化，通常都选True。
+import torch
+from torch.autograd import Variable
+
+tensor = torch.FloatTensor([[1,2],[3,4]])
+variable = Variable(tensor,requires_grad=True)
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/PyTorch">PyTorch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Torch_BaseLine_import/">
+        <p class="h4 index-header">谷歌QA比赛/Torch_BaseLine_import</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Baseline_importimport Lib
 import numpy as np
 #numpy是主要用于数组计算，线性代数，傅里叶变换等。
-
 import pandas as pd
 #pandas基于numpy，可以处理高纬数据
-
-from sklean.manifold import TSNE
+from sklearn.manifold import TSNE
 #sklearn是机器学习中常用的第三方模块，对常见的机器学习算法进行了封装，包括回归、降维、分类、聚类等
 #sklearn.manifold是流形学习，非线性降维的手段。最简单的降维手段是随机投影，但是会导致结构丢失。
 #manifold learning是一种类似主成分分析（PCA）的线性框架，不会错失数据结构中的非线性项
 # TSNE提供了一种画图方式，让高维的数据降低为二维画出来
-
 import seaborn as sns
 # 基于matplotlib的画图工具
-
 import glob
 # glob是查找模块。支持空格 ，问号？，方括号[]这三个通配符。
 # 空格代表0个或者多个字符，问号？代表一个字符，[]代表范围，例如0-9.
-# glob主要是两个方法，glob方法获（取全部匹配路</div>
+# glob主要是两个方法，glob方法获（取全</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B">谷歌QA比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E8%B0%B7%E6%AD%8CQA%E6%AF%94%E8%B5%9B/Transformer/">
+        <p class="h4 index-header">谷歌QA比赛/Transformer</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">TransformerTransformer改进了RNN的训练慢的缺点，加入了自注意机制，充分发挥了DNN的优点，提升模型准确率。Transformer由论文《Attention is All you need》提出。有Tensorflow和Pytorch版本。
+宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。
+
+拆开这个黑箱，发现里边是由编码和解码组件构成。
+
+编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。
+1.编码器详解像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
+
+词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
+
+开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
+2</div>
         </div>
       </a>
 
@@ -472,194 +669,6 @@ CRC差错检测
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E6%A6%82%E5%BF%B5s/">
-        <p class="h4 index-header">线性代数/概念s</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">转自知乎学习笔记:
-https://www.matongxue.com/madocs/555.html
-概念
-2范数
-
-范数有长度的意思
-
-向量的2范数:就是x中各元素平方和相加再开根号
-矩阵的2范数:A的转置乘以A矩阵特征根的最大值的开根号
-
-
-
-
-
-
-可逆矩阵
-
-矩阵A为n阶方阵，若存在n阶矩阵B，使得矩阵A、B的乘积为单位阵，则称A为可逆阵，B为A的逆矩阵。若方阵的逆阵存在，则称为可逆矩阵或非奇异矩阵，且其逆矩阵唯一。
-
-求可逆矩阵的方法如下图
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%EF%BC%8C%E8%83%BD%E5%90%A6%E6%88%90%E4%B8%BA%E4%BC%81%E4%B8%9A%E4%B8%8B%E4%B8%80%E4%BB%A3%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">
-        <p class="h4 index-header">知识图谱/知识图谱，能否成为企业下一代的数据仓库</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">知识图谱，能否成为企业下一代的数据仓库？原创： camel AI科技评论 前天
-
-作者 | camel编辑 | 唐里
-
-“我认为，知识图谱是企业下一代管理数据的一种新的组织方式，能够更高效的连接上游的大数据和下游的AI建模任务。
-企业最初数据量少、结构单一的时候，用MySQL这样的结构化数据库就够了；再后来数据量越来越多、业务系统越来越复杂，就需要分布式数据库、数据仓库、数据集市来管理数据资产。这类数据都需要事先定义好结构。但在大数据时代，你不可能事先将数据的结构定义好，于是很多企业开始利用像 Hadoop 等来搭建大数据平台，以NOSQL的方式存储那些事先无法定义的数据。但这些数据之间如何有效关联？例如，当一些查找稍微深度（例如四、五度或出现隐形关系），这就需要利用知识图谱进行数据组织了。”
-
-在近期AI科技评论对张杰博士进行的采访中，张杰如是回答了他对知识图谱未来发展的看法。
-​             
-张杰博士是明略科技资深科学家，明略科学院知识工程实验室主任，加入明略科技后便一直在负责明略科技“行业知识图谱”的研究和搭建工作，在此之前曾在华为中央研究院从事机器学习方面的研究工</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1">知识图谱</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1">知识图谱</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
-        <p class="h4 index-header">线性代数/奇异值分解</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">奇异值分解1.应用：影像压缩2.应用：过滤噪声
-左图是原始图片。右图是经过SVD分解处理的图片，丢失了一些精确度，但是呈现效果更好，很可能丢失的精确度恰好是噪声。
-具体做法是我们对15*25的矩阵做奇异值分解（SVD），然后得到如下15个特征值，其中前三个特征是比较重要，为了压缩数据和过滤噪声，我们只取前三个特征值，后边的全部丢弃。
-
-
-5.计算例子​    
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
-          
-            <a href="/tags/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3">奇异值分解</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
-        <p class="h4 index-header">杂谈/王威廉对博士生的要求</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Hiring PhD students
-Q: What’s your research interest? 
-A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/phd%E7%94%B3%E8%AF%B7">phd申请</a>&nbsp;
-          
-            <a href="/tags/UCSB">UCSB</a>&nbsp;
           
         
       </div>
