@@ -204,6 +204,53 @@ cd bqlion.github.</div>
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+        <p class="h4 index-header">安装调试记录/更新图床+截屏工作流</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.七牛云的试用域名只能用一个月，过期后要用自己已备案的域名。不管是否有备案域名所有已上传图片都要改链接，坑。
+2.改用sm.ms图床，username:bqlion,email:398703917@qq.com,password:8
+3.sm.ms限流，改用又拍云。
+4.又拍云的shareX配置信息如下，密码用又拍云操作员控制台生成。
+
+4.shareX简直神器。可以取代Snipaste+mpic。
+5.ShareX更改快捷键：
+
+捕捉矩形区域为F1
+设置“上传至”为FTP，
+动作设置-高级设置 - after upload - chipboardContentFormat  - 修改为![]($result)
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%9B%BE%E5%BA%8A">图床</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/win%E5%AE%89%E8%A3%85linux%E5%AD%90%E7%B3%BB%E7%BB%9F/">
         <p class="h4 index-header">安装调试记录/win安装linux子系统</p>
         
@@ -512,54 +559,6 @@ MEMM模型克服了观察值之间严格独立产生的问题，但是由于状�
 CRF模型解决了标注偏置问题，去除了HMM中两个不合理的假设，当然，模型相应的变得更复杂了。
 6.6.3）HMM模型，最大熵模型，CRF模型的优劣
 HMM模型将标注看做是马尔科夫链，一阶马尔科夫链式针对相邻标注的关系进行建模，其中每个</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
-          
-            <a href="/tags/HMM">HMM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM%E5%92%8CHEMM%E5%92%8CCRF%E7%9A%84%E6%AF%94%E8%BE%83pt2/">
-        <p class="h4 index-header">Speech and language processing/概念_6_HMM和HEMM和CRF的比较pt2</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.1.1 概览在统计概率图（probability graph models）中，参考宗成庆老师的书，是这样的体系结构（个人非常喜欢这种类型的图）：
-
-在概率图模型中，数据(样本)由公式  建模表示： 
-
- 表示节点，即随机变量（放在此处的，可以是一个token或者一个label），具体地，用  为随机变量建模，注意  现在是代表了一批随机变量（想象对应一条sequence，包含了很多的token），  为这些随机变量的分布；
- 表示边，即概率依赖关系。具体咋理解，还是要在后面结合HMM或CRF的graph具体解释。
-
-2.1.2 有向图 vs. 无向图上图可以看到，贝叶斯网络（信念网络）都是有向的，马尔科夫网络无向。所以，贝叶斯网络适合为有单向依赖的数据建模，马尔科夫网络适合实体之间互相依赖的建模。具体地，他们的核心差异表现在如何求  ，即怎么表示  这个的联合概率。
-1. 有向图
-对于有向图模型，这么求联合概率： 
-举个例子，对于下面的这个有向图的随机变量(注意，这个图我画的还是比较广义的)：
-
-应该这样表示他们的联合概率:
-
-应该很好理解吧。
-2. 无向图
-对于无向图，我看资料</div>
         </div>
       </a>
 
