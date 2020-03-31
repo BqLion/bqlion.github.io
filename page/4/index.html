@@ -136,47 +136,39 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">安装调试记录/博客建站记录</p>
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4.%E5%9B%BE/">
+        <p class="h4 index-header">数据结构/4.图</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">windows环境下使用hexo搭建博客记录搭建步骤
-购买域名
+          <div class="index-text mb-1">4.图图是一种网状数据结构,由顶点和边构成,Graph = (V,E)
+4.1子图
+4.2强连通分量:
+构造镜像图G’
 
-github创建个人仓库
-
-安装node.js
-
-安装hexo
-
-推送网站
-
-域名解析
-
-更换主题
-
-更改配置
-
-发布文章
-
-使用图床
+对G 和 G’中s的可达分量求并集既可得强连通分量
 
 
-1.域名购买godaddy.com: 域名很全但价格较高，首年年费均价￥60左右,往后每年续费￥120左右。
-阿里云：价格适中但个性化后缀较少,cc后缀域名无法备案
-namesilo.com: 域名较全,价格最低,bqlab.cc十年￥280,最终在此购买。 
-2.github创建仓库仓库名命名为bqlion.github.io，亲测改成其他域名网站不能正常访问，
-3.安装node.js下载地址：https://nodejs.org/en/download/
-安装完成后检测是否成功：node -v
-检测npm是否一起安装成功: npm - v
-4.安装hexo创建名为bqlion.github.io的文件夹，在这里打开cmd命令行
-输入
-npm install -g hexo-cli初始化博客
-hexo bqlion.github.io检查网站雏形
-cd bqlion.github.</div>
+
+
+4.3图的存储方式首先,从图的逻辑结构定义来看,无法将图的顶点排列成唯一的线性序列,在图中任意顶点都可以是图的第一个顶点.
+对任意顶点来说他的邻接点也不存在顺序关系
+所以顶点在图中的位置就是指该顶点在图中[人为]确定的序列的位置
+由于图的结构比较复杂,任意两个顶点之间都可能存在联系,所以无法将数据元素存储区的位置来表示元素之间的关系,即图没有顺序映像的存储结构,但可借助数组来表示数据元素之间的关系
+4.3.1邻接矩阵图的邻接矩阵表示法就是用数组来存放图的结构,也成为[数组表示法],采用两个数组来表示图
+
+存储所有顶点信息的一维数组
+
+存储图中顶点之间关系的二维数组,这个关联数组也叫邻接矩阵
+邻接矩阵的示意图(∞代表没有相连)
+
+
+
+4.3.2邻接表临接矩阵的问题:空间使用效率低,因为大量的单元所对应的边可能没有在图中出现
+按照改进空间使用效率的思路想,可以将静态数组的存储结构改成链式存储结构
+</div>
         </div>
       </a>
 
@@ -187,13 +179,15 @@ cd bqlion.github.</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%9B%BE">图</a>&nbsp;
           
         
       </div>
@@ -204,24 +198,210 @@ cd bqlion.github.</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
-        <p class="h4 index-header">安装调试记录/更新图床+截屏工作流</p>
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5.%E5%A0%86/">
+        <p class="h4 index-header">数据结构/5.堆</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.七牛云的试用域名只能用一个月，过期后要用自己已备案的域名。不管是否有备案域名所有已上传图片都要改链接，坑。
-2.改用sm.ms图床，username:bqlion,email:398703917@qq.com,password:8
-3.sm.ms限流，改用又拍云。
-4.又拍云的shareX配置信息如下，密码用又拍云操作员控制台生成。
+          <div class="index-text mb-1">5.堆
+堆中存储的值是偏序
 
-4.shareX简直神器。可以取代Snipaste+mpic。
-5.ShareX更改快捷键：
+堆属于完全二叉树
 
-捕捉矩形区域为F1
-设置“上传至”为FTP，
-动作设置-高级设置 - after upload - chipboardContentFormat  - 修改为![]($result)
+大顶堆：父节点的值小于或等于子节点的值
+
+小顶堆：父节点的值大于或等于子节点的值
+
+
+
+1.堆的存储一般都用数组来表示堆，i节点的父节点下标就是（i - 1）/ 2,它的左右节点的下标分别是2 * i + 1和2 * i + 2。
+
+2.堆的操作：insert插入元素时，新元素被加到heap的末尾，然后更新树以恢复堆的次序。从新加元素到根节点之间必为一个有序数列，现在的任务是将这个新数据插入到原来的有序数列中，使数列仍保持有序。
+
+3.堆的操作：删除以大顶堆为例，删除元素时，每次都删除堆的第0个元素，为了便于重建堆，实际的操作是将堆的最后一个数据的值赋给根节点，然后从根节点开始依次从上往下调整。调整时先在左右儿子中找到最小的，若父节点比小子节点还还小就不交换，完成。如果不是就和大子节点交换位置，一直到交换不了为止。
+
+4.堆的操作：堆化数组堆化数组就是把数组从头到尾过一遍，把不满足大/小顶堆要求的数据依次交换。
+需注意叶子节点一律不用处理，应该从非叶子节点的右下角开始处理，处理时将本节点与下方节点比较，不符合要求的直接交换。本次交换后下</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E5%A0%86">堆</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/0.%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/">
+        <p class="h4 index-header">数据结构/0.常见算法总览</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">十大排序算法
+
+简单排序：插入排序、选择排序、冒泡排序（必学）
+分治排序：快速排序、归并排序（必学，快速排序还要关注中轴的选取方式）
+分配排序：桶排序、基数排序
+树状排序：堆排序（必学）
+其他：计数排序（必学）、希尔排序
+
+对于十大算法的学习，假如你不大懂的话，那么我还是挺推荐你去看书的，因为看了书，你可能不仅仅知道这个算法怎么写，还能知道他是怎么来的。推荐书籍是《算法第四版》，这本书讲的很详细，而且配了很多图演示，还是挺好懂的。
+推荐文章：
+必学十大经典排序算法，看这篇就够了(附完整代码/动图/优质文章)(修订版)
+2、图论算法
+
+图的表示：邻接矩阵和邻接表
+遍历算法：深度搜索和广度搜索(必学)
+最短路径算法：Floyd，Dijkstra（必学）
+最小生成树算法：Prim，Kruskal（必学）
+实际常用算法：关键路径、拓扑排序（原理与应用）
+二分图匹配：配对、匈牙利算法（原理与应用）
+拓展：中心性算法、社区发现算法（原理与应用）
+
+图还是比较难的，不过我觉得图涉及到的挺多算法都是挺实用的，例如最短路径的计算等，图相关的，我这里还是建议看书的，可以看《算法第四版》。
+漫画：什么是 “</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.%E6%95%B0%E7%BB%84,%E9%93%BE%E8%A1%A8/">
+        <p class="h4 index-header">数据结构/1.数组,链表</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">数组
+数组是用来存放一组有相同数据类型的数据结构,通过整形下标来访问数组中的值
+如果越过数据的下标访问数据,会返回ArrayIndexOutOfBoundException
+Java中数组是一个类:所以两个数组变量可以指向同一个数组
+
+线性表
+顺序存储结构
+用数组实现
+插入元素的平均时间复杂度是O(n)
+查找的平均时间复杂度是O(1)
+适合多查找的场景
+
+
+链式存储结构
+典型的node节点由[data]和[next]两个域组成
+插入元素的平均时间复杂度是O(1)
+查找的平均时间复杂度是O(n)
+适合多增删的场景
+
+
+
+迭代器迭代器是程序设计模式中的行为模式,功能是提供一种方法顺序访问一个聚集对象中各个元素,又不暴露该对象的内部表示.
+简单来说迭代器就是对遍历操作的抽象.
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%95%B0%E7%BB%84">数组</a>&nbsp;
+          
+            <a href="/tags/%E9%93%BE%E8%A1%A8">链表</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2.%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97-/">
+        <p class="h4 index-header">数据结构/2.栈与队列-</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4.1栈
+栈的定义
+
+栈又称堆栈,是运算首先的线性表,仅允许从表的一端进行插入和删除.
+
+插入,删除的一端称为栈顶(top),另外一端称为栈底(bottom)
+
+
+栈的顺序存储和链式存储和线性表一模一样,只是在栈顶加上了增删元素的限制.
+
+有后进先出的特征
+
+
+
+
+4.2队列
+队列的定义
+队列和栈一样,是运算受限制的线性表,仅允许从一头插入元素(rear),从另一头读取(head)
+有先进先出的特征
+
+
 
 </div>
         </div>
@@ -234,128 +414,18 @@ cd bqlion.github.</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%9B%BE%E5%BA%8A">图床</a>&nbsp;
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
           
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/win%E5%AE%89%E8%A3%85linux%E5%AD%90%E7%B3%BB%E7%BB%9F/">
-        <p class="h4 index-header">安装调试记录/win安装linux子系统</p>
-        
-        
+            <a href="/tags/%E6%A0%88">栈</a>&nbsp;
           
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.安装​    win10设置-针对开发者人员-勾选开发人员模式
-​    控制面板-程序-程序和功能-启动或关闭windows功能-勾选适用于linux的windows子系统
-​    windows appstore下载ubuntu
-2.优化​    备份源路径文件sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-​    编辑源路径文件sudo vim  /etc/apt/sources.list
-​    切换镜像源    vim删除当前文件所有内容：ggdG
-deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse 
-deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main r</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
+            <a href="/tags/%E9%98%9F%E5%88%97">队列</a>&nbsp;
           
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux">linux</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/ShadowSocks%E5%9C%A8AWS%E6%90%AD%E6%A2%AF%E5%AD%90/">
-        <p class="h4 index-header">安装调试记录/ShadowSocks在AWS搭梯子</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">SAWS搭梯子ShadowSocks在AWS搭梯子（2020.2不可用）注册AWS账号，启动新的实例。
-配置安全组，给实例增加端口，点击添加规则（类型：自定义TCP规则，协议：默认TCP，端口：8989，来源：任何位置）
-下载密钥对
-下载putty，把密钥放在putty根目录里
-打开puttygen，选择Type of key to generate为RSA
-点击puttygen里边的load，文件类型改成所有文件，打开putty根目录里的密钥
-点save private key,弹出是否不要密码地保存私钥点”是”
-打开putty，Connection页面，seconds between keepalives填写10。
-打开putty，第一页HostName填写user_name@public_dns_name，也就是
-ec2-user@ec2-18-191-169-15.us-east-2.compute.amazonaws.computty - connection - ssh - auth - browser,选中刚才生成的pkk文件，点击open，即可连上实例。
-sudo yu</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/Docker%E5%9C%A8AWS%E6%90%AD%E6%A2%AF%E5%AD%90/">
-        <p class="h4 index-header">安装调试记录/Docker在AWS搭梯子</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">使用Docker在AWS上搭梯子1.在aws上安装dockersudo apt-get update
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
         
       </div>
     </div>
@@ -583,7 +653,7 @@ HMM模型将标注看做是马尔科夫链，一阶马尔科夫链式针对相�
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
