@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>安装调试记录/博客建站记录 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      6 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="windows环境下使用hexo搭建博客记录"><a href="#windows环境下使用hexo搭建博客记录" class="headerlink" title="windows环境下使用hexo搭建博客记录"></a>windows环境下使用hexo搭建博客记录</h1><h3 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h3><ul>
+<li><p>购买域名</p>
+</li>
+<li><p>github创建个人仓库</p>
+</li>
+<li><p>安装node.js</p>
+</li>
+<li><p>安装hexo</p>
+</li>
+<li><p>推送网站</p>
+</li>
+<li><p>域名解析</p>
+</li>
+<li><p>更换主题</p>
+</li>
+<li><p>更改配置</p>
+</li>
+<li><p>发布文章</p>
+</li>
+<li><p>使用图床</p>
+</li>
+</ul>
+<h4 id="1-域名购买"><a href="#1-域名购买" class="headerlink" title="1.域名购买"></a>1.域名购买</h4><p>godaddy.com: 域名很全但价格较高，首年年费均价￥60左右,往后每年续费￥120左右。</p>
+<p>阿里云：价格适中但个性化后缀较少,cc后缀域名无法备案</p>
+<p>namesilo.com: 域名较全,价格最低,bqlab.cc十年￥280,最终在此购买。 </p>
+<h4 id="2-github创建仓库"><a href="#2-github创建仓库" class="headerlink" title="2.github创建仓库"></a>2.github创建仓库</h4><p>仓库名命名为bqlion.github.io，亲测改成其他域名网站不能正常访问，</p>
+<h4 id="3-安装node-js"><a href="#3-安装node-js" class="headerlink" title="3.安装node.js"></a>3.安装node.js</h4><p>下载地址：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
+<p>安装完成后检测是否成功：node -v</p>
+<p>检测npm是否一起安装成功: npm - v</p>
+<h4 id="4-安装hexo"><a href="#4-安装hexo" class="headerlink" title="4.安装hexo"></a>4.安装hexo</h4><p>创建名为bqlion.github.io的文件夹，在这里打开cmd命令行</p>
+<p>输入</p>
+<pre><code>npm install -g hexo-cli</code></pre><p>初始化博客</p>
+<pre><code>hexo bqlion.github.io</code></pre><p>检查网站雏形</p>
+<pre><code>cd bqlion.github.io
+
+hexo new test_my_site
+
+hexo g
+
+hexo s</code></pre><p>打开localhost:4000 检查网站是否已经拉起</p>
+<p>常用hexo命令</p>
+<pre><code>npm install hexo -g #安装Hexo
+npm update hexo -g #升级 
+hexo init #初始化博客
+
+命令简写
+hexo n  &quot;我的博客&quot; == hexo new  &quot;我的博客&quot;   #新建文章
+hexo g == hexo generate   #生成
+hexo s == hexo server   #启动服务预览
+hexo d == hexo deploy   #部署
+
+hexo server     #Hexo会监视文件变动并自动更新，无须重启服务器
+hexo server -s    #静态模式
+hexo server -p 5000     #更改端口
+hexo server -i 192.168.1.1     #自定义 
+IPhexo clean     #清除缓存，若是网页正常情况下可以忽略这条命令
+</code></pre><h4 id="5-推送网站"><a href="#5-推送网站" class="headerlink" title="5.推送网站"></a>5.推送网站</h4><p>根目录下的_config.yml是站点配置文件，themes文件夹里的_config.yml文件是主题配置文件</p>
+<p>将hexo与github关联起来：</p>
+<p>打开_config.yml，修改最后几行为：</p>
+<pre><code>deploy: 
+type: git
+repo: https://github.com/BqLion/bqlion.github.io.git
+branch: master</code></pre><p>其实就是给 hexo d这个命令做配置，让hexo知道要把blog部署在哪个位置</p>
+<p>安装git部署插件</p>
+<pre><code>npm install hexo-deployer-git --save</code></pre><p>分别输入三条命令（清理，生成，部署）</p>
+<pre><code>hexo clean 
+hexo g 
+hexo d</code></pre><p>到这里博客就上线了</p>
+<h4 id="6-域名解析"><a href="#6-域名解析" class="headerlink" title="6.域名解析"></a>6.域名解析</h4><p>阿里云在添加两条bqlab.cc中添加两条记录</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1217_10_817.png" alt=""></p>
+<p>第一条记录值是bqlion.github.io，第二条记录值是bqlion.github.io的ip</p>
+<p>ip地址获取方法是打开cmd</p>
+<pre><code>ping bqlion.github.io</code></pre><p>点开github之前创建的仓库，点settings，设置custom domain,输入bqlab.cc</p>
+<p>在blog根目录/source文件夹里创建记事本，内容就是自己的网址</p>
+<pre><code>bqlab.cc</code></pre><p>退出保存为CNAME,注意保存为所有文件而不是txt文件</p>
+<p>然后输入</p>
+<pre><code class="bash">hexo clean
+hexo g
+hexo d</code></pre>
+<p>即可看到博客</p>
+<h4 id="7-更换主题"><a href="#7-更换主题" class="headerlink" title="7.更换主题"></a>7.更换主题</h4><p>我使用的是fliud主题，参照<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener">https://github.com/fluid-dev/hexo-theme-fluid</a>设置</p>
+<p>_config.yml修改红框主题为fliud</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1217_43_784.png" alt=""></p>
+<p>下载相应版本<a href="https://github.com/fluid-dev/hexo-theme-fluid/releases" target="_blank" rel="noopener">https://github.com/fluid-dev/hexo-theme-fluid/releases</a></p>
+<p>解压到themes目录下，重命名为fluid</p>
+<ul>
+<li>配置</li>
+</ul>
+<p>按如下代码块修改hexo根目录的_config.yml</p>
+<pre><code># 设置语言，需要对应下面目录内的文件名，可以自定义文件内容
+# https://github.com/fluid-dev/hexo-theme-fluid/tree/master/languages
+language: zh-CN
+
+# 关闭默认的代码高亮
+highlight:
+  enable: false</code></pre><ul>
+<li>启用主题</li>
+</ul>
+<p>修改根目录的_config.yml</p>
+<pre><code># Extensions
+theme: fluid</code></pre><ul>
+<li></li>
+</ul>
+<h4 id="8-配置主题（需特别注意yml的缩进问题）"><a href="#8-配置主题（需特别注意yml的缩进问题）" class="headerlink" title="8.配置主题（需特别注意yml的缩进问题）"></a>8.配置主题（需特别注意yml的缩进问题）</h4><p>参考文件<a href="https://fluid-dev.github.io/hexo-fluid-docs/guide" target="_blank" rel="noopener">https://fluid-dev.github.io/hexo-fluid-docs/guide</a></p>
+<p>覆盖配置</p>
+<ol>
+<li><p>根目录的source目录，创建_data文件夹和_post文件夹，</p>
+</li>
+<li><p>在 <code>_data</code> 目录下创建 <code>fluid_config.yml</code> 文件，将 <code>/theme/fluid/_config.yml</code> 中被修改的配置或者全部配置，复制到 <code>fluid_config.yml</code> 中；</p>
+</li>
+<li><p>以后配置都在 <code>fluid_config.yml</code> 中修改，配置会在 <code>hexo g</code> 时自动覆盖。</p>
+</li>
+<li><p>所有资源静态文件的 Url 可以通过 <code>_static_prefix</code> 自定义配置，同样也支持覆盖配置，写入 <code>_data/fluid_static_prefix.yml</code> 即可。</p>
+</li>
+<li><p>其他情况，建议更新前备份 <code>/theme/fluid/_config.yml</code>，以免覆盖自定义的配置项。</p>
+</li>
+</ol>
+<p>config.yml</p>
+<ul>
+<li>site</li>
+</ul>
+<pre><code>title: 刘秉乾的技术博客 :)
+subtitle: &quot;Life Oriented Programming...&quot;
+description: &#39;desc&#39;
+keywords:
+author: LiuBingqian
+language: zh-CN
+timezone: Asia/Shanghai</code></pre><p>subtitle:首页打印信息</p>
+<p>language 和 timezone为必填项</p>
+<ul>
+<li>url</li>
+</ul>
+<pre><code>url: bqlab.cc
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing index.html from permalinks</code></pre><p>url 必填</p>
+<ul>
+<li>extension/deployment</li>
+</ul>
+<pre><code># Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: fluid
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: https://github.com/BqLion/bqlion.github.io.git
+  branck: master</code></pre><p>之前的步骤中已经修改</p>
+<p>fliud_config.yml</p>
+<p>修改头图</p>
+<pre><code>favicon: /img/myicon.png # 网站标签页的 icon
+
+apple_touch_icon: /img/myicon.png # 用于苹果设备的 icon</code></pre><p>修改导航栏</p>
+<pre><code>navbar:
+  blog_title: LiuBingqian`s Blog # 导航栏左侧的标题，为空则按 hexo config.title 显示
+  menu:  # 可自行增减，若想减去某个入口，可以将值留空
+    &quot;主页&quot;: /
+    &quot;目录&quot;: /categories/
+    &quot;归档&quot;: /archives/
+    &quot;标签&quot;: /tags/
+    &quot;关于&quot;: /about/</code></pre><p>修改各页图片和高度</p>
+<pre><code>banner_img: https://static.zkqiang.cn/images/20190728023253.jpg-slim # 首页 Banner 头图，以下相同
+banner_img_height: 100  # 头图高度，屏幕百分比，available: 0 - 100</code></pre><p>修改about页信息</p>
+<pre><code>#---------------------------
+# 关于页
+# About Page
+#---------------------------
+about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/about.md 中编辑，支持 markdown 和 HTML
+  md_path: ./pages/about.md  # 关于页文档的相对路径，可以按相对文档设置主题之外的路径，从而避免更新冲突
+  banner_img: https://static.zkqiang.cn/images/20190728021541.jpg-slim
+  banner_img_height: 90  # available: 0 - 100
+  avatar: /img/slava.png # 头像
+  name: 刘秉乾
+  introduce: 程序猿 / 健身爱好者 / 搬砖狂魔 # 支持 HTML
+  icons: # 更多图标可从 https://fontawesome.com/icons 查找，并以 &quot;图标名: url&quot; 的格式添加在下方
+    &quot;fab fa-github&quot;: https://github.com/BqLion
+    #&quot;fab fa-twitter&quot;:
+    #&quot;fab fa-weixin&quot;: # 微信图标，这个是特殊图标，点击不会跳转而是悬浮二维码，所以链接需要对应二维码图片地址
+</code></pre><p>参考博客：</p>
+<p><a href="https://zkqiang.cn/" target="_blank" rel="noopener">https://zkqiang.cn/</a></p>
+<p><a href="https://0x2e.github.io/" target="_blank" rel="noopener">https://0x2e.github.io/</a></p>
+<h4 id="9-发布文章"><a href="#9-发布文章" class="headerlink" title="9.发布文章"></a>9.发布文章</h4><p>可直接把.md文件拖进_post目录，注意在每个.md文件头部插入yml块，输入如下内容配置好标签和分类</p>
+<pre><code>categories:
+- 算法
+- CS229
+tags:
+- 机器学习
+- 梯度下降</code></pre><h4 id="10-使用图床"><a href="#10-使用图床" class="headerlink" title="10.使用图床"></a>10.使用图床</h4><ol>
+<li>注册七牛云，实名认证，新建存储空间</li>
+<li>使用MPic图床神器，配置AK SK后即可使用，直接把图片拖拽上去即可在剪切板生成md插入图片链接</li>
+<li>使用snipaste截屏工具，比windows自带工具好用</li>
+</ol>
+<h4 id="11-常用命令"><a href="#11-常用命令" class="headerlink" title="11.常用命令"></a>11.常用命令</h4><p>hexo clean</p>
+<p>hexo g</p>
+<p>hexo d</p>
+<p>hexo new &lt;title&gt;</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "安装调试记录/博客建站记录&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

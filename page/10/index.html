@@ -136,41 +136,272 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/10.%E8%81%9A%E7%B1%BBClustering/">
-        <p class="h4 index-header">CS229/10.聚类Clustering</p>
+      <a href="/2020/02/24/D3NER/embedding/">
+        <p class="h4 index-header">D3NER/embedding</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
-如图就是聚类问题
-左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
-10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
+          <div class="index-text mb-1"></div>
+        </div>
+      </a>
 
-K-均值是一个迭代算法
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
 
-设想我们将数据聚集成n组,选择k个随机的点为聚类中心
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/D3NER/">
+        <p class="h4 index-header">D3NER/D3NER</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">D3NER:biomedical named entity recognition using CRF-biLSTM improved with fine-tuned embedding of various linguistic information找有代码的论文读，复现作者的工作
+1.标题D3NER:一种使用[被精细调整过”多种语言信息embedding”所提升性能的条件随机场-双向长短时记忆网络]的生物医学命名实体识别工具
 
-对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
+embedding
 
-然后开始迭代:
+CRF
 
-每次计算一个组的平均值,将中心点移动到平均值的位置
-如此反复几次中心点的位置就不再变化
-如下图所示
-
+biLSTM
+均另起文章讨论
 
 
+2.abstract2.1Motivation
+生物医学命名实体识别技术,是从生物医学文本信息(unstructured text)中提取知识的先决条件,最近LSTM网络被应用到这个问题上,表现很好,不过我们有更改进的地方.
+2.2Result
+我们使用D3NER,一种使用了CRF+biLSTM网络+精调语言信息embedding的生物医学命名实体识别技术
+D3NER和同方向的七种实体识别技术做了充分对比,结论是性能确实有提高
+3.Introduction
+特征工程做NER
+Named En</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
+            <a href="/tags/embedding">embedding</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/LSTM/">
+        <p class="h4 index-header">D3NER/LSTM</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LSTM+CRF1、perspectively
+LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
+但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
+2、LSTM+CRF
+既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
+因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
+
+input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/CRF/">
+        <p class="h4 index-header">D3NER/CRF</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">条件随机场
+概率统计图概览
 
 
-10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
-因此K均值的代价函数为:
+马尔科夫假设/马尔科夫性
 
-10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
-1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
-2.随机选择K个训练实例,然后令K个聚类中心等于他们
-K-均值算法的一个问题在于,他可能停留在某个</div>
+马尔科夫假设
+马尔科夫链  里的  总是只受  一个人的影响。马尔科夫假设这里相当于就是个2-gram。
+马尔科夫过程
+在一个过程中，每个状态的转移只依赖于前n个状态
+
+
+
+
+马尔科夫性
+马尔科夫性是保证或者判断概率图是否为概率无向图的条件
+成对性
+局部性
+全局性
+
+
+
+
+
+
+条件随机场定义
+
+条件随机场是在给定的随机变量 （具体，对应观测序列  ）条件下，随机变量  （具体，对应隐状态序列  的马尔科夫随机场。
+广义的CRF的定义是： 满足  的马尔科夫随机场叫做条件随机场（CRF）
+条件随机场是一种特殊的马尔科夫随机场
+马尔科夫随机场
+首先我们有无向图G=(V,E)， 图G中每个节点v上都有一个随机变量y，这样所有的节点上的随机变量就构成一组随机变量Y，图G上有联合概率分布P(Y)。边e表示相邻节点的变量存在某种神秘的联系。
+图G上的随机变量Y满足马尔科夫性，即两个不相邻的节点上的随机变量yi，yj条件独立。这就是马尔科夫随机场。
+
+
+
+
+CRF建模公式
+
+
+CRF特征函数
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E6%A2%AF%E6%AE%B5%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">CS229/梯段下降算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">梯度下降算法
+特点：梯度下降算法可以自动将代价函数J最小化
+问题描述:有一个代价函数，它有两个参数，想让这个代价函数的值最小化。
+做法：持续把这个两个参数向着梯度下降最快的方向迭代。
+
+
+
+梯度下降算法的学习率α设置:
+α过小,收敛太慢
+α过大,在最小值附近震荡
+
+
+梯度下降缺点:可能求的是局部最优解，解决办法是多次随机初始化起点。
+
+1.多特征值的回归问题
+
+单特征回归:只有房子面积一个特征,求预测房价
+
+单特征回归的假设函数:h(x) = θ0 + θ1x
+
+
+多特征回归:有房子面积,卧室数量,几层高,使用年限四个特征,求预测房价
+
+四特征回归的假设函数:h(x) = θ0 + θ1x1+θ2x2+θ3x3+θ4x4    —-&gt;   缩写h = θ(XT) :向量θ乘以向量X的转置
+只考虑最简单的一次线性多项式
+
+
+多特征回归的梯度下降算法:
+
+每次对一个参数求偏导,并对其迭代.
+所有参数都迭代这么一圈算完成一个回合.
+多参数迭代过程如下图
+
+
+
+
+
+
+2.梯度下降实用技巧–特征缩放(feature scaling)
+如果参数 θ1和θ2大小相差太远,那么θ1的轻微改变都可</div>
         </div>
       </a>
 
@@ -189,7 +420,7 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
-            <a href="/tags/%E8%81%9A%E7%B1%BB">聚类</a>&nbsp;
+            <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95">梯度下降算法</a>&nbsp;
           
         
       </div>
@@ -200,41 +431,29 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
-        <p class="h4 index-header">CS229/2.正规方程</p>
+      <a href="/2020/02/24/CS229/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
+        <p class="h4 index-header">CS229/极大似然估计</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">CS229—正规方程1.定义
-​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
+          <div class="index-text mb-1">极大似然估计极大似然估计是确定机器学习模型的参数的一种办法。确定参数值的过程，是找到能最大化“模型产生真实观察数据可能性“的那一组参数，略抽象，如下是一个例子：
+从某过程观察了如下十个数据点，每个数据点代表了学生回答问题使用的秒数。
 
-正规方程求解参数矩阵的公式:
+这些数据的生成过程可以使用高斯分布（正态分布）进行充分描述。高斯分布有两个参数，西格玛和μ，如何确定参数？如下示意图表示了使用不同参数的不同高斯分布（方差大的中心函数更扁平）。
+注：蓝色曲线是正确曲线N(10,2.25)
 
-2.正规方程法和梯度下降法的对比
+OK，如何反编译确定正确参数？我们把这个例子再次简化，同样的情境，这次只存在三个数据点：9,9.5,11
+如何使用最大似然估计确定这个高斯分布的参数？
+高斯分布中，单个数据点x的边缘概率如下
 
-梯度下降的特点
+同时观察到上边所提三个点（9,9.5,11）的联合概率是带入上边三个数据的连乘积：
 
-要设置学习率α
-多次迭代
-工作地非常均衡
-适合特征变量很多的时候用
-要求参数归一化
-
-
-正规方程法
-
-不用设置学习率
-不用迭代
-需要计算
-适合特征变量不超过1000时用
-不要求参数归一化,如下图
-
-
-
-有些较复杂问题不能使用正规方程法,只能使用梯度下降
-
+我们只要能找到最大化上述连乘积的参数μ和西格玛就ok了。也就是说，最大似然估计是一个通过确定参数得到函数最大值的优化问题。
+那么，如何求出上述函数的最大值？
+easy，二元函数求偏导标准步骤，加以两边套上对数等数学小技巧就完事儿了。
+SOP:
 
 
 </div>
@@ -256,7 +475,7 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
-            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
+            <a href="/tags/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">极大似然估计</a>&nbsp;
           
         
       </div>
@@ -267,46 +486,220 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/4.%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
-        <p class="h4 index-header">CS229/4.逻辑回归</p>
+      <a href="/2020/02/24/CS229/8.%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
+        <p class="h4 index-header">CS229/8.应用机器学习的建议</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">4.逻辑回归(logistics regression)1.逻辑回归模型
-分类问题输出一个结果”正确”或者”错误”
+          <div class="index-text mb-1">8.应用机器学习的建议8.1如何提高一个算法/机器学习模型的性能问题:预测房价的机器学习模型性能遇见瓶颈,如何提升性能?
 
-逻辑回归模型:
+很多人是凭感觉去解决问题,他们有如下猜想并随便选一个去做
 
+随便某个猜想都是耗时耗力巨大的项目,人们常常选择的是一条不归路
 
-
-
-当hθ(x) 在区间[0.5,1]时,预测是”正确”,越贴近1越确信
-当hθ(x) 在区间[0,0.5)时,预测是”错误”,越贴近0越确信
-
-2.逻辑回归的代价函数
-
-简单点一句话讲:
-答案是1,你预测了1,无误差
-答案是1,你预测的数字离0越近误差就越大,完全是0误差就是无限大(不可能情况)
-答案是0的情况与答案是1的情况同理
+如何尽量排除无效的道路?
 
 
 
-3.对逻辑回归的代价函数使用梯度下降算法,以得到最优参数/最优解
-4.高级优化
-一些建议
+获得更多的训练样本——解决高方差   
+尝试减少特征的数量——解决高方差
+尝试获得更多的特征——解决高偏差
+尝试增加多项式特征——解决高偏差
+尝试减少正则化程度λ——解决高偏差
+尝试增加正则化程度λ——解决高方差
 
-不需要写代码实现代价函数的迭代
+8.2如何评估一个模型表现
+模型的代价函数非常小未必是好事,因为可能存在过拟合的现象
+为了检验模型是否过拟合,可以采用交叉验证的方法
+可以把数据集分为训练集和测试集,然后重复洗牌交叉验证
 
-从技术来讲,其实我们不需要自己手动写程序来计算刚才提到的梯度下降算法的代价函数以及其迭代过程,就像我们不需要自己手动写求平方根和创建数组一样,这些问题早都有非常成熟的库来调用
+高偏差与高方差
+
+高偏差是欠拟合
+
+高方差是过拟合
 
 
-更高级的算法
 
-除了梯度下降算法,还有共轭梯度法 BFGS (变尺度法) 和L-BFGS (限制变尺度法)这种更高级算法可调用
-吴恩达本人已经使用如上提到的算法很多年了,也才是最近才搞清楚他们的内部实现细节
+
+增加模型的多项式次数导致的过/欠拟合问题
+
+训练集上:
+增加模型多项式的次数会导致代价函数单调递减
+
+
+交叉验证集上:
+增加模型多项式的次数会导致代价函数先减后增
+先减是改善了欠拟合的问题
+后增就是过拟合越来越严重
+
+
+结论:
+交叉验证是评估过/欠拟合</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0">评估模型表现</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/9.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
+        <p class="h4 index-header">CS229/9.支持向量机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">9.支持向量机9.1SVM的优化目标从逻辑回归展示如何一点点修改得到本质上的支持向量机
+
+逻辑回归的假设函数
+
+
+
+
+
+9.2核函数对支持向量机算法做一些修改,以构造复杂的非线性分类器
+我们用”核函数”来达到此目的
+问题的提出:
+使用高级数的多项式模型来解决无法使用直线进行分割的分类问题,如何确定模式中的每一项的参数?
+支持向量机的假设函数和代价函数
+
+9.3 SVM的使用不建议自己写代码求解参数θ,就像没有人会写代码自己去求解平方根一样,可以直接调用现有的库
+除了高斯核函数之外还有其他核函数可以用:
+多项式核函数（Polynomial Kernel）
+字符串核函数（String kernel）
+卡方核函数（ chi-square kernel）
+直方图交集核函数（histogram intersection kernel）
+等等
+SVM模型 和 逻辑回归模型之间的取舍:
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/SVM">SVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">判定模型和生成模型的区别
+机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
+
+判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
+生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
+
+一个生动的例子说明两者的区别:
+
+判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
+生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
+          
+            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
+        <p class="h4 index-header">CS229/5.过拟合和正则化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
+
+
+解决办法:
+过拟合就丢弃不能正确预测的特征,欠拟合就加特征
+2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
+
+
+
+给高维项设置惩罚项
+
+代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
+
+增加了惩罚项的代价函数
+
+
 
 
 
@@ -328,353 +721,6 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">逻辑回归</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/1.%E7%BB%AA%E8%AE%BA/">
-        <p class="h4 index-header">CS229/1.绪论</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">CS229–绪论,梯度下降算法1.监督学习和无监督学习
-监督学习定义
-部分数据集已经有答案.比如房价信息集,知道了正确的房价,需要预测出更多的房价
-回归问题,预测连续值的输出(房价)
-聚类问题,预测离散值的输出(肿瘤是良性还是恶性?)
-
-
-
-
-无监督学习
-
-无监督学习没有答案,自动聚类:比如google搜索BP油井泄露,会把CNN,ABC,BBC新闻放一起
-
-
-
-2.线性回归算法
-监督学习的典型过程
-
-Training set –[喂食给]—&gt;Learning Algorithm –[生成]–&gt;hypothesis(假设函数)
-
-size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate price
-
-
-
-
-
-线性回归
-
-预测房价的假设函数:h(x) = θ0 + θ1x
-根据训练集生成一元一次方程,输入房间大小得到房价预测
-
-
-
-3.代价函数
-代价函数有利于弄清楚如何把最有可能的直线与我们的数据相拟合
-
-最小化代价函数就可得到最好的预测函数
-
-如何选择假设函数hypothesis “h(x) = θ0 + θ1x”</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/9%20-%20%E6%9C%BA%E7%BF%BB,%E9%AB%98%E7%BA%A7RNN,LSTM,GRU/">
-        <p class="h4 index-header">CS224n/9 - 机翻,高级RNN,LSTM,GRU</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture9 - 高级RNN,LSTM,GRU,机翻本节继续讲循环神经网络以及LSTM和GRU这两个本课程最重要的深度学习模型，几乎你能看到的所有深度学习论文都是以这两个模型为基础。
-1.机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
-我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
-基于统计的机翻模型介绍
-源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
-
-如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/6%20-%20%E4%BE%9D%E5%AD%98%E5%88%86%E6%9E%90/">
-        <p class="h4 index-header">CS224n/6 - 依存分析</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture6 依存分析本节课综述
-
-这节课主要讲句法 + 语法 + 依存分析
-基于转移的依存关系分析语法
-神经网络内容
-TensorFlow + 实际的nlp内容例如构建神经依存关系分析器
-
-1.依存分析的概念和一个例子句子或句子的一部分有一种结构，人们可以用特定的方式将他们组合起来，我们可以从非常简单的并不构成句子的东西入手。
-
-一个冠词 + 名字 通常被语言学家称为名词短语
-
-
-
-有一些规则可以用来扩展他们：比如在冠词和名词之间加一个形容词
-the large cat
-a beautiful dog等
-
-你也可以在名词后边添加介词短语
-the large cat in a crate
-the barking dog on the table等
-
-
-传统上，语言学家和自然语言处理器想做的是描述人类语言结构，人们过去有两个关键工具来做到这点，一种是上下文无关文法的方法，这种方法经常被语言学家引用为短语结构文法。我们现在要做的就是写出这些上下文无关文法的规则。
-
-还有一种了解语言结构的不同角度，就是依存句法结构。它通过找到句子当中每一个词所依赖的部分来描述句子结构。如果一个词修饰另一</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/">
-        <p class="h4 index-header">CS224n/8 - RNN和语言模式</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture8 RNN和语言模式本节讲简单的循环神经网络模型，这个模型家族是大多数人现在在实际训练环境中使用的。
- 概览：
-1.传统的语言模型
-2.RNNs
-3.语言模型建模来驱动循环神经网络（RNN）
-4.重要的训练时的问题和技巧
-​    梯度消失问题
-​    梯度爆炸问题
-5.用于队列处理的RNN
-6.双向深度RNN
-1. 传统的语言模型和现在的词向量模型对比传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。
-如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。
-如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/7%20-%20Tensorflow/">
-        <p class="h4 index-header">CS224n/7 - Tensorflow</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture7 TensorFlow为什么要使用深度学习框架？
-
-有助于扩展机器学习代码
-自动计算梯度（通常梯度计算并不重要，这些框架可以自动处理梯度，使得我们把重点放在更高层次的数学上）
-在很多领域使机器学习更标准化
-这些框架提供了GPU接口
-
-1.TensorFlow是什么？是一个谷歌开发的深度学习框架，使用流式图进行数值计算的开源软件库。TensorFlow是用于表示机器学习算法的接口，以及用于执行这种算法的实现。
-TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图的节点是操作，每个节点都有一个输入和输出，节点之间的边表示他们之间流动的张量，在实践中最好的方法就是认为，张量是一个n维数组。
-使用流式图作为深度学习框架主干的优点在于它允许你使用小而简单的操作建立复杂的模型，当我们这样做的时候，会使得梯度计算变得极其简单。
-此框架可以自动求导，而且图方法的每一个操作都是可以在其所在点被评估的一个函数。变量将成为输出其当前值的有状态节点。
-占位符是那些在执行期间才会接收值的节点，如果在你的网络中有依赖外部数据的一些输入，你并不想在建立图时依赖任何实际的值。</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/2,-%20%E6%B3%A8%E9%87%8A%E4%B9%8Bsoftmax/">
-        <p class="h4 index-header">CS224n/2,- 注释之softmax</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">softmax定义：
-假如有一个数组V，Vi表示V中的第i个元素，这个元素的softmax值如下，也就是该元素的指数值和所有元素指数值之和的比值。softmax通常希望特征对概率的影响是乘性的。
-
-softmax VS k个二元分类器：如果你在开发一个音乐分类的应用，需要对k种类型的音乐进行识别，那么是选择使用 softmax 分类器呢，还是使用 logistic 回归算法建立 k 个独立的二元分类器呢？这一选择取决于你的类别之间是否互斥，例如，如果你有四个类别的音乐，分别为：古典音乐、乡村音乐、摇滚乐和爵士乐，那么你可以假设每个训练样本只会被打上一个标签（即：一首歌只能属于这四种音乐类型的其中一种），此时你应该使用类别数 k = 4 的softmax回归。（如果在你的数据集中，有的歌曲不属于以上四类的其中任何一类，那么你可以添加一个“其他类”，并将类别数 k 设为5。）如果你的四个类别如下：人声音乐、舞曲、影视原声、流行歌曲，那么这些类别之间并不是互斥的。例如：一首歌曲可以来源于影视原声，同时也包含人声 。这种情况下，使用4个二分类的 logistic 回归分类器更为合适。这样，对于</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/4%20-%20wordWindow%E5%92%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-        <p class="h4 index-header">CS224n/4 - wordWindow和神经网络</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture4  wordWindow和神经网络1.分类背景知识对分类的直觉感受是什么？在机器学习领域，在还没有达到深度学习领域的情况下，我们通常将分类理解为简单的逻辑回归，也就是定义一个简单的决策边界。
-
-2.窗口分类在一般的机器学习中，我们假设输入是固定的。输入X都是固定的，我们只训练参数W，也就是softmax的权值，然后计算给定输入X时输出Y的概率。
-3.交叉熵我们假设正确类别的概率为1，其余的概率为0.举个例子，假设共有5个类别，正确类别是中间的第三个，那么第三个的概率为1，其他都是0.我们把理想的概率定义为p，softmax计算的概率为q，这里给出了交叉熵的定义，就是对所有类别的求和
-正则化项：里边包含的参数θ如果是标准逻辑回归中的矩阵W，实际上目标函数加入这个正则化项的目的就是是为了鼓励模型中的所有权值尽可能地小。
-可以假设你想要一个贝叶斯模型，你可以有一个先验的高斯分布，理想情况下这些参数的值都很小，但是如果没有这个正则化项，通常情况下你得到的模型参数会爆炸，他会越来越过拟合。如果没有正则化项，我们会专注于如何拟合我们的模型。
-通常的机器学习优化就是只优化模型的参数W</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -685,7 +731,7 @@ softmax VS k个二元分类器：如果你在开发一个音乐分类的应用�
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
