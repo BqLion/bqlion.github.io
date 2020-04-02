@@ -161,6 +161,52 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/LSTM/">
+        <p class="h4 index-header">D3NER/LSTM</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LSTM+CRF1、perspectively
+LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
+但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
+2、LSTM+CRF
+既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
+因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
+
+input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/D3NER/D3NER/">
         <p class="h4 index-header">D3NER/D3NER</p>
         
@@ -210,52 +256,6 @@ Named En</div>
             <a href="/tags/LSTM">LSTM</a>&nbsp;
           
             <a href="/tags/embedding">embedding</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/D3NER/LSTM/">
-        <p class="h4 index-header">D3NER/LSTM</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">LSTM+CRF1、perspectively
-LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
-但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
-2、LSTM+CRF
-既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
-因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
-
-input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/D3NER">D3NER</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/D3NER">D3NER</a>&nbsp;
-          
-            <a href="/tags/CRF">CRF</a>&nbsp;
-          
-            <a href="/tags/LSTM">LSTM</a>&nbsp;
           
         
       </div>
@@ -486,6 +486,87 @@ SOP:
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/8.%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
+        <p class="h4 index-header">CS229/8.应用机器学习的建议</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8.应用机器学习的建议8.1如何提高一个算法/机器学习模型的性能问题:预测房价的机器学习模型性能遇见瓶颈,如何提升性能?
+
+很多人是凭感觉去解决问题,他们有如下猜想并随便选一个去做
+
+随便某个猜想都是耗时耗力巨大的项目,人们常常选择的是一条不归路
+
+如何尽量排除无效的道路?
+
+
+
+获得更多的训练样本——解决高方差   
+尝试减少特征的数量——解决高方差
+尝试获得更多的特征——解决高偏差
+尝试增加多项式特征——解决高偏差
+尝试减少正则化程度λ——解决高偏差
+尝试增加正则化程度λ——解决高方差
+
+8.2如何评估一个模型表现
+模型的代价函数非常小未必是好事,因为可能存在过拟合的现象
+为了检验模型是否过拟合,可以采用交叉验证的方法
+可以把数据集分为训练集和测试集,然后重复洗牌交叉验证
+
+高偏差与高方差
+
+高偏差是欠拟合
+
+高方差是过拟合
+
+
+
+
+增加模型的多项式次数导致的过/欠拟合问题
+
+训练集上:
+增加模型多项式的次数会导致代价函数单调递减
+
+
+交叉验证集上:
+增加模型多项式的次数会导致代价函数先减后增
+先减是改善了欠拟合的问题
+后增就是过拟合越来越严重
+
+
+结论:
+交叉验证是评估过/欠拟合</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0">评估模型表现</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/9.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
         <p class="h4 index-header">CS229/9.支持向量机</p>
         
@@ -586,87 +667,6 @@ SVM模型 和 逻辑回归模型之间的取舍:
             <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
           
             <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/8.%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
-        <p class="h4 index-header">CS229/8.应用机器学习的建议</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">8.应用机器学习的建议8.1如何提高一个算法/机器学习模型的性能问题:预测房价的机器学习模型性能遇见瓶颈,如何提升性能?
-
-很多人是凭感觉去解决问题,他们有如下猜想并随便选一个去做
-
-随便某个猜想都是耗时耗力巨大的项目,人们常常选择的是一条不归路
-
-如何尽量排除无效的道路?
-
-
-
-获得更多的训练样本——解决高方差   
-尝试减少特征的数量——解决高方差
-尝试获得更多的特征——解决高偏差
-尝试增加多项式特征——解决高偏差
-尝试减少正则化程度λ——解决高偏差
-尝试增加正则化程度λ——解决高方差
-
-8.2如何评估一个模型表现
-模型的代价函数非常小未必是好事,因为可能存在过拟合的现象
-为了检验模型是否过拟合,可以采用交叉验证的方法
-可以把数据集分为训练集和测试集,然后重复洗牌交叉验证
-
-高偏差与高方差
-
-高偏差是欠拟合
-
-高方差是过拟合
-
-
-
-
-增加模型的多项式次数导致的过/欠拟合问题
-
-训练集上:
-增加模型多项式的次数会导致代价函数单调递减
-
-
-交叉验证集上:
-增加模型多项式的次数会导致代价函数先减后增
-先减是改善了欠拟合的问题
-后增就是过拟合越来越严重
-
-
-结论:
-交叉验证是评估过/欠拟合</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%8E%B0">评估模型表现</a>&nbsp;
           
         
       </div>
