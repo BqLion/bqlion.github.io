@@ -161,52 +161,6 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/D3NER/LSTM/">
-        <p class="h4 index-header">D3NER/LSTM</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">LSTM+CRF1、perspectively
-LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
-但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
-2、LSTM+CRF
-既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
-因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
-
-input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/D3NER">D3NER</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/D3NER">D3NER</a>&nbsp;
-          
-            <a href="/tags/CRF">CRF</a>&nbsp;
-          
-            <a href="/tags/LSTM">LSTM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/D3NER/D3NER/">
         <p class="h4 index-header">D3NER/D3NER</p>
         
@@ -251,11 +205,57 @@ Named En</div>
           
             <a href="/tags/D3NER">D3NER</a>&nbsp;
           
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
             <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/embedding">embedding</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/LSTM/">
+        <p class="h4 index-header">D3NER/LSTM</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LSTM+CRF1、perspectively
+LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
+但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
+2、LSTM+CRF
+既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
+因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
+
+input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
           
             <a href="/tags/LSTM">LSTM</a>&nbsp;
           
-            <a href="/tags/embedding">embedding</a>&nbsp;
+            <a href="/tags/CRF">CRF</a>&nbsp;
           
         
       </div>
