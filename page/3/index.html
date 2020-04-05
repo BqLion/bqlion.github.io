@@ -372,8 +372,6 @@ A: My research interests are in the broad areas of Artificial Intelligence. I am
           
             <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
           
-            <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91">字典树</a>&nbsp;
-          
             <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">最小生成树</a>&nbsp;
           
             <a href="/tags/Kruskal">Kruskal</a>&nbsp;
@@ -383,6 +381,8 @@ A: My research interests are in the broad areas of Artificial Intelligence. I am
             <a href="/tags/%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95">迪杰斯特拉算法</a>&nbsp;
           
             <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8">哈希表</a>&nbsp;
+          
+            <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91">字典树</a>&nbsp;
           
             <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91">后缀树</a>&nbsp;
           
@@ -473,6 +473,52 @@ A*寻路算法需要对每个格子维持三个状态值：总代价，到起点
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">数据结构/搜索/回溯算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8.查找8.1回溯回溯算法也叫试探法，是一种系统地解决搜索问题的解的方法
+用回溯算法解决问题的一般步骤：
+1.针对问题，定义解空间，使得能用回溯法方便地搜索整个解空间
+2.确定易于搜索的解空间结构，使得能用回溯法方便地搜索整个空间结构
+3.以深度优先的方式搜索解空间，并且在搜索过程中使用剪枝函数避免无效搜索
+回溯法在解空间树里对结果进行深度优先遍历，如果发现本节点不属于解的范围，则退出，剪枝，然后递归地对子节点搜索
+经典问题是八皇后问题，见代码
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/categories/%E6%90%9C%E7%B4%A2">搜索</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/%E6%9F%A5%E6%89%BE">查找</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
         <p class="h4 index-header">数据结构/搜索/贪心算法与最小生成树</p>
         
@@ -520,52 +566,6 @@ print(payed)
             <a href="/tags/Kruskal">Kruskal</a>&nbsp;
           
             <a href="/tags/Prim">Prim</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">数据结构/搜索/回溯算法</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">8.查找8.1回溯回溯算法也叫试探法，是一种系统地解决搜索问题的解的方法
-用回溯算法解决问题的一般步骤：
-1.针对问题，定义解空间，使得能用回溯法方便地搜索整个解空间
-2.确定易于搜索的解空间结构，使得能用回溯法方便地搜索整个空间结构
-3.以深度优先的方式搜索解空间，并且在搜索过程中使用剪枝函数避免无效搜索
-回溯法在解空间树里对结果进行深度优先遍历，如果发现本节点不属于解的范围，则退出，剪枝，然后递归地对子节点搜索
-经典问题是八皇后问题，见代码
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/categories/%E6%90%9C%E7%B4%A2">搜索</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E6%9F%A5%E6%89%BE">查找</a>&nbsp;
           
         
       </div>

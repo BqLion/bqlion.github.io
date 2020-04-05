@@ -205,9 +205,9 @@ Named En</div>
           
             <a href="/tags/D3NER">D3NER</a>&nbsp;
           
-            <a href="/tags/LSTM">LSTM</a>&nbsp;
-          
             <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
           
             <a href="/tags/embedding">embedding</a>&nbsp;
           
@@ -253,9 +253,9 @@ input: “学习出一个模型，然后再预测出一条指定”expected outp
           
             <a href="/tags/D3NER">D3NER</a>&nbsp;
           
-            <a href="/tags/LSTM">LSTM</a>&nbsp;
-          
             <a href="/tags/CRF">CRF</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
           
         
       </div>
@@ -486,6 +486,56 @@ SOP:
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">判定模型和生成模型的区别
+机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
+
+判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
+生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
+
+一个生动的例子说明两者的区别:
+
+判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
+生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
+          
+            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/8.%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
         <p class="h4 index-header">CS229/8.应用机器学习的建议</p>
         
@@ -617,56 +667,6 @@ SVM模型 和 逻辑回归模型之间的取舍:
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
             <a href="/tags/SVM">SVM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
-        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">判定模型和生成模型的区别
-机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
-
-判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
-生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
-
-一个生动的例子说明两者的区别:
-
-判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
-生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
-          
-            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
           
         
       </div>

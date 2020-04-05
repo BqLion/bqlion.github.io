@@ -316,25 +316,22 @@ A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_5_FST%E7%8A%B6%E6%80%81%E6%9C%BA/">
-        <p class="h4 index-header">Speech and language processing/概念_5_FST状态机</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_3_%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91/">
+        <p class="h4 index-header">Speech and language processing/概念_3_一阶逻辑</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">状态机概念FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。
+          <div class="index-text mb-1">概念：一阶逻辑（first order logic）一阶二阶这类的词, 一是表达量化的程度, 二是表达逻辑系统多有表达能力. 
 
-作者：陈天
-链接：https://zhuanlan.zhihu.com/p/28142401
-来源：知乎
-在谈论一般意义的状态机时，我们先看看有限状态机，Finite State Machine，简称 FSM。
-在计算理论（Theory of computation）中，FSM 是一切的基础，也是能力最为有限的机器。在其能力之上是 CFL（Context Free Language），然后是 Turing Machine。
-FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。对于一个字符串是否以 \0 结尾（C 语言的字符串结构），FSM 可以给出答案。
-CFL 是一切编程语言的基础。你写的一段 python 代码是否语法正确，CFL 能够给出答案。
-Turing Machine 就是我们日常用各种算法写代码解决各种问题的基础。不较真地说，JVM 就是一个 Turing Machine。
-再往上，就是未知的世界 —— Turing Machine 也解决不了的问题。
-如果你工作多年</div>
+0阶逻辑： 每一个字母就代表一个命题, 所以命题逻辑只能表达句子之间的关系, 比如“p&amp;q”, “if p then q”等等的真值如何从p和q的真值中计算出来.
+1阶逻辑则引入了两个量词, 即universal quantifier(倒A，所有)和existential quantifier(倒E，存在), 并且加入了一阶谓词和individual variables（变量）和individual constants（常量）. 这些导致一阶逻辑可以量化individuals in the domain. 比如经典的
+
+
+三段论就可以被一阶逻辑表达：For all x, Hx-&gt;MxHs-—Ms
+
+其中for all x就是量化了所有individuals, 即domain里的任意一对象, 用individual variable x来表示. Hx则是表示x属于H(Human)这个谓词的extension, Mx表示x属于M(Mortal)的e</div>
         </div>
       </a>
 
@@ -353,7 +350,7 @@ Turing Machine 就是我们日常用各种算法写代码解决各种问题的�
           
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
-            <a href="/tags/%E7%8A%B6%E6%80%81%E6%9C%BA">状态机</a>&nbsp;
+            <a href="/tags/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91">一阶逻辑</a>&nbsp;
           
         
       </div>
@@ -409,22 +406,25 @@ http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-proc
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_3_%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91/">
-        <p class="h4 index-header">Speech and language processing/概念_3_一阶逻辑</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_5_FST%E7%8A%B6%E6%80%81%E6%9C%BA/">
+        <p class="h4 index-header">Speech and language processing/概念_5_FST状态机</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">概念：一阶逻辑（first order logic）一阶二阶这类的词, 一是表达量化的程度, 二是表达逻辑系统多有表达能力. 
+          <div class="index-text mb-1">状态机概念FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。
 
-0阶逻辑： 每一个字母就代表一个命题, 所以命题逻辑只能表达句子之间的关系, 比如“p&amp;q”, “if p then q”等等的真值如何从p和q的真值中计算出来.
-1阶逻辑则引入了两个量词, 即universal quantifier(倒A，所有)和existential quantifier(倒E，存在), 并且加入了一阶谓词和individual variables（变量）和individual constants（常量）. 这些导致一阶逻辑可以量化individuals in the domain. 比如经典的
-
-
-三段论就可以被一阶逻辑表达：For all x, Hx-&gt;MxHs-—Ms
-
-其中for all x就是量化了所有individuals, 即domain里的任意一对象, 用individual variable x来表示. Hx则是表示x属于H(Human)这个谓词的extension, Mx表示x属于M(Mortal)的e</div>
+作者：陈天
+链接：https://zhuanlan.zhihu.com/p/28142401
+来源：知乎
+在谈论一般意义的状态机时，我们先看看有限状态机，Finite State Machine，简称 FSM。
+在计算理论（Theory of computation）中，FSM 是一切的基础，也是能力最为有限的机器。在其能力之上是 CFL（Context Free Language），然后是 Turing Machine。
+FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。对于一个字符串是否以 \0 结尾（C 语言的字符串结构），FSM 可以给出答案。
+CFL 是一切编程语言的基础。你写的一段 python 代码是否语法正确，CFL 能够给出答案。
+Turing Machine 就是我们日常用各种算法写代码解决各种问题的基础。不较真地说，JVM 就是一个 Turing Machine。
+再往上，就是未知的世界 —— Turing Machine 也解决不了的问题。
+如果你工作多年</div>
         </div>
       </a>
 
@@ -443,8 +443,44 @@ http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-proc
           
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
-            <a href="/tags/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91">一阶逻辑</a>&nbsp;
+            <a href="/tags/%E7%8A%B6%E6%80%81%E6%9C%BA">状态机</a>&nbsp;
           
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/9%20-%20Automatic%20Speech%20Recognition/">
+        <p class="h4 index-header">Speech and language processing/9 - Automatic Speech Recognition</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
+影响语音转文字系统性能表现的几个参数：
+
+需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
+speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
+声音质量：apparently，噪音少识别起来容易。
+讲话者的类型：apparently，nat</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
         
       </div>
     </div>
@@ -588,42 +624,6 @@ Sym</div>
           
             <a href="/tags/NLP">NLP</a>&nbsp;
           
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/9%20-%20Automatic%20Speech%20Recognition/">
-        <p class="h4 index-header">Speech and language processing/9 - Automatic Speech Recognition</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
-影响语音转文字系统性能表现的几个参数：
-
-需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
-speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
-声音质量：apparently，噪音少识别起来容易。
-讲话者的类型：apparently，nat</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
         
       </div>
     </div>
