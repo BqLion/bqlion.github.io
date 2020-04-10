@@ -136,25 +136,224 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/">
-        <p class="h4 index-header">Speech and language processing/10 - Automatic Speech RecongnitionAdvanced Topics</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/4%20-%20N-Grams/">
+        <p class="h4 index-header">Speech and language processing/4 - N-Grams</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">10. Auto Speech Recognition Advanced Topic ：语音转文字进阶话题之前企图对输入的语音转换成音素的处理办法是：构建一个由全体语言组成的HMM状态网络，然后在网络中采用维特比算法进行全局搜索。这种算法太expensive了。
-改进思路是采用多路编码的decoding技术，使用新的上下文相关声学模型(triphone)。本章还会介绍判别训练(discriminative training)和模型的一些变体；
-10.1）多路编码decoding : N-Best List and Lattices
-首先，维特比算法在进行对语音输入的decoding的时候，有如下两个问题：
+          <div class="index-text mb-1">4 - N-GramsN-gram is a language model,is a N-token sequence of words.
+1.the way to calculate conditional probability.For example,how can we calculate P(the|its water is so transparent that) ?
+Method1): counting 2 sentences
+Counting the times of “its water is so transparent that the” and “its water is so transparent that” in the whole corpus.It works sometime,but language is creative,many sentences is not exist.
+ 
+Method2): chain rule of probability,then use method 1.
 
-在应对一词多音/一音多词的语言时，维特比算法表现很差
-维特比算法很难take advantage of 复杂的语言模型：2-gram还行，3-gram就不行了。因为3-gram violates the dynamic programming invariant
+notice that:
 
-改进如上两个问题的思路有：
+means  P(w1w2</div>
+        </div>
+      </a>
 
-改进维特比算法，将原本只返回单一值，变成返回多值。以改进一词多音的问题。
-使用其他的的d</div>
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/23%20-%20QA/">
+        <p class="h4 index-header">Speech and language processing/23 - QA</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">23 - Question Answering and Summarization本章介绍基于事实的回答问题系统+文章的总结系统。如果我们查找的是结构化的数据，可用上一章介绍的信息提取算法来词查找。如果查找的是非结构化的信息，则需要用本章介绍的“回答问题系统”处理，非结构化信息的查找就是一种“使用非正式的单词或句子”来表达查找需求的场景，这种场景下客户通常期望能返回一些回答or一些文本，或something in between。
+第一个session介绍向量空间模型，第二个session介绍基于事实的一问一答系统。第六个session介绍基于句子的总结系统/基于注意力机制的总结系统。
+23.1 Information Retrieval 信息检索术语定义
+文档document指的是一个有索引的，可被检索系统直接定位的最小单元，对应到web就是一个网页
+集合collection指的是一系列用来满足用户需求的文档documents
+term指的是一个词汇元素。
+query指的是一系列terms
+
+词向量空间
+词义相近的在向量空间中距也近，概念在CS224N中学过了。空间和点积的直观图如下</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/24%20-%20%E5%AF%B9%E8%AF%9Dagent/">
+        <p class="h4 index-header">Speech and language processing/24 - 对话agent</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">24 - Dialogue and Conversational Agents这一章介绍问答助手的基本结构+算法。Session24.1介绍人类对话的基本概念，如对话的交替，表达技巧，grounding，对话结构等。Session24.2介绍口语系统的组件和评价标准。Session24.5和Session24.6介绍信息状态架构和马尔科夫对话代理模型，以及高阶话题如BDI范式（belief - desire -intention）信念 - 渴望 - 意图范式。
+24.1 人类对话的Properties24.1.1 Turns and turn-talking人类对话的模式是一个人说完了之后另一人说，交替进行，通常情况下，两人对话的重叠部分不超过5%。两个人交替间的停顿时间在100ms左右。为了实现这种模式，人类对话通常有如下三个规律来规范交替的进行，非常显而易见。
+
+通常一个比正常情况更长的听读怒会有额外的表达效果，如下所示一个长停顿代表了不想积极回应问题。
+
+24.1.2 Language as Action:Speech Acts 语言是会产生后果的行动语言能对现实世界产生具体影响</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/22%20-%20Information%20Extraction/">
+        <p class="h4 index-header">Speech and language processing/22 - Information Extraction</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">22 - Information Extraction本章主要概念：
+
+NER：命名实体识别
+relation detection and classification：关系检测与分类
+event detection and classification：事件检测与分类
+temporal expression recognition：事件表达式识别
+template filling：模板填充
+
+22.1)NER : 命名实体识别命名实体识别分类的举例
+
+22.1.2）NER as Sequence Labeling
+标准的命名实体识别的步骤是使用word-by-word sequence labeling任务。其实进行NER的方法与第五章的POS tagging和十三章的syntactic chunking方法相同。
+PS：提一下第五章的POS tagging：使用的还是HMM base 的 维特比算法（decoding）。
+
+问题的本质如下所示，观察到句子/词语，猜测对应的词性/NER类型。也就是观察到结果，猜测其隐状态。
+
+
+具体的 word-by-word IOB-style t</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/2%20-%20Regular%20expressions%20and%20automata/">
+        <p class="h4 index-header">Speech and language processing/2 - Regular expressions and automata</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2 - Regular expressions and automata2.2) Relationship between FSA and RE
+Any regular expression(RE) can be implemented as a finite state automata(FSA),symmetrically,any finite-state automata can be described with a regular expression.
+Both RE and FSA can be used to describe regular languages:
+
+Using FSA to understand sheep talk
+sheep language can be defined as any string from the following set:
+baa!
+baaaa!
+baaaaa!
+baaaaaa!
+baaaaaaa!
+baaaaaaaa!
+baaaaaaaaa!
+…
+Sheep language can be described as fol</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/11%20-%20Computational%20Phonology/">
+        <p class="h4 index-header">Speech and language processing/11 - Computational Phonology</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">11. Computational Phonology本章较艰涩，对NLP发文帮助不大，Skip，以后需用再补。
+</div>
         </div>
       </a>
 
@@ -208,15 +407,25 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/11%20-%20Computational%20Phonology/">
-        <p class="h4 index-header">Speech and language processing/11 - Computational Phonology</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/">
+        <p class="h4 index-header">Speech and language processing/10 - Automatic Speech RecongnitionAdvanced Topics</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">11. Computational Phonology本章较艰涩，对NLP发文帮助不大，Skip，以后需用再补。
-</div>
+          <div class="index-text mb-1">10. Auto Speech Recognition Advanced Topic ：语音转文字进阶话题之前企图对输入的语音转换成音素的处理办法是：构建一个由全体语言组成的HMM状态网络，然后在网络中采用维特比算法进行全局搜索。这种算法太expensive了。
+改进思路是采用多路编码的decoding技术，使用新的上下文相关声学模型(triphone)。本章还会介绍判别训练(discriminative training)和模型的一些变体；
+10.1）多路编码decoding : N-Best List and Lattices
+首先，维特比算法在进行对语音输入的decoding的时候，有如下两个问题：
+
+在应对一词多音/一音多词的语言时，维特比算法表现很差
+维特比算法很难take advantage of 复杂的语言模型：2-gram还行，3-gram就不行了。因为3-gram violates the dynamic programming invariant
+
+改进如上两个问题的思路有：
+
+改进维特比算法，将原本只返回单一值，变成返回多值。以改进一词多音的问题。
+使用其他的的d</div>
         </div>
       </a>
 
@@ -330,202 +539,6 @@ Discourse : knowledge about linguistic units larger than a single utterance
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/%E8%AF%BE%E9%A2%98%E7%BB%84%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">
-        <p class="h4 index-header">NLP发文/课题组信息搜集</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">NLP课题组信息搜集20191218作者：cstghitpku
-链接：https://zhuanlan.zhihu.com/p/48529628
-来源：知乎
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-根据这几年的积累，整理了一份国内外学术界和工业界的牛人和大牛团队，供大家申请硕士、博士、博士后和找工作参考。
-学校（排名不分先后）：
-哈工大社会计算与信息检索实验室：刘挺老师坐镇，教师包括：秦兵、张宇、车万翔、赵妍妍、刘铭、张伟男、丁效等老师，实验室共7个组，另外王海峰老师也是实验室兼职博导。
-哈工大智能技术与自然语言处理实验室：王晓龙老师坐镇，教师包括刘秉权、刘远超、孙承杰等老师
-哈工大机器智能与翻译研究室：赵铁军老师坐镇，教师包括杨沐昀、郑德权、徐冰老师等，另外周明老师是实验室兼职博导。
-哈工大深圳智能计算研究中心：王晓龙老师坐镇，包括陈清才、汤步洲、徐睿峰、刘滨等老师，实力很强。
-哈工大深圳人类语言技术组：徐睿峰老师坐镇，情感原因发现做的比较好。
-哈工大另外做NLP的老师包括：关毅、王轩等。
-清华大学自然语言处理与社会人文计算实验室：孙茂松老师坐镇，包括刘</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AF%BE%E9%A2%98%E7%BB%84%E4%BF%A1%E6%81%AF">课题组信息</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E4%BF%AE%E6%94%B9conda%E6%BA%90_%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">安装调试记录/修改conda源_下载问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">首次改为国内源：打开cmd
-conda config –add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/conda config –add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forgeconda config –add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/conda config –add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/conda config –add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/conda config –add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forg</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-        <p class="h4 index-header">安装调试记录/正则表达式</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">正则表达式定义:简洁表达一组字符串的表达式
-优势:简洁,一行胜千言
-用途:
-
-文本处理
-
-
-表达文本信息特征
-查找/替换字符串
-匹配字符串的全部或者部分
-
-常用符号（百度百科版）
-
-
-
-常用操作符正则表达式实例
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/python">python</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a>&nbsp;
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/%E8%AF%AD%E8%A8%80%E5%AD%A6%E8%8D%90%E4%B9%A6/">
-        <p class="h4 index-header">NLP发文/语言学荐书</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">语言学方向书籍推荐–Serena Gao首先，做nlp不一定要很懂语言学，也不一定要跟语言学扯上关系。nlp可以仅是data mining，features engineering, 也的确有很多work目前在用文本或者对话做为数据集，然后用统计学方法实现目的，比如deep learning 。在某些任务上统计学模型功不可没，比如machine translation, speech recognition, question answering, etc. 
-如果题主只是对nlp的应用感兴趣，想泛泛了解一下目前进展的话，以上几个回答已经非常详细了，我接下来的回答可以不用看。许多主流大公司目前的力度都在deep learning, 学好nlp基本知识，做工程就够了(当然你还需要cs的background)， 语言学的东西不用太深入研究。
-————————————-3.17 update——————————-
-看了一下其他答案，大家的讨论和见解都很有趣，上来更新一点。
-大多数人对nlp和语言学联系的了解，在于认为rule-based的nlp就是基于语言学。的确rule-based是语言学</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E5%8F%91%E6%96%87/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%9B%86%5BDone%5D/">
-        <p class="h4 index-header">NLP发文/深度学习论文集[Done]</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">作者：风雨兼程
-链接：https://zhuanlan.zhihu.com/p/25549497
-来源：知乎
-1 深度学习历史和基础1.0 书籍█[0] Bengio, Yoshua, Ian J. Goodfellow, and Aaron Courville. “Deep learning.” An MIT Press book. (2015). [pdf] (Ian Goodfellow 等大牛所著的教科书，乃深度学习圣经。你可以同时研习这本书以及以下论文) ★★★★★
-地址：https://github.com/HFTrader/DeepLearningBook/raw/master/DeepLearningBook.pdf
-1.1 调查█[1] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. “Deep learning.” Nature 521.7553 (2015): 436-444. [pdf] (三巨头做的调查)  ★★★★★
-地址：http://www.cs.toronto.edu/~hinton/absps/Nat</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/NLP%E5%8F%91%E6%96%87">NLP发文</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
           
         
       </div>

@@ -136,8 +136,226 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/08/kaggle/import_Pandas_apply_series/">
-        <p class="h4 index-header">kaggle/import_Pandas_apply_series</p>
+      <a href="/2020/03/26/Python/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <p class="h4 index-header">Python/正则表达式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">正则表达式re.compile()compile() 的定义：
+compile(pattern,flags=0)
+# compile a regular expression pattern,returning a pattern object
+从原文档的定义可知，compile函数返回的是一个匹配对象，一般和findall(),search(),match()函数搭配使用。返回的是一个列表。
+搭配使用的例子：
+import re
+
+def main():
+    content = &#39;Hello, I am Jerry,from Chongqing, a montain city,nice to meet you&#39;
+    regex = re.compile(&#39;\W*o\w*&#39;)
+    x = regex.findall(content)
+    print(x)
+
+if __name__ == &#39;__main__&#39;：
+    main()
+# [&#39;Hello&#39;,&#39;from&#39;,&#39;Chongqi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-26&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/python">python</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/25/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_CNN/">
+        <p class="h4 index-header">NLP概念/概念_CNN</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">CNN 概念 - 卷积神经网络</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/13/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_gensim/">
+        <p class="h4 index-header">NLP概念/概念_gensim</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Gensimword2vec
+word2vec的使用就是gensim中models/word2vec.py文件里的word2vec类中，共有如下24个参数。
+
+
+
+参数名称
+默认值
+用途
+
+
+
+sentences
+None
+训练的语料，一个可迭代对象。对于从磁盘加载的大型语料最好用gensim.models.word2vec.BrownCorpus，gensim.models.word2vec.Text8Corpus ，gensim.models.word2vec.LineSentence 去生成sentences
+
+
+size
+100
+生成词向量的维度
+
+
+alpha
+0.025
+初始学习率
+
+
+window
+5
+句子中当前和预测单词之间的最大距离，取词窗口大小
+
+
+min_count
+5
+文档中总频率低于此值的单词忽略
+
+
+max_vocab_size
+None
+构建词汇表最大数，词汇大于这个数按照频率排序，去除频率低的词汇
+
+
+sample
+1.00E-03
+高频词进行随机下采样的阈值，范围是(0, 1e-5)
+
+
+seed
+1
+向量初始化的随机数种子
+
+
+workers
+3
+几</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/gensim">gensim</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/10/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_numpy_seed/">
+        <p class="h4 index-header">NLP概念/概念_numpy_seed</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Numpynp.random.seed()函数np.random.seed()函数用于生成指定的随机数，seed ()被设定后可以按照顺序产生一组固定的数组，如果使用相同的seed（）值，每次产生的随机数都相同。如果不设置这个值，则每次产生的随机数都
+np.random.seed()函数这个seed（）函数可以说是随机数的编号。比如seed（1） 产生的数组是[1,2,3,4,2,2,1]，那么以后调用seed（1）出来的数组都是[1,2,3,4,2,2,1].
+不使用seed（）就得不到相同的随机数：
+import numpy as np
+np.random.seed(1)
+
+L1 = np.random.randn(3, 3)
+L2 = np.random.randn(3, 3)
+print(L1)
+print(L2)
+out：
+[[ 1.62434536 -0.61175641 -0.52817175]
+ [-1.07296862  0.86540763 -2.3015387 ]
+ [ 1.74481176 -0.7612069   0.3190391 ]]
+
+[[-0.2493</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_Pandas_apply_series/">
+        <p class="h4 index-header">NLP概念/概念_Pandas_apply_series</p>
         
         
           
@@ -175,7 +393,7 @@ boolean=[True,F</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
           &nbsp;
         
         
@@ -246,8 +464,8 @@ lamada用例
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/05/kaggle/%E6%AF%94%E8%B5%9B%E8%B0%B7%E6%AD%8CQA_%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%83%A8%E5%88%86/">
-        <p class="h4 index-header">kaggle/比赛谷歌QA_数据处理部分</p>
+      <a href="/2020/03/05/kaggle/Google_QA_%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%83%A8%E5%88%86/">
+        <p class="h4 index-header">kaggle/Google_QA_数据处理部分</p>
         
         
           
@@ -293,8 +511,8 @@ import glob
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/04/kaggle/Concept_Embed/">
-        <p class="h4 index-header">kaggle/Concept_Embed</p>
+      <a href="/2020/03/04/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_Embed/">
+        <p class="h4 index-header">NLP概念/概念_Embed</p>
         
         
           
@@ -325,7 +543,7 @@ embedding能用低维向量对概念进行编码还能保留含义的特点适�
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
           &nbsp;
         
         
@@ -399,213 +617,6 @@ index-url = https://pypi.tuna.tsinghua</div>
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-02&nbsp;&nbsp;
         
         
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/26/Python/PyCharm%E8%AE%BE%E7%BD%AE/">
-        <p class="h4 index-header">Python/PyCharm设置</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">PyCharm设置1.修改配色:setting - Editor -Color scheme -python -schem - warmNeon
-2.设置解释器：setting - project name - project interpreter - project interpreter
-解释器设置为base：找到Anaconda根目录下的python.exe
-解释器设置为conda的某个env：env文件夹找到python.exe
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-26&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/python">python</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/25/kaggle/Pytorch%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
-        <p class="h4 index-header">kaggle/Pytorch基本操作</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.Variable变量variable可以想象成是篮子，tensor是鸡蛋。鸡蛋从一个篮子pass到另一个篮子时，就会构建一个计算图纸。
-目前的深度学习框架大部分都基于计算图
-一张计算图谱就是一个有向无环图，图中的节点主要是Variable。
-想要让tensor作为一个神经网络的参数，首要就是把tensor转换为Variable类型。
-只有variable节点可以被神经网络反向传播优化到，其他的占位符和常亮节点不可以被优化到。
-如下代码中，requires_grad 这个参数代表此节点是需要反向传播优化，通常都选True。
-import torch
-from torch.autograd import Variable
-
-tensor = torch.FloatTensor([[1,2],[3,4]])
-variable = Variable(tensor,requires_grad=True)
-2.激励函数
-如上，激励函数是一个非线性的函数，是神经网络中非线性化的手段。每一层神经网络的输出结果都进入激励函数，激励函数将它们映射到下一层的输入中。
-from torch.autogra</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-25&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/PyTorch">PyTorch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/kaggle/Concept_Transformer/">
-        <p class="h4 index-header">kaggle/Concept_Transformer</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">TransformerTransformer改进了RNN的训练慢的缺点，加入了自注意机制，充分发挥了DNN的优点，提升模型准确率。Transformer由论文《Attention is All you need》提出。有Tensorflow和Pytorch版本。
-宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。
-
-拆开这个黑箱，发现里边是由编码和解码组件构成。
-
-编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。
-1.编码器详解像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
-
-词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
-
-开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
-2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/kaggle/%E6%AF%94%E8%B5%9B%E8%B0%B7%E6%AD%8CQA_%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2/">
-        <p class="h4 index-header">kaggle/比赛谷歌QA_数据探索</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.基本概念1.本比赛数据截屏如下
-
-
-1.question_id
-1
-
-
-
-2.question_title
-What am I losing when using extension tubes in…
-
-
-3.question_body
-After playing around with macro photography on…
-
-
-4.question_username
-ysap
-
-
-5.question_user_page
-https://photo.stackexchange.com/users/1024
-
-
-6.answer
-I just got extension tubes, so here’s the skin…
-
-
-7.answer_user_name
-rfusca
-
-
-8.answer_user_page
-https://photo.stackexchange.com/users/1917
-
-
-9.url
-http://photo.stackexchange.com/questions/9169/…
-
-
-10.category
-LIFE_ARTS
-
-
-11.q</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
         
       </div>
     </div>

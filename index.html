@@ -136,6 +136,209 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_batchsize/">
+        <p class="h4 index-header">NLP概念/概念_batchsize</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">BatchSize机器学习训练中，把数据集分割成若干个batch，每个batch的大小叫做batchsize。
+对batchsize、epoch、iteration的举例：
+mnist 数据集有张图片作为训练数据，张图片作为测试数据。假设现在选择 Batch_Size = 对模型进行训练。迭代次。
+
+每个 Epoch 要训练的图片数量：(训练集上的所有图像)
+训练集具有的 Batch 个数： 
+每个 Epoch 需要完成的 Batch 个数：
+每个 Epoch 具有的 Iteration 个数：（完成一个Batch训练，相当于参数迭代一次）
+每个 Epoch 中发生模型权重更新的次数：
+训练 10 个Epoch后，模型权重更新的次数： 
+不同Epoch的训练，其实用的是同一个训练集的数据。第1个Epoch和第10个Epoch虽然用的都是训练集的图片，但是对模型的权重更新值却是完全不同的。因为不同Epoch的模型处于代价函数空间上的不同位置，模型的训练代越靠后，越接近谷底，其代价越小。
+总共完成30000次迭代，相当于完成了个Epoch
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_epoch/">
+        <p class="h4 index-header">NLP概念/概念_epoch</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Epoch定义训练集的所有数据对模型进行了一次完整训练，称为“一代训练”（epoch）。
+也就是说所有训练样本在神经网络中都进行了一次正向传播和一次反向传播。
+为什么要进行多于一次的epoch？神经网络中传递完整的数据集一次是不够的，而且我们需要将完整的数据集在同样的神经网络中传递多次。
+但是因为使用的是有限的数据集，并且使用一个迭代过程也就是梯度下降来优化学习过程。如下图所示，随着epoch的增加，神经网络的权重更新次数也在增加，曲线从欠拟合变成了过拟合。所以需要选择合适的epoch。
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E6%B1%A0%E5%8C%96/">
+        <p class="h4 index-header">NLP概念/概念_池化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">池化池化是什么卷积之后往往是池化操作，which可以降低卷积输出的特征向量，避免过拟合。
+以最大池化max pooling为例：整个图像被分为不重叠的若干小块，每个小块内取最大的数字，然后保持原平面结构，得出output。
+
+​    
+池化的作用感受到不变性，增大感受野。
+减小下一层的输入大小，减小计算量和参数个数，降维。
+如上图，第一行是卷积，第二行是池化。经过这两行操作，“横折”这个点，不论做平移旋转或者伸缩，都有相同的输出。于是
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E5%8D%B7%E7%A7%AF/">
+        <p class="h4 index-header">NLP概念/概念_卷积</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">卷积机器学习中的卷积操作的核心就是“对应相乘”。feature和原图的各部位分别相乘相加求均值，把原图遍历一道，便得到结果。如下所示，采用不同的卷积核可得到不同的结果图。
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/07/Linux/%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
+        <p class="h4 index-header">Linux/常见命令</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">常见操作export命令用于设置或者显示环境变量。
+在shell中执行程序时，shell会提供一组环境变量，export可新增修改或者删除环境变量，供后续执行的程序使用。export操作的效力仅限于该次登录操作。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/linux">linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/linux">linux</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/31/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/U%E7%9B%98%E5%AE%89%E8%A3%85Ubuntu/">
         <p class="h4 index-header">安装调试记录/U盘安装Ubuntu</p>
         
@@ -180,8 +383,8 @@ https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/31/Abhishek%20Thakur/1.1BuildingMLFramework/">
-        <p class="h4 index-header">Abhishek Thakur/1.1BuildingMLFramework</p>
+      <a href="/2020/03/31/kaggle/Abhi_BuildFramework/">
+        <p class="h4 index-header">kaggle/Abhi_BuildFramework</p>
         
         
           
@@ -198,7 +401,7 @@ https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/AbhishekThakur">AbhishekThakur</a>&nbsp;
+            <a href="/categories/kaggle">kaggle</a>&nbsp;
           &nbsp;
         
         
@@ -215,53 +418,8 @@ https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/31/Abhishek%20Thakur/%E6%AF%94%E8%B5%9BMultiLinguToxic/">
-        <p class="h4 index-header">Abhishek Thakur/比赛MultiLinguToxic</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">MultiLinguToxic : Abhishek Thakur`s Guide数据探索基本文件
-如上是本比赛需要的数据，标橙的是主要数据。其中第一行和第二行的两个train数据来自之前jigsaw举办的比赛两个128长度的seq for BERT也许不是我们需要的东西。
-数据列分析
-如上是数据不同的列，分别表示了id，真实评论，语言类型，是否是toxic的标签。
-对train.csv的一瞥
-可以看到，数据的分列情况就是id+评论+是否toxic+是否严重toxic+是否淫秽。
-作者推荐自己的bert-sentimentbert-sentiment用的是IMDb数据集，在github上star了。
-
-把dataset.py复制进ide
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-31&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/AbhishekThakur">AbhishekThakur</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/28/NLP%E5%85%A5%E9%97%A8/Word2Vec/">
-        <p class="h4 index-header">NLP入门/Word2Vec</p>
+      <a href="/2020/03/28/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_Word2Vec/">
+        <p class="h4 index-header">NLP概念/概念_Word2Vec</p>
         
         
           
@@ -311,7 +469,7 @@ n-gram词</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%85%A5%E9%97%A8">NLP入门</a>&nbsp;
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
           &nbsp;
         
         
@@ -323,8 +481,8 @@ n-gram词</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/28/NLP%E5%85%A5%E9%97%A8/tokenize%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
-        <p class="h4 index-header">NLP入门/tokenize和预处理</p>
+      <a href="/2020/03/28/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_tokenize%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
+        <p class="h4 index-header">NLP概念/概念_tokenize和预处理</p>
         
         
           
@@ -356,7 +514,7 @@ deri</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/NLP%E5%85%A5%E9%97%A8">NLP入门</a>&nbsp;
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
           &nbsp;
         
         
@@ -392,224 +550,6 @@ deri</div>
           <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/26/Python/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-        <p class="h4 index-header">Python/正则表达式</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">正则表达式re.compile()compile() 的定义：
-compile(pattern,flags=0)
-# compile a regular expression pattern,returning a pattern object
-从原文档的定义可知，compile函数返回的是一个匹配对象，一般和findall(),search(),match()函数搭配使用。返回的是一个列表。
-搭配使用的例子：
-import re
-
-def main():
-    content = &#39;Hello, I am Jerry,from Chongqing, a montain city,nice to meet you&#39;
-    regex = re.compile(&#39;\W*o\w*&#39;)
-    x = regex.findall(content)
-    print(x)
-
-if __name__ == &#39;__main__&#39;：
-    main()
-# [&#39;Hello&#39;,&#39;from&#39;,&#39;Chongqi</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-26&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/python">python</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/25/kaggle/Concept_CNN/">
-        <p class="h4 index-header">kaggle/Concept_CNN</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">CNN 概念 - 卷积神经网络</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-25&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/13/kaggle/import_gensim/">
-        <p class="h4 index-header">kaggle/import_gensim</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Gensimword2vec
-word2vec的使用就是gensim中models/word2vec.py文件里的word2vec类中，共有如下24个参数。
-
-
-
-参数名称
-默认值
-用途
-
-
-
-sentences
-None
-训练的语料，一个可迭代对象。对于从磁盘加载的大型语料最好用gensim.models.word2vec.BrownCorpus，gensim.models.word2vec.Text8Corpus ，gensim.models.word2vec.LineSentence 去生成sentences
-
-
-size
-100
-生成词向量的维度
-
-
-alpha
-0.025
-初始学习率
-
-
-window
-5
-句子中当前和预测单词之间的最大距离，取词窗口大小
-
-
-min_count
-5
-文档中总频率低于此值的单词忽略
-
-
-max_vocab_size
-None
-构建词汇表最大数，词汇大于这个数按照频率排序，去除频率低的词汇
-
-
-sample
-1.00E-03
-高频词进行随机下采样的阈值，范围是(0, 1e-5)
-
-
-seed
-1
-向量初始化的随机数种子
-
-
-workers
-3
-几</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-13&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/gensim">gensim</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/10/kaggle/import_numpy_seed/">
-        <p class="h4 index-header">kaggle/import_numpy_seed</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Numpynp.random.seed()函数np.random.seed()函数用于生成指定的随机数，seed ()被设定后可以按照顺序产生一组固定的数组，如果使用相同的seed（）值，每次产生的随机数都相同。如果不设置这个值，则每次产生的随机数都
-np.random.seed()函数这个seed（）函数可以说是随机数的编号。比如seed（1） 产生的数组是[1,2,3,4,2,2,1]，那么以后调用seed（1）出来的数组都是[1,2,3,4,2,2,1].
-不使用seed（）就得不到相同的随机数：
-import numpy as np
-np.random.seed(1)
-
-L1 = np.random.randn(3, 3)
-L2 = np.random.randn(3, 3)
-print(L1)
-print(L2)
-out：
-[[ 1.62434536 -0.61175641 -0.52817175]
- [-1.07296862  0.86540763 -2.3015387 ]
- [ 1.74481176 -0.7612069   0.3190391 ]]
-
-[[-0.2493</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-10&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
           &nbsp;
         
         

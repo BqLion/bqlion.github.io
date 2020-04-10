@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>NLP概念/概念_Transformer ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      11 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p>Transformer改进了RNN的训练慢的缺点，加入了自注意机制，充分发挥了DNN的优点，提升模型准确率。Transformer由论文《Attention is All you need》提出。有Tensorflow和Pytorch版本。</p>
+<p>宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_UNNZMFirMr.png" alt=""></p>
+<p>拆开这个黑箱，发现里边是由编码和解码组件构成。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_ESVLKlPHhd.png" alt=""></p>
+<p>编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。</p>
+<h3 id="1-编码器详解"><a href="#1-编码器详解" class="headerlink" title="1.编码器详解"></a>1.<strong>编码器详解</strong></h3><p>像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_hkMoMASPhK.png" alt=""></p>
+<p>词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_WK2a3xSATp.png" alt=""></p>
+<p>开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。</p>
+<h3 id="2-自注意力机制详解"><a href="#2-自注意力机制详解" class="headerlink" title="2.自注意力机制详解"></a>2.<strong>自注意力机制详解</strong></h3><p><strong>宏观角度</strong>看，比如翻译一个句子，“The animal didn`t cross the street because it was too tired”，it指代什么？对于人类来说，指代的是animal不是street，很容易但是对于计算机来说这就是一个复杂的问题。</p>
+<p>当模型处理“it”这个单词的时候，自注意力机制会允许it和animal之间发生联系。</p>
+<p>随着模型处理输入序列的每个单词，自注意力机制会关注整个输入序列的所有单词，帮助模型对本单词更好的编码。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_qMZ3PBAKgx.png" alt=""></p>
+<p>如图，RNN循环神经网络中，自注意力机制会关注整个输入序列的所有单词，帮助模型对本单词更好的进行编码。</p>
+<p><strong>微观角度</strong>看，如何使用向量计算自注意力，然后看看如何使用矩阵来实现，计算自注意力的第一步是从每个编码器的输入向量（每个单词的词向量）中生成三个向量。也就是说对于每个单词，我们创造一个查询向量，一个key向量，一个value向量。这三个向量是通过词嵌入与三个权重矩阵相乘创建的。</p>
+<p>这些新向量在维度上比词嵌入向量更低，他们的维度是64，而词嵌入和编码器的输入/输出向量的维度是512。这些分向量比总的词嵌入向量小的原因是基于架构的选择，使得多头注意力的大部分计算保持不变。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_6vXIOeu37l.png" alt=""></p>
+<p>词嵌入向量乘以WQ，Wk，Wv矩阵，就可以分别得到查询向量q1，key向量k1，value向量v1.</p>
+<p><strong>查询向量，key向量，value向量详解</strong></p>
+<p>他们都是有助于计算和理解注意力机制的抽象概念。</p>
+<p>计算自注意力的第二步是计算得分，假设我们这个例子，第一个词是“thinking”，计算自注意力向量，我们需要拿输入句子中的每个单词对“Thinking”<strong>打分</strong>，这些分数决定了在编码单词“Thinking”的过程中有多重视句子的其他部分。</p>
+<p><strong>打分</strong>是通过每个单词的key向量与“thinking”单词的查询向量的点积来计算的。如果我们是处理位置最靠前的单词的自注意力的话，第一个分数是q1*k1,第二个分数是q1*k2。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_0d3s4CIJ2B.png" alt=""></p>
+<p>接下来对每个打分除以8,8这个数字是默认值，在论文中是维度64的平方根，除以了这个值之后，会让梯度更加稳定。softmax函数是把所有的值都挤压到0-1的区间内，且总值为1。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_pbeEMhw8OP.png" alt=""></p>
+<p>于是完成自注意力的计算，得到的向量可以传给前馈神经网络，实际中，这些计算是通过矩阵完成的，以便算的更快。接下来研究具体如何用矩阵计算。</p>
+<p><strong>用矩阵计算自注意力机制的各个向量</strong></p>
+<p>第一步是计算查询矩阵、key矩阵、value矩阵。我们将输入句子的词嵌入装进矩阵X中，将其乘以我们训练的权重矩阵（WQ,WK,WV）</p>
+<p>如下图，将输入的值装入X矩阵中，乘以我们训练的权重矩阵（WQ,WK,WV）</p>
+<p>X矩阵中的每一行对应于输入句子中的每一个单词，词嵌入向量512维，表示为4个格子，q/k/v向量是64维，表示为3个格子。</p>
+<p>最后，可以用矩阵乘法将上文提到的步骤2到步骤6（查询向量*值向量、除以8、softmax，求和等等）写在一个矩阵公式中：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_Z5aUHOiyMU.png" alt=""></p>
+<p><strong>大战多头怪</strong></p>
+<p>通过增加“多头”注意力，进一步完善了自注意力层，并在两方面提高了注意力层的性能。</p>
+<p>1.拓展了模型专注于不同位置的能力。在上边的例子里，每个编码都在z1中或多或少有些体现，但是他可能被实际的单词本身所支配。翻译开篇的句子“The animal didn`t cross the street because it was too tired”,我们会想知道it指代的是哪个词，这时候模型的“多头”注意机制会起到作用。</p>
+<p>2.他给出了注意力层的多个“表示子空间”，接下来我们会看到，对于“多头”注意力机制，我们有多个查询/key/value的权重矩阵集合（Transformer有八个注意力头，所以每个编码、解码器有八个矩阵集合）。这些集合中的每一个都是随机初始化的。在训练后，每个集合都会被用来将输入词嵌入投影到不同的表示子空间中。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_xJZmBNGucQ.png" alt=""></p>
+<p>在多头注意力机制下，我们为每个头保持独立的查询/KEY/VALUE 的权重矩阵，做和上个session相同的自注意力计算，只需要八次不同的权重运算，我们就会得到八个不同的Z矩阵。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_qSIYj5VkoT.png" alt=""></p>
+<p>可是前馈层只需要一个矩阵，如何把八个矩阵压缩为一个矩阵？可以先将八个矩阵拼接在一起，然后使用附加的权重矩阵WO将他们相乘。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_FABCnIsnJY.png" alt=""></p>
+<p>下图是详细过程</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_e3uK4kPwAH.png" alt=""></p>
+<p>再以上文的句子为例，不同的注意力头注意的是不同的词。在编码“it”的时候，有的头注意“animal”，有的头注意“tired”。从某种意义上来说，模型对“it”一词的表达在某种程度上是“animal”和“tired”的代表。把所有的attention都汇聚在一张图里，如下所示。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_0a2yBSahem.png" alt=""></p>
+<p><strong>使用位置编码表示序列的顺序</strong></p>
+<p>目前为止，我们对模型的描述缺少了一种理解输入单词顺序的方法。为此，Transformer为每个输入的词嵌入添加了一个向量，这些向量遵循学习到的特定模式，这有利于确定每个单词的位置，或者序列中不同单词之间的距离。这个向量就是<strong>位置向量</strong>。将<strong>位置向量</strong>添加到词嵌入中，能使得他们在接下来的运算中更好地表达词与词之间的距离。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_rtIMuWomLy.png" alt=""></p>
+<p>如上图，给词嵌入添加了位置编码向量，使得词嵌入变成了基于时间序列的词嵌入。</p>
+<p>假设词嵌入的维数是4（mini-词嵌入），实际的位置编码如下：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_ogqh4cGQnc.png" alt=""></p>
+<p>下图中，每一行对应一个词向量的位置编码。第一行对应输入序列的第一个词。每行包括512个值。每个值都在-1到1之间。离1越近越黄，离-1越近越蓝。</p>
+<p>下图是一个20个字的位置编码实例，词嵌入的大小是512维，可以看到在中间分成两半，左边一半的值由一个正弦函数生成，右边由余弦函数生成。</p>
+<p>原始论文中描述了位置编码的公式，可以在get_timing_signal_1d()中看到生成位置编码的代码。当然这种方法不是唯一的生成位置编码的方法，然而，他的优点是能够扩展到未知的序列长度。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_eexMR6j1wC.png" alt=""></p>
+<p><strong>残差模块</strong></p>
+<p>编码器架构中有个细节：在编码器中的每个子层（自注意力，前馈）的周围都有一个残差链接，并都跟随一个“层-归一化”步骤。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_7G0MyFlmao.png" alt=""></p>
+<p>编码器和解码器的子层均是这样，一个二层编码-解码结构的Transformer，看起来如下图所示。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_32nAP7wlCy.png" alt=""></p>
+<p><strong>解码组件</strong></p>
+<p>编码器通过处理输入序列开始工作，顶端编码器的输出会转变为一个包含K向量（Key向量）的V（Value）向量的注意力向量集。这些向量将被每个解码器用于自身的“编码-解码注意力层”，而这些层可以帮助解码器关注输入序列那些位置更加合适。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_5pXw7V2lMP.png" alt=""></p>
+<p>在解码阶段，解码的每个步骤都会输出一个输出序列的元素，本例子是英语翻译的句子。接下来的步骤中重复了这个过程，知道达到一个特殊的终止符号，他表示transformer的解码器已经完成了他的输出。每个步骤的输出在下一个时间步被提供给底端解码器。</p>
+<p>那些在解码器中的自注意力层表现的模式和编码器不同：在解码器中，自注意力层只被允许处理输出序列中更靠前的哪些位置，在softmax步骤前，他会把后面的位置给隐去（设为-inf）</p>
+<p>这个位置-解码注意力层工作方式基本就像多头自注意力层一样，只不过是它通过在它下面的层来创造查询矩阵，并从解码器的输出中取得键/值矩阵。</p>
+<p><strong>最终的线性变换和Softmax层</strong></p>
+<p>上文的解码器组件输出的是一个实数向量。线性变换层把向量解析为单词。之后是softmax层。</p>
+<p>线性变换层是一个简单的全连接神经网络，可以把解码器组件产生的向量投射到一个比他大得多的被称为“对数几率”的向量里。不妨假设我们的模型从训练集中学习了一万个不同的英语单词（输出词表），因此对数几率向量为一万个单元格长度的向量——每个单元格对应一个单词的分数。</p>
+<p>接下来softmax层会把分数变成概率，值在0到1 之间，概率最高的单元格被选中，并且对应的单词作为这个时间步的输出。</p>
+<p>如下图，logit层维持的是每个单词和对应的数字，经过softmax后把大的放大小的缩小。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_bM4NMPLbch.png" alt=""></p>
+<p><strong>训练部分总结</strong></p>
+<p>总结一下transformer的前向传播过程，假设我们的输出词汇仅仅包含六个单词，如下。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_2YT0YCe7uh.png" alt=""></p>
+<p>模型的输出词表在训练前就被设定好了，一但我们定义了我们的输出词表，我们可以使用一个相同宽度的向量来表示我们词汇表中的每一个单词，这也被认为是一个one-hot编码，所以我们用如下的one-hot encoding来表示“am”。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_GqEGmgYoC2.png" alt=""></p>
+<p>*<em>损失函数 *</em></p>
+<p>比如我们在训练模型，现在是第一步，把“merci”翻译成“thanks”，想要的输出是thanks这里的独热码是1，其他都是0，这个向量表示了这个单词，但是因为这个模型还没有被训练好，所以不太可能现在就出现这个结果。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_ggC9OV3tPL.png" alt=""></p>
+<p>模型的参数是被随机生成的，然后采用反向传播算法来调整所有模型的权重，生成更接近结果的输出。</p>
+<p>更现实的情况是处理一个句子。例如，输入“je suis étudiant”并期望输出是“i am a student”。那我们就希望我们的模型能够成功地在这些情况下输出概率分布：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_Pf7i3u2vEV.png" alt=""></p>
+<p>当然这只是理想情况，真实的模型输出的概率分布更可能是这样</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_tf9h4bL4qK.png" alt=""></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "NLP概念/概念_Transformer&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
