@@ -136,23 +136,241 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
-        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
+      <a href="/2020/02/24/D3NER/LSTM/">
+        <p class="h4 index-header">D3NER/LSTM</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">判定模型和生成模型的区别
-机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
+          <div class="index-text mb-1">LSTM+CRF1、perspectively
+LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。
+但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。
+2、LSTM+CRF
+既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? 
+因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：
 
-判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
-生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
+input: “学习出一个模型，然后再预测出一条指定”expected output: 学/B 习/E 出/S 一/B 个/E 模/B</div>
+        </div>
+      </a>
 
-一个生动的例子说明两者的区别:
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
 
-判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
-生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/D3NER/CRF/">
+        <p class="h4 index-header">D3NER/CRF</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">条件随机场
+概率统计图概览
+
+
+马尔科夫假设/马尔科夫性
+
+马尔科夫假设
+马尔科夫链  里的  总是只受  一个人的影响。马尔科夫假设这里相当于就是个2-gram。
+马尔科夫过程
+在一个过程中，每个状态的转移只依赖于前n个状态
+
+
+
+
+马尔科夫性
+马尔科夫性是保证或者判断概率图是否为概率无向图的条件
+成对性
+局部性
+全局性
+
+
+
+
+
+
+条件随机场定义
+
+条件随机场是在给定的随机变量 （具体，对应观测序列  ）条件下，随机变量  （具体，对应隐状态序列  的马尔科夫随机场。
+广义的CRF的定义是： 满足  的马尔科夫随机场叫做条件随机场（CRF）
+条件随机场是一种特殊的马尔科夫随机场
+马尔科夫随机场
+首先我们有无向图G=(V,E)， 图G中每个节点v上都有一个随机变量y，这样所有的节点上的随机变量就构成一组随机变量Y，图G上有联合概率分布P(Y)。边e表示相邻节点的变量存在某种神秘的联系。
+图G上的随机变量Y满足马尔科夫性，即两个不相邻的节点上的随机变量yi，yj条件独立。这就是马尔科夫随机场。
+
+
+
+
+CRF建模公式
+
+
+CRF特征函数
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/D3NER">D3NER</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/D3NER">D3NER</a>&nbsp;
+          
+            <a href="/tags/CRF">CRF</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E6%A2%AF%E6%AE%B5%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">CS229/梯段下降算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">梯度下降算法
+特点：梯度下降算法可以自动将代价函数J最小化
+问题描述:有一个代价函数，它有两个参数，想让这个代价函数的值最小化。
+做法：持续把这个两个参数向着梯度下降最快的方向迭代。
+
+
+
+梯度下降算法的学习率α设置:
+α过小,收敛太慢
+α过大,在最小值附近震荡
+
+
+梯度下降缺点:可能求的是局部最优解，解决办法是多次随机初始化起点。
+
+1.多特征值的回归问题
+
+单特征回归:只有房子面积一个特征,求预测房价
+
+单特征回归的假设函数:h(x) = θ0 + θ1x
+
+
+多特征回归:有房子面积,卧室数量,几层高,使用年限四个特征,求预测房价
+
+四特征回归的假设函数:h(x) = θ0 + θ1x1+θ2x2+θ3x3+θ4x4    —-&gt;   缩写h = θ(XT) :向量θ乘以向量X的转置
+只考虑最简单的一次线性多项式
+
+
+多特征回归的梯度下降算法:
+
+每次对一个参数求偏导,并对其迭代.
+所有参数都迭代这么一圈算完成一个回合.
+多参数迭代过程如下图
+
+
+
+
+
+
+2.梯度下降实用技巧–特征缩放(feature scaling)
+如果参数 θ1和θ2大小相差太远,那么θ1的轻微改变都可</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95">梯度下降算法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
+        <p class="h4 index-header">CS229/极大似然估计</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">极大似然估计极大似然估计是确定机器学习模型的参数的一种办法。确定参数值的过程，是找到能最大化“模型产生真实观察数据可能性“的那一组参数，略抽象，如下是一个例子：
+从某过程观察了如下十个数据点，每个数据点代表了学生回答问题使用的秒数。
+
+这些数据的生成过程可以使用高斯分布（正态分布）进行充分描述。高斯分布有两个参数，西格玛和μ，如何确定参数？如下示意图表示了使用不同参数的不同高斯分布（方差大的中心函数更扁平）。
+注：蓝色曲线是正确曲线N(10,2.25)
+
+OK，如何反编译确定正确参数？我们把这个例子再次简化，同样的情境，这次只存在三个数据点：9,9.5,11
+如何使用最大似然估计确定这个高斯分布的参数？
+高斯分布中，单个数据点x的边缘概率如下
+
+同时观察到上边所提三个点（9,9.5,11）的联合概率是带入上边三个数据的连乘积：
+
+我们只要能找到最大化上述连乘积的参数μ和西格玛就ok了。也就是说，最大似然估计是一个通过确定参数得到函数最大值的优化问题。
+那么，如何求出上述函数的最大值？
+easy，二元函数求偏导标准步骤，加以两边套上对数等数学小技巧就完事儿了。
+SOP:
+
 
 </div>
         </div>
@@ -173,9 +391,7 @@
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
-            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
-          
-            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
+            <a href="/tags/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">极大似然估计</a>&nbsp;
           
         
       </div>
@@ -327,31 +543,23 @@ SVM模型 和 逻辑回归模型之间的取舍:
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
-        <p class="h4 index-header">CS229/5.过拟合和正则化</p>
+      <a href="/2020/02/24/CS229/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        <p class="h4 index-header">CS229/判定模型和生成模型的区别</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
+          <div class="index-text mb-1">判定模型和生成模型的区别
+机器学习的任务是从属性X预测标记Y，即是求概率P（Y|X）
 
+判别式模型是上图左边示例，有个明显的边界，新来一个值需要判断他属于哪一类的时候直接算出他的score，当score大于threshold时为正类，反之为负类。线性回归，SVM模型都是典型的判别式模型
+生成式模型是上图右边示例，无明显边界，新来一个值要判断他是哪一类的时候，首先求该值与两个不同标记的不同联合概率分布，然后大的获胜。朴素贝叶斯模型，HMM模型都是生成式模型。
 
-解决办法:
-过拟合就丢弃不能正确预测的特征,欠拟合就加特征
-2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
+一个生动的例子说明两者的区别:
 
-
-
-给高维项设置惩罚项
-
-代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
-
-增加了惩罚项的代价函数
-
-
-
-
+判别式模型：要确定一个羊是山羊还是绵羊，用判别式的方法是从历史数据中学到模型（运行同一个模型得到确定的结果），然后通过提取这只羊的特征来预测出羊的类型。
+生成式模型：根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型。然后提取这只待判定羊的特征，放到山羊模型中看看概率是多少，再放到绵羊模型中看看概率是多少。哪个大就是哪个。（两个模型，两个结果，最后比比数值大小得出结论）
 
 </div>
         </div>
@@ -371,6 +579,77 @@ SVM模型 和 逻辑回归模型之间的取舍:
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B">判定模型</a>&nbsp;
+          
+            <a href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成模型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
+        <p class="h4 index-header">CS229/6.神经网络(表述)</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">#
+6.神经网络(表述)6.1问题的由来
+特征爆炸无法处理
+例如,智能识别一个图片是不是汽车的问题
+假设使用50*50小黑白照片
+那么就有2500个像素灰度作为特征
+2500个特征两两组合就是3000000项,这的多项式处理不了
+这时候就需要神经网络
+
+
+
+6.2直观理解和逻辑运算符的构建
+直观理解
+
+神经网络能够通过自身学习得到一些列特征,这些特征是使用数据的原始特征经过拆分组合和一系列逻辑运算得到的
+这样的一系列特征比普通的逻辑回归的表层特征要深刻的多
+最后做决定的神经元依据上一层传进来的特征,这些特征已经经过多层传导,内化为自己的特征了
+
+
+神经元可以通过增加一个固定权重神经元构建逻辑运算符(与,非,或,抑或等)
+
+如下图
+
+
+
+
+6.3神经网络的形态
+6.4神经网络基本概念的定义from CS224N如图，神经网络有输入，有偏置单元，有激活函数，以及对后续神经网络的输出。
+输入x，w是乘以输入的权重，b是偏置值，f是sigmod函数。
+输入乘以权重加上偏置值后，进入sigmod函数，输出一个分类值。
+有了神经网络，让我们再回到之前的单窗口分类器。代替之前直接将softmax应用</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
           
         
       </div>
@@ -459,217 +738,29 @@ a(2)是第二层神经元的输出项,共五项,是z(2)五项经过第二层神�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
-        <p class="h4 index-header">CS229/6.神经网络(表述)</p>
+      <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
+        <p class="h4 index-header">CS229/5.过拟合和正则化</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">#
-6.神经网络(表述)6.1问题的由来
-特征爆炸无法处理
-例如,智能识别一个图片是不是汽车的问题
-假设使用50*50小黑白照片
-那么就有2500个像素灰度作为特征
-2500个特征两两组合就是3000000项,这的多项式处理不了
-这时候就需要神经网络
+          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
+
+
+解决办法:
+过拟合就丢弃不能正确预测的特征,欠拟合就加特征
+2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
 
 
 
-6.2直观理解和逻辑运算符的构建
-直观理解
+给高维项设置惩罚项
 
-神经网络能够通过自身学习得到一些列特征,这些特征是使用数据的原始特征经过拆分组合和一系列逻辑运算得到的
-这样的一系列特征比普通的逻辑回归的表层特征要深刻的多
-最后做决定的神经元依据上一层传进来的特征,这些特征已经经过多层传导,内化为自己的特征了
+代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
 
-
-神经元可以通过增加一个固定权重神经元构建逻辑运算符(与,非,或,抑或等)
-
-如下图
+增加了惩罚项的代价函数
 
 
-
-
-6.3神经网络的形态
-6.4神经网络基本概念的定义from CS224N如图，神经网络有输入，有偏置单元，有激活函数，以及对后续神经网络的输出。
-输入x，w是乘以输入的权重，b是偏置值，f是sigmod函数。
-输入乘以权重加上偏置值后，进入sigmod函数，输出一个分类值。
-有了神经网络，让我们再回到之前的单窗口分类器。代替之前直接将softmax应用</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/11.%E9%99%8D%E7%BB%B4/">
-        <p class="h4 index-header">CS229/11.降维</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">11.降维11.1 动机一：数据压缩例如有两个特征，一个是厘米，一个是英寸，这个时候可以抛弃其中一个特征，将二维降成一维
-利用投影的方法可以将数据降低为任意想要的维度
-11.2主成分分析问题PCA主成分分析是最常见的降维算法
-步骤：
-找到一个方向向量，当所有的数据投射到该向量时，我们希望投射的平均均方误差最小，方向向量是一个经过原点的向量，而投射误差是从特征向量向该方向作垂线的长度
-左边是线性回归，右边是PSA
-
-计算方法
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E9%99%8D%E7%BB%B4">降维</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/10.%E8%81%9A%E7%B1%BBClustering/">
-        <p class="h4 index-header">CS229/10.聚类Clustering</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
-如图就是聚类问题
-左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
-10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
-
-K-均值是一个迭代算法
-
-设想我们将数据聚集成n组,选择k个随机的点为聚类中心
-
-对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
-
-然后开始迭代:
-
-每次计算一个组的平均值,将中心点移动到平均值的位置
-如此反复几次中心点的位置就不再变化
-如下图所示
-
-
-
-
-
-10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
-因此K均值的代价函数为:
-
-10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
-1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
-2.随机选择K个训练实例,然后令K个聚类中心等于他们
-K-均值算法的一个问题在于,他可能停留在某个</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E8%81%9A%E7%B1%BB">聚类</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
-        <p class="h4 index-header">CS229/2.正规方程</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">CS229—正规方程1.定义
-​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
-
-正规方程求解参数矩阵的公式:
-
-2.正规方程法和梯度下降法的对比
-
-梯度下降的特点
-
-要设置学习率α
-多次迭代
-工作地非常均衡
-适合特征变量很多的时候用
-要求参数归一化
-
-
-正规方程法
-
-不用设置学习率
-不用迭代
-需要计算
-适合特征变量不超过1000时用
-不要求参数归一化,如下图
-
-
-
-有些较复杂问题不能使用正规方程法,只能使用梯度下降
 
 
 
@@ -691,81 +782,6 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/4.%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
-        <p class="h4 index-header">CS229/4.逻辑回归</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">4.逻辑回归(logistics regression)1.逻辑回归模型
-分类问题输出一个结果”正确”或者”错误”
-
-逻辑回归模型:
-
-
-
-
-当hθ(x) 在区间[0.5,1]时,预测是”正确”,越贴近1越确信
-当hθ(x) 在区间[0,0.5)时,预测是”错误”,越贴近0越确信
-
-2.逻辑回归的代价函数
-
-简单点一句话讲:
-答案是1,你预测了1,无误差
-答案是1,你预测的数字离0越近误差就越大,完全是0误差就是无限大(不可能情况)
-答案是0的情况与答案是1的情况同理
-
-
-
-3.对逻辑回归的代价函数使用梯度下降算法,以得到最优参数/最优解
-4.高级优化
-一些建议
-
-不需要写代码实现代价函数的迭代
-
-从技术来讲,其实我们不需要自己手动写程序来计算刚才提到的梯度下降算法的代价函数以及其迭代过程,就像我们不需要自己手动写求平方根和创建数组一样,这些问题早都有非常成熟的库来调用
-
-
-更高级的算法
-
-除了梯度下降算法,还有共轭梯度法 BFGS (变尺度法) 和L-BFGS (限制变尺度法)这种更高级算法可调用
-吴恩达本人已经使用如上提到的算法很多年了,也才是最近才搞清楚他们的内部实现细节
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">逻辑回归</a>&nbsp;
           
         
       </div>

@@ -136,6 +136,232 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/21/CS224U/Sentiment_Analysis_SST/">
+        <p class="h4 index-header">CS224U/Sentiment_Analysis_SST</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Sentiment_Analysis SSTSST项目基本信息
+SST斯坦福链接
+SST工作展示蓝色是正面情绪，黄色是负面，灰色是中性情绪。叶子节点的merge原理暂时未知。They said it would be great这句话下边都是正面情绪，直到跟节点的they才恢复为中性情绪，因为they said其实不能反映出作者的 bias。
+而后边接上的they were wrong明显是负面，然后merge后总体就是负面情绪了。这个总体的判断要比直接把一句话拆开按照各个单词的正负性简单sum要靠谱很多。
+
+verse vesa
+
+Readers讲解
+In [5]、In [6]中的train_reader参数详解
+
+
+
+
+meaning
+
+
+
+class_func=sst.binary_class_func
+二分类问题
+
+
+class_func=sst.ternary_class_func
+三分类问题
+
+
+class_func=None
+五分类问题
+
+
+核心类 ： nltk.tree.Tree输入一个tree：
+
+循环打印各个subtree：
+
+输出tree的lable和subtre</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224U">CS224U</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/19/kaggle/env_yml_kag1_%E6%9C%AC%E6%9C%BA/">
+        <p class="h4 index-header">kaggle/env_yml_kag1_本机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">environment_ymlname: kag1
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+  - defaults
+dependencies:
+  - absl-py=0.9.0=py37_0
+  - astor=0.7.1=py_0
+  - attrs=19.3.0=py_0
+  - boto=2.49.0=py_0
+  - boto3=1.12.11=py_0
+  - botocore=1.15.11</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kaggle">kaggle</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/19/Python/python%E7%8E%AF%E5%A2%83%E8%BF%81%E7%A7%BB/">
+        <p class="h4 index-header">Python/python环境迁移</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">python环境迁移copy from：WenShan`s blog
+Conda 是著名的包管理器和虚拟环境管理器。
+在配置完项目环境，并编写和测试代码后，您可能希望将其移至另一台计算机。
+Conda 提供了多种保存和移动环境的方法。
+Clone在本地，conda 可以方便地创建环境的快照或者备份：
+1 conda create --name snapshot --clone myenv Spec List如果需要在具有 相同操作系统 的计算机之间复制环境，则可以生成 spec list。
+生成 spec list 文件：
+1 conda list --explicit &gt; spec-list.txt 重现环境：
+1 conda create  --name python-course --file spec-list.txt Environment.yml也可以使用 -export 选项生成一个 environment.yml 文件，以在 不同的平台和操作系统之间 复现项目环境。 spec list 文件和 environment.yml 文件之间的区别在于： environm</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kaggle">kaggle</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/18/CS224U/Sentiment_Analysis_%E6%9D%90%E6%96%99%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
+        <p class="h4 index-header">CS224U/Sentiment_Analysis_材料和预处理</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Sentiment Analysis阅读材料和数据预处理核心阅读材料
+
+情感分析各子领域合适的切入点。他们入选的原因是位置合适以及有公开数据集
+
+常用情感分析数据库
+
+lexica
+
+preprocessingpreprocessing ： tokenizing
+
+preprocessing : 词干化stemming
+
+porter stemming演示
+
+兰开斯特stemming演示
+
+wordNet stemming演示
+
+preprocessing:  POS tagging
+有些英文单词的sentiment只能通过pos来确定。
+
+需要注意的是即使有些单词的pos tagging一模一样仍然会有相反的sentiment
+
+preprocessing : 简单情感标记和推荐阅读
+
+简单负面情绪标记示例
+
+推荐阅读
+
+负面情绪标记带来的性能提升
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224U">CS224U</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_batchsize/">
         <p class="h4 index-header">NLP概念/概念_batchsize</p>
         
@@ -374,184 +600,6 @@ https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
           
             <a href="/tags/linux">linux</a>&nbsp;
           
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/31/kaggle/Abhi_BuildFramework/">
-        <p class="h4 index-header">kaggle/Abhi_BuildFramework</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Building ML Framework</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-31&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/28/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_Word2Vec/">
-        <p class="h4 index-header">NLP概念/概念_Word2Vec</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Word2VecNLP常见任务
-自动摘要
-指代消解：小明放学了，妈妈去接他
-机翻：小心地滑-》slide carefully
-词性标注：heat（v），water（n）
-分词（主要中文）：大水沟/很/难/过 –传统做的比较好的都是用HMM做的
-主题识别
-文本分类
-
-NLP处理方法传统：基于规则
-现在：基于统计机器学习
-
-HMM,CRF,SVM,LDA,CNN，词袋，LSTM,SVM,RNN等
-“规则”隐含在模型参数里
-
-词编码对于词的编码要保证词语的相似性，例如frog就要和如下词汇离得比较近
-
-在计算机中表示一个词的思路：
-上位词和同义词代替表述。
-这种表述的方法的缺点是不能分别细节的差别，需要大量的人力，主观，无法兼容新词，难以精确的计算词之间的相似度。
-
-One-hot离散表述
-构建语料库。想象构建一个字典，本字典每一页都只有一个词，然后想要表述某个词，就用独热码表示他的页码即可。
-
-词袋离散表述
-一个句子中的每个词语都是一个one-hot编码，把编码们简单相加就是句子的词袋表述。
-
-离散表示的问题：
-
-太稀疏，难以捕捉文本的含义。
-
-词表维度随着语料库增长膨胀
-
-n-gram词</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-28&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/28/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_tokenize%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
-        <p class="h4 index-header">NLP概念/概念_tokenize和预处理</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Tokenize把长句子拆分成有意义的小句子。
-import nltk
-sentence = &quot;hello,world&quot;
-tokens = nltk.word_tokenize(sentence)
-token = 
-[&#39;hello&#39;, &#39;,&#39; , &#39;world&#39;]
-有时候tokenize没那么简单，比如如下的例子是黄晓明在推特上@安吉拉卑鄙秀恩爱的语料。
-在这个场景下，大家会用很多# @ 表情符和超链接等，自然语言呈现出与书本不同形态，如果还沿用老的tokenize策略，就会分出不少乱七八糟的符号，并且拆散了有意义的本符号比如“ :D ” 。
-
-所以需要根据不同的业务场景开发定制化的tokenize策略，根据上文的分析，将本场景下最容易出现的专有token全部用正则表达式重写，试图完整表达。
-
-通过re.compile定义一个小方法token_re,返回和regex匹配的模式。
-
-词形的变化词有两种变化，分别是
-Inflection变化: walk -&gt; walking -&gt;walked不影响词性
-deri</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-28&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/27/%E6%9D%82%E8%B0%88/%E6%82%89%E8%BE%BE%E5%A4%9A%E7%9A%84%E7%8E%8B%E5%AD%90/">
-        <p class="h4 index-header">杂谈/悉达多的王子</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">悉达多1.爱与知识并不能来带peace
-悉达多感到，父母朋友之爱，长者传授的知识不能让他感到满足，不能使他的内心安宁。悉达多开始怀疑，沐浴、祭祀等仪式是否有必要？
-爱是大脑的内分泌短暂失调+欲求不满的表现，知识的传授其实可以在极短的时间内完成（剩余时间是磨洋工），沐浴祭祀等繁文缛节是keep everybody busy的手段，换成现代概念几乎可以等同于各种繁复的人事缓冲池——若不是要严控失业率，从基层到决策层之间90%的传递信息者都可被优化掉。
-2.众生皆苦，逃避无用
-悉达多说，冥想，对肉体的决弃，斋戒和调息都是在逃避自我，是对自我所受的苦难的短暂的逃避，这种逃避和牧牛人在酒馆里喝几碗米酒是同样的。在这种短暂的麻醉下，他们不再感受到自我，不再感觉到生命的苦难。那几碗米酒让牧牛人浑然入睡，他同样找到了悉达多和乔文达在长时间的修行中逃离肉体并宅于非我之境所找到的感觉。
-悉达多说的这种逃避痛苦的方式，暗示了痛苦的根源就在与“我”，感受到我的存在，便能感受到痛苦。喝了酒，进入了禅定，做爱，入睡了，在别的国家旅游用英语讲话逃离中文世界，weed等都可短暂的忘我。但是在短暂的忘我结束后，一切一如</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-27&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
         
       </div>
     </div>
