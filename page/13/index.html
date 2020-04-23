@@ -136,6 +136,47 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/4%20-%20wordWindow%E5%92%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+        <p class="h4 index-header">CS224n/4 - wordWindow和神经网络</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture4  wordWindow和神经网络1.分类背景知识对分类的直觉感受是什么？在机器学习领域，在还没有达到深度学习领域的情况下，我们通常将分类理解为简单的逻辑回归，也就是定义一个简单的决策边界。
+
+2.窗口分类在一般的机器学习中，我们假设输入是固定的。输入X都是固定的，我们只训练参数W，也就是softmax的权值，然后计算给定输入X时输出Y的概率。
+3.交叉熵我们假设正确类别的概率为1，其余的概率为0.举个例子，假设共有5个类别，正确类别是中间的第三个，那么第三个的概率为1，其他都是0.我们把理想的概率定义为p，softmax计算的概率为q，这里给出了交叉熵的定义，就是对所有类别的求和
+正则化项：里边包含的参数θ如果是标准逻辑回归中的矩阵W，实际上目标函数加入这个正则化项的目的就是是为了鼓励模型中的所有权值尽可能地小。
+可以假设你想要一个贝叶斯模型，你可以有一个先验的高斯分布，理想情况下这些参数的值都很小，但是如果没有这个正则化项，通常情况下你得到的模型参数会爆炸，他会越来越过拟合。如果没有正则化项，我们会专注于如何拟合我们的模型。
+通常的机器学习优化就是只优化模型的参数W</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS224n/5%20-%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD+%E9%A1%B9%E7%9B%AE%E5%BB%BA%E8%AE%AE/">
         <p class="h4 index-header">CS224n/5 - 反向传播+项目建议</p>
         
@@ -480,55 +521,6 @@ Bengio在采访中表示，实验论证深度学习技术应用与新应用的�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/1%20-%20%E5%AF%BC%E8%AE%BA/">
-        <p class="h4 index-header">CS224n/1 - 导论</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture1-导论1.本课程研究对象NLP是计算机科学和语言学的交叉学科。
-语言是人类特有的属性，人类通过语言思考、交流、行动。
-nlp要解决的核心问题是让计算机了解人类语言，然后完成有意义的任务（知识图谱，语义识别等）
-nlp的步骤
-
-
-预处理：首先speech和text都会被拆分
-构词法分析：Morphological analysis，拆开ing和ex等前缀后缀，还原不同时态的词根。
-句子结构分析：Syntactic analysis，比如主语是我，宾语是你，谓语是艹。
-语义解释：Semantic interpretation，得出句子的含义。仅知道每个单词的含义是不够的，许多单词在一块构成了上下文，许多含义是依靠上下文传递的。这就引出了语用学和语篇处理等研究领域。
-
-cs224n这门课主要讨论句子结构分析和语义解释
-2.人类语言的特殊之处做信号处理，数据挖掘之类的事情时人类往往只用视觉系统识别数据，然后处理数据。
-但几乎所有的人类语言都是某人想要传递某个信息，他为此构建了一条信息，并试图传递给另一个人。语言有明确的指向性。
-人类的语言系统是一套离散的符号分类信号系统，如下图</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS224n/10%20-%20%E6%9C%BA%E7%BF%BB2%EF%BC%8C%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A8%A1%E5%9E%8B/">
         <p class="h4 index-header">CS224n/10 - 机翻2，注意力模型</p>
         
@@ -571,7 +563,7 @@ cs224n这门课主要讨论句子结构分析和语义解释
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/12/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+      <a class="extend prev" rel="prev" href="/page/12/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

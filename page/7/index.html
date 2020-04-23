@@ -136,6 +136,54 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM%E5%92%8CHEMM%E5%92%8CCRF%E7%9A%84%E6%AF%94%E8%BE%83pt2/">
+        <p class="h4 index-header">Speech and language processing/概念_6_HMM和HEMM和CRF的比较pt2</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.1.1 概览在统计概率图（probability graph models）中，参考宗成庆老师的书，是这样的体系结构（个人非常喜欢这种类型的图）：
+
+在概率图模型中，数据(样本)由公式  建模表示： 
+
+ 表示节点，即随机变量（放在此处的，可以是一个token或者一个label），具体地，用  为随机变量建模，注意  现在是代表了一批随机变量（想象对应一条sequence，包含了很多的token），  为这些随机变量的分布；
+ 表示边，即概率依赖关系。具体咋理解，还是要在后面结合HMM或CRF的graph具体解释。
+
+2.1.2 有向图 vs. 无向图上图可以看到，贝叶斯网络（信念网络）都是有向的，马尔科夫网络无向。所以，贝叶斯网络适合为有单向依赖的数据建模，马尔科夫网络适合实体之间互相依赖的建模。具体地，他们的核心差异表现在如何求  ，即怎么表示  这个的联合概率。
+1. 有向图
+对于有向图模型，这么求联合概率： 
+举个例子，对于下面的这个有向图的随机变量(注意，这个图我画的还是比较广义的)：
+
+应该这样表示他们的联合概率:
+
+应该很好理解吧。
+2. 无向图
+对于无向图，我看资料</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/HMM">HMM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
         <p class="h4 index-header">Speech and language processing/概念_6_HMM_三个问题</p>
         
@@ -161,6 +209,51 @@
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/HMM">HMM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">
+        <p class="h4 index-header">Speech and language processing/概念_6_HMM_马尔科夫模型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">隐性马尔可夫模型(HMM):1. 什么样的问题需要HMM模型首先我们来看看什么样的问题可以用HMM模型。使用HMM模型时我们的问题一般有这两个特征：
+​    １）我们的问题是基于序列的，比如时间序列，或者状态序列。
+​    ２）我们的问题中有两类数据，一类序列数据是可以观测到的，即观测序列；而另一类数据是不能观察到        的，即隐藏状态序列，简称状态序列。（Hidden state）
+有了这两个特征，那么这个问题一般可以用HMM模型来尝试解决。这样的问题在实际生活中是很多的。比如：我现在在打字写博客，我在键盘上敲出来的一系列字符就是观测序列，而我实际想写的一段话就是隐藏序列，输入法的任务就是从敲入的一系列字符尽可能的猜测我要写的一段话，并把最可能的词语放在最前面让我选择，这就可以看做一个HMM模型了。再举一个，我在和你说话，我发出的一串连续的声音就是观测序列，而我实际要表达的一段话就是状态序列，你大脑的任务，就是从这一串连续的声音中判断出我最可能要表达的话的内容。
+2. HMM模型的定义
+
+Q是各个状态，图示的节点
+
+A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
@@ -213,51 +306,6 @@
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
             <a href="/tags/EM%E7%AE%97%E6%B3%95">EM算法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">
-        <p class="h4 index-header">Speech and language processing/概念_6_HMM_马尔科夫模型</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">隐性马尔可夫模型(HMM):1. 什么样的问题需要HMM模型首先我们来看看什么样的问题可以用HMM模型。使用HMM模型时我们的问题一般有这两个特征：
-​    １）我们的问题是基于序列的，比如时间序列，或者状态序列。
-​    ２）我们的问题中有两类数据，一类序列数据是可以观测到的，即观测序列；而另一类数据是不能观察到        的，即隐藏状态序列，简称状态序列。（Hidden state）
-有了这两个特征，那么这个问题一般可以用HMM模型来尝试解决。这样的问题在实际生活中是很多的。比如：我现在在打字写博客，我在键盘上敲出来的一系列字符就是观测序列，而我实际想写的一段话就是隐藏序列，输入法的任务就是从敲入的一系列字符尽可能的猜测我要写的一段话，并把最可能的词语放在最前面让我选择，这就可以看做一个HMM模型了。再举一个，我在和你说话，我发出的一串连续的声音就是观测序列，而我实际要表达的一段话就是状态序列，你大脑的任务，就是从这一串连续的声音中判断出我最可能要表达的话的内容。
-2. HMM模型的定义
-
-Q是各个状态，图示的节点
-
-A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
-          
-            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
@@ -549,42 +597,6 @@ Sym</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/9%20-%20Automatic%20Speech%20Recognition/">
-        <p class="h4 index-header">Speech and language processing/9 - Automatic Speech Recognition</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
-影响语音转文字系统性能表现的几个参数：
-
-需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
-speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
-声音质量：apparently，噪音少识别起来容易。
-讲话者的类型：apparently，nat</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%80%BB%E7%BB%93/">
         <p class="h4 index-header">Speech and language processing/总结</p>
         
@@ -622,26 +634,20 @@ speech的流畅度：如果是切分好的单个单词，容易。流畅长篇�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/7%20-%20Phonetics/">
-        <p class="h4 index-header">Speech and language processing/7 - Phonetics</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/9%20-%20Automatic%20Speech%20Recognition/">
+        <p class="h4 index-header">Speech and language processing/9 - Automatic Speech Recognition</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">7.Phonetics(语音学) – 本章对研究帮助不大，跳过A speech recognition system needs to have a pronunciation for every word it can recognize,and a text-to-speech system needs to have a pronunciation for every word it can say.
+          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
+影响语音转文字系统性能表现的几个参数：
 
-In this chapter,we introduces phonetic alphabets音标字母 for describing these pronunciations.
-
-Then we introduces two main areas of phonetics, articulatory phonetics发音语音学,and acoustic phonetics声学语音学。
-
-Also briefly touch on phonology音韵学
-
-
-7.1）Speech sounds and phonetic transciption
-音标表格如下：
-
-</div>
+需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
+speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
+声音质量：apparently，噪音少识别起来容易。
+讲话者的类型：apparently，nat</div>
         </div>
       </a>
 
@@ -656,11 +662,6 @@ Also briefly touch on phonology音韵学
           &nbsp;
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Phonetics">Phonetics</a>&nbsp;
-          
-        
       </div>
     </div>
   </div>
@@ -669,7 +670,7 @@ Also briefly touch on phonology音韵学
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/6/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/8/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/6/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
