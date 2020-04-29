@@ -136,6 +136,107 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/10/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_numpy_seed/">
+        <p class="h4 index-header">NLP概念/概念_numpy_seed</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Numpynp.random.seed()函数np.random.seed()函数用于生成指定的随机数，seed ()被设定后可以按照顺序产生一组固定的数组，如果使用相同的seed（）值，每次产生的随机数都相同。如果不设置这个值，则每次产生的随机数都
+np.random.seed()函数这个seed（）函数可以说是随机数的编号。比如seed（1） 产生的数组是[1,2,3,4,2,2,1]，那么以后调用seed（1）出来的数组都是[1,2,3,4,2,2,1].
+不使用seed（）就得不到相同的随机数：
+import numpy as np
+np.random.seed(1)
+
+L1 = np.random.randn(3, 3)
+L2 = np.random.randn(3, 3)
+print(L1)
+print(L2)
+out：
+[[ 1.62434536 -0.61175641 -0.52817175]
+ [-1.07296862  0.86540763 -2.3015387 ]
+ [ 1.74481176 -0.7612069   0.3190391 ]]
+
+[[-0.2493</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_Pandas_apply_series/">
+        <p class="h4 index-header">NLP概念/概念_Pandas_apply_series</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Pandas_SeriesSeries数据包括：一列数据和一列index组成。和字典非常相似
+创建空的series
+import numpy as np
+import pandas as pd
+S1 = pd.Series()
+S1    
+Series([],dtype:float64)
+指定value和index的值
+S2=pd.Series([1,3,5,7,9],index=[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;])
+S2
+a    1
+b    3
+c    5
+d    7
+e    9
+dtype: int64
+S2.values
+array([1, 3, 5, 7, 9])
+S2.index
+Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&#39;object&#39;)
+Pandas处理series的方法:map,apply数据由如下代码模拟生成
+boolean=[True,F</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Pandas">Pandas</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/07/Python/Lamada%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
         <p class="h4 index-header">Python/Lamada表达式</p>
         
@@ -464,125 +565,6 @@ from torch.autogra</div>
           <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_BERT/">
-        <p class="h4 index-header">NLP概念/概念_BERT</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Bert 概念1.全景介绍BERT是一种深度学习模型，他是Transformer的双向编码器表示，在维基百科和Books Corpus上预训练过，运用于特定任务时只需要微调即可。
-他的效果很好，在很多NLP任务中都有最近进展，包括问答系统（Squad）和自然语言推理（MNLI）任务。
-BERT改变了NLP的格局。跑一个在大量未标记数据集上训练的模型，在11个单独的NLP任务中仅仅通过不同的微调，就可以分别得到11个最新的结果，这种表现只有BERT可以做到。
-BERT还启发了TransformerXL,GPT-2,XLNet,ERNIE2.0,RoBERTa等等。
-2.什么是BERT?1.基本上是堆叠在一起的一堆Transformer encoders，注意仅仅是Transformer encoders不是整个Transformer架构。双向性的概念十分重要，是BERT和其前身OpenAL GPT的关键区别，BERT是双向的因为他在自我注意层的两个方向上都执行自我注意。
-2.要注意的是BERT在维基百科（25亿词）和Books Corpus（8亿词）上的预训练非常重要，因为模型在一个大的</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/kaggle/Google_QA/Google_QA_%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2/">
-        <p class="h4 index-header">kaggle/Google_QA/Google_QA_数据探索</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.基本概念1.本比赛数据截屏如下
-
-
-1.question_id
-1
-
-
-
-2.question_title
-What am I losing when using extension tubes in…
-
-
-3.question_body
-After playing around with macro photography on…
-
-
-4.question_username
-ysap
-
-
-5.question_user_page
-https://photo.stackexchange.com/users/1024
-
-
-6.answer
-I just got extension tubes, so here’s the skin…
-
-
-7.answer_user_name
-rfusca
-
-
-8.answer_user_page
-https://photo.stackexchange.com/users/1917
-
-
-9.url
-http://photo.stackexchange.com/questions/9169/…
-
-
-10.category
-LIFE_ARTS
-
-
-11.q</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
           &nbsp;
         
         

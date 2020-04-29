@@ -136,6 +136,127 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
+        <p class="h4 index-header">CS229/6.神经网络(表述)</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">#
+6.神经网络(表述)6.1问题的由来
+特征爆炸无法处理
+例如,智能识别一个图片是不是汽车的问题
+假设使用50*50小黑白照片
+那么就有2500个像素灰度作为特征
+2500个特征两两组合就是3000000项,这的多项式处理不了
+这时候就需要神经网络
+
+
+
+6.2直观理解和逻辑运算符的构建
+直观理解
+
+神经网络能够通过自身学习得到一些列特征,这些特征是使用数据的原始特征经过拆分组合和一系列逻辑运算得到的
+这样的一系列特征比普通的逻辑回归的表层特征要深刻的多
+最后做决定的神经元依据上一层传进来的特征,这些特征已经经过多层传导,内化为自己的特征了
+
+
+神经元可以通过增加一个固定权重神经元构建逻辑运算符(与,非,或,抑或等)
+
+如下图
+
+
+
+
+6.3神经网络的形态
+6.4神经网络基本概念的定义from CS224N如图，神经网络有输入，有偏置单元，有激活函数，以及对后续神经网络的输出。
+输入x，w是乘以输入的权重，b是偏置值，f是sigmod函数。
+输入乘以权重加上偏置值后，进入sigmod函数，输出一个分类值。
+有了神经网络，让我们再回到之前的单窗口分类器。代替之前直接将softmax应用</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
+        <p class="h4 index-header">CS229/5.过拟合和正则化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
+
+
+解决办法:
+过拟合就丢弃不能正确预测的特征,欠拟合就加特征
+2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
+
+
+
+给高维项设置惩罚项
+
+代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
+
+增加了惩罚项的代价函数
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/7.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E5%AD%A6%E4%B9%A0)/">
         <p class="h4 index-header">CS229/7.神经网络(学习)</p>
         
@@ -611,90 +732,6 @@ the barking dog on the table等
 1. 传统的语言模型和现在的词向量模型对比传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。
 如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。
 如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/7%20-%20Tensorflow/">
-        <p class="h4 index-header">CS224n/7 - Tensorflow</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture7 TensorFlow为什么要使用深度学习框架？
-
-有助于扩展机器学习代码
-自动计算梯度（通常梯度计算并不重要，这些框架可以自动处理梯度，使得我们把重点放在更高层次的数学上）
-在很多领域使机器学习更标准化
-这些框架提供了GPU接口
-
-1.TensorFlow是什么？是一个谷歌开发的深度学习框架，使用流式图进行数值计算的开源软件库。TensorFlow是用于表示机器学习算法的接口，以及用于执行这种算法的实现。
-TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图的节点是操作，每个节点都有一个输入和输出，节点之间的边表示他们之间流动的张量，在实践中最好的方法就是认为，张量是一个n维数组。
-使用流式图作为深度学习框架主干的优点在于它允许你使用小而简单的操作建立复杂的模型，当我们这样做的时候，会使得梯度计算变得极其简单。
-此框架可以自动求导，而且图方法的每一个操作都是可以在其所在点被评估的一个函数。变量将成为输出其当前值的有状态节点。
-占位符是那些在执行期间才会接收值的节点，如果在你的网络中有依赖外部数据的一些输入，你并不想在建立图时依赖任何实际的值。</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/2,-%20%E6%B3%A8%E9%87%8A%E4%B9%8Bsoftmax/">
-        <p class="h4 index-header">CS224n/2,- 注释之softmax</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">softmax定义：
-假如有一个数组V，Vi表示V中的第i个元素，这个元素的softmax值如下，也就是该元素的指数值和所有元素指数值之和的比值。softmax通常希望特征对概率的影响是乘性的。
-
-softmax VS k个二元分类器：如果你在开发一个音乐分类的应用，需要对k种类型的音乐进行识别，那么是选择使用 softmax 分类器呢，还是使用 logistic 回归算法建立 k 个独立的二元分类器呢？这一选择取决于你的类别之间是否互斥，例如，如果你有四个类别的音乐，分别为：古典音乐、乡村音乐、摇滚乐和爵士乐，那么你可以假设每个训练样本只会被打上一个标签（即：一首歌只能属于这四种音乐类型的其中一种），此时你应该使用类别数 k = 4 的softmax回归。（如果在你的数据集中，有的歌曲不属于以上四类的其中任何一类，那么你可以添加一个“其他类”，并将类别数 k 设为5。）如果你的四个类别如下：人声音乐、舞曲、影视原声、流行歌曲，那么这些类别之间并不是互斥的。例如：一首歌曲可以来源于影视原声，同时也包含人声 。这种情况下，使用4个二分类的 logistic 回归分类器更为合适。这样，对于</div>
         </div>
       </a>
 

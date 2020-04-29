@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>分类 - 数据结构 ~ 刘秉乾的技术博客 :)</title>
+  <title>CS224U/Sentiment_Analysis_有监督的情感分析.md ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -38,7 +38,7 @@
 
 
 <body>
-  <header style="height: 90vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -109,6 +109,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期二, 四月 28日 2020, 10:53 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    304 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -123,111 +158,65 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 14 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%8C%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%8C%E5%AD%97%E5%85%B8%E6%A0%91/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/网络流，最短路径，字典树</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/A%5B%E6%98%9F%E5%8F%B7%5D%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/搜索/A[星号]寻路算法</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/搜索/回溯算法</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/搜索/贪心算法与最小生成树</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.2-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/排序/7.2-归并排序</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.3-%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/排序/7.3-计数排序</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/7.%E5%AD%97%E5%85%B8%E6%A0%91Trie/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/7.字典树Trie</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.1-%E5%BF%AB%E6%8E%92/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/排序/7.1-快排</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3.%E6%A0%91/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/3.树</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5.%E5%A0%86/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/5.堆</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4.%E5%9B%BE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/4.图</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.%E6%95%B0%E7%BB%84,%E9%93%BE%E8%A1%A8/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/1.数组,链表</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/0.%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/0.常见算法总览</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2.%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97-/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据结构/2.栈与队列-</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-</div>
-              </div>
-            </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="Sentiment-Analysis-有监督的情感分析-md"><a href="#Sentiment-Analysis-有监督的情感分析-md" class="headerlink" title="Sentiment_Analysis_有监督的情感分析.md"></a>Sentiment_Analysis_有监督的情感分析.md</h1><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200428_2253_57_336.png" alt=""></p>
+<p>如上所示，phi函数就是上篇介绍的feature function，提供的功能就是把tree转换成字典。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200428_2254_14_407.png" alt=""></p>
+<p>如上所示，fit model函数提供将数据x和y fit进指定模型（逻辑回归）中的功能。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200428_2254_30_253.png" alt=""></p>
+<p>然后使用上节介绍的sst.experiment函数（三个参数）分别是路径，feature函数和fit函数。</p>
+<p>这样设计的好处就是实现了类的分离，如果需要改写feature函数或者fit函数，直接在本体里边修改就好。</p>
+<h4 id="超参数的搜索与确定"><a href="#超参数的搜索与确定" class="headerlink" title="超参数的搜索与确定"></a>超参数的搜索与确定</h4><p><strong>超参数的基本原理</strong>：<br>超参数是模型的优化过程之外的“settings”。有如下几个例子：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200428_2254_40_886.png" alt=""></p>
+<p><strong>超参数搜索</strong>实例</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200428_2254_50_180.png" alt=""></p>
+<p>如上，In[4] 的 fit_softmax_with_crossvalidation函数，就是搜索超参数的函数。basemod是逻辑回归，给他加上了搜索空间：c,罚函数，等，然后调用系统工具箱里的utils.fit_classifier_with_crossvalidation就可以得到搜索结果。当然这个搜索的过程耗时较长。</p>
+<p>然后把得到的函数放进experiment函数中开始实验。因为得到的函数是在超参数空间中的最优解，所以效果肯定比默认函数要好。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -300,6 +289,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -340,7 +334,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "分类 - 数据结构&nbsp;",
+        "CS224U/Sentiment_Analysis_有监督的情感分析.md&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

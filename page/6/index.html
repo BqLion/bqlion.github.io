@@ -136,26 +136,77 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
-        <p class="h4 index-header">安装调试记录/更新图床+截屏工作流</p>
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%87%8D%E8%A3%85Git%E5%92%8C%E5%8D%9A%E5%AE%A2/">
+        <p class="h4 index-header">安装调试记录/重装Git和博客</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.七牛云的试用域名只能用一个月，过期后要用自己已备案的域名。不管是否有备案域名所有已上传图片都要改链接，坑。
-2.改用sm.ms图床，username:bqlion,email:398703917@qq.com,password:8
-3.sm.ms限流，改用又拍云。
-4.又拍云的shareX配置信息如下，密码用又拍云操作员控制台生成。
+          <div class="index-text mb-1">重装Git和博客：Git下载安装git.exe，官网速度慢就从腾讯下载
+git bash
 
-4.shareX简直神器。可以取代Snipaste+mpic。
-5.ShareX更改快捷键：
+git config –global user.name “yubin（自定义用户名）”
 
-捕捉矩形区域为F1
-设置“上传至”为FTP，
-动作设置-高级设置 - after upload - chipboardContentFormat  - 修改为![]($result)
+git config –global user.email “488459564@qq.com（自定义邮箱）”
 
-</div>
+ssh-keygen -t rsa -C “你的邮箱”　
+三个回车
+
+
+在C:\users\bqlion\.ssh找到公钥，复制，粘贴到github里的new sshkey中
+git clone git@github.com::BqLion/_post.git
+推送时若报转义问题：warning: LF will be replaced by CRLF in 字典树.md.The file will have its original line endings in your working directory
+输入git config –global core.autocrlf false解决
+hexo下载安装node：https://nodejs.org/en/download/
+检查是否</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/">
+        <p class="h4 index-header">安装调试记录/网站部署记录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.获取root权限-sudo passwd
+-su root
+2.云主机安装git-yum update
+-yum install git
+-mkdir App
+-cd App
+3.云主机与github建立sshkey连接返回：Permissiondenied (publickey)，fatal:Could not read from remote repository.
+cd ~/.ssh ls  //查看是否有ssh key
+ssh-keygen -t rsa -C “youremail@example.com“    //一路回车
+ssh -v git@github.com 
+ssh-agent -s
+ssh-add ~/.ssh/ github new SSH KEY
+ssh -T git@github.com
+若出错：“Could not open a connection to your authentication agent”
+eval `ssh-agent -s``
+ssh-add ~/.ssh/id_rsa，
+github new SSH KEY
+4.克隆项目，安</div>
         </div>
       </a>
 
@@ -172,7 +223,9 @@
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%9B%BE%E5%BA%8A">图床</a>&nbsp;
+            <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
+          
+            <a href="/tags/java">java</a>&nbsp;
           
         
       </div>
@@ -241,6 +294,53 @@ cd bqlion.github.</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+        <p class="h4 index-header">安装调试记录/更新图床+截屏工作流</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.七牛云的试用域名只能用一个月，过期后要用自己已备案的域名。不管是否有备案域名所有已上传图片都要改链接，坑。
+2.改用sm.ms图床，username:bqlion,email:398703917@qq.com,password:8
+3.sm.ms限流，改用又拍云。
+4.又拍云的shareX配置信息如下，密码用又拍云操作员控制台生成。
+
+4.shareX简直神器。可以取代Snipaste+mpic。
+5.ShareX更改快捷键：
+
+捕捉矩形区域为F1
+设置“上传至”为FTP，
+动作设置-高级设置 - after upload - chipboardContentFormat  - 修改为![]($result)
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%9B%BE%E5%BA%8A">图床</a>&nbsp;
           
         
       </div>
@@ -480,105 +580,6 @@ lg gram
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
             <a href="/tags/%E7%8A%B6%E6%80%81%E6%9C%BA">状态机</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/">
-        <p class="h4 index-header">Speech and language processing/概念_6_HMM_马尔科夫链</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">马尔科夫链马尔可夫链是一个模型，告诉我们关于随机变量序列的概率，状态。每个状态都可以从某个集合中获取值。 这些集合可以是单词，标签或代表任何东西的符号，例如天气。 下图左边是天气转换，右边是生成句子的单词序列。
-
-考虑状态变量  ,HMM核心假设是:当预测未来时，过去并不重要，重要的是现在。
-
-上图显示了一个马尔可夫链，用于为一系列天气事件分配概率，其中词汇表包括HOT, COLD,和 WARM，状态表示为图中的节点，转换以其概率表示为边。 转换是概率：离开给定状态的弧的值必须总和为1。上图右边用于为单词序列  分配一个概率，他其实是一个bigram的语言模型，每条边表示概率  。
-在形式上，马尔可夫链由以下组件指定:
-
-
- ，N个状态的集合
-A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概率  ,  
- ，状态上的初始概率分布(某一时刻的所有可能的隐藏状态的分布(可能性))。是马尔可夫链从状态i开始的概率。一些状态j可能有  ，这意味着它们不可能是初始状态。  
-
-马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关：如果我们得到了这个稳定</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
-          
-            <a href="/tags/HMM">HMM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM%E5%92%8CHEMM%E5%92%8CCRF%E7%9A%84%E6%AF%94%E8%BE%83/">
-        <p class="h4 index-header">Speech and language processing/概念_6_HMM和HEMM和CRF的比较</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">HMM，HEMM,CRF的比较6.6.1)CRF的优点:
-
-CRF没有HMM 那样严格的独立性假设条件，因此可以容纳任意的上下文内容。特征设计灵活。—— 与HMM比较。
-
-由于CRF计算全局最优输出节点的条件概率，它还克服了最大熵马尔科夫模型标记偏置的问题（label-bias）。  —— 与MEMM的比较
-
-CRF是在给定需要标记的观察序列的条件下，计算整个标记序列的联合概率分布。而不是在给定当前状态的条件下，定义一个状态的状态分布。 ——与ME的比较
-
-
-  CRF缺点：
-
-训练代价大，复杂度高
-
-6.6.2）CRF解决的问题：
-HMM模型中存在两个假设，一是输出观察值之间严格独立，二是状态转移过程中当前状态只与前一状态有关（一阶马尔科夫模型）。
-MEMM模型克服了观察值之间严格独立产生的问题，但是由于状态之间的假设理论，使得该模型存在标注偏置问题。
-CRF模型解决了标注偏置问题，去除了HMM中两个不合理的假设，当然，模型相应的变得更复杂了。
-6.6.3）HMM模型，最大熵模型，CRF模型的优劣
-HMM模型将标注看做是马尔科夫链，一阶马尔科夫链式针对相邻标注的关系进行建模，其中每个</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
-          
-            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
