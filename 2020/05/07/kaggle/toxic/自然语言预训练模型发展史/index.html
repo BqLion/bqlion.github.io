@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>CS224n/5 - 反向传播+项目建议 ~ 刘秉乾的技术博客 :)</title>
+  <title>kaggle/toxic/自然语言预训练模型发展史 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 二月 24日 2020, 12:04 中午
+                  星期四, 五月 7日 2020, 2:36 下午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.2k 字
+                    1k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -167,53 +167,41 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Lecture5-反向传播-项目建议"><a href="#Lecture5-反向传播-项目建议" class="headerlink" title="Lecture5 反向传播 + 项目建议"></a>Lecture5 反向传播 + 项目建议</h1><h4 id="1-一层神经网络过渡到多层神经网络"><a href="#1-一层神经网络过渡到多层神经网络" class="headerlink" title="1.一层神经网络过渡到多层神经网络"></a>1.一层神经网络过渡到多层神经网络</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_08_008.png" alt=""></p>
-<h4 id="2-反向传播"><a href="#2-反向传播" class="headerlink" title="2.反向传播"></a>2.反向传播</h4><p>为了解耦，反向传播的笔记已整合到cs229 - 7中。</p>
-<h4 id="3-项目建议"><a href="#3-项目建议" class="headerlink" title="3.项目建议"></a>3.项目建议</h4><p>老师推荐的文章和会议</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_24_988.png" alt=""></p>
-<p>1.定义你的任务：</p>
-<p>例如：summarization</p>
-<p>2.定义数据集：</p>
-<p>最好使用现成的数据集，因为他们已经有baselines</p>
-<p>3.建立baseline</p>
-<p>他可以是一个非常简单的一元线性回归，然后在你的训练数据集上计算你的评价标准，看看模型是过拟合还是欠拟合</p>
-<h4 id="4-选做题：自己发明新的模型"><a href="#4-选做题：自己发明新的模型" class="headerlink" title="4.选做题：自己发明新的模型"></a>4.选做题：自己发明新的模型</h4><ol>
-<li><p>首先，你需要做好以上说的几个步骤.</p>
-</li>
-<li><p>然后你需要知道已经存在的模型上有哪些问题。然后你就可以设计出自己的模型。如果你想要这样做的话，<strong>你真的需要和你的导师和其他研究者保持沟通，除非你自己就是研究者并且已经获得了博士文凭</strong>。</p>
-</li>
-<li><p>你需要实现你的模型，然后根据你的新点子去对它快速迭代。（也许在某个位置新加一层？然后看看他起不起作用？）</p>
-</li>
-<li><p>那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。</p>
-</li>
-<li><p>建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型。</p>
-</li>
-<li><p>对于终极任务：summarization任务。</p>
-<ol>
-<li>一开始你可能尝试一些非常简单的模型。比如对自然段中的所有单词向量求平均，然后用贪心搜索一个接一个地生成单词，或者用贪心搜索对维基百科中的现有文章寻找一些片段，然后把合适的片段复制过去。</li>
-<li>然后升级你的目标，尝试某些真正让你生产整段总结的方法。</li>
-</ol>
-</li>
-</ol>
-<p>一些项目的idea（包括了在kaggle上打比赛！）</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_37_463.png" alt=""></p>
-<p>下次课程会学一些有趣的基础语言学任务，比如句法分析；然后会学习TensorFlow的应用。</p>
-<h4 id="论文分享："><a href="#论文分享：" class="headerlink" title="论文分享："></a>论文分享：</h4><p>词袋模型</p>
-<p>文本分类是nlp领域一个非常重要的话题， 给定一串文本，我们就可能问，它带有的是积极还是消极情绪。是垃圾邮件还是正常邮件。如图就是一个情感分析的例子。</p>
-<p>取得一个句子的特征的一种简单的办法就是对句子中所有的单词向量做平均。这篇论文中的模型也是类似这样的方式。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_49_271.png" alt=""></p>
-<p>对他们求平均，但是会丢失他们之间的顺序。然后得到的是这个低纬度的文本向量，代表这个句子，这就揉碎了的低纬度的文本向量就是词袋（word  bag）</p>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>反向传播和词袋模型在其他文档中有总结。</p>
-<p>本节课最有含金量的就是老师对想要发文章的同学的做项目的建议。</p>
-<p>首先，纯理论突破现在不可能。所以必须得要做项目，项目的选题要与老师或者其他研究者讨论，避免过大或者过小，除非你自己是一个phd和独立研究者。但是现在我没有人去讨论，但是回避六个月白忙的风险的动作是要做的，解决思路有两个</p>
+            <h1 id="从Word-embedding到Bert：A-brief-history-of-nlp-pre-train-model"><a href="#从Word-embedding到Bert：A-brief-history-of-nlp-pre-train-model" class="headerlink" title="从Word embedding到Bert：A brief history of nlp pre-train model"></a>从Word embedding到Bert：A brief history of nlp pre-train model</h1><h2 id="Word-embedding"><a href="#Word-embedding" class="headerlink" title="Word embedding"></a>Word embedding</h2><p><strong>LM</strong>做<strong>word embedding</strong> –&gt; 使用的工具是<strong>word2vec</strong> –&gt; <strong>word2vec</strong>的训练方法：<strong>CBOW</strong> 和 <strong>SKIP - GRAM</strong></p>
+<p><strong>word embedding</strong>的问题：无法解决一词多义。</p>
+<p>​                                                两种不同的上下文信息经过<strong>word2vec</strong>都会预测相同的单词bank，因为同一个单词占                                                用的是同一行的参数空间。所以WE无法区分一词多义。</p>
+<h2 id="ELMO"><a href="#ELMO" class="headerlink" title="ELMO"></a>ELMO</h2><p>为解决WE一词多义问题，提出ELMO，其思路是事先用LM学好 一个单词的word embedding，后边根据上下文动态调整。WE是静态，ELMO是动态，所以ELMO可以解决一词多义问题。</p>
+<p>ELMO工作方式分为两段，分别是<strong>利用语言模型进行预训练</strong>和做下游任务时<strong>将预训练网络中提取对应单词的网络的各层的word embedding作为新特征补充</strong>到下游任务中。</p>
+<p>阶段一 ：<strong>预训练</strong></p>
+<p>如图，网络结构是<strong>双层双向LSTM</strong>,训练任务是<strong>根据上下文正确预测中间的单词</strong>。下图左边用于输入context-before右边输入context-after。<br>通过大量语料做语言模型任务就能训练好这个网络。<br>训练好后，输入一个新的句子“Sen”，可得到关于它的三个embedding：<br>                                                                                底层的<strong>单词的word embedding</strong>，<br>                                                                                第一层双向LSTM中对应单词位置的embedding包含<strong>句法信息</strong><br>                                                                                第二层双向LSTM中对应单词位置的embedding包含<strong>语义信息</strong></p>
+<p>也就是说ELMO不仅训练了单词的word embedding，还训练了双层双向的LSTM网络结构（这个包含了句法和语义信息的两层embedding是解决一词多义问题的重要推手）。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1519_00_500.png" alt=""></p>
+<p>阶段二 ：<strong>将阶段一训练的embedding作为新特征补充到下游任务中</strong></p>
+<p>比如下游任务是QA，对于问句X，先把X丢进阶段一训练好的ELMO网络中，这样就可以得到关于X的三个embedding，然后给这三个embedding分别学习一个权重值，然后三个embedding加权求和成为一个embedding。然后将这个embedding作为X在自己任务中的那个网络的输入。以此，实现了对下游任务的特征补充。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1519_22_092.png" alt=""></p>
+<p>ELMO的问题：</p>
+<p>1.LSTM抽取特征的能力要远远弱于Transformer</p>
+<p>2.双向融合特征的拼接方式导致了特征融合能力偏弱</p>
+<h2 id="GPT-Generative-pre-training"><a href="#GPT-Generative-pre-training" class="headerlink" title="GPT - Generative pre training"></a>GPT - Generative pre training</h2><p>GPT也是采用两段过程，第一阶段是语言模型预训练，第二阶段是使用fine - tuning解决下游任务。</p>
+<p>这个模型和ELMO类似，只是把特征提取器从RNN换成了更强的Transformer，但是此模型的缺点是在训练的时候只考虑了上文而未考虑下文，败笔。</p>
+<p>预训练：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1522_49_144.png" alt=""></p>
+<p>使用：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1526_37_530.png" alt=""></p>
+<p>GPT的缺点：单向语言模型。</p>
+<h2 id="Bert"><a href="#Bert" class="headerlink" title="Bert"></a>Bert</h2><p>Bert的结构和GPT以及ELMO大同小异，都是两阶段模型：<strong>语言模型预训练</strong> &amp; <strong>Fine-tuning模式解决下游任务</strong>。</p>
+<p>Bert比GPT强在使用了双向语言模型、语言模型的数据规模比较大。</p>
+<p>两阶段工作图示：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1530_10_632.png" alt=""></p>
+<p>Bert改造四种下游任务：</p>
 <ul>
-<li>发邮件、线下拜访中国的nlp领域的老师，求指点</li>
-<li>直接打kaggle。问题具体，选题明确。</li>
+<li>句子关系类（POS tagging，NER）：和GPT类似，每局加上一个起始和终结符号，句子间加上分隔符。输出的时候把第一个起始符号对应的Transformer最后一层位置上面串接一个softmax分类层即可。</li>
+<li>分类问题（sentiment，文本分类）：和GPT一样，每一句增加起始和结束符号。把第一个起始符号对应的Transformer最后一层位置上面串接一个softmax分类层即可。</li>
+<li>序列标注文图：输入部分和单句分类是一样的，只需要输出部分Transformer最后一层每个单词对应位置都进行分类即可。</li>
+<li>生成类任务：bert暂无现成方案，但是理论上改装也不难，例如机翻或者QA任务，只要附着在S2S上，编解码器是深度Transformer即可。</li>
 </ul>
-<p>做能发文章的项目要先确定baseline和数据集。然后遍历先有的模型，然后提出一些修改意见（idea），然后在数据集上跑，看看是不是确实有提高，如果有，就完事儿了嗷。做出修改意见并且修改别人的模型的前提是得有充足的工程能力，这个工程能力我现在他妈绝对不具备。难顶，只能硬上。</p>
-<p>另一个要注意的事情是老师反复<strong>强调迭代 + 先从容易的模型开始实现</strong>。我认为这是把大问题难问题拆分成小问题容易问题的思路。这种思路非常关键，小熊也提过很多次。我需要做计划，把大问题拆分成小问题。当然具体是一个多大的问题，发论文一共有多少步，哪些步骤最难大概耗时多久如何拆分成容易问题都是还需要探索的地方。</p>
-<p>所以在做总计划的时候也要秉承把困难计划先简答实现然后再根据新发现的信息对其迅速迭代的思路。</p>
-<p>之所以这样做因为what else？</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1531_21_288.png" alt=""></p>
+<h2 id="Bert-Word2vec-ELMO-GPT之间的关系"><a href="#Bert-Word2vec-ELMO-GPT之间的关系" class="headerlink" title="Bert,Word2vec,ELMO,GPT之间的关系"></a>Bert,Word2vec,ELMO,GPT之间的关系</h2><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1539_47_580.png" alt=""></p>
 
             <hr>
           </div>
@@ -224,7 +212,10 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/CS224n">CS224n</a>
+                  <a class="hover-with-bg" href="/categories/kaggle">kaggle</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/toxic">toxic</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -233,7 +224,7 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
+                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
                 
               </span>
             
@@ -383,7 +374,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "CS224n/5 - 反向传播+项目建议&nbsp;",
+        "kaggle/toxic/自然语言预训练模型发展史&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

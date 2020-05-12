@@ -136,6 +136,304 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">Speech and language processing/概念_6_HMM_三个问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">HMM的三个核心问题的解本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。
+1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别有如下递进定义
+
+将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个网络
+若该网络是有向无环图，则称这个网络为贝叶斯网络
+如果这个图退化成线性链的方式，则得到马尔科夫模型，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是马尔科夫过程。
+若上述网络是无向的，则是无向图模型，又称马尔科夫随机场或者马尔科夫网络。
+若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。
+如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
+
+2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/HMM">HMM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_6_EM%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">Speech and language processing/概念_6_EM算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2. EM算法推导2.1 基础知识2.1.1 凸函数设是定义在实数域上的函数，如果对于任意的实数，都有： 那么是凸函数。若不是单个实数，而是由实数组成的向量，此时，如果函数的 Hesse 矩阵是半正定的，即 是凸函数。特别地，如果  或者   ，称为严格凸函数。
+2.1.2 Jensen不等式如下图，如果函数  是凸函数，  是随机变量，有 0.5 的概率是 a，有 0.5 的概率是 b，  的期望值就是 a 和 b 的中值了那么： 其中， ，这里 a 和 b 的权值为 0.5,    与 a 的权值相等， 与 b 的权值相等。
+特别地，如果函数   是严格凸函数，当且仅当：   (即随机变量是常量) 时等号成立。
+
+注：若函数    是凹函数，Jensen不等式符号相反。
+2.1.3 期望对于离散型随机变量 X 的概率分布为   ，数学期望   为： 
+ 是权值，满足两个条件   。
+若连续型随机变量X的概率密度函数为  ，则数学期望  为： 设 ， 若  是离散型随机变量，则： 若    是连续型随机变量，则：  
+2.2 EM算法的推导对于  个相互独立的样本  ，对应的隐含数据</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/EM%E7%AE%97%E6%B3%95">EM算法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_3_%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91/">
+        <p class="h4 index-header">Speech and language processing/概念_3_一阶逻辑</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">概念：一阶逻辑（first order logic）一阶二阶这类的词, 一是表达量化的程度, 二是表达逻辑系统多有表达能力. 
+
+0阶逻辑： 每一个字母就代表一个命题, 所以命题逻辑只能表达句子之间的关系, 比如“p&amp;q”, “if p then q”等等的真值如何从p和q的真值中计算出来.
+1阶逻辑则引入了两个量词, 即universal quantifier(倒A，所有)和existential quantifier(倒E，存在), 并且加入了一阶谓词和individual variables（变量）和individual constants（常量）. 这些导致一阶逻辑可以量化individuals in the domain. 比如经典的
+
+
+三段论就可以被一阶逻辑表达：For all x, Hx-&gt;MxHs-—Ms
+
+其中for all x就是量化了所有individuals, 即domain里的任意一对象, 用individual variable x来表示. Hx则是表示x属于H(Human)这个谓词的extension, Mx表示x属于M(Mortal)的e</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91">一阶逻辑</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/">
+        <p class="h4 index-header">Speech and language processing/概念_5_FSD状态传感器</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">状态传感器FST概念状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。
+他是一种类似于字典树/自动机的数据结构。
+转自豆瓣-巴扎黑
+有限状态转移机在自然语言处理上的应用
+原文地址：
+http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/
+在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。
+首先，先来大概的了解一下有限状态机（FSM）
+有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8">状态传感器</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%A6%82%E5%BF%B5_5_FST%E7%8A%B6%E6%80%81%E6%9C%BA/">
+        <p class="h4 index-header">Speech and language processing/概念_5_FST状态机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">状态机概念FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。
+
+作者：陈天
+链接：https://zhuanlan.zhihu.com/p/28142401
+来源：知乎
+在谈论一般意义的状态机时，我们先看看有限状态机，Finite State Machine，简称 FSM。
+在计算理论（Theory of computation）中，FSM 是一切的基础，也是能力最为有限的机器。在其能力之上是 CFL（Context Free Language），然后是 Turing Machine。
+FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。对于一个字符串是否以 \0 结尾（C 语言的字符串结构），FSM 可以给出答案。
+CFL 是一切编程语言的基础。你写的一段 python 代码是否语法正确，CFL 能够给出答案。
+Turing Machine 就是我们日常用各种算法写代码解决各种问题的基础。不较真地说，JVM 就是一个 Turing Machine。
+再往上，就是未知的世界 —— Turing Machine 也解决不了的问题。
+如果你工作多年</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/%E7%8A%B6%E6%80%81%E6%9C%BA">状态机</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/9%20-%20Automatic%20Speech%20Recognition/">
+        <p class="h4 index-header">Speech and language processing/9 - Automatic Speech Recognition</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
+影响语音转文字系统性能表现的几个参数：
+
+需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
+speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
+声音质量：apparently，噪音少识别起来容易。
+讲话者的类型：apparently，nat</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">Speech and language processing/总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
+自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Speech%20and%20language%20processing/Dic/">
         <p class="h4 index-header">Speech and language processing/Dic</p>
         
@@ -279,43 +577,6 @@ Sym</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%80%BB%E7%BB%93/">
-        <p class="h4 index-header">Speech and language processing/总结</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
-自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/Speech%20and%20language%20processing/7%20-%20Phonetics/">
         <p class="h4 index-header">Speech and language processing/7 - Phonetics</p>
         
@@ -400,264 +661,6 @@ homograph disambiguation
           
             <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/6%20-%20HMM%20&%20HEMM/">
-        <p class="h4 index-header">Speech and language processing/6 - HMM &amp; HEMM</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">6.Hidden Markov and Maximum Entropy Models（HMM,MEMM）HMM and HEMM are both sequence classifiers.
-Sequence classifier or sequence labeler is a model whose job is to assign some label or class to each unit in a sequence.The FST we studied in Chapter 3 is a kind of non-probabilisitic sequence classifier.
-We have seen on important sequence classification task:POS tagging.
-This chapter is roughtly divided into 2 section:HMM , MEMM.
-6.1) Markov Chains - 马尔科夫链 - 详见概念6 - 马尔科夫链
-6.2)The Hidden Markov Model</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/5%20-%20Part-of-Speech%20Tagging/">
-        <p class="h4 index-header">Speech and language processing/5 - Part-of-Speech Tagging</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">5.Part-of-Speech TaggingIntroduce three algorithms:
-
-rule-based tagging
-HMM tagging
-transformation-based tagging
-
-词性标注是一项消歧任务，很多情况下词具有多于一个的意思，我们的工作是为这种情况找到正确的标签。
-5.2）Tagset for EnglishThere are 3 different tagset.
-
-45-tag Penn Treebank tagset
-61-tag C5 tagset
-87-tag tagset 
-
-
-Small Tagset:
-
-
-
-Middle Tagset
-
-
-
-Large Tagset
-
-
-
-5.3) Part-of-Speech TaggingSometimes,tagging can be difficult（unambiguous）,For example ,book is ambiguous.Book can be a noun as a read book,or be a verb, as booking a hotel.</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/3%20-%20Word%20&%20Transducers/">
-        <p class="h4 index-header">Speech and language processing/3 - Word &amp; Transducers</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">3.Word &amp; Transducers3.1)Word
-Before processing, words in speech should be Stemming、lemmatization and tokenization.
-Tokenization means put”New York”in one word,separate “I`m” into “I” and “am”。
-Using FSA to build Stemming net of words
-
-3.2)FST : Finite state transducers.
-I define it my way:
-If you input “aa”,”b”will be output,and the state in still “q0”,if you input “b”,”a or b”will out put,state will be “q1”.For example,if you input “aa aa b a”，output is “b b a ba”.
-
-Defination with details </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/4%20-%20N-Grams/">
-        <p class="h4 index-header">Speech and language processing/4 - N-Grams</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">4 - N-GramsN-gram is a language model,is a N-token sequence of words.
-1.the way to calculate conditional probability.For example,how can we calculate P(the|its water is so transparent that) ?
-Method1): counting 2 sentences
-Counting the times of “its water is so transparent that the” and “its water is so transparent that” in the whole corpus.It works sometime,but language is creative,many sentences is not exist.
- 
-Method2): chain rule of probability,then use method 1.
-
-notice that:
-
-means  P(w1w2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/23%20-%20QA/">
-        <p class="h4 index-header">Speech and language processing/23 - QA</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">23 - Question Answering and Summarization本章介绍基于事实的回答问题系统+文章的总结系统。如果我们查找的是结构化的数据，可用上一章介绍的信息提取算法来词查找。如果查找的是非结构化的信息，则需要用本章介绍的“回答问题系统”处理，非结构化信息的查找就是一种“使用非正式的单词或句子”来表达查找需求的场景，这种场景下客户通常期望能返回一些回答or一些文本，或something in between。
-第一个session介绍向量空间模型，第二个session介绍基于事实的一问一答系统。第六个session介绍基于句子的总结系统/基于注意力机制的总结系统。
-23.1 Information Retrieval 信息检索术语定义
-文档document指的是一个有索引的，可被检索系统直接定位的最小单元，对应到web就是一个网页
-集合collection指的是一系列用来满足用户需求的文档documents
-term指的是一个词汇元素。
-query指的是一系列terms
-
-词向量空间
-词义相近的在向量空间中距也近，概念在CS224N中学过了。空间和点积的直观图如下</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/24%20-%20%E5%AF%B9%E8%AF%9Dagent/">
-        <p class="h4 index-header">Speech and language processing/24 - 对话agent</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">24 - Dialogue and Conversational Agents这一章介绍问答助手的基本结构+算法。Session24.1介绍人类对话的基本概念，如对话的交替，表达技巧，grounding，对话结构等。Session24.2介绍口语系统的组件和评价标准。Session24.5和Session24.6介绍信息状态架构和马尔科夫对话代理模型，以及高阶话题如BDI范式（belief - desire -intention）信念 - 渴望 - 意图范式。
-24.1 人类对话的Properties24.1.1 Turns and turn-talking人类对话的模式是一个人说完了之后另一人说，交替进行，通常情况下，两人对话的重叠部分不超过5%。两个人交替间的停顿时间在100ms左右。为了实现这种模式，人类对话通常有如下三个规律来规范交替的进行，非常显而易见。
-
-通常一个比正常情况更长的听读怒会有额外的表达效果，如下所示一个长停顿代表了不想积极回应问题。
-
-24.1.2 Language as Action:Speech Acts 语言是会产生后果的行动语言能对现实世界产生具体影响</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
         
         
       </div>

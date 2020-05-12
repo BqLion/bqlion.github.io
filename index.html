@@ -136,6 +136,394 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/12/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%92%8C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">NLP概念/概念_神经网络和反向传播算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">神经网络神经网络深入学习的网站：neuralnetworksanddeeplearning.com 
+神经网络就是一个函数，本例中有764个输入，有10个输出 
+总览图:
+第一层(764)：
+764个输入源于28 * 28的正方形格子，每个小格子都是0到1之间的值，越接近1就越白，越接近0就越黑。
+隐藏层
+隐藏层是干什么的？ 大体上说，隐藏层用于发掘模式。如上所示，隐藏层一识别小线段，隐藏层二识别小线段构成层的圈或者大线段
+从这里看出深度神经网络其实就是模式识别的高级应用，所以要恶补pattern recognition。
+如何训练神经网络？ 训练神经网络就是把训练集中的数据和label在神经网络中的(784 * 16 + 16 * 16 + 16 * 10) + (16+16+10) =13002    个参数通过动态调整来拟合。
+从数学上来说，动态调整13002个参数以获得min(代价函数)的做法，本质上就是寻找函数的最小值，如下
+
+w1和a1： 
+a1就是输入的784个点中第一个点的亮暗情况
+w1就是接受这第一个点a1刺激的第一层的第一个神经元对第二层的如图所示的神经元的兴奋程度</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/12/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/">
+        <p class="h4 index-header">NLP概念/概念_随机森林</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">随机森林随机森林就是用随机的方法建立一堆决策树。每棵树之间是没有关联的，当一个待分类样本输入森林中时，将此样本输入进每一个决策树然后看哪种分类结果最多，就最终输出哪种分类结果。
+随机森林的构造过程：
+
+假设有N个样本，有放回的随机选择N个样本，然后按照这N个样本训练一个决策树，这N个样本就是决策树根节点的样本
+当每个样本有M个属性时，就需要在决策树中分裂节点以做进一步的判断。于是从M中随机选出m个(m &lt;&lt; M)个属性，然后从m个属性中采取某种策略（比如min信息熵）来选择一个属性来作为该节点的分裂属性。
+然后就是重复上边的步骤。当下一次分裂选出来的属性还是父节点的属性时，说明已经穷尽属性，到达叶子节点。
+
+按照如上三个步骤，可以构造大量决策树，例如movie sentiment tutor step1中的随机森林就是构造了100颗决策树。
+注意：随机森林中的决策树并没有为了回避过拟合问题而剪枝，因为随机采样已经避免了过拟合。
+此算法优点：
+
+数据上表现好，两个随机性的引入避免了过拟合问题
+抗噪声
+能处理高维度数据，而且不用做特征选择。
+对数据集的适应能力强，既能处理连续性</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/12/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E5%86%B3%E7%AD%96%E6%A0%91/">
+        <p class="h4 index-header">NLP概念/概念_决策树</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">决策树决策树是一种树形结构分类器。每个节点都有一个表示属性的判断，每个分支都代表了一个判断结果的输出。
+常见的决策树生成算法有ID3,C4.5,C5.0,CART等。
+示例：如下图片是正确的分类集（train set）
+
+如下是分类树的判断过程（演示了分类树其实可以有不同构型）
+
+
+如上分类树的根节点都是判断分数是否大于A（90），如果是就是好学生。然后第二个节点就出现了不同，分别是判断分数是否小于70 OR 出勤率是否大于0.8。
+这个分类器节点的构造其实很灵活，怎样构造最好的分类器呢？ID3,ID4.5算法都是倾向于迭代选择熵值最小化的那个分类器。但是ID3,ID4.5算法都有严重的过拟合问题。
+CART算法也使用了类似熵的指数–GINI指数，CART算法迭代的目标也是向着GINI指数最小化的方向进行，不过CART算法为了解决过拟合的问题，使用了剪枝的策略，也就是将树中过长的枝叶剪去。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/12/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8BBagofWord/">
+        <p class="h4 index-header">NLP概念/概念_词袋模型BagofWord</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">词袋模型词袋模型是将词语向量表示的方法。
+具体操作如下：
+
+清洗整个语料库by美丽汤
+去掉停止词和非英语单词，去掉数组，大小写统一by正则表达式
+将剩下的单词组成词典
+词典按照词频降序排列
+然后指定词袋的feature个数，以五千为例就是前5000个常用单词作为每一个词语/句子的向量表示。
+每个向量都是5000维，第一维就是最常用的单词，第二维就是第二常用的单词，第一维是1说明被本向量表示的句子中最常用的单词出现了一次，第一维是2说明被表示的句子中最常用的单词出现了两次。
+
+
+然后可以将例如25000条语料依次分别按照5000维的向量表示，集合到shape(25000 * 5000)的矩阵中
+
+然后此矩阵带上label就可以用来训练model了
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/08/kaggle/tutor_senti/%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/">
+        <p class="h4 index-header">kaggle/tutor_senti/词袋模型应用</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">tutorial of sentiment词袋模型应用1.引入训练数据
+import pandas as pd
+train = pd.read_csv(&quot;labeledTrainData.tsv&quot;, header=0,delimiter=&quot;\t&quot;, quoting=3)
+2.确定引入数据是否正确 – 看一下shape和列标签
+&gt;&gt;&gt; train.shape
+(25000, 3)
+
+&gt;&gt;&gt; train.columns.values
+array([id, sentiment, review], dtype=object)
+3.glipise
+print train[&quot;review&quot;][0]
+4.用beautiful soap清洗掉HTML标签
+# Import BeautifulSoup into your workspace
+from bs4 import BeautifulSoup             
+
+# Initialize the BeautifulSoup object on </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kaggle">kaggle</a>&nbsp;
+          
+            <a href="/categories/tutor_senti">tutor_senti</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_Word_embedding%E8%AF%A6%E8%A7%A3/">
+        <p class="h4 index-header">NLP概念/概念_Word_embedding详解</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Word_embedding之前词语数字化表示的几种思路和问题，以及WE的提出：
+
+独热码离散表示：红橙黄绿青蓝紫大卡车和红橙黄绿青蓝紫中卡车是2 * 7 = 14个对象
+
+
+构建特征的分布式表示：红橙黄绿青蓝紫大卡车和红橙黄绿青蓝紫中卡车是7 + 2 = 9个对象
+
+
+
+
+邻接词的分布式表示：
+
+
+离散表示太稀疏，使用一个词附近的词分布式表示是不错的折中方案。
+WE的概念图（同义相近）：
+
+WE的目标：把单词转换为数字（向量）。
+这种转换是必要的，因为深度神经网络等技术都只能处理连续值的向量，不能处理文本和字符串。
+把单词变成向量还有如下两个好处：
+
+降维：更高效的表示方法
+上下文相似性：更有表达力的表示方法
+
+词向量的训练方法:
+使用语料库和模型训练词向量，把嵌入矩阵embedding matrix当成模型参数的一部分，通过词语词之间的共现矩阵或者上下文关系来优化模型参数，最终得到的矩阵就是所有词的词向量。最初的词向量都是随机初始化的，后边采用标准训练和优化。
+优秀的WE可视化网站：
+https://ronxin.github.io/wevi/
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/07/kaggle/toxic/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B1%95%E5%8F%B2/">
+        <p class="h4 index-header">kaggle/toxic/自然语言预训练模型发展史</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">从Word embedding到Bert：A brief history of nlp pre-train modelWord embeddingLM做word embedding –&gt; 使用的工具是word2vec –&gt; word2vec的训练方法：CBOW 和 SKIP - GRAM
+word embedding的问题：无法解决一词多义。
+​                                                两种不同的上下文信息经过word2vec都会预测相同的单词bank，因为同一个单词占                                                用的是同一行的参数空间。所以WE无法区分一词多义。
+ELMO为解决WE一词多义问题，提出ELMO，其思路是事先用LM学好 一个单词的word embedding，后边根据上下文动态调整。WE是静态，ELMO是动态，所以ELMO可以解决一词多义问题。
+ELMO工作方式分为两段，分别是利用语言模型进行预训练和做下游任务时将预训练网络中提取对应单词的网络的各层的wor</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kaggle">kaggle</a>&nbsp;
+          
+            <a href="/categories/toxic">toxic</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/07/CS224n/9%20-%20%E6%9C%BA%E7%BF%BB/">
+        <p class="h4 index-header">CS224n/9 - 机翻</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
+我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
+基于统计的机翻模型介绍
+源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
+
+如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项里找一个简单流畅的句子。
+
+其中的一个模块，翻译模型中，第一件要做的事情是匹配两种语言的单词，匹配所面临的困难使用法语英语互译来展示。其实英法是相似度很高的语言，换成其他相似度低的语言则难度会</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/04/28/CS224U/Sentiment_Analysis_%E6%9C%89%E7%9B%91%E7%9D%A3%E7%9A%84%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90.md/">
         <p class="h4 index-header">CS224U/Sentiment_Analysis_有监督的情感分析.md</p>
         
@@ -205,403 +593,6 @@
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/chromebook">chromebook</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/23/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/chromebook%E4%BB%A3%E7%90%86%E5%85%B1%E4%BA%AB/">
-        <p class="h4 index-header">安装调试记录/chromebook代理共享</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.下载ssr
-2.google免费ssr节点，复制粘贴。连接ssr，右键ssr图标-选项设置-允许来自局域网的连接。
-3.电脑连接手机热点，电脑打                          开热点共享，chromebook连接电脑发射的热点
-4.电脑win+R,cmd,ipconfig,得到如下所示ip信息
-
-5.chromebook点击所连接wifi热点，点击热点详情-连接类型-手动配置代理-输入上图ip，端口号是1080（详见第2条中允许来自局域网连接的按钮周围的端口信息）。
-6.登录，done。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/chromebook">chromebook</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/21/CS224U/Sentiment_Analysis_SST/">
-        <p class="h4 index-header">CS224U/Sentiment_Analysis_SST</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment_Analysis SSTSST项目基本信息
-SST斯坦福链接
-SST工作展示蓝色是正面情绪，黄色是负面，灰色是中性情绪。叶子节点的merge原理暂时未知。They said it would be great这句话下边都是正面情绪，直到跟节点的they才恢复为中性情绪，因为they said其实不能反映出作者的 bias。
-而后边接上的they were wrong明显是负面，然后merge后总体就是负面情绪了。这个总体的判断要比直接把一句话拆开按照各个单词的正负性简单sum要靠谱很多。
-
-verse vesa
-
-Readers讲解
-In [5]、In [6]中的train_reader参数详解
-
-
-
-
-meaning
-
-
-
-class_func=sst.binary_class_func
-二分类问题
-
-
-class_func=sst.ternary_class_func
-三分类问题
-
-
-class_func=None
-五分类问题
-
-
-核心类 ： nltk.tree.Tree输入一个tree：
-
-循环打印各个subtree：
-
-输出tree的lable和subtre</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224U">CS224U</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/19/kaggle/env_yml_kag1_%E6%9C%AC%E6%9C%BA/">
-        <p class="h4 index-header">kaggle/env_yml_kag1_本机</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">environment_ymlname: kag1
-channels:
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
-  - defaults
-dependencies:
-  - absl-py=0.9.0=py37_0
-  - astor=0.7.1=py_0
-  - attrs=19.3.0=py_0
-  - boto=2.49.0=py_0
-  - boto3=1.12.11=py_0
-  - botocore=1.15.11</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/19/Python/python%E7%8E%AF%E5%A2%83%E8%BF%81%E7%A7%BB/">
-        <p class="h4 index-header">Python/python环境迁移</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">python环境迁移copy from：WenShan`s blog
-Conda 是著名的包管理器和虚拟环境管理器。
-在配置完项目环境，并编写和测试代码后，您可能希望将其移至另一台计算机。
-Conda 提供了多种保存和移动环境的方法。
-Clone在本地，conda 可以方便地创建环境的快照或者备份：
-1 conda create --name snapshot --clone myenv Spec List如果需要在具有 相同操作系统 的计算机之间复制环境，则可以生成 spec list。
-生成 spec list 文件：
-1 conda list --explicit &gt; spec-list.txt 重现环境：
-1 conda create  --name python-course --file spec-list.txt Environment.yml也可以使用 -export 选项生成一个 environment.yml 文件，以在 不同的平台和操作系统之间 复现项目环境。 spec list 文件和 environment.yml 文件之间的区别在于： environm</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/18/CS224U/Sentiment_Analysis_%E6%9D%90%E6%96%99%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
-        <p class="h4 index-header">CS224U/Sentiment_Analysis_材料和预处理</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment Analysis阅读材料和数据预处理核心阅读材料
-
-情感分析各子领域合适的切入点。他们入选的原因是位置合适以及有公开数据集
-
-常用情感分析数据库
-
-lexica
-
-preprocessingpreprocessing ： tokenizing
-
-preprocessing : 词干化stemming
-
-porter stemming演示
-
-兰开斯特stemming演示
-
-wordNet stemming演示
-
-preprocessing:  POS tagging
-有些英文单词的sentiment只能通过pos来确定。
-
-需要注意的是即使有些单词的pos tagging一模一样仍然会有相反的sentiment
-
-preprocessing : 简单情感标记和推荐阅读
-
-简单负面情绪标记示例
-
-推荐阅读
-
-负面情绪标记带来的性能提升
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-18&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224U">CS224U</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_batchsize/">
-        <p class="h4 index-header">NLP概念/概念_batchsize</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">BatchSize机器学习训练中，把数据集分割成若干个batch，每个batch的大小叫做batchsize。
-对batchsize、epoch、iteration的举例：
-mnist 数据集有张图片作为训练数据，张图片作为测试数据。假设现在选择 Batch_Size = 对模型进行训练。迭代次。
-
-每个 Epoch 要训练的图片数量：(训练集上的所有图像)
-训练集具有的 Batch 个数： 
-每个 Epoch 需要完成的 Batch 个数：
-每个 Epoch 具有的 Iteration 个数：（完成一个Batch训练，相当于参数迭代一次）
-每个 Epoch 中发生模型权重更新的次数：
-训练 10 个Epoch后，模型权重更新的次数： 
-不同Epoch的训练，其实用的是同一个训练集的数据。第1个Epoch和第10个Epoch虽然用的都是训练集的图片，但是对模型的权重更新值却是完全不同的。因为不同Epoch的模型处于代价函数空间上的不同位置，模型的训练代越靠后，越接近谷底，其代价越小。
-总共完成30000次迭代，相当于完成了个Epoch
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_epoch/">
-        <p class="h4 index-header">NLP概念/概念_epoch</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Epoch定义训练集的所有数据对模型进行了一次完整训练，称为“一代训练”（epoch）。
-也就是说所有训练样本在神经网络中都进行了一次正向传播和一次反向传播。
-为什么要进行多于一次的epoch？神经网络中传递完整的数据集一次是不够的，而且我们需要将完整的数据集在同样的神经网络中传递多次。
-但是因为使用的是有限的数据集，并且使用一个迭代过程也就是梯度下降来优化学习过程。如下图所示，随着epoch的增加，神经网络的权重更新次数也在增加，曲线从欠拟合变成了过拟合。所以需要选择合适的epoch。
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E6%B1%A0%E5%8C%96/">
-        <p class="h4 index-header">NLP概念/概念_池化</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">池化池化是什么卷积之后往往是池化操作，which可以降低卷积输出的特征向量，避免过拟合。
-以最大池化max pooling为例：整个图像被分为不重叠的若干小块，每个小块内取最大的数字，然后保持原平面结构，得出output。
-
-​    
-池化的作用感受到不变性，增大感受野。
-减小下一层的输入大小，减小计算量和参数个数，降维。
-如上图，第一行是卷积，第二行是池化。经过这两行操作，“横折”这个点，不论做平移旋转或者伸缩，都有相同的输出。于是
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
         
       </div>

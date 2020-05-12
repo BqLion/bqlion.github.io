@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>NLP概念/概念_Embed ~ 刘秉乾的技术博客 :)</title>
+  <title>CS224n/5 - 项目建议 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期三, 三月 4日 2020, 3:52 下午
+                  星期一, 二月 24日 2020, 12:04 中午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    337 字
+                    1.2k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -167,20 +167,52 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="embedding"><a href="#embedding" class="headerlink" title="embedding"></a>embedding</h1><p>embedding就是用向量表示概念，也就是CS224N开篇讲了很久的word2vec思想。</p>
-<p>如下各个颜色都是三原色的RGB向量表示，语料库中的词汇也可以用向量表示。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200304_1545_20_741.png" alt=""></p>
-<p>颜色用RGB表示，是有物理解释的，但语料库中的词汇没有，语料库中的词汇的向量表示该怎么求？</p>
-<p>使用语料和模型来训练词向量，把嵌入矩阵embedding matrix当成模型参数的一部分，通过词语词之间的共现或者上下文关系来优化模型参数，最终得到的矩阵就是所有词的词向量。</p>
-<p>那么，“最初的词向量如何来的？”其实最初的词向量都是瞎鸡巴填的，随机初始化–前向传播计算损失函数–反向传播求嵌入矩阵里各个参数的导数，然后梯度下降更新之。这个训练过程和一般的模型没有区别。</p>
-<pre><code class="matlab">表意接近的向量数值上也接近，表意满足加减关系的向量基本也满足。
-
-embedding(复仇者联盟)和embedding(钢铁侠)的距离就很近
-
-Embedding(马德里)-Embedding(西班牙)+Embedding(法国)≈Embedding(巴黎)
-
-embedding能用低维向量对概念进行编码还能保留含义的特点适合深度学习。
-</code></pre>
+            <h1 id="Lecture5-项目建议"><a href="#Lecture5-项目建议" class="headerlink" title="Lecture5 项目建议"></a>Lecture5 项目建议</h1><h4 id="1-一层神经网络过渡到多层神经网络"><a href="#1-一层神经网络过渡到多层神经网络" class="headerlink" title="1.一层神经网络过渡到多层神经网络"></a>1.一层神经网络过渡到多层神经网络</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_08_008.png" alt=""></p>
+<h4 id="2-项目建议"><a href="#2-项目建议" class="headerlink" title="2.项目建议"></a>2.项目建议</h4><p>老师推荐的文章和会议</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_24_988.png" alt=""></p>
+<p>1.定义你的任务：</p>
+<p>例如：summarization</p>
+<p>2.定义数据集：</p>
+<p>最好使用现成的数据集，因为他们已经有baselines</p>
+<p>3.建立baseline</p>
+<p>他可以是一个非常简单的一元线性回归，然后在你的训练数据集上计算你的评价标准，看看模型是过拟合还是欠拟合</p>
+<h4 id="4-选做题：自己发明新的模型"><a href="#4-选做题：自己发明新的模型" class="headerlink" title="4.选做题：自己发明新的模型"></a>4.选做题：自己发明新的模型</h4><ol>
+<li><p>首先，你需要做好以上说的几个步骤.</p>
+</li>
+<li><p>然后你需要知道已经存在的模型上有哪些问题。然后你就可以设计出自己的模型。如果你想要这样做的话，<strong>你真的需要和你的导师和其他研究者保持沟通，除非你自己就是研究者并且已经获得了博士文凭</strong>。</p>
+</li>
+<li><p>你需要实现你的模型，然后根据你的新点子去对它快速迭代。（也许在某个位置新加一层？然后看看他起不起作用？）</p>
+</li>
+<li><p>那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。</p>
+</li>
+<li><p>建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型。</p>
+</li>
+<li><p>对于终极任务：summarization任务。</p>
+<ol>
+<li>一开始你可能尝试一些非常简单的模型。比如对自然段中的所有单词向量求平均，然后用贪心搜索一个接一个地生成单词，或者用贪心搜索对维基百科中的现有文章寻找一些片段，然后把合适的片段复制过去。</li>
+<li>然后升级你的目标，尝试某些真正让你生产整段总结的方法。</li>
+</ol>
+</li>
+</ol>
+<p>一些项目的idea（包括了在kaggle上打比赛！）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_37_463.png" alt=""></p>
+<p>下次课程会学一些有趣的基础语言学任务，比如句法分析；然后会学习TensorFlow的应用。</p>
+<h4 id="论文分享："><a href="#论文分享：" class="headerlink" title="论文分享："></a>论文分享：</h4><p>词袋模型</p>
+<p>文本分类是nlp领域一个非常重要的话题， 给定一串文本，我们就可能问，它带有的是积极还是消极情绪。是垃圾邮件还是正常邮件。如图就是一个情感分析的例子。</p>
+<p>取得一个句子的特征的一种简单的办法就是对句子中所有的单词向量做平均。这篇论文中的模型也是类似这样的方式。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_49_271.png" alt=""></p>
+<p>对他们求平均，但是会丢失他们之间的顺序。然后得到的是这个低纬度的文本向量，代表这个句子，这就揉碎了的低纬度的文本向量就是词袋（word  bag）</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>反向传播和词袋模型在其他文档中有总结。</p>
+<p>本节课最有含金量的就是老师对想要发文章的同学的做项目的建议。</p>
+<p>首先，纯理论突破现在不可能。所以必须得要做项目，项目的选题要与老师或者其他研究者讨论，避免过大或者过小，除非你自己是一个phd和独立研究者。但是现在我没有人去讨论，但是回避六个月白忙的风险的动作是要做的，解决思路有两个</p>
+<ul>
+<li>发邮件、线下拜访中国的nlp领域的老师，求指点</li>
+<li>直接打kaggle。问题具体，选题明确。</li>
+</ul>
+<p>做能发文章的项目要先确定baseline和数据集。然后遍历先有的模型，然后提出一些修改意见（idea），然后在数据集上跑，看看是不是确实有提高，如果有，就完事儿了嗷。做出修改意见并且修改别人的模型的前提是得有充足的工程能力，这个工程能力我现在他妈绝对不具备。难顶，只能硬上。</p>
+<p>另一个要注意的事情是老师反复<strong>强调迭代 + 先从容易的模型开始实现</strong>。我认为这是把大问题难问题拆分成小问题容易问题的思路。这种思路非常关键，小熊也提过很多次。我需要做计划，把大问题拆分成小问题。当然具体是一个多大的问题，发论文一共有多少步，哪些步骤最难大概耗时多久如何拆分成容易问题都是还需要探索的地方。</p>
+<p>所以在做总计划的时候也要秉承把困难计划先简答实现然后再根据新发现的信息对其迅速迭代的思路。</p>
+<p>之所以这样做因为what else？</p>
 
             <hr>
           </div>
@@ -191,7 +223,7 @@ embedding能用低维向量对概念进行编码还能保留含义的特点适�
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>
+                  <a class="hover-with-bg" href="/categories/CS224n">CS224n</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -200,7 +232,7 @@ embedding能用低维向量对概念进行编码还能保留含义的特点适�
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
                 
               </span>
             
@@ -350,7 +382,7 @@ embedding能用低维向量对概念进行编码还能保留含义的特点适�
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "NLP概念/概念_Embed&nbsp;",
+        "CS224n/5 - 项目建议&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

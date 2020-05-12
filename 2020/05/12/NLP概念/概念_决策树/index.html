@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>kaggle/Abhi_BuildFramework ~ 刘秉乾的技术博客 :)</title>
+  <title>NLP概念/概念_决策树 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期二, 三月 31日 2020, 6:46 晚上
+                  星期二, 五月 12日 2020, 11:22 上午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    3 字
+                    313 字
                   </span>&nbsp;
                 
 
@@ -167,7 +167,17 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Building-ML-Framework"><a href="#Building-ML-Framework" class="headerlink" title="Building ML Framework"></a>Building ML Framework</h1>
+            <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p>决策树是一种树形结构分类器。每个节点都有一个表示属性的判断，每个分支都代表了一个判断结果的输出。</p>
+<p>常见的决策树生成算法有ID3,C4.5,C5.0,CART等。</p>
+<p>示例：如下图片是正确的分类集（train set）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1127_57_754.png" alt=""></p>
+<p>如下是分类树的判断过程（演示了分类树其实可以有不同构型）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1134_06_590.png" alt=""></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1134_23_636.png" alt=""></p>
+<p>如上分类树的根节点都是判断分数是否大于A（90），如果是就是好学生。然后第二个节点就出现了不同，分别是判断分数是否小于70 OR 出勤率是否大于0.8。</p>
+<p>这个分类器节点的构造其实很灵活，怎样构造最好的分类器呢？<strong>ID3,ID4.5算法</strong>都是倾向于迭代选择熵值最小化的那个分类器。但是<strong>ID3,ID4.5算法</strong>都有严重的过拟合问题。</p>
+<p><strong>CART</strong>算法也使用了类似熵的指数–GINI指数，CART算法迭代的目标也是向着GINI指数最小化的方向进行，不过CART算法为了解决过拟合的问题，使用了剪枝的策略，也就是将树中过长的枝叶剪去。</p>
+
             <hr>
           </div>
           <br>
@@ -177,7 +187,7 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/kaggle">kaggle</a>
+                  <a class="hover-with-bg" href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -336,7 +346,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "kaggle/Abhi_BuildFramework&nbsp;",
+        "NLP概念/概念_决策树&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

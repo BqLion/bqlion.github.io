@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      11 分钟
+                      10 分钟
                   </span>&nbsp;
                 
 
@@ -167,7 +167,7 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p>Transformer改进了RNN的训练慢的缺点，加入了自注意机制，充分发挥了DNN的优点，提升模型准确率。Transformer由论文《Attention is All you need》提出。有Tensorflow和Pytorch版本。</p>
+            <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1042_20_724.png" alt=""></p>
 <p>宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_UNNZMFirMr.png" alt=""></p>
 <p>拆开这个黑箱，发现里边是由编码和解码组件构成。</p>
@@ -178,7 +178,7 @@
 <p>词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_WK2a3xSATp.png" alt=""></p>
 <p>开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。</p>
-<h3 id="2-自注意力机制详解"><a href="#2-自注意力机制详解" class="headerlink" title="2.自注意力机制详解"></a>2.<strong>自注意力机制详解</strong></h3><p><strong>宏观角度</strong>看，比如翻译一个句子，“The animal didn`t cross the street because it was too tired”，it指代什么？对于人类来说，指代的是animal不是street，很容易但是对于计算机来说这就是一个复杂的问题。</p>
+<h3 id="2-自注意力机制详解-其实就是维持了一个关于句子本身的二维数组"><a href="#2-自注意力机制详解-其实就是维持了一个关于句子本身的二维数组" class="headerlink" title="2.自注意力机制详解(其实就是维持了一个关于句子本身的二维数组)"></a>2.<strong>自注意力机制详解</strong>(其实就是维持了一个关于句子本身的二维数组)</h3><p><strong>宏观角度</strong>看，比如翻译一个句子，“The animal didn`t cross the street because it was too tired”，it指代什么？对于人类来说，指代的是animal不是street，很容易但是对于计算机来说这就是一个复杂的问题。</p>
 <p>当模型处理“it”这个单词的时候，自注意力机制会允许it和animal之间发生联系。</p>
 <p>随着模型处理输入序列的每个单词，自注意力机制会关注整个输入序列的所有单词，帮助模型对本单词更好的编码。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_qMZ3PBAKgx.png" alt=""></p>
@@ -186,11 +186,10 @@
 <p><strong>微观角度</strong>看，如何使用向量计算自注意力，然后看看如何使用矩阵来实现，计算自注意力的第一步是从每个编码器的输入向量（每个单词的词向量）中生成三个向量。也就是说对于每个单词，我们创造一个查询向量，一个key向量，一个value向量。这三个向量是通过词嵌入与三个权重矩阵相乘创建的。</p>
 <p>这些新向量在维度上比词嵌入向量更低，他们的维度是64，而词嵌入和编码器的输入/输出向量的维度是512。这些分向量比总的词嵌入向量小的原因是基于架构的选择，使得多头注意力的大部分计算保持不变。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_6vXIOeu37l.png" alt=""></p>
-<p>词嵌入向量乘以WQ，Wk，Wv矩阵，就可以分别得到查询向量q1，key向量k1，value向量v1.</p>
 <p><strong>查询向量，key向量，value向量详解</strong></p>
 <p>他们都是有助于计算和理解注意力机制的抽象概念。</p>
 <p>计算自注意力的第二步是计算得分，假设我们这个例子，第一个词是“thinking”，计算自注意力向量，我们需要拿输入句子中的每个单词对“Thinking”<strong>打分</strong>，这些分数决定了在编码单词“Thinking”的过程中有多重视句子的其他部分。</p>
-<p><strong>打分</strong>是通过每个单词的key向量与“thinking”单词的查询向量的点积来计算的。如果我们是处理位置最靠前的单词的自注意力的话，第一个分数是q1*k1,第二个分数是q1*k2。</p>
+<p><strong>打分也就是填充自注意力机制的二维数组</strong>，具体是通过每个单词的key向量与“thinking”单词的查询向量的点积来计算的(目前的理解是WE中语义近的向量点积大语义远的点积小)。如果我们是处理位置最靠前的单词的自注意力的话，第一个分数是q1*k1,第二个分数是q1*k2。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_0d3s4CIJ2B.png" alt=""></p>
 <p>接下来对每个打分除以8,8这个数字是默认值，在论文中是维度64的平方根，除以了这个值之后，会让梯度更加稳定。softmax函数是把所有的值都挤压到0-1的区间内，且总值为1。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_pbeEMhw8OP.png" alt=""></p>

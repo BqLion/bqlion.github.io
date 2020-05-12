@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>kaggle/env_yml_kag1_本机 ~ 刘秉乾的技术博客 :)</title>
+  <title>CS224n/10 - 注意力机制 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期日, 四月 19日 2020, 4:09 下午
+                  星期一, 二月 24日 2020, 12:04 中午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    708 字
+                    2.1k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      7 分钟
                   </span>&nbsp;
                 
 
@@ -167,147 +167,41 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="environment-yml"><a href="#environment-yml" class="headerlink" title="environment_yml"></a>environment_yml</h1><pre><code class="yml">name: kag1
-channels:
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
-  - defaults
-dependencies:
-  - absl-py=0.9.0=py37_0
-  - astor=0.7.1=py_0
-  - attrs=19.3.0=py_0
-  - boto=2.49.0=py_0
-  - boto3=1.12.11=py_0
-  - botocore=1.15.11=py_0
-  - bz2file=0.98=py_0
-  - ca-certificates=2020.4.5.1=hecc5488_0
-  - catalogue=1.0.0=py_0
-  - category_encoders=1.2.6=py_0
-  - certifi=2020.4.5.1=py37hc8dfbb8_0
-  - cffi=1.13.2=py37hb32ad35_0
-  - chardet=3.0.4=py37_1003
-  - click=7.0=py_0
-  - cryptography=2.8=py37hb32ad35_1
-  - cycler=0.10.0=py_2
-  - cymem=2.0.3=py37h6538335_0
-  - cython-blis=0.4.1=py37hfa6e2cd_0
-  - docutils=0.15.2=py37_0
-  - flask=1.1.2=pyh9f0ad1d_0
-  - freetype=2.10.0=h563cfd7_1
-  - gast=0.2.2=py_0
-  - gensim=3.8.1=py37h6538335_1
-  - google-pasta=0.1.8=py_0
-  - grpcio=1.23.0=py37h3db2c7e_0
-  - h5py=2.9.0=nompi_h3cb27cb_1101
-  - hdf5=1.10.4=nompi_hcc15c50_1106
-  - idna=2.9=py_1
-  - importlib_metadata=1.5.0=py37_0
-  - itsdangerous=1.1.0=py_0
-  - jinja2=2.11.1=py_0
-  - jmespath=0.9.4=py_0
-  - joblib=0.14.1=py_0
-  - jpeg=9c=hfa6e2cd_1001
-  - jsonschema=3.2.0=py37_0
-  - keras-applications=1.0.8=py_1
-  - keras-preprocessing=1.1.0=py_0
-  - kiwisolver=1.1.0=py37he980bc4_0
-  - libblas=3.8.0=15_mkl
-  - libcblas=3.8.0=15_mkl
-  - libgpuarray=0.7.6=hfa6e2cd_1003
-  - liblapack=3.8.0=15_mkl
-  - libpng=1.6.37=h7602738_0
-  - libprotobuf=3.11.4=h1a1b453_0
-  - libtiff=4.0.9=h36446d0_1002
-  - mako=1.1.0=py_0
-  - markdown=3.2.1=py_0
-  - markupsafe=1.1.1=py37hfa6e2cd_0
-  - matplotlib-base=3.1.3=py37h2981e6d_0
-  - murmurhash=1.0.0=py37h6538335_0
-  - ninja=1.10.0=h1ad3211_0
-  - nltk=3.4.4=py_0
-  - numpy=1.18.1=py37hc71023c_0
-  - olefile=0.46=py_0
-  - openssl=1.1.1f=hfa6e2cd_0
-  - opt_einsum=3.1.0=py_0
-  - pandas=1.0.1=py37he350917_0
-  - patsy=0.5.1=py_0
-  - pillow=6.1.0=py37h9a613e6_0
-  - pip=20.0.2=py_2
-  - plac=0.9.6=py_1
-  - preshed=3.0.2=py37h6538335_1
-  - protobuf=3.11.4=py37he025d50_0
-  - pycparser=2.19=py_2
-  - pygpu=0.7.6=py37hc8d92b1_1000
-  - pyopenssl=19.1.0=py_1
-  - pyparsing=2.4.6=py_0
-  - pyreadline=2.1=py37_1001
-  - pyrsistent=0.15.6=py37hfa6e2cd_0
-  - pysocks=1.7.1=py37_0
-  - python=3.7.3=h510b542_1
-  - python-dateutil=2.8.1=py_0
-  - python_abi=3.7=1_cp37m
-  - pytz=2019.3=py_0
-  - pyyaml=5.3=py37hfa6e2cd_0
-  - regex=2020.2.20=py37hfa6e2cd_0
-  - requests=2.23.0=py37_0
-  - s3transfer=0.3.3=py37_0
-  - sacremoses=0.0.38=py_0
-  - scikit-learn=0.22.1=py37h7208079_1
-  - seaborn=0.10.0=py_1
-  - setuptools=45.2.0=py37_0
-  - six=1.14.0=py37_0
-  - smart_open=1.9.0=py_0
-  - spacy=2.2.3=py37he980bc4_0
-  - sqlite=3.30.1=hfa6e2cd_0
-  - srsly=1.0.0=py37h6538335_0
-  - statsmodels=0.11.1=py37hfa6e2cd_0
-  - tensorboard=1.15.0=py37_0
-  - tensorflow-hub=0.7.0=pyhe1b5a44_0
-  - termcolor=1.1.0=py_2
-  - theano=1.0.4=py37h6538335_1001
-  - thinc=7.3.0=py37he980bc4_0
-  - tk=8.6.10=hfa6e2cd_0
-  - tornado=6.0.3=py37hfa6e2cd_4
-  - tqdm=4.43.0=py_0
-  - urllib3=1.25.7=py37_0
-  - wasabi=0.6.0=py_0
-  - werkzeug=0.16.1=py_0
-  - wheel=0.34.2=py_1
-  - win_inet_pton=1.1.0=py37_0
-  - wincertstore=0.2=py37_1003
-  - wordcloud=1.6.0=py37hfa6e2cd_0
-  - wrapt=1.12.0=py37hfa6e2cd_0
-  - yaml=0.2.2=hfa6e2cd_1
-  - zipp=3.0.0=py_0
-  - zlib=1.2.11=h2fa13f4_1004
-  - m2w64-gcc-libgfortran=5.3.0=6
-  - m2w64-gcc-libs=5.3.0=7
-  - m2w64-gcc-libs-core=5.3.0=7
-  - m2w64-gmp=6.1.0=2
-  - m2w64-libwinpthread-git=5.0.0.4634.697f757=2
-  - msys2-conda-epoch=20160418=1
-  - pytorch=1.2.0=py3.7_cuda100_cudnn7_1
-  - torchvision=0.4.0=py37_cu100
-  - blas=1.0=mkl
-  - _tflow_select=2.2.0=eigen
-  - cudatoolkit=10.0.130=0
-  - icc_rt=2019.0.0=h0cc432a_1
-  - intel-openmp=2020.0=166
-  - mkl=2020.0=166
-  - scipy=1.2.1=py37h29ff71c_0
-  - tensorflow=1.15.0=eigen_py37h9f89a44_0
-  - tensorflow-base=1.15.0=eigen_py37h07d2309_0
-  - tensorflow-estimator=1.15.1=pyh2649769_0
-  - vc=14.1=h0510ff6_4
-  - vs2015_runtime=14.16.27012=hf0eaf9b_1
-  - vs2015_win-64=14.0.25420=h55c1224_11
-prefix: F:\Softwares\Anaconda3\envs\kag1
-
-</code></pre>
-<p>\</p>
+            <h1 id="Lecture10-Attention注意力机制"><a href="#Lecture10-Attention注意力机制" class="headerlink" title="Lecture10 - Attention注意力机制"></a>Lecture10 - Attention注意力机制</h1><h4 id="什么是attention？"><a href="#什么是attention？" class="headerlink" title="什么是attention？"></a>什么是attention？</h4><p>CV举例，如下图所示，要预测的对象是黄框 - 狗子的左耳朵，那么对人类来说，预测重要的信息就是红框中的狗子的右耳朵和狗眼睛还有狗鼻子，这些东西可以判断出这是一只狗子，通过右耳朵和眼睛可以对左耳朵进行定位。<br>attention机制模仿人类的认知框架，着重注意红框中的有用信息，忽略例如背景等不重要的信息。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1053_55_520.png" alt=""></p>
+<p>NLP举例，如下图，对词和词之间的关系，分配不同的注意力等级。green修饰apple，eat和apple只见也构成谓宾关系，于是他们都被分类了强注意力，而eat 和 green没有只见关系，于是只被分配了弱注意力。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1040_45_963.png" alt=""></p>
+<p>进一步讲，注意力机制其实就是表示重要性的<strong>权重向量</strong>，比如上图识别狗子特征，发现嘴巴和鼻子这一块特别重要，于是就提高了权重值全部设置为1，可以全部采集，而其他不重要的地方比如背景之类就设置为0或者很小的数字，这样就降低了采集的强度。<br>为了预测图像中的元素或者句子中的单词，我们使用注意力权重来估计其他元素与其相关的强度。并将注意力权重加权的值的总和作为最终预测的目标的一个特征。</p>
+<h4 id="attention计算步骤："><a href="#attention计算步骤：" class="headerlink" title="attention计算步骤："></a>attention计算步骤：</h4><ul>
+<li>计算其他元素与待预测元素的相关性权重（狗鼻子和狗耳朵，背景和狗耳朵之间的权重），这一步拿到的是一批浮点数。</li>
+<li>根据相关性权重对其他元素进行加权求和。也就是狗鼻子乘以0.9,背景乘以0.1，然后做加权求和。 </li>
+</ul>
+<h4 id="seq2seq问题"><a href="#seq2seq问题" class="headerlink" title="seq2seq问题"></a>seq2seq问题</h4><p>就是对于一个输入序列，我们需要将其转化为一个新的输出序列，其中输入输出序列可以是任何长度。典型的seq2seq问题包括了机器翻译，问答系统，语音识别等问题。<br>经典的seq2seq模型：Encoder-Decoder框架，这个框架的好处就是并没有把所有的输入都一视同仁的处理，而是按照词语和词语之间的关系分配不同的注意力。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1040_59_649.png" alt=""></p>
+<p> Encoder，decoder，上下文向量之间的关系， 注意力机制的好处：<br> 如下图，是一个机器翻译的任务场景，英语输入，汉语输出。she和她相关，吃和eat相关，苹果和apple相关，理想的情况是刚才罗列的三个词组对分别都用定制的上下文向量，而没有注意力机制的时候这一段话中每一个相关的词语对都公用一套上下文向量，效果可想而后。引入注意力机制后就可以定制每一个中文词语和分别每一个英语词组的注意力高低值。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_30_521.png" alt=""></p>
+<p>如下是seq2seq的另一个框架（Bahdanau 2015），输入source，输出target，在souce和target之间是Attention层，source和target与attention层通信的介质是Encoder和decoder。Encoder是一个双向RNN，decoder是一个动态的上下文向量+带状态的RNN。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_15_437.png" alt=""><br>之前没有注意力机制的时候，模型和上图也类似，无外乎是拿出Encoder里边的双向RNN的正向最后一个向量和反向第一个向量拼接，然后做一个maxpooling。</p>
+<p>有了注意力机制后，如下图，2015模型中的注意力层：每一个a(t,n)都是一个输出值对应全部输入值的权重组。比如她和she的atn值是0.8，她和is的atn值就是0.03。而且这个注意力层的参数的初始化和确定都是通过简单的前馈神经网络。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_42_379.png" alt=""></p>
+<p>另一个seq2seq中应用注意力机制的图片实例：在cs224n上有提到过，其实就是源头语言和目标语言之间的每一个单词互相建立二维数组，然后给出他们之间的相关性。如图，1992和1992强相关，和其他任何单词都不相关，was signed这个过去时态的sign也和法语中的相应过去时态的sign强相关，和其他词不相关。</p>
+<h4 id="注意力机制的来源（改进机翻）"><a href="#注意力机制的来源（改进机翻）" class="headerlink" title="注意力机制的来源（改进机翻）"></a>注意力机制的来源（改进机翻）</h4><p>如果我们使用一个固定维数的向量Y来表示输入，也就是编码器的最后一个输入状态，而整个解码过程我们都依赖这个Y在，这样做的话翻译的效果仅在短句上表现的好，长句子表现较差。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1145_18_548.png" alt=""></p>
+<p>所以人们想到了一种注意力机制的解决方案，这种方案最早在计算机视觉方向被提出：</p>
+<p>与其使用编码器的最后一个隐状态Y生成目标语句，不如直接使用编码过程中所有的隐层编码向量，也就是所有源对应的隐层状态来进行翻译工作。这样以来这些源状态成为了类似于随机存储器的东西，后边的神经网络可以根据翻译的需要访问他们。如下图所示，这样以来我们除了有了LSTM的增强记忆，同时还有了按需访问的记忆长度长的多的架构。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1150_06_551.png" alt=""></p>
+<p>如下是注意力模型示意图，注意力机制就是手动维持了目标语言和源头语言中的每一个单词的两两相关关系。相关性强的在完成目标任务时会被分配更多资源。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1042_09_370.png" alt=""></p>
+<p>下面要预测的单词应该去访问之前状态层（蓝色）的哪个内存单元？</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1201_08_059.png" alt=""></p>
+<p>现行做法是使用上一层的状态来作为注意力机制的判别标准。具体做法是使用结合上一层的状态和当前隐层的元素来生成一个分数(后边会详细解释),把得到的分数丢给softmax函数，返回一个概率分布权重,根据这个概率分布来决定注意力的分配。softmax函数示意图如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1209_30_771.png" alt=""></p>
+<p>在此之后，我们将编码器所有的隐层状态根据注意力机制给出的权重将其组合起来，具体来说，拿到编码器的每一个隐层的状态（蓝色块），和注意力机制给出的权重，然后求它的加权和，这个加权和就上下文向量。这样我们子在预测下一个词的时候就可以不是简单地使用最后一个隐层状态作为预测的标准，而是用到了编码器的全部隐层状态信息。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_09_050.png" alt=""></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_22_190.png" alt=""></p>
+<p>具体如何得到这个分数（被喂给softmax的那个分数）？</p>
+<p>如下图所示，使用单层神经网络，就像LSTM内部那些普通神经网络一样，我们这里使用了两个隐层状态的拼接，做一次矩阵乘法后再通过一次tan函数变换。其中第二个双线性注意力函数相当成功，在两个点乘之间插入了一个矩阵W，这种矩阵实际上学习到了如何将不同权重分配到点乘的不同部分。这是实现注意力机制的想法之一，这样可以使ht和hs之间产生某种交互。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1221_22_000.png" alt=""></p>
+<p>对于简单的注意力模型，有一个注意力函数覆盖了整个源编码，并且将此函数的输出作为权重，这是一个简单的函数容易学习，也是一个连续可微的模型，但是如果序列过长，其计算的复杂度就令人头疼，因为如果你从反向传播算法的角度来考虑，你需要每时每刻将误差传递到所有位置。因此人们开始寻求局部注意力模型，也就是每次只将注意力放到一部分状态的模型，这更像是从记忆里检索出某些事物的概念。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1226_17_470.png" alt=""></p>
+<p> 如下红线演示了不带注意力的模型，在短句子上表现不错，长句子down很快。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1230_53_670.png" alt=""></p>
+<p><strong>注意力机制在计算机视觉中的idea</strong></p>
+<p>如下图演示，注意力在不同的地方，得到的输出不同，比如鸟儿，数次，背景等等。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1234_55_097.png" alt=""></p>
 
             <hr>
           </div>
@@ -318,7 +212,7 @@ prefix: F:\Softwares\Anaconda3\envs\kag1
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/kaggle">kaggle</a>
+                  <a class="hover-with-bg" href="/categories/CS224n">CS224n</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -327,7 +221,7 @@ prefix: F:\Softwares\Anaconda3\envs\kag1
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
                 
               </span>
             
@@ -477,7 +371,7 @@ prefix: F:\Softwares\Anaconda3\envs\kag1
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "kaggle/env_yml_kag1_本机&nbsp;",
+        "CS224n/10 - 注意力机制&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

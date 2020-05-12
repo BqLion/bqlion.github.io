@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    648 字
+                    200 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      1 分钟
                   </span>&nbsp;
                 
 
@@ -167,53 +167,7 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Word2Vec"><a href="#Word2Vec" class="headerlink" title="Word2Vec"></a>Word2Vec</h1><h4 id="NLP常见任务"><a href="#NLP常见任务" class="headerlink" title="NLP常见任务"></a>NLP常见任务</h4><ul>
-<li>自动摘要</li>
-<li>指代消解：<strong>小明</strong>放学了，妈妈去接<strong>他</strong></li>
-<li>机翻：小心地滑-》slide carefully</li>
-<li>词性标注：heat（v），water（n）</li>
-<li>分词（主要中文）：大水沟/很/难/过 –传统做的比较好的都是用HMM做的</li>
-<li>主题识别</li>
-<li>文本分类</li>
-</ul>
-<h4 id="NLP处理方法"><a href="#NLP处理方法" class="headerlink" title="NLP处理方法"></a>NLP处理方法</h4><p>传统：基于规则</p>
-<p>现在：基于统计机器学习</p>
-<ul>
-<li>HMM,CRF,SVM,LDA,CNN，词袋，LSTM,SVM,RNN等</li>
-<li>“规则”隐含在模型参数里</li>
-</ul>
-<h4 id="词编码"><a href="#词编码" class="headerlink" title="词编码"></a>词编码</h4><p>对于词的编码要保证词语的相似性，例如frog就要和如下词汇离得比较近</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200328_1644_41_397.png" alt=""></p>
-<p>在计算机中表示一个词的思路：</p>
-<p><strong>上位词</strong>和<strong>同义词</strong>代替表述。</p>
-<p>这种表述的方法的缺点是不能分别细节的差别，需要大量的人力，主观，无法兼容新词，难以精确的计算词之间的相似度。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200328_1648_10_672.png" alt=""></p>
-<p><strong>One-hot</strong>离散表述</p>
-<p>构建语料库。想象构建一个字典，本字典每一页都只有一个词，然后想要表述某个词，就用独热码表示他的页码即可。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200329_1450_25_805.png" alt=""></p>
-<p><strong>词袋</strong>离散表述</p>
-<p>一个句子中的每个词语都是一个one-hot编码，把编码们简单相加就是句子的词袋表述。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200329_1452_43_253.png" alt=""></p>
-<p><strong>离散表示的问题</strong>：</p>
-<ul>
-<li><p>太稀疏，难以捕捉文本的含义。</p>
-</li>
-<li><p>词表维度随着语料库增长膨胀</p>
-</li>
-<li><p>n-gram词序列随着语料库膨胀更快</p>
-</li>
-<li><p>数据稀疏问题</p>
-</li>
-</ul>
-<p><strong>分布式表示</strong></p>
-<p>用于对比的离散表示：</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200329_1532_23_884.png" alt=""></p>
-<p>分布式表示：（构建特征，用特征表示）</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200329_1532_48_111.png" alt=""></p>
-<p><strong>一个分布式表示思路</strong>：用一个词附近的其他词来表示该词。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200329_1534_13_274.png" alt=""></p>
-<p>离散表示太稀疏，使用一个词附近的词分布式表示是不错的折中方案。</p>
-<p><strong>共现矩阵</strong>:</p>
+            <p><strong>共现矩阵</strong>:</p>
 <p>把语料库中相邻的单词出现频率显示出来</p>
 <p>语料库如下</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20200329_1537_42_939.png" alt=""></p>
@@ -234,14 +188,6 @@
           <br>
           <div>
             <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
-                
-                  <a class="hover-with-bg" href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>
-                  &nbsp;
-                
-              </span>&nbsp;&nbsp;
             
             
             </p>

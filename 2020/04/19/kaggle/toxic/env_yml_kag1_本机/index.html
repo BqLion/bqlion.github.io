@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>CS224n/10 - 机翻2，注意力模型 ~ 刘秉乾的技术博客 :)</title>
+  <title>kaggle/toxic/env_yml_kag1_本机 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 二月 24日 2020, 12:04 中午
+                  星期日, 四月 19日 2020, 4:09 下午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.6k 字
+                    708 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      5 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -167,44 +167,147 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Lecture10-机翻2，注意力模型"><a href="#Lecture10-机翻2，注意力模型" class="headerlink" title="Lecture10 - 机翻2，注意力模型"></a>Lecture10 - 机翻2，注意力模型</h1><p>神经网络机翻通常是指，构造一个大型神经网络，我们可以在上边以端到端的方式对这个网络进行训练和优化。如下图所示，我们使用一个大型神经网络，他接受输入文本并将其编码为神经网络内部传递的向量，然后通过解码器解码，输出是文本。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1059_01_286.png" alt=""></p>
-<p>早期机翻模型如下，结构相对简单，由认知学家和心理学家们设计</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1101_06_914.png" alt=""></p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1101_45_119.png" alt=""></p>
-<p>这些模型的设计应该遵循一定的规则，特别是昨天学的LSTM内部的各种门和电路设计感觉是同一种思路，找到这门系统设计的学科并从头到尾过一遍，</p>
-<p><strong>神经网络曾经是一个非常沉寂的边缘细分学科，以前都是心理学家和认知科学家们在这里耕耘，直到算力和网络技术发展成熟，大量CS科学家和资本入场，这里才变得热闹起来。做科研也需要赶时髦，因为如果当下一个科研方向很热门，说明在这个历史时期科学正在往这个方向发展。本身科学家做研究就需要互相引用他人的成果，使用他们的公式和仪器，站在巨人肩膀上做事，scientist,as a part of science,必须顺应时代的潮流，甚至要能预判时代的走向打一个提前量，这样对自己的职业发展最有利，也对推动世界进步最有利。</strong></p>
-<p><strong>深度学习这一块提升性能最突飞猛进的几年已经过去了，国内对AI和DL这一块关注度也在下降。找一个benchmark评估下各细分方向/行业的繁荣度指标。学完NLP读完survey后好好考考虑下是继续NLP还是转到因果推理上去。毕竟因果推理已经不止第一次听说了，就像我在大三的时候知道了kaggle和python和CS229却没有抓住现在他妈的还在补课一样。有了机会和idea就应该好好分析尽量抓住。</strong></p>
-<h3 id="1-现代机翻模型"><a href="#1-现代机翻模型" class="headerlink" title="1.现代机翻模型"></a>1.现代机翻模型</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1126_02_497.png" alt=""></p>
-<p>如上示意图，一个循环神经网络作为编码器，另一个循环神经网络作为解码器。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1128_15_920.png" alt=""></p>
-<p>如上，使用了多层神经网络的机翻模型。 </p>
-<h3 id="2-注意力机制"><a href="#2-注意力机制" class="headerlink" title="2.注意力机制"></a>2.注意力机制</h3><p>如果我们使用一个固定维数的向量Y来表示输入，也就是编码器的最后一个输入状态，而整个解码过程我们都依赖这个Y在，这样做的话翻译的效果仅在短句上表现的好，长句子表现较差。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1145_18_548.png" alt=""></p>
-<p>所以人们想到了一种注意力机制的解决方案，这种方案最早在计算机视觉方向被提出：</p>
-<p>与其使用编码器的最后一个隐状态Y生成目标语句，不如直接使用编码过程中所有的隐层编码向量，也就是所有源对应的隐层状态来进行翻译工作。这样以来这些源状态成为了类似于随机存储器的东西，后边的神经网络可以根据翻译的需要访问他们。如下图所示，这样以来我们除了有了LSTM的增强记忆，同时还有了按需访问的记忆长度长的多的架构。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1150_06_551.png" alt=""></p>
-<p>如下是注意力模型示意图，演示了哪里需要注意力机制的关注。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1157_42_357.png" alt=""></p>
-<p>下面要预测的单词应该去访问之前状态层（蓝色）的哪个内存单元？</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1201_08_059.png" alt=""></p>
-<p>现行做法是使用上一层的状态来作为注意力机制的判别标准。具体做法是使用结合上一层的状态和当前隐层的元素来生成一个分数(后边会详细解释),把得到的分数丢给softmax函数，返回一个概率分布权重,根据这个概率分布来决定注意力的分配。softmax函数示意图如下</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1209_30_771.png" alt=""></p>
-<p>在此之后，我们将编码器所有的隐层状态根据注意力机制给出的权重将其组合起来，具体来说，拿到编码器的每一个隐层的状态（蓝色块），和注意力机制给出的权重，然后求它的加权和，这个加权和就上下文向量。这样我们子在预测下一个词的时候就可以不是简单地使用最后一个隐层状态作为预测的标准，而是用到了编码器的全部隐层状态信息。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_09_050.png" alt=""></p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_22_190.png" alt=""></p>
-<p>具体如何得到这个分数（被喂给softmax的那个分数）？</p>
-<p>如下图所示，使用单层神经网络，就像LSTM内部那些普通神经网络一样，我们这里使用了两个隐层状态的拼接，做一次矩阵乘法后再通过一次tan函数变换。其中第二个双线性注意力函数相当成功，在两个点乘之间插入了一个矩阵W，这种矩阵实际上学习到了如何将不同权重分配到点乘的不同部分。这是实现注意力机制的想法之一，这样可以使ht和hs之间产生某种交互。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1221_22_000.png" alt=""></p>
-<p>对于简单的注意力模型，有一个注意力函数覆盖了整个源编码，并且将此函数的输出作为权重，这是一个简单的函数容易学习，也是一个连续可微的模型，但是如果序列过长，其计算的复杂度就令人头疼，因为如果你从反向传播算法的角度来考虑，你需要每时每刻将误差传递到所有位置。因此人们开始寻求局部注意力模型，也就是每次只将注意力放到一部分状态的模型，这更像是从记忆里检索出某些事物的概念。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1226_17_470.png" alt=""></p>
-<p> 如下红线演示了不带注意力的模型，在短句子上表现不错，长句子down很快。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1230_53_670.png" alt=""></p>
-<p><strong>注意力机制在计算机视觉中的idea</strong></p>
-<p>如下图演示，注意力在不同的地方，得到的输出不同，比如鸟儿，数次，背景等等。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1234_55_097.png" alt=""></p>
-<p>在把注意力模型从计算机视觉迁移到机器翻译中的时候，一种思路是采用双向注意力模型。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1236_43_089.png" alt=""></p>
+            <h1 id="environment-yml"><a href="#environment-yml" class="headerlink" title="environment_yml"></a>environment_yml</h1><pre><code class="yml">name: kag1
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+  - defaults
+dependencies:
+  - absl-py=0.9.0=py37_0
+  - astor=0.7.1=py_0
+  - attrs=19.3.0=py_0
+  - boto=2.49.0=py_0
+  - boto3=1.12.11=py_0
+  - botocore=1.15.11=py_0
+  - bz2file=0.98=py_0
+  - ca-certificates=2020.4.5.1=hecc5488_0
+  - catalogue=1.0.0=py_0
+  - category_encoders=1.2.6=py_0
+  - certifi=2020.4.5.1=py37hc8dfbb8_0
+  - cffi=1.13.2=py37hb32ad35_0
+  - chardet=3.0.4=py37_1003
+  - click=7.0=py_0
+  - cryptography=2.8=py37hb32ad35_1
+  - cycler=0.10.0=py_2
+  - cymem=2.0.3=py37h6538335_0
+  - cython-blis=0.4.1=py37hfa6e2cd_0
+  - docutils=0.15.2=py37_0
+  - flask=1.1.2=pyh9f0ad1d_0
+  - freetype=2.10.0=h563cfd7_1
+  - gast=0.2.2=py_0
+  - gensim=3.8.1=py37h6538335_1
+  - google-pasta=0.1.8=py_0
+  - grpcio=1.23.0=py37h3db2c7e_0
+  - h5py=2.9.0=nompi_h3cb27cb_1101
+  - hdf5=1.10.4=nompi_hcc15c50_1106
+  - idna=2.9=py_1
+  - importlib_metadata=1.5.0=py37_0
+  - itsdangerous=1.1.0=py_0
+  - jinja2=2.11.1=py_0
+  - jmespath=0.9.4=py_0
+  - joblib=0.14.1=py_0
+  - jpeg=9c=hfa6e2cd_1001
+  - jsonschema=3.2.0=py37_0
+  - keras-applications=1.0.8=py_1
+  - keras-preprocessing=1.1.0=py_0
+  - kiwisolver=1.1.0=py37he980bc4_0
+  - libblas=3.8.0=15_mkl
+  - libcblas=3.8.0=15_mkl
+  - libgpuarray=0.7.6=hfa6e2cd_1003
+  - liblapack=3.8.0=15_mkl
+  - libpng=1.6.37=h7602738_0
+  - libprotobuf=3.11.4=h1a1b453_0
+  - libtiff=4.0.9=h36446d0_1002
+  - mako=1.1.0=py_0
+  - markdown=3.2.1=py_0
+  - markupsafe=1.1.1=py37hfa6e2cd_0
+  - matplotlib-base=3.1.3=py37h2981e6d_0
+  - murmurhash=1.0.0=py37h6538335_0
+  - ninja=1.10.0=h1ad3211_0
+  - nltk=3.4.4=py_0
+  - numpy=1.18.1=py37hc71023c_0
+  - olefile=0.46=py_0
+  - openssl=1.1.1f=hfa6e2cd_0
+  - opt_einsum=3.1.0=py_0
+  - pandas=1.0.1=py37he350917_0
+  - patsy=0.5.1=py_0
+  - pillow=6.1.0=py37h9a613e6_0
+  - pip=20.0.2=py_2
+  - plac=0.9.6=py_1
+  - preshed=3.0.2=py37h6538335_1
+  - protobuf=3.11.4=py37he025d50_0
+  - pycparser=2.19=py_2
+  - pygpu=0.7.6=py37hc8d92b1_1000
+  - pyopenssl=19.1.0=py_1
+  - pyparsing=2.4.6=py_0
+  - pyreadline=2.1=py37_1001
+  - pyrsistent=0.15.6=py37hfa6e2cd_0
+  - pysocks=1.7.1=py37_0
+  - python=3.7.3=h510b542_1
+  - python-dateutil=2.8.1=py_0
+  - python_abi=3.7=1_cp37m
+  - pytz=2019.3=py_0
+  - pyyaml=5.3=py37hfa6e2cd_0
+  - regex=2020.2.20=py37hfa6e2cd_0
+  - requests=2.23.0=py37_0
+  - s3transfer=0.3.3=py37_0
+  - sacremoses=0.0.38=py_0
+  - scikit-learn=0.22.1=py37h7208079_1
+  - seaborn=0.10.0=py_1
+  - setuptools=45.2.0=py37_0
+  - six=1.14.0=py37_0
+  - smart_open=1.9.0=py_0
+  - spacy=2.2.3=py37he980bc4_0
+  - sqlite=3.30.1=hfa6e2cd_0
+  - srsly=1.0.0=py37h6538335_0
+  - statsmodels=0.11.1=py37hfa6e2cd_0
+  - tensorboard=1.15.0=py37_0
+  - tensorflow-hub=0.7.0=pyhe1b5a44_0
+  - termcolor=1.1.0=py_2
+  - theano=1.0.4=py37h6538335_1001
+  - thinc=7.3.0=py37he980bc4_0
+  - tk=8.6.10=hfa6e2cd_0
+  - tornado=6.0.3=py37hfa6e2cd_4
+  - tqdm=4.43.0=py_0
+  - urllib3=1.25.7=py37_0
+  - wasabi=0.6.0=py_0
+  - werkzeug=0.16.1=py_0
+  - wheel=0.34.2=py_1
+  - win_inet_pton=1.1.0=py37_0
+  - wincertstore=0.2=py37_1003
+  - wordcloud=1.6.0=py37hfa6e2cd_0
+  - wrapt=1.12.0=py37hfa6e2cd_0
+  - yaml=0.2.2=hfa6e2cd_1
+  - zipp=3.0.0=py_0
+  - zlib=1.2.11=h2fa13f4_1004
+  - m2w64-gcc-libgfortran=5.3.0=6
+  - m2w64-gcc-libs=5.3.0=7
+  - m2w64-gcc-libs-core=5.3.0=7
+  - m2w64-gmp=6.1.0=2
+  - m2w64-libwinpthread-git=5.0.0.4634.697f757=2
+  - msys2-conda-epoch=20160418=1
+  - pytorch=1.2.0=py3.7_cuda100_cudnn7_1
+  - torchvision=0.4.0=py37_cu100
+  - blas=1.0=mkl
+  - _tflow_select=2.2.0=eigen
+  - cudatoolkit=10.0.130=0
+  - icc_rt=2019.0.0=h0cc432a_1
+  - intel-openmp=2020.0=166
+  - mkl=2020.0=166
+  - scipy=1.2.1=py37h29ff71c_0
+  - tensorflow=1.15.0=eigen_py37h9f89a44_0
+  - tensorflow-base=1.15.0=eigen_py37h07d2309_0
+  - tensorflow-estimator=1.15.1=pyh2649769_0
+  - vc=14.1=h0510ff6_4
+  - vs2015_runtime=14.16.27012=hf0eaf9b_1
+  - vs2015_win-64=14.0.25420=h55c1224_11
+prefix: F:\Softwares\Anaconda3\envs\kag1
+
+</code></pre>
+<p>\</p>
 
             <hr>
           </div>
@@ -215,7 +318,10 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/CS224n">CS224n</a>
+                  <a class="hover-with-bg" href="/categories/kaggle">kaggle</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/toxic">toxic</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -224,7 +330,7 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
+                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
                 
               </span>
             
@@ -374,7 +480,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "CS224n/10 - 机翻2，注意力模型&nbsp;",
+        "kaggle/toxic/env_yml_kag1_本机&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

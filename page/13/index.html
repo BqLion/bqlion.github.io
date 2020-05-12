@@ -136,6 +136,325 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
+        <p class="h4 index-header">CS229/2.正规方程</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">CS229—正规方程1.定义
+​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
+
+正规方程求解参数矩阵的公式:
+
+2.正规方程法和梯度下降法的对比
+
+梯度下降的特点
+
+要设置学习率α
+多次迭代
+工作地非常均衡
+适合特征变量很多的时候用
+要求参数归一化
+
+
+正规方程法
+
+不用设置学习率
+不用迭代
+需要计算
+适合特征变量不超过1000时用
+不要求参数归一化,如下图
+
+
+
+有些较复杂问题不能使用正规方程法,只能使用梯度下降
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/4.%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
+        <p class="h4 index-header">CS229/4.逻辑回归</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4.逻辑回归(logistics regression)1.逻辑回归模型
+分类问题输出一个结果”正确”或者”错误”
+
+逻辑回归模型:
+
+
+
+
+当hθ(x) 在区间[0.5,1]时,预测是”正确”,越贴近1越确信
+当hθ(x) 在区间[0,0.5)时,预测是”错误”,越贴近0越确信
+
+2.逻辑回归的代价函数
+
+简单点一句话讲:
+答案是1,你预测了1,无误差
+答案是1,你预测的数字离0越近误差就越大,完全是0误差就是无限大(不可能情况)
+答案是0的情况与答案是1的情况同理
+
+
+
+3.对逻辑回归的代价函数使用梯度下降算法,以得到最优参数/最优解
+4.高级优化
+一些建议
+
+不需要写代码实现代价函数的迭代
+
+从技术来讲,其实我们不需要自己手动写程序来计算刚才提到的梯度下降算法的代价函数以及其迭代过程,就像我们不需要自己手动写求平方根和创建数组一样,这些问题早都有非常成熟的库来调用
+
+
+更高级的算法
+
+除了梯度下降算法,还有共轭梯度法 BFGS (变尺度法) 和L-BFGS (限制变尺度法)这种更高级算法可调用
+吴恩达本人已经使用如上提到的算法很多年了,也才是最近才搞清楚他们的内部实现细节
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">逻辑回归</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/9%20-%20RNN,LSTM,GRU/">
+        <p class="h4 index-header">CS224n/9 - RNN,LSTM,GRU</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture9 - 高级RNN,LSTM,GRU,机翻本节继续讲循环神经网络以及LSTM和GRU这两个本课程最重要的深度学习模型，几乎你能看到的所有深度学习论文都是以这两个模型为基础。
+1.使用RNN的机器翻译模型
+编码器和解码器如图所示，目标函数就是最小化交叉熵。
+2.GRU模型GRU模型的主要思想是，我们希望能够保存一些记忆，能够捕获一些较长的依赖，需要有一个模型去学习何时以及如何去做，同时还得允许错误消息流转。基于输入，这些流转会向不同的方向以不同的强度传递。
+对GRU的介绍从标准的RNN开始
+循环神经网络RNN基本上直接计算下一步的隐层，同样的，之前的隐状态会回归给向量，我们不是去计算GRU数值，而是先要计算其中各个门，这些门和h(t)一样，就是一些连续的隐状态长度一致的向量。这些门包括更新门和重置门。
+计算更新门时主要是基于当前输入的词向量和隐藏状态
+
+计算重置门方法类似但是使用的是不同的权重
+
+通过一个直观例子来认识重置门的作用：
+
+详细分析上图的公式和重置门的作用：假如这是一个语义的情感分析任务，前边都是对一个电影长篇累牍的剧情讨论，最后一句话是it`s a reall</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/1.%E7%BB%AA%E8%AE%BA/">
+        <p class="h4 index-header">CS229/1.绪论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">CS229–绪论,梯度下降算法1.监督学习和无监督学习
+监督学习定义
+部分数据集已经有答案.比如房价信息集,知道了正确的房价,需要预测出更多的房价
+回归问题,预测连续值的输出(房价)
+聚类问题,预测离散值的输出(肿瘤是良性还是恶性?)
+
+
+
+
+无监督学习
+
+无监督学习没有答案,自动聚类:比如google搜索BP油井泄露,会把CNN,ABC,BBC新闻放一起
+
+
+
+2.线性回归算法
+监督学习的典型过程
+
+Training set –[喂食给]—&gt;Learning Algorithm –[生成]–&gt;hypothesis(假设函数)
+
+size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate price
+
+
+
+
+
+线性回归
+
+预测房价的假设函数:h(x) = θ0 + θ1x
+根据训练集生成一元一次方程,输入房间大小得到房价预测
+
+
+
+3.代价函数
+代价函数有利于弄清楚如何把最有可能的直线与我们的数据相拟合
+
+最小化代价函数就可得到最好的预测函数
+
+如何选择假设函数hypothesis “h(x) = θ0 + θ1x”</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/6%20-%20%E4%BE%9D%E5%AD%98%E5%88%86%E6%9E%90/">
+        <p class="h4 index-header">CS224n/6 - 依存分析</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture6 依存分析本节课综述
+
+这节课主要讲句法 + 语法 + 依存分析
+基于转移的依存关系分析语法
+神经网络内容
+TensorFlow + 实际的nlp内容例如构建神经依存关系分析器
+
+1.依存分析的概念和一个例子句子或句子的一部分有一种结构，人们可以用特定的方式将他们组合起来，我们可以从非常简单的并不构成句子的东西入手。
+
+一个冠词 + 名字 通常被语言学家称为名词短语
+
+
+
+有一些规则可以用来扩展他们：比如在冠词和名词之间加一个形容词
+the large cat
+a beautiful dog等
+
+你也可以在名词后边添加介词短语
+the large cat in a crate
+the barking dog on the table等
+
+
+传统上，语言学家和自然语言处理器想做的是描述人类语言结构，人们过去有两个关键工具来做到这点，一种是上下文无关文法的方法，这种方法经常被语言学家引用为短语结构文法。我们现在要做的就是写出这些上下文无关文法的规则。
+
+还有一种了解语言结构的不同角度，就是依存句法结构。它通过找到句子当中每一个词所依赖的部分来描述句子结构。如果一个词修饰另一</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS224n/7%20-%20Tensorflow/">
         <p class="h4 index-header">CS224n/7 - Tensorflow</p>
         
@@ -155,6 +474,53 @@ TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图�
 使用流式图作为深度学习框架主干的优点在于它允许你使用小而简单的操作建立复杂的模型，当我们这样做的时候，会使得梯度计算变得极其简单。
 此框架可以自动求导，而且图方法的每一个操作都是可以在其所在点被评估的一个函数。变量将成为输出其当前值的有状态节点。
 占位符是那些在执行期间才会接收值的节点，如果在你的网络中有依赖外部数据的一些输入，你并不想在建立图时依赖任何实际的值。</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/">
+        <p class="h4 index-header">CS224n/8 - RNN和语言模式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture8 RNN和语言模式本节讲简单的循环神经网络模型，这个模型家族是大多数人现在在实际训练环境中使用的。
+ 概览：
+1.传统的语言模型
+2.RNNs
+3.语言模型建模来驱动循环神经网络（RNN）
+4.重要的训练时的问题和技巧
+​    梯度消失问题
+​    梯度爆炸问题
+5.用于队列处理的RNN
+6.双向深度RNN
+1. 传统的语言模型和现在的词向量模型对比传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。
+如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。
+如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效</div>
         </div>
       </a>
 
@@ -261,16 +627,15 @@ softmax VS k个二元分类器：如果你在开发一个音乐分类的应用�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/5%20-%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD+%E9%A1%B9%E7%9B%AE%E5%BB%BA%E8%AE%AE/">
-        <p class="h4 index-header">CS224n/5 - 反向传播+项目建议</p>
+      <a href="/2020/02/24/CS224n/5%20-%20%E9%A1%B9%E7%9B%AE%E5%BB%BA%E8%AE%AE/">
+        <p class="h4 index-header">CS224n/5 - 项目建议</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture5 反向传播 + 项目建议1.一层神经网络过渡到多层神经网络
-2.反向传播为了解耦，反向传播的笔记已整合到cs229 - 7中。
-3.项目建议老师推荐的文章和会议
+          <div class="index-text mb-1">Lecture5 项目建议1.一层神经网络过渡到多层神经网络
+2.项目建议老师推荐的文章和会议
 
 1.定义你的任务：
 例如：summarization
@@ -287,253 +652,11 @@ softmax VS k个二元分类器：如果你在开发一个音乐分类的应用�
 
 那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。
 
-建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型</div>
-        </div>
-      </a>
+建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型。
 
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
+对于终极任务：summarization任务。
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/16%20-%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9C%A8NLP%E4%B8%AD%E7%9A%84%E9%99%90%E5%88%B6/">
-        <p class="h4 index-header">CS224n/16 - 深度学习在NLP中的限制</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture16 - 深度学习在NLP中的限制对于语言，如果你想要一个合适的语言系统，你可能需要一些对于输入的情感理解，在逻辑上推理某些事实，在数据库中检索一些事实，或者基于数据库中的逻辑原因，再做一些内存检索。还有一些时候，你需要对谈论的内容做一些奖励。在现实世界中这些过程是由很多不同的成分组成的。我们想要一个更好的理解语言的系统，理想情况下这个系统应该包括很多内容，以一种更科学的方式呈现。
-现在联合多任务学习仍然非常困难，迄今为止，人们谈论多任务学习时，他们假设有一个源任务和一个目标任务，他们希望神经网络在源任务的预训练可以加强另一个目标任务的表现。就我而言，理想的情况是让他们共同训练，而不是分开训练不同的解码器。例如不同语言中，不同的分类问题。理想情况下，我们只有一个很大的不同种类的数据集，我们想根据输入来预测，他们有完全一样的解码器，但是很多时候人们做多任务学习的时候他们只是共享低层的参数，共同训练他们，但是不能共享高层的参数。
-也就是说，在自然语言处理的过程中，我们通常只是共享了词向量，我们没有共享其他高层的比如LSTM层，这种层能解决更多的任务，其实计算机视觉在这方面有挺</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/2%20-%20%E8%AF%8D%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA/">
-        <p class="h4 index-header">CS224n/2 - 词向量表示</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture2 - 词向量表示（上）这节课我们将深入语言的底层，做一些向量和计算，这节课提到的数学是后边内容的基础。这节课将用很慢的速度来仔细讲解一些基础，以便大家可以使用神经网络来学习词语表征这样的简单任务。下周将会继续从基础开始讲解很多的数学。
-1.语言学和NLP对词语释义的不同做法语言学用如下词典释义来解释“meaning”这个词的意思
-
-the idea that is represented by a word,phrase,etc
-the idea that i person wants to express by using words,signs,etc
-the idea that is expressed in a work of writing,art,etc
-
-NLP用多用分类资源处理词义。
-比较著名的分类资源是WordNet，它提供很多词汇相关的分类信息。
-如下图左侧，用一段代码演示nltk如何抓取wordnet中”panda“这个词的分类信息，panda是一种肉食动物，一种有胎盘的哺乳动物，再往上上溯可抽象为动物，物体，物理实体等等。
-如下图右侧，抓取“go</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/14%20-%20%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/">
-        <p class="h4 index-header">CS224n/14 - 问答系统</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture14 - 问答系统1.实现问答系统的联合模型：动态记忆网络
-从下边开始看，输入都是词向量，比如word2vec或者glove之类。基本会有一个循环的神经序列模型，比如GRU,他为每个输入单词计算一个隐藏层。
-在右下角的问题模块中也有处理问题的GRU,用于计算输入的问题的向量。
-以右下角输入的问题为例，“足球在哪里？”我们会认为足球被提及的事实的这个问题储存在上一次GRU隐藏层的某个地方，我们称之为Q，我们使用Q从本质引发所有潜在输入的注意力机制，每当有一个特定的句子被强烈关注，我们将把这个句子作为另一个GRU的输入，那就是情节记忆模块。基本上只要有上图蓝色的线存在，那基本就是一种循环的神经网络序列模型。所以基本上，一个问题促发一个注意力机制。遍历所有输入的所有隐藏层，现在基本上说这个事实似乎与这个问题有关。基本上说，一个问题引发一个注意力机制，然后遍历所有输入的所有隐藏层，也就是说在输入模块，我们认为最后一次提到“足球”肯定和现在问的问题是相关的，于是GRU的隐藏层捕捉到了这一点，然后经过上边的记忆模块中的GRU（fliter）过滤，现在只聚合与当前问题相关的句子。 图上</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/15%20-%20NLP%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E5%8F%AF%E8%83%BD%E6%80%A7%E6%9E%B6%E6%9E%84/">
-        <p class="h4 index-header">CS224n/15 - NLP的问题和可能性架构</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture15 - NLP的问题和可能性架构1.NLP问题视觉研究以前在深度学习中占主导地位，但是三巨头Yann LeCun,Geoff Hinton,Yoshua Bengio都把他们的研究方向转向NLP(也就是说深度学习三巨头的研究方向有风向标的意义)
-Bengio在采访中表示，实验论证深度学习技术应用与新应用的可能性，这些新应用包括了计算机视觉，对话系统，虚拟助手，语音识别，NLP,机器翻译以及其他应用。
-这世界上有太多不同的语言现象和相对应的任务要完成，所以解决NLP问题不能像解决计算机视觉那样，某个人构建出一个足够复杂的深度神经网络就vans了.NLP问题们并不同源，不能说解决了其中一个，就可以宣布全部解决。
-在传统NLP问题中丢失了的东西：
-将现在和过去对比是一件很有趣的事情，在70和80年代的那批从事NLP研究的人员里，他们有着非常崇高的目标，他们想要达到人类级别的语言理解能力，但是他们最终达到的是非常骨感的现实。
-不论上述对比的结果如何，我们现在所处的环境，我们能比他们当时更好地实现目标，但是，达到目标的途径却开始变得不那么明朗。作为实践，我们可以在这个语料数据上运</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/13%20-%20%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-        <p class="h4 index-header">CS224n/13 - 卷积神经网络</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture13 - 卷积神经网络递归神经网络非常棒棒，其效率通常是其他模型的几倍，但他的问题是，它不能分离地捕获短语，它只能捕获上下文中左侧的短语，比如我在句子里只想表达my birth,循环网路将始终从左往右，所以my birth上边的向量不会只捕获my birth还会把前边的the country of  也包含进来。有些时候你有简单的分类问题，但你实际上可能只是确定在整个文章当中是否存在某个单词或者短语，并试图证明在这个文档中存在这个短语。
-
-即使你的RNN是双向的，仍然会有这个问题，因为从右往左，中间的词汇也可能丢失。
-当然LSTM在这方面做的很好，他有遗忘门可以参与process，有时候可以选择不打开遗忘门，保持一些东西在周围，在你看到某些事情的时候保持一些特定单元的打开，但是lstm要求很多模型才能平稳运行。lstm也很难在不同的时间步中保持关系的稳定性。
-所以上述问题就是卷积神经网络想要解决的问题，main idea是捕获左侧的上下文以代替在每个时间步计算单个向量的表示。我们可以为句中的每一个单词计算一个短语向量， 比如这句短语the  country of my b</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/12%20-%20%E8%AF%AD%E9%9F%B3%E5%A4%84%E7%90%86%E7%9A%84%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%A8%A1%E5%9E%8B/">
-        <p class="h4 index-header">CS224n/12 - 语音处理的端到端模型</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture12 - 语音处理的端到端模型
-介绍传统的语音识别系统
-引出语音识别的端到端模型，并给出描述（CTC,LAS）
-端到端模型的改进版
-语言模型如何影响语音识别的
-语音识别模型中的解码工作的改进
-
-1.传统语音识别系统自动语音识别的基本定义是把语音信号自动转换为文字呈现，语音识别系统的经典实现方法是使用生成模型（generate model），后来被简单的神经网络模型取代。
-如下图最右，你从语言模型（n-gram）中生成了一个由单词组成的特定序列。然后到右二，每个单词都有一个读音模型，也就是每个单词都有自己的指定发音方法（音标），读音模型可以将文本序列转换为读音token序列，然后将这些模型传递给给右三声学模型（acoustic models），声学模型基本上给出一个token听起来是什么样，一般由高斯混合模型来构建，然后这个声学模型会输出一组一组的声音features，一般这些features是由信号处理专家定义的，就像是被捕捉到的声音的评率成分的特征一样（又被称为频谱图或者钟形滤波器组频图）。
-
-如下图，应用神经网络，同架构，performance提升较大
-
-2.端到端模</div>
+一开始你可能尝试一些非常简</div>
         </div>
       </a>
 

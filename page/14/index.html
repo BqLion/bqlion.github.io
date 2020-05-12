@@ -136,6 +136,252 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/16%20-%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9C%A8NLP%E4%B8%AD%E7%9A%84%E9%99%90%E5%88%B6/">
+        <p class="h4 index-header">CS224n/16 - 深度学习在NLP中的限制</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture16 - 深度学习在NLP中的限制对于语言，如果你想要一个合适的语言系统，你可能需要一些对于输入的情感理解，在逻辑上推理某些事实，在数据库中检索一些事实，或者基于数据库中的逻辑原因，再做一些内存检索。还有一些时候，你需要对谈论的内容做一些奖励。在现实世界中这些过程是由很多不同的成分组成的。我们想要一个更好的理解语言的系统，理想情况下这个系统应该包括很多内容，以一种更科学的方式呈现。
+现在联合多任务学习仍然非常困难，迄今为止，人们谈论多任务学习时，他们假设有一个源任务和一个目标任务，他们希望神经网络在源任务的预训练可以加强另一个目标任务的表现。就我而言，理想的情况是让他们共同训练，而不是分开训练不同的解码器。例如不同语言中，不同的分类问题。理想情况下，我们只有一个很大的不同种类的数据集，我们想根据输入来预测，他们有完全一样的解码器，但是很多时候人们做多任务学习的时候他们只是共享低层的参数，共同训练他们，但是不能共享高层的参数。
+也就是说，在自然语言处理的过程中，我们通常只是共享了词向量，我们没有共享其他高层的比如LSTM层，这种层能解决更多的任务，其实计算机视觉在这方面有挺</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/2%20-%20%E8%AF%8D%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA/">
+        <p class="h4 index-header">CS224n/2 - 词向量表示</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture2 - 词向量表示（上）这节课我们将深入语言的底层，做一些向量和计算，这节课提到的数学是后边内容的基础。这节课将用很慢的速度来仔细讲解一些基础，以便大家可以使用神经网络来学习词语表征这样的简单任务。下周将会继续从基础开始讲解很多的数学。
+1.语言学和NLP对词语释义的不同做法语言学用如下词典释义来解释“meaning”这个词的意思
+
+the idea that is represented by a word,phrase,etc
+the idea that i person wants to express by using words,signs,etc
+the idea that is expressed in a work of writing,art,etc
+
+NLP用多用分类资源处理词义。
+比较著名的分类资源是WordNet，它提供很多词汇相关的分类信息。
+如下图左侧，用一段代码演示nltk如何抓取wordnet中”panda“这个词的分类信息，panda是一种肉食动物，一种有胎盘的哺乳动物，再往上上溯可抽象为动物，物体，物理实体等等。
+如下图右侧，抓取“go</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/13%20-%20%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+        <p class="h4 index-header">CS224n/13 - 卷积神经网络</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture13 - 卷积神经网络递归神经网络非常棒棒，其效率通常是其他模型的几倍，但他的问题是，它不能分离地捕获短语，它只能捕获上下文中左侧的短语，比如我在句子里只想表达my birth,循环网路将始终从左往右，所以my birth上边的向量不会只捕获my birth还会把前边的the country of  也包含进来。有些时候你有简单的分类问题，但你实际上可能只是确定在整个文章当中是否存在某个单词或者短语，并试图证明在这个文档中存在这个短语。
+
+即使你的RNN是双向的，仍然会有这个问题，因为从右往左，中间的词汇也可能丢失。
+当然LSTM在这方面做的很好，他有遗忘门可以参与process，有时候可以选择不打开遗忘门，保持一些东西在周围，在你看到某些事情的时候保持一些特定单元的打开，但是lstm要求很多模型才能平稳运行。lstm也很难在不同的时间步中保持关系的稳定性。
+所以上述问题就是卷积神经网络想要解决的问题，main idea是捕获左侧的上下文以代替在每个时间步计算单个向量的表示。我们可以为句中的每一个单词计算一个短语向量， 比如这句短语the  country of my b</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/14%20-%20%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/">
+        <p class="h4 index-header">CS224n/14 - 问答系统</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture14 - 问答系统1.实现问答系统的联合模型：动态记忆网络
+从下边开始看，输入都是词向量，比如word2vec或者glove之类。基本会有一个循环的神经序列模型，比如GRU,他为每个输入单词计算一个隐藏层。
+在右下角的问题模块中也有处理问题的GRU,用于计算输入的问题的向量。
+以右下角输入的问题为例，“足球在哪里？”我们会认为足球被提及的事实的这个问题储存在上一次GRU隐藏层的某个地方，我们称之为Q，我们使用Q从本质引发所有潜在输入的注意力机制，每当有一个特定的句子被强烈关注，我们将把这个句子作为另一个GRU的输入，那就是情节记忆模块。基本上只要有上图蓝色的线存在，那基本就是一种循环的神经网络序列模型。所以基本上，一个问题促发一个注意力机制。遍历所有输入的所有隐藏层，现在基本上说这个事实似乎与这个问题有关。基本上说，一个问题引发一个注意力机制，然后遍历所有输入的所有隐藏层，也就是说在输入模块，我们认为最后一次提到“足球”肯定和现在问的问题是相关的，于是GRU的隐藏层捕捉到了这一点，然后经过上边的记忆模块中的GRU（fliter）过滤，现在只聚合与当前问题相关的句子。 图上</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/15%20-%20NLP%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E5%8F%AF%E8%83%BD%E6%80%A7%E6%9E%B6%E6%9E%84/">
+        <p class="h4 index-header">CS224n/15 - NLP的问题和可能性架构</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture15 - NLP的问题和可能性架构1.NLP问题视觉研究以前在深度学习中占主导地位，但是三巨头Yann LeCun,Geoff Hinton,Yoshua Bengio都把他们的研究方向转向NLP(也就是说深度学习三巨头的研究方向有风向标的意义)
+Bengio在采访中表示，实验论证深度学习技术应用与新应用的可能性，这些新应用包括了计算机视觉，对话系统，虚拟助手，语音识别，NLP,机器翻译以及其他应用。
+这世界上有太多不同的语言现象和相对应的任务要完成，所以解决NLP问题不能像解决计算机视觉那样，某个人构建出一个足够复杂的深度神经网络就vans了.NLP问题们并不同源，不能说解决了其中一个，就可以宣布全部解决。
+在传统NLP问题中丢失了的东西：
+将现在和过去对比是一件很有趣的事情，在70和80年代的那批从事NLP研究的人员里，他们有着非常崇高的目标，他们想要达到人类级别的语言理解能力，但是他们最终达到的是非常骨感的现实。
+不论上述对比的结果如何，我们现在所处的环境，我们能比他们当时更好地实现目标，但是，达到目标的途径却开始变得不那么明朗。作为实践，我们可以在这个语料数据上运</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/12%20-%20%E8%AF%AD%E9%9F%B3%E5%A4%84%E7%90%86%E7%9A%84%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%A8%A1%E5%9E%8B/">
+        <p class="h4 index-header">CS224n/12 - 语音处理的端到端模型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture12 - 语音处理的端到端模型
+介绍传统的语音识别系统
+引出语音识别的端到端模型，并给出描述（CTC,LAS）
+端到端模型的改进版
+语言模型如何影响语音识别的
+语音识别模型中的解码工作的改进
+
+1.传统语音识别系统自动语音识别的基本定义是把语音信号自动转换为文字呈现，语音识别系统的经典实现方法是使用生成模型（generate model），后来被简单的神经网络模型取代。
+如下图最右，你从语言模型（n-gram）中生成了一个由单词组成的特定序列。然后到右二，每个单词都有一个读音模型，也就是每个单词都有自己的指定发音方法（音标），读音模型可以将文本序列转换为读音token序列，然后将这些模型传递给给右三声学模型（acoustic models），声学模型基本上给出一个token听起来是什么样，一般由高斯混合模型来构建，然后这个声学模型会输出一组一组的声音features，一般这些features是由信号处理专家定义的，就像是被捕捉到的声音的评率成分的特征一样（又被称为频谱图或者钟形滤波器组频图）。
+
+如下图，应用神经网络，同架构，performance提升较大
+
+2.端到端模</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS224n/11%20-%20GRU2,NMT/">
         <p class="h4 index-header">CS224n/11 - GRU2,NMT</p>
         
@@ -180,21 +426,17 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/10%20-%20%E6%9C%BA%E7%BF%BB2%EF%BC%8C%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A8%A1%E5%9E%8B/">
-        <p class="h4 index-header">CS224n/10 - 机翻2，注意力模型</p>
+      <a href="/2020/02/24/CS224n/10%20-%20%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/">
+        <p class="h4 index-header">CS224n/10 - 注意力机制</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture10 - 机翻2，注意力模型神经网络机翻通常是指，构造一个大型神经网络，我们可以在上边以端到端的方式对这个网络进行训练和优化。如下图所示，我们使用一个大型神经网络，他接受输入文本并将其编码为神经网络内部传递的向量，然后通过解码器解码，输出是文本。
-
-早期机翻模型如下，结构相对简单，由认知学家和心理学家们设计
-
-
-这些模型的设计应该遵循一定的规则，特别是昨天学的LSTM内部的各种门和电路设计感觉是同一种思路，找到这门系统设计的学科并从头到尾过一遍，
-神经网络曾经是一个非常沉寂的边缘细分学科，以前都是心理学家和认知科学家们在这里耕耘，直到算力和网络技术发展成熟，大量CS科学家和资本入场，这里才变得热闹起来。做科研也需要赶时髦，因为如果当下一个科研方向很热门，说明在这个历史时期科学正在往这个方向发展。本身科学家做研究就需要互相引用他人的成果，使用他们的公式和仪器，站在巨人肩膀上做事，scientist,as a part of science,必须顺应时代的潮流，甚至要能预判时代的走向打一个提前量，这样对自己的职业发展最有利，也对推动世界进步最有利。
-深度学习这一块提升性能最突</div>
+          <div class="index-text mb-1">Lecture10 - Attention注意力机制什么是attention？CV举例，如下图所示，要预测的对象是黄框 - 狗子的左耳朵，那么对人类来说，预测重要的信息就是红框中的狗子的右耳朵和狗眼睛还有狗鼻子，这些东西可以判断出这是一只狗子，通过右耳朵和眼睛可以对左耳朵进行定位。attention机制模仿人类的认知框架，着重注意红框中的有用信息，忽略例如背景等不重要的信息。
+NLP举例，如下图，对词和词之间的关系，分配不同的注意力等级。green修饰apple，eat和apple只见也构成谓宾关系，于是他们都被分类了强注意力，而eat 和 green没有只见关系，于是只被分配了弱注意力。
+进一步讲，注意力机制其实就是表示重要性的权重向量，比如上图识别狗子特征，发现嘴巴和鼻子这一块特别重要，于是就提高了权重值全部设置为1，可以全部采集，而其他不重要的地方比如背景之类就设置为0或者很小的数字，这样就降低了采集的强度。为了预测图像中的元素或者句子中的单词，我们使用注意力权重来估计其他元素与其相关的强度。并将注意力权重加权的值的总和作为最终预测的目标的一个特征。
+attention计算步骤：</div>
         </div>
       </a>
 
