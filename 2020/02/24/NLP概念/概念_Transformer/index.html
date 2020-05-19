@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    3.2k 字
+                    3.1k 字
                   </span>&nbsp;
                 
 
@@ -167,13 +167,12 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1042_20_724.png" alt=""></p>
-<p>宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_UNNZMFirMr.png" alt=""></p>
-<p>拆开这个黑箱，发现里边是由编码和解码组件构成。</p>
+            <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p>总览图：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1042_20_724.png" alt=""></p>
+<p>Transformer由编码器和解码器构成，如下：</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_ESVLKlPHhd.png" alt=""></p>
-<p>编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。</p>
-<h3 id="1-编码器详解"><a href="#1-编码器详解" class="headerlink" title="1.编码器详解"></a>1.<strong>编码器详解</strong></h3><p>像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。</p>
+<h3 id="1-编码器详解"><a href="#1-编码器详解" class="headerlink" title="1.编码器详解"></a>1.<strong>编码器详解</strong></h3><p>编码器有两层（前馈神经网络层，自注意力层）。</p>
+<p>像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_hkMoMASPhK.png" alt=""></p>
 <p>词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_WK2a3xSATp.png" alt=""></p>
@@ -228,7 +227,7 @@
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_7G0MyFlmao.png" alt=""></p>
 <p>编码器和解码器的子层均是这样，一个二层编码-解码结构的Transformer，看起来如下图所示。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_32nAP7wlCy.png" alt=""></p>
-<p><strong>解码组件</strong></p>
+<h3 id="解码组件"><a href="#解码组件" class="headerlink" title="解码组件"></a><strong>解码组件</strong></h3><p>解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。</p>
 <p>编码器通过处理输入序列开始工作，顶端编码器的输出会转变为一个包含K向量（Key向量）的V（Value）向量的注意力向量集。这些向量将被每个解码器用于自身的“编码-解码注意力层”，而这些层可以帮助解码器关注输入序列那些位置更加合适。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_5pXw7V2lMP.png" alt=""></p>
 <p>在解码阶段，解码的每个步骤都会输出一个输出序列的元素，本例子是英语翻译的句子。接下来的步骤中重复了这个过程，知道达到一个特殊的终止符号，他表示transformer的解码器已经完成了他的输出。每个步骤的输出在下一个时间步被提供给底端解码器。</p>

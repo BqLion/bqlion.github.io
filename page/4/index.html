@@ -136,6 +136,297 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/25/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_CNN%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+        <p class="h4 index-header">NLP概念/概念_CNN卷积神经网络</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">CNN卷积神经网络卷积神经网络擅长处理网格结构的数据。
+顾名思义，卷积神经网络是利用了数学上的卷积操作的神经网络。和之前的前馈神经网络比起来，卷积神经网络不过是将其中的某几层的矩阵乘法运算替换为卷积运算。其他的比如最大似然法则、反向传播算法等都不变。
+什么是卷积运算回顾一下矩阵乘法C = AB的表示：
+
+卷积的定义：
+
+其中I是输入矩阵，K是kernels核矩阵，S就是输出的特征图，m和m是K矩阵的大小
+如下图，卷积就是kernel核矩阵扫过输入矩阵产生输出矩阵的过程。
+
+
+卷积神经网络的两大优势卷积神经网络擅长处理网格结构的数据，比如一维的时间序列，二维的图像像素，三维的医学CT图。之所以擅长是因为卷积神经网络的两个优势：
+
+稀疏连接
+传统的神经网络主要操作是矩阵乘法，每个输入输出元之间都需要一个独立的参数表示，这也代表着两层之间每个输出元和输入元都有连接。于是就需要很大的存储空间来存储这些参数。对于CNN来说，核矩阵的大小远小于输入的大小，对于图像数据来说，输入通常有成千上万的数据，但是检测图像中边edge的结构的核矩阵可能只有数十最多数百个像素。这极大的减小了存储所需空间和计算量</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/13/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_gensim/">
+        <p class="h4 index-header">NLP概念/概念_gensim</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Gensimword2vec
+word2vec的使用就是gensim中models/word2vec.py文件里的word2vec类中，共有如下24个参数。
+
+
+
+参数名称
+默认值
+用途
+
+
+
+sentences
+None
+训练的语料，一个可迭代对象。对于从磁盘加载的大型语料最好用gensim.models.word2vec.BrownCorpus，gensim.models.word2vec.Text8Corpus ，gensim.models.word2vec.LineSentence 去生成sentences
+
+
+size
+100
+生成词向量的维度
+
+
+alpha
+0.025
+初始学习率
+
+
+window
+5
+句子中当前和预测单词之间的最大距离，取词窗口大小
+
+
+min_count
+5
+文档中总频率低于此值的单词忽略
+
+
+max_vocab_size
+None
+构建词汇表最大数，词汇大于这个数按照频率排序，去除频率低的词汇
+
+
+sample
+1.00E-03
+高频词进行随机下采样的阈值，范围是(0, 1e-5)
+
+
+seed
+1
+向量初始化的随机数种子
+
+
+workers
+3
+几</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/gensim">gensim</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/10/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_numpy_seed/">
+        <p class="h4 index-header">NLP概念/概念_numpy_seed</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Numpynp.random.seed()函数np.random.seed()函数用于生成指定的随机数，seed ()被设定后可以按照顺序产生一组固定的数组，如果使用相同的seed（）值，每次产生的随机数都相同。如果不设置这个值，则每次产生的随机数都
+np.random.seed()函数这个seed（）函数可以说是随机数的编号。比如seed（1） 产生的数组是[1,2,3,4,2,2,1]，那么以后调用seed（1）出来的数组都是[1,2,3,4,2,2,1].
+不使用seed（）就得不到相同的随机数：
+import numpy as np
+np.random.seed(1)
+
+L1 = np.random.randn(3, 3)
+L2 = np.random.randn(3, 3)
+print(L1)
+print(L2)
+out：
+[[ 1.62434536 -0.61175641 -0.52817175]
+ [-1.07296862  0.86540763 -2.3015387 ]
+ [ 1.74481176 -0.7612069   0.3190391 ]]
+
+[[-0.2493</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_Pandas_apply_series/">
+        <p class="h4 index-header">NLP概念/概念_Pandas_apply_series</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Pandas_SeriesSeries数据包括：一列数据和一列index组成。和字典非常相似
+创建空的series
+import numpy as np
+import pandas as pd
+S1 = pd.Series()
+S1    
+Series([],dtype:float64)
+指定value和index的值
+S2=pd.Series([1,3,5,7,9],index=[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;])
+S2
+a    1
+b    3
+c    5
+d    7
+e    9
+dtype: int64
+S2.values
+array([1, 3, 5, 7, 9])
+S2.index
+Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&#39;object&#39;)
+Pandas处理series的方法:map,apply数据由如下代码模拟生成
+boolean=[True,F</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Pandas">Pandas</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/07/Python/Lamada%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <p class="h4 index-header">Python/Lamada表达式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Python中lamada函数的概念lamada函数就是个匿名函数，即定义即用，省去了起名字等等环节，使用方便快捷。
+不用lamada函数的例子
+def f(x):
+return x**2
+print f(4)
+使用lamada函数的例子：
+g = lambda x : x**2
+print g(4)
+lamada用例
+# lamada语句中，冒号前是参数，可以有多个，用逗号隔开。冒号后是返回值，lamada语句构建的其实是一个函数对象
+
+&gt;&gt;&gt; foo = [2, 18, 9, 22, 17, 24, 8, 12, 27]
+&gt;&gt;&gt; print filter(lambda x: x % 3 == 0, foo)
+[18, 9, 24, 12, 27]
+&gt;&gt;&gt; print map(lambda x: x * 2 + 10, foo)
+[14, 46, 28, 54, 44, 58, 26, 34, 64]
+&gt;&gt;&gt; print reduce(lambda x, y: x + y, foo)
+139
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/python">python</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Lamada">Lamada</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/05/kaggle/Google_QA/Google_QA_%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%83%A8%E5%88%86/">
         <p class="h4 index-header">kaggle/Google_QA/Google_QA_数据处理部分</p>
         
@@ -329,266 +620,11 @@ from torch.autogra</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_Transformer/">
-        <p class="h4 index-header">NLP概念/概念_Transformer</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Transformer
-宏观视角讲，这个模型是一个黑箱操作，在机器翻译中，就是输入一种语言输出一种语言。如下图示。
-
-拆开这个黑箱，发现里边是由编码和解码组件构成。
-
-编码器有两层（前馈神经网络层，自注意力层），解码器有三层（前馈神经网络，解码-编码注意力层，自注意力层）。
-1.编码器详解像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
-
-词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
-
-开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
-2.自注意力机制详解(其实就是维持了一个关于句子本身的二维数组)宏观角度看，比如翻译一个句子，“The animal didn`t cross the street because it was too tired”，it指代什么？对于人类来</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_BERT/">
-        <p class="h4 index-header">NLP概念/概念_BERT</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Bert 概念1.全景介绍BERT是一种深度学习模型，他是Transformer的双向编码器表示，在维基百科和Books Corpus上预训练过，运用于特定任务时只需要微调即可。
-他的效果很好，在很多NLP任务中都有最近进展，包括问答系统（Squad）和自然语言推理（MNLI）任务。
-BERT改变了NLP的格局。跑一个在大量未标记数据集上训练的模型，在11个单独的NLP任务中仅仅通过不同的微调，就可以分别得到11个最新的结果，这种表现只有BERT可以做到。
-BERT还启发了TransformerXL,GPT-2,XLNet,ERNIE2.0,RoBERTa等等。
-2.什么是BERT?1.基本上是堆叠在一起的一堆Transformer encoders，注意仅仅是Transformer encoders不是整个Transformer架构。双向性的概念十分重要，是BERT和其前身OpenAL GPT的关键区别，BERT是双向的因为他在自我注意层的两个方向上都执行自我注意。
-2.要注意的是BERT在维基百科（25亿词）和Books Corpus（8亿词）上的预训练非常重要，因为模型在一个大的</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/kaggle/Google_QA/Google_QA_%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2/">
-        <p class="h4 index-header">kaggle/Google_QA/Google_QA_数据探索</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.基本概念1.本比赛数据截屏如下
-
-
-1.question_id
-1
-
-
-
-2.question_title
-What am I losing when using extension tubes in…
-
-
-3.question_body
-After playing around with macro photography on…
-
-
-4.question_username
-ysap
-
-
-5.question_user_page
-https://photo.stackexchange.com/users/1024
-
-
-6.answer
-I just got extension tubes, so here’s the skin…
-
-
-7.answer_user_name
-rfusca
-
-
-8.answer_user_page
-https://photo.stackexchange.com/users/1917
-
-
-9.url
-http://photo.stackexchange.com/questions/9169/…
-
-
-10.category
-LIFE_ARTS
-
-
-11.q</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          
-            <a href="/categories/GoogleQA">GoogleQA</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
-        <p class="h4 index-header">杂谈/王威廉对博士生的要求</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Hiring PhD students
-Q: What’s your research interest? 
-A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/phd%E7%94%B3%E8%AF%B7">phd申请</a>&nbsp;
-          
-            <a href="/tags/UCSB">UCSB</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E9%98%BF-%E7%94%B3%E8%AF%B7phd%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">杂谈/王阿-申请phd思路</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">我是如何申请到phd的转载自知乎–王阿的阿
-谢谢你们。
-在这篇经验贴里，我会告诉你我当时申请时面临的处境、我的决策过程，以及申请当中各个环节最精华的经验和技巧，我都毫无保留地贡献在这里了。
-读完这篇文章，除了我介绍的各种申请技巧以外，我希望能让你认识到申请过程中决策和心态的重要意义：
-
-想成功申请美国的PhD，除了自己软硬件要出色，还有很重要的一点是对自己的定位，包括认识到自己的目标、兴趣以及自己的长处和缺陷。不论你是申请哪个学科的PhD，请重点关注我做决策时的思考内容和思考方向，这也许会对你有所启发。
-心理韧性、抗打击能力也是申请成功的一个重要因素。如果你知道GradCafe这个北美grad school申请论坛，你会发现上面有很多人诉说自己第二次、第三次才申请成功的经历。我就是其中一员。
-
-我的故事是这样婶儿的……
-2017一整年是我这辈子最难熬的一年，这一年我第一次（也只申请了这一次）申请美国的临床心理学PhD（clinical psychology），申了13所学校。2017年的头四个月陆续收到13封拒信，无一录取，甚至连一个面试都没有。当时的我：
-
-已经在纽约市生活了三年；
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
-          
-            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

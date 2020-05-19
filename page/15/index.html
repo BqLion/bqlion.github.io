@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E8%AF%8D%E5%90%91%E9%87%8F_Word2vec/">
+        <p class="h4 index-header">NLP概念/概念_词向量_Word2vec</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture2 - 词向量表示（上）这节课深入语言的底层，做一些向量和计算，这节课提到的数学是后边内容的基础。这节课将用很慢的速度来仔细讲解一些基础，以便大家可以使用神经网络来学习词语表征这样的简单任务。
+1.语言学和NLP对词语释义的不同做法语言学用如下词典释义来解释“meaning”这个词的意思
+
+the idea that is represented by a word,phrase,etc
+the idea that i person wants to express by using words,signs,etc
+the idea that is expressed in a work of writing,art,etc
+
+NLP同义词描述词汇
+如下图左侧，用一段代码演示nltk如何抓取wordnet中”panda“这个词的分类信息，panda是一种肉食动物，一种有胎盘的哺乳动物，再往上上溯可抽象为动物，物体，物理实体等等。
+如下图右侧，抓取“good“的同义词，这里显示的就是wordnet的答案。
+
+同义词描述词汇本义毕竟是离散的方法，会有如下的问题：
+
+同义词的描</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/13%20-%20%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+        <p class="h4 index-header">CS224n/13 - 卷积神经网络</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1"></div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/14%20-%20%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/">
+        <p class="h4 index-header">CS224n/14 - 问答系统</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture14 - 问答系统1.实现问答系统的联合模型：动态记忆网络
+从下边开始看，输入都是词向量，比如word2vec或者glove之类。基本会有一个循环的神经序列模型，比如GRU,他为每个输入单词计算一个隐藏层。
+在右下角的问题模块中也有处理问题的GRU,用于计算输入的问题的向量。
+以右下角输入的问题为例，“足球在哪里？”我们会认为足球被提及的事实的这个问题储存在上一次GRU隐藏层的某个地方，我们称之为Q，我们使用Q从本质引发所有潜在输入的注意力机制，每当有一个特定的句子被强烈关注，我们将把这个句子作为另一个GRU的输入，那就是情节记忆模块。基本上只要有上图蓝色的线存在，那基本就是一种循环的神经网络序列模型。所以基本上，一个问题促发一个注意力机制。遍历所有输入的所有隐藏层，现在基本上说这个事实似乎与这个问题有关。基本上说，一个问题引发一个注意力机制，然后遍历所有输入的所有隐藏层，也就是说在输入模块，我们认为最后一次提到“足球”肯定和现在问的问题是相关的，于是GRU的隐藏层捕捉到了这一点，然后经过上边的记忆模块中的GRU（fliter）过滤，现在只聚合与当前问题相关的句子。 图上</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/15%20-%20NLP%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E5%8F%AF%E8%83%BD%E6%80%A7%E6%9E%B6%E6%9E%84/">
+        <p class="h4 index-header">CS224n/15 - NLP的问题和可能性架构</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture15 - NLP的问题和可能性架构1.NLP问题视觉研究以前在深度学习中占主导地位，但是三巨头Yann LeCun,Geoff Hinton,Yoshua Bengio都把他们的研究方向转向NLP(也就是说深度学习三巨头的研究方向有风向标的意义)
+Bengio在采访中表示，实验论证深度学习技术应用与新应用的可能性，这些新应用包括了计算机视觉，对话系统，虚拟助手，语音识别，NLP,机器翻译以及其他应用。
+这世界上有太多不同的语言现象和相对应的任务要完成，所以解决NLP问题不能像解决计算机视觉那样，某个人构建出一个足够复杂的深度神经网络就vans了.NLP问题们并不同源，不能说解决了其中一个，就可以宣布全部解决。
+在传统NLP问题中丢失了的东西：
+将现在和过去对比是一件很有趣的事情，在70和80年代的那批从事NLP研究的人员里，他们有着非常崇高的目标，他们想要达到人类级别的语言理解能力，但是他们最终达到的是非常骨感的现实。
+不论上述对比的结果如何，我们现在所处的环境，我们能比他们当时更好地实现目标，但是，达到目标的途径却开始变得不那么明朗。作为实践，我们可以在这个语料数据上运</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/12%20-%20%E8%AF%AD%E9%9F%B3%E5%A4%84%E7%90%86%E7%9A%84%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%A8%A1%E5%9E%8B/">
+        <p class="h4 index-header">CS224n/12 - 语音处理的端到端模型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture12 - 语音处理的端到端模型
+介绍传统的语音识别系统
+引出语音识别的端到端模型，并给出描述（CTC,LAS）
+端到端模型的改进版
+语言模型如何影响语音识别的
+语音识别模型中的解码工作的改进
+
+1.传统语音识别系统自动语音识别的基本定义是把语音信号自动转换为文字呈现，语音识别系统的经典实现方法是使用生成模型（generate model），后来被简单的神经网络模型取代。
+如下图最右，你从语言模型（n-gram）中生成了一个由单词组成的特定序列。然后到右二，每个单词都有一个读音模型，也就是每个单词都有自己的指定发音方法（音标），读音模型可以将文本序列转换为读音token序列，然后将这些模型传递给给右三声学模型（acoustic models），声学模型基本上给出一个token听起来是什么样，一般由高斯混合模型来构建，然后这个声学模型会输出一组一组的声音features，一般这些features是由信号处理专家定义的，就像是被捕捉到的声音的评率成分的特征一样（又被称为频谱图或者钟形滤波器组频图）。
+
+如下图，应用神经网络，同架构，performance提升较大
+
+2.端到端模</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/11%20-%20GRU2,NMT/">
+        <p class="h4 index-header">CS224n/11 - GRU2,NMT</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture11 - GRU,NMT这部分集中讲如何使用循环模型和和seq2seq架构。
+1.对RNN的补充阐述RNN到底在做什么？
+在时间t时有一些随着时间变化的东西（图的左边开始端），然后到了时间t+n的时候它发生了变化（图的右边结束端）。我们要研究的就是在时间t时看到的东西是如何影响到t+n时刻的。我们要测量比如现在看到的单词是如何影响到接下里的6个或者8个单词的。
+
+我们要如何实现RNN？我们要做的是，在基本RNN的每个时间点，我们已经获得了一些隐藏的状态，我们用矩阵去乘他们，然后我们增加一些东西去处理输入，然后我们进入下一个时间，我们将隐藏状态再次乘以相同的矩阵，然后多次重复这个过程就会遇到梯度消失的问题。
+
+这个问题其实是由如下的朴素的transition函数导致的。
+
+门控制单元GRU的阐述
+在朴素的翻译函数中，我们在序列中执行矩阵乘法，我们每一步乘以一个矩阵U，这样代表着我们正在学习这其中对我们的决策会起到多大的影响。我们通过在整个序列的中间节点做反向传播，这也就是说，整个GRU单元的思路中，我们希望能够获得更多直接的证据证明前期步骤对后续步骤有影响，但是不用做长序列</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/1%20-%20%E5%AF%BC%E8%AE%BA/">
+        <p class="h4 index-header">CS224n/1 - 导论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture1-导论1.本课程研究对象NLP是计算机科学和语言学的交叉学科。
+语言是人类特有的属性，人类通过语言思考、交流、行动。
+nlp要解决的核心问题是让计算机了解人类语言，然后完成有意义的任务（知识图谱，语义识别等）
+nlp的步骤
+
+
+预处理：首先speech和text都会被拆分
+构词法分析：Morphological analysis，拆开ing和ex等前缀后缀，还原不同时态的词根。
+句子结构分析：Syntactic analysis，比如主语是我，宾语是你，谓语是艹。
+语义解释：Semantic interpretation，得出句子的含义。仅知道每个单词的含义是不够的，许多单词在一块构成了上下文，许多含义是依靠上下文传递的。这就引出了语用学和语篇处理等研究领域。
+
+cs224n这门课主要讨论句子结构分析和语义解释
+2.人类语言的特殊之处做信号处理，数据挖掘之类的事情时人类往往只用视觉系统识别数据，然后处理数据。
+但几乎所有的人类语言都是某人想要传递某个信息，他为此构建了一条信息，并试图传递给另一个人。语言有明确的指向性。
+人类的语言系统是一套离散的符号分类信号系统，如下图</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion/">
+        <p class="h4 index-header">NLP概念/概念_注意力机制Attenion</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Attention注意力机制什么是attention？根据数据对当前任务的重要性维持的权重数组。
+CV举例，如下图所示，要预测的对象是黄框 - 狗子的左耳朵，那么对人类来说，预测重要的信息就是红框中的狗子的右耳朵和狗眼睛还有狗鼻子，这些东西可以判断出这是一只狗子，通过右耳朵和眼睛可以对左耳朵进行定位。attention机制模仿人类的认知框架，着重注意红框中的有用信息，忽略例如背景等不重要的信息。
+NLP举例，如下图，对词和词之间的关系，分配不同的注意力等级。green修饰apple，eat和apple只见也构成谓宾关系，于是他们都被分类了强注意力，而eat和green没有只见关系，于是只被分配了弱注意力(数组中的权重值低)。
+进一步讲，注意力机制其实就是表示重要性的权重向量，比如上图识别狗子特征，发现嘴巴和鼻子这一块特别重要，于是就提高了权重值全部设置为1，可以全部采集，而其他不重要的地方比如背景之类就设置为0或者很小的数字，这样就降低了采集的强度。为了预测图像中的元素或者句子中的单词，我们使用注意力权重来估计其他元素与其相关的强度。并将注意力权重加权的值的总和作为最终预测的目标的一个</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6">注意力机制</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/14/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "暗影疾行&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

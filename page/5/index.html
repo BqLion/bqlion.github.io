@@ -136,6 +136,381 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_Transformer/">
+        <p class="h4 index-header">NLP概念/概念_Transformer</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Transformer总览图：
+
+Transformer由编码器和解码器构成，如下：
+
+1.编码器详解编码器有两层（前馈神经网络层，自注意力层）。
+像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
+
+词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
+
+开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
+2.自注意力机制详解(其实就是维持了一个关于句子本身的二维数组)宏观角度看，比如翻译一个句子，“The animal didn`t cross the street because it was too tired”，it指代什么？对于人类来说，指代的是animal不是street，很容易但是对于计算机来说这就是一个复杂的问题。
+当模型处理“it”这个单词的时候，自注意力机制会允许</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_BERT/">
+        <p class="h4 index-header">NLP概念/概念_BERT</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Bert 概念1.全景介绍BERT是一种深度学习模型，他是Transformer的双向编码器表示，在维基百科和Books Corpus上预训练过，运用于特定任务时只需要微调即可。
+他的效果很好，在很多NLP任务中都有最近进展，包括问答系统（Squad）和自然语言推理（MNLI）任务。
+BERT改变了NLP的格局。跑一个在大量未标记数据集上训练的模型，在11个单独的NLP任务中仅仅通过不同的微调，就可以分别得到11个最新的结果，这种表现只有BERT可以做到。
+BERT还启发了TransformerXL,GPT-2,XLNet,ERNIE2.0,RoBERTa等等。
+2.什么是BERT?1.基本上是堆叠在一起的一堆Transformer encoders，注意仅仅是Transformer encoders不是整个Transformer架构。双向性的概念十分重要，是BERT和其前身OpenAL GPT的关键区别，BERT是双向的因为他在自我注意层的两个方向上都执行自我注意。
+2.要注意的是BERT在维基百科（25亿词）和Books Corpus（8亿词）上的预训练非常重要，因为模型在一个大的</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/kaggle/Google_QA/Google_QA_%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2/">
+        <p class="h4 index-header">kaggle/Google_QA/Google_QA_数据探索</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.基本概念1.本比赛数据截屏如下
+
+
+1.question_id
+1
+
+
+
+2.question_title
+What am I losing when using extension tubes in…
+
+
+3.question_body
+After playing around with macro photography on…
+
+
+4.question_username
+ysap
+
+
+5.question_user_page
+https://photo.stackexchange.com/users/1024
+
+
+6.answer
+I just got extension tubes, so here’s the skin…
+
+
+7.answer_user_name
+rfusca
+
+
+8.answer_user_page
+https://photo.stackexchange.com/users/1917
+
+
+9.url
+http://photo.stackexchange.com/questions/9169/…
+
+
+10.category
+LIFE_ARTS
+
+
+11.q</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kaggle">kaggle</a>&nbsp;
+          
+            <a href="/categories/GoogleQA">GoogleQA</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E6%A6%82%E5%BF%B5_%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5/">
+        <p class="h4 index-header">线性代数/概念_正交矩阵</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">正交矩阵如果一个矩阵乘以它自己的转置矩阵等于E（单位阵），则称为正交矩阵。
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E6%A6%82%E5%BF%B5_%E7%89%B9%E5%BE%81%E5%80%BC&%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/">
+        <p class="h4 index-header">线性代数/概念_特征值&amp;特征向量计算</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">特征值特 &amp; 特征向量省略理论部分，一个例子讲清：
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E6%A6%82%E5%BF%B5_%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
+        <p class="h4 index-header">线性代数/概念_奇异值分解</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">奇异值分解1.应用：影像压缩2.应用：过滤噪声
+左图是原始图片。右图是经过SVD分解处理的图片，丢失了一些精确度，但是呈现效果更好，很可能丢失的精确度恰好是噪声。
+具体做法是我们对15*25的矩阵做奇异值分解（SVD），然后得到如下15个特征值，其中前三个特征是比较重要，为了压缩数据和过滤噪声，我们只取前三个特征值，后边的全部丢弃。
+
+
+5.计算例子​    
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+            <a href="/tags/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3">奇异值分解</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E9%98%BF-%E7%94%B3%E8%AF%B7phd%E6%80%9D%E8%B7%AF/">
+        <p class="h4 index-header">杂谈/王阿-申请phd思路</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">我是如何申请到phd的转载自知乎–王阿的阿
+谢谢你们。
+在这篇经验贴里，我会告诉你我当时申请时面临的处境、我的决策过程，以及申请当中各个环节最精华的经验和技巧，我都毫无保留地贡献在这里了。
+读完这篇文章，除了我介绍的各种申请技巧以外，我希望能让你认识到申请过程中决策和心态的重要意义：
+
+想成功申请美国的PhD，除了自己软硬件要出色，还有很重要的一点是对自己的定位，包括认识到自己的目标、兴趣以及自己的长处和缺陷。不论你是申请哪个学科的PhD，请重点关注我做决策时的思考内容和思考方向，这也许会对你有所启发。
+心理韧性、抗打击能力也是申请成功的一个重要因素。如果你知道GradCafe这个北美grad school申请论坛，你会发现上面有很多人诉说自己第二次、第三次才申请成功的经历。我就是其中一员。
+
+我的故事是这样婶儿的……
+2017一整年是我这辈子最难熬的一年，这一年我第一次（也只申请了这一次）申请美国的临床心理学PhD（clinical psychology），申了13所学校。2017年的头四个月陆续收到13封拒信，无一录取，甚至连一个面试都没有。当时的我：
+
+已经在纽约市生活了三年；
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
+          
+            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
+        <p class="h4 index-header">杂谈/王威廉对博士生的要求</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Hiring PhD students
+Q: What’s your research interest? 
+A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/phd%E7%94%B3%E8%AF%B7">phd申请</a>&nbsp;
+          
+            <a href="/tags/UCSB">UCSB</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/">
         <p class="h4 index-header">杂谈/996 - 超时工作的异化问题</p>
         
@@ -218,473 +593,11 @@
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%8C%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%8C%E5%AD%97%E5%85%B8%E6%A0%91/">
-        <p class="h4 index-header">数据结构/网络流，最短路径，字典树</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.最短路径:迪杰斯特拉算法7.1释义迪杰斯特拉算法就是求一个顶点到其他所有顶点的最短路径
-需要维持两个数据集,一个最开始只有顶点,另一个最开始有除了顶点之外的所有点
-然后每次都把距离顶点最近的点放入前一个数据集,然后遍历一次顶点到和前一个数据集接触的点的最短路径,有更近的就更新一次
-
-
-8.网络流建模8.1几个概念
-原点:起点
-
-汇点:目标点
-
-流:从原点到汇点的一条路径
-
-流量:通过一条边的水的体积
-
-容量:每条管道允许通过的最大流量
-
-()实际流量:取决于流上最小的容量,最小流量是流的短板
-
-最小割:如下图,切断哪些管道后,源头的水就不能流向汇点了?
-
-最小割=最大流
-
-
-
-
-
-9.哈希表9.1什么是哈希表举例说明
-去商场停车,有三种策略
-
-随机停,然后找车的时候从头到尾顺序搜索,时间复杂度是O(N)
-所有车辆按照牌照顺序停,然后每次二分查找找车,时间复杂度是log(n)
-每个车都有一个与牌照对应的停车位,专车专位,时间复杂度是O(1)
-这种策略时间复杂度确实低,但是空间开销过大,每个车牌照都需要分配一个存储空间
-
-
-
-所以在时间复杂度和空间复杂度之间做个取舍，降低专车专位的空间</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">最小生成树</a>&nbsp;
-          
-            <a href="/tags/Kruskal">Kruskal</a>&nbsp;
-          
-            <a href="/tags/Prim">Prim</a>&nbsp;
-          
-            <a href="/tags/%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95">迪杰斯特拉算法</a>&nbsp;
-          
-            <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8">哈希表</a>&nbsp;
-          
-            <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91">字典树</a>&nbsp;
-          
-            <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91">后缀树</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/A%5B%E6%98%9F%E5%8F%B7%5D%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">数据结构/搜索/A[星号]寻路算法</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A*寻路算法算法要解决的问题：
-在有障碍的格子地图上已知终点和起点，横走代价小于斜走，求由始到终代价最小的路径。
-F = G + H 
-总代价  = 到起点的格子数 + 到终点的曼哈顿距离
-算法描述：
-
-初始节点即为当前节点，放入open列表
-
-初始节点从open列表移除，放入close列表
-
-
-
-当前格子周围八个格子用如下三选一方式处理:
-
-若在close列表中，忽略
-若不在open/close列表中，加入open列表，并将当前格子设为它的父节点
-若在open列表中，计算这个格子经过当前格子的F值，如果F值更小，更新之，并将当前格子设为它的新父节点。
-
-
-把当前格子从open列表拿入close列表；
-设置刚才加入open列表中F值最小的格子为当前格子。
-
-
-
-重复3.4.两步，知道找到终点，随后按照父节点顺序回溯，找到最优路径
-
-不需要更新F值的图示
-
-
-
-
-
-
-
-
-
-需要更新F值的图示
-
-
-小结：
-A*寻路算法需要对每个格子维持三个状态值：总代价，到起点的距离，到终点的距离。下一步如何选择由总代价值指导。通常比DFS和BFS更高效。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/categories/%E6%90%9C%E7%B4%A2">搜索</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/A*%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95">A*寻路算法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">数据结构/搜索/回溯算法</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">8.查找8.1回溯回溯算法也叫试探法，是一种系统地解决搜索问题的解的方法
-用回溯算法解决问题的一般步骤：
-1.针对问题，定义解空间，使得能用回溯法方便地搜索整个解空间
-2.确定易于搜索的解空间结构，使得能用回溯法方便地搜索整个空间结构
-3.以深度优先的方式搜索解空间，并且在搜索过程中使用剪枝函数避免无效搜索
-回溯法在解空间树里对结果进行深度优先遍历，如果发现本节点不属于解的范围，则退出，剪枝，然后递归地对子节点搜索
-经典问题是八皇后问题，见代码
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/categories/%E6%90%9C%E7%B4%A2">搜索</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E6%9F%A5%E6%89%BE">查找</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%90%9C%E7%B4%A2/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
-        <p class="h4 index-header">数据结构/搜索/贪心算法与最小生成树</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">贪心算法贪心算法是指，在对问题求解时，总是做出当前来看最好的选择，比较短视，不从总体上考虑最优解，每一步都在向局部最优解迈进（类似于梯度下降算法）
-贪心算法并不能总是得到最优解，关键是贪心策略的选择，选择贪心策略必须具备无后效性，即某个状态以前的过程只与当前状态有关，不会影响到以后的状态。
-引入找零问题尽可能用少的硬币和纸币加出一个指定金额总数。思路是从尽可能大的面额的货币开始处理，附上代码
-denom = [10000, 5000, 2000, 1000, 500, 200, 100, 50, 25, 10, 5, 1]
-owed = 9876
-payed = []
-for d in denom:
-    while owed &gt;= d:
-        owed -= d
-        payed.append(d)
-
-print(sum(payed))
-print(payed)
-输出如下结果
-9876
-[5000, 2000, 2000, 500, 200, 100, 50, 25, 1]
-引入背包问题背包问题可视为纸币找零问题的泛化版，背包问题是组合优化的NP完全问题，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/categories/%E6%90%9C%E7%B4%A2">搜索</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/Kruskal">Kruskal</a>&nbsp;
-          
-            <a href="/tags/Prim">Prim</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.2-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
-        <p class="h4 index-header">数据结构/排序/7.2-归并排序</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.2归并排序归并排序思路：
-1.将序列中待排序数字分为若干组，每个数字分为一组
-2.将若干组两两合并，保证合并后的组是有序的
-3.重复第二步，知道所有组都被处理完成
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/categories/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
-          
-            <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F">归并排序</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.3-%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/">
-        <p class="h4 index-header">数据结构/排序/7.3-计数排序</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.3计数排序适用范围：
-数据量很大但是取值范围很小
-适用案例：
-对某企业三万员工的年龄排序，快速取得高考成绩等
-桶排序的思想：
-以年龄排序为例子：
-假设年龄以0-60为区间
-创建一个新的数组，长度为61，遍历待排序数组，将出现的数字频率记录在以本数字为下标的计数数组中，
-
-然后按照计数数组记录的频率值输出数字就OK了
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/categories/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
-          
-            <a href="/tags/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F">计数排序</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/7.%E5%AD%97%E5%85%B8%E6%A0%91Trie/">
-        <p class="h4 index-header">数据结构/7.字典树Trie</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.字典树在实际的搜索引擎中，当我们在数据库中搜索一个关键字的时候，如何快速准确的进行定位是一个关键的问题，在面临大规模数据的时候，使用暴力的手段往往会造成检索和查找性能的低下，因此我们需要更加高效的数据结构。
-这时候我们引入一种新的数据结构：Trie树（字典树）。
-又称单词查找树，Trie树，是一种树形结构，是一种哈希树的变种。典型应用是用于统计，排序和保存大量的字符串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：利用字符串的公共前缀来减少查询时间，最大限度地减少无谓的字符串比较，查询效率比哈希树高。
-字典树每一个节点代表一个字符,有相同前缀的树就有相同的根节点,每个节点结束的时候用一个特殊的标记来表示(-1)
-
-从图中可以看出：
-1.每一个节点代表一个字符
-2.有相同前缀的单词在树中就有公共的前缀节点，由于一共有26个小写英文字母（在这篇文章中，我们主要讨论小写的英文字母查询），因此每个节点最多有26个子节点。
-3.整棵树的根节点是空的（这里我们设置根节点为root=0），这便于查找和插入，可以通过根节点快速的进入树结构，稍后就会明白。
-4.每个节点结束</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91">字典树</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/7.1-%E5%BF%AB%E6%8E%92/">
-        <p class="h4 index-header">数据结构/排序/7.1-快排</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.排序7.1快速排序快排是对冒泡排序的改进.
-基本思想:
-通过一趟排序将数据分割成独立的两部分,其中一部分的数据要小于另一部分
-然后用同样方法递归地对这两部分数据做快速排序,直到整个数据都变成有序序列.
-如下图所示
-7.1.左指针放最左,右指针放最右,Basic指针随机放
-7.2.左指针向右移动,遇见比basic大的停下来右指针向左移动,遇见比basic小的停下来左右指针指的对象交换位置
-
-7.3.交换位置后重复刚才步骤,直到左右指针相碰
-7.4.相碰后交换本对象和basic所指对象的位置
-7.5.于是将数据一分为二,可递归地操作剩下数据
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/categories/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
-          
-            <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">快速排序</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
