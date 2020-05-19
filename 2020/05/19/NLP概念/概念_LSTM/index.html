@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>CS224n/11 - GRU2,NMT ~ 刘秉乾的技术博客 :)</title>
+  <title>NLP概念/概念_LSTM ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 二月 24日 2020, 12:04 中午
+                  星期二, 五月 19日 2020, 1:56 下午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    4.3k 字
+                    4.6k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      14 分钟
+                      15 分钟
                   </span>&nbsp;
                 
 
@@ -167,19 +167,76 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Lecture11-GRU-NMT"><a href="#Lecture11-GRU-NMT" class="headerlink" title="Lecture11 - GRU,NMT"></a>Lecture11 - GRU,NMT</h1><p>这部分集中讲如何使用循环模型和和seq2seq架构。</p>
-<h3 id="1-对RNN的补充阐述"><a href="#1-对RNN的补充阐述" class="headerlink" title="1.对RNN的补充阐述"></a>1.对RNN的补充阐述</h3><p><strong>RNN到底在做什么？</strong></p>
-<p>在时间t时有一些随着时间变化的东西（图的左边开始端），然后到了时间t+n的时候它发生了变化（图的右边结束端）。我们要研究的就是在时间t时看到的东西是如何影响到t+n时刻的。我们要测量比如现在看到的单词是如何影响到接下里的6个或者8个单词的。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1415_39_199.png" alt=""></p>
-<p>我们要如何实现RNN？我们要做的是，在基本RNN的每个时间点，我们已经获得了一些隐藏的状态，我们用矩阵去乘他们，然后我们增加一些东西去处理输入，然后我们进入下一个时间，我们将隐藏状态再次乘以相同的矩阵，然后多次重复这个过程就会遇到梯度消失的问题。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1419_07_794.png" alt=""></p>
-<p>这个问题其实是由如下的朴素的transition函数导致的。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1421_20_904.png" alt=""></p>
-<p><strong>门控制单元GRU的阐述</strong></p>
-<p>在朴素的翻译函数中，我们在序列中执行矩阵乘法，我们每一步乘以一个矩阵U，这样代表着我们正在学习这其中对我们的决策会起到多大的影响。我们通过在整个序列的中间节点做反向传播，这也就是说，整个GRU单元的思路中，我们希望能够获得更多直接的证据证明前期步骤对后续步骤有影响，但是不用做长序列的矩阵乘法。我们同时希望能够在短距离链接中如下图下边的示意，能够有反向传播的跨度为2的反馈，这样我们就能学到这些长期的依赖关系。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1433_29_452.png" alt=""></p>
+            <h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><p>LSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。</p>
+<h4 id="朴素RNN与展开"><a href="#朴素RNN与展开" class="headerlink" title="朴素RNN与展开"></a><strong>朴素RNN</strong>与展开</h4><p>是一种处理序列数据的神经网络，某单词根据上下文变化而有不同含义这种任务就适合交给RNN来做。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1429_27_198.png" alt=""></p>
+<p>RNN在时序上展开</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1429_35_535.png" alt=""></p>
+<h4 id="LSTM与RNN结构对比"><a href="#LSTM与RNN结构对比" class="headerlink" title="LSTM与RNN结构对比"></a><strong>LSTM与RNN结构对比</strong></h4><p>长短期记忆（Long short-term memory, LSTM）是一种特殊的RNN，主要是为了解决长序列训练过程中的梯度消失和梯度爆炸问题。简单来说，就是相比普通的RNN，LSTM能够在更长的序列中有更好的表现。</p>
+<p>LSTM结构和普通RNN的对比图如下，LSTM有两个传输状态，分别是cell state <strong>ct</strong> 和 hidden state <strong>ht</strong>，一般ct改变的很慢，通常是上一个ct加上一些数值。不同的时序下ht改变很快。</p>
+<p>而RNN只有一个传输状态也就是<strong>ht</strong>，对应于LSTM中的ct。 </p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1453_46_649.png" alt=""></p>
+<h4 id="LSTM的一胞三门两终态"><a href="#LSTM的一胞三门两终态" class="headerlink" title="LSTM的一胞三门两终态"></a><strong>LSTM的一胞三门两终态</strong></h4><ul>
+<li><p><strong>输入门</strong>，基本上决定了关心当前向量的强度，或者说当前的cell或者当前输入的词能起多少作用</p>
+<p>公式：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1523_51_723.png" alt=""></p>
+<p>示意图：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1523_06_419.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>遗忘门</strong>，是一种分离机制，告诉cell有些时候需要忘记信息或者保留信息。这种情况看起来可能有一些不直观，通常定义遗忘门时0代表忘记过去。</p>
+<p>公式：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1527_37_613.png" alt=""></p>
+<p>示意图：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1528_00_542.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>输出门</strong>，用于分离那些与预测相关的内容和那些在该时点上需要保留在RNN中的内容。因此可以说，在当前时点上，这个特定的细胞单元并不重要，不过随后会变得很重要，比如现在不会输出最终的softmax但是还是希望保留这一信息，这就是另一个分离机制，会去学习何时输出。</p>
+<p>公式：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1528_52_937.png" alt=""></p>
+<p>示意图：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1529_07_262.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>新的记忆cell</strong>，跟GRU中的作用类似。在数学形式上和上</p>
+<p>公式：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1529_39_278.png" alt=""></p>
+<p>示意图：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1530_44_309.png" alt=""></p>
+</li>
+<li><p><strong>最终记忆cell</strong>，ct,分离了输入门和遗忘门。就是遗忘门乘以上一次的记忆细胞，加上输入门乘以新的记忆细胞。这里会再次决定，多大程度上希望保存或者忘记过去的内容。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1532_14_473.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>最终隐状态</strong>，如图是输出乘以<strong>tan(最终记忆cell）</strong></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1532_56_409.png" alt=""></p>
+</li>
+</ul>
+<pre><code class="python"># 遗忘门，输入门，输出门，以及新的记忆细胞都是单层神经网络。
+
+# 其中记忆细胞z是将结果通过tanh激活函数将数值映射在-1 到 1之间，使用tanh而不是sigmod是因为其职责是输入信号而非门控信号。
+
+# 其中输入门zi、遗忘门zf、输出门zo这三个门是由拼接向量乘以相应的权重矩阵后再通过一个sigmoid激活函数转换为0到1之间的数值。</code></pre>
+<h4 id="LSTM内部的三个阶段："><a href="#LSTM内部的三个阶段：" class="headerlink" title="LSTM内部的三个阶段："></a><strong>LSTM内部的三个阶段：</strong></h4><ol>
+<li><p>忘记阶段</p>
+<p>这个阶段主要是对上一个节点传进来的输入进行选择性忘记，具体操作是通过计算得到的zf来作为忘记门控来控制上一个c(t-1)哪些需要记哪些要忘。</p>
+</li>
+<li><p>选择记忆阶段</p>
+<p>对输入xt进行选择性记忆，重要的多记不重要少记。门控信号使用zi输入门控制。</p>
+<p>另一个输入内容是z。也是用zi信息门控制。</p>
+<p>上面两步得到的结果相加，即可得到传输给下一个状态的c0</p>
+</li>
+<li><p>输出阶段</p>
+<p>对选择记忆阶段输出的c0通过tanh函数放缩，然后输出门z0控制哪些会被作为当前的状态输出。</p>
+<p>与普通RNN类似，输出yt往往由最终状态ht得到。</p>
+</li>
+</ol>
 <p><strong>把门控制单元部署到LSTM上的解释</strong></p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1533_28_787.png" alt=""></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1439_41_349.png" alt=""></p>
 <p>解析上图第二行，标绿的<strong>神经网络的循环单元</strong>：<br>h(t)，循环单元，等于当前的向量输入与W矩阵相乘，加上之前的状态乘以U矩阵，然后再加上一个偏差b，然后将他们放进tan函数中去，这是标准的RNN迭代。我们像常规的RNN一样去更新迭代。</p>
 <p>解析上图第一行<strong>核心公式</strong>;<br>对于准确确定我们计算的函数，我们需要自适应学习需要用多少和哪些维度去更新candidate，以及我们需要截取并使用百分之多少我们之前时间段获得的内容也就是h(t-1)。我们允许使用距离远的过去时间段的内容，并且这个远距离内容并不是使用乘法进入当前时间点，而是相加进入，而核心公式的相加第二项也就是我们刚才说的在下一个时间点之前移动这个内容，我们直接从过去获取这个内容，影响现在并进一步影响决定。这是一种递增法，你可以一直这么处理，你正在决定哪些内容应该被关注，但是如果你一旦关注了他，效果会一直伴随，因为你正在添加更多的东西上去。</p>
 <p><strong>遗忘门</strong></p>
@@ -211,10 +268,7 @@
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1524_49_078.png" alt=""></p>
 <p>不仅门控会更新，候选值也会同时更新。当然候选值是使用tan函数来输出的，最后的值在-1到1之间。<br>sum up idea就是如果你正在做一个候选值的更新，你总是使用之前的隐藏状态层，和新的输入词在更新门中使用相同的方式。如果你已经在输入中检测到一个新的词汇，你应该存储进47到52维，然后你就应该忽略你过去在那里有的内容，还要一些情况你需要丢掉当前的隐藏层的就是用新的隐藏层取代它。这种取代就是重置门所要做的，重置门能观察之前的隐藏状态层在当前的重要性，并且让他选择一个0-1之间的值，如果重置门的选择的值接近0，必须扔掉之前的隐藏状态层，并且根据新的输入计算。</p>
 <p>这里有一个具体语言的类比。比如你正在记录东西，上次见过的词在47到52维之间，当你见到一个新的词，要做的正确的事情是丢掉之前47到52维的历史记录，并且根据新的计算输入更新值。但是上述操作并不是总适用。比如英语中有大量的助词词组，例如make up,make out之类的。比如你想计算出make out这个词的意思，当你先看见了make，并且把它放进了47到52维之间，如果47到52维之间真的存储了主要谓语make的意思，但是后边的out又出来了，你肯定不想丢掉make，因为这是一个词组。在这种情况下，你希望重置门能有一个接近1的值，希望即保留前边的词又import进新的词。</p>
-<p><strong>GRU不会遭受梯度消失的阐述</strong></p>
-<p>不会梯度消失的秘密在下图这个加号这里。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1525_59_925.png" alt=""></p>
-<h3 id="注意老师在这里也提到了门控单元对设计实用系统的重要性，电路设计-系统设计又是一个深坑"><a href="#注意老师在这里也提到了门控单元对设计实用系统的重要性，电路设计-系统设计又是一个深坑" class="headerlink" title="注意老师在这里也提到了门控单元对设计实用系统的重要性，电路设计/系统设计又是一个深坑"></a><strong>注意老师在这里也提到了门控单元对设计实用系统的重要性，电路设计/</strong>系统设计又是一个深坑</h3><h3 id="2-LSTM"><a href="#2-LSTM" class="headerlink" title="2.LSTM"></a>2.LSTM</h3><p>如图是LSTM和GRU的对比图。这里要注意LSTM引入了cell细胞的概念，可等价于GRU中的hidden layer。也就是C&lt;==&gt;L</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h4 id="LSTM和GRU的对比图"><a href="#LSTM和GRU的对比图" class="headerlink" title="LSTM和GRU的对比图"></a>LSTM和GRU的对比图</h4><p>这里要注意LSTM引入了cell细胞的概念，可等价于GRU中的hidden layer。也就是C&lt;==&gt;L</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1649_02_108.png" alt=""></p>
 <p>下图LSTM细胞更新公式是LSTM的核心，和GRU中的隐藏状态层更新公式有细微的差别，在LSTM中，有两个门，一个是遗忘门，一个是输入门，他们的值都在0到1之间，所以你可以保存任何之前和新计算的值，然后还能把他们加起来。这是在权衡保留多少值，这点是和GRU不一样的。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1649_57_914.png" alt=""></p>
@@ -226,7 +280,7 @@
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1656_34_491.png" alt=""></p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1656_42_614.png" alt=""></p>
 <p>GRU和LSTM还有个区别就是GRU有重置门的功能，在计算候选值的时候可能忽略部分过去的值，LSTM的做法稍微有些不同，LSTM在候选更新的时候总是使用当前输入，但是对于另一部分，不使用C(t-1)。而且在LSTM中也有ht，是通过ct推导过来的。形式和GRU略有不同。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1854_21_034.png" alt=""> </p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1445_05_063.png" alt=""> </p>
 <p>上图是LSTM的构造图，横着的三行是各种门，第四行是候选值更新，和RNN一样。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1859_02_952.png" alt=""></p>
 <p>上图紫色部分的加权加法是整个LSTM网络拥有长期记忆能力的秘诀。一种可能是你仅仅复制前一个时间步的内容，如果出现这种情况，梯度是1，就可以把误差反向传播回去，对于每个时间步长都可以持续这么做。所以把这个和前一个时间步加起来，而不是做矩阵乘法，这是让LSTM拥有了长短期记忆的核心思想。这被证实是一个非常强大的想法。这个思想在深度学习做计算机视觉的领域也应用地很好。这种思想也叫做残差网络，一般简写为ResNet，大概来说，大概来说，我们希望能够设计100层的深度神经网络，希望能够成功的训练他们，这里的加号和ResNet的第一次近似的思想完全相同。随着你不断向后层计算，我们会使用常规的神经网络层进行一些非线性运算，但是提供一种选择，你可以把前面层的输入移过来，并把他们相加起来，重复一次又一次直到100层。</p>
@@ -248,8 +302,13 @@
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1942_54_429.png" alt=""></p>
 </li>
 </ul>
-<p><strong>一些实践性的指导意见</strong></p>
-<ol>
+<h4 id="警惕可读性过差的信息"><a href="#警惕可读性过差的信息" class="headerlink" title="警惕可读性过差的信息"></a>警惕可读性过差的信息</h4><p>下图为LSTM原论文配图，严重缺少注释，结构表现不明显，放大缩小无度。和前文知乎作者的图片比起来表达力高下立判。</p>
+<p>其实所有的模型or概念只要表达得当都很容易理解。以后再遇到类似下图这种表达力实在呵呵的东西如<strong>高级数据结构/可读性巨差的数学公式时</strong>，要明确这都是已经提出了很久的模型或者固定知识，动作要敏捷，不要在一个具体的点上耗费太多精力，科学地、分层地去看，每一层不会有很多hardcore信息。</p>
+<p>某个点过于难顶一定是<strong>作者表达方法不行，或者结构设置不合理，或者自己极度缺乏基础知识</strong>。</p>
+<p>遇见这种难顶的点的时候一定注意时间和passion的消耗问题，路一直都明确地在脚下，失败是因为停止行路，停止的原因不就是passion消耗殆尽吗，认识难顶概念被卡住时passion消耗最快。这时必须高度警惕，迅速调整打法，通过阅读其他大牛的技术博客或其他靠谱信息源去理解它，横看成岭侧成峰，现成的概念一定有一个角度是非常好理解的！</p>
+<p>我们无法摆脱对前人后人工作的依赖和影响，单个科学家生命周期实在太短，人类科学是作为一个整体前进的。所以写代码的人有维持可读性的责任，论文、博客、图片同理。苏联式教育虽然能打下扎实基本功，但对可读性的追求不够讲究，这种结构性的缺陷要格外注意回避。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1703_05_453.png" alt=""></p>
+<h4 id="关于Gated-RNN的一些实践性的指导意见"><a href="#关于Gated-RNN的一些实践性的指导意见" class="headerlink" title="关于Gated RNN的一些实践性的指导意见"></a><strong>关于Gated RNN的一些实践性的指导意见</strong></h4><ol>
 <li><p>如果你要建立一个大的循环神经网络RNN，不管是GRU还是LSTM,初始化真的非常非常重要，如果你的RNN不能正常工作，很多时候是你的初始化做的不好。通常来讲把前一个cell的隐藏状态层乘起来对循环矩阵很有用，通常可以让他正交，这样就有了使用线性代数的机会。</p>
 </li>
 <li><p>RNN中其实没有多少参数，为了能让它们学习到一些有用的东西，提供一个正交的初始化被证实确实是一种更好的方式。有了这种想法，你就能够在RNN中一直做乘法，通常你的初始值非常小，不可以大，大了就会毁掉神经网络。</p>
@@ -264,15 +323,6 @@
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_2041_14_615.png" alt=""></p>
 </li>
 </ol>
-<h3 id="3-MT机器翻译的评价标准"><a href="#3-MT机器翻译的评价标准" class="headerlink" title="3.MT机器翻译的评价标准"></a>3.MT机器翻译的评价标准</h3><p>面对同一个句子，十个翻译有十种不同答案，有的偏重原语义，有的偏重转述。所以翻译没有标准答案，句法的选择也多，用机器学习的术语来描述就是翻译者可以做“优化”。</p>
-<p>谷歌发明了一种廉价的评价翻译效果的办法，called BLEU,他们的思想是生成参考翻译并且让机翻与之对照打分。通常，人工翻译和机器翻译对比时，n-gram的表现一般不错，也就是图中打下划线的词组们。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_2137_22_650.png" alt=""></p>
-<p>如果你构建的单词生成系统中有过多的单词（语言有很大的词汇表），所以从隐状态开始，我们乘以这个softmax参数矩阵，矩阵大小是词汇表的大小乘以隐状态的大小。然后在输进softmax函数压缩。这给了我们生成不同单词的可能性。但是如果词汇表太大，过多算力都会消耗在计算softmax上，这也会是一个问题。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_2357_43_477.png" alt=""></p>
-<p>一种解决办法是使用较小的词汇表，比如早起机翻系统里只有50000个单词，但是这样的话句子里有趣的词都不会出现在你的生成记结果里了，如下图</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_2359_15_079.png" alt=""></p>
-<p>还有一种降低计算负荷的方法是将词汇表划分为树片段，分到树的各个分支，这样我们也能做更少的计算量。当然一旦划分成树的分支就不能很好的使用GPU了。</p>
-<p>另一种思路是在训练和测试模型的时候都使用词汇表的“常用词子集”。毕竟总体上来说，有40%的词汇在一个自然语言的使用场景下，只会出现一次。我们在划分这个常用词子集的时候可以聪明一点，比如把关于篮球的文章放在一个文件里，把关于宠物的文章放在一个文件里等等。</p>
 
             <hr>
           </div>
@@ -283,7 +333,7 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/CS224n">CS224n</a>
+                  <a class="hover-with-bg" href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -292,7 +342,7 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
+                  <a class="hover-with-bg" href="/tags/LSTM">LSTM</a>
                 
               </span>
             
@@ -442,7 +492,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "CS224n/11 - GRU2,NMT&nbsp;",
+        "NLP概念/概念_LSTM&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

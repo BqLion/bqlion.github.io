@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>D3NER/LSTM ~ 刘秉乾的技术博客 :)</title>
+  <title>NLP概念/概念_GRU ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 二月 24日 2020, 12:04 中午
+                  星期二, 五月 19日 2020, 2:15 下午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    699 字
+                    866 字
                   </span>&nbsp;
                 
 
@@ -167,39 +167,32 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h3 id="LSTM-CRF"><a href="#LSTM-CRF" class="headerlink" title="LSTM+CRF"></a>LSTM+CRF</h3><p><strong>1、perspectively</strong></p>
-<p>LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。</p>
-<p>但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。</p>
-<p><strong>2、LSTM+CRF</strong></p>
-<p>既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? </p>
-<p>因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：</p>
-<blockquote>
-<p><strong>input</strong>: “学习出一个模型，然后再预测出一条指定”<br><strong>expected output</strong>: 学/B 习/E 出/S 一/B 个/E 模/B 型/E ，/S 然/B 后/E 再/E 预/B 测/E ……<br><strong>real output</strong>: 学/B 习/E 出/S 一/B 个/B 模/B 型/E ，/S 然/B 后/B 再/E 预/B 测/E ……</p>
-</blockquote>
-<p>用LSTM，整体的预测accuracy是不错,但是会出现上述的错误：在B之后再来一个B。这个错误在CRF中是不存在的，因为CRF的特征函数的存在就是为了对given序列观察学习各种特征（n-gram，窗口），这些特征就是在限定窗口size下的各种词之间的关系。然后一般都会学到这样的一条规律（特征）：B后面接E，不会出现E。这个限定特征会使得CRF的预测结果不出现上述例子的错误。当然了，CRF还能学到更多的限定特征，那越多越好啊！</p>
-<p>好了，那就把CRF接到LSTM上面，把LSTM在time<em>step上把每一个hidden</em>state的tensor输入给CRF，让LSTM负责在CRF的特征限定下，依照新的loss function，学习出一套新的非线性变换空间。</p>
-<p>3.LSTM定义</p>
-<ul>
-<li><p>从RNN说起</p>
-<ul>
-<li><p>循环神经网络RNN是一种处理序列数据的神经网络,相比一般的神经网络,他能处理序列变化的数据,比如某个单词的意思为因为上文提到的内容不同而有不同的含义,RNN能很好的解决这个问题</p>
-</li>
-<li><p>普通RNN模型</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1429_27_198.png" alt=""></p>
-</li>
-<li><p>序列化的输入,能得到如下形式的RNN</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1429_35_535.png" alt=""></p>
-</li>
-</ul>
-</li>
-<li><p>什么是LSTM</p>
-<p>长短期记忆（Long short-term memory, LSTM）是一种特殊的RNN，主要是为了解决长序列训练过程中的梯度消失和梯度爆炸问题。简单来说，就是相比普通的RNN，LSTM能够在更长的序列中有更好的表现。</p>
-</li>
-</ul>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1429_48_470.png" alt=""></p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1430_18_847.png" alt=""></p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1430_33_099.png" alt=""></p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1430_58_800.png" alt=""></p>
+            <h1 id="Gated-RNN-GRU"><a href="#Gated-RNN-GRU" class="headerlink" title="Gated RNN : GRU"></a>Gated RNN : GRU</h1><p>LSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。</p>
+<h4 id="GRU模型"><a href="#GRU模型" class="headerlink" title="GRU模型"></a>GRU模型</h4><p>GRU模型的主要思想是，我们希望能够保存一些记忆，能够捕获一些较长的依赖，需要有一个模型去学习何时以及如何去做，同时还得允许错误消息流转。基于输入，这些流转会向不同的方向以不同的强度传递。</p>
+<p><strong>对GRU的介绍从标准的RNN开始</strong></p>
+<p>循环神经网络RNN基本上直接计算下一步的隐层，同样的，之前的隐状态会回归给向量，我们不是去计算GRU数值，而是先要计算其中各个门，这些门和h(t)一样，就是一些连续的隐状态长度一致的向量。这些门包括更新门和重置门。</p>
+<p>计算更新门时主要是基于当前输入的词向量和隐藏状态</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1611_59_836.png" alt=""></p>
+<p>计算重置门方法类似但是使用的是不同的权重</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1612_26_600.png" alt=""></p>
+<p>通过一个直观例子来认识<strong>重置门</strong>的作用：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1614_04_663.png" alt=""></p>
+<p>详细分析上图的公式和重置门的作用：假如这是一个语义的情感分析任务，前边都是对一个电影长篇累牍的剧情讨论，最后一句话是it`s a really boring movie.那么其实只要最后这个boring就OK了，前边的都可以舍弃。所以这里重置门就可以置为0，把计算累计的东西都清理掉，只是记录词向量Xt而已。</p>
+<p>直观例子认识<strong>更新门</strong>的作用：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1621_08_398.png" alt=""></p>
+<p>因为重置门和更新门都是经过了西格玛函数，最终输出的结果在0到1之间。如上图的公式，如果更新门Zt是1，那么最终的记忆内容ht就是直接复制h(t-1)，反之就是抛弃h(t-1)，继承之前所有的。直观例子还是语义情感分析任务，你上来就说这个电影我太喜欢了，然后后文是一堆对他细节的讨论。这时只用设置更新门确保不要丢失第一句话就好了。</p>
+<p><strong>图示GRU模型</strong></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1636_02_643.png" alt=""></p>
+<p>更新门和重置门在内存步进更新时起的作用。</p>
+<p>电路设计视角;</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1639_28_543.png" alt=""></p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p><strong>门控制单元GRU的阐述</strong></p>
+<p>在朴素的翻译函数中，我们在序列中执行矩阵乘法，我们每一步乘以一个矩阵U，这样代表着我们正在学习这其中对我们的决策会起到多大的影响。我们通过在整个序列的中间节点做反向传播，这也就是说，整个GRU单元的思路中，我们希望能够获得更多直接的证据证明前期步骤对后续步骤有影响，但是不用做长序列的矩阵乘法。我们同时希望能够在短距离链接中如下图下边的示意，能够有反向传播的跨度为2的反馈，这样我们就能学到这些长期的依赖关系。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1433_29_452.png" alt=""></p>
+<p><strong>GRU不会遭受梯度消失的阐述</strong></p>
+<p>不会梯度消失的秘密在下图这个加号这里。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191211_1525_59_925.png" alt=""></p>
+<p>注意老师在这里也提到了门控单元对设计实用系统的重要性，电路设计系统设计又是一个深坑</p>
 
             <hr>
           </div>
@@ -210,7 +203,7 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/D3NER">D3NER</a>
+                  <a class="hover-with-bg" href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -219,11 +212,7 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/D3NER">D3NER</a>
-                
-                  <a class="hover-with-bg" href="/tags/LSTM">LSTM</a>
-                
-                  <a class="hover-with-bg" href="/tags/CRF">CRF</a>
+                  <a class="hover-with-bg" href="/tags/GRU">GRU</a>
                 
               </span>
             
@@ -373,7 +362,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "D3NER/LSTM&nbsp;",
+        "NLP概念/概念_GRU&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

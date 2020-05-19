@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    367 字
+                    880 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -177,7 +177,23 @@
 <h4 id="RNN基本结构图"><a href="#RNN基本结构图" class="headerlink" title="RNN基本结构图"></a>RNN基本结构图</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1145_18_442.png" alt=""></p>
 <p>如上，x是时时输入的序列，h是维持的状态，o是状态给出的输出，y是训练集中的答案，L是答案和输出之间的损失函数（如交叉熵）。</p>
 <p>因为上一个状态h(t-1)和下一个状态ht之间有循环连接，所以计算时要顺序计算而不能并行计算，所以训练过程比较缓慢。而且该模型需要输入与输出序列相同。</p>
-<h4 id="RNN-的-teacher-forcing变体"><a href="#RNN-的-teacher-forcing变体" class="headerlink" title="RNN 的 teacher forcing变体"></a>RNN 的 teacher forcing变体</h4>
+<h4 id="RNN-的-teacher-forcing变体"><a href="#RNN-的-teacher-forcing变体" class="headerlink" title="RNN 的 teacher forcing变体"></a>RNN 的 teacher forcing变体</h4><p>丧失一定的普适性，去掉h之间的循环连接，建立前一个时间点真实答案值y与当前h的连接。这样当前值就不用依赖于前一个h的状态计算结束。这样就可以使用并行计算。当然这样做y(t-1)并不能代表h(t-1)的信息，这也就是丧失普适性的原因。如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1337_11_840.png" alt=""></p>
+<h4 id="RNN的-encoder-decoder结构"><a href="#RNN的-encoder-decoder结构" class="headerlink" title="RNN的 encoder - decoder结构"></a>RNN的 encoder - decoder结构</h4><p>基本的RNN要求输入输出定长，但是实际应用比如语音识别和机翻，是做不到定长的，所以需要先用RNN将输入序列转换为一个向量（通常是最终态h（t）的一个函数）这个函数被称为encoder或者decoder。</p>
+<p>结合起来就是经典的encoder - decoder结构又称sequence2sequence结构。经过这两步就解决了不定长的问题。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1351_12_857.png" alt=""></p>
+<p>encoder和decoder的数学表示：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1418_35_164.png" alt=""></p>
+<p>损失函数：目标就是要最小化这个交叉熵</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200519_1419_00_647.png" alt=""></p>
+<h4 id="RNN的问题："><a href="#RNN的问题：" class="headerlink" title="RNN的问题："></a>RNN的问题：</h4><p>在时间t时有一些随着时间变化的东西（图的左边开始端），然后到了时间t+n的时候它发生了变化（图的右边结束端）。我们要研究的就是在时间t时看到的东西是如何影响到t+n时刻的。我们要测量比如现在看到的单词是如何影响到接下里的6个或者8个单词的。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1415_39_199.png" alt=""></p>
+<p>我们要如何实现RNN？我们要做的是，在基本RNN的每个时间点，我们已经获得了一些隐藏的状态，我们用矩阵去乘他们，然后我们增加一些东西去处理输入，然后我们进入下一个时间，我们将隐藏状态再次乘以相同的矩阵，然后多次重复这个过程就会遇到梯度消失的问题。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1419_07_794.png" alt=""></p>
+<p>这个问题其实是由如下的朴素的transition函数导致的。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1421_20_904.png" alt=""></p>
+<p>为解决RNN的梯度消失问题，后边引入了带gate的RNN，也就是LSTM和GRU，见专门的文章。</p>
+
             <hr>
           </div>
           <br>

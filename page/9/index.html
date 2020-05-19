@@ -136,22 +136,22 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/">
-        <p class="h4 index-header">NLP概念/概念_5_FSD状态传感器</p>
+      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">
+        <p class="h4 index-header">NLP概念/概念_6_HMM_马尔科夫模型</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">状态传感器FST概念状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。
-他是一种类似于字典树/自动机的数据结构。
-转自豆瓣-巴扎黑
-有限状态转移机在自然语言处理上的应用
-原文地址：
-http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/
-在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。
-首先，先来大概的了解一下有限状态机（FSM）
-有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of</div>
+          <div class="index-text mb-1">隐性马尔可夫模型(HMM):1. 什么样的问题需要HMM模型首先我们来看看什么样的问题可以用HMM模型。使用HMM模型时我们的问题一般有这两个特征：
+​    １）我们的问题是基于序列的，比如时间序列，或者状态序列。
+​    ２）我们的问题中有两类数据，一类序列数据是可以观测到的，即观测序列；而另一类数据是不能观察到        的，即隐藏状态序列，简称状态序列。（Hidden state）
+有了这两个特征，那么这个问题一般可以用HMM模型来尝试解决。这样的问题在实际生活中是很多的。比如：我现在在打字写博客，我在键盘上敲出来的一系列字符就是观测序列，而我实际想写的一段话就是隐藏序列，输入法的任务就是从敲入的一系列字符尽可能的猜测我要写的一段话，并把最可能的词语放在最前面让我选择，这就可以看做一个HMM模型了。再举一个，我在和你说话，我发出的一串连续的声音就是观测序列，而我实际要表达的一段话就是状态序列，你大脑的任务，就是从这一串连续的声音中判断出我最可能要表达的话的内容。
+2. HMM模型的定义
+
+Q是各个状态，图示的节点
+
+A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边</div>
         </div>
       </a>
 
@@ -170,7 +170,49 @@ http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-proc
           
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
-            <a href="/tags/%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8">状态传感器</a>&nbsp;
+            <a href="/tags/HMM">HMM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">NLP概念/概念_6_HMM_三个问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">HMM的三个核心问题的解本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。
+1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别有如下递进定义
+
+将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个网络
+若该网络是有向无环图，则称这个网络为贝叶斯网络
+如果这个图退化成线性链的方式，则得到马尔科夫模型，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是马尔科夫过程。
+若上述网络是无向的，则是无向图模型，又称马尔科夫随机场或者马尔科夫网络。
+若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。
+如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
+
+2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
@@ -226,6 +268,51 @@ http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-proc
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/">
+        <p class="h4 index-header">NLP概念/概念_5_FSD状态传感器</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">状态传感器FST概念状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。
+他是一种类似于字典树/自动机的数据结构。
+转自豆瓣-巴扎黑
+有限状态转移机在自然语言处理上的应用
+原文地址：
+http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/
+在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。
+首先，先来大概的了解一下有限状态机（FSM）
+有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
+          
+            <a href="/tags/%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8">状态传感器</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_5_FST%E7%8A%B6%E6%80%81%E6%9C%BA/">
         <p class="h4 index-header">NLP概念/概念_5_FST状态机</p>
         
@@ -264,6 +351,43 @@ Turing Machine 就是我们日常用各种算法写代码解决各种问题的�
             <a href="/tags/NLP%E6%A6%82%E5%BF%B5">NLP概念</a>&nbsp;
           
             <a href="/tags/%E7%8A%B6%E6%80%81%E6%9C%BA">状态机</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">Speech and language processing/总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
+自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -453,15 +577,25 @@ Sym</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/%E6%80%BB%E7%BB%93/">
-        <p class="h4 index-header">Speech and language processing/总结</p>
+      <a href="/2020/02/24/Speech%20and%20language%20processing/7%20-%20Phonetics/">
+        <p class="h4 index-header">Speech and language processing/7 - Phonetics</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
-自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
+          <div class="index-text mb-1">7.Phonetics(语音学) – 本章对研究帮助不大，跳过A speech recognition system needs to have a pronunciation for every word it can recognize,and a text-to-speech system needs to have a pronunciation for every word it can say.
+
+In this chapter,we introduces phonetic alphabets音标字母 for describing these pronunciations.
+
+Then we introduces two main areas of phonetics, articulatory phonetics发音语音学,and acoustic phonetics声学语音学。
+
+Also briefly touch on phonology音韵学
+
+
+7.1）Speech sounds and phonetic transciption
+音标表格如下：
+
 </div>
         </div>
       </a>
@@ -479,7 +613,7 @@ Sym</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/Phonetics">Phonetics</a>&nbsp;
           
         
       </div>
@@ -528,154 +662,6 @@ homograph disambiguation
             <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
           &nbsp;
         
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/7%20-%20Phonetics/">
-        <p class="h4 index-header">Speech and language processing/7 - Phonetics</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.Phonetics(语音学) – 本章对研究帮助不大，跳过A speech recognition system needs to have a pronunciation for every word it can recognize,and a text-to-speech system needs to have a pronunciation for every word it can say.
-
-In this chapter,we introduces phonetic alphabets音标字母 for describing these pronunciations.
-
-Then we introduces two main areas of phonetics, articulatory phonetics发音语音学,and acoustic phonetics声学语音学。
-
-Also briefly touch on phonology音韵学
-
-
-7.1）Speech sounds and phonetic transciption
-音标表格如下：
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Phonetics">Phonetics</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/6%20-%20HMM%20&%20HEMM/">
-        <p class="h4 index-header">Speech and language processing/6 - HMM &amp; HEMM</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">6.Hidden Markov and Maximum Entropy Models（HMM,MEMM）HMM and HEMM are both sequence classifiers.
-Sequence classifier or sequence labeler is a model whose job is to assign some label or class to each unit in a sequence.The FST we studied in Chapter 3 is a kind of non-probabilisitic sequence classifier.
-We have seen on important sequence classification task:POS tagging.
-This chapter is roughtly divided into 2 section:HMM , MEMM.
-6.1) Markov Chains - 马尔科夫链 - 详见概念6 - 马尔科夫链
-6.2)The Hidden Markov Model</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/Speech%20and%20language%20processing/5%20-%20Part-of-Speech%20Tagging/">
-        <p class="h4 index-header">Speech and language processing/5 - Part-of-Speech Tagging</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">5.Part-of-Speech TaggingIntroduce three algorithms:
-
-rule-based tagging
-HMM tagging
-transformation-based tagging
-
-词性标注是一项消歧任务，很多情况下词具有多于一个的意思，我们的工作是为这种情况找到正确的标签。
-5.2）Tagset for EnglishThere are 3 different tagset.
-
-45-tag Penn Treebank tagset
-61-tag C5 tagset
-87-tag tagset 
-
-
-Small Tagset:
-
-
-
-Middle Tagset
-
-
-
-Large Tagset
-
-
-
-5.3) Part-of-Speech TaggingSometimes,tagging can be difficult（unambiguous）,For example ,book is ambiguous.Book can be a noun as a read book,or be a verb, as booking a hotel.</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Speech%20and%20language%20processing">Speech and language processing</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
         
       </div>
     </div>

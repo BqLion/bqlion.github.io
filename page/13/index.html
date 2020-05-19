@@ -136,6 +136,61 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
+        <p class="h4 index-header">NLP概念/概念_极大似然估计</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">极大似然估计极大似然估计是确定机器学习模型的参数的一种办法。确定参数值的过程，是找到能最大化“模型产生真实观察数据可能性“的那一组参数，略抽象，如下是一个例子：
+从某过程观察了如下十个数据点，每个数据点代表了学生回答问题使用的秒数。
+
+这些数据的生成过程可以使用高斯分布（正态分布）进行充分描述。高斯分布有两个参数，西格玛和μ，如何确定参数？如下示意图表示了使用不同参数的不同高斯分布（方差大的中心函数更扁平）。
+注：蓝色曲线是正确曲线N(10,2.25)
+
+OK，如何反编译确定正确参数？我们把这个例子再次简化，同样的情境，这次只存在三个数据点：9,9.5,11
+如何使用最大似然估计确定这个高斯分布的参数？
+高斯分布中，单个数据点x的边缘概率如下
+
+同时观察到上边所提三个点（9,9.5,11）的联合概率是带入上边三个数据的连乘积：
+
+我们只要能找到最大化上述连乘积的参数μ和西格玛就ok了。也就是说，最大似然估计是一个通过确定参数得到函数最大值的优化问题。
+那么，如何求出上述函数的最大值？
+easy，二元函数求偏导标准步骤，加以两边套上对数等数学小技巧就完事儿了。
+SOP:
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">极大似然估计</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E6%A2%AF%E6%AE%B5%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95/">
         <p class="h4 index-header">NLP概念/概念_梯段下降算法</p>
         
@@ -389,6 +444,60 @@ SVM模型 和 逻辑回归模型之间的取舍:
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
+        <p class="h4 index-header">CS229/5.过拟合和正则化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
+
+
+解决办法:
+过拟合就丢弃不能正确预测的特征,欠拟合就加特征
+2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
+
+
+
+给高维项设置惩罚项
+
+代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
+
+增加了惩罚项的代价函数
+
+
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
         <p class="h4 index-header">CS229/6.神经网络(表述)</p>
         
@@ -456,60 +565,6 @@ SVM模型 和 逻辑回归模型之间的取舍:
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
-        <p class="h4 index-header">CS229/5.过拟合和正则化</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
-
-
-解决办法:
-过拟合就丢弃不能正确预测的特征,欠拟合就加特征
-2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
-
-
-
-给高维项设置惩罚项
-
-代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
-
-增加了惩罚项的代价函数
-
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS229/7.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E5%AD%A6%E4%B9%A0)/">
         <p class="h4 index-header">CS229/7.神经网络(学习)</p>
         
@@ -557,137 +612,6 @@ a(2)是第二层神经元的输出项,共五项,是z(2)五项经过第二层神�
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
             <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
-        <p class="h4 index-header">CS229/2.正规方程</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">CS229—正规方程1.定义
-​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
-
-正规方程求解参数矩阵的公式:
-
-2.正规方程法和梯度下降法的对比
-
-梯度下降的特点
-
-要设置学习率α
-多次迭代
-工作地非常均衡
-适合特征变量很多的时候用
-要求参数归一化
-
-
-正规方程法
-
-不用设置学习率
-不用迭代
-需要计算
-适合特征变量不超过1000时用
-不要求参数归一化,如下图
-
-
-
-有些较复杂问题不能使用正规方程法,只能使用梯度下降
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS229/10.%E8%81%9A%E7%B1%BBClustering/">
-        <p class="h4 index-header">CS229/10.聚类Clustering</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
-如图就是聚类问题
-左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
-10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
-
-K-均值是一个迭代算法
-
-设想我们将数据聚集成n组,选择k个随机的点为聚类中心
-
-对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
-
-然后开始迭代:
-
-每次计算一个组的平均值,将中心点移动到平均值的位置
-如此反复几次中心点的位置就不再变化
-如下图所示
-
-
-
-
-
-10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
-因此K均值的代价函数为:
-
-10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
-1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
-2.随机选择K个训练实例,然后令K个聚类中心等于他们
-K-均值算法的一个问题在于,他可能停留在某个</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS229">CS229</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E8%81%9A%E7%B1%BB">聚类</a>&nbsp;
           
         
       </div>
@@ -761,6 +685,70 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
             <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">逻辑回归</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/10.%E8%81%9A%E7%B1%BBClustering/">
+        <p class="h4 index-header">CS229/10.聚类Clustering</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
+如图就是聚类问题
+左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
+10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
+
+K-均值是一个迭代算法
+
+设想我们将数据聚集成n组,选择k个随机的点为聚类中心
+
+对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
+
+然后开始迭代:
+
+每次计算一个组的平均值,将中心点移动到平均值的位置
+如此反复几次中心点的位置就不再变化
+如下图所示
+
+
+
+
+
+10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
+因此K均值的代价函数为:
+
+10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
+1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
+2.随机选择K个训练实例,然后令K个聚类中心等于他们
+K-均值算法的一个问题在于,他可能停留在某个</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E8%81%9A%E7%B1%BB">聚类</a>&nbsp;
           
         
       </div>

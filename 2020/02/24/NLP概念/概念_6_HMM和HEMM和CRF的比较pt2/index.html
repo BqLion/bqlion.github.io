@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    10k 字
+                    9.4k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      36 分钟
+                      34 分钟
                   </span>&nbsp;
                 
 
@@ -496,20 +496,6 @@
 <blockquote>
 <p>Nuclear B<em>TAStheory E</em>TAS<br>devoted O<br>major O<br>efforts O<br>…… </p>
 </blockquote>
-<h2 id="5-4-LSTM-CRF"><a href="#5-4-LSTM-CRF" class="headerlink" title="5.4 LSTM+CRF"></a><strong>5.4 LSTM+CRF</strong></h2><p>LSTM+CRF这个组合其实我在知乎上答过问题，然后顺便可以整合到这里来。</p>
-<p><strong>1、perspectively</strong></p>
-<p>大家都知道，LSTM已经可以胜任序列标注问题了，为每个token预测一个label（LSTM后面接:分类器）；而CRF也是一样的，为每个token预测一个label。</p>
-<p>但是，他们的预测机理是不同的。CRF是全局范围内统计归一化的条件状态转移概率矩阵，再预测出一条指定的sample的每个token的label；LSTM（RNNs，不区分here）是依靠神经网络的超强非线性拟合能力，在训练时将samples通过复杂到让你窒息的高阶高纬度异度空间的非线性变换，学习出一个模型，然后再预测出一条指定的sample的每个token的label。</p>
-<p><strong>2、LSTM+CRF</strong></p>
-<p>既然LSTM都OK了，为啥researchers搞一个LSTM+CRF的hybrid model? </p>
-<p>哈哈，因为a single LSTM预测出来的标注有问题啊！举个segmentation例子(BES; char level)，plain LSTM 会搞出这样的结果：</p>
-<blockquote>
-<p><strong>input</strong>: “学习出一个模型，然后再预测出一条指定”<br><strong>expected output</strong>: 学/B 习/E 出/S 一/B 个/E 模/B 型/E ，/S 然/B 后/E 再/E 预/B 测/E ……<br><strong>real output</strong>: 学/B 习/E 出/S 一/B 个/B 模/B 型/E ，/S 然/B 后/B 再/E 预/B 测/E ……</p>
-</blockquote>
-<p>看到不，用LSTM，整体的预测accuracy是不错indeed, 但是会出现上述的错误：在B之后再来一个B。这个错误在CRF中是不存在的，因为CRF的特征函数的存在就是为了对given序列观察学习各种特征（n-gram，窗口），这些特征就是在限定窗口size下的各种词之间的关系。然后一般都会学到这样的一条规律（特征）：B后面接E，不会出现E。这个限定特征会使得CRF的预测结果不出现上述例子的错误。当然了，CRF还能学到更多的限定特征，那越多越好啊！</p>
-<p>好了，那就把CRF接到LSTM上面，把LSTM在time<em>step上把每一个hidden</em>state的tensor输入给CRF，让LSTM负责在CRF的特征限定下，依照新的loss function，学习出一套新的非线性变换空间。</p>
-<p>最后，不用说，结果还真是好多了呢。</p>
-<p><a href="https://link.zhihu.com/?target=https%3A//github.com/scofield7419/sequence-labeling-BiLSTM-CRF">LSTM+CRF codes</a>, here. Go just take it.</p>
 <h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a><strong>六、总结</strong></h2><p><strong>1. 总体对比</strong></p>
 <p>应该看到了熟悉的图了，现在看这个图的话，应该可以很清楚地get到他所表达的含义了。这张图的内容正是按照生成式&amp;判别式来区分的，NB在sequence建模下拓展到了HMM；LR在sequence建模下拓展到了CRF。</p>
 <p><img src="https://pic1.zhimg.com/v2-376fd85a490e161978130ddd759244d4_b.jpg" alt="img"></p>

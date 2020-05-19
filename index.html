@@ -136,6 +136,104 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/19/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_GRU/">
+        <p class="h4 index-header">NLP概念/概念_GRU</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Gated RNN : GRULSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。
+GRU模型GRU模型的主要思想是，我们希望能够保存一些记忆，能够捕获一些较长的依赖，需要有一个模型去学习何时以及如何去做，同时还得允许错误消息流转。基于输入，这些流转会向不同的方向以不同的强度传递。
+对GRU的介绍从标准的RNN开始
+循环神经网络RNN基本上直接计算下一步的隐层，同样的，之前的隐状态会回归给向量，我们不是去计算GRU数值，而是先要计算其中各个门，这些门和h(t)一样，就是一些连续的隐状态长度一致的向量。这些门包括更新门和重置门。
+计算更新门时主要是基于当前输入的词向量和隐藏状态
+
+计算重置门方法类似但是使用的是不同的权重
+
+通过一个直观例子来认识重置门的作用：
+
+详细分析上图的公式和重置门的作用：假如这是一个语义的情感分析任务，前边都是对一个电影长篇累牍的剧情讨论，最后一句话是it`s a really boring movie.那么其实只要最后这个boring就OK了，前边的都可以舍弃。所以这里重置门就可以置为0，把计算累计的东西都清理掉，</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/GRU">GRU</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/19/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_LSTM/">
+        <p class="h4 index-header">NLP概念/概念_LSTM</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LSTMLSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。
+朴素RNN与展开是一种处理序列数据的神经网络，某单词根据上下文变化而有不同含义这种任务就适合交给RNN来做。
+
+RNN在时序上展开
+
+LSTM与RNN结构对比长短期记忆（Long short-term memory, LSTM）是一种特殊的RNN，主要是为了解决长序列训练过程中的梯度消失和梯度爆炸问题。简单来说，就是相比普通的RNN，LSTM能够在更长的序列中有更好的表现。
+LSTM结构和普通RNN的对比图如下，LSTM有两个传输状态，分别是cell state ct 和 hidden state ht，一般ct改变的很慢，通常是上一个ct加上一些数值。不同的时序下ht改变很快。
+而RNN只有一个传输状态也就是ht，对应于LSTM中的ct。 
+
+LSTM的一胞三门两终态
+输入门，基本上决定了关心当前向量的强度，或者说当前的cell或者当前输入的词能起多少作用
+公式：
+
+示意图：
+
+
+
+
+遗忘门，是一种分离机制，告诉cell有些时候需要忘记信息或者保留信息。这种情况看起来可能有一些</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/05/18/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_RNN%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
         <p class="h4 index-header">NLP概念/概念_RNN循环神经网络</p>
         
@@ -464,100 +562,6 @@ print (&quot;Read %d labeled train reviews, %d labeled test</div>
 w1和a1： 
 a1就是输入的784个点中第一个点的亮暗情况
 w1就是接受这第一个点a1刺激的第一层的第一个神经元对第二层的如图所示的神经元的兴奋程度</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/12/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/">
-        <p class="h4 index-header">NLP概念/概念_随机森林</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">随机森林随机森林就是用随机的方法建立一堆决策树。每棵树之间是没有关联的，当一个待分类样本输入森林中时，将此样本输入进每一个决策树然后看哪种分类结果最多，就最终输出哪种分类结果。
-随机森林的构造过程：
-
-假设有N个样本，有放回的随机选择N个样本，然后按照这N个样本训练一个决策树，这N个样本就是决策树根节点的样本
-当每个样本有M个属性时，就需要在决策树中分裂节点以做进一步的判断。于是从M中随机选出m个(m &lt;&lt; M)个属性，然后从m个属性中采取某种策略（比如min信息熵）来选择一个属性来作为该节点的分裂属性。
-然后就是重复上边的步骤。当下一次分裂选出来的属性还是父节点的属性时，说明已经穷尽属性，到达叶子节点。
-
-按照如上三个步骤，可以构造大量决策树，例如movie sentiment tutor step1中的随机森林就是构造了100颗决策树。
-注意：随机森林中的决策树并没有为了回避过拟合问题而剪枝，因为随机采样已经避免了过拟合。
-此算法优点：
-
-数据上表现好，两个随机性的引入避免了过拟合问题
-抗噪声
-能处理高维度数据，而且不用做特征选择。
-对数据集的适应能力强，既能处理连续性</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/12/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E5%86%B3%E7%AD%96%E6%A0%91/">
-        <p class="h4 index-header">NLP概念/概念_决策树</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">决策树决策树是一种树形结构分类器。每个节点都有一个表示属性的判断，每个分支都代表了一个判断结果的输出。
-常见的决策树生成算法有ID3,C4.5,C5.0,CART等。
-示例：如下图片是正确的分类集（train set）
-
-如下是分类树的判断过程（演示了分类树其实可以有不同构型）
-
-
-如上分类树的根节点都是判断分数是否大于A（90），如果是就是好学生。然后第二个节点就出现了不同，分别是判断分数是否小于70 OR 出勤率是否大于0.8。
-这个分类器节点的构造其实很灵活，怎样构造最好的分类器呢？ID3,ID4.5算法都是倾向于迭代选择熵值最小化的那个分类器。但是ID3,ID4.5算法都有严重的过拟合问题。
-CART算法也使用了类似熵的指数–GINI指数，CART算法迭代的目标也是向着GINI指数最小化的方向进行，不过CART算法为了解决过拟合的问题，使用了剪枝的策略，也就是将树中过长的枝叶剪去。
-</div>
         </div>
       </a>
 

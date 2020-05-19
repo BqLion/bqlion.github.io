@@ -136,6 +136,73 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS229/2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
+        <p class="h4 index-header">CS229/2.正规方程</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">CS229—正规方程1.定义
+​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
+
+正规方程求解参数矩阵的公式:
+
+2.正规方程法和梯度下降法的对比
+
+梯度下降的特点
+
+要设置学习率α
+多次迭代
+工作地非常均衡
+适合特征变量很多的时候用
+要求参数归一化
+
+
+正规方程法
+
+不用设置学习率
+不用迭代
+需要计算
+适合特征变量不超过1000时用
+不要求参数归一化,如下图
+
+
+
+有些较复杂问题不能使用正规方程法,只能使用梯度下降
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS229">CS229</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+          
+            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_PCA%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/">
         <p class="h4 index-header">NLP概念/概念_PCA主成分分析</p>
         
@@ -173,6 +240,46 @@ x3    1,2,3]               t3   1,2]​              ↑压缩前数据   ↑解
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
           
             <a href="/tags/%E9%99%8D%E7%BB%B4">降维</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/CS224n/9%20-%20RNN,LSTM,GRU/">
+        <p class="h4 index-header">CS224n/9 - RNN,LSTM,GRU</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">助教分享：建立一个更好的语言模型语言模型是NLP中最经典的任务，这里有三种方式可以让其变得更好，第一是更好的输入表达，第二是更好的正则化或者预处理，第三是有更好的模型。
+第一种是改进输入，例如Glove是一个词层面的表示，事实上可以把单词进一步编码为子词阶段，可以采用语素解码方式，可以采用BPE，最终也可以采用字母级的嵌入，他的作用是大大减少所用到的词汇量，让模型预测变得更简单，如下图展示的论文就是对输入端的改进。
+
+第二种办法是采用正则化技巧，来改善过拟合的问题，有一堆论文在讲如何做正则化，今天聚焦的点是在预处理阶段，通过和计算机视觉类似的替换技巧来构建更合理的语料库，比如把频繁和罕见的词语的评率都往平均值上拉一拉，就会使得曲线更显平滑，平滑的分布能让系统获得更好的语言模型和更好的实验结果。
+第三是更好的模型，etc。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CS224n">CS224n</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -246,53 +353,6 @@ size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate p
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/9%20-%20RNN,LSTM,GRU/">
-        <p class="h4 index-header">CS224n/9 - RNN,LSTM,GRU</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture9 - Gated RNN：LSTM&amp;GRU,机翻本节继续讲循环神经网络以及LSTM和GRU这两个本课程最重要的深度学习模型，几乎你能看到的所有深度学习论文都是以这两个模型为基础。
-1.使用RNN的机器翻译模型
-编码器和解码器如图所示，目标函数就是最小化交叉熵。
-2.GRU模型GRU模型的主要思想是，我们希望能够保存一些记忆，能够捕获一些较长的依赖，需要有一个模型去学习何时以及如何去做，同时还得允许错误消息流转。基于输入，这些流转会向不同的方向以不同的强度传递。
-对GRU的介绍从标准的RNN开始
-循环神经网络RNN基本上直接计算下一步的隐层，同样的，之前的隐状态会回归给向量，我们不是去计算GRU数值，而是先要计算其中各个门，这些门和h(t)一样，就是一些连续的隐状态长度一致的向量。这些门包括更新门和重置门。
-计算更新门时主要是基于当前输入的词向量和隐藏状态
-
-计算重置门方法类似但是使用的是不同的权重
-
-通过一个直观例子来认识重置门的作用：
-
-详细分析上图的公式和重置门的作用：假如这是一个语义的情感分析任务，前边都是对一个电影长篇累牍的剧情讨论，最后一句话是it`s</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
           
         
       </div>
@@ -493,63 +553,6 @@ softmax VS k个二元分类器：如果你在开发一个音乐分类的应用�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/5%20-%20%E9%A1%B9%E7%9B%AE%E5%BB%BA%E8%AE%AE/">
-        <p class="h4 index-header">CS224n/5 - 项目建议</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture5 项目建议1.一层神经网络过渡到多层神经网络
-2.项目建议老师推荐的文章和会议
-
-1.定义你的任务：
-例如：summarization
-2.定义数据集：
-最好使用现成的数据集，因为他们已经有baselines
-3.建立baseline
-他可以是一个非常简单的一元线性回归，然后在你的训练数据集上计算你的评价标准，看看模型是过拟合还是欠拟合
-4.选做题：自己发明新的模型
-首先，你需要做好以上说的几个步骤.
-
-然后你需要知道已经存在的模型上有哪些问题。然后你就可以设计出自己的模型。如果你想要这样做的话，你真的需要和你的导师和其他研究者保持沟通，除非你自己就是研究者并且已经获得了博士文凭。
-
-你需要实现你的模型，然后根据你的新点子去对它快速迭代。（也许在某个位置新加一层？然后看看他起不起作用？）
-
-那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。
-
-建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型。
-
-对于终极任务：summarization任务。
-
-一开始你可能尝试一些非常简</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224n">CS224n</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/CS224n/4%20-%20wordWindow%E5%92%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
         <p class="h4 index-header">CS224n/4 - wordWindow和神经网络</p>
         
@@ -591,16 +594,36 @@ softmax VS k个二元分类器：如果你在开发一个音乐分类的应用�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/CS224n/16%20-%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9C%A8NLP%E4%B8%AD%E7%9A%84%E9%99%90%E5%88%B6/">
-        <p class="h4 index-header">CS224n/16 - 深度学习在NLP中的限制</p>
+      <a href="/2020/02/24/CS224n/5%20-%20%E9%A1%B9%E7%9B%AE%E5%BB%BA%E8%AE%AE/">
+        <p class="h4 index-header">CS224n/5 - 项目建议</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture16 - 深度学习在NLP中的限制对于语言，如果你想要一个合适的语言系统，你可能需要一些对于输入的情感理解，在逻辑上推理某些事实，在数据库中检索一些事实，或者基于数据库中的逻辑原因，再做一些内存检索。还有一些时候，你需要对谈论的内容做一些奖励。在现实世界中这些过程是由很多不同的成分组成的。我们想要一个更好的理解语言的系统，理想情况下这个系统应该包括很多内容，以一种更科学的方式呈现。
-现在联合多任务学习仍然非常困难，迄今为止，人们谈论多任务学习时，他们假设有一个源任务和一个目标任务，他们希望神经网络在源任务的预训练可以加强另一个目标任务的表现。就我而言，理想的情况是让他们共同训练，而不是分开训练不同的解码器。例如不同语言中，不同的分类问题。理想情况下，我们只有一个很大的不同种类的数据集，我们想根据输入来预测，他们有完全一样的解码器，但是很多时候人们做多任务学习的时候他们只是共享低层的参数，共同训练他们，但是不能共享高层的参数。
-也就是说，在自然语言处理的过程中，我们通常只是共享了词向量，我们没有共享其他高层的比如LSTM层，这种层能解决更多的任务，其实计算机视觉在这方面有挺</div>
+          <div class="index-text mb-1">Lecture5 项目建议1.一层神经网络过渡到多层神经网络
+2.项目建议老师推荐的文章和会议
+
+1.定义你的任务：
+例如：summarization
+2.定义数据集：
+最好使用现成的数据集，因为他们已经有baselines
+3.建立baseline
+他可以是一个非常简单的一元线性回归，然后在你的训练数据集上计算你的评价标准，看看模型是过拟合还是欠拟合
+4.选做题：自己发明新的模型
+首先，你需要做好以上说的几个步骤.
+
+然后你需要知道已经存在的模型上有哪些问题。然后你就可以设计出自己的模型。如果你想要这样做的话，你真的需要和你的导师和其他研究者保持沟通，除非你自己就是研究者并且已经获得了博士文凭。
+
+你需要实现你的模型，然后根据你的新点子去对它快速迭代。（也许在某个位置新加一层？然后看看他起不起作用？）
+
+那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。
+
+建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型。
+
+对于终极任务：summarization任务。
+
+一开始你可能尝试一些非常简</div>
         </div>
       </a>
 
