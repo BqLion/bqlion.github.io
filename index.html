@@ -136,8 +136,372 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/28/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/Chrome%20OS%E5%88%9D%E5%A7%8B%E5%8C%96%E6%93%8D%E4%BD%9C/">
-        <p class="h4 index-header">安装调试记录/Chrome OS初始化操作</p>
+      <a href="/2020/05/25/3.%E8%AF%BE%E7%A8%8B/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <p class="h4 index-header">3.课程/正则表达式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1"></div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/25/2.%E6%AF%94%E8%B5%9B/Toxic_Abhi_Bert_Senti/">
+        <p class="h4 index-header">2.比赛/Toxic_Abhi_Bert_Senti</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">MultiLinguToxic : Abhishek Thakur`s Guide数据探索基本文件
+如上是本比赛需要的数据，标橙的是主要数据。其中第一行和第二行的两个train数据来自之前jigsaw举办的比赛两个128长度的seq for BERT也许不是我们需要的东西。
+数据列分析
+如上是数据不同的列，分别表示了id，真实评论，语言类型，是否是toxic的标签。
+对train.csv的一瞥
+可以看到，数据的分列情况就是id+评论+是否toxic+是否严重toxic+是否淫秽。
+bert-sentimentbert-sentiment用的是IMDb数据集，在github上star,Abhi出了三集视频专门介绍这个project。本次比赛可以直接调用。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/2.%E6%AF%94%E8%B5%9B">2.比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Toxic">Toxic</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/25/2.%E6%AF%94%E8%B5%9B/%E6%8C%87%E5%AF%BC_%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/">
+        <p class="h4 index-header">2.比赛/指导_特征提取与特征选择</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">特征提取与特征选择这两者的效果是一样的，都是试图去减少特征数据集中的属性（特征）的数目，但是两者采用的方法不同，
+特征提取的方法是通过属性之间的关系，通过组合不同的属性得到新的属性，改变了特征空间
+特征选择的方法是选择出特征集的子集，是一种包含的关系，没有改变特征空间
+1.2特征提取的主要方法PCA,LDA,SVD等
+1.3特征选择的主要方法1.fliter方法
+对每个特征打分，即给出每一维的特征赋予权重，该权重代表了特征的重要性，然后根据权重排序。
+主要的方法：卡方，信息增益，相关系数
+2.Wrapper方法
+主要思想：将子集的选择看成一个搜索寻优问题，生成不同的组合，对组合进行评论
+可看做一个优化问题，有很多优化算法可供使用
+尤其是启发式算法GA，PSO,DE,ABC等等
+主要方法：递归特征消除方法
+3.Embedded方法
+主要思想：在模型既定的情况下，学习出对提高模型准确性最好的属性，即在确定模型的过程中，挑选出哪些对模型训练有重要意义的属性
+主要方法：正则化，如岭回归就是在回归的基础上加上了正则化项
+1.4总结1.特征提取是从杂乱无章的世界中，去到更高的世界俯瞰原有世界，这时</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/2.%E6%AF%94%E8%B5%9B">2.比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96">特征提取</a>&nbsp;
+          
+            <a href="/tags/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9">特征选择</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/17/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E6%AD%A3%E4%BA%A4%E5%BD%92%E4%B8%80%E6%80%A7/">
+        <p class="h4 index-header">3.课程/线性代数_正交归一性</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">正交归一性如果内积空间的两个向量是互相正交的，并且两个向量的范数都是1，则称这两个向量互相具有正交归一性/正交规范性。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/17/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%BD%92%E4%B8%80%E5%8C%96/">
+        <p class="h4 index-header">3.课程/线性代数_归一化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">归一化归一化消除了量纲，是处理数据的一种手段。通过归一化最优解的寻找过程会变得平缓，更容易正确的收敛到最优解。
+下图的例子是房价预测模型，横坐标是房间数量（0 - 10），纵坐标是面积大小（0 - 1000），预测结果是等高线上的没画出的第三维。
+图一未归一化，图像是长椭圆，图二归一化后是正圆（拍扁了数据），可见归一化后收敛过程更平缓。
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/07/2.%E6%AF%94%E8%B5%9B/Toxic_%E6%80%9D%E8%B7%AF%20/">
+        <p class="h4 index-header">2.比赛/Toxic_思路 </p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">思路ToDoList
+
+
+
+
+
+
+
+bpe
+跨语言编码
+
+
+XLM-R + ERNIE
+kaggle最热跨语言模型 + 注入特定知识toxic
+
+
+transformer
+特征抽取器(模型)要向匹配问题领域的特点去修改
+
+
+lstm
+transformer组件
+
+
+
+
+
+
+
+
+
+
+选择正确的特征抽取器解决情感分类问题，从模型角度讲，最重要的是特征抽取器的能力。以前是研发人员设计抽取哪些特征，现在都是端到端的抽取，也就是特征抽取器Transformer自动抽取。根据今日阅读知乎和github上的观点，不要使用RNN和CNN，应该采用更加先进的Transformer。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/2.%E6%AF%94%E8%B5%9B">2.比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Toxic">Toxic</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/07/3.%E8%AF%BE%E7%A8%8B/CS224n_9%20-%20%E6%9C%BA%E7%BF%BB/">
+        <p class="h4 index-header">3.课程/CS224n_9 - 机翻</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
+我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
+基于统计的机翻模型介绍
+源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
+
+如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项里找一个简单流畅的句子。
+
+其中的一个模块，翻译模型中，第一件要做的事情是匹配两种语言的单词，匹配所面临的困难使用法语英语互译来展示。其实英法是相似度很高的语言，换成其他相似度低的语言则难度会</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/28/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_%E6%9C%89%E7%9B%91%E7%9D%A3%E7%9A%84%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90.md/">
+        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_有监督的情感分析.md</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Sentiment_Analysis_有监督的情感分析.md
+如上所示，phi函数就是上篇介绍的feature function，提供的功能就是把tree转换成字典。
+
+如上所示，fit model函数提供将数据x和y fit进指定模型（逻辑回归）中的功能。
+
+然后使用上节介绍的sst.experiment函数（三个参数）分别是路径，feature函数和fit函数。
+这样设计的好处就是实现了类的分离，如果需要改写feature函数或者fit函数，直接在本体里边修改就好。
+超参数的搜索与确定超参数的基本原理：超参数是模型的优化过程之外的“settings”。有如下几个例子：
+
+超参数搜索实例
+
+如上，In[4] 的 fit_softmax_with_crossvalidation函数，就是搜索超参数的函数。basemod是逻辑回归，给他加上了搜索空间：c,罚函数，等，然后调用系统工具箱里的utils.fit_classifier_with_crossvalidation就可以得到搜索结果。当然这个搜索的过程耗时较长。
+然后把得到的函数放进experiment函数中开始实验。因为得到的函数</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-28&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NLP">NLP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/28/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/Chrome%20OS%E5%88%9D%E5%A7%8B%E5%8C%96%E6%93%8D%E4%BD%9C/">
+        <p class="h4 index-header">4.安装调试记录/Chrome OS初始化操作</p>
         
         
           
@@ -161,7 +525,7 @@
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
           &nbsp;
         
         
@@ -178,8 +542,8 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/23/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/chromebook%E4%BB%A3%E7%90%86%E5%85%B1%E4%BA%AB/">
-        <p class="h4 index-header">安装调试记录/chromebook代理共享</p>
+      <a href="/2020/04/23/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/chromebook%E4%BB%A3%E7%90%86%E5%85%B1%E4%BA%AB/">
+        <p class="h4 index-header">4.安装调试记录/chromebook代理共享</p>
         
         
           
@@ -203,7 +567,7 @@
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
           &nbsp;
         
         
@@ -216,330 +580,11 @@
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/31/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/U%E7%9B%98%E5%AE%89%E8%A3%85Ubuntu/">
-        <p class="h4 index-header">安装调试记录/U盘安装Ubuntu</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">U盘安装Ubuntuwindows下 - 磁盘管理 - 压缩卷，然后删除卷。
-找一个大于4G的u盘
-http://mirrors.ustc.edu.cn/ubuntu-releases/16.04/ 下载ubuntu-16.04.6-desktop-amd64.iso    
-https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
-左上角 文件 - 打开iso文件；左下角本地目录 选中u盘，启动 - 写入硬盘映像 - 写入
-插入U盘，重启，F1,选择直接进入U盘。
-选择安装Ubuntu - 其他选项（根据需求调整分区）-  点击左下方的加号添加分区，分区方案参考如下
-
-现在安装 - 等待  - 拔U盘 - 重启 - 进
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-31&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux">linux</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/27/%E6%9D%82%E8%B0%88/%E6%82%89%E8%BE%BE%E5%A4%9A%E7%9A%84%E7%8E%8B%E5%AD%90/">
-        <p class="h4 index-header">杂谈/悉达多的王子</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">悉达多1.爱与知识并不能来带peace
-悉达多感到，父母朋友之爱，长者传授的知识不能让他感到满足，不能使他的内心安宁。悉达多开始怀疑，沐浴、祭祀等仪式是否有必要？
-爱是大脑的内分泌短暂失调+欲求不满的表现，知识的传授其实可以在极短的时间内完成（剩余时间是磨洋工），沐浴祭祀等繁文缛节是keep everybody busy的手段，换成现代概念几乎可以等同于各种繁复的人事缓冲池——若不是要严控失业率，从基层到决策层之间90%的传递信息者都可被优化掉。
-2.众生皆苦，逃避无用
-悉达多说，冥想，对肉体的决弃，斋戒和调息都是在逃避自我，是对自我所受的苦难的短暂的逃避，这种逃避和牧牛人在酒馆里喝几碗米酒是同样的。在这种短暂的麻醉下，他们不再感受到自我，不再感觉到生命的苦难。那几碗米酒让牧牛人浑然入睡，他同样找到了悉达多和乔文达在长时间的修行中逃离肉体并宅于非我之境所找到的感觉。
-悉达多说的这种逃避痛苦的方式，暗示了痛苦的根源就在与“我”，感受到我的存在，便能感受到痛苦。喝了酒，进入了禅定，做爱，入睡了，在别的国家旅游用英语讲话逃离中文世界，weed等都可短暂的忘我。但是在短暂的忘我结束后，一切一如</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-27&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/04/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%90%8D%E7%9A%84%E6%96%B9%E5%BC%8F/">
-        <p class="h4 index-header">安装调试记录/批量修改文件后缀名的方式</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">新建一个.txt文档，输入：
-ren *.java *.md
-保存
-将文件后缀名改成.bat,双击运行
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-04&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/02/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E4%BF%AE%E6%94%B9pip%E6%BA%90/">
-        <p class="h4 index-header">安装调试记录/修改pip源</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-将pip切换回国内源pip国内的一些镜像
-  阿里云 http://mirrors.aliyun.com/pypi/simple/  中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/  豆瓣(douban) http://pypi.douban.com/simple/  清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/  中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
-修改源方法：
-临时使用：可以在使用pip的时候在后面加上-i参数，指定pip源eg: pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple   –trusted-host  pypi.tuna.tsinghua.edu.cn
-永久修改：linux:修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
-[global]
-index-url = https://pypi.tuna.tsinghua</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-02&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
-        <p class="h4 index-header">杂谈/王威廉对博士生的要求</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Hiring PhD students
-Q: What’s your research interest? 
-A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/phd%E7%94%B3%E8%AF%B7">phd申请</a>&nbsp;
-          
-            <a href="/tags/UCSB">UCSB</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E9%98%BF-%E7%94%B3%E8%AF%B7phd%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">杂谈/王阿-申请phd思路</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">我是如何申请到phd的转载自知乎–王阿的阿
-谢谢你们。
-在这篇经验贴里，我会告诉你我当时申请时面临的处境、我的决策过程，以及申请当中各个环节最精华的经验和技巧，我都毫无保留地贡献在这里了。
-读完这篇文章，除了我介绍的各种申请技巧以外，我希望能让你认识到申请过程中决策和心态的重要意义：
-
-想成功申请美国的PhD，除了自己软硬件要出色，还有很重要的一点是对自己的定位，包括认识到自己的目标、兴趣以及自己的长处和缺陷。不论你是申请哪个学科的PhD，请重点关注我做决策时的思考内容和思考方向，这也许会对你有所启发。
-心理韧性、抗打击能力也是申请成功的一个重要因素。如果你知道GradCafe这个北美grad school申请论坛，你会发现上面有很多人诉说自己第二次、第三次才申请成功的经历。我就是其中一员。
-
-我的故事是这样婶儿的……
-2017一整年是我这辈子最难熬的一年，这一年我第一次（也只申请了这一次）申请美国的临床心理学PhD（clinical psychology），申了13所学校。2017年的头四个月陆续收到13封拒信，无一录取，甚至连一个面试都没有。当时的我：
-
-已经在纽约市生活了三年；
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
-          
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">杂谈/996 - 超时工作的异化问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">996 - 超时工作与异化问题1.感性认识我国现阶段各行业超时工作现象十分普遍，有的互联网公司晚上十一二点整个大楼还灯火通明，有的公司虽然晚上按时下班，但回家后仍然要求有工作输出，很多岗位还要求7*24小时on call。
-我前些年所在的公司就有制度要求员工每月加班22天以上才算考核达标，而我经常需要加班27天才能完成工作，每晚九点离开公司后经一小时通勤才能到家，洗洗漱漱刚好十一点上床，十二点入睡，第二天早上6点50分起床后经过一小时通勤抵达公司，在公司门口的快餐店里缩着身子与其他同事挤在餐桌上潦草进食后便赶往工位，开始一天的埋头苦干。算上通勤时间，我的工作强度是7107。高强度劳动和了无希望所积累的疲劳深入骨髓，在此期间我感到生命力与灵魂的飞速流逝。
-深夜的华为大楼
-
-早上五点半排队等公交上班的年轻人
-
-2.八小时工作制的来由八小时工作制国家法律规定的工作日长度为8小时的工作制度。目前世界各国普遍实行八小时工作制。正常一天工作时间为早上九点至下午五点为8小时。
-理论起源
-八小时工作制最早由社会主义者罗伯特·欧文于1817年8月提出。他还发明了一个口号， “8小时劳动， 8小时休闲， </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
-          
-            <a href="/tags/996">996</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/">
-        <p class="h4 index-header">杂谈/博士这五年-李沐</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">转自知乎-李沐
-前言12年8月提着一个行李箱降落在匹兹堡机场。没找住的地方，也不知道CMU应该怎么去。对未来一片迷茫，但充满乐观。 现在，刚完成了博士期间最后的一场报告，在同样的机场，不过是在等待离开的航班。
-回想过去的五年，是折腾的五年，也是自我感悟和提升的五年。这里我尝试记录这五年主要做过的事情和其中的感想，希望对大家有所启发。
-第0年：3/11-8/12我第一次申请美国的博士是在11年，但拿到的offer并没有特别合适的导师，于是就北上投奔文渊去了。 我当时在百度商务搜索部门做广告的点击预估。具体是使用机器学习来预测一个广告是不是会被用户点击。 这时候离“大数据”这个词流行还有两年，但百度那时候的数据即使现在来看仍然是大的。我的任务是如何高效的利用数百台机器快速的在数十T的数据上训练出模型。
-当时产品用的算法基于LBFGS，我于是想是不是可以换个收敛更快的算法。没几天就找到个不错 。但实现上发现了各种问题，包括性能，收敛，和稳定性。而且那时有的就是一个裸的Linux和很老版本的GCC，什么都是需要从头开始写。花了大量时间做系统优化，算法改动，和线上实验，最后一年后在整个广告流量上</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
-          
-            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

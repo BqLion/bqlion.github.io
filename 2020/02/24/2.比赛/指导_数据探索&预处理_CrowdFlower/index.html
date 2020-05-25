@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>2.比赛/指导_数据探索&amp;预处理_CrowdFlower ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.7k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      9 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="以CrowdFlower比赛为例讲解数据探索与预处理"><a href="#以CrowdFlower比赛为例讲解数据探索与预处理" class="headerlink" title="以CrowdFlower比赛为例讲解数据探索与预处理"></a>以CrowdFlower比赛为例讲解数据探索与预处理</h1><h4 id="比赛目标"><a href="#比赛目标" class="headerlink" title="比赛目标"></a>比赛目标</h4><p>​    衡量搜索结果的相关性</p>
+<ul>
+<li>比赛数据集<ul>
+<li>CrowdFlower平台丰富的查询结果配对创建的</li>
+<li>为了评估搜索相关性,CrowdFlower已经将261个搜索词与产品列表放在一起,要求人群对每个搜索结果评分,1,2,3,4分别表示搜索结果从完全不相关到完全相关</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h4><ul>
+<li>train.csv训练集数据<ul>
+<li>id 产品id</li>
+<li>query 搜索词语</li>
+<li>product_title 产品标题</li>
+<li>product_description 产品描述文本</li>
+<li>median_relevance 三位评分员的相关性评分中位数</li>
+<li>relevance_variance 评分员的相关性评分方差</li>
+</ul>
+</li>
+<li>test.csv<ul>
+<li>id 产品id</li>
+<li>query 搜索词语</li>
+<li>product_description 产品描述文本</li>
+</ul>
+</li>
+<li>目标变量<ul>
+<li>median_relevance</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1435_22_447.png" alt=""></p>
+<ul>
+<li>首先本数据以文字为主,文字只能输入进分类树模型,所以首先要把文字转换成数字</li>
+<li>Dropping HTML标签</li>
+<li>Word Replacement:然后要把拼写错误的单词替换掉</li>
+<li>stemming:词干化:把过去时,进行时等等还原成词干 </li>
+</ul>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1436_13_722.png" alt=""></p>
+<ul>
+<li>Counting Features :频率特征</li>
+<li>DIstance features:距离特征</li>
+<li>TF - IDF features:对频率特征的改进,如果频率太高可以通过取对数等方式进行改进</li>
+<li>Query ID:查询的编号</li>
+</ul>
+<h3 id="3-1数据探索"><a href="#3-1数据探索" class="headerlink" title="3.1数据探索"></a>3.1数据探索</h3><ul>
+<li><p>查看一眼文件头</p>
+</li>
+<li><p>查看列信息</p>
+</li>
+<li><p>查看有多少行</p>
+</li>
+<li><p>查看感兴趣的列信息去重后有多少项</p>
+</li>
+<li><p>查看感兴趣的信息去重后前一百项是什么</p>
+</li>
+<li><p>查看两个文件中,感兴趣的同一列有多少个是相同的,多少是不同的</p>
+</li>
+<li><p>对感兴趣的某一列信息,根据重复数画出柱状图</p>
+</li>
+</ul>
+<pre><code class="python"># -*- coding: utf-8 -*-
+import pandas as pd
+import numpy as np
+import nltk
+
+train = pd.read_csv(&quot;filePath&quot;)
+test = pd.read_csv(&quot;filePath&quot;)
+
+train.head()
+test.head()
+#查看文件头
+
+train.columns
+test.columns
+#查看文件的列信息
+
+len(train)
+len(test)
+#查看文件有多少行
+
+train[&#39;query&#39;].unique()[0:100]
+#查看train这个文件中query的去重的前一百个数据
+
+train[&#39;product_title&#39;].unique()[0:10]
+#查看train这个文件中product_title的去重前十个元素
+
+len(train[&#39;query&#39;].unique())    
+len(test[&#39;query&#39;].unique())
+#查看train和test两个文件,去重之后一共有多少个数据
+
+
+len(train[&#39;product_title&#39;].unique())
+len(test[&#39;product_title&#39;].unique())
+#查看两个文件去重product_title的长度
+
+len(np.setdiff1d(test[&#39;product_title&#39;].unique(),train[&#39;product_title&#39;]))
+#查看两个文件中的product_title有多少个是不一样的
+
+len(np.intersect1d(test[&#39;product_title&#39;].unique(),train[&#39;product_title&#39;]))
+#查看两个文件中的product_title有多少个是一样的
+
+query = train[&#39;query&#39;].map(nltk.tokenize.word_tokenize)
+
+from nltk.corpus import stopwords
+stopset = set(stopwords.words(&#39;english&#39;))
+
+def key_plot(data,col,top_num = 10):
+    s = data[col].map(nltk.tokenize.word_tokenize)
+    fdisk = nltk.FreqDist(words.lower() for x in s
+                          for words in x if words.lower()not in stopset)
+    #让数据集token化,统一小写,把stopwords(in at之类)去掉
+    top = pd.DataFrame(fdisk.most_common(top_num),columns=[&#39;query&#39;,&#39;time&#39;])
+    top = top.set_index(&#39;query&#39;)
+    top.plot(kind=&#39;bar&#39;)
+ #按照query从大到小顺序排列
+
+key_plot(train,&#39;query&#39;)
+key_plot(test,&#39;query&#39;)
+#然后画图
+</code></pre>
+<h3 id="3-2预处理"><a href="#3-2预处理" class="headerlink" title="3.2预处理"></a>3.2预处理</h3><ul>
+<li><p>剔除HTML标签</p>
+<ul>
+<li>通过beautifulSoup4库提取HTML的文本信息</li>
+</ul>
+</li>
+<li><p>单词替换</p>
+<ul>
+<li><p>拼写错误检查</p>
+</li>
+<li><p>同义词替换</p>
+</li>
+<li><p>其他替换</p>
+</li>
+<li><p>如下图</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1438_18_617.png" alt="">词干化</p>
+</li>
+<li><p>stemming:</p>
+<ul>
+<li>选择是porter还是snowball</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据清洗</p>
+<ul>
+<li>clean text:</li>
+<li>drop html</li>
+<li>repalce dic</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python">#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Created on Thu Oct 31 14:34:00 2019
+
+@author: bq
+
+____file____
+
+    nlp_utils.py
+
+____description___
+
+    The file provides functions to perform  NLP task,e.g.,TF-IDF and POS tagging
+
+__author__
+
+    BqLion copy from Chenglong Chen For Study use
+
+&quot;&quot;&quot;
+
+
+import re
+import sys
+import nltk
+from bs4 import BeautifulSoup
+from replacer import CsvWordReplacer
+from nltk import pos_tag
+from sklearn.feature_extraction.text import TfidVectorizer,CountVectorizer
+sys.path.append(&quot;../&quot;)
+from param_config import config
+
+#####
+#stop words
+####
+stopwords  = nltk.corpus.stopwords.word(&quot;english&quot;)
+stopwords = set(stopwords)
+
+
+
+###########
+#stemming
+###########
+if config.stemmer_type == &quot;porter&quot;:
+    english_stemmer = nltk.stem.PorterStemmer()
+elif config.stemmer_type == &quot;snowball&quot;:
+    english_stemmer = nltk.stem.SnowballStemmer(&#39;english&#39;)
+def stem_tokens(tokens,stemmer):
+    stemmed = []
+    for token in tokens:
+        stemmed.append(stemmer.stem(token))
+    return stemmed
+
+
+
+###########
+###POS tag
+###########
+token_pattern = r&quot;(?u)\b\w\w+\b&quot;
+# \b :bound 
+# \w :any char
+# \+ :once or more 
+def pos_tag_text(line,
+            token_pattern=token_pattern,
+            exclude_stopword=config.cooccurrence_word_exclude_stopword,
+            encode_digit=False):
+    token_pattern = re.compile(token_pattern,flags = re.UNICODE | re.LOCATE)
+    for name in [&quot;query&quot;,&quot;product_title&quot;,&quot;product_description&quot;]:
+        l = line[name]
+        ##tokenize
+        tokens = [x.lower()for x in token_pattern.findall(l)]
+        ##stem
+        tokens = stem_tokens(tokens,english_stemmer)
+        if exclude_stopword:
+            tokens = [x for x in tokens if x not in stopwords]
+        tags = pos_tag(tokens)
+        tags_list = [t for w,t in tags]
+        tags_str = &quot; &quot;.join(tags_list)
+        #print tags_str
+        line[name] = tags_str
+        return line
+
+#########
+##TF-IDF
+#########
+class StemmedTfidfVectorizer(TfidVectorizer):
+    def build_analyzer(self):
+        analyzer = super(TfidVectorizer,self).build_analyzer()
+        return lambda doc:(english_stemmer.stem(w)for w in analyzer(doc))
+
+token_pattern = r&quot;(?u)\b\w\w+\b&quot;
+tfidf__norm = &quot;l2&quot;
+tfidf__max_df = 0.75
+tfidf__min_df = 3
+
+def getTFV(token_pattern = token_pattern,
+           norm = tfidf__norm,
+           max_df = tfidf__max_df,
+           min_df = tfidf__min_df,
+           ngram_range = (1, 1),
+           vocabulary = None,
+           stop_words = &#39;english&#39;):
+    tfv = StemmedTfidfVectorizer(min_df=min_df, max_df=max_df, max_features=None, 
+                                 strip_accents=&#39;unicode&#39;, analyzer=&#39;word&#39;, token_pattern=token_pattern,
+                                 ngram_range=ngram_range, use_idf=1, smooth_idf=1, sublinear_tf=1,
+                                 stop_words = stop_words, norm=norm, vocabulary=vocabulary)
+    return tfv
+
+
+#########
+## BOW ##
+#########
+class StemmedCountVectorizer(CountVectorizer):
+    def build_analyzer(self):
+        analyzer = super(CountVectorizer, self).build_analyzer()
+        return lambda doc: (english_stemmer.stem(w) for w in analyzer(doc))
+
+token_pattern = r&quot;(?u)\b\w\w+\b&quot;
+#token_pattern = r&#39;\w{1,}&#39;
+#token_pattern = r&quot;\w+&quot;
+#token_pattern = r&quot;[\w&#39;]+&quot;
+bow__max_df = 0.75
+bow__min_df = 3
+def getBOW(token_pattern = token_pattern,
+           max_df = bow__max_df,
+           min_df = bow__min_df,
+           ngram_range = (1, 1),
+           vocabulary = None,
+           stop_words = &#39;english&#39;):
+    bow = StemmedCountVectorizer(min_df=min_df, max_df=max_df, max_features=None, 
+                                 strip_accents=&#39;unicode&#39;, analyzer=&#39;word&#39;, token_pattern=token_pattern,
+                                 ngram_range=ngram_range,
+                                 stop_words = stop_words, vocabulary=vocabulary)
+    return bow       
+
+
+################
+## Text Clean ##
+################
+## synonym replacer
+replacer = CsvWordReplacer(&#39;%s/synonyms.csv&#39; % config.data_folder)
+## other replace dict
+## such dict is found by exploring the training data
+replace_dict = {
+    &quot;nutri system&quot;: &quot;nutrisystem&quot;,
+    &quot;soda stream&quot;: &quot;sodastream&quot;,
+    &quot;playstation&#39;s&quot;: &quot;ps&quot;,
+    &quot;playstations&quot;: &quot;ps&quot;,
+    &quot;playstation&quot;: &quot;ps&quot;,
+    &quot;(ps 2)&quot;: &quot;ps2&quot;,
+    &quot;(ps 3)&quot;: &quot;ps3&quot;,
+    &quot;(ps 4)&quot;: &quot;ps4&quot;,
+    &quot;ps 2&quot;: &quot;ps2&quot;,
+    &quot;ps 3&quot;: &quot;ps3&quot;,
+    &quot;ps 4&quot;: &quot;ps4&quot;,
+    &quot;coffeemaker&quot;: &quot;coffee maker&quot;,
+    &quot;k-cups&quot;: &quot;k cup&quot;,
+    &quot;k-cup&quot;: &quot;k cup&quot;,
+    &quot;4-ounce&quot;: &quot;4 ounce&quot;,
+    &quot;8-ounce&quot;: &quot;8 ounce&quot;,
+    &quot;12-ounce&quot;: &quot;12 ounce&quot;,
+    &quot;ounce&quot;: &quot;oz&quot;,
+    &quot;button-down&quot;: &quot;button down&quot;,
+    &quot;doctor who&quot;: &quot;dr who&quot;,
+    &quot;2-drawer&quot;: &quot;2 drawer&quot;,
+    &quot;3-drawer&quot;: &quot;3 drawer&quot;,
+    &quot;in-drawer&quot;: &quot;in drawer&quot;,
+    &quot;hardisk&quot;: &quot;hard drive&quot;,
+    &quot;hard disk&quot;: &quot;hard drive&quot;,
+    &quot;harley-davidson&quot;: &quot;harley davidson&quot;,
+    &quot;harleydavidson&quot;: &quot;harley davidson&quot;,
+    &quot;e-reader&quot;: &quot;ereader&quot;,
+    &quot;levi strauss&quot;: &quot;levi&quot;,
+    &quot;levis&quot;: &quot;levi&quot;,
+    &quot;mac book&quot;: &quot;macbook&quot;,
+    &quot;micro-usb&quot;: &quot;micro usb&quot;,
+    &quot;screen protector for samsung&quot;: &quot;screen protector samsung&quot;,
+    &quot;video games&quot;: &quot;videogames&quot;,
+    &quot;game pad&quot;: &quot;gamepad&quot;,
+    &quot;western digital&quot;: &quot;wd&quot;,
+    &quot;eau de toilette&quot;: &quot;perfume&quot;,
+}     
+
+def clean_text(line,drop_html_flag=False):
+    names = [&quot;query&quot;,&quot;product_title&quot;,&quot;product_description&quot;]
+    for name in names:
+        l = line[name]
+        if drop_html_flag:
+            l = drop_html(l)
+        l = l.lower()
+        ## replace gb
+        for vol in[16,32,64,128,500]:
+            l = re.sub(&quot;%d gb&quot;%vol,&quot;%dgb&quot;%vol,l)
+            l = re.sub(&quot;%d g&quot;%vol,&quot;%dgb&quot;%vol,l)
+            l = re.sub(&quot;%dg&quot;%vol,&quot;%dgb&quot;%vol,l)
+        ## replace tb
+        for vol in [2]:
+            l = re.sub(&quot;%d tb&quot;%vol,&quot;%dtb&quot;%vol,l)
+
+        ## replace other words
+        for k,v in repalce_dict.item():
+            l = re.sub(k,v,l)
+            l = l.split(&quot; &quot;)
+
+        ## replace synonyms
+        l = replacer.replace(l)
+        l = &quot; &quot;.join(l)
+        line[name] = l
+    return line
+
+
+    ##########
+    ##drop html tag
+    ##########
+
+    def drop_html(html):
+        return BeautifulSoup(html).get(text(separator = &quot; &quot;))
+
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/2.%E6%AF%94%E8%B5%9B">2.比赛</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86">数据预处理</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "2.比赛/指导_数据探索&预处理_CrowdFlower&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

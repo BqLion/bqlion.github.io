@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>3.课程/CS224n_5 - 项目建议 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="Lecture5-项目建议"><a href="#Lecture5-项目建议" class="headerlink" title="Lecture5 项目建议"></a>Lecture5 项目建议</h1><h4 id="1-一层神经网络过渡到多层神经网络"><a href="#1-一层神经网络过渡到多层神经网络" class="headerlink" title="1.一层神经网络过渡到多层神经网络"></a>1.一层神经网络过渡到多层神经网络</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_08_008.png" alt=""></p>
+<h4 id="2-项目建议"><a href="#2-项目建议" class="headerlink" title="2.项目建议"></a>2.项目建议</h4><p>老师推荐的文章和会议</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_24_988.png" alt=""></p>
+<p>1.定义你的任务：</p>
+<p>例如：summarization</p>
+<p>2.定义数据集：</p>
+<p>最好使用现成的数据集，因为他们已经有baselines</p>
+<p>3.建立baseline</p>
+<p>他可以是一个非常简单的一元线性回归，然后在你的训练数据集上计算你的评价标准，看看模型是过拟合还是欠拟合</p>
+<h4 id="4-选做题：自己发明新的模型"><a href="#4-选做题：自己发明新的模型" class="headerlink" title="4.选做题：自己发明新的模型"></a>4.选做题：自己发明新的模型</h4><ol>
+<li><p>首先，你需要做好以上说的几个步骤.</p>
+</li>
+<li><p>然后你需要知道已经存在的模型上有哪些问题。然后你就可以设计出自己的模型。如果你想要这样做的话，<strong>你真的需要和你的导师和其他研究者保持沟通，除非你自己就是研究者并且已经获得了博士文凭</strong>。</p>
+</li>
+<li><p>你需要实现你的模型，然后根据你的新点子去对它快速迭代。（也许在某个位置新加一层？然后看看他起不起作用？）</p>
+</li>
+<li><p>那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。</p>
+</li>
+<li><p>建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型。</p>
+</li>
+<li><p>对于终极任务：summarization任务。</p>
+<ol>
+<li>一开始你可能尝试一些非常简单的模型。比如对自然段中的所有单词向量求平均，然后用贪心搜索一个接一个地生成单词，或者用贪心搜索对维基百科中的现有文章寻找一些片段，然后把合适的片段复制过去。</li>
+<li>然后升级你的目标，尝试某些真正让你生产整段总结的方法。</li>
+</ol>
+</li>
+</ol>
+<p>一些项目的idea（包括了在kaggle上打比赛！）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_37_463.png" alt=""></p>
+<p>下次课程会学一些有趣的基础语言学任务，比如句法分析；然后会学习TensorFlow的应用。</p>
+<h4 id="论文分享："><a href="#论文分享：" class="headerlink" title="论文分享："></a>论文分享：</h4><p>词袋模型</p>
+<p>文本分类是nlp领域一个非常重要的话题， 给定一串文本，我们就可能问，它带有的是积极还是消极情绪。是垃圾邮件还是正常邮件。如图就是一个情感分析的例子。</p>
+<p>取得一个句子的特征的一种简单的办法就是对句子中所有的单词向量做平均。这篇论文中的模型也是类似这样的方式。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1420_49_271.png" alt=""></p>
+<p>对他们求平均，但是会丢失他们之间的顺序。然后得到的是这个低纬度的文本向量，代表这个句子，这就揉碎了的低纬度的文本向量就是词袋（word  bag）</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>反向传播和词袋模型在其他文档中有总结。</p>
+<p>本节课最有含金量的就是老师对想要发文章的同学的做项目的建议。</p>
+<p>首先，纯理论突破现在不可能。所以必须得要做项目，项目的选题要与老师或者其他研究者讨论，避免过大或者过小，除非你自己是一个phd和独立研究者。但是现在我没有人去讨论，但是回避六个月白忙的风险的动作是要做的，解决思路有两个</p>
+<ul>
+<li>发邮件、线下拜访中国的nlp领域的老师，求指点</li>
+<li>直接打kaggle。问题具体，选题明确。</li>
+</ul>
+<p>做能发文章的项目要先确定baseline和数据集。然后遍历先有的模型，然后提出一些修改意见（idea），然后在数据集上跑，看看是不是确实有提高，如果有，就完事儿了嗷。做出修改意见并且修改别人的模型的前提是得有充足的工程能力，这个工程能力我现在他妈绝对不具备。难顶，只能硬上。</p>
+<p>另一个要注意的事情是老师反复<strong>强调迭代 + 先从容易的模型开始实现</strong>。我认为这是把大问题难问题拆分成小问题容易问题的思路。这种思路非常关键，小熊也提过很多次。我需要做计划，把大问题拆分成小问题。当然具体是一个多大的问题，发论文一共有多少步，哪些步骤最难大概耗时多久如何拆分成容易问题都是还需要探索的地方。</p>
+<p>所以在做总计划的时候也要秉承把困难计划先简答实现然后再根据新发现的信息对其迅速迭代的思路。</p>
+<p>之所以这样做因为what else？</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "3.课程/CS224n_5 - 项目建议&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

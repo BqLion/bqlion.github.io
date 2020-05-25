@@ -136,33 +136,32 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-        <p class="h4 index-header">安装调试记录/快捷键</p>
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95_1_%E6%A6%82%E8%AE%BA/">
+        <p class="h4 index-header">3.课程/统计学习方法_1_概论</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">PyCharmCTRL + -  = 折叠本行 
-CTRL + + = 打开本行
-CTRL + SHIFT + -  = 全部折叠
-CTRL + SHIFT + + = 全部打开
-ChromeCTRL + SHIFT + N = 打开匿名窗口
-CTRL + SHIFT + I =  检查
-CTRL + W  = 关闭当前标签页
-CTRL + fn  + PgUp/PgDn = 上翻/下翻当前标签页
-IDEACTRL + SHIFT + F12 =  编程窗口最大化
-CTRL + SHIFT+ N = 查找文件
-SHIFT + F6 = 全局替换
-CTRL + ALT + L = 格式化代码
-CTRL + ALT + V =快速赋值
-Cookie[] cookeis数组遍历便捷写法  = cookies.for = for(Cookie cookie : cookies)
-SHIFT + F6  = 文件重命名
-CTRL + SHIFT + C = 拷贝文件路径
-CTRL + D = 拷贝一行
-SHIFT + ENTER = 换行
-CTRL + P = 查看参数
-CTRL + N = 查</div>
+          <div class="index-text mb-1">1.概论介绍基本概念，是对全书的概括。
+首先叙述统计学习的定义、研究对象和方法，然后叙述监督学习。
+然后提出统计学习方法的三要素：模型，策略和算法。
+介绍模型选择，包括正则化、交叉验证和学习的泛化能力。
+介绍生成模型和判别模型
+介绍监督学习方法的应用： 分类问题，标注问题，回归问题。
+1.1统计学习定义
+统计学习是关于计算机基于数据构建概率统计模型并运用模型对数据进行预测和分析的学科。
+统计学习是概率论，统计学，信息论，计算理论，最优化理论，计算机科学等领域的交叉学科。在发展中逐步有了自己的理论体系和方法论。
+目的
+统计学习用于对未知数据预测和分析。
+对数据的预测可以使计算机更加智能化/计算机的性能提升。
+对数据的分析可以使人们获取新的知识。
+方法
+统计学习的方法是基于数据构建统计模型进而对数据进行预测和分析，统计学习由监督学习，半监督学习，无监督学习和强化学习等组成。
+本书主要讨论的是监督学习，这种情况统计学习的方法可以概括如下：
+从给定的有限的训练数据集出发（training set）,假设数据是独立同分布产生的；
+假设要学习的模型属于某个函数的集合，称为假设空间。
+把模型应用于某</div>
         </div>
       </a>
 
@@ -173,13 +172,436 @@ CTRL + N = 查</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a>&nbsp;
+            <a href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95">统计学习方法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95_2_%E6%84%9F%E7%9F%A5%E6%9C%BA/">
+        <p class="h4 index-header">3.课程/统计学习方法_2_感知机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.感知机感知机是二分类的线性分类模型，输入是实例的特征向量，输出是分类结果（-1,1）。
+感知机对应输入空间（特征空间）中将实例划为正副两类的分离超平面。
+工作原理是导入基于误分类的损失函数，利用梯度下降法岁损失函数极小化。
+感知机1957年提出，是神经网络和SVM的基础。
+本章先介绍感知机的模型，然后叙述学习策略，然后是算法（原始和对偶形式）。
+2.1感知机模型感知机模型是f(x) = sign(w.x + b).
+其中sign是如下的函数
+
+也就是一个一元一次方程（直线）作为超平面的分类函数。
+
+2.2感知机学习策略假设训练集是可分的，感知机的学习目的就是确定一个超平面把训练集分开。
+为了找出这个超平面，就要确定感知机模型的参数w和b。
+损失函数怎么定？定为错分类点到超平面的总距离w。（如上图）
+某个点到超平面的距离怎么求？如下图，||w||是w的范数。
+
+损失函数的正式定义；
+
+2.3感知机的学习算法随机梯度下降法
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95">统计学习方法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5/">
+        <p class="h4 index-header">3.课程/线性代数_正交矩阵</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">正交矩阵如果一个矩阵乘以它自己的转置矩阵等于E（单位阵），则称为正交矩阵。
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/">
+        <p class="h4 index-header">3.课程/线性代数_特征值&amp;特征向量计算</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">特征值特 &amp; 特征向量省略理论部分，一个例子讲清：
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
+        <p class="h4 index-header">3.课程/线性代数_奇异值分解</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">奇异值分解1.应用：影像压缩2.应用：过滤噪声
+左图是原始图片。右图是经过SVD分解处理的图片，丢失了一些精确度，但是呈现效果更好，很可能丢失的精确度恰好是噪声。
+具体做法是我们对15*25的矩阵做奇异值分解（SVD），然后得到如下15个特征值，其中前三个特征是比较重要，为了压缩数据和过滤噪声，我们只取前三个特征值，后边的全部丢弃。
+
+
+5.计算例子​    
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+          
+            <a href="/tags/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3">奇异值分解</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
+        <p class="h4 index-header">5.杂谈/王威廉对博士生的要求</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Hiring PhD students
+Q: What’s your research interest? 
+A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/5.%E6%9D%82%E8%B0%88">5.杂谈</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/phd%E7%94%B3%E8%AF%B7">phd申请</a>&nbsp;
+          
+            <a href="/tags/UCSB">UCSB</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/%E7%8E%8B%E9%98%BF-%E7%94%B3%E8%AF%B7phd%E6%80%9D%E8%B7%AF/">
+        <p class="h4 index-header">5.杂谈/王阿-申请phd思路</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">我是如何申请到phd的转载自知乎–王阿的阿
+谢谢你们。
+在这篇经验贴里，我会告诉你我当时申请时面临的处境、我的决策过程，以及申请当中各个环节最精华的经验和技巧，我都毫无保留地贡献在这里了。
+读完这篇文章，除了我介绍的各种申请技巧以外，我希望能让你认识到申请过程中决策和心态的重要意义：
+
+想成功申请美国的PhD，除了自己软硬件要出色，还有很重要的一点是对自己的定位，包括认识到自己的目标、兴趣以及自己的长处和缺陷。不论你是申请哪个学科的PhD，请重点关注我做决策时的思考内容和思考方向，这也许会对你有所启发。
+心理韧性、抗打击能力也是申请成功的一个重要因素。如果你知道GradCafe这个北美grad school申请论坛，你会发现上面有很多人诉说自己第二次、第三次才申请成功的经历。我就是其中一员。
+
+我的故事是这样婶儿的……
+2017一整年是我这辈子最难熬的一年，这一年我第一次（也只申请了这一次）申请美国的临床心理学PhD（clinical psychology），申了13所学校。2017年的头四个月陆续收到13封拒信，无一录取，甚至连一个面试都没有。当时的我：
+
+已经在纽约市生活了三年；
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/5.%E6%9D%82%E8%B0%88">5.杂谈</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
+          
+            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">5.杂谈/996 - 超时工作的异化问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">996 - 超时工作与异化问题1.感性认识我国现阶段各行业超时工作现象十分普遍，有的互联网公司晚上十一二点整个大楼还灯火通明，有的公司虽然晚上按时下班，但回家后仍然要求有工作输出，很多岗位还要求7*24小时on call。
+我前些年所在的公司就有制度要求员工每月加班22天以上才算考核达标，而我经常需要加班27天才能完成工作，每晚九点离开公司后经一小时通勤才能到家，洗洗漱漱刚好十一点上床，十二点入睡，第二天早上6点50分起床后经过一小时通勤抵达公司，在公司门口的快餐店里缩着身子与其他同事挤在餐桌上潦草进食后便赶往工位，开始一天的埋头苦干。算上通勤时间，我的工作强度是7107。高强度劳动和了无希望所积累的疲劳深入骨髓，在此期间我感到生命力与灵魂的飞速流逝。
+深夜的华为大楼
+
+早上五点半排队等公交上班的年轻人
+
+2.八小时工作制的来由八小时工作制国家法律规定的工作日长度为8小时的工作制度。目前世界各国普遍实行八小时工作制。正常一天工作时间为早上九点至下午五点为8小时。
+理论起源
+八小时工作制最早由社会主义者罗伯特·欧文于1817年8月提出。他还发明了一个口号， “8小时劳动， 8小时休闲， </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/5.%E6%9D%82%E8%B0%88">5.杂谈</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
+          
+            <a href="/tags/996">996</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/">
+        <p class="h4 index-header">5.杂谈/博士这五年-李沐</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">转自知乎-李沐
+前言12年8月提着一个行李箱降落在匹兹堡机场。没找住的地方，也不知道CMU应该怎么去。对未来一片迷茫，但充满乐观。 现在，刚完成了博士期间最后的一场报告，在同样的机场，不过是在等待离开的航班。
+回想过去的五年，是折腾的五年，也是自我感悟和提升的五年。这里我尝试记录这五年主要做过的事情和其中的感想，希望对大家有所启发。
+第0年：3/11-8/12我第一次申请美国的博士是在11年，但拿到的offer并没有特别合适的导师，于是就北上投奔文渊去了。 我当时在百度商务搜索部门做广告的点击预估。具体是使用机器学习来预测一个广告是不是会被用户点击。 这时候离“大数据”这个词流行还有两年，但百度那时候的数据即使现在来看仍然是大的。我的任务是如何高效的利用数百台机器快速的在数十T的数据上训练出模型。
+当时产品用的算法基于LBFGS，我于是想是不是可以换个收敛更快的算法。没几天就找到个不错 。但实现上发现了各种问题，包括性能，收敛，和稳定性。而且那时有的就是一个裸的Linux和很老版本的GCC，什么都是需要从头开始写。花了大量时间做系统优化，算法改动，和线上实验，最后一年后在整个广告流量上</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/5.%E6%9D%82%E8%B0%88">5.杂谈</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
+          
+            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_A%5B%E6%98%9F%E5%8F%B7%5D%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">3.课程/数据结构_搜索_A[星号]寻路算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A*寻路算法算法要解决的问题：
+在有障碍的格子地图上已知终点和起点，横走代价小于斜走，求由始到终代价最小的路径。
+F = G + H 
+总代价  = 到起点的格子数 + 到终点的曼哈顿距离
+算法描述：
+
+初始节点即为当前节点，放入open列表
+
+初始节点从open列表移除，放入close列表
+
+
+
+当前格子周围八个格子用如下三选一方式处理:
+
+若在close列表中，忽略
+若不在open/close列表中，加入open列表，并将当前格子设为它的父节点
+若在open列表中，计算这个格子经过当前格子的F值，如果F值更小，更新之，并将当前格子设为它的新父节点。
+
+
+把当前格子从open列表拿入close列表；
+设置刚才加入open列表中F值最小的格子为当前格子。
+
+
+
+重复3.4.两步，知道找到终点，随后按照父节点顺序回溯，找到最优路径
+
+不需要更新F值的图示
+
+
+
+
+
+
+
+
+
+需要更新F值的图示
+
+
+小结：
+A*寻路算法需要对每个格子维持三个状态值：总代价，到起点的距离，到终点的距离。下一步如何选择由总代价值指导。通常比DFS和BFS更高效。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/A*%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95">A*寻路算法</a>&nbsp;
           
         
       </div>
@@ -190,7 +612,7 @@ CTRL + N = 查</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

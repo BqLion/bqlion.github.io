@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>3.课程/CS224n_7 - Tensorflow ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      11 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="Lecture7-TensorFlow"><a href="#Lecture7-TensorFlow" class="headerlink" title="Lecture7 TensorFlow"></a>Lecture7 TensorFlow</h1><p>为什么要使用深度学习框架？</p>
+<ul>
+<li>有助于扩展机器学习代码</li>
+<li>自动计算梯度（通常梯度计算并不重要，这些框架可以自动处理梯度，使得我们把重点放在更高层次的数学上）</li>
+<li>在很多领域使机器学习更标准化</li>
+<li>这些框架提供了GPU接口</li>
+</ul>
+<h4 id="1-TensorFlow是什么？"><a href="#1-TensorFlow是什么？" class="headerlink" title="1.TensorFlow是什么？"></a>1.TensorFlow是什么？</h4><p>是一个谷歌开发的深度学习框架，使用流式图进行数值计算的开源软件库。TensorFlow是用于表示机器学习算法的接口，以及用于执行这种算法的实现。</p>
+<p>TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图的节点是操作，每个节点都有一个输入和输出，节点之间的边表示他们之间流动的张量，在实践中最好的方法就是认为，张量是一个n维数组。</p>
+<p>使用流式图作为深度学习框架主干的优点在于它允许你使用小而简单的操作建立复杂的模型，当我们这样做的时候，会使得梯度计算变得极其简单。</p>
+<p>此框架可以自动求导，而且图方法的每一个操作都是可以在其所在点被评估的一个函数。变量将成为输出其当前值的有状态节点。</p>
+<p>占位符是那些在执行期间才会接收值的节点，如果在你的网络中有依赖外部数据的一些输入，你并不想在建立图时依赖任何实际的值。你并不想在建立图时依赖任何的实际的值，那么这些就是我们在训练时添加到计算中的充当占位符的值。对于占位符，我们不给定任何初始的值，仅仅分配一个数据类型，我们的图仍然知道该计算什么，尽管当前并没有存储的值。 </p>
+<p>还有一种节点是数学操作节点，比如矩阵乘法，加法，激活函数、</p>
+<h4 id="2-建立图和会话"><a href="#2-建立图和会话" class="headerlink" title="2.建立图和会话"></a>2.建立图和会话</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1422_00_819.png" alt=""></p>
+<p>新建一个变量b，将其初始化大小是100维的“0”的向量。</p>
+<p>新建一个W，服从[-1,1]均匀分布，shape是（784,100）的TensorFlow变量。</p>
+<p>我们给输入创建一个占位符x，没有被初始化任何值。它仅仅接受32位浮点数的数据类型，接受一个（100,784）shape。</p>
+<p>实际建立流式图，我们用h表示对x和W进行矩阵乘法并加上偏置b，然后进行Relu运行的结果。</p>
+<p>h的数学表达式：</p>
+<p><img src="http://q0u9fsub0.bkt.clouddn.com///20191204/4b2z8nKEsqKk.png?imageslim" alt="mark">)<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1422_10_895.png" alt=""></p>
+<p>我们已经定义了图，下一个问题是我们如何执行它。在TensorFlow中运行图形的方式是将其部署在一个称为会话的地方（session）。</p>
+<p>会话是特定的执行上下文（如CPU和GPU）的绑定。</p>
+<p>我们将会建立一个会话对象，并且调用两个参数fetches和feeds，fetches是返回节点输出的图形节点列表，feeds是一个从图节点到我们想要在模型中运行的实际值的字典映射，所以这就是我们实际填写在前面提到的占位符的地方。</p>
+<p> <img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1422_21_099.png" alt=""></p>
+<p>代码增添了如图所示三行。</p>
+<pre><code>sess = tf.Session()</code></pre><p>表示新建一个session，他会采取默认的环境，最有可能的是一个CPU，当然你也可以添加一个你想要的运行设备作为参数。 </p>
+<pre><code class="python">sess.run(tf.initialize_all_variables())</code></pre>
+<p>初始化所有的变量。</p>
+<p>这是概念密集型流程，称为懒惰评估。这意味着你的图片的评估只会在运行时发生。我们可以在TensorFlow中给运行时间添加一个解释。这就是session（会话）。</p>
+<p>一旦我们建立好了会话，我们就可以准备好实际调用。</p>
+<pre><code class="python">sess.run(h,{x:np.random.random(100,784)})</code></pre>
+<p>第三行：输入h中的x，x是随机初始化的矩阵</p>
+<p>到目前为止，我们首先使用变量和占位符建立了一个图，然后我们将图部署到会话上，也就是我们的执行环境，接下来我们看看如何训练模型。</p>
+<p>一个问题：变量和占位符的不同？为什么要使用占位符？</p>
+<p>通常情况下 ，变量是我们感兴趣的参数，你几乎可以将他们视为直接对应关系。</p>
+<p>上文代码中的x是数据，而不是我们感兴趣的需要调优的参数，对数据使用占位符。</p>
+<p>此外，在刚开始的时候，对我们模型中的参数进行初始化试非常重要的。我们如果想要把我们的模型传给别人，他没有理由包含任何真实的数据，数据应该是任意的。模型中的参数才是你的模型的依据，这些参数是的你的模型更有趣，模型的计算实际上就是计算这些参数。</p>
+<p>​        </p>
+<h4 id="3-训练模型"><a href="#3-训练模型" class="headerlink" title="3.训练模型"></a>3.训练模型</h4><h4 id="3-1定义损失"><a href="#3-1定义损失" class="headerlink" title="3.1定义损失"></a>3.1定义损失</h4><p>对于优化而言，我们如何定义损失？我们将使用占位符作为标签，使用label和prediction建立一个损失节点。</p>
+<p>如下代码表示我们在网路结束时的预测值，它是对神经网络顶层进行softmax函数计算，输出一个概率向量，这是一个回归过程。 </p>
+<p>第一个标志是你的神经网络前馈阶段在哪里结束？他就是在网络预测出值的时候结束。</p>
+<pre><code class="pyhton">prediction = tf.nn.softmax(...) </code></pre>
+<p>如下代码表示创建一个label变量，它是我们真实标记的占位符，我们的模型根据他来训练。</p>
+<pre><code class="python">label = tf.placeholder(tf.float32,[100,10])</code></pre>
+<p>如下代码是创建交叉熵节点，它是真实标签乘以Tensorflow中对prediction取对数的乘积，然后再按列求和。也就是计算预测的结果准不准。</p>
+<pre><code class="python">cross_entropy = -tf.reduce_sum(label * tf.log(prediction),axis = 1)</code></pre>
+<p>TensorFlow会把我们写的加减乘除自动转换为TensorFlow中的操作。</p>
+<h4 id="3-2计算梯度"><a href="#3-2计算梯度" class="headerlink" title="3.2计算梯度"></a>3.2计算梯度</h4><p>我们在计算梯度之前，首先要定义一个优化器对象。在tf中有一个通用的抽象列叫做优化器，在这个类中的每一个子类都是一个针对特定学习算法的优化器，我们目前使用的学习算法是梯度下降算法，</p>
+<p>如下代码调用的.minimize方法，参数就是我们想要最小化的节点。</p>
+<p>minimize方法其实做了两件事，第一是计算了交叉熵的梯度（他和我们在图中定义的所有的变量相关），第二是他会给这些变量根据梯度进行更新。</p>
+<p>我们在底层实际是如何计算梯度的呢？每一个图节点都有一个附加的梯度操作，都有相对于输入预先构建的输出梯度，当我们在计算交叉熵相对于所有参数的梯度的时候，通过图使用链式法则利用反向传播计算是非常简单的。</p>
+<p>这就是把机器学习框架表示为计算图表的主要优势。这样子程序也很容易回退，在图形中向后遍历，并且在每个节点上将误差信号乘以节点的预定义梯度。所有的这些都是自动实现的。</p>
+<pre><code class="python">tf.train.GradientDescentOptimizer(lr).minimize(cross_entropy)</code></pre>
+<h4 id="3-3学习计划"><a href="#3-3学习计划" class="headerlink" title="3.3学习计划"></a>3.3学习计划</h4><p>我们有了梯度，我们能对梯度进行更新，我们需要创建一个迭代的学习计划，比如这里我们需要迭代一千次，我们在数据集上使用next_batch方法。</p>
+<pre><code class="python">for i in range(1000):
+    batch_x,batch_label = data.next_batch()</code></pre>
+<p>我们将会得到我们输入的一个批次的数据，以及对应的标签值。</p>
+<p>然后在train_step变量上调用session.run方法，当我们调用他的时候，已经对图中所有的变量应用了梯度。我们需要建立字典，将值传给我们之前定义好的两个占位符。这里的x和label是图中的节点，字典中的关键字是图中的节点，对应的项是numpy数据。</p>
+<pre><code class="python">sess.run(train_step,feed_dict = {x:batch_x,label:batch_label}</code></pre>
+<p>TensorFlow提供了很好的numpy接口，tf会把图中节点的数据转换为张量，所以我们可以把numpy数组插入到字典中，比如batch_x和batch_label，我们执行sess.run之后会得到输出，如果定义了变量比如output等于sess.run,那么他们也是相应节点的nump数组，也就是这些节点评估的值。通过train_step将会返回给你梯度的值。</p>
+<h4 id="4-变量共享"><a href="#4-变量共享" class="headerlink" title="4.变量共享"></a>4.变量共享</h4><p>如果想要建立一个大的模型，经常需要共享大的变量，你可以能想在一个地方初始化他们，例如，我们可能想要多次实例化我的图，或者更有趣的是，我们想要在GPU集群上训练。也就是说通常情况下我们希望能在不同的设备上训练模型。</p>
+<p>实现这种共享的简单思路是，在代码的顶端创建这个变量的字典。把一些字符串的字典放到他们所代表的变量中。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1422_33_648.png" alt=""></p>
+<p>但是有一些原因证明这其实不是一个好的主意，这主要的原因是它破坏了封装性，在TensorFlow中构建图的代码应该始终具有相关使用节点和操作的所有有关信息。在代码文件中应该能找到神经元的名字，变量的形状。如果只是在代码的顶部有这些大的field，你其实会丢失这些信息。</p>
+<p>TensorFlow设计了有关变量作用域的解决方案:variable_scope。</p>
+<p>提供了一个简单的名称空间方案来避免冲突，另一个相关的函数是get_variable。get_variable会为你创建一个变量，如果具备特定名词的变量存在，他会访问该变量，让我们来看看它是如何起作用的。</p>
+<pre><code class="pyhton">tf.variable_scope() 
+#provides simple name_spacing to avoid clashes</code></pre>
+<p>open一个foo的新变量作用域，调用get_variable方法，创建变量名，名字为v。 </p>
+<pre><code class="python">with tf.varibale_scope(&quot;foo&quot;）:    
+    v = tf.get_varibale(&quot;v&quot;,shape = [1])
+# v.name == &quot;foo/v:0&quot;</code></pre>
+<p>这样当我们调用foo，就好像进入了一个目录，让我们关闭这个变量作用域并reopen，并使用参数reuse = True。现在如果调用get_varibale，name为v，我实际上得到的是同一个变量，我将会访问该变量，其实我访问的是和之前创建的对象相同的变量。</p>
+<p> 如果我再一次关闭变量作用域，然后重新打开，使用参数reuse = False，如果我尝试再次运行，程序会崩溃。因为你已经设置他不复用任何变量，所以当它试图创建新的变量，但是已经存在一个同名变量了，在下个作业里，变量作用域的使用将会是明显的。</p>
+<pre><code class="python">小结;
+1.建立一个
+    1.1前馈+预测
+    1.2优化器（梯度+训练步骤设置）
+2.初始化一个会话
+3.训练session.run（train_step,feed_dict）</code></pre>
+<h4 id="live-demo环节"><a href="#live-demo环节" class="headerlink" title="live demo环节"></a>live demo环节</h4><p>直接在anaconda中做。</p>
+<h4 id="助教论文分享：Visual-Dialog（可视对话）"><a href="#助教论文分享：Visual-Dialog（可视对话）" class="headerlink" title="助教论文分享：Visual Dialog（可视对话）"></a>助教论文分享：Visual Dialog（可视对话）</h4><p>许多人相信下一代人工智能系统将会能够根据视觉内容以自然语言与人类进行有意义的对话。在看这篇论文之前，我们先看看相关工作。</p>
+<p>许多人对自然语言处理和计算机视觉融合方向做了许多工作。比如给图像加字幕或者描述，如下图片。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1422_44_145.png" alt=""></p>
+<p>还有一类工作是视觉-语义对齐，这个模型并不是给出每张图片的描述，而是给出图片中每个独立组件的描述。在搜集图片中的组件时，需要给图片画出许多边界框，并单独描述每一个独立的组件。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1422_53_931.png" alt=""></p>
+<p>还有一类工作与我们今天分享的论文很相关，就是视觉问答，模型基于视觉内容回答给定的问题。在此种情况下，如图所示，回答是二分类的，yes or no或者非常简洁的其他二分类回答（数字，圆或者方之类的）。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1423_01_032.png" alt=""></p>
+<p>我们要介绍的论文，《visual dialog》中，模型可以基于视觉内容，和人进行有意义的对话。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1423_10_721.png" alt=""></p>
+<p>如下图所示，这个模型使用卷积神经网络将图片进行编码，同时使用两个循环神经网络将问题和对话历史进行编码，然后将三个编码合并为一个向量。为他接上一层全连接层和一个解码器，用来生成基于向量表示的答案。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1423_39_943.png" alt=""></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "3.课程/CS224n_7 - Tensorflow&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
