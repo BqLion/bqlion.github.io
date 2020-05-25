@@ -136,392 +136,39 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/19/kaggle/toxic/env_yml_kag1_%E6%9C%AC%E6%9C%BA/">
-        <p class="h4 index-header">kaggle/toxic/env_yml_kag1_本机</p>
+      <a href="/2020/02/24/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+        <p class="h4 index-header">安装调试记录/快捷键</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">environment_ymlname: kag1
-channels:
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
-  - defaults
-dependencies:
-  - absl-py=0.9.0=py37_0
-  - astor=0.7.1=py_0
-  - attrs=19.3.0=py_0
-  - boto=2.49.0=py_0
-  - boto3=1.12.11=py_0
-  - botocore=1.15.11</div>
+          <div class="index-text mb-1">PyCharmCTRL + -  = 折叠本行 
+CTRL + + = 打开本行
+CTRL + SHIFT + -  = 全部折叠
+CTRL + SHIFT + + = 全部打开
+ChromeCTRL + SHIFT + N = 打开匿名窗口
+CTRL + SHIFT + I =  检查
+CTRL + W  = 关闭当前标签页
+CTRL + fn  + PgUp/PgDn = 上翻/下翻当前标签页
+IDEACTRL + SHIFT + F12 =  编程窗口最大化
+CTRL + SHIFT+ N = 查找文件
+SHIFT + F6 = 全局替换
+CTRL + ALT + L = 格式化代码
+CTRL + ALT + V =快速赋值
+Cookie[] cookeis数组遍历便捷写法  = cookies.for = for(Cookie cookie : cookies)
+SHIFT + F6  = 文件重命名
+CTRL + SHIFT + C = 拷贝文件路径
+CTRL + D = 拷贝一行
+SHIFT + ENTER = 换行
+CTRL + P = 查看参数
+CTRL + N = 查</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          
-            <a href="/categories/toxic">toxic</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/19/Python/python%E7%8E%AF%E5%A2%83%E8%BF%81%E7%A7%BB/">
-        <p class="h4 index-header">Python/python环境迁移</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">python环境迁移copy from：WenShan`s blog
-Conda 是著名的包管理器和虚拟环境管理器。
-在配置完项目环境，并编写和测试代码后，您可能希望将其移至另一台计算机。
-Conda 提供了多种保存和移动环境的方法。
-Clone在本地，conda 可以方便地创建环境的快照或者备份：
-1 conda create --name snapshot --clone myenv Spec List如果需要在具有 相同操作系统 的计算机之间复制环境，则可以生成 spec list。
-生成 spec list 文件：
-1 conda list --explicit &gt; spec-list.txt 重现环境：
-1 conda create  --name python-course --file spec-list.txt Environment.yml也可以使用 -export 选项生成一个 environment.yml 文件，以在 不同的平台和操作系统之间 复现项目环境。 spec list 文件和 environment.yml 文件之间的区别在于： environm</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/18/CS224U/Sentiment_Analysis_%E6%9D%90%E6%96%99%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
-        <p class="h4 index-header">CS224U/Sentiment_Analysis_材料和预处理</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment Analysis阅读材料和数据预处理核心阅读材料
-
-情感分析各子领域合适的切入点。他们入选的原因是位置合适以及有公开数据集
-
-常用情感分析数据库
-
-lexica
-
-preprocessingpreprocessing ： tokenizing
-
-preprocessing : 词干化stemming
-
-porter stemming演示
-
-兰开斯特stemming演示
-
-wordNet stemming演示
-
-preprocessing:  POS tagging
-有些英文单词的sentiment只能通过pos来确定。
-
-需要注意的是即使有些单词的pos tagging一模一样仍然会有相反的sentiment
-
-preprocessing : 简单情感标记和推荐阅读
-
-简单负面情绪标记示例
-
-推荐阅读
-
-负面情绪标记带来的性能提升
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-18&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/CS224U">CS224U</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_batchsize/">
-        <p class="h4 index-header">NLP概念/概念_batchsize</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">BatchSize机器学习训练中，把数据集分割成若干个batch，每个batch的大小叫做batchsize。
-对batchsize、epoch、iteration的举例：
-mnist 数据集有张图片作为训练数据，张图片作为测试数据。假设现在选择 Batch_Size = 对模型进行训练。迭代次。
-
-每个 Epoch 要训练的图片数量：(训练集上的所有图像)
-训练集具有的 Batch 个数： 
-每个 Epoch 需要完成的 Batch 个数：
-每个 Epoch 具有的 Iteration 个数：（完成一个Batch训练，相当于参数迭代一次）
-每个 Epoch 中发生模型权重更新的次数：
-训练 10 个Epoch后，模型权重更新的次数： 
-不同Epoch的训练，其实用的是同一个训练集的数据。第1个Epoch和第10个Epoch虽然用的都是训练集的图片，但是对模型的权重更新值却是完全不同的。因为不同Epoch的模型处于代价函数空间上的不同位置，模型的训练代越靠后，越接近谷底，其代价越小。
-总共完成30000次迭代，相当于完成了个Epoch
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_epoch/">
-        <p class="h4 index-header">NLP概念/概念_epoch</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Epoch定义训练集的所有数据对模型进行了一次完整训练，称为“一代训练”（epoch）。
-也就是说所有训练样本在神经网络中都进行了一次正向传播和一次反向传播。
-为什么要进行多于一次的epoch？神经网络中传递完整的数据集一次是不够的，而且我们需要将完整的数据集在同样的神经网络中传递多次。
-但是因为使用的是有限的数据集，并且使用一个迭代过程也就是梯度下降来优化学习过程。如下图所示，随着epoch的增加，神经网络的权重更新次数也在增加，曲线从欠拟合变成了过拟合。所以需要选择合适的epoch。
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E6%B1%A0%E5%8C%96/">
-        <p class="h4 index-header">NLP概念/概念_池化</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">池化池化是什么卷积之后往往是池化操作，which可以降低卷积输出的特征向量，避免过拟合。
-以最大池化max pooling为例：整个图像被分为不重叠的若干小块，每个小块内取最大的数字，然后保持原平面结构，得出output。
-
-​    
-池化的作用感受到不变性，增大感受野。
-减小下一层的输入大小，减小计算量和参数个数，降维。
-如上图，第一行是卷积，第二行是池化。经过这两行操作，“横折”这个点，不论做平移旋转或者伸缩，都有相同的输出。于是
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E5%8D%B7%E7%A7%AF/">
-        <p class="h4 index-header">NLP概念/概念_卷积</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">卷积机器学习中的卷积操作的核心就是“对应相乘”。feature和原图的各部位分别相乘相加求均值，把原图遍历一道，便得到结果。如下所示，采用不同的卷积核可得到不同的结果图。
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/07/Linux/%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
-        <p class="h4 index-header">Linux/常见命令</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">常见操作export命令用于设置或者显示环境变量。
-在shell中执行程序时，shell会提供一组环境变量，export可新增修改或者删除环境变量，供后续执行的程序使用。export操作的效力仅限于该次登录操作。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-07&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/linux">linux</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux">linux</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/31/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/U%E7%9B%98%E5%AE%89%E8%A3%85Ubuntu/">
-        <p class="h4 index-header">安装调试记录/U盘安装Ubuntu</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">U盘安装Ubuntuwindows下 - 磁盘管理 - 压缩卷，然后删除卷。
-找一个大于4G的u盘
-http://mirrors.ustc.edu.cn/ubuntu-releases/16.04/ 下载ubuntu-16.04.6-desktop-amd64.iso    
-https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
-左上角 文件 - 打开iso文件；左下角本地目录 选中u盘，启动 - 写入硬盘映像 - 写入
-插入U盘，重启，F1,选择直接进入U盘。
-选择安装Ubuntu - 其他选项（根据需求调整分区）-  点击左下方的加号添加分区，分区方案参考如下
-
-现在安装 - 等待  - 拔U盘 - 重启 - 进
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-31&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -532,53 +179,8 @@ https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/linux">linux</a>&nbsp;
+            <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a>&nbsp;
           
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/28/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_tokenize%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
-        <p class="h4 index-header">NLP概念/概念_tokenize和预处理</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Tokenize把长句子拆分成有意义的小句子。
-import nltk
-sentence = &quot;hello,world&quot;
-tokens = nltk.word_tokenize(sentence)
-token = 
-[&#39;hello&#39;, &#39;,&#39; , &#39;world&#39;]
-有时候tokenize没那么简单，比如如下的例子是黄晓明在推特上@安吉拉卑鄙秀恩爱的语料。
-在这个场景下，大家会用很多# @ 表情符和超链接等，自然语言呈现出与书本不同形态，如果还沿用老的tokenize策略，就会分出不少乱七八糟的符号，并且拆散了有意义的本符号比如“ :D ” 。
-
-所以需要根据不同的业务场景开发定制化的tokenize策略，根据上文的分析，将本场景下最容易出现的专有token全部用正则表达式重写，试图完整表达。
-
-通过re.compile定义一个小方法token_re,返回和regex匹配的模式。
-
-词形的变化词有两种变化，分别是
-Inflection变化: walk -&gt; walking -&gt;walked不影响词性
-deri</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-28&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
         
       </div>
     </div>
@@ -588,7 +190,7 @@ deri</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </span>
   </nav>
   

@@ -136,174 +136,38 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/19/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_GRU/">
-        <p class="h4 index-header">NLP概念/概念_GRU</p>
+      <a href="/2020/04/28/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/Chrome%20OS%E5%88%9D%E5%A7%8B%E5%8C%96%E6%93%8D%E4%BD%9C/">
+        <p class="h4 index-header">安装调试记录/Chrome OS初始化操作</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Gated RNN : GRULSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。
-GRU模型GRU模型的主要思想是，我们希望能够保存一些记忆，能够捕获一些较长的依赖，需要有一个模型去学习何时以及如何去做，同时还得允许错误消息流转。基于输入，这些流转会向不同的方向以不同的强度传递。
-对GRU的介绍从标准的RNN开始
-循环神经网络RNN基本上直接计算下一步的隐层，同样的，之前的隐状态会回归给向量，我们不是去计算GRU数值，而是先要计算其中各个门，这些门和h(t)一样，就是一些连续的隐状态长度一致的向量。这些门包括更新门和重置门。
-计算更新门时主要是基于当前输入的词向量和隐藏状态
-
-计算重置门方法类似但是使用的是不同的权重
-
-通过一个直观例子来认识重置门的作用：
-
-详细分析上图的公式和重置门的作用：假如这是一个语义的情感分析任务，前边都是对一个电影长篇累牍的剧情讨论，最后一句话是it`s a really boring movie.那么其实只要最后这个boring就OK了，前边的都可以舍弃。所以这里重置门就可以置为0，把计算累计的东西都清理掉，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/GRU">GRU</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/19/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_LSTM/">
-        <p class="h4 index-header">NLP概念/概念_LSTM</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">LSTMLSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。
-朴素RNN与展开是一种处理序列数据的神经网络，某单词根据上下文变化而有不同含义这种任务就适合交给RNN来做。
-
-RNN在时序上展开
-
-LSTM与RNN结构对比长短期记忆（Long short-term memory, LSTM）是一种特殊的RNN，主要是为了解决长序列训练过程中的梯度消失和梯度爆炸问题。简单来说，就是相比普通的RNN，LSTM能够在更长的序列中有更好的表现。
-LSTM结构和普通RNN的对比图如下，LSTM有两个传输状态，分别是cell state ct 和 hidden state ht，一般ct改变的很慢，通常是上一个ct加上一些数值。不同的时序下ht改变很快。
-而RNN只有一个传输状态也就是ht，对应于LSTM中的ct。 
-
-LSTM的一胞三门两终态
-输入门，基本上决定了关心当前向量的强度，或者说当前的cell或者当前输入的词能起多少作用
-公式：
-
-示意图：
-
-
-
-
-遗忘门，是一种分离机制，告诉cell有些时候需要忘记信息或者保留信息。这种情况看起来可能有一些</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/LSTM">LSTM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/18/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_RNN%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-        <p class="h4 index-header">NLP概念/概念_RNN循环神经网络</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">循环神经网络RNN循环神经网络擅长处理序列化的数据，比如文字序列或者时间序列。
-循环神经网络比基本的前馈神经网络强在它可以跨时间序列地共享不同输入序列之间的特征。
-之前提到的CNN卷积神经网络也可参数共享，而RNN循环神经网络与之不同的是每一点的输出依赖于之前的结果。
-状态机近似表示RNN名字中的recurrent得名于如下图所示的t时刻的状态 依赖于 t - 1时刻的状态 + 输入x。
-
-​              ↑总图                   ↑拆分                                 ↑ t - 1时刻            ↑ t时刻               ↑ t + 1时刻
-上图维持的状态h(t)可以看作是之前的向量序列【x1，x2，x3，x4，……，xn】的全体有损表示（损度可控，某些语言模型只有附近的文字重要就可以加大损度）。
-RNN基本结构图
-如上，x是时时输入的序列，h是维持的状态，o是状态给出的输出，y是训练集中的答案，L是答案和输出之间的损失函数（如交叉熵）。
-因为上一个状态h(t-1)和下一个状态ht之间有循环连</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-18&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/RNN">RNN</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/17/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E6%A6%82%E5%BF%B5_%E6%AD%A3%E4%BA%A4%E5%BD%92%E4%B8%80%E6%80%A7/">
-        <p class="h4 index-header">线性代数/概念_正交归一性</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">正交归一性如果内积空间的两个向量是互相正交的，并且两个向量的范数都是1，则称这两个向量互相具有正交归一性/正交规范性。
+          <div class="index-text mb-1">Chrome OS初始化操作0.进入开发者模式，esc + f３ + 电源，then ctrl + D 
+1.参见“共享代理文章”，用手机和电脑开启代理共享，chromebook连上wifi，登陆谷歌账号，不断重试，连接google play（这一步非常耗时）。
+2.安装包管理工具crew  Ctrl + Alt +t  curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
+3.安装ssr  在主流的apk网站上下载并安装ssr，登陆amytelecom，将信息复制到ssr中，删除无关的免费节点。
+4.安装马克飞象，印象笔记
+5.setting中安装linux，打开linux命令行输入sudo apt install vim-gtk3安装gvim
+6.用gvim打开rsa_pub，在linux中连接github，将post项目拉下来
 </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-17&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-28&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+            <a href="/tags/chromebook">chromebook</a>&nbsp;
           
         
       </div>
@@ -314,36 +178,38 @@ RNN基本结构图
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/17/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E6%A6%82%E5%BF%B5_%E5%BD%92%E4%B8%80%E5%8C%96/">
-        <p class="h4 index-header">线性代数/概念_归一化</p>
+      <a href="/2020/04/23/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/chromebook%E4%BB%A3%E7%90%86%E5%85%B1%E4%BA%AB/">
+        <p class="h4 index-header">安装调试记录/chromebook代理共享</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">归一化归一化消除了量纲，是处理数据的一种手段。通过归一化最优解的寻找过程会变得平缓，更容易正确的收敛到最优解。
-下图的例子是房价预测模型，横坐标是房间数量（0 - 10），纵坐标是面积大小（0 - 1000），预测结果是等高线上的没画出的第三维。
-图一未归一化，图像是长椭圆，图二归一化后是正圆（拍扁了数据），可见归一化后收敛过程更平缓。
+          <div class="index-text mb-1">1.下载ssr
+2.google免费ssr节点，复制粘贴。连接ssr，右键ssr图标-选项设置-允许来自局域网的连接。
+3.电脑连接手机热点，电脑打                          开热点共享，chromebook连接电脑发射的热点
+4.电脑win+R,cmd,ipconfig,得到如下所示ip信息
 
-
+5.chromebook点击所连接wifi热点，点击热点详情-连接类型-手动配置代理-输入上图ip，端口号是1080（详见第2条中允许来自局域网连接的按钮周围的端口信息）。
+6.登录，done。
 </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-17&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-23&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">线性代数</a>&nbsp;
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BA%BF%E4%BB%A3">线代</a>&nbsp;
+            <a href="/tags/chromebook">chromebook</a>&nbsp;
           
         
       </div>
@@ -354,98 +220,40 @@ RNN基本结构图
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/15/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_The%20Annotated%20Transformer/">
-        <p class="h4 index-header">NLP概念/概念_The Annotated Transformer</p>
+      <a href="/2020/03/31/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/U%E7%9B%98%E5%AE%89%E8%A3%85Ubuntu/">
+        <p class="h4 index-header">安装调试记录/U盘安装Ubuntu</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">The Annotated Transformerharvard nlp 对Transformer论文的逐行注解,原文：http://nlp.seas.harvard.edu/2018/04/03/attention.html
-本文在github和谷歌drive上的网址：
-https://github.com/harvardnlp/annotated-transformer
-https://drive.google.com/file/d/1xQXSv6mtAOLXxEMi8RvaW8TW-7bvYBDF/view
-Import lib:import numpy as np
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import math, copy, time
-from torch.autograd import Variable
-import matplotlib.pyplot as plt
-import seaborn
-seaborn.set_context(context=&quot;ta</div>
-        </div>
-      </a>
+          <div class="index-text mb-1">U盘安装Ubuntuwindows下 - 磁盘管理 - 压缩卷，然后删除卷。
+找一个大于4G的u盘
+http://mirrors.ustc.edu.cn/ubuntu-releases/16.04/ 下载ubuntu-16.04.6-desktop-amd64.iso    
+https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
+左上角 文件 - 打开iso文件；左下角本地目录 选中u盘，启动 - 写入硬盘映像 - 写入
+插入U盘，重启，F1,选择直接进入U盘。
+选择安装Ubuntu - 其他选项（根据需求调整分区）-  点击左下方的加号添加分区，分区方案参考如下
 
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-15&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/15/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E8%AF%8D%E5%90%91%E9%87%8F_Word_embedding%E8%AF%A6%E8%A7%A3/">
-        <p class="h4 index-header">NLP概念/概念_词向量_Word_embedding详解</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Word_embedding之前词语数字化表示的几种思路和问题，以及WE的提出：
-
-独热码离散表示：红橙黄绿青蓝紫大卡车和红橙黄绿青蓝紫中卡车是2 * 7 = 14个对象
-
-
-构建特征的分布式表示：红橙黄绿青蓝紫大卡车和红橙黄绿青蓝紫中卡车是7 + 2 = 9个对象
-
-
-
-
-邻接词的分布式表示：
-
-
-离散表示太稀疏，使用一个词附近的词分布式表示是不错的折中方案。
-WE的概念图（同义相近）：
-
-WE的目标：把单词转换为数字（向量）。
-这种转换是必要的，因为深度神经网络等技术都只能处理连续值的向量，不能处理文本和字符串。
-把单词变成向量还有如下两个好处：
-
-降维：更高效的表示方法
-上下文相似性：更有表达力的表示方法
-
-词向量的训练方法:
-使用语料库和模型训练词向量，把嵌入矩阵embedding matrix当成模型参数的一部分，通过词语词之间的共现矩阵或者上下文关系来优化模型参数，最终得到的矩阵就是所有词的词向量。最初的词向量都是随机初始化的，后边采用标准训练和优化。
+现在安装 - 等待  - 拔U盘 - 重启 - 进
 </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-15&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-31&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+            <a href="/tags/linux">linux</a>&nbsp;
           
         
       </div>
@@ -456,34 +264,136 @@ WE的目标：把单词转换为数字（向量）。
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/14/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E8%AF%8D%E5%90%91%E9%87%8F_SkipGram/">
-        <p class="h4 index-header">NLP概念/概念_词向量_SkipGram</p>
+      <a href="/2020/03/27/%E6%9D%82%E8%B0%88/%E6%82%89%E8%BE%BE%E5%A4%9A%E7%9A%84%E7%8E%8B%E5%AD%90/">
+        <p class="h4 index-header">杂谈/悉达多的王子</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">skip-gram算法详解Skip-gram算法是word2vec模型中两大生成词向量算法中的一个。
-生成词汇向量的skip-gram算法的中心思想**：给定中心词汇，预测单词们出现在它周围的概率，最终确定的这些单词们，要使概率分布值最大化。
-如下，中心词是banking，Skip - gram会尝试去预测它一定范围内（m window）的上下文词汇。
-
-Skip-gram的损失函数损失函数J`(θ)表示的是：一串很长的文本比如整个维基百科（which has足够长的词汇序列和足够多的词汇和真正的行文）然后遍历文本中的所有位置，对于每个位置，我们都会定义一个围绕输入词汇的大小为2m的窗口，窗口包括前后各m个单词，把每个词汇和周围的窗口的p(周围每一个词|中心词)都连乘起来。
-这就是一个有监督学习，目标是使损失函数最小化，手段是通过对训练集的training动态调整模型的超参数们(窗口大小，容差系数等).
-
-损失函数plus : 计算机中大量连乘容易误差累计和误差消失，给上边的损失函数整体套上log，将连乘转换为带log的连加。如下
-要不是高中学的明白根本肝不到这里……answer th</div>
+          <div class="index-text mb-1">悉达多1.爱与知识并不能来带peace
+悉达多感到，父母朋友之爱，长者传授的知识不能让他感到满足，不能使他的内心安宁。悉达多开始怀疑，沐浴、祭祀等仪式是否有必要？
+爱是大脑的内分泌短暂失调+欲求不满的表现，知识的传授其实可以在极短的时间内完成（剩余时间是磨洋工），沐浴祭祀等繁文缛节是keep everybody busy的手段，换成现代概念几乎可以等同于各种繁复的人事缓冲池——若不是要严控失业率，从基层到决策层之间90%的传递信息者都可被优化掉。
+2.众生皆苦，逃避无用
+悉达多说，冥想，对肉体的决弃，斋戒和调息都是在逃避自我，是对自我所受的苦难的短暂的逃避，这种逃避和牧牛人在酒馆里喝几碗米酒是同样的。在这种短暂的麻醉下，他们不再感受到自我，不再感觉到生命的苦难。那几碗米酒让牧牛人浑然入睡，他同样找到了悉达多和乔文达在长时间的修行中逃离肉体并宅于非我之境所找到的感觉。
+悉达多说的这种逃避痛苦的方式，暗示了痛苦的根源就在与“我”，感受到我的存在，便能感受到痛苦。喝了酒，进入了禅定，做爱，入睡了，在别的国家旅游用英语讲话逃离中文世界，weed等都可短暂的忘我。但是在短暂的忘我结束后，一切一如</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-14&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-27&nbsp;&nbsp;
         
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/04/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%90%8D%E7%9A%84%E6%96%B9%E5%BC%8F/">
+        <p class="h4 index-header">安装调试记录/批量修改文件后缀名的方式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">新建一个.txt文档，输入：
+ren *.java *.md
+保存
+将文件后缀名改成.bat,双击运行
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">安装调试记录</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/02/%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E4%BF%AE%E6%94%B9pip%E6%BA%90/">
+        <p class="h4 index-header">安装调试记录/修改pip源</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+将pip切换回国内源pip国内的一些镜像
+  阿里云 http://mirrors.aliyun.com/pypi/simple/  中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/  豆瓣(douban) http://pypi.douban.com/simple/  清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/  中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+修改源方法：
+临时使用：可以在使用pip的时候在后面加上-i参数，指定pip源eg: pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple   –trusted-host  pypi.tuna.tsinghua.edu.cn
+永久修改：linux:修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
+[global]
+index-url = https://pypi.tuna.tsinghua</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-02&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
+        <p class="h4 index-header">杂谈/王威廉对博士生的要求</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Hiring PhD students
+Q: What’s your research interest? 
+A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
+          &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+            <a href="/tags/phd%E7%94%B3%E8%AF%B7">phd申请</a>&nbsp;
+          
+            <a href="/tags/UCSB">UCSB</a>&nbsp;
           
         
       </div>
@@ -494,43 +404,45 @@ Skip-gram的损失函数损失函数J`(θ)表示的是：一串很长的文本�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/13/kaggle/tutor_senti/word2vec%E5%BA%94%E7%94%A8/">
-        <p class="h4 index-header">kaggle/tutor_senti/word2vec应用</p>
+      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E7%8E%8B%E9%98%BF-%E7%94%B3%E8%AF%B7phd%E6%80%9D%E8%B7%AF/">
+        <p class="h4 index-header">杂谈/王阿-申请phd思路</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">word2vec应用读取数据import pandas as pd
+          <div class="index-text mb-1">我是如何申请到phd的转载自知乎–王阿的阿
+谢谢你们。
+在这篇经验贴里，我会告诉你我当时申请时面临的处境、我的决策过程，以及申请当中各个环节最精华的经验和技巧，我都毫无保留地贡献在这里了。
+读完这篇文章，除了我介绍的各种申请技巧以外，我希望能让你认识到申请过程中决策和心态的重要意义：
 
-# Read data from files 
-train = pd.read_csv( &quot;labeledTrainData.tsv&quot;, header=0, 
- delimiter=&quot;\t&quot;, quoting=3 )
-test = pd.read_csv( &quot;testData.tsv&quot;, header=0, delimiter=&quot;\t&quot;, quoting=3 )
-unlabeled_train = pd.read_csv( &quot;unlabeledTrainData.tsv&quot;, header=0, 
- delimiter=&quot;\t&quot;, quoting=3 )
+想成功申请美国的PhD，除了自己软硬件要出色，还有很重要的一点是对自己的定位，包括认识到自己的目标、兴趣以及自己的长处和缺陷。不论你是申请哪个学科的PhD，请重点关注我做决策时的思考内容和思考方向，这也许会对你有所启发。
+心理韧性、抗打击能力也是申请成功的一个重要因素。如果你知道GradCafe这个北美grad school申请论坛，你会发现上面有很多人诉说自己第二次、第三次才申请成功的经历。我就是其中一员。
 
-# Verify the number of reviews that were read (100,000 in total)
-print (&quot;Read %d labeled train reviews, %d labeled test</div>
+我的故事是这样婶儿的……
+2017一整年是我这辈子最难熬的一年，这一年我第一次（也只申请了这一次）申请美国的临床心理学PhD（clinical psychology），申了13所学校。2017年的头四个月陆续收到13封拒信，无一录取，甚至连一个面试都没有。当时的我：
+
+已经在纽约市生活了三年；
+</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-13&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/kaggle">kaggle</a>&nbsp;
-          
-            <a href="/categories/tutor_senti">tutor_senti</a>&nbsp;
+            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
+          
+            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
           
         
       </div>
@@ -541,44 +453,82 @@ print (&quot;Read %d labeled train reviews, %d labeled test</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/12/NLP%E6%A6%82%E5%BF%B5/%E6%A6%82%E5%BF%B5_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%92%8C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">NLP概念/概念_神经网络和反向传播算法</p>
+      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">杂谈/996 - 超时工作的异化问题</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">神经网络神经网络深入学习的网站：neuralnetworksanddeeplearning.com 
-神经网络就是一个函数，本例中有764个输入，有10个输出 
-总览图:
-第一层(764)：
-764个输入源于28 * 28的正方形格子，每个小格子都是0到1之间的值，越接近1就越白，越接近0就越黑。
-隐藏层
-隐藏层是干什么的？ 大体上说，隐藏层用于发掘模式。如上所示，隐藏层一识别小线段，隐藏层二识别小线段构成层的圈或者大线段
-从这里看出深度神经网络其实就是模式识别的高级应用，所以要恶补pattern recognition。
-如何训练神经网络？ 训练神经网络就是把训练集中的数据和label在神经网络中的(784 * 16 + 16 * 16 + 16 * 10) + (16+16+10) =13002    个参数通过动态调整来拟合。
-从数学上来说，动态调整13002个参数以获得min(代价函数)的做法，本质上就是寻找函数的最小值，如下
+          <div class="index-text mb-1">996 - 超时工作与异化问题1.感性认识我国现阶段各行业超时工作现象十分普遍，有的互联网公司晚上十一二点整个大楼还灯火通明，有的公司虽然晚上按时下班，但回家后仍然要求有工作输出，很多岗位还要求7*24小时on call。
+我前些年所在的公司就有制度要求员工每月加班22天以上才算考核达标，而我经常需要加班27天才能完成工作，每晚九点离开公司后经一小时通勤才能到家，洗洗漱漱刚好十一点上床，十二点入睡，第二天早上6点50分起床后经过一小时通勤抵达公司，在公司门口的快餐店里缩着身子与其他同事挤在餐桌上潦草进食后便赶往工位，开始一天的埋头苦干。算上通勤时间，我的工作强度是7107。高强度劳动和了无希望所积累的疲劳深入骨髓，在此期间我感到生命力与灵魂的飞速流逝。
+深夜的华为大楼
 
-w1和a1： 
-a1就是输入的784个点中第一个点的亮暗情况
-w1就是接受这第一个点a1刺激的第一层的第一个神经元对第二层的如图所示的神经元的兴奋程度</div>
+早上五点半排队等公交上班的年轻人
+
+2.八小时工作制的来由八小时工作制国家法律规定的工作日长度为8小时的工作制度。目前世界各国普遍实行八小时工作制。正常一天工作时间为早上九点至下午五点为8小时。
+理论起源
+八小时工作制最早由社会主义者罗伯特·欧文于1817年8月提出。他还发明了一个口号， “8小时劳动， 8小时休闲， </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/nlp%E6%A6%82%E5%BF%B5">nlp概念</a>&nbsp;
+            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
+          
+            <a href="/tags/996">996</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/%E6%9D%82%E8%B0%88/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/">
+        <p class="h4 index-header">杂谈/博士这五年-李沐</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">转自知乎-李沐
+前言12年8月提着一个行李箱降落在匹兹堡机场。没找住的地方，也不知道CMU应该怎么去。对未来一片迷茫，但充满乐观。 现在，刚完成了博士期间最后的一场报告，在同样的机场，不过是在等待离开的航班。
+回想过去的五年，是折腾的五年，也是自我感悟和提升的五年。这里我尝试记录这五年主要做过的事情和其中的感想，希望对大家有所启发。
+第0年：3/11-8/12我第一次申请美国的博士是在11年，但拿到的offer并没有特别合适的导师，于是就北上投奔文渊去了。 我当时在百度商务搜索部门做广告的点击预估。具体是使用机器学习来预测一个广告是不是会被用户点击。 这时候离“大数据”这个词流行还有两年，但百度那时候的数据即使现在来看仍然是大的。我的任务是如何高效的利用数百台机器快速的在数十T的数据上训练出模型。
+当时产品用的算法基于LBFGS，我于是想是不是可以换个收敛更快的算法。没几天就找到个不错 。但实现上发现了各种问题，包括性能，收敛，和稳定性。而且那时有的就是一个裸的Linux和很老版本的GCC，什么都是需要从头开始写。花了大量时间做系统优化，算法改动，和线上实验，最后一年后在整个广告流量上</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%80%9D%E8%80%83">思考</a>&nbsp;
+          
+            <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E6%B3%95">论文写法</a>&nbsp;
           
         
       </div>
@@ -589,7 +539,7 @@ w1就是接受这第一个点a1刺激的第一层的第一个神经元对第二�
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
