@@ -136,45 +136,6 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Docker/">
-        <p class="h4 index-header">0.概念/技术_Docker</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">DockerDocker是个虚拟机，主要运行在linux上，和VMware Workstation Pro有很多相似的地方。
-
-镜像，是创建虚拟机之前需要下载的系统镜像文件，比如iso和img文件等
-容器，是正在运行中的虚拟机
-tar文件，就是镜像的压缩文件，压缩传送解压缩安装
-dockerfile，配置文件，写完后通过docker bulid指令将dockerfile构建成一个镜像
-仓库，类似于github，和镜像是pull和push的关系，里边有做好的ubuntu，mysql，tomcat镜像等
-
-基本操作安装docker
-docker pull nginx : 从仓库下载nginx
-docker images : 查看本地镜像
-docker run -d -p 80:80 nginx 后台将镜像运行为容器nginx，端口映射80-80
-docker ps查看正在运行的容器有哪些，例如它会输出正在运行的容器是nginx，id是92a68b3fe02e
-docker exec -it 92,进入运行的id开头是92的容器
-cd /usr/share/nginx/html/,进入ngi</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_D3NER/">
         <p class="h4 index-header">0.概念/NLP_D3NER</p>
         
@@ -754,50 +715,6 @@ SVM模型 和 逻辑回归模型之间的取舍:
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
-        <p class="h4 index-header">3.课程/CS229_5.过拟合和正则化</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
-
-
-解决办法:
-过拟合就丢弃不能正确预测的特征,欠拟合就加特征
-2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
-
-
-
-给高维项设置惩罚项
-
-代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
-
-增加了惩罚项的代价函数
-
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_6.%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C(%E8%A1%A8%E8%BF%B0)/">
         <p class="h4 index-header">3.课程/CS229_6.神经网络(表述)</p>
         
@@ -836,6 +753,50 @@ SVM模型 和 逻辑回归模型之间的取舍:
 输入x，w是乘以输入的权重，b是偏置值，f是sigmod函数。
 输入乘以权重加上偏置值后，进入sigmod函数，输出一个分类值。
 有了神经网络，让我们再回到之前的单窗口分类器。代替之前直接将softmax应用</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_5.%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AD%A3%E5%88%99%E5%8C%96/">
+        <p class="h4 index-header">3.课程/CS229_5.过拟合和正则化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.过拟合和欠拟合问题两张插图说明白
+
+
+解决办法:
+过拟合就丢弃不能正确预测的特征,欠拟合就加特征
+2.代价函数的惩罚项由下图可以看出,过拟合由于高维项造成
+
+
+
+给高维项设置惩罚项
+
+代价函数里给三次项和四次项增加一些重量,梯度下降的时候系统就会更急切想把三次项和四次项降下来
+
+增加了惩罚项的代价函数
+
+
+
+
+
+</div>
         </div>
       </a>
 
@@ -933,6 +894,58 @@ x3    1,2,3]               t3   1,2]​              ↑压缩前数据   ↑解
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_10.%E8%81%9A%E7%B1%BBClustering/">
+        <p class="h4 index-header">3.课程/CS229_10.聚类Clustering</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
+如图就是聚类问题
+左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
+10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
+
+K-均值是一个迭代算法
+
+设想我们将数据聚集成n组,选择k个随机的点为聚类中心
+
+对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
+
+然后开始迭代:
+
+每次计算一个组的平均值,将中心点移动到平均值的位置
+如此反复几次中心点的位置就不再变化
+如下图所示
+
+
+
+
+
+10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
+因此K均值的代价函数为:
+
+10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
+1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
+2.随机选择K个训练实例,然后令K个聚类中心等于他们
+K-均值算法的一个问题在于,他可能停留在某个</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
         <p class="h4 index-header">3.课程/CS229_2.正规方程</p>
         
@@ -971,58 +984,6 @@ x3    1,2,3]               t3   1,2]​              ↑压缩前数据   ↑解
 
 
 </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_10.%E8%81%9A%E7%B1%BBClustering/">
-        <p class="h4 index-header">3.课程/CS229_10.聚类Clustering</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
-如图就是聚类问题
-左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
-10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
-
-K-均值是一个迭代算法
-
-设想我们将数据聚集成n组,选择k个随机的点为聚类中心
-
-对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
-
-然后开始迭代:
-
-每次计算一个组的平均值,将中心点移动到平均值的位置
-如此反复几次中心点的位置就不再变化
-如下图所示
-
-
-
-
-
-10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
-因此K均值的代价函数为:
-
-10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
-1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
-2.随机选择K个训练实例,然后令K个聚类中心等于他们
-K-均值算法的一个问题在于,他可能停留在某个</div>
         </div>
       </a>
 
@@ -1114,6 +1075,69 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
 第二种办法是采用正则化技巧，来改善过拟合的问题，有一堆论文在讲如何做正则化，今天聚焦的点是在预处理阶段，通过和计算机视觉类似的替换技巧来构建更合理的语料库，比如把频繁和罕见的词语的评率都往平均值上拉一拉，就会使得曲线更显平滑，平滑的分布能让系统获得更好的语言模型和更好的实验结果。
 第三是更好的模型，etc。
 </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_1.%E7%BB%AA%E8%AE%BA/">
+        <p class="h4 index-header">3.课程/CS229_1.绪论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">CS229–绪论1.监督学习和无监督学习
+监督学习定义
+部分数据集已经有答案.比如房价信息集,知道了正确的房价,需要预测出更多的房价
+回归问题,预测连续值的输出(房价)
+聚类问题,预测离散值的输出(肿瘤是良性还是恶性?)
+
+
+
+
+无监督学习
+
+无监督学习没有答案,自动聚类:比如google搜索BP油井泄露,会把CNN,ABC,BBC新闻放一起
+
+
+
+2.线性回归算法
+监督学习的典型过程
+
+Training set –[喂食给]—&gt;Learning Algorithm –[生成]–&gt;hypothesis(假设函数)
+
+size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate price
+
+
+
+
+
+线性回归
+
+预测房价的假设函数:h(x) = θ0 + θ1x
+根据训练集生成一元一次方程,输入房间大小得到房价预测
+
+
+
+3.代价函数
+代价函数有利于弄清楚如何把最有可能的直线与我们的数据相拟合
+
+最小化代价函数就可得到最好的预测函数
+
+如何选择假设函数hypothesis “h(x) = θ0 + θ1x” 中的两个参数</div>
         </div>
       </a>
 
