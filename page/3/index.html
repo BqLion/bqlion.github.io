@@ -136,376 +136,31 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/07/3.%E8%AF%BE%E7%A8%8B/CS224n_9%20-%20%E6%9C%BA%E7%BF%BB/">
-        <p class="h4 index-header">3.课程/CS224n_9 - 机翻</p>
+      <a href="/2020/03/07/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Lamada%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <p class="h4 index-header">0.概念/技术_Lamada表达式</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
-我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
-基于统计的机翻模型介绍
-源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
+          <div class="index-text mb-1">Python中lamada函数的概念lamada函数就是个匿名函数，即定义即用，省去了起名字等等环节，使用方便快捷。
+不用lamada函数的例子
+def f(x):
+return x**2
+print f(4)
+使用lamada函数的例子：
+g = lambda x : x**2
+print g(4)
+lamada用例
+# lamada语句中，冒号前是参数，可以有多个，用逗号隔开。冒号后是返回值，lamada语句构建的其实是一个函数对象
 
-如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项里找一个简单流畅的句子。
-
-其中的一个模块，翻译模型中，第一件要做的事情是匹配两种语言的单词，匹配所面临的困难使用法语英语互译来展示。其实英法是相似度很高的语言，换成其他相似度低的语言则难度会</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/28/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_%E6%9C%89%E7%9B%91%E7%9D%A3%E7%9A%84%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90.md/">
-        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_有监督的情感分析.md</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment_Analysis_有监督的情感分析.md
-如上所示，phi函数就是上篇介绍的feature function，提供的功能就是把tree转换成字典。
-
-如上所示，fit model函数提供将数据x和y fit进指定模型（逻辑回归）中的功能。
-
-然后使用上节介绍的sst.experiment函数（三个参数）分别是路径，feature函数和fit函数。
-这样设计的好处就是实现了类的分离，如果需要改写feature函数或者fit函数，直接在本体里边修改就好。
-超参数的搜索与确定超参数的基本原理：超参数是模型的优化过程之外的“settings”。有如下几个例子：
-
-超参数搜索实例
-
-如上，In[4] 的 fit_softmax_with_crossvalidation函数，就是搜索超参数的函数。basemod是逻辑回归，给他加上了搜索空间：c,罚函数，等，然后调用系统工具箱里的utils.fit_classifier_with_crossvalidation就可以得到搜索结果。当然这个搜索的过程耗时较长。
-然后把得到的函数放进experiment函数中开始实验。因为得到的函数</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-28&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/28/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/Chrome%20OS%E5%88%9D%E5%A7%8B%E5%8C%96%E6%93%8D%E4%BD%9C/">
-        <p class="h4 index-header">4.安装调试记录/Chrome OS初始化操作</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Chrome OS初始化操作0.进入开发者模式，esc + f３ + 电源，then ctrl + D 
-1.参见“共享代理文章”，用手机和电脑开启代理共享，chromebook连上wifi，登陆谷歌账号，不断重试，连接google play（这一步非常耗时）。
-2.安装包管理工具crew  Ctrl + Alt +t  curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
-3.安装ssr  在主流的apk网站上下载并安装ssr，登陆amytelecom，将信息复制到ssr中，删除无关的免费节点。
-4.安装马克飞象，印象笔记
-5.setting中安装linux，打开linux命令行输入sudo apt install vim-gtk3安装gvim
-6.用gvim打开rsa_pub，在linux中连接github，将post项目拉下来
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-28&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/chromebook">chromebook</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/23/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/chromebook%E4%BB%A3%E7%90%86%E5%85%B1%E4%BA%AB/">
-        <p class="h4 index-header">4.安装调试记录/chromebook代理共享</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.下载ssr
-2.google免费ssr节点，复制粘贴。连接ssr，右键ssr图标-选项设置-允许来自局域网的连接。
-3.电脑连接手机热点，电脑打                          开热点共享，chromebook连接电脑发射的热点
-4.电脑win+R,cmd,ipconfig,得到如下所示ip信息
-
-5.chromebook点击所连接wifi热点，点击热点详情-连接类型-手动配置代理-输入上图ip，端口号是1080（详见第2条中允许来自局域网连接的按钮周围的端口信息）。
-6.登录，done。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/chromebook">chromebook</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/21/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_SST/">
-        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_SST</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment_Analysis SSTSST项目基本信息
-SST斯坦福链接
-SST工作展示蓝色是正面情绪，黄色是负面，灰色是中性情绪。叶子节点的merge原理暂时未知。They said it would be great这句话下边都是正面情绪，直到跟节点的they才恢复为中性情绪，因为they said其实不能反映出作者的 bias。
-而后边接上的they were wrong明显是负面，然后merge后总体就是负面情绪了。这个总体的判断要比直接把一句话拆开按照各个单词的正负性简单sum要靠谱很多。
-
-verse vesa
-
-Readers讲解
-In [5]、In [6]中的train_reader参数详解
-
-
-
-
-meaning
-
-
-
-class_func=sst.binary_class_func
-二分类问题
-
-
-class_func=sst.ternary_class_func
-三分类问题
-
-
-class_func=None
-五分类问题
-
-
-核心类 ： nltk.tree.Tree输入一个tree：
-
-循环打印各个subtree：
-
-输出tree的lable和subtre</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/19/0.%E6%96%87%E7%AB%A0/python_env_kag1_yml/">
-        <p class="h4 index-header">0.文章/python_env_kag1_yml</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">environment_ymlname: kag1
-channels:
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
-  - defaults
-dependencies:
-  - absl-py=0.9.0=py37_0
-  - astor=0.7.1=py_0
-  - attrs=19.3.0=py_0
-  - boto=2.49.0=py_0
-  - boto3=1.12.11=py_0
-  - botocore=1.15.11</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%96%87%E7%AB%A0">文章</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/19/0.%E6%96%87%E7%AB%A0/python_%E7%8E%AF%E5%A2%83%E8%BF%81%E7%A7%BB/">
-        <p class="h4 index-header">0.文章/python_环境迁移</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">python环境迁移copy from：WenShan`s blog
-Conda 是著名的包管理器和虚拟环境管理器。
-在配置完项目环境，并编写和测试代码后，您可能希望将其移至另一台计算机。
-Conda 提供了多种保存和移动环境的方法。
-Clone在本地，conda 可以方便地创建环境的快照或者备份：
-1 conda create --name snapshot --clone myenv Spec List如果需要在具有 相同操作系统 的计算机之间复制环境，则可以生成 spec list。
-生成 spec list 文件：
-1 conda list --explicit &gt; spec-list.txt 重现环境：
-1 conda create  --name python-course --file spec-list.txt Environment.yml也可以使用 -export 选项生成一个 environment.yml 文件，以在 不同的平台和操作系统之间 复现项目环境。 spec list 文件和 environment.yml 文件之间的区别在于： environm</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%96%87%E7%AB%A0">文章</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Python%E7%8E%AF%E5%A2%83%E8%BF%81%E7%A7%BB">Python环境迁移</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/18/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_%E6%9D%90%E6%96%99%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
-        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_材料和预处理</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment Analysis阅读材料和数据预处理核心阅读材料
-
-情感分析各子领域合适的切入点。他们入选的原因是位置合适以及有公开数据集
-
-常用情感分析数据库
-
-lexica
-
-preprocessingpreprocessing ： tokenizing
-
-preprocessing : 词干化stemming
-
-porter stemming演示
-
-兰开斯特stemming演示
-
-wordNet stemming演示
-
-preprocessing:  POS tagging
-有些英文单词的sentiment只能通过pos来确定。
-
-需要注意的是即使有些单词的pos tagging一模一样仍然会有相反的sentiment
-
-preprocessing : 简单情感标记和推荐阅读
-
-简单负面情绪标记示例
-
-推荐阅读
-
-负面情绪标记带来的性能提升
+&gt;&gt;&gt; foo = [2, 18, 9, 22, 17, 24, 8, 12, 27]
+&gt;&gt;&gt; print filter(lambda x: x % 3 == 0, foo)
+[18, 9, 24, 12, 27]
+&gt;&gt;&gt; print map(lambda x: x * 2 + 10, foo)
+[14, 46, 28, 54, 44, 58, 26, 34, 64]
+&gt;&gt;&gt; print reduce(lambda x, y: x + y, foo)
+139
 
 </div>
         </div>
@@ -513,19 +168,9 @@ preprocessing : 简单情感标记和推荐阅读
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-18&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
         
       </div>
     </div>
@@ -535,44 +180,34 @@ preprocessing : 简单情感标记和推荐阅读
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/0.%E6%A6%82%E5%BF%B5/NLP_batchsize/">
-        <p class="h4 index-header">0.概念/NLP_batchsize</p>
+      <a href="/2020/03/05/2.%E6%AF%94%E8%B5%9B/%E6%8C%87%E5%AF%BC_Google_QA_%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%83%A8%E5%88%86/">
+        <p class="h4 index-header">2.比赛/指导_Google_QA_数据处理部分</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">BatchSize机器学习训练中，把数据集分割成若干个batch，每个batch的大小叫做batchsize。
-对batchsize、epoch、iteration的举例：
-mnist 数据集有张图片作为训练数据，张图片作为测试数据。假设现在选择 Batch_Size = 对模型进行训练。迭代次。
-
-每个 Epoch 要训练的图片数量：(训练集上的所有图像)
-训练集具有的 Batch 个数： 
-每个 Epoch 需要完成的 Batch 个数：
-每个 Epoch 具有的 Iteration 个数：（完成一个Batch训练，相当于参数迭代一次）
-每个 Epoch 中发生模型权重更新的次数：
-训练 10 个Epoch后，模型权重更新的次数： 
-不同Epoch的训练，其实用的是同一个训练集的数据。第1个Epoch和第10个Epoch虽然用的都是训练集的图片，但是对模型的权重更新值却是完全不同的。因为不同Epoch的模型处于代价函数空间上的不同位置，模型的训练代越靠后，越接近谷底，其代价越小。
-总共完成30000次迭代，相当于完成了个Epoch
-</div>
+          <div class="index-text mb-1">数据处理部分总体代码如下，各个程序块在pycharm中分开运行，用#%%分割。
+上来是import部分，然后是数据清洗和构建embedding矩阵等。
+import numpy as np
+#numpy是主要用于数组计算，线性代数，傅里叶变换等。
+import pandas as pd
+#pandas基于numpy，可以处理高纬数据
+from sklearn.manifold import TSNE
+# sklearn是机器学习中常用的第三方模块，对常见的机器学习算法进行了封装，包括回归、降维、分类、聚类,sklearn.manifold是流形学习，非
+# 线性降维的手段。最简单的降维手段是随机投影，但是会导致结构丢失,manifold learning是一种类似主成分分析(PCA)的线性框架，不会错失数据结构中的非线性项  ，TSNE提供了一种画图方式，让高维的数据降低为二维画出来
+import seaborn as sns
+# 基于matplotlib的画图工具
+import glob
+# glob是查找模块。支持空格 ，问号？，方括号[]这三个通配符。空格代表0个或者多个字符，问</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Batchsize">Batchsize</a>&nbsp;
-          
         
       </div>
     </div>
@@ -582,17 +217,393 @@ mnist 数据集有张图片作为训练数据，张图片作为测试数据。�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/0.%E6%A6%82%E5%BF%B5/NLP_epoch/">
-        <p class="h4 index-header">0.概念/NLP_epoch</p>
+      <a href="/2020/03/04/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%90%8D%E7%9A%84%E6%96%B9%E5%BC%8F/">
+        <p class="h4 index-header">4.安装调试记录/批量修改文件后缀名的方式</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Epoch定义训练集的所有数据对模型进行了一次完整训练，称为“一代训练”（epoch）。
-也就是说所有训练样本在神经网络中都进行了一次正向传播和一次反向传播。
-为什么要进行多于一次的epoch？神经网络中传递完整的数据集一次是不够的，而且我们需要将完整的数据集在同样的神经网络中传递多次。
-但是因为使用的是有限的数据集，并且使用一个迭代过程也就是梯度下降来优化学习过程。如下图所示，随着epoch的增加，神经网络的权重更新次数也在增加，曲线从欠拟合变成了过拟合。所以需要选择合适的epoch。
+          <div class="index-text mb-1">新建一个.txt文档，输入：
+ren *.java *.md
+保存
+将文件后缀名改成.bat,双击运行
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-04&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/02/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E4%BF%AE%E6%94%B9pip%E6%BA%90/">
+        <p class="h4 index-header">4.安装调试记录/修改pip源</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+将pip切换回国内源pip国内的一些镜像
+  阿里云 http://mirrors.aliyun.com/pypi/simple/  中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/  豆瓣(douban) http://pypi.douban.com/simple/  清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/  中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+修改源方法：
+临时使用：可以在使用pip的时候在后面加上-i参数，指定pip源eg: pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple   –trusted-host  pypi.tuna.tsinghua.edu.cn
+永久修改：linux:修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
+[global]
+index-url = https://pypi.tuna.tsinghua</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-02&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_Transformer/">
+        <p class="h4 index-header">0.概念/NLP_Transformer</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Transformer总览图：
+
+Transformer由编码器和解码器构成，如下：
+
+1.编码器详解编码器有两层（前馈神经网络层，自注意力层）。
+像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
+
+词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
+
+开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
+2.自注意力机制详解(其实就是维持了一个关于句子本身的二维数组)宏观角度看，比如翻译一个句子，“The animal didn`t cross the street because it was too tired”，it指代什么？对于人类来说，指代的是animal不是street，很容易但是对于计算机来说这就是一个复杂的问题。
+当模型处理“it”这个单词的时候，自注意力机制会允许</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_BERT/">
+        <p class="h4 index-header">0.概念/NLP_BERT</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Bert 概念1.全景介绍BERT是一种深度学习模型，他是Transformer的双向编码器表示，在维基百科和Books Corpus上预训练过，运用于特定任务时只需要微调即可。
+他的效果很好，在很多NLP任务中都有最近进展，包括问答系统（Squad）和自然语言推理（MNLI）任务。
+BERT改变了NLP的格局。跑一个在大量未标记数据集上训练的模型，在11个单独的NLP任务中仅仅通过不同的微调，就可以分别得到11个最新的结果，这种表现只有BERT可以做到。
+BERT还启发了TransformerXL,GPT-2,XLNet,ERNIE2.0,RoBERTa等等。
+2.什么是BERT?1.基本上是堆叠在一起的一堆Transformer encoders，注意仅仅是Transformer encoders不是整个Transformer架构。双向性的概念十分重要，是BERT和其前身OpenAL GPT的关键区别，BERT是双向的因为他在自我注意层的两个方向上都执行自我注意。
+2.要注意的是BERT在维基百科（25亿词）和Books Corpus（8亿词）上的预训练非常重要，因为模型在一个大的</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_1-%E6%A6%82%E8%BF%B0/">
+        <p class="h4 index-header">3.课程/网络_1-概述</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.计算机网络概述1.1局域网​        覆盖范围小（１００ｍ）,自己花钱买设备,贷款固定
+​        接入层的交换机们星形连接到汇聚层交换机,这样分散IO
+​        接入层交换机们不该串联,不然最后一台交换机那里IO压力太大
+1.2Internet和广域网​    Internet ISP :有自己的机房,对网民提供internet访问
+　广域网：距离较远，花钱租带宽，
+1.3 数据包和数据帧在一个计算机想把数据发给另一个计算机时,需要在发送信息里携带ip地址和mac地址,其中ip地址是最终目地,mac地址是下一跳的目的地,ip地址不变,mac地址每次经过路由器都刷新.下一跳的目的地由迪杰斯特拉或其他寻路算法确定.
+1.4 OSI参考模型 应用层:所有能产生网络流量的程序
+表示层:在传输之前是否进行加密或压缩处理
+会话层:查木马,netstat -n
+传输层:可靠传输,流量控制,不可靠传输
+网络层:负责选择最佳路径,规划ip地址
+数据链路层:帧的开始和结束,透明传输,差错校验
+物理层:接口标准,电器标准,如何在物理链路层上传输的更快
+
+osi参考模型对网络排错指导</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_2-%E7%89%A9%E7%90%86%E5%B1%82/">
+        <p class="h4 index-header">3.课程/网络_2-物理层</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.物理层2.1物理层的基本概念物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。
+物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：
+
+机械特性：接口形状，大小，引线数目
+
+
+电器特性：电压范围
+
+功能特性，过程特性等
+
+
+2.2数据通信的基本模型
+相关术语：
+
+数据：运送消息的实体
+信号：数据的电器或电磁表现
+模拟信号：消息的参数取值是连续的
+数字信号：消息的参数取值是离散的
+
+
+
+信道信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道
+单向信道：信息只能单向流动
+双向交替信道：信息可双向流动，但不能同时流动
+双向同时信道：信息科双向，同时流动
+基带信号和带通信号
+基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号
+
+基带数字信号的几种调制方法
+
+
+
+
+带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输
+
+在传输范围较大的时候，计算机网络必须通过带通信号传输
+
+
+
+曼彻斯特编码：由低到高是0，高到低是1
+
+差分曼彻斯特编码
+
+
+2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+        <p class="h4 index-header">3.课程/网络_3-数据链路层</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">3.数据链路层3.0概述数据链路层使用的信道主要有以下两类
+
+点对点信道
+这种信道使用一对一的点对点通信方式
+
+
+广播信道
+这种信道使用一对多的广播通信方式，因此过程较为复杂，广播信道上的链接主机很多，因此必须使用专门的共享信道协议来协调这些数据的转发
+
+
+
+3.1 数据链路和帧链路是一条无源的点到点的物理线路，中间没有任何的其他交换节点。数据链路是除了物理线路之外，还得有通信协议来控制这些数据的传输，若把实现了这些协议的软硬件加到链路上，就构成了数据链路。
+现在最常用的办法是使用适配器（网卡）来实现这些协议的硬件和软件，一般的适配器都包括了数据链路层和物理层这两层的功能。
+数据链路层传输的是帧。
+
+三个基本问题
+
+封装成帧
+透明传输
+差错控制
+
+
+封装成帧：
+
+在一段数据的前后分别打上首部和尾部，首部尾部可以确定帧的界限。
+
+
+透明传输问题：
+
+类似于我想在markdown文件中打出[]()字符缺被误以为是超连接一样，需要在[]()字符之前加上转义字符\。
+
+
+CRC差错检测
+传输过程中可能出现比特差错，1变成0或者0变成1。一段时间内传输错误的比特与总比特比值称谓误码率。为保证数据</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95_2_%E6%84%9F%E7%9F%A5%E6%9C%BA/">
+        <p class="h4 index-header">3.课程/统计学习方法_2_感知机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.感知机感知机是二分类的线性分类模型，输入是实例的特征向量，输出是分类结果（-1,1）。
+感知机对应输入空间（特征空间）中将实例划为正副两类的分离超平面。
+工作原理是导入基于误分类的损失函数，利用梯度下降法岁损失函数极小化。
+感知机1957年提出，是神经网络和SVM的基础。
+本章先介绍感知机的模型，然后叙述学习策略，然后是算法（原始和对偶形式）。
+2.1感知机模型感知机模型是f(x) = sign(w.x + b).
+其中sign是如下的函数
+
+也就是一个一元一次方程（直线）作为超平面的分类函数。
+
+2.2感知机学习策略假设训练集是可分的，感知机的学习目的就是确定一个超平面把训练集分开。
+为了找出这个超平面，就要确定感知机模型的参数w和b。
+损失函数怎么定？定为错分类点到超平面的总距离w。（如上图）
+某个点到超平面的距离怎么求？如下图，||w||是w的范数。
+
+损失函数的正式定义；
+
+2.3感知机的学习算法随机梯度下降法
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95_1_%E6%A6%82%E8%AE%BA/">
+        <p class="h4 index-header">3.课程/统计学习方法_1_概论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.概论介绍基本概念，是对全书的概括。
+首先叙述统计学习的定义、研究对象和方法，然后叙述监督学习。
+然后提出统计学习方法的三要素：模型，策略和算法。
+介绍模型选择，包括正则化、交叉验证和学习的泛化能力。
+介绍生成模型和判别模型
+介绍监督学习方法的应用： 分类问题，标注问题，回归问题。
+1.1统计学习定义
+统计学习是关于计算机基于数据构建概率统计模型并运用模型对数据进行预测和分析的学科。
+统计学习是概率论，统计学，信息论，计算理论，最优化理论，计算机科学等领域的交叉学科。在发展中逐步有了自己的理论体系和方法论。
+目的
+统计学习用于对未知数据预测和分析。
+对数据的预测可以使计算机更加智能化/计算机的性能提升。
+对数据的分析可以使人们获取新的知识。
+方法
+统计学习的方法是基于数据构建统计模型进而对数据进行预测和分析，统计学习由监督学习，半监督学习，无监督学习和强化学习等组成。
+本书主要讨论的是监督学习，这种情况统计学习的方法可以概括如下：
+从给定的有限的训练数据集出发（training set）,假设数据是独立同分布产生的；
+假设要学习的模型属于某个函数的集合，称为假设空间。
+把模型应用于某</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5/">
+        <p class="h4 index-header">3.课程/线性代数_正交矩阵</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">正交矩阵如果一个矩阵乘以它自己的转置矩阵等于E（单位阵），则称为正交矩阵。
 
 </div>
         </div>
@@ -600,19 +611,294 @@ mnist 数据集有张图片作为训练数据，张图片作为测试数据。�
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
-          <i class="iconfont icon-inbox"></i>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/">
+        <p class="h4 index-header">3.课程/线性代数_特征值&amp;特征向量计算</p>
+        
+        
           
-            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
-          &nbsp;
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">特征值特 &amp; 特征向量省略理论部分，一个例子讲清：
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
-          <i class="iconfont icon-tag"></i>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
+        <p class="h4 index-header">3.课程/线性代数_奇异值分解</p>
+        
+        
           
-            <a href="/tags/Epoch">Epoch</a>&nbsp;
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">奇异值分解1.应用：影像压缩2.应用：过滤噪声
+左图是原始图片。右图是经过SVD分解处理的图片，丢失了一些精确度，但是呈现效果更好，很可能丢失的精确度恰好是噪声。
+具体做法是我们对15*25的矩阵做奇异值分解（SVD），然后得到如下15个特征值，其中前三个特征是比较重要，为了压缩数据和过滤噪声，我们只取前三个特征值，后边的全部丢弃。
+
+
+5.计算例子​    
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
+        <p class="h4 index-header">5.杂谈/王威廉对博士生的要求</p>
+        
+        
           
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Hiring PhD students
+Q: What’s your research interest? 
+A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/%E7%8E%8B%E9%98%BF-%E7%94%B3%E8%AF%B7phd%E6%80%9D%E8%B7%AF/">
+        <p class="h4 index-header">5.杂谈/王阿-申请phd思路</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">我是如何申请到phd的转载自知乎–王阿的阿
+谢谢你们。
+在这篇经验贴里，我会告诉你我当时申请时面临的处境、我的决策过程，以及申请当中各个环节最精华的经验和技巧，我都毫无保留地贡献在这里了。
+读完这篇文章，除了我介绍的各种申请技巧以外，我希望能让你认识到申请过程中决策和心态的重要意义：
+
+想成功申请美国的PhD，除了自己软硬件要出色，还有很重要的一点是对自己的定位，包括认识到自己的目标、兴趣以及自己的长处和缺陷。不论你是申请哪个学科的PhD，请重点关注我做决策时的思考内容和思考方向，这也许会对你有所启发。
+心理韧性、抗打击能力也是申请成功的一个重要因素。如果你知道GradCafe这个北美grad school申请论坛，你会发现上面有很多人诉说自己第二次、第三次才申请成功的经历。我就是其中一员。
+
+我的故事是这样婶儿的……
+2017一整年是我这辈子最难熬的一年，这一年我第一次（也只申请了这一次）申请美国的临床心理学PhD（clinical psychology），申了13所学校。2017年的头四个月陆续收到13封拒信，无一录取，甚至连一个面试都没有。当时的我：
+
+已经在纽约市生活了三年；
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">5.杂谈/996 - 超时工作的异化问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">996 - 超时工作与异化问题1.感性认识我国现阶段各行业超时工作现象十分普遍，有的互联网公司晚上十一二点整个大楼还灯火通明，有的公司虽然晚上按时下班，但回家后仍然要求有工作输出，很多岗位还要求7*24小时on call。
+我前些年所在的公司就有制度要求员工每月加班22天以上才算考核达标，而我经常需要加班27天才能完成工作，每晚九点离开公司后经一小时通勤才能到家，洗洗漱漱刚好十一点上床，十二点入睡，第二天早上6点50分起床后经过一小时通勤抵达公司，在公司门口的快餐店里缩着身子与其他同事挤在餐桌上潦草进食后便赶往工位，开始一天的埋头苦干。算上通勤时间，我的工作强度是7107。高强度劳动和了无希望所积累的疲劳深入骨髓，在此期间我感到生命力与灵魂的飞速流逝。
+深夜的华为大楼
+
+早上五点半排队等公交上班的年轻人
+
+2.八小时工作制的来由八小时工作制国家法律规定的工作日长度为8小时的工作制度。目前世界各国普遍实行八小时工作制。正常一天工作时间为早上九点至下午五点为8小时。
+理论起源
+八小时工作制最早由社会主义者罗伯特·欧文于1817年8月提出。他还发明了一个口号， “8小时劳动， 8小时休闲， </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/">
+        <p class="h4 index-header">5.杂谈/博士这五年-李沐</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">转自知乎-李沐
+前言12年8月提着一个行李箱降落在匹兹堡机场。没找住的地方，也不知道CMU应该怎么去。对未来一片迷茫，但充满乐观。 现在，刚完成了博士期间最后的一场报告，在同样的机场，不过是在等待离开的航班。
+回想过去的五年，是折腾的五年，也是自我感悟和提升的五年。这里我尝试记录这五年主要做过的事情和其中的感想，希望对大家有所启发。
+第0年：3/11-8/12我第一次申请美国的博士是在11年，但拿到的offer并没有特别合适的导师，于是就北上投奔文渊去了。 我当时在百度商务搜索部门做广告的点击预估。具体是使用机器学习来预测一个广告是不是会被用户点击。 这时候离“大数据”这个词流行还有两年，但百度那时候的数据即使现在来看仍然是大的。我的任务是如何高效的利用数百台机器快速的在数十T的数据上训练出模型。
+当时产品用的算法基于LBFGS，我于是想是不是可以换个收敛更快的算法。没几天就找到个不错 。但实现上发现了各种问题，包括性能，收敛，和稳定性。而且那时有的就是一个裸的Linux和很老版本的GCC，什么都是需要从头开始写。花了大量时间做系统优化，算法改动，和线上实验，最后一年后在整个广告流量上</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_A%5B%E6%98%9F%E5%8F%B7%5D%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">3.课程/数据结构_搜索_A[星号]寻路算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A*寻路算法算法要解决的问题：
+在有障碍的格子地图上已知终点和起点，横走代价小于斜走，求由始到终代价最小的路径。
+F = G + H 
+总代价  = 到起点的格子数 + 到终点的曼哈顿距离
+算法描述：
+
+初始节点即为当前节点，放入open列表
+
+初始节点从open列表移除，放入close列表
+
+
+
+当前格子周围八个格子用如下三选一方式处理:
+
+若在close列表中，忽略
+若不在open/close列表中，加入open列表，并将当前格子设为它的父节点
+若在open列表中，计算这个格子经过当前格子的F值，如果F值更小，更新之，并将当前格子设为它的新父节点。
+
+
+把当前格子从open列表拿入close列表；
+设置刚才加入open列表中F值最小的格子为当前格子。
+
+
+
+重复3.4.两步，知道找到终点，随后按照父节点顺序回溯，找到最优路径
+
+不需要更新F值的图示
+
+
+
+
+
+
+
+
+
+需要更新F值的图示
+
+
+小结：
+A*寻路算法需要对每个格子维持三个状态值：总代价，到起点的距离，到终点的距离。下一步如何选择由总代价值指导。通常比DFS和BFS更高效。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">3.课程/数据结构_搜索_回溯算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8.查找8.1回溯回溯算法也叫试探法，是一种系统地解决搜索问题的解的方法
+用回溯算法解决问题的一般步骤：
+1.针对问题，定义解空间，使得能用回溯法方便地搜索整个解空间
+2.确定易于搜索的解空间结构，使得能用回溯法方便地搜索整个空间结构
+3.以深度优先的方式搜索解空间，并且在搜索过程中使用剪枝函数避免无效搜索
+回溯法在解空间树里对结果进行深度优先遍历，如果发现本节点不属于解的范围，则退出，剪枝，然后递归地对子节点搜索
+经典问题是八皇后问题，见代码
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
         
       </div>
     </div>
@@ -622,7 +908,7 @@ mnist 数据集有张图片作为训练数据，张图片作为测试数据。�
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
