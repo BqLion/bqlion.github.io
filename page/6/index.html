@@ -136,32 +136,32 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95_1_%E6%A6%82%E8%AE%BA/">
-        <p class="h4 index-header">3.课程/统计学习方法_1_概论</p>
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95_2_%E6%84%9F%E7%9F%A5%E6%9C%BA/">
+        <p class="h4 index-header">3.课程/统计学习方法_2_感知机</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.概论介绍基本概念，是对全书的概括。
-首先叙述统计学习的定义、研究对象和方法，然后叙述监督学习。
-然后提出统计学习方法的三要素：模型，策略和算法。
-介绍模型选择，包括正则化、交叉验证和学习的泛化能力。
-介绍生成模型和判别模型
-介绍监督学习方法的应用： 分类问题，标注问题，回归问题。
-1.1统计学习定义
-统计学习是关于计算机基于数据构建概率统计模型并运用模型对数据进行预测和分析的学科。
-统计学习是概率论，统计学，信息论，计算理论，最优化理论，计算机科学等领域的交叉学科。在发展中逐步有了自己的理论体系和方法论。
-目的
-统计学习用于对未知数据预测和分析。
-对数据的预测可以使计算机更加智能化/计算机的性能提升。
-对数据的分析可以使人们获取新的知识。
-方法
-统计学习的方法是基于数据构建统计模型进而对数据进行预测和分析，统计学习由监督学习，半监督学习，无监督学习和强化学习等组成。
-本书主要讨论的是监督学习，这种情况统计学习的方法可以概括如下：
-从给定的有限的训练数据集出发（training set）,假设数据是独立同分布产生的；
-假设要学习的模型属于某个函数的集合，称为假设空间。
-把模型应用于某</div>
+          <div class="index-text mb-1">2.感知机感知机是二分类的线性分类模型，输入是实例的特征向量，输出是分类结果（-1,1）。
+感知机对应输入空间（特征空间）中将实例划为正副两类的分离超平面。
+工作原理是导入基于误分类的损失函数，利用梯度下降法岁损失函数极小化。
+感知机1957年提出，是神经网络和SVM的基础。
+本章先介绍感知机的模型，然后叙述学习策略，然后是算法（原始和对偶形式）。
+2.1感知机模型感知机模型是f(x) = sign(w.x + b).
+其中sign是如下的函数
+
+也就是一个一元一次方程（直线）作为超平面的分类函数。
+
+2.2感知机学习策略假设训练集是可分的，感知机的学习目的就是确定一个超平面把训练集分开。
+为了找出这个超平面，就要确定感知机模型的参数w和b。
+损失函数怎么定？定为错分类点到超平面的总距离w。（如上图）
+某个点到超平面的距离怎么求？如下图，||w||是w的范数。
+
+损失函数的正式定义；
+
+2.3感知机的学习算法随机梯度下降法
+</div>
         </div>
       </a>
 
@@ -483,6 +483,61 @@ A: My research interests are in the broad areas of Artificial Intelligence. I am
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
+        <p class="h4 index-header">3.课程/数据结构_搜索_贪心算法与最小生成树</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">贪心算法贪心算法是指，在对问题求解时，总是做出当前来看最好的选择，比较短视，不从总体上考虑最优解，每一步都在向局部最优解迈进（类似于梯度下降算法）
+贪心算法并不能总是得到最优解，关键是贪心策略的选择，选择贪心策略必须具备无后效性，即某个状态以前的过程只与当前状态有关，不会影响到以后的状态。
+引入找零问题尽可能用少的硬币和纸币加出一个指定金额总数。思路是从尽可能大的面额的货币开始处理，附上代码
+denom = [10000, 5000, 2000, 1000, 500, 200, 100, 50, 25, 10, 5, 1]
+owed = 9876
+payed = []
+for d in denom:
+    while owed &gt;= d:
+        owed -= d
+        payed.append(d)
+
+print(sum(payed))
+print(payed)
+输出如下结果
+9876
+[5000, 2000, 2000, 500, 200, 100, 50, 25, 1]
+引入背包问题背包问题可视为纸币找零问题的泛化版，背包问题是组合优化的NP完全问题，</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+          
+            <a href="/tags/Kruskal">Kruskal</a>&nbsp;
+          
+            <a href="/tags/Prim">Prim</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_A%5B%E6%98%9F%E5%8F%B7%5D%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/">
         <p class="h4 index-header">3.课程/数据结构_搜索_A[星号]寻路算法</p>
         
@@ -549,61 +604,6 @@ A*寻路算法需要对每个格子维持三个状态值：总代价，到起点
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/A*%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95">A*寻路算法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
-        <p class="h4 index-header">3.课程/数据结构_搜索_贪心算法与最小生成树</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">贪心算法贪心算法是指，在对问题求解时，总是做出当前来看最好的选择，比较短视，不从总体上考虑最优解，每一步都在向局部最优解迈进（类似于梯度下降算法）
-贪心算法并不能总是得到最优解，关键是贪心策略的选择，选择贪心策略必须具备无后效性，即某个状态以前的过程只与当前状态有关，不会影响到以后的状态。
-引入找零问题尽可能用少的硬币和纸币加出一个指定金额总数。思路是从尽可能大的面额的货币开始处理，附上代码
-denom = [10000, 5000, 2000, 1000, 500, 200, 100, 50, 25, 10, 5, 1]
-owed = 9876
-payed = []
-for d in denom:
-    while owed &gt;= d:
-        owed -= d
-        payed.append(d)
-
-print(sum(payed))
-print(payed)
-输出如下结果
-9876
-[5000, 2000, 2000, 500, 200, 100, 50, 25, 1]
-引入背包问题背包问题可视为纸币找零问题的泛化版，背包问题是组合优化的NP完全问题，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/Kruskal">Kruskal</a>&nbsp;
-          
-            <a href="/tags/Prim">Prim</a>&nbsp;
           
         
       </div>

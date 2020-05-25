@@ -136,28 +136,45 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Docker/">
-        <p class="h4 index-header">0.概念/技术_Docker</p>
+      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Java_1.JVM,%E6%96%B9%E6%B3%95%E5%8C%BA,%E5%A0%86/">
+        <p class="h4 index-header">0.文章/Java_1.JVM,方法区,堆</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">DockerDocker是个虚拟机，主要运行在linux上，和VMware Workstation Pro有很多相似的地方。
+          <div class="index-text mb-1">JVM
+JAVA虚拟机的生命周期
+java虚拟机用于执行java程序,一个java程序对应一个虚拟机
+java虚拟机总是开始于一个main方法,返回void,接受一个args[]参数
+main()方法是程序的起点,他被执行的线程初始化为程序的初始线程
+java中的线程分两种
+守护线程daemon:java虚拟机自己使用的,比如垃圾回收
+非守护线程:non-daemon:包含main()方法的初始线程不是守护线程
 
-镜像，是创建虚拟机之前需要下载的系统镜像文件，比如iso和img文件等
-容器，是正在运行中的虚拟机
-tar文件，就是镜像的压缩文件，压缩传送解压缩安装
-dockerfile，配置文件，写完后通过docker bulid指令将dockerfile构建成一个镜像
-仓库，类似于github，和镜像是pull和push的关系，里边有做好的ubuntu，mysql，tomcat镜像等
 
-基本操作安装docker
-docker pull nginx : 从仓库下载nginx
-docker images : 查看本地镜像
-docker run -d -p 80:80 nginx 后台将镜像运行为容器nginx，端口映射80-80
-docker ps查看正在运行的容器有哪些，例如它会输出正在运行的容器是nginx，id是92a68b3fe02e
-docker exec -it 92,进入运行的id开头是92的容器
-cd /usr/share/nginx/html/,进入ngi</div>
+
+
+
+
+运行时数据区域
+
+
+1.程序计数器
+内存空间小,线程私有,字节码解释器就是依赖程序计数器工作的:改变计数器的值来选取下一条需要执行的指令,分支,循环,跳转,异常处理等.
+如果线程正在执行一个java方法,这个计数器就记录正在执行的虚拟机字节码地址.
+如果这个方法是native方法,则计数器的值为underfined
+
+
+程序计数器这个区域是java虚拟机中唯一没有规定任何OutOfMemoryError情况的区域
+
+
+2.java虚拟机栈
+线程私有,生命周期和线程一致
+线程(thread)
+是操作系统能够进行运算调度的最小单位
+被包含在进程中,是进程的实际运作单位
+</div>
         </div>
       </a>
 
@@ -168,13 +185,15 @@ cd /usr/share/nginx/html/,进入ngi</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+            <a href="/categories/%E6%96%87%E7%AB%A0">文章</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Docker">Docker</a>&nbsp;
+            <a href="/tags/java">java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
           
         
       </div>
@@ -571,6 +590,59 @@ Keras - 深度学习库,接口简单,本视频deep learning部分用Keras
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
+        <p class="h4 index-header">0.概念/NLP_极大似然估计</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">极大似然估计极大似然估计是确定机器学习模型的参数的一种办法。确定参数值的过程，是找到能最大化“模型产生真实观察数据可能性“的那一组参数，略抽象，如下是一个例子：
+从某过程观察了如下十个数据点，每个数据点代表了学生回答问题使用的秒数。
+
+这些数据的生成过程可以使用高斯分布（正态分布）进行充分描述。高斯分布有两个参数，西格玛和μ，如何确定参数？如下示意图表示了使用不同参数的不同高斯分布（方差大的中心函数更扁平）。
+注：蓝色曲线是正确曲线N(10,2.25)
+
+OK，如何反编译确定正确参数？我们把这个例子再次简化，同样的情境，这次只存在三个数据点：9,9.5,11
+如何使用最大似然估计确定这个高斯分布的参数？
+高斯分布中，单个数据点x的边缘概率如下
+
+同时观察到上边所提三个点（9,9.5,11）的联合概率是带入上边三个数据的连乘积：
+
+我们只要能找到最大化上述连乘积的参数μ和西格玛就ok了。也就是说，最大似然估计是一个通过确定参数得到函数最大值的优化问题。
+那么，如何求出上述函数的最大值？
+easy，二元函数求偏导标准步骤，加以两边套上对数等数学小技巧就完事儿了。
+SOP:
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">极大似然估计</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%A2%AF%E6%AE%B5%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95/">
         <p class="h4 index-header">0.概念/NLP_梯段下降算法</p>
         
@@ -626,59 +698,6 @@ Keras - 深度学习库,接口简单,本视频deep learning部分用Keras
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95">梯度下降算法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
-        <p class="h4 index-header">0.概念/NLP_极大似然估计</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">极大似然估计极大似然估计是确定机器学习模型的参数的一种办法。确定参数值的过程，是找到能最大化“模型产生真实观察数据可能性“的那一组参数，略抽象，如下是一个例子：
-从某过程观察了如下十个数据点，每个数据点代表了学生回答问题使用的秒数。
-
-这些数据的生成过程可以使用高斯分布（正态分布）进行充分描述。高斯分布有两个参数，西格玛和μ，如何确定参数？如下示意图表示了使用不同参数的不同高斯分布（方差大的中心函数更扁平）。
-注：蓝色曲线是正确曲线N(10,2.25)
-
-OK，如何反编译确定正确参数？我们把这个例子再次简化，同样的情境，这次只存在三个数据点：9,9.5,11
-如何使用最大似然估计确定这个高斯分布的参数？
-高斯分布中，单个数据点x的边缘概率如下
-
-同时观察到上边所提三个点（9,9.5,11）的联合概率是带入上边三个数据的连乘积：
-
-我们只要能找到最大化上述连乘积的参数μ和西格玛就ok了。也就是说，最大似然估计是一个通过确定参数得到函数最大值的优化问题。
-那么，如何求出上述函数的最大值？
-easy，二元函数求偏导标准步骤，加以两边套上对数等数学小技巧就完事儿了。
-SOP:
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">极大似然估计</a>&nbsp;
           
         
       </div>
