@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>0.文章/Flink_培训笔记 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      8 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="1-1为什么要学习Apache-FLink"><a href="#1-1为什么要学习Apache-FLink" class="headerlink" title="1.1为什么要学习Apache FLink"></a>1.1为什么要学习Apache FLink</h2><p>讲师:陈守元 阿里巴巴高级产品专家 </p>
+<ul>
+<li><p>概念</p>
+<ul>
+<li><p>framework框架定义:只写业务逻辑,其他交给框架就可以执行</p>
+</li>
+<li><p>有状态流计算</p>
+<p>当前的计算需根据之前沉淀的数据进行,沉淀的数据就是状态</p>
+<ul>
+<li>例如select操作就是无状态的,进来–计算–输出–下一个</li>
+<li>例如计算一个小时内某商品的点击量就是有状态的计算</li>
+<li>例如机器学习的训练等操作就是有状态的计算</li>
+</ul>
+</li>
+<li><p>四层flink API                (越往下越贴近底层)</p>
+<ul>
+<li>SQL</li>
+<li>Table  Api(dynamic tables)</li>
+<li>DataStream Aip(streams,windows)</li>
+<li>ProcessFunction(event,time,state)</li>
+</ul>
+</li>
+<li><p>flink和storm对比</p>
+<ul>
+<li>fllink把含状态的计算完全抽象在了系统中,storm想要含状态计算需要在引擎外套reddis或Hbase     </li>
+</ul>
+</li>
+<li><p>Batch analytics</p>
+<ul>
+<li>处理批数据时提到类似mapreduce        </li>
+</ul>
+</li>
+<li><p>学习方法</p>
+<ul>
+<li><p>先实践再理论。尝试构建复杂的Flink Application项目</p>
+<p>性学习更适合我。spring，coursera的percolation，还有现在的Flink比赛        </p>
+</li>
+<li><p>横向扩展。构建复杂的flink业务后，可横向学习Strom，Spark，DataFlow等,知识是演化来的，必有前置和铺垫，多横向看看，打开视野。</p>
+</li>
+<li><p>关注Apache Flink和Flink China社区，多交流，多提问，多输出。注册社区账号，你并不孤单。              </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2Apache-FLink概念介绍"><a href="#1-2Apache-FLink概念介绍" class="headerlink" title="1.2Apache FLink概念介绍"></a>1.2Apache FLink概念介绍</h2><p>讲师:戴资力 Apache PMC</p>
+<ul>
+<li><p>概念</p>
+<ul>
+<li><p>处理连续数据的最佳解决方案:Stateful Stream Processor</p>
+<ul>
+<li>重点1:能存储和维护大量的状态</li>
+<li>重点2:能依据时间知道是不是该收的数据都收完了才产生结果</li>
+</ul>
+</li>
+<li></li>
+<li><p>有状态流式处理的挑战</p>
+<ul>
+<li>状态容错<ul>
+<li>如何保证精确一次的容错保证?<ul>
+<li>产生快照,若错回退</li>
+<li>如何在分布式场景下给多个拥有本地状态的算子产生全域一致的快照?(且不中断运算)<ul>
+<li>JobManager(source)定时在数据流中掺入checkpoint barrier n</li>
+<li>checkpoint barrier n流经每个operator(算子)时将正在执行的subtask的state写入自身<ul>
+<li>checkpoint barrier们会时时在另一个独立文件存储系统中备份</li>
+<li>各checkpoint barrier理解为并集为满,交集不为空,</li>
+<li>交集存在于一同走过的干道</li>
+</ul>
+</li>
+<li>一旦fail,全局根据存储系统中最近的checkpoint barriers并集恢复各算子状态</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>状态维护<ul>
+<li>本地状态后端<ul>
+<li>从本地状态后端注册状态:val state = getRuntimeContext().getState(desc);</li>
+<li>读取注册的状态中的信息:val p = state.value();</li>
+<li>写入注册的状态中的信息:state.update(…);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Event-time处理<ul>
+<li>Event-time是真实的产生数据的时间戳</li>
+<li>引擎只有processor-time的概念,数据的传入可能乱序,那么输出的结果可能没有时效性保证</li>
+<li>为了引擎认识真实的数据产生时间的概念,需要引入watermark</li>
+<li>watermark:混在数据中的时间戳,当引擎收到watermark代表他不会预期收到比watermark更早的数据了,可以以此为界处理一批数据<ul>
+<li>预期所有数据都最多延误五分钟到达,那所有数据的watermark都标注延迟五分钟</li>
+<li>在10min时收到了5min的watermark,可开始执行5min前的数据了</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>状态保存与迁移<ul>
+<li>Savepoint<ul>
+<li>理解为手动产生的checkpoint,分布存储的全局快照</li>
+<li>在升级系统等时刻多应用,升级完毕后用event-time来赶上最新的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>### 1.4DataStream Api编程
+
+***
+
+讲师:崔星灿,Apache Flink Committer
+
+* 关于DataStream的基本概念
+  * 分布式流处理的基本模型
+    * 逻辑上:在数据源和数据汇之间,会有若干处理算子进行操作(operator)
+    * 物理模型:在数据源和数据汇之间有若干并发的物理计算单元  
+    * 基本模型就是一个有向无环图                 
+  * 流处理Api的衍变
+    * Storm:就是围绕如何构建有向无环图设计的,所以了解storm能更好地了解和优化flink
+    * storm和flink的对比
+      * storm--------面向数据本身编程
+        * TopologyBuilder builder = new TopologyBuilder            //图(拓扑)的构建者
+        * builder.setSpout    //构建图的点
+        * builder.setBolt        //构建图的边
+      * flink--------面向数据流这个集合编程,抽象度有上升
+        * StreamExecutionEnvironment env = StreamExeciutionEnvironment.getExecution();                    //申请环境
+        * DataStream\&lt;String&gt;text = env.readTextFile(&quot;input&quot;)        //传入源数据
+        * DataStream\&lt;Tuple2&lt;String,Integer&gt;&gt; count = text.flatMap(new Tokennizer()).keyBy(0).sum(1);                                                   //切分处理数据
+        * counts.writerAsText(&quot;output&quot;);                                                    //记录输出
+
+    * Storm对DAG图有更好的控制,写出来什么样跑的就是什么,学术界更偏爱
+    * Flink有更好的抽象和优化,工业界更偏爱 
+  * 在显式地调用execute之前分布式计算引擎一直都在画Dag图,构建并优化后才执行</code></pre><ul>
+<li>DataStream Api的操作概览<ul>
+<li>基本操作<ul>
+<li>基于单条记录:fliter,map  —-输入一条流,出来还是一条流</li>
+<li>基于窗口:window</li>
+<li>合并多条流:union,join,connect</li>
+<li>拆分:split                               —-SplitStream : 把一条流拆分为多条流 </li>
+</ul>
+</li>
+<li>数据路由方法<ul>
+<li>dataStream.global()                    全发往第一个task</li>
+<li>dataStream.broadcast()           广播</li>
+<li>dataStream.forward()                上下游并发度一样时一对一发送</li>
+<li>dataStream..shuffle()                 随机均匀发送</li>
+<li>dataStream.rebalance()             轮流分配</li>
+<li>dataStream.recale()                     本地轮流分配</li>
+<li>dataStream.partitionCustom()自定义</li>
+</ul>
+</li>
+<li>类型系统<ul>
+<li>//flink里的抽象都是强类型,这和它自身的序列化反序列化机制有关</li>
+<li>//引擎知道的类型信息越多,就能对数据进行越充足的优化,序列化反序列化的过程就越快</li>
+<li>DataStream&lt;String&gt;text = env.readTextFile(“input”);             //java用String</li>
+<li>DataStream&lt;Tuple2&lt;String,Integer&gt;&gt;                                           //java用Tuple2<ul>
+<li>基本类型:void,string,data,bigDecimal,bigInterger</li>
+<li>复合类型:Tuple,scala case classes,ROW,POJO</li>
+<li>辅助,集合类型:Option,either,list,map</li>
+<li>其他类型:自定义TypeInformation,Kryo处理,不推荐使用,可能造成迁移上的问题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-8TableApi编程"><a href="#1-8TableApi编程" class="headerlink" title="1.8TableApi编程"></a>1.8TableApi编程</h2><p>讲师:程鹤群,ali高工,FLink Contributor</p>
+<ul>
+<li><p>​    相关概念</p>
+<ul>
+<li><p>TableApi特点</p>
+<ul>
+<li>声明式,用户只关心做什么,不关心怎么做</li>
+<li>高性能,支持查询优化——————————————如何查询优化?</li>
+<li>流批同意</li>
+<li>标准统一,易理解</li>
+</ul>
+</li>
+<li><p>Table API和SQL的对比</p>
+<ul>
+<li><p>Table Api :  tab.GroupBY(“word”.select(word,count(1)as count””))</p>
+</li>
+<li><p>SQL            : SELECT word,COUNT(*)as cnt</p>
+<p>​                        FROM MyTable</p>
+<p>​                        GROUP By word</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1Flink-RunTime-核心机制编程"><a href="#2-1Flink-RunTime-核心机制编程" class="headerlink" title="2.1Flink RunTime 核心机制编程"></a>2.1Flink RunTime 核心机制编程</h3><hr>
+<p>讲师:高赟,阿里高工</p>
+<ul>
+<li>作业DAG图结构<ul>
+<li>JobGraph<ul>
+<li>客户端提供的DAG图结构</li>
+<li>逻辑结构,不考虑并发</li>
+<li>JobGraph会展开成ExecutionGraph</li>
+</ul>
+</li>
+<li>ExecutionGraph<ul>
+<li>JobMaster实际维护的数据结构,最核心</li>
+<li>维护各个job之间具体的状态</li>
+<li>物理结构,考虑并发</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Eagar调度<ul>
+<li>所有slot一起起,吃资源延迟低,多用于流作业</li>
+</ul>
+</li>
+<li>LAZY_FROM_SOURCE调度<ul>
+<li>一个进度内需要用的slot一起起,运算完了把数据存好,释放slot,把数据coyp到下一层slot上执行,不吃资源,</li>
+</ul>
+</li>
+<li>优化空间<ul>
+<li>更完善的资源管理:目前所有slot一样大,明示这是不够用的</li>
+<li>更灵活的调度策略:目前只有eagar和lazy_from_source,具体问题应该有更系统化的调度策略</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-6Flink作业执行解析"><a href="#2-6Flink作业执行解析" class="headerlink" title="2.6Flink作业执行解析"></a>2.6Flink作业执行解析</h2><p>讲师:岳猛,网易云研发</p>
+<ul>
+<li>总览<ul>
+<li>如何从program到物理执行计划?</li>
+<li>subtasks如何进行调度?</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>四个转换流程:<ul>
+<li>第一个Program-&gt;StreamGraph</li>
+<li>第二个:StreamGraph-&gt;JobGraph</li>
+<li>第三个:JobGraph-&gt;ExecutionGraph</li>
+<li>第四个:Execution-&gt;物理执行计划</li>
+</ul>
+</li>
+</ul>
+<p>第一层:StreamGraph</p>
+<ul>
+<li><p>执行流程</p>
+<ul>
+<li>StreamExecutionEnviroment.execute开始执行程序                                                        //构建环境</li>
+<li>将transform添加到StreamExecutionEnvironment的transformations里                //添加变换</li>
+<li>调用StreamGraphGenerator的generateInternal方法,遍历transformations          //遍历变换</li>
+<li>构建StreamNode和StreamEdge                                                                                               //构建边和节点</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>StreamNode            <ul>
+<li>是描述operator的逻辑节点</li>
+<li>关键成员变量:<ul>
+<li>slotSharingGroup                  //用来调度task</li>
+<li>jobVertexClass                        //具体执行task</li>
+<li>inEdges                                     //入边 </li>
+<li>outEdges                                  //出边</li>
+<li>transformationUID              //UID</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>StreamEdge<ul>
+<li>是描述两个operator逻辑的链接边</li>
+<li>关键变量:<ul>
+<li>sourceVertex</li>
+<li>targetVertex</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>第二层:JobGraph</p>
+<ul>
+<li>从StreamGraph到JobGraph的转换<ul>
+<li>设置调度模式Eagar/lazy_from_source</li>
+<li>遍历StreamGraph,寻求operator的chain<ul>
+<li>能chain在一起的chain在一起,头结点生成JobVertex,其他节点序列化写入StreamConfig</li>
+<li>不能chain在一起的节点单独生成JobVertex</li>
+</ul>
+</li>
+<li>JobEdge链接JobVertex</li>
+</ul>
+</li>
+<li>job.vertex们提交到jobMaster之后,会通过ExecutionGraphBuilder转换为ExecutionGraph</li>
+</ul>
+<p>第三层:ExecutionGraph</p>
+<ul>
+<li>JobVertex进行排序</li>
+<li>ExecutionGraph.attachJobGraph(sortedTopology)构造<ul>
+<li>JobVertex生成ExecutionVertex</li>
+<li>IntermediateDatSet生成IntermediateResult</li>
+<li></li>
+</ul>
+</li>
+<li>ExecutionGraph在deploy的时候会提交到taskManager上去,转化为物理执行图</li>
+</ul>
+<p>Job的调度和执行</p>
+<p>代码经过四层调度怎么放到集群上去的</p>
+<h2 id="2-11flink-state最佳实践"><a href="#2-11flink-state最佳实践" class="headerlink" title="2.11flink state最佳实践"></a>2.11flink state最佳实践</h2><p>讲师,唐云,阿里高工</p>
+<ul>
+<li><p>概念</p>
+<ul>
+<li><p>State Overview</p>
+<ul>
+<li>state就是数据进来又出去,留下来的东西</li>
+</ul>
+</li>
+<li><p>两种state的区别</p>
+<ul>
+<li><p>OperatorState</p>
+<ul>
+<li>没有current概念</li>
+<li>只有堆内存一种实现,只能存储在java heap中</li>
+</ul>
+</li>
+<li><p>KeyedState</p>
+<ul>
+<li><p>总有一个current key对应</p>
+</li>
+<li><p>可以用堆内存和RocksDB两种实现</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-12-SQL深入探究"><a href="#2-12-SQL深入探究" class="headerlink" title="2.12 SQL深入探究"></a>2.12 SQL深入探究</h2><p>讲师,贺小令,阿里技术专家</p>
+<p>sql转化流程:</p>
+<ul>
+<li><p>SQL–&gt;[Calcite]–&gt;[Planner]–&gt;StreamGraph–&gt;JobGRaph–&gt;ExecutionGraph–&gt;物理执行计划    </p>
+<ul>
+<li><p>[Calcite]详解:        </p>
+<ul>
+<li><p>Parser–&gt;SQLNode tree–&gt;Validator–&gt;Operation dag–&gt;</p>
+<p>QueryOperation Convertor–&gt;RelNode dag–&gt;Optimizer</p>
+</li>
+</ul>
+</li>
+<li><p>[Planner]详解:</p>
+<ul>
+<li>BatchPhysical Rel dag–&gt;BatchExecNode dag–&gt;transformation dag</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>​    </p>
+<p>本版本flink性能优化</p>
+<ul>
+<li>分段优化 sub-plan reuse</li>
+<li>100多个优化rule,batch和Stream共享</li>
+<li>更高效的数据结构BinaryRow,对序列化和反序列化有帮助</li>
+<li>mini-batch只对stream支持</li>
+<li>节省shuffle和sort的能力–shuffle和sort占计算的大头</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%96%87%E7%AB%A0">文章</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/flink">flink</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "0.文章/Flink_培训笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

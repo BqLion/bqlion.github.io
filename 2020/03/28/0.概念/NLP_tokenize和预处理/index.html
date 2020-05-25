@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>0.概念/NLP_tokenize和预处理 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 三月 28日 2020, 9:36 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h4 id="Tokenize"><a href="#Tokenize" class="headerlink" title="Tokenize"></a>Tokenize</h4><p>把长句子拆分成有意义的小句子。</p>
+<pre><code class="python">import nltk
+sentence = &quot;hello,world&quot;
+tokens = nltk.word_tokenize(sentence)
+token = 
+[&#39;hello&#39;, &#39;,&#39; , &#39;world&#39;]</code></pre>
+<p>有时候tokenize没那么简单，比如如下的例子是黄晓明在推特上@安吉拉卑鄙秀恩爱的语料。</p>
+<p>在这个场景下，大家会用很多# @ 表情符和超链接等，自然语言呈现出与书本不同形态，如果还沿用老的tokenize策略，就会分出不少乱七八糟的符号，并且拆散了有意义的本符号比如“ :D ” 。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200326_1132_28_606.png" alt=""></p>
+<p>所以需要根据不同的业务场景开发定制化的tokenize策略，根据上文的分析，将本场景下最容易出现的专有token全部用正则表达式重写，试图完整表达。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200326_1143_17_623.png" alt=""></p>
+<p>通过re.compile定义一个小方法token_re,返回和regex匹配的模式。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200327_0948_47_992.png" alt=""></p>
+<h4 id="词形的变化"><a href="#词形的变化" class="headerlink" title="词形的变化"></a>词形的变化</h4><p>词有两种变化，分别是</p>
+<p>Inflection<strong>变化</strong>: walk -&gt; walking -&gt;walked<br>不影响词性</p>
+<p>derivation<strong>引申</strong>：nation -&gt; national -&gt; nationalize<br>影响词性</p>
+<p>应对两种变化的对策：</p>
+<p>Stemming<strong>词干提取</strong>：把不影响词性的<strong>变化</strong>的尾巴砍掉(ing,ed等等)</p>
+<p>walking -&gt; walk</p>
+<p>Lemmatization<strong>词形归一</strong>：把各个类型的词的变形，归为一个形式（有些时态、格的变化完全换了词，要变回来）</p>
+<p>went -&gt; go</p>
+<p>使用NLTK实现stemming</p>
+<pre><code class="python">from nltk.stem.porter import PorterStemmer
+&gt;&gt;&gt; porter_stemmer.stem(&#39;provision&#39;)
+u&#39;provis&#39;
+
+from nltk.stem.poter import SnowballStemmer
+&gt;&gt;&gt; snowball_stemmer.stem(&#39;pressmably&#39;)
+u&#39;press&#39;</code></pre>
+<p>使用NLTK实现Lemma</p>
+<pre><code class="python">from nltk.stem import WordNetLemmatizer
+
+&gt;&gt;&gt; wordnet_lemmatizer.lemmatize(&#39;churches&#39;)
+u&#39;church&#39;</code></pre>
+<p>使用NLTK加POS tagging更好实现Lemma</p>
+<pre><code class="python"># 没有POS tag，默认是NN，名词
+&gt;&gt;&gt; wordnet_lemmatizer.lemmatize(&#39;are&#39;)
+&#39;are&#39;
+&gt;&gt;&gt; wordnet_lemmatizer.lemmatize(&#39;is&#39;)
+&#39;is&#39;
+
+# 加上POS tag
+&gt;&gt;&gt; wordnet_lemmatizer.lemmatize(&#39;is&#39;,pos=&#39;v&#39;)
+u&#39;be&#39;
+&gt;&gt;&gt; wordnet_lemmatizer.lemmatize(&#39;are&#39;,pos=&#39;v&#39;)
+u&#39;be&#39;
+</code></pre>
+<p>使用NLTK标注POS tagging</p>
+<pre><code class="python">&gt;&gt;&gt;import nltk
+&gt;&gt;&gt;text = nltk.word_tokenize(&#39;what does the fox say&#39;)
+&gt;&gt;&gt;text
+[&#39;what&#39;,&#39;does&#39;,&#39;the&#39;,&#39;fox&#39;,&#39;say&#39;]
+&gt;&gt;&gt;nltk.pos_tag(text)
+[(&#39;what&#39;,&#39;WDT&#39;),(&#39;does&#39;,&#39;VBZ&#39;),(&#39;the&#39;,&#39;DT&#39;),(&#39;fox&#39;,&#39;NNS&#39;),(&#39;say&#39;,&#39;VBP&#39;)]</code></pre>
+<h4 id="停止词"><a href="#停止词" class="headerlink" title="停止词"></a>停止词</h4><p>像是he，the这种词汇，一千个词有一千个意思，在注重文本理解的应用场景来说，歧义太多。所以可以吧stopword去掉。</p>
+<p>使用nltk去除stopwords</p>
+<pre><code class="python">from nltk.corpus import stopwords
+# 先token一把，得到一个word_list
+# ...
+# 然后filter一下
+filtered_words = 
+[word for word in word_list if word not in stopwords.words(&#39;english&#39;)]</code></pre>
+<h4 id="典型的文本预处理流程"><a href="#典型的文本预处理流程" class="headerlink" title="典型的文本预处理流程"></a>典型的文本预处理流程</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200328_0943_28_506.png" alt=""></p>
+<p>经过了文本预处理，文本变成了单词的list，然后将list通过特征工程变成计算机可以理解的数字。</p>
+<h4 id="NLTK在NLP上的经典应用"><a href="#NLTK在NLP上的经典应用" class="headerlink" title="NLTK在NLP上的经典应用"></a>NLTK在NLP上的经典应用</h4><p>情感分析</p>
+<p>文本相似度</p>
+<p>文本分类</p>
+<p><strong>情感分析</strong>就是分析如下的评论哪些是在黑你哪些是在夸你？</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200328_1436_09_350.png" alt=""></p>
+<p>最简单的情感分析是对词汇进行打分，比如1是like，2是good，-2是bad，-3是terrible</p>
+<p>用nltk完成简单的情感分析</p>
+<pre><code class="python">sentiment_dictionary = {}
+for line in open(&#39;data/AFINN-111.txt&#39;)
+    word,score = line.split(&#39;\t&#39;)  # 单词和单词的情感得分用空格分开
+    sentiment_dictionary(word) = int(score)
+
+total_score = sum(sentiment_dictionary.get(word,0) for word in words)
+# 遍历一遍待分析的句子，把对应的值相加，最终得到一个sentiment score就是最终结果</code></pre>
+<p>当然这种方式非常naive，新词、特殊词、更深层次的词没有办法处理。更有效的办法是配上ML的情感分析。后面会讲。</p>
+<p>​     </p>
+<p><strong>文本相似度</strong>是NLTK的另一个应用，比如在百度搜索“七月在线”，百度就会返回和这个字符串最相似的结果。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200328_1452_16_384.png" alt=""></p>
+<p>如何计算相似度？构建一个所有单词都在的长向量，然后把每一句话都用这个向量表示，如下是简化版：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200328_1505_47_705.png" alt=""></p>
+<p>​    然后使用余弦定理来确定两句话的相似程度</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200328_1506_32_358.png" alt=""></p>
+<p><strong>文本分类</strong>是另一个应用，意思是打开一句话，然后来确定这句话是属于哪个topic下的？（多分类问题）。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200328_1607_32_201.png" alt=""></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200328_1608_08_239.png" alt=""></p>
+<p>在nltk中实现TF-IDF</p>
+<pre><code class="python">from nltk.text import TextCollection
+
+#首先，把所有的文档放到TextCollection中，
+#这个类会帮你自动断句，做统计和计算
+
+corpus = TextCollection([&#39;this is sentence one&#39;,
+                        &#39;this is sentence two&#39;,
+                        &#39;this is sentence three])
+
+print(corpus.tf_idf(&#39;this&#39;,&#39;this is sentence four&#39;))
+# 0.444342                                           </code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%A6%82%E5%BF%B5">概念</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Tokenize">Tokenize</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "0.概念/NLP_tokenize和预处理&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

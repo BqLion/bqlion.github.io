@@ -136,44 +136,19 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
-        <p class="h4 index-header">3.课程/CS229_2.正规方程</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_维特比算法</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">CS229—正规方程1.定义
-​    正规方程(Normal Equation)是通过对训练数据/训练答案/待求参数之间的矩阵变换得到答案
+          <div class="index-text mb-1">维特比算法HMMs的解码算法为Viterbi算法，如图8.5所示。作为动态规划的一个实例，维特比类似于动态规划最小距离算法。维特比算法是一个通用的求序列最短路径的动态规划算法，维特比算法可以将HMM的状态序列作为一个整体来考虑，求给定观测序列O条件下，最可能出现的对应的状态序列  ,即  要最大化，从后向前计算的
+用于寻找最优标签序列的维特比算法。给定一个观察序列和一个HMM λ= (A;B)，算法通过HMM返回状态路径，该状态路径为观察序列分配最大似然值。
+维特比算法首先建立一个概率矩阵( ) )，每个观察  有一列，状态图中的每个状态有一行。因此，在单个组合自动机中，每个列都有一个用于每个状态  的单元。图8.6显示了这个格子的直觉，因为Janet will back the bill这句话。
+网格的每个单元格 表示在看到第一个t观察值并且在给定HMM λ的情况下经过最可能的状态序列  之后HMM处于状态j的概率。 每个单元  的值通过递归地获取可能导致我们到达该单元的最可能路径来计算。 形式上，每个cell表达概率:
 
-正规方程求解参数矩阵的公式:
-
-2.正规方程法和梯度下降法的对比
-
-梯度下降的特点
-
-要设置学习率α
-多次迭代
-工作地非常均衡
-适合特征变量很多的时候用
-要求参数归一化
-
-
-正规方程法
-
-不用设置学习率
-不用迭代
-需要计算
-适合特征变量不超过1000时用
-不要求参数归一化,如下图
-
-
-
-有些较复杂问题不能使用正规方程法,只能使用梯度下降
-
-
-
-</div>
+我们通过对所有可能的先前状态序列  取最大值来表示最可能的路</div>
         </div>
       </a>
 
@@ -184,15 +159,13 @@
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B">正规方程</a>&nbsp;
+            <a href="/tags/%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95">维特比算法</a>&nbsp;
           
         
       </div>
@@ -203,41 +176,30 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_10.%E8%81%9A%E7%B1%BBClustering/">
-        <p class="h4 index-header">3.课程/CS229_10.聚类Clustering</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM&HEMM&CRF%E7%9A%84%E6%AF%94%E8%BE%83pt2/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM&amp;HEMM&amp;CRF的比较pt2</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">10.聚类Clustering10.1无监督学习简介无监督学习是让计算机学习无标签数据,而不是之前的标签数据
-如图就是聚类问题
-左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统
-10.2 K-mean (K均值算法)K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组
+          <div class="index-text mb-1">2.1.1 概览在统计概率图（probability graph models）中，参考宗成庆老师的书，是这样的体系结构（个人非常喜欢这种类型的图）：
 
-K-均值是一个迭代算法
+在概率图模型中，数据(样本)由公式  建模表示： 
 
-设想我们将数据聚集成n组,选择k个随机的点为聚类中心
+ 表示节点，即随机变量（放在此处的，可以是一个token或者一个label），具体地，用  为随机变量建模，注意  现在是代表了一批随机变量（想象对应一条sequence，包含了很多的token），  为这些随机变量的分布；
+ 表示边，即概率依赖关系。具体咋理解，还是要在后面结合HMM或CRF的graph具体解释。
 
-对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类
+2.1.2 有向图 vs. 无向图上图可以看到，贝叶斯网络（信念网络）都是有向的，马尔科夫网络无向。所以，贝叶斯网络适合为有单向依赖的数据建模，马尔科夫网络适合实体之间互相依赖的建模。具体地，他们的核心差异表现在如何求  ，即怎么表示  这个的联合概率。
+1. 有向图
+对于有向图模型，这么求联合概率： 
+举个例子，对于下面的这个有向图的随机变量(注意，这个图我画的还是比较广义的)：
 
-然后开始迭代:
+应该这样表示他们的联合概率:
 
-每次计算一个组的平均值,将中心点移动到平均值的位置
-如此反复几次中心点的位置就不再变化
-如下图所示
-
-
-
-
-
-10.3优化目标K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和
-因此K均值的代价函数为:
-
-10.4随机初始化在运行k均值算法之前,需要随机初始化所有的聚类中心点
-1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量
-2.随机选择K个训练实例,然后令K个聚类中心等于他们
-K-均值算法的一个问题在于,他可能停留在某个</div>
+应该很好理解吧。
+2. 无向图
+对于无向图，我看资料</div>
         </div>
       </a>
 
@@ -248,15 +210,13 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E8%81%9A%E7%B1%BB">聚类</a>&nbsp;
+            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
@@ -267,50 +227,32 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_4.%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
-        <p class="h4 index-header">3.课程/CS229_4.逻辑回归</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM&HEMM&CRF%E7%9A%84%E6%AF%94%E8%BE%83/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM&amp;HEMM&amp;CRF的比较</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">4.逻辑回归(logistics regression)1.逻辑回归模型
-分类问题输出一个结果”正确”或者”错误”
+          <div class="index-text mb-1">HMM，HEMM,CRF的比较6.6.1)CRF的优点:
 
-逻辑回归模型:
+CRF没有HMM 那样严格的独立性假设条件，因此可以容纳任意的上下文内容。特征设计灵活。—— 与HMM比较。
 
+由于CRF计算全局最优输出节点的条件概率，它还克服了最大熵马尔科夫模型标记偏置的问题（label-bias）。  —— 与MEMM的比较
 
-
-
-当hθ(x) 在区间[0.5,1]时,预测是”正确”,越贴近1越确信
-当hθ(x) 在区间[0,0.5)时,预测是”错误”,越贴近0越确信
-
-2.逻辑回归的代价函数
-
-简单点一句话讲:
-答案是1,你预测了1,无误差
-答案是1,你预测的数字离0越近误差就越大,完全是0误差就是无限大(不可能情况)
-答案是0的情况与答案是1的情况同理
+CRF是在给定需要标记的观察序列的条件下，计算整个标记序列的联合概率分布。而不是在给定当前状态的条件下，定义一个状态的状态分布。 ——与ME的比较
 
 
+  CRF缺点：
 
-3.对逻辑回归的代价函数使用梯度下降算法,以得到最优参数/最优解
-4.高级优化
-一些建议
+训练代价大，复杂度高
 
-不需要写代码实现代价函数的迭代
-
-从技术来讲,其实我们不需要自己手动写程序来计算刚才提到的梯度下降算法的代价函数以及其迭代过程,就像我们不需要自己手动写求平方根和创建数组一样,这些问题早都有非常成熟的库来调用
-
-
-更高级的算法
-
-除了梯度下降算法,还有共轭梯度法 BFGS (变尺度法) 和L-BFGS (限制变尺度法)这种更高级算法可调用
-吴恩达本人已经使用如上提到的算法很多年了,也才是最近才搞清楚他们的内部实现细节
-
-
-
-</div>
+6.6.2）CRF解决的问题：
+HMM模型中存在两个假设，一是输出观察值之间严格独立，二是状态转移过程中当前状态只与前一状态有关（一阶马尔科夫模型）。
+MEMM模型克服了观察值之间严格独立产生的问题，但是由于状态之间的假设理论，使得该模型存在标注偏置问题。
+CRF模型解决了标注偏置问题，去除了HMM中两个不合理的假设，当然，模型相应的变得更复杂了。
+6.6.3）HMM模型，最大熵模型，CRF模型的优劣
+HMM模型将标注看做是马尔科夫链，一阶马尔科夫链式针对相邻标注的关系进行建模，其中每个</div>
         </div>
       </a>
 
@@ -321,15 +263,13 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
-          
-            <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92">逻辑回归</a>&nbsp;
+            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
@@ -340,19 +280,26 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_9%20-%20RNN,LSTM,GRU/">
-        <p class="h4 index-header">3.课程/CS224n_9 - RNN,LSTM,GRU</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM_马尔科夫链</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">助教分享：建立一个更好的语言模型语言模型是NLP中最经典的任务，这里有三种方式可以让其变得更好，第一是更好的输入表达，第二是更好的正则化或者预处理，第三是有更好的模型。
-第一种是改进输入，例如Glove是一个词层面的表示，事实上可以把单词进一步编码为子词阶段，可以采用语素解码方式，可以采用BPE，最终也可以采用字母级的嵌入，他的作用是大大减少所用到的词汇量，让模型预测变得更简单，如下图展示的论文就是对输入端的改进。
+          <div class="index-text mb-1">马尔科夫链马尔可夫链是一个模型，告诉我们关于随机变量序列的概率，状态。每个状态都可以从某个集合中获取值。 这些集合可以是单词，标签或代表任何东西的符号，例如天气。 下图左边是天气转换，右边是生成句子的单词序列。
 
-第二种办法是采用正则化技巧，来改善过拟合的问题，有一堆论文在讲如何做正则化，今天聚焦的点是在预处理阶段，通过和计算机视觉类似的替换技巧来构建更合理的语料库，比如把频繁和罕见的词语的评率都往平均值上拉一拉，就会使得曲线更显平滑，平滑的分布能让系统获得更好的语言模型和更好的实验结果。
-第三是更好的模型，etc。
-</div>
+考虑状态变量  ,HMM核心假设是:当预测未来时，过去并不重要，重要的是现在。
+
+上图显示了一个马尔可夫链，用于为一系列天气事件分配概率，其中词汇表包括HOT, COLD,和 WARM，状态表示为图中的节点，转换以其概率表示为边。 转换是概率：离开给定状态的弧的值必须总和为1。上图右边用于为单词序列  分配一个概率，他其实是一个bigram的语言模型，每条边表示概率  。
+在形式上，马尔可夫链由以下组件指定:
+
+
+ ，N个状态的集合
+A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概率  ,  
+ ，状态上的初始概率分布(某一时刻的所有可能的隐藏状态的分布(可能性))。是马尔可夫链从状态i开始的概率。一些状态j可能有  ，这意味着它们不可能是初始状态。  
+
+马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关：如果我们得到了这个稳定</div>
         </div>
       </a>
 
@@ -363,13 +310,13 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE">马尔科夫链</a>&nbsp;
           
         
       </div>
@@ -380,52 +327,22 @@ K-均值算法的一个问题在于,他可能停留在某个</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_1.%E7%BB%AA%E8%AE%BA/">
-        <p class="h4 index-header">3.课程/CS229_1.绪论</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_EM%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_EM算法</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">CS229–绪论1.监督学习和无监督学习
-监督学习定义
-部分数据集已经有答案.比如房价信息集,知道了正确的房价,需要预测出更多的房价
-回归问题,预测连续值的输出(房价)
-聚类问题,预测离散值的输出(肿瘤是良性还是恶性?)
+          <div class="index-text mb-1">EM算法2.1 基础知识2.1.1 凸函数设是定义在实数域上的函数，如果对于任意的实数，都有： 那么是凸函数。若不是单个实数，而是由实数组成的向量，此时，如果函数的 Hesse 矩阵是半正定的，即 是凸函数。特别地，如果  或者   ，称为严格凸函数。
+2.1.2 Jensen不等式如下图，如果函数  是凸函数，  是随机变量，有 0.5 的概率是 a，有 0.5 的概率是 b，  的期望值就是 a 和 b 的中值了那么： 其中， ，这里 a 和 b 的权值为 0.5,    与 a 的权值相等， 与 b 的权值相等。
+特别地，如果函数   是严格凸函数，当且仅当：   (即随机变量是常量) 时等号成立。
 
-
-
-
-无监督学习
-
-无监督学习没有答案,自动聚类:比如google搜索BP油井泄露,会把CNN,ABC,BBC新闻放一起
-
-
-
-2.线性回归算法
-监督学习的典型过程
-
-Training set –[喂食给]—&gt;Learning Algorithm –[生成]–&gt;hypothesis(假设函数)
-
-size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate price
-
-
-
-
-
-线性回归
-
-预测房价的假设函数:h(x) = θ0 + θ1x
-根据训练集生成一元一次方程,输入房间大小得到房价预测
-
-
-
-3.代价函数
-代价函数有利于弄清楚如何把最有可能的直线与我们的数据相拟合
-
-最小化代价函数就可得到最好的预测函数
-
-如何选择假设函数hypothesis “h(x) = θ0 + θ1x” 中的两个参数</div>
+注：若函数    是凹函数，Jensen不等式符号相反。
+2.1.3 期望对于离散型随机变量 X 的概率分布为   ，数学期望   为： 
+ 是权值，满足两个条件   。
+若连续型随机变量X的概率密度函数为  ，则数学期望  为： 设 ， 若  是离散型随机变量，则： 若    是连续型随机变量，则：  
+2.2 EM算法的推导对于  个相互独立的样本  ，对应的隐含数据  ，此时</div>
         </div>
       </a>
 
@@ -436,13 +353,13 @@ size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate p
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>&nbsp;
+            <a href="/tags/EM%E7%AE%97%E6%B3%95">EM算法</a>&nbsp;
           
         
       </div>
@@ -453,38 +370,24 @@ size of house–[输入]—-&gt;hypothesis(函数)—-[输出]—-&gt;Estimate p
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_6%20-%20%E4%BE%9D%E5%AD%98%E5%88%86%E6%9E%90/">
-        <p class="h4 index-header">3.课程/CS224n_6 - 依存分析</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM_三个问题</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture6 依存分析本节课综述
+          <div class="index-text mb-1">HMM的三个核心问题的解本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。
+1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别有如下递进定义
 
-这节课主要讲句法 + 语法 + 依存分析
-基于转移的依存关系分析语法
-神经网络内容
-TensorFlow + 实际的nlp内容例如构建神经依存关系分析器
+将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个网络
+若该网络是有向无环图，则称这个网络为贝叶斯网络
+如果这个图退化成线性链的方式，则得到马尔科夫模型，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是马尔科夫过程。
+若上述网络是无向的，则是无向图模型，又称马尔科夫随机场或者马尔科夫网络。
+若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。
+如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
 
-1.依存分析的概念和一个例子句子或句子的一部分有一种结构，人们可以用特定的方式将他们组合起来，我们可以从非常简单的并不构成句子的东西入手。
-
-一个冠词 + 名字 通常被语言学家称为名词短语
-
-
-
-有一些规则可以用来扩展他们：比如在冠词和名词之间加一个形容词
-the large cat
-a beautiful dog等
-
-你也可以在名词后边添加介词短语
-the large cat in a crate
-the barking dog on the table等
-
-
-传统上，语言学家和自然语言处理器想做的是描述人类语言结构，人们过去有两个关键工具来做到这点，一种是上下文无关文法的方法，这种方法经常被语言学家引用为短语结构文法。我们现在要做的就是写出这些上下文无关文法的规则。
-
-还有一种了解语言结构的不同角度，就是依存句法结构。它通过找到句子当中每一个词所依赖的部分来描述句子结构。如果一个词修饰另一</div>
+2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
         </div>
       </a>
 
@@ -495,13 +398,13 @@ the barking dog on the table等
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
@@ -512,25 +415,22 @@ the barking dog on the table等
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_7%20-%20Tensorflow/">
-        <p class="h4 index-header">3.课程/CS224n_7 - Tensorflow</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM_马尔科夫模型</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture7 TensorFlow为什么要使用深度学习框架？
+          <div class="index-text mb-1">隐性马尔可夫模型(HMM):1. 什么样的问题需要HMM模型首先我们来看看什么样的问题可以用HMM模型。使用HMM模型时我们的问题一般有这两个特征：
+​    １）我们的问题是基于序列的，比如时间序列，或者状态序列。
+​    ２）我们的问题中有两类数据，一类序列数据是可以观测到的，即观测序列；而另一类数据是不能观察到        的，即隐藏状态序列，简称状态序列。（Hidden state）
+有了这两个特征，那么这个问题一般可以用HMM模型来尝试解决。这样的问题在实际生活中是很多的。比如：我现在在打字写博客，我在键盘上敲出来的一系列字符就是观测序列，而我实际想写的一段话就是隐藏序列，输入法的任务就是从敲入的一系列字符尽可能的猜测我要写的一段话，并把最可能的词语放在最前面让我选择，这就可以看做一个HMM模型了。再举一个，我在和你说话，我发出的一串连续的声音就是观测序列，而我实际要表达的一段话就是状态序列，你大脑的任务，就是从这一串连续的声音中判断出我最可能要表达的话的内容。
+2. HMM模型的定义
 
-有助于扩展机器学习代码
-自动计算梯度（通常梯度计算并不重要，这些框架可以自动处理梯度，使得我们把重点放在更高层次的数学上）
-在很多领域使机器学习更标准化
-这些框架提供了GPU接口
+Q是各个状态，图示的节点
 
-1.TensorFlow是什么？是一个谷歌开发的深度学习框架，使用流式图进行数值计算的开源软件库。TensorFlow是用于表示机器学习算法的接口，以及用于执行这种算法的实现。
-TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图的节点是操作，每个节点都有一个输入和输出，节点之间的边表示他们之间流动的张量，在实践中最好的方法就是认为，张量是一个n维数组。
-使用流式图作为深度学习框架主干的优点在于它允许你使用小而简单的操作建立复杂的模型，当我们这样做的时候，会使得梯度计算变得极其简单。
-此框架可以自动求导，而且图方法的每一个操作都是可以在其所在点被评估的一个函数。变量将成为输出其当前值的有状态节点。
-占位符是那些在执行期间才会接收值的节点，如果在你的网络中有依赖外部数据的一些输入，你并不想在建立图时依赖任何实际的值。</div>
+A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边</div>
         </div>
       </a>
 
@@ -541,13 +441,13 @@ TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图�
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/HMM">HMM</a>&nbsp;
           
         
       </div>
@@ -558,26 +458,22 @@ TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/">
-        <p class="h4 index-header">3.课程/CS224n_8 - RNN和语言模式</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_3_%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91/">
+        <p class="h4 index-header">0.概念/NLP_SLP_3_一阶逻辑</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture8 RNN和语言模式本节讲简单的循环神经网络模型，这个模型家族是大多数人现在在实际训练环境中使用的。
- 概览：
-1.传统的语言模型
-2.RNNs
-3.语言模型建模来驱动循环神经网络（RNN）
-4.重要的训练时的问题和技巧
-​    梯度消失问题
-​    梯度爆炸问题
-5.用于队列处理的RNN
-6.双向深度RNN
-1. 传统的语言模型和现在的词向量模型对比传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。
-如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。
-如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效</div>
+          <div class="index-text mb-1">概念：一阶逻辑（first order logic）一阶二阶这类的词, 一是表达量化的程度, 二是表达逻辑系统多有表达能力. 
+
+0阶逻辑： 每一个字母就代表一个命题, 所以命题逻辑只能表达句子之间的关系, 比如“p&amp;q”, “if p then q”等等的真值如何从p和q的真值中计算出来.
+1阶逻辑则引入了两个量词, 即universal quantifier(倒A，所有)和existential quantifier(倒E，存在), 并且加入了一阶谓词和individual variables（变量）和individual constants（常量）. 这些导致一阶逻辑可以量化individuals in the domain. 比如经典的
+
+
+三段论就可以被一阶逻辑表达：For all x, Hx-&gt;MxHs-—Ms
+
+其中for all x就是量化了所有individuals, 即domain里的任意一对象, 用individual variable x来表示. Hx则是表示x属于H(Human)这个谓词的extension, Mx表示x属于M(Mortal)的e</div>
         </div>
       </a>
 
@@ -588,13 +484,13 @@ TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图�
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91">一阶逻辑</a>&nbsp;
           
         
       </div>
@@ -605,17 +501,25 @@ TensorFlow的一个big idea就是数值计算表示为计算图来进行。 图�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_2,-%20%E6%B3%A8%E9%87%8A%E4%B9%8Bsoftmax/">
-        <p class="h4 index-header">3.课程/CS224n_2,- 注释之softmax</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FST%E7%8A%B6%E6%80%81%E6%9C%BA/">
+        <p class="h4 index-header">0.概念/NLP_SLP_5_FST状态机</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">softmax定义：
-假如有一个数组V，Vi表示V中的第i个元素，这个元素的softmax值如下，也就是该元素的指数值和所有元素指数值之和的比值。softmax通常希望特征对概率的影响是乘性的。
+          <div class="index-text mb-1">状态机概念FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。
 
-softmax VS k个二元分类器：如果你在开发一个音乐分类的应用，需要对k种类型的音乐进行识别，那么是选择使用 softmax 分类器呢，还是使用 logistic 回归算法建立 k 个独立的二元分类器呢？这一选择取决于你的类别之间是否互斥，例如，如果你有四个类别的音乐，分别为：古典音乐、乡村音乐、摇滚乐和爵士乐，那么你可以假设每个训练样本只会被打上一个标签（即：一首歌只能属于这四种音乐类型的其中一种），此时你应该使用类别数 k = 4 的softmax回归。（如果在你的数据集中，有的歌曲不属于以上四类的其中任何一类，那么你可以添加一个“其他类”，并将类别数 k 设为5。）如果你的四个类别如下：人声音乐、舞曲、影视原声、流行歌曲，那么这些类别之间并不是互斥的。例如：一首歌曲可以来源于影视原声，同时也包含人声 。这种情况下，使用4个二分类的 logistic 回归分类器更为合适。这样，对于</div>
+作者：陈天
+链接：https://zhuanlan.zhihu.com/p/28142401
+来源：知乎
+在谈论一般意义的状态机时，我们先看看有限状态机，Finite State Machine，简称 FSM。
+在计算理论（Theory of computation）中，FSM 是一切的基础，也是能力最为有限的机器。在其能力之上是 CFL（Context Free Language），然后是 Turing Machine。
+FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。对于一个字符串是否以 \0 结尾（C 语言的字符串结构），FSM 可以给出答案。
+CFL 是一切编程语言的基础。你写的一段 python 代码是否语法正确，CFL 能够给出答案。
+Turing Machine 就是我们日常用各种算法写代码解决各种问题的基础。不较真地说，JVM 就是一个 Turing Machine。
+再往上，就是未知的世界 —— Turing Machine 也解决不了的问题。
+如果你工作多年</div>
         </div>
       </a>
 
@@ -626,13 +530,13 @@ softmax VS k个二元分类器：如果你在开发一个音乐分类的应用�
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/%E7%8A%B6%E6%80%81%E6%9C%BA">状态机</a>&nbsp;
           
         
       </div>
@@ -643,36 +547,22 @@ softmax VS k个二元分类器：如果你在开发一个音乐分类的应用�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_5%20-%20%E9%A1%B9%E7%9B%AE%E5%BB%BA%E8%AE%AE/">
-        <p class="h4 index-header">3.课程/CS224n_5 - 项目建议</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/">
+        <p class="h4 index-header">0.概念/NLP_SLP_5_FSD状态传感器</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Lecture5 项目建议1.一层神经网络过渡到多层神经网络
-2.项目建议老师推荐的文章和会议
-
-1.定义你的任务：
-例如：summarization
-2.定义数据集：
-最好使用现成的数据集，因为他们已经有baselines
-3.建立baseline
-他可以是一个非常简单的一元线性回归，然后在你的训练数据集上计算你的评价标准，看看模型是过拟合还是欠拟合
-4.选做题：自己发明新的模型
-首先，你需要做好以上说的几个步骤.
-
-然后你需要知道已经存在的模型上有哪些问题。然后你就可以设计出自己的模型。如果你想要这样做的话，你真的需要和你的导师和其他研究者保持沟通，除非你自己就是研究者并且已经获得了博士文凭。
-
-你需要实现你的模型，然后根据你的新点子去对它快速迭代。（也许在某个位置新加一层？然后看看他起不起作用？）
-
-那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。
-
-建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型。
-
-对于终极任务：summarization任务。
-
-一开始你可能尝试一些非常简</div>
+          <div class="index-text mb-1">状态传感器FST概念状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。
+他是一种类似于字典树/自动机的数据结构。
+转自豆瓣-巴扎黑
+有限状态转移机在自然语言处理上的应用
+原文地址：
+http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/
+在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。
+首先，先来大概的了解一下有限状态机（FSM）
+有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of</div>
         </div>
       </a>
 
@@ -683,13 +573,13 @@ softmax VS k个二元分类器：如果你在开发一个音乐分类的应用�
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8">状态传感器</a>&nbsp;
           
         
       </div>
@@ -700,7 +590,7 @@ softmax VS k个二元分类器：如果你在开发一个音乐分类的应用�
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

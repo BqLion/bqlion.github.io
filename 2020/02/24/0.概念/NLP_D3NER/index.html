@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>0.概念/NLP_D3NER ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.9k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      7 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="D3NER-biomedical-named-entity-recognition-using-CRF-biLSTM-improved-with-fine-tuned-embedding-of-various-linguistic-information"><a href="#D3NER-biomedical-named-entity-recognition-using-CRF-biLSTM-improved-with-fine-tuned-embedding-of-various-linguistic-information" class="headerlink" title="D3NER:biomedical named entity recognition using CRF-biLSTM improved with fine-tuned embedding of various linguistic information"></a>D3NER:biomedical named entity recognition using CRF-biLSTM improved with fine-tuned embedding of various linguistic information</h1><p>找有代码的论文读，复现作者的工作</p>
+<h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><p>D3NER:一种使用[被精细调整过”多种语言信息embedding”所提升性能的条件随机场-双向长短时记忆网络]的生物医学命名实体识别工具</p>
+<ul>
+<li><p>embedding</p>
+</li>
+<li><p>CRF</p>
+</li>
+<li><p>biLSTM</p>
+<p>均另起文章讨论</p>
+</li>
+</ul>
+<h2 id="2-abstract"><a href="#2-abstract" class="headerlink" title="2.abstract"></a>2.abstract</h2><p>2.1Motivation</p>
+<p>生物医学命名实体识别技术,是从生物医学文本信息(unstructured text)中提取知识的先决条件,最近LSTM网络被应用到这个问题上,表现很好,不过我们有更改进的地方.</p>
+<p>2.2Result</p>
+<p>我们使用D3NER,一种使用了CRF+biLSTM网络+精调语言信息embedding的生物医学命名实体识别技术</p>
+<p>D3NER和同方向的七种实体识别技术做了充分对比,结论是性能确实有提高</p>
+<h2 id="3-Introduction"><a href="#3-Introduction" class="headerlink" title="3.Introduction"></a>3.Introduction</h2><ul>
+<li><p>特征工程做NER</p>
+<p>Named Entity Recognition(NER)是提取文本文档中知识的先决条件</p>
+<p>Traditionally,表现好的NER模型都是用耗时长/易产生不完整不满足(incomplete,non-satisfactory)set的特征工程实现的.</p>
+<p>代表性的模型有DNorm,TmChem,TaggerOne,UET-CAM</p>
+</li>
+</ul>
+<ul>
+<li><p>LSTM做NER</p>
+<ul>
+<li><p>有两种流行的embedding和我们新加的embedding</p>
+<ul>
+<li><p>pretrained work/token embedding</p>
+<p>现在,一种先进的深度神经网络(biLSTM)被应用在了生物医学NER问题上,效果拔群.</p>
+<p>代表性的模型是[L,C,2016],[M,H,2016],[W,2016b],[L,2018],[H,2017](见原文)</p>
+<p>这些模型用biLSTM网络 学习每个语言单元(词语,符号token)的最佳上下文向量表示,这些[语言单元]    所在的句子将被喂给 序列标记模型”CRF(条件随机场)”</p>
+<p>这些[语言单元]用低维连续向量表示形式(embedding)进行初始化,数量巨大的未标记文本会预训练这些表现形式</p>
+</li>
+<li><p>character-level word embedding</p>
+<p>有些模型[H,2017][L,2018][V,2017]把输入字符级别的词汇embedding运用在biLSTM网络中,使性能进一步提升</p>
+</li>
+<li><p>其他embeddings</p>
+<p>还有一些重要的与语义信息相关的特征:POS(part of speech)和chunking(断句),这两个embedding被论证为也是可以提升NER性能的</p>
+</li>
+<li><p>我们的模型就是加入了POS embedding和 abberviation embedding.提升了性能</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-Materials-and-methods"><a href="#4-Materials-and-methods" class="headerlink" title="4 Materials and methods"></a>4 Materials and methods</h2><h4 id="4-1-DataSets"><a href="#4-1-DataSets" class="headerlink" title="4.1 DataSets"></a>4.1 DataSets</h4><p>在三个benchmark上评估:BC5 CDR,NCBI,FSU-PRGE</p>
+<h4 id="4-2-Data-pre-processing"><a href="#4-2-Data-pre-processing" class="headerlink" title="4.2 Data pre-processing"></a>4.2 Data pre-processing</h4><p>用python 的 spaCy做数据的分割,tokenization(标签?),以及POS(part of speech)标记</p>
+<p>两项额外预处理工作:</p>
+<ul>
+<li>去除了连字符” - “ </li>
+<li>把所有的数字都换成0,因为数字太特殊又容易过拟合</li>
+</ul>
+<h3 id="4-3模型架构"><a href="#4-3模型架构" class="headerlink" title="4.3模型架构"></a>4.3模型架构</h3><p>D3NER 包含了四层,分别是</p>
+<ul>
+<li>TPAC embedding</li>
+<li>文本表示biLSTM</li>
+<li>project层</li>
+<li>NER层</li>
+</ul>
+<h4 id="4-3-1-TPAC-embedding层"><a href="#4-3-1-TPAC-embedding层" class="headerlink" title="4.3.1  TPAC embedding层"></a>4.3.1  TPAC embedding层</h4><p>总体架构</p>
+<p>input   :由带有POS tag 的n个tokens t1,t2,t3组成的句子</p>
+<p>output:携带embedding向量的token</p>
+<p>每个token都被如下embedding级联:   </p>
+<ul>
+<li>Token itself</li>
+<li>POS</li>
+<li>information about its Abbreviation status </li>
+<li>information about its Character</li>
+</ul>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1426_07_159.png" alt=""></p>
+<ul>
+<li>Token-level embedding<ul>
+<li>tE用于捕捉形态上不近似,但是语义近似的词汇,比如‘Grippe’ and ‘Influenza’都是感冒</li>
+<li>运用的是200维的 pre-trained word embedding Pyysalo</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>POS embedding<ul>
+<li>pE用于捕捉单词文法上的异同点相同POS tag的单词一般有相近的意思<ul>
+<li>不同的POS tag哪怕有相近的形态也有不同的含义</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Abbreviation embedding</p>
+<ul>
+<li><p>aE 判断一个token是不是一个缩写,如果是,找出缩写与 在FUS-PRGE,MeSH数据库的命名实体之间最大相似处的有关信息</p>
+</li>
+<li><p>首先对缩写使用AB3P,然后字符级-gram TF-IDF 生成FUS-PRGE,MeSH数据库中缩写的完整形式和每个概念名的向量,用于测量成对余弦相似度得分</p>
+</li>
+<li><p>aE(aD,aC,aGP)是一个三维向量</p>
+<ul>
+<li><p>aD是缩写与MeSH disease的最大相似性</p>
+</li>
+<li><p>aC是缩写与MeSH chemical的最大相似性</p>
+</li>
+<li><p>aGP是FUS-PRGE gene/protein name的最大相似性</p>
+</li>
+<li><p>为了让这个向量和其他embedding相适应,我们把他放进一个完全链接层,生成最终的5维向量</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Character-level embedding</p>
+<ul>
+<li><p>eC代表了词汇在形态上的含义,例如(effective 和 effectiveness)</p>
+</li>
+<li><p>一个Character-level embedding模型,和Character to word embedding模型相似,被biLSTM建立,我们叫他CE - biLSTM模型</p>
+<ul>
+<li>Character set:76个实体,分别是26个字母的大小写和各种标点符号</li>
+<li>每一个属于Character set的字符cj都被一个C lookup table所初始化为cej向量</li>
+</ul>
+</li>
+<li><p>CE-biLSTM 把单个的token”ti”(有序的队列)作为输入,把Character-level的token ti 的embedding</p>
+<p>ei作为输出,ei由forward LSTM和 backward LSTM构成</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-3-2-CR-BiLSTM-layer-上下文表示-双向长短时记忆层"><a href="#4-3-2-CR-BiLSTM-layer-上下文表示-双向长短时记忆层" class="headerlink" title="4.3.2 CR-BiLSTM layer(上下文表示-双向长短时记忆层)"></a>4.3.2 CR-BiLSTM layer(上下文表示-双向长短时记忆层)</h4><p>Context Represent-biLSTM层,对于每个token ti,前向的LSTM 处理了前向的上下文向量表示的句子,后向的LSTM 处理了后向的上下文向量表示的句子</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1426_15_558.png" alt=""></p>
+<h3 id="4-3-3-Project-层"><a href="#4-3-3-Project-层" class="headerlink" title="4.3.3 Project 层"></a>4.3.3 Project 层</h3><p>project 层接受CR-biLSTM层传进来的数据</p>
+<p>project 第一层把550维的数据转换成275维</p>
+<p>project第二层把275维的数据转换成9维(chemical/disease NER)/或5维(gene/protein NER)</p>
+<p>在完全连接这一层之前,我们应用了批的正则化技术,这对性能的提升很大</p>
+<h3 id="4-3-4-NER层"><a href="#4-3-4-NER层" class="headerlink" title="4.3.4 NER层"></a>4.3.4 NER层</h3><p>最上这一层使用的是条件随机字段技术(CRF),这一层用维克比算法给整句打上标签,</p>
+<p>我们运用的打标签schema叫做 IOBES(inside,outside,beginning,ending,Singleton(独身))</p>
+<p>一共有13个标签,分别是关于 diseases,chemicals,genes/proteins,    标签O表示不属于他们之间的任何一种</p>
+<h3 id="4-3-5-超参数-hyper-parameters-和模型训练"><a href="#4-3-5-超参数-hyper-parameters-和模型训练" class="headerlink" title="4.3.5 超参数(hyper parameters)和模型训练"></a>4.3.5 超参数(hyper parameters)和模型训练</h3><p>本模型使用了</p>
+<ul>
+<li>TensorFlow</li>
+<li>LSTM和D3NER都使用了RMSProp optimizer来优化学习率和动量值(momentum value):分别为0.0005和0.9</li>
+<li>tanh function被用于所有的LSTM units的output </li>
+<li>batch - padding using for pad the length of all tokens</li>
+<li>mini batch training size被设置为128</li>
+<li>预训练的TE(token embedding)设置为200个维</li>
+<li>Character 被 initialized 为50维的向量</li>
+<li>PE(part of speech embedding) – 25维</li>
+<li>CE(character level embedding) –100维</li>
+<li>AE(abbr embedding) – 5维</li>
+</ul>
+<p>避免过拟合,应用了dropout[S,2014]</p>
+<ul>
+<li>CE-biLSTM(character-level embedding)的final hidden layer : 0.5</li>
+<li>CR-biLSTM(context-representing embedding)的final hidden layer : 0.15</li>
+</ul>
+<h3 id="4-4-LSTM网络简单释义"><a href="#4-4-LSTM网络简单释义" class="headerlink" title="4.4 LSTM网络简单释义"></a>4.4 LSTM网络简单释义</h3><p>LSTM网络是RNN的一个特定变体,它比RNN先进在它不受梯度爆炸或梯度消失的困扰,所以LSTM可以对长期依赖按序建模</p>
+<p>LSTM之所以有这种性能,是因为通过带自适应选通机制的记忆细胞(memory cell)”ct” 获得了记忆能力</p>
+<p>典型的LSTM有三个gate:</p>
+<ul>
+<li>forget gate ft</li>
+<li>input gate it</li>
+<li>output gate ot</li>
+</ul>
+<p>三个gate控制了LSTM之前留存的状态/现在输入和存储的data的特征</p>
+<p>LSTM的隐藏层 在 时间 t的时候计算使用的公式如下所示<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1426_28_932.png" alt=""></p>
+<h3 id="4-5CRF简单释义"><a href="#4-5CRF简单释义" class="headerlink" title="4.5CRF简单释义"></a>4.5CRF简单释义</h3><p>conditianl random field条件随机场是一个歧视的非直接的概念的图形化模型,把两个出色的标签序列化模型(隐性马尔科夫(HMMs)和最大熵马尔科夫模型(MeMM))的优点聚集在一起的模型</p>
+<p>CRF学会:在给定了输入队列的情况下,最大化待打标签的对数似然的条件概率</p>
+<p>公式表示如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1426_36_682.png" alt=""></p>
+<h2 id="5-模型评价"><a href="#5-模型评价" class="headerlink" title="5.模型评价"></a>5.模型评价</h2><ul>
+<li>与其他模型对比</li>
+</ul>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1426_44_245.png" alt=""></p>
+<ul>
+<li>各个embedding的影响<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1426_54_022.png" alt=""></li>
+</ul>
+<h2 id="6-errors"><a href="#6-errors" class="headerlink" title="6. errors"></a>6. errors</h2><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1427_49_849.png" alt=""></p>
+<h2 id="7-结论"><a href="#7-结论" class="headerlink" title="7.结论"></a>7.结论</h2><p>D3NER被用在了3个标准测试数据集上,与现存的七个模型多了对比,表现可圈可点</p>
+<p>提供了单独的可执行文件</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%A6%82%E5%BF%B5">概念</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/D3NER">D3NER</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "0.概念/NLP_D3NER&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

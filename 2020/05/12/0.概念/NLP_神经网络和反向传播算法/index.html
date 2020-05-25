@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>0.概念/NLP_神经网络和反向传播算法 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期二, 五月 12日 2020, 4:14 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><p>神经网络深入学习的网站：neuralnetworksanddeeplearning.com </p>
+<p>神经网络就是一个函数，本例中有764个输入，有10个输出 </p>
+<h4 id="总览图"><a href="#总览图" class="headerlink" title="总览图:"></a>总览图:</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1420_29_240.png" alt=""></p>
+<h4 id="第一层-764-："><a href="#第一层-764-：" class="headerlink" title="第一层(764)："></a>第一层(764)：</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1421_14_257.png" alt=""></p>
+<p>764个输入源于28 * 28的正方形格子，每个小格子都是0到1之间的值，越接近1就越白，越接近0就越黑。</p>
+<h4 id="隐藏层"><a href="#隐藏层" class="headerlink" title="隐藏层"></a>隐藏层</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1427_10_637.png" alt=""></p>
+<p>隐藏层是干什么的？ 大体上说，隐藏层用于发掘模式。如上所示，隐藏层一识别小线段，隐藏层二识别小线段构成层的圈或者大线段</p>
+<p><strong>从这里看出深度神经网络其实就是模式识别的高级应用，所以要恶补pattern recognition。</strong></p>
+<h4 id="如何训练神经网络？"><a href="#如何训练神经网络？" class="headerlink" title="如何训练神经网络？"></a>如何训练神经网络？</h4><p> 训练神经网络就是把训练集中的数据和label在神经网络中的(784 * 16 + 16 * 16 + 16 * 10) + (16+16+10) =13002    个参数通过动态调整来拟合。</p>
+<p>从数学上来说，动态调整13002个参数以获得min(代价函数)的做法，本质上就是寻找函数的最小值，如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1435_08_891.png" alt=""></p>
+<p>w1和a1： </p>
+<p>a1就是输入的784个点中第一个点的亮暗情况</p>
+<p>w1就是接受这第一个点a1刺激的第一层的第一个神经元对第二层的如图所示的神经元的兴奋程度（越兴奋，第二层的这个接受的神经元越倾向于也兴奋）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1441_49_301.png" alt=""></p>
+<p> 成本函数/代价函数/cost function</p>
+<p> 上文提到，训练神经网络的目的就是为了最小化成本函数。那么成本函数是什么？</p>
+<p>成本函数是神经网络的所有预测结果和训练集中所有正确结果之间的各误差平方再sum。</p>
+<p> 于是once again，优化代价函数的具体做法就是对这13002个参数组成的函数做梯度下降法（with随机初始化）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1449_59_022.png" alt=""></p>
+<h4 id="BP反向传播算法"><a href="#BP反向传播算法" class="headerlink" title="BP反向传播算法"></a>BP反向传播算法</h4><p>反向传播算法示例：</p>
+<p>1.找出输出层问题中当下最需要调整的值</p>
+<p> 如下的神经网络在训练过程中，13002个参数正在调整。正确结果是2，预测结果1/3/6并不正确，所以要调整参本例当务之急是增大2的预测值，而不是例如“减小8的预测值”，因为2非常错误，8的预测值接近0不那么错误。 </p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1531_40_013.png" alt=""></p>
+<p>2.如何调整输出值</p>
+<p>接上文，当下最需要调整的是输出单元2的输出值，输出单元2的输出构成如下图所示，由上一层中若干个输入值和权重值经过挤压函数决定。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1544_02_132.png" alt=""></p>
+<p>调整输出值无外乎三条路可走，一是增大偏置值b，二是增大权重w，三是增大输入a。</p>
+<p>偏置和输入都是固定值很好理解，如何最有效的通过调整w增大输出结果？</p>
+<p>——应该增加连接最亮的那个点的权重值，因为显然改变亮的w比改变暗淡的w的效果要好上几倍</p>
+<p> 如此，我们知道了如果想要提高输出层2号节点的输出信号，该让倒数第二层的神经元们如何改变。 </p>
+<h4 id="反向传播的实现"><a href="#反向传播的实现" class="headerlink" title="反向传播的实现"></a>反向传播的实现</h4><p>承上，知道了提高输出层的2号节点该如何做，那么加上<strong>输出层0,1,3,4,5,6,7,8,9节点</strong>的诉求，倒数第二层该如何改变？如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1553_24_709.png" alt=""></p>
+<h4 id="改变参数的性价比"><a href="#改变参数的性价比" class="headerlink" title="改变参数的性价比"></a>改变参数的性价比</h4><p>BP算法中，不该只看每个参数该增大还是减小，还应该看改变哪个参数的性价比最高。</p>
+<p>从生物学的角度讲，权重的最大增长也就是连接变的更强的部分，会发生在已经最活跃的神经元和想要更多激发的神经元之间。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1547_47_429.png" alt=""></p>
+<p>每次输入一个train data，反向传播的详细改变（从左往右逐列进行）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1618_47_643.png" alt=""></p>
+<h4 id="在反向传播过程中的一个小技巧：mini-batch"><a href="#在反向传播过程中的一个小技巧：mini-batch" class="headerlink" title="在反向传播过程中的一个小技巧：mini batch"></a>在反向传播过程中的一个小技巧：mini batch</h4><p>如果在梯度下降中把所有的样本都用上，那么花的时间就太长了。所以可以把训练样本都打乱，然后分成若干组mini batch，例如本来train set是10000条数据，每个mini batch都是100个。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1623_28_286.png" alt=""></p>
+<p>这样计算的梯度不是代价函数真实的梯度，毕竟真实的梯度是所有的训练集算出来的，这也不是下降最快的方向，但是这样计算量会下降非常多。</p>
+<p>如下图对比，左边是用上所有的train data，下降的精确但是非常慢，右边是mini batch也成为<strong>随机梯度下降</strong>，下降的很快但是未必精准。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200512_1625_46_277.jpg" alt=""></p>
+<h1 id="反向传播的老版笔记"><a href="#反向传播的老版笔记" class="headerlink" title="反向传播的老版笔记"></a>反向传播的老版笔记</h1><ul>
+<li><p>定义</p>
+<ul>
+<li>反向传播算法是利用链式法则递归计算表达式梯度的方法</li>
+</ul>
+</li>
+<li><p>理解</p>
+<ul>
+<li><p>反向传播就是先正向走一遍,得到各个节点的计算结果</p>
+</li>
+<li><p>从最后一个节点开始,设置梯度是1</p>
+</li>
+<li><p>反向计算各个上层节点对他的局部梯度</p>
+</li>
+<li><p>[dz/dx ]  = [dz/dy]   *  [dy/dx]</p>
+<p>[最终结果与本层的梯度]  =上层梯度*本层局部梯度</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1447_31_252.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>目的</p>
+<ul>
+<li>首先随机初始化[代价函数]中各个权重值</li>
+<li>正向计算</li>
+<li>反向传播算法,检查各个权重值的梯度</li>
+<li>使用梯度下降或其他高级优化算法,改变权重值来最小化代价函数</li>
+</ul>
+</li>
+<li><p>过程</p>
+<ul>
+<li>首先x输入是2维的， w是三维的，多了一个偏倚项。上边的过程图是对这个函数计算过程的最详细描述。</li>
+</ul>
+</li>
+<li><p>前向传播和反向传播之间的关系是，前向传播就是计算你在测试时需要的结果，计算你的函数的最终输出。</p>
+<p>当你计算这个单词位置的概率，你做的就是前向传播。</p>
+<p>对于反向传播，就是要用数据集训练模型，要更新模型的时候计算所需的梯度。</p>
+</li>
+</ul>
+<h4 id="cs231n举例"><a href="#cs231n举例" class="headerlink" title="cs231n举例"></a>cs231n举例</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1447_53_986.png" alt=""></p>
+<p>如图所示，f对x，f对y的导数，分别就是f对q的导数乘以q对x的导数，和f对q的导数乘以q对y的导数（链式求导法则）。</p>
+<p>然后逐层求导，乘以链式法则，完事儿。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%A6%82%E5%BF%B5">概念</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95">反向传播算法</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "0.概念/NLP_神经网络和反向传播算法&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

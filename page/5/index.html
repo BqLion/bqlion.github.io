@@ -136,36 +136,281 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_0.%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/">
-        <p class="h4 index-header">3.课程/数据结构_0.常见算法总览</p>
+      <a href="/2020/03/07/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Lamada%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <p class="h4 index-header">0.概念/技术_Lamada表达式</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">十大排序算法
+          <div class="index-text mb-1">Python中lamada函数的概念lamada函数就是个匿名函数，即定义即用，省去了起名字等等环节，使用方便快捷。
+不用lamada函数的例子
+def f(x):
+return x**2
+print f(4)
+使用lamada函数的例子：
+g = lambda x : x**2
+print g(4)
+lamada用例
+# lamada语句中，冒号前是参数，可以有多个，用逗号隔开。冒号后是返回值，lamada语句构建的其实是一个函数对象
 
-简单排序：插入排序、选择排序、冒泡排序（必学）
-分治排序：快速排序、归并排序（必学，快速排序还要关注中轴的选取方式）
-分配排序：桶排序、基数排序
-树状排序：堆排序（必学）
-其他：计数排序（必学）、希尔排序
+&gt;&gt;&gt; foo = [2, 18, 9, 22, 17, 24, 8, 12, 27]
+&gt;&gt;&gt; print filter(lambda x: x % 3 == 0, foo)
+[18, 9, 24, 12, 27]
+&gt;&gt;&gt; print map(lambda x: x * 2 + 10, foo)
+[14, 46, 28, 54, 44, 58, 26, 34, 64]
+&gt;&gt;&gt; print reduce(lambda x, y: x + y, foo)
+139
 
-对于十大算法的学习，假如你不大懂的话，那么我还是挺推荐你去看书的，因为看了书，你可能不仅仅知道这个算法怎么写，还能知道他是怎么来的。推荐书籍是《算法第四版》，这本书讲的很详细，而且配了很多图演示，还是挺好懂的。
-推荐文章：
-必学十大经典排序算法，看这篇就够了(附完整代码/动图/优质文章)(修订版)
-2、图论算法
+</div>
+        </div>
+      </a>
 
-图的表示：邻接矩阵和邻接表
-遍历算法：深度搜索和广度搜索(必学)
-最短路径算法：Floyd，Dijkstra（必学）
-最小生成树算法：Prim，Kruskal（必学）
-实际常用算法：关键路径、拓扑排序（原理与应用）
-二分图匹配：配对、匈牙利算法（原理与应用）
-拓展：中心性算法、社区发现算法（原理与应用）
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Lamada">Lamada</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
 
-图还是比较难的，不过我觉得图涉及到的挺多算法都是挺实用的，例如最短路径的计算等，图相关的，我这里还是建议看书的，可以看《算法第四版》。
-漫画：什么是 “</div>
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/05/2.%E6%AF%94%E8%B5%9B/%E6%8C%87%E5%AF%BC_Google_QA_%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%83%A8%E5%88%86/">
+        <p class="h4 index-header">2.比赛/指导_Google_QA_数据处理部分</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">数据处理部分总体代码如下，各个程序块在pycharm中分开运行，用#%%分割。
+上来是import部分，然后是数据清洗和构建embedding矩阵等。
+import numpy as np
+#numpy是主要用于数组计算，线性代数，傅里叶变换等。
+import pandas as pd
+#pandas基于numpy，可以处理高纬数据
+from sklearn.manifold import TSNE
+# sklearn是机器学习中常用的第三方模块，对常见的机器学习算法进行了封装，包括回归、降维、分类、聚类,sklearn.manifold是流形学习，非
+# 线性降维的手段。最简单的降维手段是随机投影，但是会导致结构丢失,manifold learning是一种类似主成分分析(PCA)的线性框架，不会错失数据结构中的非线性项  ，TSNE提供了一种画图方式，让高维的数据降低为二维画出来
+import seaborn as sns
+# 基于matplotlib的画图工具
+import glob
+# glob是查找模块。支持空格 ，问号？，方括号[]这三个通配符。空格代表0个或者多个字符，问</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/2.%E6%AF%94%E8%B5%9B">2.比赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">数据处理</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/04/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%90%8D%E7%9A%84%E6%96%B9%E5%BC%8F/">
+        <p class="h4 index-header">4.安装调试记录/批量修改文件后缀名的方式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">新建一个.txt文档，输入：
+ren *.java *.md
+保存
+将文件后缀名改成.bat,双击运行
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
+          &nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/02/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E4%BF%AE%E6%94%B9pip%E6%BA%90/">
+        <p class="h4 index-header">4.安装调试记录/修改pip源</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+将pip切换回国内源pip国内的一些镜像
+  阿里云 http://mirrors.aliyun.com/pypi/simple/  中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/  豆瓣(douban) http://pypi.douban.com/simple/  清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/  中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+修改源方法：
+临时使用：可以在使用pip的时候在后面加上-i参数，指定pip源eg: pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple   –trusted-host  pypi.tuna.tsinghua.edu.cn
+永久修改：linux:修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
+[global]
+index-url = https://pypi.tuna.tsinghua</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-02&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_Transformer/">
+        <p class="h4 index-header">0.概念/NLP_Transformer</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Transformer总览图：
+
+Transformer由编码器和解码器构成，如下：
+
+1.编码器详解编码器有两层（前馈神经网络层，自注意力层）。
+像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
+
+词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
+
+开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
+2.自注意力机制详解(其实就是维持了一个关于句子本身的二维数组)宏观角度看，比如翻译一个句子，“The animal didn`t cross the street because it was too tired”，it指代什么？对于人类来说，指代的是animal不是street，很容易但是对于计算机来说这就是一个复杂的问题。
+当模型处理“it”这个单词的时候，自注意力机制会允许</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Transformer">Transformer</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_BERT/">
+        <p class="h4 index-header">0.概念/NLP_BERT</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Bert 概念1.全景介绍BERT是一种深度学习模型，他是Transformer的双向编码器表示，在维基百科和Books Corpus上预训练过，运用于特定任务时只需要微调即可。
+他的效果很好，在很多NLP任务中都有最近进展，包括问答系统（Squad）和自然语言推理（MNLI）任务。
+BERT改变了NLP的格局。跑一个在大量未标记数据集上训练的模型，在11个单独的NLP任务中仅仅通过不同的微调，就可以分别得到11个最新的结果，这种表现只有BERT可以做到。
+BERT还启发了TransformerXL,GPT-2,XLNet,ERNIE2.0,RoBERTa等等。
+2.什么是BERT?1.基本上是堆叠在一起的一堆Transformer encoders，注意仅仅是Transformer encoders不是整个Transformer架构。双向性的概念十分重要，是BERT和其前身OpenAL GPT的关键区别，BERT是双向的因为他在自我注意层的两个方向上都执行自我注意。
+2.要注意的是BERT在维基百科（25亿词）和Books Corpus（8亿词）上的预训练非常重要，因为模型在一个大的</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Bert">Bert</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_1-%E6%A6%82%E8%BF%B0/">
+        <p class="h4 index-header">3.课程/网络_1-概述</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.计算机网络概述1.1局域网​        覆盖范围小（１００ｍ）,自己花钱买设备,贷款固定
+​        接入层的交换机们星形连接到汇聚层交换机,这样分散IO
+​        接入层交换机们不该串联,不然最后一台交换机那里IO压力太大
+1.2Internet和广域网​    Internet ISP :有自己的机房,对网民提供internet访问
+　广域网：距离较远，花钱租带宽，
+1.3 数据包和数据帧在一个计算机想把数据发给另一个计算机时,需要在发送信息里携带ip地址和mac地址,其中ip地址是最终目地,mac地址是下一跳的目的地,ip地址不变,mac地址每次经过路由器都刷新.下一跳的目的地由迪杰斯特拉或其他寻路算法确定.
+1.4 OSI参考模型 应用层:所有能产生网络流量的程序
+表示层:在传输之前是否进行加密或压缩处理
+会话层:查木马,netstat -n
+传输层:可靠传输,流量控制,不可靠传输
+网络层:负责选择最佳路径,规划ip地址
+数据链路层:帧的开始和结束,透明传输,差错校验
+物理层:接口标准,电器标准,如何在物理链路层上传输的更快
+
+osi参考模型对网络排错指导</div>
         </div>
       </a>
 
@@ -182,9 +427,9 @@
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
           
-            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+            <a href="/tags/OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B">OSI参考模型</a>&nbsp;
           
         
       </div>
@@ -195,36 +440,182 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_1.%E6%95%B0%E7%BB%84,%E9%93%BE%E8%A1%A8/">
-        <p class="h4 index-header">3.课程/数据结构_1.数组,链表</p>
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+        <p class="h4 index-header">3.课程/网络_3-数据链路层</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">数组
-数组是用来存放一组有相同数据类型的数据结构,通过整形下标来访问数组中的值
-如果越过数据的下标访问数据,会返回ArrayIndexOutOfBoundException
-Java中数组是一个类:所以两个数组变量可以指向同一个数组
+          <div class="index-text mb-1">3.数据链路层3.0概述数据链路层使用的信道主要有以下两类
 
-线性表
-顺序存储结构
-用数组实现
-插入元素的平均时间复杂度是O(n)
-查找的平均时间复杂度是O(1)
-适合多查找的场景
+点对点信道
+这种信道使用一对一的点对点通信方式
 
 
-链式存储结构
-典型的node节点由[data]和[next]两个域组成
-插入元素的平均时间复杂度是O(1)
-查找的平均时间复杂度是O(n)
-适合多增删的场景
+广播信道
+这种信道使用一对多的广播通信方式，因此过程较为复杂，广播信道上的链接主机很多，因此必须使用专门的共享信道协议来协调这些数据的转发
 
 
 
-迭代器迭代器是程序设计模式中的行为模式,功能是提供一种方法顺序访问一个聚集对象中各个元素,又不暴露该对象的内部表示.
-简单来说迭代器就是对遍历操作的抽象.
+3.1 数据链路和帧链路是一条无源的点到点的物理线路，中间没有任何的其他交换节点。数据链路是除了物理线路之外，还得有通信协议来控制这些数据的传输，若把实现了这些协议的软硬件加到链路上，就构成了数据链路。
+现在最常用的办法是使用适配器（网卡）来实现这些协议的硬件和软件，一般的适配器都包括了数据链路层和物理层这两层的功能。
+数据链路层传输的是帧。
+
+三个基本问题
+
+封装成帧
+透明传输
+差错控制
+
+
+封装成帧：
+
+在一段数据的前后分别打上首部和尾部，首部尾部可以确定帧的界限。
+
+
+透明传输问题：
+
+类似于我想在markdown文件中打出[]()字符缺被误以为是超连接一样，需要在[]()字符之前加上转义字符\。
+
+
+CRC差错检测
+传输过程中可能出现比特差错，1变成0或者0变成1。一段时间内传输错误的比特与总比特比值称谓误码率。为保证数据</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_2-%E7%89%A9%E7%90%86%E5%B1%82/">
+        <p class="h4 index-header">3.课程/网络_2-物理层</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.物理层2.1物理层的基本概念物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。
+物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：
+
+机械特性：接口形状，大小，引线数目
+
+
+电器特性：电压范围
+
+功能特性，过程特性等
+
+
+2.2数据通信的基本模型
+相关术语：
+
+数据：运送消息的实体
+信号：数据的电器或电磁表现
+模拟信号：消息的参数取值是连续的
+数字信号：消息的参数取值是离散的
+
+
+
+信道信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道
+单向信道：信息只能单向流动
+双向交替信道：信息可双向流动，但不能同时流动
+双向同时信道：信息科双向，同时流动
+基带信号和带通信号
+基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号
+
+基带数字信号的几种调制方法
+
+
+
+
+带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输
+
+在传输范围较大的时候，计算机网络必须通过带通信号传输
+
+
+
+曼彻斯特编码：由低到高是0，高到低是1
+
+差分曼彻斯特编码
+
+
+2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
+          
+            <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95_2_%E6%84%9F%E7%9F%A5%E6%9C%BA/">
+        <p class="h4 index-header">3.课程/统计学习方法_2_感知机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.感知机感知机是二分类的线性分类模型，输入是实例的特征向量，输出是分类结果（-1,1）。
+感知机对应输入空间（特征空间）中将实例划为正副两类的分离超平面。
+工作原理是导入基于误分类的损失函数，利用梯度下降法岁损失函数极小化。
+感知机1957年提出，是神经网络和SVM的基础。
+本章先介绍感知机的模型，然后叙述学习策略，然后是算法（原始和对偶形式）。
+2.1感知机模型感知机模型是f(x) = sign(w.x + b).
+其中sign是如下的函数
+
+也就是一个一元一次方程（直线）作为超平面的分类函数。
+
+2.2感知机学习策略假设训练集是可分的，感知机的学习目的就是确定一个超平面把训练集分开。
+为了找出这个超平面，就要确定感知机模型的参数w和b。
+损失函数怎么定？定为错分类点到超平面的总距离w。（如上图）
+某个点到超平面的距离怎么求？如下图，||w||是w的范数。
+
+损失函数的正式定义；
+
+2.3感知机的学习算法随机梯度下降法
 </div>
         </div>
       </a>
@@ -242,480 +633,7 @@ Java中数组是一个类:所以两个数组变量可以指向同一个数组
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E6%95%B0%E7%BB%84">数组</a>&nbsp;
-          
-            <a href="/tags/%E9%93%BE%E8%A1%A8">链表</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_2.%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97-/">
-        <p class="h4 index-header">3.课程/数据结构_2.栈与队列-</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">4.1栈
-栈的定义
-
-栈又称堆栈,是运算首先的线性表,仅允许从表的一端进行插入和删除.
-
-插入,删除的一端称为栈顶(top),另外一端称为栈底(bottom)
-
-
-栈的顺序存储和链式存储和线性表一模一样,只是在栈顶加上了增删元素的限制.
-
-有后进先出的特征
-
-
-
-
-4.2队列
-队列的定义
-队列和栈一样,是运算受限制的线性表,仅允许从一头插入元素(rear),从另一头读取(head)
-有先进先出的特征
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E6%A0%88">栈</a>&nbsp;
-          
-            <a href="/tags/%E9%98%9F%E5%88%97">队列</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93_%E6%A6%82%E8%AE%BA/">
-        <p class="h4 index-header">3.课程/数据库_概论</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.数据库的四个基本概念
-数据语义
-
-“93”的语义
-可以是年龄
-也可以是班级人数
-
-
-
-
-
-
-数据和自然语言
-
-自然语言可以通过上下文完整描述事物
-
-数据是计算机的记录:
-
-(李明,男,199005,江苏南京,计算机,自行车协会)
-记录不能完整表达事物内容,因缺少语义(列信息)
-
-
-
-
-
-
-
-什么是数据库
-长期储存在计算机内,有组织的,可共享的大量数据集合
-
-
-为什么要建立数据库
-可收集所需的大量数据,然后进一步加工处理,转换为有用的知识
-
-
-数据库的基本特征
-数据按照一定的数据模型(结构)存储,组织,描述
-冗余度小,可扩展
-数据独立性高
-
-
-什么是数据库管理系统DBMS
-位于用户和操作系统之间的一层数据管理软件
-基础软件,也是一层服务
-
-
-DBMS的用途
-科学的组织和存储数据,高效的获取和维护数据 
-
-
-DBMS的主要功能
-数据定义功能
-提供数据定义语言DDL
-定于数据库中的数据对象
-
-
-数据组织/存储/管理
-管理数据
-确定数据在存储级别上的结构和存取方式
-实现数据之间的联系
-提供多种存储方法提高存储效率
-
-
-数据操纵功能
-增删改查
-提供数据操纵语言(DML)
-关系代数
-关系演算
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>&nbsp;
-          
-            <a href="/tags/sql">sql</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">4.安装调试记录/网站部署记录</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.获取root权限-sudo passwd
--su root
-2.云主机安装git-yum update
--yum install git
--mkdir App
--cd App
-3.云主机与github建立sshkey连接返回：Permissiondenied (publickey)，fatal:Could not read from remote repository.
-cd ~/.ssh ls  //查看是否有ssh key
-ssh-keygen -t rsa -C “youremail@example.com“    //一路回车
-ssh -v git@github.com 
-ssh-agent -s
-ssh-add ~/.ssh/ github new SSH KEY
-ssh -T git@github.com
-若出错：“Could not open a connection to your authentication agent”
-eval `ssh-agent -s``
-ssh-add ~/.ssh/id_rsa，
-github new SSH KEY
-4.克隆项目，安</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
-          
-            <a href="/tags/java">java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%87%8D%E8%A3%85Git%E5%92%8C%E5%8D%9A%E5%AE%A2/">
-        <p class="h4 index-header">4.安装调试记录/重装Git和博客</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">重装Git和博客：Git下载安装git.exe，官网速度慢就从腾讯下载
-git bash
-
-git config –global user.name “yubin（自定义用户名）”
-
-git config –global user.email “488459564@qq.com（自定义邮箱）”
-
-ssh-keygen -t rsa -C “你的邮箱”　
-三个回车
-
-
-在C:\users\bqlion\.ssh找到公钥，复制，粘贴到github里的new sshkey中
-git clone git@github.com::BqLion/_post.git
-推送时若报转义问题：warning: LF will be replaced by CRLF in 字典树.md.The file will have its original line endings in your working directory
-输入git config –global core.autocrlf false解决
-hexo下载安装node：https://nodejs.org/en/download/
-检查是否</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">4.安装调试记录/博客建站记录</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">windows环境下使用hexo搭建博客记录搭建步骤
-购买域名
-
-github创建个人仓库
-
-安装node.js
-
-安装hexo
-
-推送网站
-
-域名解析
-
-更换主题
-
-更改配置
-
-发布文章
-
-使用图床
-
-
-1.域名购买godaddy.com: 域名很全但价格较高，首年年费均价￥60左右,往后每年续费￥120左右。
-阿里云：价格适中但个性化后缀较少,cc后缀域名无法备案
-namesilo.com: 域名较全,价格最低,bqlab.cc十年￥280,最终在此购买。 
-2.github创建仓库仓库名命名为bqlion.github.io，亲测改成其他域名网站不能正常访问，
-3.安装node.js下载地址：https://nodejs.org/en/download/
-安装完成后检测是否成功：node -v
-检测npm是否一起安装成功: npm - v
-4.安装hexo创建名为bqlion.github.io的文件夹，在这里打开cmd命令行
-输入
-npm install -g hexo-cli初始化博客
-hexo bqlion.github.io检查网站雏形
-cd bqlion.github.</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
-        <p class="h4 index-header">4.安装调试记录/更新图床+截屏工作流</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.七牛云的试用域名只能用一个月，过期后要用自己已备案的域名。不管是否有备案域名所有已上传图片都要改链接，坑。
-2.改用sm.ms图床，username:bqlion,email:398703917@qq.com,password:8
-3.sm.ms限流，改用又拍云。
-4.又拍云的shareX配置信息如下，密码用又拍云操作员控制台生成。
-
-4.shareX简直神器。可以取代Snipaste+mpic。
-5.ShareX更改快捷键：
-
-捕捉矩形区域为F1
-设置“上传至”为FTP，
-动作设置-高级设置 - after upload - chipboardContentFormat  - 修改为![]($result)
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%9B%BE%E5%BA%8A">图床</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/win%E5%AE%89%E8%A3%85linux%E5%AD%90%E7%B3%BB%E7%BB%9F/">
-        <p class="h4 index-header">4.安装调试记录/win安装linux子系统</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.安装​    win10设置-针对开发者人员-勾选开发人员模式
-​    控制面板-程序-程序和功能-启动或关闭windows功能-勾选适用于linux的windows子系统
-​    windows appstore下载ubuntu
-2.优化​    备份源路径文件sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-​    编辑源路径文件sudo vim  /etc/apt/sources.list
-​    切换镜像源    vim删除当前文件所有内容：ggdG
-deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse 
-deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main r</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux">linux</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/ShadowSocks%E5%9C%A8AWS%E6%90%AD%E6%A2%AF%E5%AD%90/">
-        <p class="h4 index-header">4.安装调试记录/ShadowSocks在AWS搭梯子</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">ShadowSocks在AWS搭梯子注册AWS账号，启动新的实例。
-配置安全组，给实例增加端口，点击添加规则（类型：自定义TCP规则，协议：默认TCP，端口：8989，来源：任何位置）
-下载密钥对
-下载putty，把密钥放在putty根目录里
-打开puttygen，选择Type of key to generate为RSA
-点击puttygen里边的load，文件类型改成所有文件，打开putty根目录里的密钥
-点save private key,弹出是否不要密码地保存私钥点”是”
-打开putty，Connection页面，seconds between keepalives填写10。
-打开putty，第一页HostName填写user_name@public_dns_name，也就是
-ec2-user@ec2-18-191-169-15.us-east-2.compute.amazonaws.computty - connection - ssh - auth - browser,选中刚才生成的pkk文件，点击open，即可连上实例。
-sudo yum install python-p</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/SSR%E6%90%AD%E6%A2%AF%E5%AD%90">SSR搭梯子</a>&nbsp;
+            <a href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95">统计学习方法</a>&nbsp;
           
         
       </div>
@@ -726,7 +644,7 @@ sudo yum install python-p</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

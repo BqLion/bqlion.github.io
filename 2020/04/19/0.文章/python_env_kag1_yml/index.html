@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>0.文章/python_env_kag1_yml ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 四月 19日 2020, 4:09 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    708 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="environment-yml"><a href="#environment-yml" class="headerlink" title="environment_yml"></a>environment_yml</h1><pre><code class="yml">name: kag1
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+  - defaults
+dependencies:
+  - absl-py=0.9.0=py37_0
+  - astor=0.7.1=py_0
+  - attrs=19.3.0=py_0
+  - boto=2.49.0=py_0
+  - boto3=1.12.11=py_0
+  - botocore=1.15.11=py_0
+  - bz2file=0.98=py_0
+  - ca-certificates=2020.4.5.1=hecc5488_0
+  - catalogue=1.0.0=py_0
+  - category_encoders=1.2.6=py_0
+  - certifi=2020.4.5.1=py37hc8dfbb8_0
+  - cffi=1.13.2=py37hb32ad35_0
+  - chardet=3.0.4=py37_1003
+  - click=7.0=py_0
+  - cryptography=2.8=py37hb32ad35_1
+  - cycler=0.10.0=py_2
+  - cymem=2.0.3=py37h6538335_0
+  - cython-blis=0.4.1=py37hfa6e2cd_0
+  - docutils=0.15.2=py37_0
+  - flask=1.1.2=pyh9f0ad1d_0
+  - freetype=2.10.0=h563cfd7_1
+  - gast=0.2.2=py_0
+  - gensim=3.8.1=py37h6538335_1
+  - google-pasta=0.1.8=py_0
+  - grpcio=1.23.0=py37h3db2c7e_0
+  - h5py=2.9.0=nompi_h3cb27cb_1101
+  - hdf5=1.10.4=nompi_hcc15c50_1106
+  - idna=2.9=py_1
+  - importlib_metadata=1.5.0=py37_0
+  - itsdangerous=1.1.0=py_0
+  - jinja2=2.11.1=py_0
+  - jmespath=0.9.4=py_0
+  - joblib=0.14.1=py_0
+  - jpeg=9c=hfa6e2cd_1001
+  - jsonschema=3.2.0=py37_0
+  - keras-applications=1.0.8=py_1
+  - keras-preprocessing=1.1.0=py_0
+  - kiwisolver=1.1.0=py37he980bc4_0
+  - libblas=3.8.0=15_mkl
+  - libcblas=3.8.0=15_mkl
+  - libgpuarray=0.7.6=hfa6e2cd_1003
+  - liblapack=3.8.0=15_mkl
+  - libpng=1.6.37=h7602738_0
+  - libprotobuf=3.11.4=h1a1b453_0
+  - libtiff=4.0.9=h36446d0_1002
+  - mako=1.1.0=py_0
+  - markdown=3.2.1=py_0
+  - markupsafe=1.1.1=py37hfa6e2cd_0
+  - matplotlib-base=3.1.3=py37h2981e6d_0
+  - murmurhash=1.0.0=py37h6538335_0
+  - ninja=1.10.0=h1ad3211_0
+  - nltk=3.4.4=py_0
+  - numpy=1.18.1=py37hc71023c_0
+  - olefile=0.46=py_0
+  - openssl=1.1.1f=hfa6e2cd_0
+  - opt_einsum=3.1.0=py_0
+  - pandas=1.0.1=py37he350917_0
+  - patsy=0.5.1=py_0
+  - pillow=6.1.0=py37h9a613e6_0
+  - pip=20.0.2=py_2
+  - plac=0.9.6=py_1
+  - preshed=3.0.2=py37h6538335_1
+  - protobuf=3.11.4=py37he025d50_0
+  - pycparser=2.19=py_2
+  - pygpu=0.7.6=py37hc8d92b1_1000
+  - pyopenssl=19.1.0=py_1
+  - pyparsing=2.4.6=py_0
+  - pyreadline=2.1=py37_1001
+  - pyrsistent=0.15.6=py37hfa6e2cd_0
+  - pysocks=1.7.1=py37_0
+  - python=3.7.3=h510b542_1
+  - python-dateutil=2.8.1=py_0
+  - python_abi=3.7=1_cp37m
+  - pytz=2019.3=py_0
+  - pyyaml=5.3=py37hfa6e2cd_0
+  - regex=2020.2.20=py37hfa6e2cd_0
+  - requests=2.23.0=py37_0
+  - s3transfer=0.3.3=py37_0
+  - sacremoses=0.0.38=py_0
+  - scikit-learn=0.22.1=py37h7208079_1
+  - seaborn=0.10.0=py_1
+  - setuptools=45.2.0=py37_0
+  - six=1.14.0=py37_0
+  - smart_open=1.9.0=py_0
+  - spacy=2.2.3=py37he980bc4_0
+  - sqlite=3.30.1=hfa6e2cd_0
+  - srsly=1.0.0=py37h6538335_0
+  - statsmodels=0.11.1=py37hfa6e2cd_0
+  - tensorboard=1.15.0=py37_0
+  - tensorflow-hub=0.7.0=pyhe1b5a44_0
+  - termcolor=1.1.0=py_2
+  - theano=1.0.4=py37h6538335_1001
+  - thinc=7.3.0=py37he980bc4_0
+  - tk=8.6.10=hfa6e2cd_0
+  - tornado=6.0.3=py37hfa6e2cd_4
+  - tqdm=4.43.0=py_0
+  - urllib3=1.25.7=py37_0
+  - wasabi=0.6.0=py_0
+  - werkzeug=0.16.1=py_0
+  - wheel=0.34.2=py_1
+  - win_inet_pton=1.1.0=py37_0
+  - wincertstore=0.2=py37_1003
+  - wordcloud=1.6.0=py37hfa6e2cd_0
+  - wrapt=1.12.0=py37hfa6e2cd_0
+  - yaml=0.2.2=hfa6e2cd_1
+  - zipp=3.0.0=py_0
+  - zlib=1.2.11=h2fa13f4_1004
+  - m2w64-gcc-libgfortran=5.3.0=6
+  - m2w64-gcc-libs=5.3.0=7
+  - m2w64-gcc-libs-core=5.3.0=7
+  - m2w64-gmp=6.1.0=2
+  - m2w64-libwinpthread-git=5.0.0.4634.697f757=2
+  - msys2-conda-epoch=20160418=1
+  - pytorch=1.2.0=py3.7_cuda100_cudnn7_1
+  - torchvision=0.4.0=py37_cu100
+  - blas=1.0=mkl
+  - _tflow_select=2.2.0=eigen
+  - cudatoolkit=10.0.130=0
+  - icc_rt=2019.0.0=h0cc432a_1
+  - intel-openmp=2020.0=166
+  - mkl=2020.0=166
+  - scipy=1.2.1=py37h29ff71c_0
+  - tensorflow=1.15.0=eigen_py37h9f89a44_0
+  - tensorflow-base=1.15.0=eigen_py37h07d2309_0
+  - tensorflow-estimator=1.15.1=pyh2649769_0
+  - vc=14.1=h0510ff6_4
+  - vs2015_runtime=14.16.27012=hf0eaf9b_1
+  - vs2015_win-64=14.0.25420=h55c1224_11
+prefix: F:\Softwares\Anaconda3\envs\kag1
+
+</code></pre>
+<p>\</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/kaggle">kaggle</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/toxic">toxic</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "0.文章/python_env_kag1_yml&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

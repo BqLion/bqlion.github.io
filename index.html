@@ -160,9 +160,9 @@
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/python">python</a>&nbsp;
-          
             <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a>&nbsp;
+          
+            <a href="/tags/python">python</a>&nbsp;
           
         
       </div>
@@ -267,6 +267,211 @@ bert-sentimentbert-sentiment用的是IMDb数据集，在github上star,Abhi出了
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/25/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Storm/">
+        <p class="h4 index-header">0.概念/技术_Storm</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Stormstorm是一个Apache顶级开源项目,用于流计算
+流式计算
+
+实时获取/传输/计算/展示数据
+代表技术:Flume实时获取,KAFKA实时存储,Storm实时计算,Redis实时缓存,mysql实时存储
+
+批计算
+
+批量获取/传输数据
+代表技术:sqoop导入数据,HDFS存储数据,MapReduce计算数据,Hive计算数据
+
+storm和hadoop的区别:
+
+storm用于流计算,数据用网络传进来,处理过的数据放在内存中
+hadoop用于批计算,处理的数据保存在文件存放系统中
+
+storm和hadoop的相同点:
+
+编程模型类似
+storm                     hadoop
+Nimbus                JobTracker
+Supervisor         TaskTracker
+Worker                  child
+topology              job
+spout/bolt           mapper/reducer
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Hadoop">Hadoop</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/19/0.%E6%A6%82%E5%BF%B5/NLP_GRU/">
+        <p class="h4 index-header">0.概念/NLP_GRU</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Gated RNN : GRULSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。
+GRU模型GRU模型的主要思想是，我们希望能够保存一些记忆，能够捕获一些较长的依赖，需要有一个模型去学习何时以及如何去做，同时还得允许错误消息流转。基于输入，这些流转会向不同的方向以不同的强度传递。
+对GRU的介绍从标准的RNN开始
+循环神经网络RNN基本上直接计算下一步的隐层，同样的，之前的隐状态会回归给向量，我们不是去计算GRU数值，而是先要计算其中各个门，这些门和h(t)一样，就是一些连续的隐状态长度一致的向量。这些门包括更新门和重置门。
+计算更新门时主要是基于当前输入的词向量和隐藏状态
+
+计算重置门方法类似但是使用的是不同的权重
+
+通过一个直观例子来认识重置门的作用：
+
+详细分析上图的公式和重置门的作用：假如这是一个语义的情感分析任务，前边都是对一个电影长篇累牍的剧情讨论，最后一句话是it`s a really boring movie.那么其实只要最后这个boring就OK了，前边的都可以舍弃。所以这里重置门就可以置为0，把计算累计的东西都清理掉，</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/GRU">GRU</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/19/0.%E6%A6%82%E5%BF%B5/NLP_LSTM/">
+        <p class="h4 index-header">0.概念/NLP_LSTM</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LSTMLSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。
+朴素RNN与展开是一种处理序列数据的神经网络，某单词根据上下文变化而有不同含义这种任务就适合交给RNN来做。
+
+RNN在时序上展开
+
+LSTM与RNN结构对比长短期记忆（Long short-term memory, LSTM）是一种特殊的RNN，主要是为了解决长序列训练过程中的梯度消失和梯度爆炸问题。简单来说，就是相比普通的RNN，LSTM能够在更长的序列中有更好的表现。
+LSTM结构和普通RNN的对比图如下，LSTM有两个传输状态，分别是cell state ct 和 hidden state ht，一般ct改变的很慢，通常是上一个ct加上一些数值。不同的时序下ht改变很快。
+而RNN只有一个传输状态也就是ht，对应于LSTM中的ct。 
+
+LSTM的一胞三门两终态
+输入门，基本上决定了关心当前向量的强度，或者说当前的cell或者当前输入的词能起多少作用
+公式：
+
+示意图：
+
+
+
+
+遗忘门，是一种分离机制，告诉cell有些时候需要忘记信息或者保留信息。这种情况看起来可能有一些</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/LSTM">LSTM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/18/0.%E6%A6%82%E5%BF%B5/NLP_RNN%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+        <p class="h4 index-header">0.概念/NLP_RNN循环神经网络</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">循环神经网络RNN循环神经网络擅长处理序列化的数据，比如文字序列或者时间序列。
+循环神经网络比基本的前馈神经网络强在它可以跨时间序列地共享不同输入序列之间的特征。
+之前提到的CNN卷积神经网络也可参数共享，而RNN循环神经网络与之不同的是每一点的输出依赖于之前的结果。
+状态机近似表示RNN名字中的recurrent得名于如下图所示的t时刻的状态 依赖于 t - 1时刻的状态 + 输入x。
+
+​              ↑总图                   ↑拆分                                 ↑ t - 1时刻            ↑ t时刻               ↑ t + 1时刻
+上图维持的状态h(t)可以看作是之前的向量序列【x1，x2，x3，x4，……，xn】的全体有损表示（损度可控，某些语言模型只有附近的文字重要就可以加大损度）。
+RNN基本结构图
+如上，x是时时输入的序列，h是维持的状态，o是状态给出的输出，y是训练集中的答案，L是答案和输出之间的损失函数（如交叉熵）。
+因为上一个状态h(t-1)和下一个状态ht之间有循环连</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/RNN">RNN</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/05/17/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E6%AD%A3%E4%BA%A4%E5%BD%92%E4%B8%80%E6%80%A7/">
         <p class="h4 index-header">3.课程/线性代数_正交归一性</p>
         
@@ -343,237 +548,43 @@ bert-sentimentbert-sentiment用的是IMDb数据集，在github上star,Abhi出了
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/07/2.%E6%AF%94%E8%B5%9B/Toxic_%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">2.比赛/Toxic_思路</p>
+      <a href="/2020/05/15/0.%E6%96%87%E7%AB%A0/NLP_The%20Annotated%20Transformer/">
+        <p class="h4 index-header">0.文章/NLP_The Annotated Transformer</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">思路ToDoList
-
-
-
-
-
-
-
-bpe
-跨语言编码
-
-
-XLM-R + ERNIE
-kaggle最热跨语言模型 + 注入特定知识toxic
-
-
-transformer
-特征抽取器(模型)要向匹配问题领域的特点去修改
-
-
-lstm
-transformer组件
-
-
-
-
-
-
-
-
-
-
-选择正确的特征抽取器解决情感分类问题，从模型角度讲，最重要的是特征抽取器的能力。以前是研发人员设计抽取哪些特征，现在都是端到端的抽取，也就是特征抽取器Transformer自动抽取。根据今日阅读知乎和github上的观点，不要使用RNN和CNN，应该采用更加先进的Transformer。
-</div>
+          <div class="index-text mb-1">The Annotated Transformerharvard nlp 对Transformer论文的逐行注解,原文：http://nlp.seas.harvard.edu/2018/04/03/attention.html
+本文在github和谷歌drive上的网址：
+https://github.com/harvardnlp/annotated-transformer
+https://drive.google.com/file/d/1xQXSv6mtAOLXxEMi8RvaW8TW-7bvYBDF/view
+Import lib:import numpy as np
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import math, copy, time
+from torch.autograd import Variable
+import matplotlib.pyplot as plt
+import seaborn
+seaborn.set_context(context=&quot;ta</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-15&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/2.%E6%AF%94%E8%B5%9B">2.比赛</a>&nbsp;
+            <a href="/categories/%E6%96%87%E7%AB%A0">文章</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Toxic">Toxic</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/07/3.%E8%AF%BE%E7%A8%8B/CS224n_9%20-%20%E6%9C%BA%E7%BF%BB/">
-        <p class="h4 index-header">3.课程/CS224n_9 - 机翻</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
-我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
-基于统计的机翻模型介绍
-源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
-
-如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项里找一个简单流畅的句子。
-
-其中的一个模块，翻译模型中，第一件要做的事情是匹配两种语言的单词，匹配所面临的困难使用法语英语互译来展示。其实英法是相似度很高的语言，换成其他相似度低的语言则难度会</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/28/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_%E6%9C%89%E7%9B%91%E7%9D%A3%E7%9A%84%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90.md/">
-        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_有监督的情感分析.md</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment_Analysis_有监督的情感分析.md
-如上所示，phi函数就是上篇介绍的feature function，提供的功能就是把tree转换成字典。
-
-如上所示，fit model函数提供将数据x和y fit进指定模型（逻辑回归）中的功能。
-
-然后使用上节介绍的sst.experiment函数（三个参数）分别是路径，feature函数和fit函数。
-这样设计的好处就是实现了类的分离，如果需要改写feature函数或者fit函数，直接在本体里边修改就好。
-超参数的搜索与确定超参数的基本原理：超参数是模型的优化过程之外的“settings”。有如下几个例子：
-
-超参数搜索实例
-
-如上，In[4] 的 fit_softmax_with_crossvalidation函数，就是搜索超参数的函数。basemod是逻辑回归，给他加上了搜索空间：c,罚函数，等，然后调用系统工具箱里的utils.fit_classifier_with_crossvalidation就可以得到搜索结果。当然这个搜索的过程耗时较长。
-然后把得到的函数放进experiment函数中开始实验。因为得到的函数</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-28&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/28/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/Chrome%20OS%E5%88%9D%E5%A7%8B%E5%8C%96%E6%93%8D%E4%BD%9C/">
-        <p class="h4 index-header">4.安装调试记录/Chrome OS初始化操作</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Chrome OS初始化操作0.进入开发者模式，esc + f３ + 电源，then ctrl + D 
-1.参见“共享代理文章”，用手机和电脑开启代理共享，chromebook连上wifi，登陆谷歌账号，不断重试，连接google play（这一步非常耗时）。
-2.安装包管理工具crew  Ctrl + Alt +t  curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
-3.安装ssr  在主流的apk网站上下载并安装ssr，登陆amytelecom，将信息复制到ssr中，删除无关的免费节点。
-4.安装马克飞象，印象笔记
-5.setting中安装linux，打开linux命令行输入sudo apt install vim-gtk3安装gvim
-6.用gvim打开rsa_pub，在linux中连接github，将post项目拉下来
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-28&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/chromebook">chromebook</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/23/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/chromebook%E4%BB%A3%E7%90%86%E5%85%B1%E4%BA%AB/">
-        <p class="h4 index-header">4.安装调试记录/chromebook代理共享</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.下载ssr
-2.google免费ssr节点，复制粘贴。连接ssr，右键ssr图标-选项设置-允许来自局域网的连接。
-3.电脑连接手机热点，电脑打                          开热点共享，chromebook连接电脑发射的热点
-4.电脑win+R,cmd,ipconfig,得到如下所示ip信息
-
-5.chromebook点击所连接wifi热点，点击热点详情-连接类型-手动配置代理-输入上图ip，端口号是1080（详见第2条中允许来自局域网连接的按钮周围的端口信息）。
-6.登录，done。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/chromebook">chromebook</a>&nbsp;
+            <a href="/tags/Transformer">Transformer</a>&nbsp;
           
         
       </div>
@@ -584,7 +595,7 @@ transformer组件
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

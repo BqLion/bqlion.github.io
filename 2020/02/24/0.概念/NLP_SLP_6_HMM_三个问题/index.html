@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>0.概念/NLP_SLP_6_HMM_三个问题 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      7 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="HMM的三个核心问题的解"><a href="#HMM的三个核心问题的解" class="headerlink" title="HMM的三个核心问题的解"></a>HMM的三个核心问题的解</h1><p>本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。</p>
+<h3 id="1-马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别"><a href="#1-马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别" class="headerlink" title="1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别"></a>1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别</h3><p>有如下递进定义</p>
+<ol>
+<li>将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个<strong>网络</strong></li>
+<li>若该网络是有向无环图，则称这个网络为<strong>贝叶斯网络</strong></li>
+<li>如果这个图退化成线性链的方式，则得到<strong>马尔科夫模型</strong>，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是<strong>马尔科夫过程</strong>。</li>
+<li>若上述网络是无向的，则是无向图模型，又称<strong>马尔科夫随机场或者马尔科夫网络</strong>。</li>
+<li>若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。</li>
+<li>如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场</li>
+</ol>
+<h3 id="2-马尔科夫模型"><a href="#2-马尔科夫模型" class="headerlink" title="2.马尔科夫模型"></a>2.马尔科夫模型</h3><h4 id="2-1马尔科夫过程"><a href="#2-1马尔科夫过程" class="headerlink" title="2.1马尔科夫过程"></a>2.1马尔科夫过程</h4><p>马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液体微粒做的布朗运动，传染病受感染的人数等，都可以视为马尔科夫过程。</p>
+<p>每个状态的转移只依赖于之前的n个状态，这个状态被称为1个n阶的模型。其中n是转移状态的数目。最简单的马尔科夫模型是一个一阶过程。每个状态的转移只依赖于之前的那个状态。这也叫做马尔科夫性质。</p>
+<h3 id="3-HMM的三个重要问题"><a href="#3-HMM的三个重要问题" class="headerlink" title="3.HMM的三个重要问题"></a>3.HMM的三个重要问题</h3><p>1） Likelihood，给出转移矩阵A、发射矩阵B、观测值O，求特定观测值出现的概率P（O | A，B）</p>
+<p>​    用前向后向算法(Forward - backward Algorithm)。</p>
+<p>2）Decoding，给出转移矩阵A、发射矩阵B、观测值O，求状态层Q</p>
+<p>​    解码问题，用基于动态规划的维特比算法。</p>
+<p>3）Learning，给出观测值O和状态层Q，求A,B.</p>
+<p>​    模型参数学习问题。这个问题的求解需要用到基于EM算法的鲍姆-韦尔奇算法.</p>
+<p><strong>例题</strong></p>
+<p>晓明有三天假期，为了打发时间，可以在每一天选择三件事情中的一件来做，分别是散步、购物、打扫卫生。</p>
+<p>我们在生活中的决定通常会受到天气的影响，比如晴天可能会想要去散步或购物，下午则不想出门在家打扫卫生。这里的散步、购物、整理是可观测序列。下雨和天晴是隐藏状态。用如下概率图表示:</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191227_1641_40_122.png" alt=""></p>
+<p>对应的三个问题就是：</p>
+<p>1.likelihood：已知整个模型，我连续观察到三天做的事情是：散步-购物-收拾。求出现这些行为的概率？</p>
+<p>2.Decoding：已知整个模型，同样观察到三天所做的事情是：散步-购物-收拾。求三天的天气是怎样？</p>
+<p>3.Learning：我只知道三天做了：散步-购物-收拾。其他什么信息都没有，我得自己建立一个模型，计算出：晴雨转换概率、第一天天气分布情况、根据天气选择做某事的概率。</p>
+<pre><code>找到好的实例之后理解马尔科夫模型和三大问题就直观多了。
+没有实例之前去想象A矩阵是什么，B矩阵是什么，h矩阵是什么的时候，自己心理清楚这样其实根本没理解。需要实例化。以后遇见太抽象的概念记得及时实例化提高认知效率。
+进一步分析：为什么明知概念模糊拖这么久才实例化(accidently)？
+因为没有摆脱高中的学习模式！！！！！！！！！！！
+高中习惯了老师扔出概念，然后马上feed us优质例题。这个认知过程太完美太省力，addicted，类似于婴儿吃妈妈嚼烂了又吐出来的肉糜。
+But you are almost 27.没有张老师，徐战胜，王汉娇们了，the road the phd,也许有的领域真就知道自己懂了。
+I need academic growing up.Come on,it`s time for student becoming a teacher.
+</code></pre><h3 id="3-1-Likelihood-遍历与前向算法"><a href="#3-1-Likelihood-遍历与前向算法" class="headerlink" title="3.1 Likelihood - 遍历与前向算法"></a>3.1 Likelihood - 遍历与前向算法</h3><p> 已知整个模型，我连续观察到三天做的事情是：散步-购物-收拾。求出现这些行为的概率？</p>
+<p><strong>解1：</strong>遍历算法</p>
+<p>假设第一天是晴天，要散步，直接把图上的概率乘一下就好了：0.6*0.4 = 0.24。不难列出所有情况。</p>
+<p>第二天要做的事情就是在第一天的基础上再遍历所有情况，same goes 第三天。</p>
+<p>这个思路简单，但是复杂度会随着观测序列和隐藏状态的增加而爆炸。</p>
+<p>复杂度：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191227_1702_55_488.png" alt=""></p>
+<p><strong>解2</strong>：前向算法：Forward Algorithm</p>
+<p>假设第一天要散步，计算出包括雨天和晴天的散步概率</p>
+<p>假设第二天要购物，在第一天的基础上计算出雨天和晴天的购物的概率</p>
+<p>第三天同理。“带剪枝的遍历”。</p>
+<p>复杂度：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191227_1704_58_200.png" alt=""></p>
+<h3 id="3-2-Decoding-维特比算法"><a href="#3-2-Decoding-维特比算法" class="headerlink" title="3.2 Decoding - 维特比算法"></a>3.2 Decoding - 维特比算法</h3><p>已知整个模型，同样观察到三天所做的事情是：散步-购物-收拾。求三天的天气是什么？</p>
+<p>也就是要求隐藏状态。用维特比算法。维特比算法是应用最广的动态规划算法。利用动态规划，可以解决任何一个图中的最短路径问题。而维特比算法是针对一个特殊的图-篱笆网络（lattice）的有向图最短路径问题而提出的。他之所以重要是因为使用HMM模型描述的问题都可以用它来解码。包括现在的数字通信，语音识别，机翻，拼音转汉字等。维特比算法一般用于模式识别，通过观测数据来反推出隐藏状态。下面是这个算法的detail。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191227_1641_40_122.png" alt=""></p>
+<p>因为是要根据观测数据来反推，所以这里要进行一个假设，<strong>假设这三天所做的行为分别是：散步、购物、打扫卫生，</strong>那么我们要求的是这三天的天气(路径)分别是什么。</p>
+<p>初始计算第一天下雨和第一天晴天去散步的概率值：</p>
+<p><img src="https://pic1.zhimg.com/v2-73131ddf54508a7084f0452da924751c_b.jpg" alt="img"></p>
+<p>表示第一天下雨的概率</p>
+<p><img src="https://pic3.zhimg.com/v2-27da2400809669de79c6f818d124763e_b.jpg" alt="img"></p>
+<p>表示中间的状态(下雨)s概率</p>
+<p><img src="https://pic1.zhimg.com/v2-a1a5e88edd5711b389e5c3fc5ea3bcfc_b.jpg" alt="img"></p>
+<p>表示下雨并且散步的概率</p>
+<p><img src="https://pic3.zhimg.com/v2-4f2fffcb11a07760749be5870f7fada6_b.jpg" alt="img"></p>
+<p>表示下雨天到下雨天的概率</p>
+<p><img src="https://pic1.zhimg.com/v2-e127070538c94eb18e37f8b32d84a750_b.jpg" alt="img"></p>
+<p><img src="https://pic2.zhimg.com/v2-2591cecffb3f93a7c1971ef65f49f5a9_b.jpg" alt="img"></p>
+<p>   初始路径为：</p>
+<p><img src="https://pic1.zhimg.com/v2-482826b9557199994b9ea145eb20a1c4_b.jpg" alt="img"></p>
+<p><img src="https://pic1.zhimg.com/v2-a438ee87c87d96d651eabdd250f1d87c_b.jpg" alt="img"></p>
+<ol>
+<li>计算第二天下雨和第二天晴天去购物的概率值：</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/v2-f5f0030f0ac7e28a260e2b20c5806fc8_b.jpg" alt="img"></p>
+<p>对应路径为：</p>
+<p><img src="https://pic4.zhimg.com/v2-fe2e21e05b0a17c5379802b44896e2e7_b.jpg" alt="img"></p>
+<ol>
+<li>计算第三天下雨和第三天晴天去打扫卫生的概率值：</li>
+</ol>
+<p><img src="https://pic4.zhimg.com/v2-f11d52d82c3010dd9155bcd0c9527a63_b.jpg" alt="img"></p>
+<p>对应路径为：</p>
+<p><img src="https://pic3.zhimg.com/v2-1e0431aafa9790b683f335e87999537e_b.jpg" alt="img"></p>
+<p>比较每一步中  的概率大小，选取<strong>最大值</strong>并找到对应的路径，依次类推就能找到最有可能的<strong>隐藏状态路径</strong>。<br>第一天的概率最大值为  </p>
+<p><img src="https://pic3.zhimg.com/v2-6a33161b94c9ce27a3ba5ea5a9f43e0a_b.jpg" alt="img"></p>
+<p>对应路径为Sunny，<br>第二天的概率最大值为  </p>
+<p><img src="https://pic3.zhimg.com/v2-b5b9c73fdc7c8b2db44e50f2799a51b6_b.jpg" alt="img"></p>
+<p>对应路径为Sunny，<br>第三天的概率最大值为  </p>
+<p><img src="https://pic2.zhimg.com/v2-e696141e8b8be5367c769538f3f2dbcd_b.jpg" alt="img"></p>
+<p>对应路径为Rainy。</p>
+<p>合起来的路径就是Sunny-&gt;Sunny-&gt;Rainy，这就是我们所求。</p>
+<pre><code>维特比小结：
+无外乎是三天三层的树形结构。遍历这颗二叉的状态树，找到每一层的最大可能性。
+每一层的最大可能性就是预估结果。</code></pre><h3 id="3-3-Learning-EM算法"><a href="#3-3-Learning-EM算法" class="headerlink" title="3.3.Learning - EM算法"></a>3.3.Learning - EM算法</h3><p>我只知道三天做了：散步-购物-收拾。其他什么信息都没有，我得自己建立一个模型，计算出：晴雨转换概率、第一天天气分布情况、根据天气选择做某事的概率。</p>
+<p>详见概念 - 6 - EM算法</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%A6%82%E5%BF%B5">概念</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/HMM">HMM</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "0.概念/NLP_SLP_6_HMM_三个问题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

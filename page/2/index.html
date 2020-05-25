@@ -136,130 +136,56 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/21/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_SST/">
-        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_SST</p>
+      <a href="/2020/05/15/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_Word_embedding%E8%AF%A6%E8%A7%A3/">
+        <p class="h4 index-header">0.概念/NLP_词向量_Word_embedding详解</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment_Analysis SSTSST项目基本信息
-SST斯坦福链接
-SST工作展示蓝色是正面情绪，黄色是负面，灰色是中性情绪。叶子节点的merge原理暂时未知。They said it would be great这句话下边都是正面情绪，直到跟节点的they才恢复为中性情绪，因为they said其实不能反映出作者的 bias。
-而后边接上的they were wrong明显是负面，然后merge后总体就是负面情绪了。这个总体的判断要比直接把一句话拆开按照各个单词的正负性简单sum要靠谱很多。
+          <div class="index-text mb-1">Word_embedding之前词语数字化表示的几种思路和问题，以及WE的提出：
 
-verse vesa
+独热码离散表示：红橙黄绿青蓝紫大卡车和红橙黄绿青蓝紫中卡车是2 * 7 = 14个对象
 
-Readers讲解
-In [5]、In [6]中的train_reader参数详解
+
+构建特征的分布式表示：红橙黄绿青蓝紫大卡车和红橙黄绿青蓝紫中卡车是7 + 2 = 9个对象
 
 
 
 
-meaning
+邻接词的分布式表示：
 
 
+离散表示太稀疏，使用一个词附近的词分布式表示是不错的折中方案。
+WE的概念图（同义相近）：
 
-class_func=sst.binary_class_func
-二分类问题
+WE的目标：把单词转换为数字（向量）。
+这种转换是必要的，因为深度神经网络等技术都只能处理连续值的向量，不能处理文本和字符串。
+把单词变成向量还有如下两个好处：
 
+降维：更高效的表示方法
+上下文相似性：更有表达力的表示方法
 
-class_func=sst.ternary_class_func
-三分类问题
-
-
-class_func=None
-五分类问题
-
-
-核心类 ： nltk.tree.Tree输入一个tree：
-
-循环打印各个subtree：
-
-输出tree的lable和subtre</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NLP">NLP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/18/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_%E6%9D%90%E6%96%99%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
-        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_材料和预处理</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment Analysis阅读材料和数据预处理核心阅读材料
-
-情感分析各子领域合适的切入点。他们入选的原因是位置合适以及有公开数据集
-
-常用情感分析数据库
-
-lexica
-
-preprocessingpreprocessing ： tokenizing
-
-preprocessing : 词干化stemming
-
-porter stemming演示
-
-兰开斯特stemming演示
-
-wordNet stemming演示
-
-preprocessing:  POS tagging
-有些英文单词的sentiment只能通过pos来确定。
-
-需要注意的是即使有些单词的pos tagging一模一样仍然会有相反的sentiment
-
-preprocessing : 简单情感标记和推荐阅读
-
-简单负面情绪标记示例
-
-推荐阅读
-
-负面情绪标记带来的性能提升
-
+词向量的训练方法:
+使用语料库和模型训练词向量，把嵌入矩阵embedding matrix当成模型参数的一部分，通过词语词之间的共现矩阵或者上下文关系来优化模型参数，最终得到的矩阵就是所有词的词向量。最初的词向量都是随机初始化的，后边采用标准训练和优化。
 </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-18&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-15&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/NLP">NLP</a>&nbsp;
+            <a href="/tags/Word_Embedding">Word_Embedding</a>&nbsp;
           
         
       </div>
@@ -270,40 +196,225 @@ preprocessing : 简单情感标记和推荐阅读
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/31/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/U%E7%9B%98%E5%AE%89%E8%A3%85Ubuntu/">
-        <p class="h4 index-header">4.安装调试记录/U盘安装Ubuntu</p>
+      <a href="/2020/05/14/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_SkipGram/">
+        <p class="h4 index-header">0.概念/NLP_词向量_SkipGram</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">U盘安装Ubuntuwindows下 - 磁盘管理 - 压缩卷，然后删除卷。
-找一个大于4G的u盘
-http://mirrors.ustc.edu.cn/ubuntu-releases/16.04/ 下载ubuntu-16.04.6-desktop-amd64.iso    
-https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
-左上角 文件 - 打开iso文件；左下角本地目录 选中u盘，启动 - 写入硬盘映像 - 写入
-插入U盘，重启，F1,选择直接进入U盘。
-选择安装Ubuntu - 其他选项（根据需求调整分区）-  点击左下方的加号添加分区，分区方案参考如下
+          <div class="index-text mb-1">skip-gram算法详解Skip-gram算法是word2vec模型中两大生成词向量算法中的一个。
+生成词汇向量的skip-gram算法的中心思想：给定中心词汇，预测单词们出现在它周围的概率，最终确定的这些单词们，要使概率分布值最大化。
+如下，中心词是banking，Skip - gram会尝试去预测它一定范围内（m window）的上下文词汇。
 
-现在安装 - 等待  - 拔U盘 - 重启 - 进
+Skip-gram的损失函数损失函数J`(θ)表示的是：一串很长的文本比如整个维基百科（which has足够长的词汇序列和足够多的词汇和真正的行文）然后遍历文本中的所有位置，对于每个位置，我们都会定义一个围绕输入词汇的大小为2m的窗口，窗口包括前后各m个单词，把每个词汇和周围的窗口的p(周围每一个词|中心词)都连乘起来。
+这就是一个有监督学习，目标是使损失函数最小化，手段是通过对训练集的training动态调整模型的超参数们(窗口大小，容差系数等).
+
+损失函数plus : 计算机中大量连乘容易误差累计和误差消失，给上边的损失函数整体套上log，将连乘转换为带log的连加。如下
+要不是高中学的明白根本肝不到这里……answer the </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AF%8D%E5%90%91%E9%87%8F">词向量</a>&nbsp;
+          
+            <a href="/tags/SkipGram">SkipGram</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/13/0.%E6%96%87%E7%AB%A0/NLP_word2vec%E5%BA%94%E7%94%A8/">
+        <p class="h4 index-header">0.文章/NLP_word2vec应用</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">word2vec应用读取数据import pandas as pd
+
+# Read data from files 
+train = pd.read_csv( &quot;labeledTrainData.tsv&quot;, header=0, 
+ delimiter=&quot;\t&quot;, quoting=3 )
+test = pd.read_csv( &quot;testData.tsv&quot;, header=0, delimiter=&quot;\t&quot;, quoting=3 )
+unlabeled_train = pd.read_csv( &quot;unlabeledTrainData.tsv&quot;, header=0, 
+ delimiter=&quot;\t&quot;, quoting=3 )
+
+# Verify the number of reviews that were read (100,000 in total)
+print (&quot;Read %d labeled train reviews, %d labeled test</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%96%87%E7%AB%A0">文章</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Word2vec">Word2vec</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/12/0.%E6%A6%82%E5%BF%B5/NLP_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%92%8C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">0.概念/NLP_神经网络和反向传播算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">神经网络神经网络深入学习的网站：neuralnetworksanddeeplearning.com 
+神经网络就是一个函数，本例中有764个输入，有10个输出 
+总览图:
+第一层(764)：
+764个输入源于28 * 28的正方形格子，每个小格子都是0到1之间的值，越接近1就越白，越接近0就越黑。
+隐藏层
+隐藏层是干什么的？ 大体上说，隐藏层用于发掘模式。如上所示，隐藏层一识别小线段，隐藏层二识别小线段构成层的圈或者大线段
+从这里看出深度神经网络其实就是模式识别的高级应用，所以要恶补pattern recognition。
+如何训练神经网络？ 训练神经网络就是把训练集中的数据和label在神经网络中的(784 * 16 + 16 * 16 + 16 * 10) + (16+16+10) =13002    个参数通过动态调整来拟合。
+从数学上来说，动态调整13002个参数以获得min(代价函数)的做法，本质上就是寻找函数的最小值，如下
+
+w1和a1： 
+a1就是输入的784个点中第一个点的亮暗情况
+w1就是接受这第一个点a1刺激的第一层的第一个神经元对第二层的如图所示的神经元的兴奋程度</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a>&nbsp;
+          
+            <a href="/tags/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95">反向传播算法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/12/0.%E6%A6%82%E5%BF%B5/NLP_%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/">
+        <p class="h4 index-header">0.概念/NLP_随机森林</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">随机森林随机森林就是用随机的方法建立一堆决策树。每棵树之间是没有关联的，当一个待分类样本输入森林中时，将此样本输入进每一个决策树然后看哪种分类结果最多，就最终输出哪种分类结果。
+随机森林的构造过程：
+
+假设有N个样本，有放回的随机选择N个样本，然后按照这N个样本训练一个决策树，这N个样本就是决策树根节点的样本
+当每个样本有M个属性时，就需要在决策树中分裂节点以做进一步的判断。于是从M中随机选出m个(m &lt;&lt; M)个属性，然后从m个属性中采取某种策略（比如min信息熵）来选择一个属性来作为该节点的分裂属性。
+然后就是重复上边的步骤。当下一次分裂选出来的属性还是父节点的属性时，说明已经穷尽属性，到达叶子节点。
+
+按照如上三个步骤，可以构造大量决策树，例如movie sentiment tutor step1中的随机森林就是构造了100颗决策树。
+注意：随机森林中的决策树并没有为了回避过拟合问题而剪枝，因为随机采样已经避免了过拟合。
+此算法优点：
+
+数据上表现好，两个随机性的引入避免了过拟合问题
+抗噪声
+能处理高维度数据，而且不用做特征选择。
+对数据集的适应能力强，既能处理连续性</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97">随机森林</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/12/0.%E6%A6%82%E5%BF%B5/NLP_%E5%86%B3%E7%AD%96%E6%A0%91/">
+        <p class="h4 index-header">0.概念/NLP_决策树</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">决策树决策树是一种树形结构分类器。每个节点都有一个表示属性的判断，每个分支都代表了一个判断结果的输出。
+常见的决策树生成算法有ID3,C4.5,C5.0,CART等。
+示例：如下图片是正确的分类集（train set）
+
+如下是分类树的判断过程（演示了分类树其实可以有不同构型）
+
+
+如上分类树的根节点都是判断分数是否大于A（90），如果是就是好学生。然后第二个节点就出现了不同，分别是判断分数是否小于70 OR 出勤率是否大于0.8。
+这个分类器节点的构造其实很灵活，怎样构造最好的分类器呢？ID3,ID4.5算法都是倾向于迭代选择熵值最小化的那个分类器。但是ID3,ID4.5算法都有严重的过拟合问题。
+CART算法也使用了类似熵的指数–GINI指数，CART算法迭代的目标也是向着GINI指数最小化的方向进行，不过CART算法为了解决过拟合的问题，使用了剪枝的策略，也就是将树中过长的枝叶剪去。
 </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-31&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
+            <a href="/categories/%E6%A6%82%E5%BF%B5">概念</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/linux">linux</a>&nbsp;
+            <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91">决策树</a>&nbsp;
           
         
       </div>
@@ -314,32 +425,49 @@ https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/27/5.%E6%9D%82%E8%B0%88/%E6%82%89%E8%BE%BE%E5%A4%9A%E7%9A%84%E7%8E%8B%E5%AD%90/">
-        <p class="h4 index-header">5.杂谈/悉达多的王子</p>
+      <a href="/2020/05/12/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_%E8%AF%8D%E8%A2%8BBOW/">
+        <p class="h4 index-header">0.概念/NLP_词向量_词袋BOW</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">悉达多1.爱与知识并不能来带peace
-悉达多感到，父母朋友之爱，长者传授的知识不能让他感到满足，不能使他的内心安宁。悉达多开始怀疑，沐浴、祭祀等仪式是否有必要？
-爱是大脑的内分泌短暂失调+欲求不满的表现，知识的传授其实可以在极短的时间内完成（剩余时间是磨洋工），沐浴祭祀等繁文缛节是keep everybody busy的手段，换成现代概念几乎可以等同于各种繁复的人事缓冲池——若不是要严控失业率，从基层到决策层之间90%的传递信息者都可被优化掉。
-2.众生皆苦，逃避无用
-悉达多说，冥想，对肉体的决弃，斋戒和调息都是在逃避自我，是对自我所受的苦难的短暂的逃避，这种逃避和牧牛人在酒馆里喝几碗米酒是同样的。在这种短暂的麻醉下，他们不再感受到自我，不再感觉到生命的苦难。那几碗米酒让牧牛人浑然入睡，他同样找到了悉达多和乔文达在长时间的修行中逃离肉体并宅于非我之境所找到的感觉。
-悉达多说的这种逃避痛苦的方式，暗示了痛苦的根源就在与“我”，感受到我的存在，便能感受到痛苦。喝了酒，进入了禅定，做爱，入睡了，在别的国家旅游用英语讲话逃离中文世界，weed等都可短暂的忘我。但是在短暂的忘我结束后，一切一如</div>
+          <div class="index-text mb-1">词袋算法详解词袋算法是word2vec中构建两大构建词向量算法中的一个。
+kaggle tutor实战解读：具体操作如下：
+
+清洗整个语料库by美丽汤
+去掉停止词和非英语单词，去掉数组，大小写统一by正则表达式
+将剩下的单词组成词典
+词典按照词频降序排列
+然后指定词袋的feature个数，以五千为例就是前5000个常用单词作为每一个词语/句子的向量表示。
+每个向量都是5000维，第一维就是最常用的单词，第二维就是第二常用的单词，第一维是1说明被本向量表示的句子中最常用的单词出现了一次，第一维是2说明被表示的句子中最常用的单词出现了两次。
+
+
+然后可以将例如25000条语料依次分别按照5000维的向量表示，集合到shape(25000 * 5000)的矩阵中
+
+然后此矩阵带上label就可以用来训练model了
+CS224N解读词袋的训练模型如下。
+
+输入层：上下文的独热码，假设向量空间V维，上下文单词个数是C。
+
+所有onehot分别乘以共享的W（V*N）初始化权重矩阵，V是向量维度，N自己设置。
+
+因为是onehot向量，只有一个值为1，其他都是0，所以乘以权重矩阵后仍然是向量，然后</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-27&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
         
         
-          <i class="iconfont icon-inbox"></i>
+        
+          <i class="iconfont icon-tag"></i>
           
-            <a href="/categories/5.%E6%9D%82%E8%B0%88">5.杂谈</a>&nbsp;
-          &nbsp;
-        
+            <a href="/tags/%E8%AF%8D%E5%90%91%E9%87%8F">词向量</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%8D%E8%A2%8B">词袋</a>&nbsp;
+          
         
       </div>
     </div>
@@ -349,32 +477,144 @@ https://cn.ultraiso.net/xiazai.html 下载ultralSo，安装，运行
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/05/2.%E6%AF%94%E8%B5%9B/%E6%8C%87%E5%AF%BC_Google_QA_%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%83%A8%E5%88%86/">
-        <p class="h4 index-header">2.比赛/指导_Google_QA_数据处理部分</p>
+      <a href="/2020/05/08/0.%E6%96%87%E7%AB%A0/NLP_%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/">
+        <p class="h4 index-header">0.文章/NLP_词袋模型应用</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">数据处理部分总体代码如下，各个程序块在pycharm中分开运行，用#%%分割。
-上来是import部分，然后是数据清洗和构建embedding矩阵等。
-import numpy as np
-#numpy是主要用于数组计算，线性代数，傅里叶变换等。
+          <div class="index-text mb-1">词袋模型的应用1.引入训练数据
 import pandas as pd
-#pandas基于numpy，可以处理高纬数据
-from sklearn.manifold import TSNE
-# sklearn是机器学习中常用的第三方模块，对常见的机器学习算法进行了封装，包括回归、降维、分类、聚类,sklearn.manifold是流形学习，非
-# 线性降维的手段。最简单的降维手段是随机投影，但是会导致结构丢失,manifold learning是一种类似主成分分析(PCA)的线性框架，不会错失数据结构中的非线性项  ，TSNE提供了一种画图方式，让高维的数据降低为二维画出来
-import seaborn as sns
-# 基于matplotlib的画图工具
-import glob
-# glob是查找模块。支持空格 ，问号？，方括号[]这三个通配符。空格代表0个或者多个字符，问</div>
+train = pd.read_csv(&quot;labeledTrainData.tsv&quot;, header=0,delimiter=&quot;\t&quot;, quoting=3)
+2.确定引入数据是否正确 – 看一下shape和列标签
+&gt;&gt;&gt; train.shape
+(25000, 3)
+
+&gt;&gt;&gt; train.columns.values
+array([id, sentiment, review], dtype=object)
+3.glipise
+print train[&quot;review&quot;][0]
+4.用beautiful soap清洗掉HTML标签
+# Import BeautifulSoup into your workspace
+from bs4 import BeautifulSoup             
+
+# Initialize the BeautifulSoup object on a single movie revie</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-08&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%96%87%E7%AB%A0">文章</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B">词袋模型</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/07/0.%E6%96%87%E7%AB%A0/NLP_pre-trained-LM%E5%8F%91%E5%B1%95%E5%8F%B2WE2Bert/">
+        <p class="h4 index-header">0.文章/NLP_pre-trained-LM发展史WE2Bert</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">从Word embedding到Bert：A brief history of nlp pre-train modelWord embeddingLM做word embedding –&gt; 使用的工具是word2vec –&gt; word2vec的训练方法：CBOW 和 SKIP - GRAM
+word embedding的问题：无法解决一词多义。
+​                                                两种不同的上下文信息经过word2vec都会预测相同的单词bank，因为同一个单词占                                                用的是同一行的参数空间。所以WE无法区分一词多义。
+ELMO为解决WE一词多义问题，提出ELMO，其思路是事先用LM学好 一个单词的word embedding，后边根据上下文动态调整。WE是静态，ELMO是动态，所以ELMO可以解决一词多义问题。
+ELMO工作方式分为两段，分别是利用语言模型进行预训练和做下游任务时将预训练网络中提取对应单词的网络的各层的wor</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%96%87%E7%AB%A0">文章</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/WordEmbedding">WordEmbedding</a>&nbsp;
+          
+            <a href="/tags/Bert">Bert</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/07/2.%E6%AF%94%E8%B5%9B/Toxic_%E6%80%9D%E8%B7%AF/">
+        <p class="h4 index-header">2.比赛/Toxic_思路</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">思路ToDoList
+
+
+
+
+
+
+
+bpe
+跨语言编码
+
+
+XLM-R + ERNIE
+kaggle最热跨语言模型 + 注入特定知识toxic
+
+
+transformer
+特征抽取器(模型)要向匹配问题领域的特点去修改
+
+
+lstm
+transformer组件
+
+
+
+
+
+
+
+
+
+
+选择正确的特征抽取器解决情感分类问题，从模型角度讲，最重要的是特征抽取器的能力。以前是研发人员设计抽取哪些特征，现在都是端到端的抽取，也就是特征抽取器Transformer自动抽取。根据今日阅读知乎和github上的观点，不要使用RNN和CNN，应该采用更加先进的Transformer。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -385,275 +625,7 @@ import glob
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">数据处理</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/04/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%90%8D%E7%9A%84%E6%96%B9%E5%BC%8F/">
-        <p class="h4 index-header">4.安装调试记录/批量修改文件后缀名的方式</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">新建一个.txt文档，输入：
-ren *.java *.md
-保存
-将文件后缀名改成.bat,双击运行
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-04&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/02/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E4%BF%AE%E6%94%B9pip%E6%BA%90/">
-        <p class="h4 index-header">4.安装调试记录/修改pip源</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-将pip切换回国内源pip国内的一些镜像
-  阿里云 http://mirrors.aliyun.com/pypi/simple/  中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/  豆瓣(douban) http://pypi.douban.com/simple/  清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/  中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
-修改源方法：
-临时使用：可以在使用pip的时候在后面加上-i参数，指定pip源eg: pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple   –trusted-host  pypi.tuna.tsinghua.edu.cn
-永久修改：linux:修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
-[global]
-index-url = https://pypi.tuna.tsinghua</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-02&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_1-%E6%A6%82%E8%BF%B0/">
-        <p class="h4 index-header">3.课程/网络_1-概述</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.计算机网络概述1.1局域网​        覆盖范围小（１００ｍ）,自己花钱买设备,贷款固定
-​        接入层的交换机们星形连接到汇聚层交换机,这样分散IO
-​        接入层交换机们不该串联,不然最后一台交换机那里IO压力太大
-1.2Internet和广域网​    Internet ISP :有自己的机房,对网民提供internet访问
-　广域网：距离较远，花钱租带宽，
-1.3 数据包和数据帧在一个计算机想把数据发给另一个计算机时,需要在发送信息里携带ip地址和mac地址,其中ip地址是最终目地,mac地址是下一跳的目的地,ip地址不变,mac地址每次经过路由器都刷新.下一跳的目的地由迪杰斯特拉或其他寻路算法确定.
-1.4 OSI参考模型 应用层:所有能产生网络流量的程序
-表示层:在传输之前是否进行加密或压缩处理
-会话层:查木马,netstat -n
-传输层:可靠传输,流量控制,不可靠传输
-网络层:负责选择最佳路径,规划ip地址
-数据链路层:帧的开始和结束,透明传输,差错校验
-物理层:接口标准,电器标准,如何在物理链路层上传输的更快
-
-osi参考模型对网络排错指导</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-            <a href="/tags/OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B">OSI参考模型</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_2-%E7%89%A9%E7%90%86%E5%B1%82/">
-        <p class="h4 index-header">3.课程/网络_2-物理层</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.物理层2.1物理层的基本概念物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。
-物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：
-
-机械特性：接口形状，大小，引线数目
-
-
-电器特性：电压范围
-
-功能特性，过程特性等
-
-
-2.2数据通信的基本模型
-相关术语：
-
-数据：运送消息的实体
-信号：数据的电器或电磁表现
-模拟信号：消息的参数取值是连续的
-数字信号：消息的参数取值是离散的
-
-
-
-信道信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道
-单向信道：信息只能单向流动
-双向交替信道：信息可双向流动，但不能同时流动
-双向同时信道：信息科双向，同时流动
-基带信号和带通信号
-基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号
-
-基带数字信号的几种调制方法
-
-
-
-
-带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输
-
-在传输范围较大的时候，计算机网络必须通过带通信号传输
-
-
-
-曼彻斯特编码：由低到高是0，高到低是1
-
-差分曼彻斯特编码
-
-
-2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-            <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
-        <p class="h4 index-header">3.课程/网络_3-数据链路层</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">3.数据链路层3.0概述数据链路层使用的信道主要有以下两类
-
-点对点信道
-这种信道使用一对一的点对点通信方式
-
-
-广播信道
-这种信道使用一对多的广播通信方式，因此过程较为复杂，广播信道上的链接主机很多，因此必须使用专门的共享信道协议来协调这些数据的转发
-
-
-
-3.1 数据链路和帧链路是一条无源的点到点的物理线路，中间没有任何的其他交换节点。数据链路是除了物理线路之外，还得有通信协议来控制这些数据的传输，若把实现了这些协议的软硬件加到链路上，就构成了数据链路。
-现在最常用的办法是使用适配器（网卡）来实现这些协议的硬件和软件，一般的适配器都包括了数据链路层和物理层这两层的功能。
-数据链路层传输的是帧。
-
-三个基本问题
-
-封装成帧
-透明传输
-差错控制
-
-
-封装成帧：
-
-在一段数据的前后分别打上首部和尾部，首部尾部可以确定帧的界限。
-
-
-透明传输问题：
-
-类似于我想在markdown文件中打出[]()字符缺被误以为是超连接一样，需要在[]()字符之前加上转义字符\。
-
-
-CRC差错检测
-传输过程中可能出现比特差错，1变成0或者0变成1。一段时间内传输错误的比特与总比特比值称谓误码率。为保证数据</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/3.%E8%AF%BE%E7%A8%8B">3.课程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a>&nbsp;
+            <a href="/tags/Toxic">Toxic</a>&nbsp;
           
         
       </div>
@@ -664,7 +636,7 @@ CRC差错检测
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
