@@ -133,9 +133,9 @@
   
   
   <entry>
-    <title>2.比赛/Toxic_思路 </title>
-    <link href="undefined2020/05/07/2.%E6%AF%94%E8%B5%9B/Toxic_%E6%80%9D%E8%B7%AF%20/"/>
-    <url>2020/05/07/2.%E6%AF%94%E8%B5%9B/Toxic_%E6%80%9D%E8%B7%AF%20/</url>
+    <title>2.比赛/Toxic_思路</title>
+    <link href="undefined2020/05/07/2.%E6%AF%94%E8%B5%9B/Toxic_%E6%80%9D%E8%B7%AF/"/>
+    <url>2020/05/07/2.%E6%AF%94%E8%B5%9B/Toxic_%E6%80%9D%E8%B7%AF/</url>
     
     <content type="html"><![CDATA[<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h4 id="ToDoList"><a href="#ToDoList" class="headerlink" title="ToDoList"></a>ToDoList</h4><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>bpe</td><td>跨语言编码</td></tr><tr><td>XLM-R + ERNIE</td><td>kaggle最热跨语言模型 + 注入特定知识toxic</td></tr><tr><td>transformer</td><td><strong>特征抽取器(模型)要向匹配问题领域的特点去修改</strong></td></tr><tr><td>lstm</td><td>transformer组件</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table><h4 id="选择正确的特征抽取器"><a href="#选择正确的特征抽取器" class="headerlink" title="选择正确的特征抽取器"></a>选择正确的特征抽取器</h4><p>解决情感分类问题，从模型角度讲，最重要的是特征抽取器的能力。以前是研发人员设计抽取哪些特征，现在都是端到端的抽取，也就是<strong>特征抽取器Transformer自动抽取</strong>。根据今日阅读知乎和github上的观点，不要使用RNN和CNN，应该采用更加先进的Transformer。</p>]]></content>
     
