@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>2.比赛/Toxic_Abhi_Bert_Senti ~ 刘秉乾的技术博客 :)</title>
+  <title>标签 - 课表 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -38,7 +38,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 90vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -109,41 +109,6 @@
             </span>
 
             
-              <br>
-              
-                <p class="mt-3">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 五月 25日 2020, 12:47 下午
-                </p>
-              
-
-              <p>
-                
-                  
-                  &nbsp;<i class="far fa-chart-bar"></i>
-                  <span class="post-count">
-                    178 字
-                  </span>&nbsp;
-                
-
-                
-                  
-                  &nbsp;<i class="far fa-clock"></i>
-                  <span class="post-count">
-                      1 分钟
-                  </span>&nbsp;
-                
-
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
-                  <span id="busuanzi_container_page_pv">
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>&nbsp;
-                
-              </p>
-            
           </div>
 
           
@@ -158,74 +123,35 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 1 篇文章</p>
+  <hr>
+  
+    
       
+      <p class="h5">2020</p>
+    
+    <a href="/2020/05/27/3.%E8%AF%BE%E7%A8%8B/%E6%B8%85%E5%8D%8E%E8%AF%BE%E8%A1%A8/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">3.课程/清华课表</span>
+      <span style="float: right;">05-27</span>
+    </a>
+  
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          <div class="markdown-body">
-            <h1 id="MultiLinguToxic-Abhishek-Thakur-s-Guide"><a href="#MultiLinguToxic-Abhishek-Thakur-s-Guide" class="headerlink" title="MultiLinguToxic : Abhishek Thakur`s Guide"></a>MultiLinguToxic : Abhishek Thakur`s Guide</h1><h3 id="数据探索"><a href="#数据探索" class="headerlink" title="数据探索"></a>数据探索</h3><h4 id="基本文件"><a href="#基本文件" class="headerlink" title="基本文件"></a>基本文件</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200331_1144_50_792.png" alt=""></p>
-<p>如上是本比赛需要的数据，标橙的是主要数据。其中第一行和第二行的两个train数据来自之前jigsaw举办的比赛<br>两个128长度的seq for BERT也许不是我们需要的东西。</p>
-<h4 id="数据列分析"><a href="#数据列分析" class="headerlink" title="数据列分析"></a>数据列分析</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200331_1148_30_471.png" alt=""></p>
-<p>如上是数据不同的列，分别表示了id，真实评论，语言类型，是否是toxic的标签。</p>
-<h4 id="对train-csv的一瞥"><a href="#对train-csv的一瞥" class="headerlink" title="对train.csv的一瞥"></a>对train.csv的一瞥</h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200331_1151_18_648.png" alt=""></p>
-<p>可以看到，数据的分列情况就是id+评论+是否toxic+是否严重toxic+是否淫秽。</p>
-<h4 id="bert-sentiment"><a href="#bert-sentiment" class="headerlink" title="bert-sentiment"></a>bert-sentiment</h4><p>bert-sentiment用的是IMDb数据集，在github上star,Abhi出了三集视频专门介绍这个project。本次比赛可以直接调用。</p>
 
-            <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
-                
-                  <a class="hover-with-bg" href="/categories/2.%E6%AF%94%E8%B5%9B">2.比赛</a>
-                  &nbsp;
-                
-              </span>&nbsp;&nbsp;
-            
-            
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/Toxic">Toxic</a>
-                
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="d-none d-lg-block col-lg-2 toc-container">
-      
-  <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
-    <div id="tocbot"></div>
-  </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-  </div>
-</div>
-
     
   </main>
 
@@ -298,11 +224,6 @@
 
 
 
-  
-    <script src="/lib/tocbot/tocbot.min.js" ></script>
-  
-  <script src="/js/post.js" ></script>
-
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -343,7 +264,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "2.比赛/Toxic_Abhi_Bert_Senti&nbsp;",
+        "标签 - 课表&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,
