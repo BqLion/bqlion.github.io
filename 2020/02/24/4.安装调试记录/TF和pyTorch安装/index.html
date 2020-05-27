@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>分类 ~ 刘秉乾的技术博客 :)</title>
+  <title>4.安装调试记录/TF和pyTorch安装 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -38,7 +38,7 @@
 
 
 <body>
-  <header style="height: 90vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -109,6 +109,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 12:04 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    197 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -123,22 +158,86 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h4 id="安装pytorch记录"><a href="#安装pytorch记录" class="headerlink" title="安装pytorch记录"></a>安装pytorch记录</h4><p>conda create -n kag1</p>
+<p>conda install -n kag1 pytorch==1.2.0 torchvision==0.4.0 cudatoolkit=10.0 -c pytorch</p>
+<p>如果报http000链接不上anaconda就挂vpn</p>
+<p>速度太慢下载不动在输入y之前关vpn</p>
+<h4 id="安装TensorFlow记录"><a href="#安装TensorFlow记录" class="headerlink" title="安装TensorFlow记录"></a>安装TensorFlow记录</h4><p>TensorFlow，cuda，cudnn，python版本对应关系  </p>
+<p>win:</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1213_24_654.png" alt=""></h4><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1213_48_629.png" alt=""> <img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1214_01_338.png" alt=""></p>
+<p>环境变量:</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1214_29_949.png" alt=""></p>
+<p>安装cuda9:</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1214_44_397.png" alt=""></p>
+<p>不安装PhysX因为已存在,Visual Studio Intergration也不安装，不然会报错。如下图所示</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1214_57_822.png" alt=""></p>
+<p>cmd输入nvcc -V 检测是否成功</p>
+<p>安装cudnn7</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1215_11_643.png" alt=""></p>
+<p>需要账号密码398730@ / 字母和数字间有:</p>
+<p>将解压包中三个文件夹拖入CUDA根目录下即可</p>
+<p>tensorflow安装：</p>
+<p>Anaconda prompt</p>
+<p>conda create -n tensorflow pip python=3.5</p>
+<p>pip install –upgrade –ignore-installed tensorflow_gpu==1.8.0 -i <a href="http://pypi.douban.com/simple" target="_blank" rel="noopener">http://pypi.douban.com/simple</a> –trusted-host pypi.douban.com</p>
+<p>tensorflow卸载：</p>
+<p>activate tensorflow</p>
+<p>pip uninstall tensorflow-gpu</p>
+<p>GPU组件版本：<br>CUDA:10.0<br>CUDDN:7.6.5</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
                 
-
-<ul class="category-tree-list"><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/1-%E7%A7%91%E7%A0%94/">1.科研</a><span class="category-tree-list-count">11</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/2-%E6%AF%94%E8%B5%9B/">2.比赛</a><span class="category-tree-list-count">7</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/3-%E8%AF%BE%E7%A8%8B/">3.课程</a><span class="category-tree-list-count">66</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/4-%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/">4.安装调试记录</a><span class="category-tree-list-count">15</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/5-%E6%9D%82%E8%B0%88/">5.杂谈</a><span class="category-tree-list-count">5</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/%E6%96%87%E7%AB%A0/">文章</a><span class="category-tree-list-count">18</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/%E6%A6%82%E5%BF%B5/">概念</a><span class="category-tree-list-count">47</span></li></ul>
-
-
-              </div>
-            </div>
+                  <a class="hover-with-bg" href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -211,6 +310,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -251,7 +355,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "分类&nbsp;",
+        "4.安装调试记录/TF和pyTorch安装&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,
