@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>0.文章/Flink_Calcite ~ 刘秉乾的技术博客 :)</title>
+  <title>0.概念/NLP_注意力机制Attenion概览 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    423 字
+                    2.2k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      7 分钟
                   </span>&nbsp;
                 
 
@@ -167,88 +167,42 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="Apache-Calcite"><a href="#Apache-Calcite" class="headerlink" title="Apache Calcite"></a>Apache Calcite</h2><p>calcite是数据库的解析器+优化器。</p>
-<p>数据库的三大组件：</p>
-<ul>
-<li><p>解析器</p>
-</li>
-<li><p>执行引擎</p>
-</li>
-<li><p>优化器—–&gt;数据库把关系表达式转换为执行计划的组件,决定数据库性能</p>
-<ul>
-<li><p>基于规则的优化器</p>
-<ul>
-<li>根据规则优化关系表达式,产生最终执行计划</li>
-<li>只认规则,对数据不敏感,易局部优全局差</li>
+            <h1 id="Attention注意力机制"><a href="#Attention注意力机制" class="headerlink" title="Attention注意力机制"></a>Attention注意力机制</h1><h4 id="什么是attention？"><a href="#什么是attention？" class="headerlink" title="什么是attention？"></a>什么是attention？</h4><p>根据数据对当前任务的重要性维持的权重数组。</p>
+<p>CV举例，如下图所示，要预测的对象是黄框 - 狗子的左耳朵，那么对人类来说，预测重要的信息就是红框中的狗子的右耳朵和狗眼睛还有狗鼻子，这些东西可以判断出这是一只狗子，通过右耳朵和眼睛可以对左耳朵进行定位。<br>attention机制模仿人类的认知框架，着重注意红框中的有用信息，忽略例如背景等不重要的信息。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1053_55_520.png" alt=""></p>
+<p>NLP举例，如下图，对词和词之间的关系，分配不同的注意力等级。green修饰apple，eat和apple只见也构成谓宾关系，于是他们都被分类了强注意力，而eat和green没有只见关系，于是只被分配了弱注意力(数组中的权重值低)。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1040_45_963.png" alt=""></p>
+<p>进一步讲，注意力机制其实就是表示重要性的<strong>权重向量</strong>，比如上图识别狗子特征，发现嘴巴和鼻子这一块特别重要，于是就提高了权重值全部设置为1，可以全部采集，而其他不重要的地方比如背景之类就设置为0或者很小的数字，这样就降低了采集的强度。<br>为了预测图像中的元素或者句子中的单词，我们使用注意力权重来估计其他元素与其相关的强度。并将注意力权重加权的值的总和作为最终预测的目标的一个特征。</p>
+<h4 id="attention计算步骤："><a href="#attention计算步骤：" class="headerlink" title="attention计算步骤："></a>attention计算步骤：</h4><ul>
+<li>计算其他元素与待预测元素的相关性权重（狗鼻子和狗耳朵，背景和狗耳朵之间的权重），这一步拿到的是一批浮点数。</li>
+<li>根据相关性权重对其他元素进行加权求和。也就是狗鼻子乘以0.9,背景乘以0.1，然后做加权求和。 </li>
 </ul>
-</li>
-<li><p>基于代价的优化器</p>
-<ul>
-<li><p>根据规则优化关系表达式,产生多个执行计划,计算各计划cost,择优而动</p>
-</li>
-<li><p>灵活智能,多被采用</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Calcite优化器是:</p>
-<ul>
-<li>基于代价的优化器<ul>
-<li>组件有：<ul>
-<li>JDBC Client</li>
-<li>JDBC Server</li>
-<li>SQL Parser and validator</li>
-<li>Operator Expression </li>
-<li>Query Optimizer<ul>
-<li>两个插拔组件<ul>
-<li>Metadata provider</li>
-<li>Pluginable Rules</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>Calcite理解</p>
-<p>是编程框架，因为有可插拔的优化rules，有对接底层数据源的Adaptor模式</p>
-<p>是工具库，因为flink把它嵌入自身的sql处理流程中</p>
-</li>
-</ul>
-<ul>
-<li>优化器Optimizer的三个元件<ul>
-<li>planner rule                    优化expression树的规则</li>
-<li>metadata providers     提供元数据</li>
-<li>planner engines                <ul>
-<li>cost-based planner engines     尽量找到最低cost</li>
-<li>exhaustive planner                      遍历所有rules,直到plan不变</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Calcite在flink的架构</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1155_04_601.png" alt=""></p>
-<p>Calcite的优化器optimizer中从logical plan到DataSet程序的详细转换</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1155_18_695.png" alt=""></p>
-<p>Sql转换为物理执行方案的过程是：</p>
-<ul>
-<li>Sql Parser:将sql解析成语法树(AST),本例用SqlNode表示AST</li>
-<li>Sql Validator: 结合catalog验证sql语法</li>
-<li>生成logical plan,将sqlnode表示的AST转换成LogicalPlan,用relNode表示</li>
-<li>生成optimized logicalPlan<ul>
-<li>calcite rules优化</li>
-<li>flink定制rules优化</li>
-</ul>
-</li>
-<li>生成Flink物理执行计划:基于flink本身的rules将optimized logicalPlan转换为Flink物理执行计划</li>
-<li>生成FlinkExecutionPlan:调用translateToPlan方法,转换和利用CodeGen元编程成Flink的各种算子</li>
-</ul>
+<h4 id="seq2seq问题"><a href="#seq2seq问题" class="headerlink" title="seq2seq问题"></a>seq2seq问题</h4><p>就是对于一个输入序列，我们需要将其转化为一个新的输出序列，其中输入输出序列可以是任何长度。典型的seq2seq问题包括了机器翻译，问答系统，语音识别等问题。<br>经典的seq2seq模型：Encoder-Decoder框架，这个框架的好处就是并没有把所有的输入都一视同仁的处理，而是按照词语和词语之间的关系分配不同的注意力。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1040_59_649.png" alt=""></p>
+<p> Encoder，decoder，上下文向量之间的关系， 注意力机制的好处：<br> 如下图，是一个机器翻译的任务场景，英语输入，汉语输出。she和她相关，吃和eat相关，苹果和apple相关，理想的情况是刚才罗列的三个词组对分别都用定制的上下文向量，而没有注意力机制的时候这一段话中每一个相关的词语对都公用一套上下文向量，效果可想而后。引入注意力机制后就可以定制每一个中文词语和分别每一个英语词组的注意力高低值。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_30_521.png" alt=""></p>
+<p>如下是seq2seq的另一个框架（Bahdanau 2015），输入source，输出target，在souce和target之间是Attention层，source和target与attention层通信的介质是Encoder和decoder。Encoder是一个双向RNN，decoder是一个动态的上下文向量+带状态的RNN。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_15_437.png" alt=""><br>之前没有注意力机制的时候，模型和上图也类似，无外乎是拿出Encoder里边的双向RNN的正向最后一个向量和反向第一个向量拼接，然后做一个maxpooling。</p>
+<p>有了注意力机制后，如下图，2015模型中的注意力层：每一个a(t,n)都是一个输出值对应全部输入值的权重组。比如她和she的atn值是0.8，她和is的atn值就是0.03。而且这个注意力层的参数的初始化和确定都是通过简单的前馈神经网络。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_42_379.png" alt=""></p>
+<p>另一个seq2seq中应用注意力机制的图片实例：在cs224n上有提到过，其实就是源头语言和目标语言之间的每一个单词互相建立二维数组，然后给出他们之间的相关性。如图，1992和1992强相关，和其他任何单词都不相关，was signed这个过去时态的sign也和法语中的相应过去时态的sign强相关，和其他词不相关。</p>
+<h4 id="注意力机制的来源（改进机翻）"><a href="#注意力机制的来源（改进机翻）" class="headerlink" title="注意力机制的来源（改进机翻）"></a>注意力机制的来源（改进机翻）</h4><p>如果我们使用一个固定维数的向量Y来表示输入，也就是编码器的最后一个输入状态，而整个解码过程我们都依赖这个Y在，这样做的话翻译的效果仅在短句上表现的好，长句子表现较差。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1145_18_548.png" alt=""></p>
+<p>所以人们想到了一种注意力机制的解决方案，这种方案最早在计算机视觉方向被提出：</p>
+<p>与其使用编码器的最后一个隐状态Y生成目标语句，不如直接使用编码过程中所有的隐层编码向量，也就是所有源对应的隐层状态来进行翻译工作。这样以来这些源状态成为了类似于随机存储器的东西，后边的神经网络可以根据翻译的需要访问他们。如下图所示，这样以来我们除了有了LSTM的增强记忆，同时还有了按需访问的记忆长度长的多的架构。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1150_06_551.png" alt=""></p>
+<p>如下是注意力模型示意图，注意力机制就是手动维持了目标语言和源头语言中的每一个单词的两两相关关系。相关性强的在完成目标任务时会被分配更多资源。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1042_09_370.png" alt=""></p>
+<p>下面要预测的单词应该去访问之前状态层（蓝色）的哪个内存单元？</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1201_08_059.png" alt=""></p>
+<p>现行做法是使用上一层的状态来作为注意力机制的判别标准。具体做法是使用结合上一层的状态和当前隐层的元素来生成一个分数(后边会详细解释),把得到的分数丢给softmax函数，返回一个概率分布权重,根据这个概率分布来决定注意力的分配。softmax函数示意图如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1209_30_771.png" alt=""></p>
+<p>在此之后，我们将编码器所有的隐层状态根据注意力机制给出的权重将其组合起来，具体来说，拿到编码器的每一个隐层的状态（蓝色块），和注意力机制给出的权重，然后求它的加权和，这个加权和就上下文向量。这样我们子在预测下一个词的时候就可以不是简单地使用最后一个隐层状态作为预测的标准，而是用到了编码器的全部隐层状态信息。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_09_050.png" alt=""></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_22_190.png" alt=""></p>
+<p>具体如何得到这个分数（被喂给softmax的那个分数）？</p>
+<p>如下图所示，使用单层神经网络，就像LSTM内部那些普通神经网络一样，我们这里使用了两个隐层状态的拼接，做一次矩阵乘法后再通过一次tan函数变换。其中第二个双线性注意力函数相当成功，在两个点乘之间插入了一个矩阵W，这种矩阵实际上学习到了如何将不同权重分配到点乘的不同部分。这是实现注意力机制的想法之一，这样可以使ht和hs之间产生某种交互。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1221_22_000.png" alt=""></p>
+<p>对于简单的注意力模型，有一个注意力函数覆盖了整个源编码，并且将此函数的输出作为权重，这是一个简单的函数容易学习，也是一个连续可微的模型，但是如果序列过长，其计算的复杂度就令人头疼，因为如果你从反向传播算法的角度来考虑，你需要每时每刻将误差传递到所有位置。因此人们开始寻求局部注意力模型，也就是每次只将注意力放到一部分状态的模型，这更像是从记忆里检索出某些事物的概念。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1226_17_470.png" alt=""></p>
+<p> 如下红线演示了不带注意力的模型，在短句子上表现不错，长句子down很快。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1230_53_670.png" alt=""></p>
+<p><strong>注意力机制在计算机视觉中的idea</strong></p>
+<p>如下图演示，注意力在不同的地方，得到的输出不同，比如鸟儿，数次，背景等等。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1234_55_097.png" alt=""></p>
 
             <hr>
           </div>
@@ -259,7 +213,7 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/%E6%96%87%E7%AB%A0">文章</a>
+                  <a class="hover-with-bg" href="/categories/%E6%A6%82%E5%BF%B5">概念</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -268,9 +222,7 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/flink">flink</a>
-                
-                  <a class="hover-with-bg" href="/tags/calcite">calcite</a>
+                  <a class="hover-with-bg" href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6">注意力机制</a>
                 
               </span>
             
@@ -420,7 +372,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "0.文章/Flink_Calcite&nbsp;",
+        "0.概念/NLP_注意力机制Attenion概览&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

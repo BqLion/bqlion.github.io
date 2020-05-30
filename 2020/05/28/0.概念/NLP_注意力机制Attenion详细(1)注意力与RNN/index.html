@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>0.概念/NLP_注意力机制Attenion ~ 刘秉乾的技术博客 :)</title>
+  <title>0.概念/NLP_注意力机制Attenion详细(1)注意力与RNN ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 二月 24日 2020, 12:04 中午
+                  星期四, 五月 28日 2020, 3:03 下午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    2.2k 字
+                    713 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      7 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -167,42 +167,42 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Attention注意力机制"><a href="#Attention注意力机制" class="headerlink" title="Attention注意力机制"></a>Attention注意力机制</h1><h4 id="什么是attention？"><a href="#什么是attention？" class="headerlink" title="什么是attention？"></a>什么是attention？</h4><p>根据数据对当前任务的重要性维持的权重数组。</p>
-<p>CV举例，如下图所示，要预测的对象是黄框 - 狗子的左耳朵，那么对人类来说，预测重要的信息就是红框中的狗子的右耳朵和狗眼睛还有狗鼻子，这些东西可以判断出这是一只狗子，通过右耳朵和眼睛可以对左耳朵进行定位。<br>attention机制模仿人类的认知框架，着重注意红框中的有用信息，忽略例如背景等不重要的信息。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1053_55_520.png" alt=""></p>
-<p>NLP举例，如下图，对词和词之间的关系，分配不同的注意力等级。green修饰apple，eat和apple只见也构成谓宾关系，于是他们都被分类了强注意力，而eat和green没有只见关系，于是只被分配了弱注意力(数组中的权重值低)。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1040_45_963.png" alt=""></p>
-<p>进一步讲，注意力机制其实就是表示重要性的<strong>权重向量</strong>，比如上图识别狗子特征，发现嘴巴和鼻子这一块特别重要，于是就提高了权重值全部设置为1，可以全部采集，而其他不重要的地方比如背景之类就设置为0或者很小的数字，这样就降低了采集的强度。<br>为了预测图像中的元素或者句子中的单词，我们使用注意力权重来估计其他元素与其相关的强度。并将注意力权重加权的值的总和作为最终预测的目标的一个特征。</p>
-<h4 id="attention计算步骤："><a href="#attention计算步骤：" class="headerlink" title="attention计算步骤："></a>attention计算步骤：</h4><ul>
-<li>计算其他元素与待预测元素的相关性权重（狗鼻子和狗耳朵，背景和狗耳朵之间的权重），这一步拿到的是一批浮点数。</li>
-<li>根据相关性权重对其他元素进行加权求和。也就是狗鼻子乘以0.9,背景乘以0.1，然后做加权求和。 </li>
-</ul>
-<h4 id="seq2seq问题"><a href="#seq2seq问题" class="headerlink" title="seq2seq问题"></a>seq2seq问题</h4><p>就是对于一个输入序列，我们需要将其转化为一个新的输出序列，其中输入输出序列可以是任何长度。典型的seq2seq问题包括了机器翻译，问答系统，语音识别等问题。<br>经典的seq2seq模型：Encoder-Decoder框架，这个框架的好处就是并没有把所有的输入都一视同仁的处理，而是按照词语和词语之间的关系分配不同的注意力。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1040_59_649.png" alt=""></p>
-<p> Encoder，decoder，上下文向量之间的关系， 注意力机制的好处：<br> 如下图，是一个机器翻译的任务场景，英语输入，汉语输出。she和她相关，吃和eat相关，苹果和apple相关，理想的情况是刚才罗列的三个词组对分别都用定制的上下文向量，而没有注意力机制的时候这一段话中每一个相关的词语对都公用一套上下文向量，效果可想而后。引入注意力机制后就可以定制每一个中文词语和分别每一个英语词组的注意力高低值。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_30_521.png" alt=""></p>
-<p>如下是seq2seq的另一个框架（Bahdanau 2015），输入source，输出target，在souce和target之间是Attention层，source和target与attention层通信的介质是Encoder和decoder。Encoder是一个双向RNN，decoder是一个动态的上下文向量+带状态的RNN。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_15_437.png" alt=""><br>之前没有注意力机制的时候，模型和上图也类似，无外乎是拿出Encoder里边的双向RNN的正向最后一个向量和反向第一个向量拼接，然后做一个maxpooling。</p>
-<p>有了注意力机制后，如下图，2015模型中的注意力层：每一个a(t,n)都是一个输出值对应全部输入值的权重组。比如她和she的atn值是0.8，她和is的atn值就是0.03。而且这个注意力层的参数的初始化和确定都是通过简单的前馈神经网络。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_42_379.png" alt=""></p>
-<p>另一个seq2seq中应用注意力机制的图片实例：在cs224n上有提到过，其实就是源头语言和目标语言之间的每一个单词互相建立二维数组，然后给出他们之间的相关性。如图，1992和1992强相关，和其他任何单词都不相关，was signed这个过去时态的sign也和法语中的相应过去时态的sign强相关，和其他词不相关。</p>
-<h4 id="注意力机制的来源（改进机翻）"><a href="#注意力机制的来源（改进机翻）" class="headerlink" title="注意力机制的来源（改进机翻）"></a>注意力机制的来源（改进机翻）</h4><p>如果我们使用一个固定维数的向量Y来表示输入，也就是编码器的最后一个输入状态，而整个解码过程我们都依赖这个Y在，这样做的话翻译的效果仅在短句上表现的好，长句子表现较差。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1145_18_548.png" alt=""></p>
-<p>所以人们想到了一种注意力机制的解决方案，这种方案最早在计算机视觉方向被提出：</p>
-<p>与其使用编码器的最后一个隐状态Y生成目标语句，不如直接使用编码过程中所有的隐层编码向量，也就是所有源对应的隐层状态来进行翻译工作。这样以来这些源状态成为了类似于随机存储器的东西，后边的神经网络可以根据翻译的需要访问他们。如下图所示，这样以来我们除了有了LSTM的增强记忆，同时还有了按需访问的记忆长度长的多的架构。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1150_06_551.png" alt=""></p>
-<p>如下是注意力模型示意图，注意力机制就是手动维持了目标语言和源头语言中的每一个单词的两两相关关系。相关性强的在完成目标任务时会被分配更多资源。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1042_09_370.png" alt=""></p>
-<p>下面要预测的单词应该去访问之前状态层（蓝色）的哪个内存单元？</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1201_08_059.png" alt=""></p>
-<p>现行做法是使用上一层的状态来作为注意力机制的判别标准。具体做法是使用结合上一层的状态和当前隐层的元素来生成一个分数(后边会详细解释),把得到的分数丢给softmax函数，返回一个概率分布权重,根据这个概率分布来决定注意力的分配。softmax函数示意图如下</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1209_30_771.png" alt=""></p>
-<p>在此之后，我们将编码器所有的隐层状态根据注意力机制给出的权重将其组合起来，具体来说，拿到编码器的每一个隐层的状态（蓝色块），和注意力机制给出的权重，然后求它的加权和，这个加权和就上下文向量。这样我们子在预测下一个词的时候就可以不是简单地使用最后一个隐层状态作为预测的标准，而是用到了编码器的全部隐层状态信息。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_09_050.png" alt=""></p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_22_190.png" alt=""></p>
-<p>具体如何得到这个分数（被喂给softmax的那个分数）？</p>
-<p>如下图所示，使用单层神经网络，就像LSTM内部那些普通神经网络一样，我们这里使用了两个隐层状态的拼接，做一次矩阵乘法后再通过一次tan函数变换。其中第二个双线性注意力函数相当成功，在两个点乘之间插入了一个矩阵W，这种矩阵实际上学习到了如何将不同权重分配到点乘的不同部分。这是实现注意力机制的想法之一，这样可以使ht和hs之间产生某种交互。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1221_22_000.png" alt=""></p>
-<p>对于简单的注意力模型，有一个注意力函数覆盖了整个源编码，并且将此函数的输出作为权重，这是一个简单的函数容易学习，也是一个连续可微的模型，但是如果序列过长，其计算的复杂度就令人头疼，因为如果你从反向传播算法的角度来考虑，你需要每时每刻将误差传递到所有位置。因此人们开始寻求局部注意力模型，也就是每次只将注意力放到一部分状态的模型，这更像是从记忆里检索出某些事物的概念。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1226_17_470.png" alt=""></p>
-<p> 如下红线演示了不带注意力的模型，在短句子上表现不错，长句子down很快。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1230_53_670.png" alt=""></p>
-<p><strong>注意力机制在计算机视觉中的idea</strong></p>
-<p>如下图演示，注意力在不同的地方，得到的输出不同，比如鸟儿，数次，背景等等。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1234_55_097.png" alt=""></p>
+            <h1 id="Attention注意力机制详解"><a href="#Attention注意力机制详解" class="headerlink" title="Attention注意力机制详解"></a>Attention注意力机制详解</h1><p>Attention详解分三篇文章：</p>
+<ol>
+<li>Seq2seq问题中RNN与Attention的结合</li>
+<li>抛弃RNN的self-Attention模型和Transformer架构</li>
+<li>Attention和Transformer在NLP和CV问题上的应用</li>
+</ol>
+<p>主要参考资料是Yoshua Bengio组的论文、谷歌研究组的论文、Tensor2Tensor的文档、斯坦福NLP讲义</p>
+<h2 id="第一部分-：Seq2seq问题中RNN与Attention的结合"><a href="#第一部分-：Seq2seq问题中RNN与Attention的结合" class="headerlink" title="第一部分 ：Seq2seq问题中RNN与Attention的结合"></a>第一部分 ：Seq2seq问题中RNN与Attention的结合</h2><h4 id="RNN结构的局限"><a href="#RNN结构的局限" class="headerlink" title="RNN结构的局限"></a><strong>RNN结构的局限</strong></h4><p>在机翻任务场景中，之前的NMT模型（neural machine translation）中，通常的配置是encoder - decoder结构。即encoder读取输入的句子将其转换成定长向量，然后decoder再将这个向量翻译成相应的目标语言的文字。</p>
+<p>通常encoder和decoder都采用RNN结构（例如 gated RNN : LSTM &amp;&amp; GRU)。如下图所示，我们采用encoder RNN将输入语句信息总结到最后一个隐向量中，并将其作为decoder的初始向量。然后decoder会将其解码为目标语言中的文字。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1513_32_291.png" alt=""></p>
+<p>可是这种RNN的结构的问题是，<strong>长程梯度消失</strong>。对于较长的句子，很难寄希望于将输入的序列转换为定长的向量而保存所有的信息。随着翻译句子的变长，这种结构的有效性会显著下降。</p>
+<h4 id="Attenion机制的引入"><a href="#Attenion机制的引入" class="headerlink" title="Attenion机制的引入"></a><strong>Attenion机制的引入</strong></h4><p>为了解决这个由长序列到定长向量转换而造成的信息损失的瓶颈，Attenion注意力机制被引入。Attention机制跟人类翻译文章时候的思路有些类似。即注意力关注正在翻译部分对应的上下文，并结合之前的已经翻译的部分作出相应的翻译。</p>
+<p>如下图，在翻译Knowledege的时候，只需要将注意力放在源句”知识“的部分，翻译power就将注意力放在”力量“上。</p>
+<p>这样每个decoder不分先后，在预测目标翻译的时候都可以看到encoder的所有信息，而不是局限于上图中的那一个定长向量h。这样定长向量h就不会在在漫长的encoder-decoder队列中滑动的时候随着时时更新而丢失信息。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1530_49_121.png" alt=""></p>
+<p>上图是直观理解，如下是详细数学计算过程：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1548_47_919.png" alt=""></p>
+<ol>
+<li><p>通过RNN得到encoder中的源语言的各个单词的<strong>隐向量</strong></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1549_57_089.png" alt=""></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>计算【下一个decoder中的单词与源语言中的<strong>每一个</strong>单词】的<strong>相关性向量</strong></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1551_34_733.png" alt=""></p>
+</li>
+</ol>
+<ol start="3">
+<li>对刚才得到的<strong>相关性向量</strong>进行softmax操作，得到<strong>注意力分布向量</strong>。如下<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1555_02_517.png" alt=""></li>
+</ol>
+<ol start="4">
+<li>对刚才得到的<strong>注意力分布向量</strong>（加和为1）和源语言各个隐向量加权求和，得到<strong>上下文向量</strong><br><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1558_31_353.png" alt=""></li>
+</ol>
+<ol start="5">
+<li>根据刚得到的<strong>上下文向量ct</strong>，以及上一个decoder的输出y(t-1)，上一个decoder的隐状态s(t-1)，可以计算下一个decoder的隐状态s(t)和隐状态的输出y(t)</li>
+</ol>
 
             <hr>
           </div>
@@ -372,7 +372,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "0.概念/NLP_注意力机制Attenion&nbsp;",
+        "0.概念/NLP_注意力机制Attenion详细(1)注意力与RNN&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

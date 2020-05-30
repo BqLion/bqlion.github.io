@@ -4,6 +4,81 @@
   
   
   <entry>
+    <title>0.概念/NLP_注意力机制Attenion详细(3)应用与改进</title>
+    <link href="undefined2020/05/30/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E8%AF%A6%E7%BB%86(3)%E5%BA%94%E7%94%A8%E4%B8%8E%E6%94%B9%E8%BF%9B/"/>
+    <url>2020/05/30/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E8%AF%A6%E7%BB%86(3)%E5%BA%94%E7%94%A8%E4%B8%8E%E6%94%B9%E8%BF%9B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Attention注意力机制详解（应用）"><a href="#Attention注意力机制详解（应用）" class="headerlink" title="Attention注意力机制详解（应用）"></a>Attention注意力机制详解（应用）</h1><p>Attention详解分三篇文章：</p><ol><li>Seq2seq问题中RNN与Attention的结合</li><li>抛弃RNN的self-Attention模型和Transformer架构</li><li>Attention和Transformer在NLP和CV问题上的应用</li></ol><p>主要参考资料是Yoshua Bengio组的论文、谷歌研究组的论文、Tensor2Tensor的文档、斯坦福NLP讲义</p><h2 id="NLP"><a href="#NLP" class="headerlink" title="NLP:"></a>NLP:</h2><h4 id="Universal-Transformer："><a href="#Universal-Transformer：" class="headerlink" title="Universal Transformer："></a>Universal Transformer：</h4><p>此模型结合了transformer结构和RNN中循环归纳的特点，使得transformer结构能够适应更多的NLU问题。改进的结构如下图，主要是引入了Transition Function，我们可以对attention进行多次循环，这一机制被应用到QA，主语推测谓语，缺失单词填充，数字字符串处理等问题中。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1448_20_779.png" alt=""></p><h4 id="BERT"><a href="#BERT" class="headerlink" title="BERT:"></a>BERT:</h4><p>双向Transformer结构，下图是bert与单向Transformer结构的OpenAI GPT、双向独立LSTM的ElMo对比。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1451_02_756.png" alt=""></p><h2 id="CV-从略"><a href="#CV-从略" class="headerlink" title="CV : 从略"></a>CV : 从略</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>概念</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>注意力机制</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0.概念/NLP_注意力机制Attenion详细(2)自注意与Transformer</title>
+    <link href="undefined2020/05/30/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E8%AF%A6%E7%BB%86(2)%E8%87%AA%E6%B3%A8%E6%84%8F%E4%B8%8ETransformer/"/>
+    <url>2020/05/30/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E8%AF%A6%E7%BB%86(2)%E8%87%AA%E6%B3%A8%E6%84%8F%E4%B8%8ETransformer/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Attention注意力机制详解"><a href="#Attention注意力机制详解" class="headerlink" title="Attention注意力机制详解"></a>Attention注意力机制详解</h1><p>Attention详解分三篇文章：</p><ol><li>Seq2seq问题中RNN与Attention的结合</li><li>抛弃RNN的self-Attention模型和Transformer架构</li><li>Attention和Transformer在NLP和CV问题上的应用</li></ol><p>主要参考资料是Yoshua Bengio组的论文、谷歌研究组的论文、Tensor2Tensor的文档、斯坦福NLP讲义</p><h2 id="第二部分：自注意力和transformer"><a href="#第二部分：自注意力和transformer" class="headerlink" title="第二部分：自注意力和transformer"></a>第二部分：自注意力和transformer</h2><p>上文讲解了早期注意力机制与RNN结合，在机器翻译中的效果。RNN由于其顺序结构训练速度常常受到限制。既然注意力机制模型本身可以看到全局信息，那么一个自然的思路是我们能不能去掉RNN，仅仅依赖Attention注意力模型呢？这样训练既可以并行化，同时也拥有全局信息。</p><p>本文就讲解Transformer模型，which仅仅依赖于Attention架构。</p><p>代码部分的讲解是Tensor2Tensor的源代码</p><h4 id="整体模型架构和工作原理"><a href="#整体模型架构和工作原理" class="headerlink" title="整体模型架构和工作原理"></a>整体模型架构和工作原理</h4><p>如下例句是“I arrived at the bank after crossing the river”.这里的bank指的是河岸还是银行呢，这里就需要联系上下文，因为看到river，所以很大概率是河岸的意思。在RNN中就需要一步步按顺序处理从bank到river之间的所有词语，当他们距离较远的时候RNN的效果很差，顺序处理的效率也很低。</p><p>自注意力机制则利用了注意力机制，计算每个单词与每个单词之间的关系，bank和river两个词就有很高的attention分数，利用这个attention分数就得到一个加权表示矩阵。将这个矩阵放进几层前馈神经网络中，就会得到新的表示。这一表示很好的考虑到了上下文信息。</p><p>如下图所示，encoder读入输入数据，利用层层叠加的自注意力机制对每一个单词得到了新的考虑了上下文信息的表征。decoder也利用类似的自注意力机制，他不仅看之前的输出，还看encoder的输出。</p><p><img src="https://pic4.zhimg.com/v2-b1b7cd5637f7c844510fd460e0e2c807_b.jpg" alt=""></p><p>Transformer整体架构图：</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200529_1352_31_533.png" alt=""></p><p>其中的多头注意力就是多个self-attention的结合，每个head学习到了在不同表示空间中的特征。两个head学习到的Attention的侧重点略有不同，这样给了模型更大的容量，如下图所示</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200529_1354_52_288.png" alt=""></p><h4 id="模型详解"><a href="#模型详解" class="headerlink" title="模型详解"></a>模型详解</h4><p>self-attention的结构概览如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200529_1356_13_480.png" alt=""></p><p>对于self-attention来说，Query，Key，Value三个矩阵，均来自同一个输入。当前词作为搜索的query，去和句子中的所有词的key去匹配，看看相关度有多高。</p><p>匹配的具体操作就是Q与K点乘，然后为了防止结果过大，将结果除以根号下（dk），dk是query和key向量的维度。然后再用softmax操作将其结果归一化为概率分布。然后再乘以矩阵V就得到权重求和的表示。该操作的数学表示：</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1144_21_571.png" alt=""></p><p><strong>矩阵计算过程的详细图示</strong></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1156_31_300.png" alt=""></p><p>可见，thinking这个单词的q矩阵依次和本句中的每一个k矩阵相乘得到2个scores，然后经过divide和softmax，最终得到两个V矩阵，V1和V2。最终输出两个Z矩阵。</p><p>Q、K、V三个矩阵之间的关系表示如下：</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1216_41_389.png" alt=""></p><p>加上多头注意力的详细表示：</p><p>如下，QKV矩阵的表意不变，只是根据不同的多头注意力表示，相同的词汇embedding有不同的QKV矩阵，于是得到不同的Z矩阵，最终将几个Z矩阵整合在一起，输出一个Z矩阵。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1218_58_732.png" alt=""></p><p><strong>如上介绍的就是基本的多头注意力单元。对于encoder来说，就是这些基本单元的叠加。</strong>其中key，query，value均是来自前一层encoder的输出。也就是每一个encoder的每一个位置都可以注意到之前一层encoder的所有位置</p><h4 id="decoder"><a href="#decoder" class="headerlink" title="decoder"></a><strong>decoder</strong></h4><p>decoder有两个和encoder不同的地方。</p><ul><li><p>第一级的Masked Multi-head</p><p>第一级的decoder的key，query，value均来自前一层encoder的输出但是加上了masked操作，也就是我们只能注意到已经翻译出来的词语，因为正处于翻译过程中所以不知道下一个输出词语是什么，下一个输出词语是我们后来才会推测到的。</p></li><li><p>第二级的Multi-head Attention不仅接受前一级的输出，还接受encoder的输出。</p><p>第二级的multi-head attention layer，它的query来自于之前一级的decoder层的输出，但是key和value来自于encoder这使得decoder的每一个位置都能注意到序列的每一个位置。</p></li></ul><p>总结：</p><ul><li>k和v的来源是相同的</li><li>q在encoder以及第一级deocder中与k，v来源相同</li><li>在encoder-decoder attention layer中k，v来源不同</li></ul><p><strong>Position encoding模块</strong></p><p>如下，因为该模型中没有recurrence或者convolution操作，所以没有明确的关于单词在源句子中的相对或者绝对信息。为了更好的让模型学习位置信息，添加了position encoding模块，将其叠加在word embedding上。attention is all you need的论文中，采用了三角函数encoding的方式。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1238_01_831.png" alt=""></p><p><strong>Add &amp;  Norm模块</strong></p><p>其中add代表Residual Connection残余连接，是为了解决多层神经网络训练困难的问题。通过将前一层的信息无差的传递到下一层，这样可以有效的关注差异部分。这种方法在图像处理结构比如ResNet等中常常用到。</p><p>norm代表Layer Normalization，是对层的激活值的归一化。可以减速训练使得模型更快的收敛。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1243_08_020.png" alt=""></p><h4 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h4><p>本文主要的代码详解部分是<strong>common_attention library</strong>和调用此libraray的<strong>Transformer模型</strong>。</p><p>首先来看common_attention libraray 中的multihead-attention method，这里为了简化省去了很多argument和logic，集中注意主要logic。并且以单一head为例加入了自己的comment。</p><pre><code class="python">def multihead_attention(query_antecedent,                        memory_antecedent,                        ...):&quot;&quot;&quot;可以输入、输出的带多头缩放点积结果的注意力transformer模型参数：    query_antecedent: a tensor with shape[batch,length_q,channels]    memory_antecedent: a tensor with shape[batch,length_m,chaneels]or None    ...返回：    The result of the attention transformation.The output shape is                 [batch_size,length_q,hidden_dim]。...&quot;&quot;&quot;# 计算 Q,K,V矩阵q,k,v = compute_qkv(query_antecedent,memory_antecedent,...)# 计算dot_product的attentionx = dot_product_attention(q,k,v...)x = commmon_layers.dense(x,...)return x</code></pre><p>下面将讲解上文代码中提到的compute_qkv和dot_product_attention函数,其中compute_qkv函数定义如下</p><pre><code class="python">def compute_qkv(query_antecedant,                memory_antecedant,                ...):&quot;&quot;&quot;compute query,key and value.参数是查询队列和内存的先行项，返回的是qkv矩阵Args:  query_antecedent: a Tensor with shape [batch, length_q, channels]  memory_antecedent: a Tensor with shape [batch, length_m, channels]  ...Returns:  q, k, v : [batch, length, depth] tensors&quot;&quot;&quot;# 如果这里的memory_antecedant是None，他就会被设置成和query_antecedent一样，encoder的自注意力self-# attention调用memory_antecedent传进去的就是None。if memory_antecedent is None: memory_antecedent  = query_antecedentq = compute_attention_component(    query_antecedent,    ...)# 注意k，v均来自于memory_antecedentk = compute_attention_component(    memory_antecedent,    ...)v = compute_attention_component(    memory_antecedent,    ...)return q,k,vdef compute_attention_component(antecedent,                                ...)&quot;&quot;&quot;Compute attention compoenet(query,key or value)Args:    antecedent: a Tensor with shape(batch,length,channels)    name:a string specifying scope name    ...Returns:    C :[bathc,length,depth]tensor&quot;&quot;&quot;return common_layer.dense(antecedent,...)</code></pre><p>其中的点乘dot_product_attention定义为</p><pre><code class="python">def dot_product_attention(q,                          k,                          v,                          ...):&quot;&quot;&quot;Dot - product attentionArgs:    q: Tensor with shape[...,length_q,depth_k].    k: Tensor with shape[...,length_kv,depth_k]    v: Tensor with shape[...,length_kv,depth_v]returns：    Tensor with shape[...,length_q,depth_V]&quot;&quot;&quot;# 计算Q，K的矩阵乘积logits = tf.matmul(q,k,transpose_b = Ture)# softmax归一化weights = tf.nn.softmax(logits,name = &quot;attention_weights&quot;)# 与V相乘得到加权表示的结果Z矩阵return tf.matmul(weight,v)</code></pre><p>这里的步骤和上图这里对应：</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1439_58_330.png" alt=""></p><p><strong>Transformer中的 encoder和 decoder调用 multihead_attention的方法如下：</strong></p><h4 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h4><pre><code class="python">def transformer_encoder(encoder_input,                        hparams,                        ...):  &quot;&quot;&quot;A stack of transformer layers.  Args:    encoder_input: a Tensor    hparams: hyperparameters for model    ...  Returns:    y: a Tensors  &quot;&quot;&quot;  x = encoder_input  with tf.variable_scope(name):    for layer in range(hparams.num_encoder_layers or hparams.num_hidden_layers):      with tf.variable_scope(&quot;layer_%d&quot; % layer):        with tf.variable_scope(&quot;self_attention&quot;):          # layer_preprocess及layer_postprocess包含了一些layer normalization          # 及residual connection, dropout等操作。          y = common_attention.multihead_attention(              common_layers.layer_preprocess(x, hparams),              #这里注意encoder memory_antecedent设置为None              None,              ...)          x = common_layers.layer_postprocess(x, y, hparams)        with tf.variable_scope(&quot;ffn&quot;):          # 前馈神经网络部分。          y = transformer_ffn_layer(              common_layers.layer_preprocess(x, hparams),              hparams,              ...)          x = common_layers.layer_postprocess(x, y, hparams)    return common_layers.layer_preprocess(x, hparams)</code></pre><h4 id="decoder-1"><a href="#decoder-1" class="headerlink" title="decoder"></a>decoder</h4><pre><code class="python">def transformer_decoder(decoder_input,                        encoder_output,                        hparams,                        ...):  &quot;&quot;&quot;A stack of transformer layers.  Args:    decoder_input: a Tensor    encoder_output: a Tensor    hparams: hyperparameters for model    ...  Returns:    y: a Tensors  &quot;&quot;&quot;  x = decoder_input  with tf.variable_scope(name):    for layer in range(hparams.num_decoder_layers or hparams.num_hidden_layers):      layer_name = &quot;layer_%d&quot; % layer      with tf.variable_scope(layer_name):        with tf.variable_scope(&quot;self_attention&quot;):          # decoder一级memory_antecedent设置为None          y = common_attention.multihead_attention(              common_layers.layer_preprocess(x, hparams),              None,              ...)          x = common_layers.layer_postprocess(x, y, hparams)        if encoder_output is not None:          with tf.variable_scope(&quot;encdec_attention&quot;):            # decoder二级memory_antecedent设置为encoder_output            y = common_attention.multihead_attention(                common_layers.layer_preprocess(x, hparams),                encoder_output,                ...)            x = common_layers.layer_postprocess(x, y, hparams)        with tf.variable_scope(&quot;ffn&quot;):          y = transformer_ffn_layer(              common_layers.layer_preprocess(x, hparams),              hparams,              ...)          x = common_layers.layer_postprocess(x, y, hparams)    return common_layers.layer_preprocess(x, hparams)</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>完全不依赖RNN结构的仅仅利用attention机制的transformer由于其并行性和全局信息的有效处理，使得其在机翻任务中有较好的表现，此后在NLP和CV问题中attention和transformer也逐步得到广泛应用。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>概念</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>注意力机制</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0.概念/NLP_注意力机制Attenion详细(1)注意力与RNN</title>
+    <link href="undefined2020/05/28/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E8%AF%A6%E7%BB%86(1)%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%B8%8ERNN/"/>
+    <url>2020/05/28/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E8%AF%A6%E7%BB%86(1)%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%B8%8ERNN/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Attention注意力机制详解"><a href="#Attention注意力机制详解" class="headerlink" title="Attention注意力机制详解"></a>Attention注意力机制详解</h1><p>Attention详解分三篇文章：</p><ol><li>Seq2seq问题中RNN与Attention的结合</li><li>抛弃RNN的self-Attention模型和Transformer架构</li><li>Attention和Transformer在NLP和CV问题上的应用</li></ol><p>主要参考资料是Yoshua Bengio组的论文、谷歌研究组的论文、Tensor2Tensor的文档、斯坦福NLP讲义</p><h2 id="第一部分-：Seq2seq问题中RNN与Attention的结合"><a href="#第一部分-：Seq2seq问题中RNN与Attention的结合" class="headerlink" title="第一部分 ：Seq2seq问题中RNN与Attention的结合"></a>第一部分 ：Seq2seq问题中RNN与Attention的结合</h2><h4 id="RNN结构的局限"><a href="#RNN结构的局限" class="headerlink" title="RNN结构的局限"></a><strong>RNN结构的局限</strong></h4><p>在机翻任务场景中，之前的NMT模型（neural machine translation）中，通常的配置是encoder - decoder结构。即encoder读取输入的句子将其转换成定长向量，然后decoder再将这个向量翻译成相应的目标语言的文字。</p><p>通常encoder和decoder都采用RNN结构（例如 gated RNN : LSTM &amp;&amp; GRU)。如下图所示，我们采用encoder RNN将输入语句信息总结到最后一个隐向量中，并将其作为decoder的初始向量。然后decoder会将其解码为目标语言中的文字。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1513_32_291.png" alt=""></p><p>可是这种RNN的结构的问题是，<strong>长程梯度消失</strong>。对于较长的句子，很难寄希望于将输入的序列转换为定长的向量而保存所有的信息。随着翻译句子的变长，这种结构的有效性会显著下降。</p><h4 id="Attenion机制的引入"><a href="#Attenion机制的引入" class="headerlink" title="Attenion机制的引入"></a><strong>Attenion机制的引入</strong></h4><p>为了解决这个由长序列到定长向量转换而造成的信息损失的瓶颈，Attenion注意力机制被引入。Attention机制跟人类翻译文章时候的思路有些类似。即注意力关注正在翻译部分对应的上下文，并结合之前的已经翻译的部分作出相应的翻译。</p><p>如下图，在翻译Knowledege的时候，只需要将注意力放在源句”知识“的部分，翻译power就将注意力放在”力量“上。</p><p>这样每个decoder不分先后，在预测目标翻译的时候都可以看到encoder的所有信息，而不是局限于上图中的那一个定长向量h。这样定长向量h就不会在在漫长的encoder-decoder队列中滑动的时候随着时时更新而丢失信息。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1530_49_121.png" alt=""></p><p>上图是直观理解，如下是详细数学计算过程：</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1548_47_919.png" alt=""></p><ol><li><p>通过RNN得到encoder中的源语言的各个单词的<strong>隐向量</strong></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1549_57_089.png" alt=""></p></li></ol><ol start="2"><li><p>计算【下一个decoder中的单词与源语言中的<strong>每一个</strong>单词】的<strong>相关性向量</strong></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1551_34_733.png" alt=""></p></li></ol><ol start="3"><li>对刚才得到的<strong>相关性向量</strong>进行softmax操作，得到<strong>注意力分布向量</strong>。如下<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1555_02_517.png" alt=""></li></ol><ol start="4"><li>对刚才得到的<strong>注意力分布向量</strong>（加和为1）和源语言各个隐向量加权求和，得到<strong>上下文向量</strong><br><img src="http://bqlab-pic.test.upcdn.net/pic/20200528_1558_31_353.png" alt=""></li></ol><ol start="5"><li>根据刚得到的<strong>上下文向量ct</strong>，以及上一个decoder的输出y(t-1)，上一个decoder的隐状态s(t-1)，可以计算下一个decoder的隐状态s(t)和隐状态的输出y(t)</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>概念</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>注意力机制</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>3.课程/清华课表</title>
     <link href="undefined2020/05/27/3.%E8%AF%BE%E7%A8%8B/%E6%B8%85%E5%8D%8E%E8%AF%BE%E8%A1%A8/"/>
     <url>2020/05/27/3.%E8%AF%BE%E7%A8%8B/%E6%B8%85%E5%8D%8E%E8%AF%BE%E8%A1%A8/</url>
@@ -1288,11 +1363,11 @@
   
   
   <entry>
-    <title>3.课程/线性代数_特征值&amp;特征向量计算</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&amp;%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&amp;%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/</url>
+    <title>3.课程/线性代数_正交矩阵</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5/</url>
     
-    <content type="html"><![CDATA[<h3 id="特征值特-amp-特征向量"><a href="#特征值特-amp-特征向量" class="headerlink" title="特征值特 &amp; 特征向量"></a>特征值特 &amp; 特征向量</h3><p>省略理论部分，一个例子讲清：<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1504_19_270.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1504_36_652.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="正交矩阵"><a href="#正交矩阵" class="headerlink" title="正交矩阵"></a>正交矩阵</h1><p>如果一个矩阵乘以它自己的转置矩阵等于E（单位阵），则称为正交矩阵。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200517_1505_26_233.png" alt=""></p>]]></content>
     
     
     <categories>
@@ -1313,11 +1388,11 @@
   
   
   <entry>
-    <title>3.课程/线性代数_正交矩阵</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5/</url>
+    <title>3.课程/线性代数_特征值&amp;特征向量计算</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&amp;%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&amp;%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/</url>
     
-    <content type="html"><![CDATA[<h1 id="正交矩阵"><a href="#正交矩阵" class="headerlink" title="正交矩阵"></a>正交矩阵</h1><p>如果一个矩阵乘以它自己的转置矩阵等于E（单位阵），则称为正交矩阵。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200517_1505_26_233.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="特征值特-amp-特征向量"><a href="#特征值特-amp-特征向量" class="headerlink" title="特征值特 &amp; 特征向量"></a>特征值特 &amp; 特征向量</h3><p>省略理论部分，一个例子讲清：<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1504_19_270.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1504_36_652.png" alt=""></p>]]></content>
     
     
     <categories>
@@ -1419,33 +1494,6 @@
   
   
   <entry>
-    <title>5.杂谈/996 - 超时工作的异化问题</title>
-    <link href="undefined2020/02/24/5.%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/"/>
-    <url>2020/02/24/5.%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/</url>
-    
-    <content type="html"><![CDATA[<h1 id="996-超时工作与异化问题"><a href="#996-超时工作与异化问题" class="headerlink" title="996 - 超时工作与异化问题"></a>996 - 超时工作与异化问题</h1><h5 id="1-感性认识"><a href="#1-感性认识" class="headerlink" title="1.感性认识"></a>1.感性认识</h5><p>我国现阶段各行业超时工作现象十分普遍，有的互联网公司晚上十一二点整个大楼还灯火通明，有的公司虽然晚上按时下班，但回家后仍然要求有工作输出，很多岗位还要求7*24小时on call。</p><p>我前些年所在的公司就有制度要求员工每月加班22天以上才算考核达标，而我经常需要加班27天才能完成工作，每晚九点离开公司后经一小时通勤才能到家，洗洗漱漱刚好十一点上床，十二点入睡，第二天早上6点50分起床后经过一小时通勤抵达公司，在公司门口的快餐店里缩着身子与其他同事挤在餐桌上潦草进食后便赶往工位，开始一天的埋头苦干。算上通勤时间，我的工作强度是7107。高强度劳动和了无希望所积累的疲劳深入骨髓，在此期间我感到生命力与灵魂的飞速流逝。</p><p>深夜的华为大楼</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1305_42_222.png" alt=""></p><p>早上五点半排队等公交上班的年轻人</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1306_00_748.png" alt=""></p><h5 id="2-八小时工作制的来由"><a href="#2-八小时工作制的来由" class="headerlink" title="2.八小时工作制的来由"></a>2.八小时工作制的来由</h5><p>八小时工作制国家法律规定的工作日长度为8小时的工作制度。目前世界各国普遍实行八小时工作制。正常一天工作时间为早上九点至下午五点为8小时。</p><p>理论起源</p><p>八小时工作制最早由社会主义者<a href="https://baike.baidu.com/item/%E7%BD%97%E4%BC%AF%E7%89%B9%C2%B7%E6%AC%A7%E6%96%87" target="_blank" rel="noopener">罗伯特·欧文</a>于1817年8月提出。他还发明了一个口号， “8小时劳动， 8小时休闲， 8个小时休息”1833年，在<a href="https://baike.baidu.com/item/%E6%AC%A7%E6%96%87" target="_blank" rel="noopener">欧文</a>的支持下，具有同情心的工厂主约翰·多赫尔蒂等人发动了一场争取八小时工作制的运动。1866年，第一国际<a href="https://baike.baidu.com/item/%E6%97%A5%E5%86%85%E7%93%A6" target="_blank" rel="noopener">日内瓦</a>代表大会提出了“8小时工作，8小时自己支配，8 小时休息”的口号，要求各国制定法律给予确认。</p><p>历史延革</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1313_15_391.png" alt=""></p><p>19世纪80年代的美国工人运动。当时，美国和欧洲的许多国家，逐步由<a href="https://baike.baidu.com/item/%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89" target="_blank" rel="noopener">资本主义</a>发展到帝国主义阶段，为了刺激经济的高速发展，榨取更多的剩余价值，以维护这个高速运转的资本主义机器，资本家不断采取增加劳动时间和劳动强度的办法来残酷地剥削工人。</p><p>在美国，工人们每天要劳动14至16个小时，有的甚至长达18个小时，但工资却很低。马萨诸塞州一个鞋厂的监工说：“让一个身强力壮体格健全的18岁小伙子，在这里的任何一架机器旁边工作，我能够使他在22岁时头发变成灰白。”沉重的阶级压迫激起了无产者巨大的愤怒。他们知道，要争取生存的条件，就只有团结起来，通过罢工运动与资本家作斗争。工人们提出的罢工口号，就是要求实行八小时工作制。</p><p>1877年，美国历史上第一次全国罢工开始了。工人阶级走向街头游行示威，向政府提出改善劳动与生活条件，要求缩短工时，实行八小时工作制。罢工不久，队伍日渐扩大，工会会员人数激增，各地工人也纷纷参加罢工运动。</p><p>在工人运动的强大压力下，美国国会被迫制定了八小时工作制的法律。但是，狠毒的资本家根本不予理睬，这项法律只不过是一纸空文，工人们仍然是生活在水深火热之中，倍受资本家的折磨。忍无可忍的工人们决定将这场争取生存权利的斗争，推向一个新的高潮，准备举行更大规模的罢工运动。</p><p>1884年10月，美国和加拿大的八个国际性和全国性工人团体，在<a href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E8%8A%9D%E5%8A%A0%E5%93%A5" target="_blank" rel="noopener">美国芝加哥</a>举行一个集会，决定于1886年5月1日举行总罢工，迫使资本家实施八小时工作制。这一天终于来到了。5月1日，美国2万多个企业的35万工人停工上街，举行了声势浩大的示威游行，各种肤色，各个工种的工人一齐进行总罢工。仅<a href="https://baike.baidu.com/item/%E8%8A%9D%E5%8A%A0%E5%93%A5" target="_blank" rel="noopener">芝加哥</a>一个城市，就有4．5万名工人涌上街头。这下，美国的主要工业部门处于瘫痪状态，火车变成了僵蛇，商店更是鸦雀无声，所有的仓库也都关门并贴上封条。</p><p>1889年7月14日，各国马克思主义者召集的社会主义者代表大会在法国巴黎隆重开幕。这次大会上，法国代表拉文提议：把1886年5月1日美国工人争取八小时工作制的斗争日，定为国际无产阶级的共同节日。与会代表一致同意，通过了这项具有历史意义的决议。</p><h5 id="3-996的起因"><a href="#3-996的起因" class="headerlink" title="3.996的起因"></a>3.996的起因</h5><p>行业特征与恶性竞争</p><p>互联网本身时效性极强，如果其他所有公司都能很快推出自己的产品，唯独自己的公司不行，那就会很快被市场淘汰。所以各公司都会延长员工的工作时间，以实现产品产出的最大化。当然，在这种严酷的加班制度下，资方并没有好心地将超时工作的时长以假期或补贴的形式返还给员工，也没有扩招人手来降低人均工作强度。资方常常采取的策略是拼命地使用员工，当员工不再年富力强或疾病缠身时就果断抛弃，反正每年都有大把的应届毕业生兴高采烈地加入被剥削大军。</p><h5 id="4-996本质是剥削"><a href="#4-996本质是剥削" class="headerlink" title="4.996本质是剥削"></a>4.996本质是剥削</h5><p>强迫人超时劳动本质是剥削，剥削的坏处是让一个完整的人变得不完整，这个长期超时工作的人会工具化和异化。</p><p>上班的人在出卖自己的劳动力换得薪水，劳动力是要再生产的。再生产的方式是吃东西，充足的睡眠，维持与家人的健康关系，发展自己的业务爱好，让自己保持身心愉悦，这样才能源源不断产生充沛的劳动力。</p><p>本身人工作8小时后剩下的16个小时是用于恢复劳动力的，但是老板拿掉了剩下恢复生产力的时间，平常8-11，周末只放一天假也用来补平常缺的觉了。长期这样以来人的正常劳动力再生产过程就会被破坏掉，这样人的劳动表现就不会好，跟不上高压的工作节奏，这样以来人干个五年十年身体与灵魂都会垮掉。这个人垮掉之后当然会被炒掉，资方只用再换一个年轻力壮的就OK了。</p><h5 id="5-深刻认识剥削"><a href="#5-深刻认识剥削" class="headerlink" title="5.深刻认识剥削"></a>5.深刻认识剥削</h5><p>作者：李劼</p><p>链接：<a href="https://www.zhihu.com/question/320073567/answer/777226626" target="_blank" rel="noopener">https://www.zhihu.com/question/320073567/answer/777226626</a></p><p>来源：知乎</p><p>如果大家认为“剥削”就是自己挣10块钱，资本家抽走7块，只给留3块。那这个话题就没有讨论的必要了。</p><p>因为这掩盖了剥削的残酷本质。</p><p>资本主义的核心并不在“私有制”（其实在原始社会末期就已经有私有财产了，封建时代也是，但都称不上资本主义）。而在于“资本做主才是第一要义”，简称“资本主义”。</p><p>由此导致的局面就是，资本凌驾于人类之上，人类为资本服务。而并非人类拥有资本，资本听命于人。虽然资本主义环境下有财产私有制度，但这极具迷惑性，容易让人误以为资本家是资本的主人（财产所有人）。但实际上，资本家只是傀儡，人形外壳，传声筒，使魔，皮囊，英灵（随便你们叫什么吧），资本本身才是真正的“主人”和“灵魂”。</p><p>到了这一步，资本即将展现它真正的杀伤力――异化。</p><p>上面那一大坨文字看不懂没关系，下面讲点简单的，举个例子。</p><p>比如你是一个老板，搞到（甭管是捡的研发的还是买的）一把超级牛逼的镐头，能让矿工挖矿的产量提高到原先的10倍。假如你面前有两个人，一个是超级矿工，即便不用这把超级镐头，他也能挖10个单位的矿（用镐头将会是100）。另一个是包身工，他只能挖1个单位的矿（用镐头就会变为10）。</p><p>现在，包身工在你面前跪下来了，他儿子得了白血病，他恳求你把超级镐头分配给他，他不介意被剥削，他愿意挖出来的矿你得7，他得3（换钱给儿子治病），实在是不行，你8他2也行。</p><p>超级矿工的辞职报告也递上来了，他的兴趣是做菜（虽然他的天赋是挖矿），他想改行当厨师。</p><p>你把镐头分配给谁？（无视人情，也无视另一人的天赋）</p><p>别想多了，犹豫必将败北。作为称职的资本家，你给超级矿工跪下了。</p><p>你求他拿上超级镐头去挖矿，你许诺跟他五五开分成，如有必要，你还可以只拿100个单位中的40，他拿60，折成股份也行。你甚至允许他每天只挖半天矿，另外半天可以兼职做厨师。至于那个可怜的包身工，谁叫他不努力呢，是吧。又或者，等超级矿工挣到钱，你的企业也成功上市，你再用财税渠道和福利政策“转移支付”给包身工，那样，你，包身工（和他倒霉儿子），超级矿工，就“共赢”了，是吧。</p><p>怎么样，如此温情脉脉，优胜劣汰，按劳分配，是不是很市场经济，很效率优先，很兼顾公平？是不是跟政治（或政治经济学）教科书里讲的剥削不一样？</p><p>不一样就对了，教科书太仁慈，不敢告诉大家剥削的残酷本质。</p><p>好，再回到前面说的“以资本为主”，“异化”。</p><p>上文就是“以资本为主”，“异化”的例子。</p><p>――“以资本为主”，所以，资本不是分配给最需要它的人，而是分配给最能实现他价值的人。</p><p>――“异化”，所以“劳动”（其实喜欢做菜）被扭曲为“就业”（挖矿最出成果）。</p><p>而就在这“以资本为主”和“异化”的过程中，“剥削”粉墨登场。</p><p>再次强调一遍，剥削并不（或不仅）表现为对成果分配的掠夺（如各种三七开，二八开，“剩余价值”），它真正残忍的面貌在于对时间与自由的剥夺。</p><p>本来，自由与时间对每一个人都是（或应该是）平等的，谁都是一天24小时（就算马云资产是我的一亿倍，他的一天也变不成24亿小时）。</p><p>然而，一旦进入“以资本为主”的“异化”过程，你的自由将不再是你的自由，你的时间将不再是你的时间。</p><p>你不能自由的，随心所欲的去“劳动”，你只能有目标有任务的去“就业”，并为此消耗时间。</p><p>但，第一，时间是不能重叠的（虽然资本允许重复投资）。</p><p>你花时间学习使用超级镐头，就不能同时陪伴白血病儿子或做菜，正所谓“放下砖头没钱养你，抱起砖头没时间陪你”。</p><p>第二，时间是不会倒流的（虽然投资可以撤回）。</p><p>当某一天，你花光了挖矿换来的钱，儿子依然死在了病榻上，又或者经济危机，你就是花时间学了怎么使用超级镐头但依然找不到工作的时候，你为此耗费的时间照样流逝，永不回头。</p><p>这才是剥削的真谛――你必须为了实现资本的价值（而非直接满足自身需要）来消耗时间（然后再诉诸于市场交换），而且，不论你的消耗能否换来自身需要的满足和自身价值的实现，时间都被实打实的消耗了，不可重叠，不可倒流，不可撤回，不可再生，不可增殖。</p><p>现在，我们可以回答问题了。</p><p>为什么资本家明明拥有大量资产，却还要剥削无产阶级？</p><p>因为还需要时间啊！</p><p>资本要实现自身价值（增殖），就必须通过运作（生产，经营，市场交换）的过程才能实现，而维持这一运作过程，需要包括资本家在内的全人类全身心投入，而“私有”却偏偏能保证大家死心塌地去投入。因为“私有”能划分出“所拥有的”和“所需要的”。要满足“所需要的”，就必须提供“所拥有的”来交换。</p><p>作为资本代言人的资本家，他们打开了名为“市场”的炉盖。</p><p>无产阶级，他们往熔炉里投入了名为“时间”（也可写作“花时间做事”）的燃料。</p><p>从此，他们的时间不为自己而生，而为资本支配。</p><p>资本家？就一烧锅炉的。</p><p>这就是为什么马克思主义者的终极追求是“解放全人类”，而非“打倒资本家”。</p><h5 id="6-探究异化"><a href="#6-探究异化" class="headerlink" title="6.探究异化"></a>6.探究异化</h5><p>作者：雾雨之灵</p><p>链接：<a href="https://www.zhihu.com/question/297726264/answer/608965993" target="_blank" rel="noopener">https://www.zhihu.com/question/297726264/answer/608965993</a></p><p>来源：知乎</p><p><img src="!%5B%5D(http://bqlab-pic.test.upcdn.net/pic/20191207_1313_37_944.png)" alt="mark"></p><p>这个问题，马克思早就预言过了，在我们中学的课本也提过了无数次。这就是资本对劳动的异化！同时也是对人的异化！</p><p>劳动，本来是人的本质属性。何为本质属性？就是这个属性不像吃喝拉撒睡，饱暖思淫欲去啪啪啪一样，这个属性别的动物都没有，唯独人有。人是无法不劳动的，让一个人休息一星期、一个月可能会很开心，但让他一直闲着，他就总要找一点事情去实现自己的价值，创造价值就是劳动，价值就是凝结于商品中的人类劳动。</p><p>所以劳动本来应该是快乐的，因为劳动创造价值嘛，劳动是自己本质属性的表达嘛。如果想找这样快乐的劳动者聊聊，就来北京打一辆出租车。北京开出租的本地人好多都不差这几个钱，为啥还要开出租？有一次我出差，出租车司机师傅特别贫，一直和我说“现在好多人都看重钱，我才不在乎，我一分存款都没有，我儿子我也不打算给他一分钱…”我一听就赶紧打住，师傅您先说说自己有几套房吧。师傅说也不多，就两套，不过有一套快拆了，拆了我能再买八套。我边听边带上耳机说，师傅我有些晕车，不说话了啊我眯一会儿……</p><p>同样，马云说他不喜欢钱，我也觉得他是真心的。他犯得着撒谎吗？</p><p>但现在呢？很显然没有年轻人觉得劳动是快乐的，除非你有出租车师傅那样的资本。现在年轻人劳动仅仅是为了活下去，这就是异化。强调一点，异化不是指一个东西失去了他的本义，异化是指，本来是客体的存在却反客为主，进而控制了主体。本来劳动是人实现价值的手段，劳动是客体，现在却成了人不得不劳动，劳动成了主体。本来金钱是为了方便人的生活，现在却是人的生活为了获取金钱。本来是人在玩手机，现在却是手机在玩人…这些才是异化。</p><p>过去的国企工人，虽然钱不多，但是单位有食堂，有房子，国家管了教育、养老和医疗，自己挣多少花多少，可不就“咱们工人有力量”了？现在的年轻人，哪怕在互联网这种高薪行业，工资扣个知道自己一时半会用不上的五险一金，再交一交房租水电，真的也不剩几个子儿了。可不就自嘲是社畜、肥宅？这不是开玩笑，调查一下当年的工人幸福指数绝对爆现在年轻人几条街不止。</p><p>这还没有完，因为马克思说资本是有自己的意志的，它的意志就是实现自己的最大化。所以劳动和价值开始完全脱钩，10年前有个房子，现在抵得上别人一辈子的劳动，另一方面，是分工越来越细，人越来越原子化。我那些进互联网的同学，一个个都是名校研究生毕业，可他们觉得自己的工作随便一个本科生来学段时间就把自己取代了。</p><p>再者，就是加班时间越来越长，八小时工作制和双休日就是个笑话。什么叫“对剩余价值的剥削”？就是劳动者一天劳动所得，仅仅够他恢复劳动力进行第二天的再次劳动。这下好了，广大年轻人累死累活，忙到晚上连性生活都不想有，结果却发现没有多少时间是属于自己的。本来以为自己赚钱就可以想买什么买什么，本来以为工作没有人管，周末时间可以自由支配，但是现实却是下了班累得只想躺在床上，点个外卖刷刷手机。</p><p>另外，资本可以自己进行增殖，即马太效应，强者愈强，弱者愈弱。有了京户，就有了学区房，然后又有了区重点和市重点…一个阶层强者为了巩固和展现自己的优势自然会集中资源再打造一个阶层，于是阶层层层化分。据我了解，去年北京海淀区某区重点高中——按理说也是北京二流学校——的理科状元的分数只能去哈工大。更何况还有多少当年从高考独木桥冲过来的精英，他们的孩子连区重点都没得上？</p><p>这就是所谓的阶级天花板。随着楼上的人越来越多，楼上的人不但拼命踹想要往上爬的人，还要在楼上再起一层高楼，楼下的空间自然越来越小，天花板越来越低。之前当一名工人也挺滋润，现在当个小领导都焦头烂额。之前的孩子放了学扔了书包就可以去玩，现在的孩子放了学就要去补习班。所以现在人们觉得努力没有希望并不是没有道理，而是源自于我们对周围这个世界长时间的认识而得出的结论。</p><p>最后，资本还要做一件事，就是登堂入室，为自己合理化，占领舆论的高地。为这样的不平等冠以各种堂而皇之的理由。宣传各种奋斗实现财务自由、阶级跃升的例子，让年轻人普遍焦虑，觉得自己活成这个样子完全是因为自己不努力；另一方面，资本又是需要市场的，为了扩大市场资本再次鼓吹消费主义，如网红餐厅之类，并且给年轻的脑力劳动者一个华丽丽的名词——白领，中产阶层。让年轻人误以为自己相比父辈们，相比工人农民地位有了本质的提高，而为了配得上这个地位，必须有相应的消费。这就是小资产阶级，这就是小布尔乔亚。</p><p>什么是小资产阶级？明明没有掌握任何生产资料，却把自己当成了资产阶级，明明还是个劳动人民，却总觉得自己比劳动人民要优越。</p><p>最后的最后，马克思的追求是什么？就是人的解放，解放生产力，发展生产力。一个疲于奔命的人是不会有劳动的动力的，你找不到一个奴隶会兴高采烈地为奴隶主干活，就算你举出有的奴隶通过自身的奋斗而当上了宰相，也改变不了这个事实。当然，个人的奋斗还是很重要的，虽然个人的奋斗常常敌不过历史的进程，但是个人的奋斗总会或多或少决定着自己的命运。所以，但行好事，莫问前程!</p><p>It’s not your fault!</p><p>小结：</p><p>资本本身是主，资本家是管家，工人是slave，资本的意志是让自己增殖，增殖需要人类大量投入时间。时间不可再生，我的时间提供给资本增殖，就必定不能提供给自己的天赋，不能提供给心之所向。我应该把时间投入到自己真正感兴趣的地方，而且是straight forward去做。 </p><p>劳动本身该是快乐的，因为创造了价值，也符合人的天性，但是我们的劳动常常被迫超时超量奉献给资本增殖，同时忽略天赋与inner voice，则变得痛苦不堪。上学同理。保持内心的愉悦与平和，如果不能保持，反思问题，付出代价，解决问题。</p><p>不要透支自己的劳动力。如果干的事情符合天赋与内心认知并且干的快乐，工作时间长一点无所谓。如果干的很痛苦，干的过程中需要付出意志力硬抗，则一定严控工作时长，工作之余好好休息放松，必须认清劳动力不是无限供应的资源这一事实。考研废掉/做事无恒心其实就是没有设计好劳动力再造的过程,我不懒而是勤奋地过了头透支了劳动力,以后要要注意劳逸结合。</p><p>警惕消费主义和小资的陷阱，不要买太贵的东西，不要高消费。高消费不能实现阶级跃迁，明明是个在格子间办公鸽子笼睡觉的被剥削的劳动人民，却觉得自己比劳动人民优越，这是精心设计的认知错位陷阱，注意堤防。</p><p>找准研究方向，既要符合自己的天赋，也要考虑历史的进程！</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>5.杂谈</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>思考</tag>
-      
-      <tag>996</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>5.杂谈/博士这五年-李沐</title>
     <link href="undefined2020/02/24/5.%E6%9D%82%E8%B0%88/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/"/>
     <url>2020/02/24/5.%E6%9D%82%E8%B0%88/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/</url>
@@ -1465,6 +1513,33 @@
       <tag>论文写法</tag>
       
       <tag>思考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>5.杂谈/996 - 超时工作的异化问题</title>
+    <link href="undefined2020/02/24/5.%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/"/>
+    <url>2020/02/24/5.%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="996-超时工作与异化问题"><a href="#996-超时工作与异化问题" class="headerlink" title="996 - 超时工作与异化问题"></a>996 - 超时工作与异化问题</h1><h5 id="1-感性认识"><a href="#1-感性认识" class="headerlink" title="1.感性认识"></a>1.感性认识</h5><p>我国现阶段各行业超时工作现象十分普遍，有的互联网公司晚上十一二点整个大楼还灯火通明，有的公司虽然晚上按时下班，但回家后仍然要求有工作输出，很多岗位还要求7*24小时on call。</p><p>我前些年所在的公司就有制度要求员工每月加班22天以上才算考核达标，而我经常需要加班27天才能完成工作，每晚九点离开公司后经一小时通勤才能到家，洗洗漱漱刚好十一点上床，十二点入睡，第二天早上6点50分起床后经过一小时通勤抵达公司，在公司门口的快餐店里缩着身子与其他同事挤在餐桌上潦草进食后便赶往工位，开始一天的埋头苦干。算上通勤时间，我的工作强度是7107。高强度劳动和了无希望所积累的疲劳深入骨髓，在此期间我感到生命力与灵魂的飞速流逝。</p><p>深夜的华为大楼</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1305_42_222.png" alt=""></p><p>早上五点半排队等公交上班的年轻人</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1306_00_748.png" alt=""></p><h5 id="2-八小时工作制的来由"><a href="#2-八小时工作制的来由" class="headerlink" title="2.八小时工作制的来由"></a>2.八小时工作制的来由</h5><p>八小时工作制国家法律规定的工作日长度为8小时的工作制度。目前世界各国普遍实行八小时工作制。正常一天工作时间为早上九点至下午五点为8小时。</p><p>理论起源</p><p>八小时工作制最早由社会主义者<a href="https://baike.baidu.com/item/%E7%BD%97%E4%BC%AF%E7%89%B9%C2%B7%E6%AC%A7%E6%96%87" target="_blank" rel="noopener">罗伯特·欧文</a>于1817年8月提出。他还发明了一个口号， “8小时劳动， 8小时休闲， 8个小时休息”1833年，在<a href="https://baike.baidu.com/item/%E6%AC%A7%E6%96%87" target="_blank" rel="noopener">欧文</a>的支持下，具有同情心的工厂主约翰·多赫尔蒂等人发动了一场争取八小时工作制的运动。1866年，第一国际<a href="https://baike.baidu.com/item/%E6%97%A5%E5%86%85%E7%93%A6" target="_blank" rel="noopener">日内瓦</a>代表大会提出了“8小时工作，8小时自己支配，8 小时休息”的口号，要求各国制定法律给予确认。</p><p>历史延革</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1313_15_391.png" alt=""></p><p>19世纪80年代的美国工人运动。当时，美国和欧洲的许多国家，逐步由<a href="https://baike.baidu.com/item/%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89" target="_blank" rel="noopener">资本主义</a>发展到帝国主义阶段，为了刺激经济的高速发展，榨取更多的剩余价值，以维护这个高速运转的资本主义机器，资本家不断采取增加劳动时间和劳动强度的办法来残酷地剥削工人。</p><p>在美国，工人们每天要劳动14至16个小时，有的甚至长达18个小时，但工资却很低。马萨诸塞州一个鞋厂的监工说：“让一个身强力壮体格健全的18岁小伙子，在这里的任何一架机器旁边工作，我能够使他在22岁时头发变成灰白。”沉重的阶级压迫激起了无产者巨大的愤怒。他们知道，要争取生存的条件，就只有团结起来，通过罢工运动与资本家作斗争。工人们提出的罢工口号，就是要求实行八小时工作制。</p><p>1877年，美国历史上第一次全国罢工开始了。工人阶级走向街头游行示威，向政府提出改善劳动与生活条件，要求缩短工时，实行八小时工作制。罢工不久，队伍日渐扩大，工会会员人数激增，各地工人也纷纷参加罢工运动。</p><p>在工人运动的强大压力下，美国国会被迫制定了八小时工作制的法律。但是，狠毒的资本家根本不予理睬，这项法律只不过是一纸空文，工人们仍然是生活在水深火热之中，倍受资本家的折磨。忍无可忍的工人们决定将这场争取生存权利的斗争，推向一个新的高潮，准备举行更大规模的罢工运动。</p><p>1884年10月，美国和加拿大的八个国际性和全国性工人团体，在<a href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E8%8A%9D%E5%8A%A0%E5%93%A5" target="_blank" rel="noopener">美国芝加哥</a>举行一个集会，决定于1886年5月1日举行总罢工，迫使资本家实施八小时工作制。这一天终于来到了。5月1日，美国2万多个企业的35万工人停工上街，举行了声势浩大的示威游行，各种肤色，各个工种的工人一齐进行总罢工。仅<a href="https://baike.baidu.com/item/%E8%8A%9D%E5%8A%A0%E5%93%A5" target="_blank" rel="noopener">芝加哥</a>一个城市，就有4．5万名工人涌上街头。这下，美国的主要工业部门处于瘫痪状态，火车变成了僵蛇，商店更是鸦雀无声，所有的仓库也都关门并贴上封条。</p><p>1889年7月14日，各国马克思主义者召集的社会主义者代表大会在法国巴黎隆重开幕。这次大会上，法国代表拉文提议：把1886年5月1日美国工人争取八小时工作制的斗争日，定为国际无产阶级的共同节日。与会代表一致同意，通过了这项具有历史意义的决议。</p><h5 id="3-996的起因"><a href="#3-996的起因" class="headerlink" title="3.996的起因"></a>3.996的起因</h5><p>行业特征与恶性竞争</p><p>互联网本身时效性极强，如果其他所有公司都能很快推出自己的产品，唯独自己的公司不行，那就会很快被市场淘汰。所以各公司都会延长员工的工作时间，以实现产品产出的最大化。当然，在这种严酷的加班制度下，资方并没有好心地将超时工作的时长以假期或补贴的形式返还给员工，也没有扩招人手来降低人均工作强度。资方常常采取的策略是拼命地使用员工，当员工不再年富力强或疾病缠身时就果断抛弃，反正每年都有大把的应届毕业生兴高采烈地加入被剥削大军。</p><h5 id="4-996本质是剥削"><a href="#4-996本质是剥削" class="headerlink" title="4.996本质是剥削"></a>4.996本质是剥削</h5><p>强迫人超时劳动本质是剥削，剥削的坏处是让一个完整的人变得不完整，这个长期超时工作的人会工具化和异化。</p><p>上班的人在出卖自己的劳动力换得薪水，劳动力是要再生产的。再生产的方式是吃东西，充足的睡眠，维持与家人的健康关系，发展自己的业务爱好，让自己保持身心愉悦，这样才能源源不断产生充沛的劳动力。</p><p>本身人工作8小时后剩下的16个小时是用于恢复劳动力的，但是老板拿掉了剩下恢复生产力的时间，平常8-11，周末只放一天假也用来补平常缺的觉了。长期这样以来人的正常劳动力再生产过程就会被破坏掉，这样人的劳动表现就不会好，跟不上高压的工作节奏，这样以来人干个五年十年身体与灵魂都会垮掉。这个人垮掉之后当然会被炒掉，资方只用再换一个年轻力壮的就OK了。</p><h5 id="5-深刻认识剥削"><a href="#5-深刻认识剥削" class="headerlink" title="5.深刻认识剥削"></a>5.深刻认识剥削</h5><p>作者：李劼</p><p>链接：<a href="https://www.zhihu.com/question/320073567/answer/777226626" target="_blank" rel="noopener">https://www.zhihu.com/question/320073567/answer/777226626</a></p><p>来源：知乎</p><p>如果大家认为“剥削”就是自己挣10块钱，资本家抽走7块，只给留3块。那这个话题就没有讨论的必要了。</p><p>因为这掩盖了剥削的残酷本质。</p><p>资本主义的核心并不在“私有制”（其实在原始社会末期就已经有私有财产了，封建时代也是，但都称不上资本主义）。而在于“资本做主才是第一要义”，简称“资本主义”。</p><p>由此导致的局面就是，资本凌驾于人类之上，人类为资本服务。而并非人类拥有资本，资本听命于人。虽然资本主义环境下有财产私有制度，但这极具迷惑性，容易让人误以为资本家是资本的主人（财产所有人）。但实际上，资本家只是傀儡，人形外壳，传声筒，使魔，皮囊，英灵（随便你们叫什么吧），资本本身才是真正的“主人”和“灵魂”。</p><p>到了这一步，资本即将展现它真正的杀伤力――异化。</p><p>上面那一大坨文字看不懂没关系，下面讲点简单的，举个例子。</p><p>比如你是一个老板，搞到（甭管是捡的研发的还是买的）一把超级牛逼的镐头，能让矿工挖矿的产量提高到原先的10倍。假如你面前有两个人，一个是超级矿工，即便不用这把超级镐头，他也能挖10个单位的矿（用镐头将会是100）。另一个是包身工，他只能挖1个单位的矿（用镐头就会变为10）。</p><p>现在，包身工在你面前跪下来了，他儿子得了白血病，他恳求你把超级镐头分配给他，他不介意被剥削，他愿意挖出来的矿你得7，他得3（换钱给儿子治病），实在是不行，你8他2也行。</p><p>超级矿工的辞职报告也递上来了，他的兴趣是做菜（虽然他的天赋是挖矿），他想改行当厨师。</p><p>你把镐头分配给谁？（无视人情，也无视另一人的天赋）</p><p>别想多了，犹豫必将败北。作为称职的资本家，你给超级矿工跪下了。</p><p>你求他拿上超级镐头去挖矿，你许诺跟他五五开分成，如有必要，你还可以只拿100个单位中的40，他拿60，折成股份也行。你甚至允许他每天只挖半天矿，另外半天可以兼职做厨师。至于那个可怜的包身工，谁叫他不努力呢，是吧。又或者，等超级矿工挣到钱，你的企业也成功上市，你再用财税渠道和福利政策“转移支付”给包身工，那样，你，包身工（和他倒霉儿子），超级矿工，就“共赢”了，是吧。</p><p>怎么样，如此温情脉脉，优胜劣汰，按劳分配，是不是很市场经济，很效率优先，很兼顾公平？是不是跟政治（或政治经济学）教科书里讲的剥削不一样？</p><p>不一样就对了，教科书太仁慈，不敢告诉大家剥削的残酷本质。</p><p>好，再回到前面说的“以资本为主”，“异化”。</p><p>上文就是“以资本为主”，“异化”的例子。</p><p>――“以资本为主”，所以，资本不是分配给最需要它的人，而是分配给最能实现他价值的人。</p><p>――“异化”，所以“劳动”（其实喜欢做菜）被扭曲为“就业”（挖矿最出成果）。</p><p>而就在这“以资本为主”和“异化”的过程中，“剥削”粉墨登场。</p><p>再次强调一遍，剥削并不（或不仅）表现为对成果分配的掠夺（如各种三七开，二八开，“剩余价值”），它真正残忍的面貌在于对时间与自由的剥夺。</p><p>本来，自由与时间对每一个人都是（或应该是）平等的，谁都是一天24小时（就算马云资产是我的一亿倍，他的一天也变不成24亿小时）。</p><p>然而，一旦进入“以资本为主”的“异化”过程，你的自由将不再是你的自由，你的时间将不再是你的时间。</p><p>你不能自由的，随心所欲的去“劳动”，你只能有目标有任务的去“就业”，并为此消耗时间。</p><p>但，第一，时间是不能重叠的（虽然资本允许重复投资）。</p><p>你花时间学习使用超级镐头，就不能同时陪伴白血病儿子或做菜，正所谓“放下砖头没钱养你，抱起砖头没时间陪你”。</p><p>第二，时间是不会倒流的（虽然投资可以撤回）。</p><p>当某一天，你花光了挖矿换来的钱，儿子依然死在了病榻上，又或者经济危机，你就是花时间学了怎么使用超级镐头但依然找不到工作的时候，你为此耗费的时间照样流逝，永不回头。</p><p>这才是剥削的真谛――你必须为了实现资本的价值（而非直接满足自身需要）来消耗时间（然后再诉诸于市场交换），而且，不论你的消耗能否换来自身需要的满足和自身价值的实现，时间都被实打实的消耗了，不可重叠，不可倒流，不可撤回，不可再生，不可增殖。</p><p>现在，我们可以回答问题了。</p><p>为什么资本家明明拥有大量资产，却还要剥削无产阶级？</p><p>因为还需要时间啊！</p><p>资本要实现自身价值（增殖），就必须通过运作（生产，经营，市场交换）的过程才能实现，而维持这一运作过程，需要包括资本家在内的全人类全身心投入，而“私有”却偏偏能保证大家死心塌地去投入。因为“私有”能划分出“所拥有的”和“所需要的”。要满足“所需要的”，就必须提供“所拥有的”来交换。</p><p>作为资本代言人的资本家，他们打开了名为“市场”的炉盖。</p><p>无产阶级，他们往熔炉里投入了名为“时间”（也可写作“花时间做事”）的燃料。</p><p>从此，他们的时间不为自己而生，而为资本支配。</p><p>资本家？就一烧锅炉的。</p><p>这就是为什么马克思主义者的终极追求是“解放全人类”，而非“打倒资本家”。</p><h5 id="6-探究异化"><a href="#6-探究异化" class="headerlink" title="6.探究异化"></a>6.探究异化</h5><p>作者：雾雨之灵</p><p>链接：<a href="https://www.zhihu.com/question/297726264/answer/608965993" target="_blank" rel="noopener">https://www.zhihu.com/question/297726264/answer/608965993</a></p><p>来源：知乎</p><p><img src="!%5B%5D(http://bqlab-pic.test.upcdn.net/pic/20191207_1313_37_944.png)" alt="mark"></p><p>这个问题，马克思早就预言过了，在我们中学的课本也提过了无数次。这就是资本对劳动的异化！同时也是对人的异化！</p><p>劳动，本来是人的本质属性。何为本质属性？就是这个属性不像吃喝拉撒睡，饱暖思淫欲去啪啪啪一样，这个属性别的动物都没有，唯独人有。人是无法不劳动的，让一个人休息一星期、一个月可能会很开心，但让他一直闲着，他就总要找一点事情去实现自己的价值，创造价值就是劳动，价值就是凝结于商品中的人类劳动。</p><p>所以劳动本来应该是快乐的，因为劳动创造价值嘛，劳动是自己本质属性的表达嘛。如果想找这样快乐的劳动者聊聊，就来北京打一辆出租车。北京开出租的本地人好多都不差这几个钱，为啥还要开出租？有一次我出差，出租车司机师傅特别贫，一直和我说“现在好多人都看重钱，我才不在乎，我一分存款都没有，我儿子我也不打算给他一分钱…”我一听就赶紧打住，师傅您先说说自己有几套房吧。师傅说也不多，就两套，不过有一套快拆了，拆了我能再买八套。我边听边带上耳机说，师傅我有些晕车，不说话了啊我眯一会儿……</p><p>同样，马云说他不喜欢钱，我也觉得他是真心的。他犯得着撒谎吗？</p><p>但现在呢？很显然没有年轻人觉得劳动是快乐的，除非你有出租车师傅那样的资本。现在年轻人劳动仅仅是为了活下去，这就是异化。强调一点，异化不是指一个东西失去了他的本义，异化是指，本来是客体的存在却反客为主，进而控制了主体。本来劳动是人实现价值的手段，劳动是客体，现在却成了人不得不劳动，劳动成了主体。本来金钱是为了方便人的生活，现在却是人的生活为了获取金钱。本来是人在玩手机，现在却是手机在玩人…这些才是异化。</p><p>过去的国企工人，虽然钱不多，但是单位有食堂，有房子，国家管了教育、养老和医疗，自己挣多少花多少，可不就“咱们工人有力量”了？现在的年轻人，哪怕在互联网这种高薪行业，工资扣个知道自己一时半会用不上的五险一金，再交一交房租水电，真的也不剩几个子儿了。可不就自嘲是社畜、肥宅？这不是开玩笑，调查一下当年的工人幸福指数绝对爆现在年轻人几条街不止。</p><p>这还没有完，因为马克思说资本是有自己的意志的，它的意志就是实现自己的最大化。所以劳动和价值开始完全脱钩，10年前有个房子，现在抵得上别人一辈子的劳动，另一方面，是分工越来越细，人越来越原子化。我那些进互联网的同学，一个个都是名校研究生毕业，可他们觉得自己的工作随便一个本科生来学段时间就把自己取代了。</p><p>再者，就是加班时间越来越长，八小时工作制和双休日就是个笑话。什么叫“对剩余价值的剥削”？就是劳动者一天劳动所得，仅仅够他恢复劳动力进行第二天的再次劳动。这下好了，广大年轻人累死累活，忙到晚上连性生活都不想有，结果却发现没有多少时间是属于自己的。本来以为自己赚钱就可以想买什么买什么，本来以为工作没有人管，周末时间可以自由支配，但是现实却是下了班累得只想躺在床上，点个外卖刷刷手机。</p><p>另外，资本可以自己进行增殖，即马太效应，强者愈强，弱者愈弱。有了京户，就有了学区房，然后又有了区重点和市重点…一个阶层强者为了巩固和展现自己的优势自然会集中资源再打造一个阶层，于是阶层层层化分。据我了解，去年北京海淀区某区重点高中——按理说也是北京二流学校——的理科状元的分数只能去哈工大。更何况还有多少当年从高考独木桥冲过来的精英，他们的孩子连区重点都没得上？</p><p>这就是所谓的阶级天花板。随着楼上的人越来越多，楼上的人不但拼命踹想要往上爬的人，还要在楼上再起一层高楼，楼下的空间自然越来越小，天花板越来越低。之前当一名工人也挺滋润，现在当个小领导都焦头烂额。之前的孩子放了学扔了书包就可以去玩，现在的孩子放了学就要去补习班。所以现在人们觉得努力没有希望并不是没有道理，而是源自于我们对周围这个世界长时间的认识而得出的结论。</p><p>最后，资本还要做一件事，就是登堂入室，为自己合理化，占领舆论的高地。为这样的不平等冠以各种堂而皇之的理由。宣传各种奋斗实现财务自由、阶级跃升的例子，让年轻人普遍焦虑，觉得自己活成这个样子完全是因为自己不努力；另一方面，资本又是需要市场的，为了扩大市场资本再次鼓吹消费主义，如网红餐厅之类，并且给年轻的脑力劳动者一个华丽丽的名词——白领，中产阶层。让年轻人误以为自己相比父辈们，相比工人农民地位有了本质的提高，而为了配得上这个地位，必须有相应的消费。这就是小资产阶级，这就是小布尔乔亚。</p><p>什么是小资产阶级？明明没有掌握任何生产资料，却把自己当成了资产阶级，明明还是个劳动人民，却总觉得自己比劳动人民要优越。</p><p>最后的最后，马克思的追求是什么？就是人的解放，解放生产力，发展生产力。一个疲于奔命的人是不会有劳动的动力的，你找不到一个奴隶会兴高采烈地为奴隶主干活，就算你举出有的奴隶通过自身的奋斗而当上了宰相，也改变不了这个事实。当然，个人的奋斗还是很重要的，虽然个人的奋斗常常敌不过历史的进程，但是个人的奋斗总会或多或少决定着自己的命运。所以，但行好事，莫问前程!</p><p>It’s not your fault!</p><p>小结：</p><p>资本本身是主，资本家是管家，工人是slave，资本的意志是让自己增殖，增殖需要人类大量投入时间。时间不可再生，我的时间提供给资本增殖，就必定不能提供给自己的天赋，不能提供给心之所向。我应该把时间投入到自己真正感兴趣的地方，而且是straight forward去做。 </p><p>劳动本身该是快乐的，因为创造了价值，也符合人的天性，但是我们的劳动常常被迫超时超量奉献给资本增殖，同时忽略天赋与inner voice，则变得痛苦不堪。上学同理。保持内心的愉悦与平和，如果不能保持，反思问题，付出代价，解决问题。</p><p>不要透支自己的劳动力。如果干的事情符合天赋与内心认知并且干的快乐，工作时间长一点无所谓。如果干的很痛苦，干的过程中需要付出意志力硬抗，则一定严控工作时长，工作之余好好休息放松，必须认清劳动力不是无限供应的资源这一事实。考研废掉/做事无恒心其实就是没有设计好劳动力再造的过程,我不懒而是勤奋地过了头透支了劳动力,以后要要注意劳逸结合。</p><p>警惕消费主义和小资的陷阱，不要买太贵的东西，不要高消费。高消费不能实现阶级跃迁，明明是个在格子间办公鸽子笼睡觉的被剥削的劳动人民，却觉得自己比劳动人民优越，这是精心设计的认知错位陷阱，注意堤防。</p><p>找准研究方向，既要符合自己的天赋，也要考虑历史的进程！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>5.杂谈</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>思考</tag>
+      
+      <tag>996</tag>
       
     </tags>
     
@@ -1498,11 +1573,11 @@
   
   
   <entry>
-    <title>3.课程/数据结构_网络流，最短路径，字典树</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%8C%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%8C%E5%AD%97%E5%85%B8%E6%A0%91/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%8C%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%8C%E5%AD%97%E5%85%B8%E6%A0%91/</url>
+    <title>3.课程/数据结构_搜索_回溯算法</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</url>
     
-    <content type="html"><![CDATA[<h1 id="7-最短路径-迪杰斯特拉算法"><a href="#7-最短路径-迪杰斯特拉算法" class="headerlink" title="7.最短路径:迪杰斯特拉算法"></a>7.最短路径:迪杰斯特拉算法</h1><h3 id="7-1释义"><a href="#7-1释义" class="headerlink" title="7.1释义"></a>7.1释义</h3><p>迪杰斯特拉算法就是求一个顶点到其他所有顶点的最短路径</p><p>需要维持两个数据集,一个最开始只有顶点,另一个最开始有除了顶点之外的所有点</p><p>然后每次都把距离顶点最近的点放入前一个数据集,然后遍历一次顶点到和前一个数据集接触的点的最短路径,有更近的就更新一次</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1238_23_066.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1238_45_004.png" alt=""></p><h1 id="8-网络流建模"><a href="#8-网络流建模" class="headerlink" title="8.网络流建模"></a>8.网络流建模</h1><h3 id="8-1几个概念"><a href="#8-1几个概念" class="headerlink" title="8.1几个概念"></a>8.1几个概念</h3><ul><li><p>原点:起点</p></li><li><p>汇点:目标点</p></li><li><p>流:从原点到汇点的一条路径</p></li><li><p>流量:通过一条边的水的体积</p></li><li><p>容量:每条管道允许通过的最大流量</p></li><li><p>()实际流量:取决于流上最小的容量,最小流量是流的短板</p></li><li><p>最小割:如下图,切断哪些管道后,源头的水就不能流向汇点了?</p><ul><li><p>最小割=最大流</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1239_14_419.png" alt=""></p></li></ul></li></ul><h1 id="9-哈希表"><a href="#9-哈希表" class="headerlink" title="9.哈希表"></a>9.哈希表</h1><h4 id="9-1什么是哈希表"><a href="#9-1什么是哈希表" class="headerlink" title="9.1什么是哈希表"></a>9.1什么是哈希表</h4><p>举例说明</p><p>去商场停车,有三种策略</p><ul><li>随机停,然后找车的时候从头到尾顺序搜索,时间复杂度是O(N)</li><li>所有车辆按照牌照顺序停,然后每次二分查找找车,时间复杂度是log(n)</li><li>每个车都有一个与牌照对应的停车位,专车专位,时间复杂度是O(1)<ul><li>这种策略时间复杂度确实低,但是空间开销过大,每个车牌照都需要分配一个存储空间</li></ul></li></ul><p>所以在时间复杂度和空间复杂度之间做个取舍，降低专车专位的空间开销，同时尽量保留时间开销的优势</p><p>哈希表：比如车牌照是０　－－　９８５７３６２８之间</p><p>取末尾四位作为下标依据，塞入散列表</p><ul><li>碰撞问题<ul><li>如果两个车的尾号都是3628怎么办?<ul><li>开链表法:如果两个车都是3628,就在原来的3628后边跟一个链表,把后一个3628接在后边</li><li>再散列法:如果3628碰撞,第二个3628就放在3629好了</li></ul></li></ul></li><li>哈希表的评估标准:<ul><li>优秀的哈希表一定是通过巧妙的散列函数,尽量避免碰撞问题的</li></ul></li></ul><h1 id="10-1后缀树"><a href="#10-1后缀树" class="headerlink" title="10.1后缀树"></a>10.1后缀树</h1><p>字典树和压缩字典树    </p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1239_59_443.png" alt=""></p><ul><li>把不会引起歧义的节点串压缩为一个节点</li></ul><p>后缀树就是把一颗以所有的后缀为关键字建立的压缩字典树<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1240_13_018.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="8-查找"><a href="#8-查找" class="headerlink" title="8.查找"></a>8.查找</h1><h4 id="8-1回溯"><a href="#8-1回溯" class="headerlink" title="8.1回溯"></a>8.1回溯</h4><p>回溯算法也叫试探法，是一种系统地解决搜索问题的解的方法</p><p>用回溯算法解决问题的一般步骤：</p><p>1.针对问题，定义解空间，使得能用回溯法方便地搜索整个解空间</p><p>2.确定易于搜索的解空间结构，使得能用回溯法方便地搜索整个空间结构</p><p>3.以深度优先的方式搜索解空间，并且在搜索过程中使用剪枝函数避免无效搜索</p><p>回溯法在解空间树里对结果进行深度优先遍历，如果发现本节点不属于解的范围，则退出，剪枝，然后递归地对子节点搜索</p><p>经典问题是八皇后问题，见代码</p>]]></content>
     
     
     <categories>
@@ -1516,19 +1591,7 @@
       
       <tag>数据结构</tag>
       
-      <tag>字典树</tag>
-      
-      <tag>最小生成树</tag>
-      
-      <tag>Kruskal</tag>
-      
-      <tag>Prim</tag>
-      
-      <tag>迪杰斯特拉算法</tag>
-      
-      <tag>哈希表</tag>
-      
-      <tag>后缀树</tag>
+      <tag>查找</tag>
       
     </tags>
     
@@ -1566,11 +1629,11 @@
   
   
   <entry>
-    <title>3.课程/数据结构_搜索_回溯算法</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</url>
+    <title>3.课程/数据结构_网络流，最短路径，字典树</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%8C%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%8C%E5%AD%97%E5%85%B8%E6%A0%91/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%8C%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%8C%E5%AD%97%E5%85%B8%E6%A0%91/</url>
     
-    <content type="html"><![CDATA[<h1 id="8-查找"><a href="#8-查找" class="headerlink" title="8.查找"></a>8.查找</h1><h4 id="8-1回溯"><a href="#8-1回溯" class="headerlink" title="8.1回溯"></a>8.1回溯</h4><p>回溯算法也叫试探法，是一种系统地解决搜索问题的解的方法</p><p>用回溯算法解决问题的一般步骤：</p><p>1.针对问题，定义解空间，使得能用回溯法方便地搜索整个解空间</p><p>2.确定易于搜索的解空间结构，使得能用回溯法方便地搜索整个空间结构</p><p>3.以深度优先的方式搜索解空间，并且在搜索过程中使用剪枝函数避免无效搜索</p><p>回溯法在解空间树里对结果进行深度优先遍历，如果发现本节点不属于解的范围，则退出，剪枝，然后递归地对子节点搜索</p><p>经典问题是八皇后问题，见代码</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="7-最短路径-迪杰斯特拉算法"><a href="#7-最短路径-迪杰斯特拉算法" class="headerlink" title="7.最短路径:迪杰斯特拉算法"></a>7.最短路径:迪杰斯特拉算法</h1><h3 id="7-1释义"><a href="#7-1释义" class="headerlink" title="7.1释义"></a>7.1释义</h3><p>迪杰斯特拉算法就是求一个顶点到其他所有顶点的最短路径</p><p>需要维持两个数据集,一个最开始只有顶点,另一个最开始有除了顶点之外的所有点</p><p>然后每次都把距离顶点最近的点放入前一个数据集,然后遍历一次顶点到和前一个数据集接触的点的最短路径,有更近的就更新一次</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1238_23_066.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1238_45_004.png" alt=""></p><h1 id="8-网络流建模"><a href="#8-网络流建模" class="headerlink" title="8.网络流建模"></a>8.网络流建模</h1><h3 id="8-1几个概念"><a href="#8-1几个概念" class="headerlink" title="8.1几个概念"></a>8.1几个概念</h3><ul><li><p>原点:起点</p></li><li><p>汇点:目标点</p></li><li><p>流:从原点到汇点的一条路径</p></li><li><p>流量:通过一条边的水的体积</p></li><li><p>容量:每条管道允许通过的最大流量</p></li><li><p>()实际流量:取决于流上最小的容量,最小流量是流的短板</p></li><li><p>最小割:如下图,切断哪些管道后,源头的水就不能流向汇点了?</p><ul><li><p>最小割=最大流</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1239_14_419.png" alt=""></p></li></ul></li></ul><h1 id="9-哈希表"><a href="#9-哈希表" class="headerlink" title="9.哈希表"></a>9.哈希表</h1><h4 id="9-1什么是哈希表"><a href="#9-1什么是哈希表" class="headerlink" title="9.1什么是哈希表"></a>9.1什么是哈希表</h4><p>举例说明</p><p>去商场停车,有三种策略</p><ul><li>随机停,然后找车的时候从头到尾顺序搜索,时间复杂度是O(N)</li><li>所有车辆按照牌照顺序停,然后每次二分查找找车,时间复杂度是log(n)</li><li>每个车都有一个与牌照对应的停车位,专车专位,时间复杂度是O(1)<ul><li>这种策略时间复杂度确实低,但是空间开销过大,每个车牌照都需要分配一个存储空间</li></ul></li></ul><p>所以在时间复杂度和空间复杂度之间做个取舍，降低专车专位的空间开销，同时尽量保留时间开销的优势</p><p>哈希表：比如车牌照是０　－－　９８５７３６２８之间</p><p>取末尾四位作为下标依据，塞入散列表</p><ul><li>碰撞问题<ul><li>如果两个车的尾号都是3628怎么办?<ul><li>开链表法:如果两个车都是3628,就在原来的3628后边跟一个链表,把后一个3628接在后边</li><li>再散列法:如果3628碰撞,第二个3628就放在3629好了</li></ul></li></ul></li><li>哈希表的评估标准:<ul><li>优秀的哈希表一定是通过巧妙的散列函数,尽量避免碰撞问题的</li></ul></li></ul><h1 id="10-1后缀树"><a href="#10-1后缀树" class="headerlink" title="10.1后缀树"></a>10.1后缀树</h1><p>字典树和压缩字典树    </p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1239_59_443.png" alt=""></p><ul><li>把不会引起歧义的节点串压缩为一个节点</li></ul><p>后缀树就是把一颗以所有的后缀为关键字建立的压缩字典树<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1240_13_018.png" alt=""></p>]]></content>
     
     
     <categories>
@@ -1584,7 +1647,19 @@
       
       <tag>数据结构</tag>
       
-      <tag>查找</tag>
+      <tag>字典树</tag>
+      
+      <tag>Kruskal</tag>
+      
+      <tag>Prim</tag>
+      
+      <tag>最小生成树</tag>
+      
+      <tag>迪杰斯特拉算法</tag>
+      
+      <tag>哈希表</tag>
+      
+      <tag>后缀树</tag>
       
     </tags>
     
@@ -1738,33 +1813,6 @@
   
   
   <entry>
-    <title>3.课程/数据结构_4.图</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_4.%E5%9B%BE/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_4.%E5%9B%BE/</url>
-    
-    <content type="html"><![CDATA[<h1 id="4-图"><a href="#4-图" class="headerlink" title="4.图"></a>4.图</h1><p>图是一种网状数据结构,由顶点和边构成,Graph = (V,E)</p><h3 id="4-1子图"><a href="#4-1子图" class="headerlink" title="4.1子图"></a>4.1子图</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1233_28_077.png" alt=""></p><h3 id="4-2强连通分量"><a href="#4-2强连通分量" class="headerlink" title="4.2强连通分量:"></a>4.2强连通分量:</h3><ul><li><p>构造镜像图G’</p><ul><li>对G 和 G’中s的可达分量求并集既可得强连通分量</li></ul><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1233_51_550.png" alt=""></p></li></ul><h3 id="4-3图的存储方式"><a href="#4-3图的存储方式" class="headerlink" title="4.3图的存储方式"></a>4.3图的存储方式</h3><p>首先,从图的逻辑结构定义来看,无法将图的顶点排列成唯一的线性序列,在图中任意顶点都可以是图的第一个顶点.</p><p>对任意顶点来说他的邻接点也不存在顺序关系</p><p>所以顶点在图中的位置就是指该顶点在图中[人为]确定的序列的位置</p><p>由于图的结构比较复杂,任意两个顶点之间都可能存在联系,所以无法将数据元素存储区的位置来表示元素之间的关系,即图没有顺序映像的存储结构,但可借助数组来表示数据元素之间的关系</p><h3 id="4-3-1邻接矩阵"><a href="#4-3-1邻接矩阵" class="headerlink" title="4.3.1邻接矩阵"></a>4.3.1邻接矩阵</h3><p>图的邻接矩阵表示法就是用数组来存放图的结构,也成为[数组表示法],采用两个数组来表示图</p><ul><li><p>存储所有顶点信息的一维数组</p></li><li><p>存储图中顶点之间关系的二维数组,这个关联数组也叫邻接矩阵</p><p>邻接矩阵的示意图(∞代表没有相连)</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1234_24_383.png" alt=""></p></li></ul><h3 id="4-3-2邻接表"><a href="#4-3-2邻接表" class="headerlink" title="4.3.2邻接表"></a>4.3.2邻接表</h3><p>临接矩阵的问题:空间使用效率低,因为大量的单元所对应的边可能没有在图中出现</p><p>按照改进空间使用效率的思路想,可以将静态数组的存储结构改成链式存储结构<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1235_28_643.png" alt=""></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>3.课程</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>数据结构</tag>
-      
-      <tag>图</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>3.课程/数据结构_5.堆</title>
     <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_5.%E5%A0%86/"/>
     <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_5.%E5%A0%86/</url>
@@ -1784,6 +1832,33 @@
       <tag>数据结构</tag>
       
       <tag>堆</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>3.课程/数据结构_4.图</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_4.%E5%9B%BE/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_4.%E5%9B%BE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="4-图"><a href="#4-图" class="headerlink" title="4.图"></a>4.图</h1><p>图是一种网状数据结构,由顶点和边构成,Graph = (V,E)</p><h3 id="4-1子图"><a href="#4-1子图" class="headerlink" title="4.1子图"></a>4.1子图</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1233_28_077.png" alt=""></p><h3 id="4-2强连通分量"><a href="#4-2强连通分量" class="headerlink" title="4.2强连通分量:"></a>4.2强连通分量:</h3><ul><li><p>构造镜像图G’</p><ul><li>对G 和 G’中s的可达分量求并集既可得强连通分量</li></ul><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1233_51_550.png" alt=""></p></li></ul><h3 id="4-3图的存储方式"><a href="#4-3图的存储方式" class="headerlink" title="4.3图的存储方式"></a>4.3图的存储方式</h3><p>首先,从图的逻辑结构定义来看,无法将图的顶点排列成唯一的线性序列,在图中任意顶点都可以是图的第一个顶点.</p><p>对任意顶点来说他的邻接点也不存在顺序关系</p><p>所以顶点在图中的位置就是指该顶点在图中[人为]确定的序列的位置</p><p>由于图的结构比较复杂,任意两个顶点之间都可能存在联系,所以无法将数据元素存储区的位置来表示元素之间的关系,即图没有顺序映像的存储结构,但可借助数组来表示数据元素之间的关系</p><h3 id="4-3-1邻接矩阵"><a href="#4-3-1邻接矩阵" class="headerlink" title="4.3.1邻接矩阵"></a>4.3.1邻接矩阵</h3><p>图的邻接矩阵表示法就是用数组来存放图的结构,也成为[数组表示法],采用两个数组来表示图</p><ul><li><p>存储所有顶点信息的一维数组</p></li><li><p>存储图中顶点之间关系的二维数组,这个关联数组也叫邻接矩阵</p><p>邻接矩阵的示意图(∞代表没有相连)</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1234_24_383.png" alt=""></p></li></ul><h3 id="4-3-2邻接表"><a href="#4-3-2邻接表" class="headerlink" title="4.3.2邻接表"></a>4.3.2邻接表</h3><p>临接矩阵的问题:空间使用效率低,因为大量的单元所对应的边可能没有在图中出现</p><p>按照改进空间使用效率的思路想,可以将静态数组的存储结构改成链式存储结构<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1235_28_643.png" alt=""></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>3.课程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据结构</tag>
+      
+      <tag>图</tag>
       
     </tags>
     
@@ -2248,9 +2323,9 @@
     
     <tags>
       
-      <tag>calcite</tag>
-      
       <tag>flink</tag>
+      
+      <tag>calcite</tag>
       
     </tags>
     
@@ -2386,31 +2461,6 @@
   
   
   <entry>
-    <title>0.概念/NLP_SLP_6_HMM_马尔科夫链</title>
-    <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/"/>
-    <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/</url>
-    
-    <content type="html"><![CDATA[<h1 id="马尔科夫链"><a href="#马尔科夫链" class="headerlink" title="马尔科夫链"></a>马尔科夫链</h1><p>马尔可夫链是一个模型，<strong>告诉我们关于随机变量序列的概率，状态。每个状态都可以从某个集合中获取值</strong>。 这些集合可以是单词，标签或代表任何东西的符号，例如天气。 下图左边是天气转换，右边是生成句子的单词序列。</p><p><img src="https://pic4.zhimg.com/v2-1f6f4ea4278bcceab330ad4f269dbc2b_b.jpg" alt="img"></p><p>考虑状态变量 <img src="https://www.zhihu.com/equation?tex=q_1%2Cq_2%2C...%2Cq_i" alt="[公式]"> ,HMM核心假设是:<strong>当预测未来时，过去并不重要，重要的是现在</strong>。</p><p><img src="https://pic2.zhimg.com/v2-f6c356f8473cba19ddc47e666a3a0ee9_b.png" alt="img"></p><p>上图显示了一个马尔可夫链，用于为一系列天气事件分配概率，其中词汇表包括HOT, COLD,和 WARM，状态表示为图中的节点，转换以其概率表示为边。 <strong>转换是概率：离开给定状态的弧的值必须总和为1</strong>。上图右边用于为单词序列 <img src="https://www.zhihu.com/equation?tex=w_1%2C...%2Cw_n" alt="[公式]"> 分配一个概率，他其实是一个bigram的语言模型，每条边表示概率 <img src="https://www.zhihu.com/equation?tex=p%28w_i%7Cw_j%29" alt="[公式]"> 。</p><p>在形式上，马尔可夫链由以下组件指定:</p><p><img src="https://pic3.zhimg.com/v2-ae800f6388fec4020030f6f9924538ca_b.jpg" alt="img"></p><ol><li><img src="https://www.zhihu.com/equation?tex=Q+%3D+q_%7B1%7D%2Cq_%7B2%7D+...q_%7Bn%7D" alt="[公式]"> ，N个状态的集合</li><li>A = <img src="https://www.zhihu.com/equation?tex=a_%7B11%7D%2Ca_%7B12%7D+...a_%7Bn1%7D+...a_%7Bnn%7D" alt="[公式]"> ,一个转移概率矩阵A，每个 <img src="https://www.zhihu.com/equation?tex=a_%7Bij%7D" alt="[公式]"> 代表从状态i移动到状态j的概率 <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%7Ba_%7Bij%7D%3D1%7D" alt="[公式]"> , <img src="https://www.zhihu.com/equation?tex=%5Cforall+i" alt="[公式]"> </li><li><img src="https://www.zhihu.com/equation?tex=%5Cpi+%3D+%5Cpi_1%2C%5Cpi_2%2C...%2C%5Cpi_N" alt="[公式]"> ，状态上的初始概率分布(某一时刻的所有可能的隐藏状态的分布(可能性))。是马尔可夫链从状态i开始的概率。一些状态j可能有 <img src="https://www.zhihu.com/equation?tex=%5Cpi_j+%3D+0" alt="[公式]"> ，这意味着它们不可能是初始状态。 <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%5Cpi+_%7Bi%7D%3D1%7D" alt="[公式]"> </li></ol><p><strong>马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关：</strong>如果我们得到了这个稳定概率分布对应的马尔科夫链模型的状态转移矩阵，则我们可以用任意的概率分布样本开始，<strong>带入马尔科夫链模型的状态转移矩阵</strong>，这样经过一些序列的转换，最终就可以得到符合对应稳定概率分布的样本。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191226_1614_48_682.png" alt=""></p><p>使用图中的样本概率( <img src="https://www.zhihu.com/equation?tex=%5Cpi+%3D+%5B0.1%2C0.7%2C0.2%5D" alt="[公式]">) )计算下列每一个序列的概率:</p><pre><code class="text">(8.5) hot hot hot hot（0.1*0.1*0.1*0.1）(8.6) cold hot cold hot（0.7*0.1*0.7*0.1）</code></pre><pre><code>小结：1.马尔科夫链假设，预测的东西仅仅和现在的状态有关，和过去的一切状态无关2.形态上看，和FST无区别</code></pre>]]></content>
-    
-    
-    <categories>
-      
-      <category>概念</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>马尔科夫链</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>0.概念/NLP_SLP_6_HMM&amp;HEMM&amp;CRF的比较pt2</title>
     <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM&amp;HEMM&amp;CRF%E7%9A%84%E6%AF%94%E8%BE%83pt2/"/>
     <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM&amp;HEMM&amp;CRF%E7%9A%84%E6%AF%94%E8%BE%83pt2/</url>
@@ -2428,6 +2478,31 @@
     <tags>
       
       <tag>HMM</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0.概念/NLP_SLP_6_HMM_马尔科夫链</title>
+    <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/"/>
+    <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="马尔科夫链"><a href="#马尔科夫链" class="headerlink" title="马尔科夫链"></a>马尔科夫链</h1><p>马尔可夫链是一个模型，<strong>告诉我们关于随机变量序列的概率，状态。每个状态都可以从某个集合中获取值</strong>。 这些集合可以是单词，标签或代表任何东西的符号，例如天气。 下图左边是天气转换，右边是生成句子的单词序列。</p><p><img src="https://pic4.zhimg.com/v2-1f6f4ea4278bcceab330ad4f269dbc2b_b.jpg" alt="img"></p><p>考虑状态变量 <img src="https://www.zhihu.com/equation?tex=q_1%2Cq_2%2C...%2Cq_i" alt="[公式]"> ,HMM核心假设是:<strong>当预测未来时，过去并不重要，重要的是现在</strong>。</p><p><img src="https://pic2.zhimg.com/v2-f6c356f8473cba19ddc47e666a3a0ee9_b.png" alt="img"></p><p>上图显示了一个马尔可夫链，用于为一系列天气事件分配概率，其中词汇表包括HOT, COLD,和 WARM，状态表示为图中的节点，转换以其概率表示为边。 <strong>转换是概率：离开给定状态的弧的值必须总和为1</strong>。上图右边用于为单词序列 <img src="https://www.zhihu.com/equation?tex=w_1%2C...%2Cw_n" alt="[公式]"> 分配一个概率，他其实是一个bigram的语言模型，每条边表示概率 <img src="https://www.zhihu.com/equation?tex=p%28w_i%7Cw_j%29" alt="[公式]"> 。</p><p>在形式上，马尔可夫链由以下组件指定:</p><p><img src="https://pic3.zhimg.com/v2-ae800f6388fec4020030f6f9924538ca_b.jpg" alt="img"></p><ol><li><img src="https://www.zhihu.com/equation?tex=Q+%3D+q_%7B1%7D%2Cq_%7B2%7D+...q_%7Bn%7D" alt="[公式]"> ，N个状态的集合</li><li>A = <img src="https://www.zhihu.com/equation?tex=a_%7B11%7D%2Ca_%7B12%7D+...a_%7Bn1%7D+...a_%7Bnn%7D" alt="[公式]"> ,一个转移概率矩阵A，每个 <img src="https://www.zhihu.com/equation?tex=a_%7Bij%7D" alt="[公式]"> 代表从状态i移动到状态j的概率 <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%7Ba_%7Bij%7D%3D1%7D" alt="[公式]"> , <img src="https://www.zhihu.com/equation?tex=%5Cforall+i" alt="[公式]"> </li><li><img src="https://www.zhihu.com/equation?tex=%5Cpi+%3D+%5Cpi_1%2C%5Cpi_2%2C...%2C%5Cpi_N" alt="[公式]"> ，状态上的初始概率分布(某一时刻的所有可能的隐藏状态的分布(可能性))。是马尔可夫链从状态i开始的概率。一些状态j可能有 <img src="https://www.zhihu.com/equation?tex=%5Cpi_j+%3D+0" alt="[公式]"> ，这意味着它们不可能是初始状态。 <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%5Cpi+_%7Bi%7D%3D1%7D" alt="[公式]"> </li></ol><p><strong>马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关：</strong>如果我们得到了这个稳定概率分布对应的马尔科夫链模型的状态转移矩阵，则我们可以用任意的概率分布样本开始，<strong>带入马尔科夫链模型的状态转移矩阵</strong>，这样经过一些序列的转换，最终就可以得到符合对应稳定概率分布的样本。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191226_1614_48_682.png" alt=""></p><p>使用图中的样本概率( <img src="https://www.zhihu.com/equation?tex=%5Cpi+%3D+%5B0.1%2C0.7%2C0.2%5D" alt="[公式]">) )计算下列每一个序列的概率:</p><pre><code class="text">(8.5) hot hot hot hot（0.1*0.1*0.1*0.1）(8.6) cold hot cold hot（0.7*0.1*0.7*0.1）</code></pre><pre><code>小结：1.马尔科夫链假设，预测的东西仅仅和现在的状态有关，和过去的一切状态无关2.形态上看，和FST无区别</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>概念</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>马尔科夫链</tag>
       
     </tags>
     
@@ -2511,31 +2586,6 @@
   
   
   <entry>
-    <title>0.概念/NLP_SLP_5_FSD状态传感器</title>
-    <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/"/>
-    <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/</url>
-    
-    <content type="html"><![CDATA[<h1 id="状态传感器FST概念"><a href="#状态传感器FST概念" class="headerlink" title="状态传感器FST概念"></a>状态传感器FST概念</h1><p>状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。</p><p>他是一种类似于字典树/自动机的数据结构。</p><p>转自豆瓣-巴扎黑</p><p>有限状态转移机在自然语言处理上的应用</p><p>原文地址：</p><p><a href="http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/" target="_blank" rel="noopener">http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/</a></p><p>在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。</p><p>首先，先来大概的了解一下有限状态机（FSM）</p><p>有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of storing a status or state and changing this state based on input. 我的理解大概这个FSM就是一个基于某些状态和某些规则而构造的一个模型。比如原文作者就丧心病狂的给他的小白鼠构造了下面这个“我的一天”的模型。</p><table><thead><tr><th><img src="https://img1.doubanio.com/view/note/large/public/p10828389.jpg" alt="img"></th></tr></thead><tbody><tr><td></td></tr></tbody></table><p>所以呢，我们大致可以看出来这个Mirovia的小白鼠每天的生活就是困了睡、饿了吃、无聊了就开始搞基……</p><p>在NLP中，FSM包含一个起始节点和一个终止结点，然后通过all possible combination of condition labels，就能去generate, recognize language了。</p><p>而FST呢，就是一种special type of FSM. 具体的来说，FST会有一个input string和一个output string, 对比起对于某种状态我要么接受条件做出转移，要么我就原地不动的FSM来说，FST是将这个input string转移成output string了，也就是说，it accepts a string on its input tape and generate another string on its output tape.</p><p>FST在一些NLP task里面特别有用，比如说我给出以下三个规则：</p><p>1) 当c后紧接x时，将c变为b         cx→bx</p><p>2) 当a前面是rs时，将a变为b        rsa→rsb</p><p>3) 当b前面是rs，后面是xy时,将b变为a       rsbxy→rsaxy</p><p>所以当我们的input string是rsaxyrscxy时，根据以上三个规则，我们就可以做出以下的变换：</p><p>rsaxyrscxy→rsaxyrsbxy</p><p>rsaxyrsbxy→rsbxyrsbxy</p><p>rsbxyrsbxy→rsaxyrsaxy</p><p>然后大家就会发现，第二步做的变换的第三步又变回去了！搞毛啊！浪费我们程序猿宝贵的时间和精力啊！于是FST就出现了， FST provides a path to eliminate these inefficiencies.</p><p>首先呢，我们把每一个rule都用一个FST表示出来，每个状态间的link表示接收input character以及相应的output character. 表示方式是input/output. 所以针对上面的3个rules，我们可以得到以下三个FST：</p><table><thead><tr><th><img src="https://img9.doubanio.com/view/note/large/public/p10828394.jpg" alt="FST based on rules"></th></tr></thead><tbody><tr><td>FST based on rules</td></tr></tbody></table><p>接下来，我们就要去extending 这些FST了，为什么要extending他们呢？原文是这么说的： FST would be of little use in matching against an input string as each is designed to process exactly the context window described in its corresponding rule.我的理解是这样的，比如说第一个rule，当rsaxyrscxy进来后，先判断第一个字符r，rule 1就识别不出来了，因为他只知道c和b的事嘛。所以为了让FST能适用于任何任意长度的string而且能够根据rules进行必要的操作，我们就要extend FST. 就拿刚刚的rule 1来说吧，他只是为了变换cx到bx，但是他也要能handle得了其前面的‘rsaxyrs’这些characters还有他后面的那个y啊，所以呢，我们可以简单的把这些貌似与规则暂时无关的characters列在一个its own individual edge上面, labeled with ?/?. 然后用ε表示无输出，我们来看一下刚刚那三个FST扩展后的结果先：</p><table><thead><tr><th><img src="https://img1.doubanio.com/view/note/large/public/p10828409.jpg" alt="extended FST"></th></tr></thead><tbody><tr><td>extended FST</td></tr></tbody></table><p>好的，就以第一个图来讲解一下</p><p>首先输入rsaxyrscxy，然后c前面的这一串‘rsaxyrs’，由于他们和我规则没有半毛钱关系，所以他们是什么就还是什么，然后遇到c字符了，我们就用c/ε 来表示“暂时无输出，跳入下一个字符”，所以我们看到了1那个节点，这个节点分别有三个link指出去，，x/bx表示输入x的话，那就输出bx；?/c?表示输入为非x外的任意字符，则原样输出嘛；c/c表示输入c，输出c(相当于继续判断我后面那个是什么)。</p><p>然后呢，就要去把上面这一堆合成一个single FST了，这个时候作者说了一句“A full explanation of the FST composition algorithm is beyond the scope of this write-up”，咳咳，same reason吧，大家比划比划应该能搞出下面这个composed FST:</p><table><thead><tr><th><img src="https://img3.doubanio.com/view/note/large/public/p10828432.jpg" alt="Final FST"></th></tr></thead><tbody><tr><td>Final FST</td></tr></tbody></table><p>这个final FST能达到那三个rule的效果，而且重点是the transformation required only a single pass though the FST and did not result in any efficient transformations. 原来这些rule的task耗费的时间与他们的rule number啊，窗长啊，input string字符数啊都有关系，而现在FST耗费的时间只与input string字符数有关了，perfect啊！</p><p>（完）</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>概念</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>状态传感器</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>0.概念/NLP_SLP_3_一阶逻辑</title>
     <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_3_%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91/"/>
     <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_3_%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91/</url>
@@ -2553,6 +2603,31 @@
     <tags>
       
       <tag>一阶逻辑</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0.概念/NLP_SLP_5_FSD状态传感器</title>
+    <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/"/>
+    <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="状态传感器FST概念"><a href="#状态传感器FST概念" class="headerlink" title="状态传感器FST概念"></a>状态传感器FST概念</h1><p>状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。</p><p>他是一种类似于字典树/自动机的数据结构。</p><p>转自豆瓣-巴扎黑</p><p>有限状态转移机在自然语言处理上的应用</p><p>原文地址：</p><p><a href="http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/" target="_blank" rel="noopener">http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/</a></p><p>在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。</p><p>首先，先来大概的了解一下有限状态机（FSM）</p><p>有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of storing a status or state and changing this state based on input. 我的理解大概这个FSM就是一个基于某些状态和某些规则而构造的一个模型。比如原文作者就丧心病狂的给他的小白鼠构造了下面这个“我的一天”的模型。</p><table><thead><tr><th><img src="https://img1.doubanio.com/view/note/large/public/p10828389.jpg" alt="img"></th></tr></thead><tbody><tr><td></td></tr></tbody></table><p>所以呢，我们大致可以看出来这个Mirovia的小白鼠每天的生活就是困了睡、饿了吃、无聊了就开始搞基……</p><p>在NLP中，FSM包含一个起始节点和一个终止结点，然后通过all possible combination of condition labels，就能去generate, recognize language了。</p><p>而FST呢，就是一种special type of FSM. 具体的来说，FST会有一个input string和一个output string, 对比起对于某种状态我要么接受条件做出转移，要么我就原地不动的FSM来说，FST是将这个input string转移成output string了，也就是说，it accepts a string on its input tape and generate another string on its output tape.</p><p>FST在一些NLP task里面特别有用，比如说我给出以下三个规则：</p><p>1) 当c后紧接x时，将c变为b         cx→bx</p><p>2) 当a前面是rs时，将a变为b        rsa→rsb</p><p>3) 当b前面是rs，后面是xy时,将b变为a       rsbxy→rsaxy</p><p>所以当我们的input string是rsaxyrscxy时，根据以上三个规则，我们就可以做出以下的变换：</p><p>rsaxyrscxy→rsaxyrsbxy</p><p>rsaxyrsbxy→rsbxyrsbxy</p><p>rsbxyrsbxy→rsaxyrsaxy</p><p>然后大家就会发现，第二步做的变换的第三步又变回去了！搞毛啊！浪费我们程序猿宝贵的时间和精力啊！于是FST就出现了， FST provides a path to eliminate these inefficiencies.</p><p>首先呢，我们把每一个rule都用一个FST表示出来，每个状态间的link表示接收input character以及相应的output character. 表示方式是input/output. 所以针对上面的3个rules，我们可以得到以下三个FST：</p><table><thead><tr><th><img src="https://img9.doubanio.com/view/note/large/public/p10828394.jpg" alt="FST based on rules"></th></tr></thead><tbody><tr><td>FST based on rules</td></tr></tbody></table><p>接下来，我们就要去extending 这些FST了，为什么要extending他们呢？原文是这么说的： FST would be of little use in matching against an input string as each is designed to process exactly the context window described in its corresponding rule.我的理解是这样的，比如说第一个rule，当rsaxyrscxy进来后，先判断第一个字符r，rule 1就识别不出来了，因为他只知道c和b的事嘛。所以为了让FST能适用于任何任意长度的string而且能够根据rules进行必要的操作，我们就要extend FST. 就拿刚刚的rule 1来说吧，他只是为了变换cx到bx，但是他也要能handle得了其前面的‘rsaxyrs’这些characters还有他后面的那个y啊，所以呢，我们可以简单的把这些貌似与规则暂时无关的characters列在一个its own individual edge上面, labeled with ?/?. 然后用ε表示无输出，我们来看一下刚刚那三个FST扩展后的结果先：</p><table><thead><tr><th><img src="https://img1.doubanio.com/view/note/large/public/p10828409.jpg" alt="extended FST"></th></tr></thead><tbody><tr><td>extended FST</td></tr></tbody></table><p>好的，就以第一个图来讲解一下</p><p>首先输入rsaxyrscxy，然后c前面的这一串‘rsaxyrs’，由于他们和我规则没有半毛钱关系，所以他们是什么就还是什么，然后遇到c字符了，我们就用c/ε 来表示“暂时无输出，跳入下一个字符”，所以我们看到了1那个节点，这个节点分别有三个link指出去，，x/bx表示输入x的话，那就输出bx；?/c?表示输入为非x外的任意字符，则原样输出嘛；c/c表示输入c，输出c(相当于继续判断我后面那个是什么)。</p><p>然后呢，就要去把上面这一堆合成一个single FST了，这个时候作者说了一句“A full explanation of the FST composition algorithm is beyond the scope of this write-up”，咳咳，same reason吧，大家比划比划应该能搞出下面这个composed FST:</p><table><thead><tr><th><img src="https://img3.doubanio.com/view/note/large/public/p10828432.jpg" alt="Final FST"></th></tr></thead><tbody><tr><td>Final FST</td></tr></tbody></table><p>这个final FST能达到那三个rule的效果，而且重点是the transformation required only a single pass though the FST and did not result in any efficient transformations. 原来这些rule的task耗费的时间与他们的rule number啊，窗长啊，input string字符数啊都有关系，而现在FST耗费的时间只与input string字符数有关了，perfect啊！</p><p>（完）</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>概念</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>状态传感器</tag>
       
     </tags>
     
@@ -2586,6 +2661,25 @@
   
   
   <entry>
+    <title>3.课程/SpeechAndLanguageProcessing_9 - Automatic Speech Recognition</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/</url>
+    
+    <content type="html"><![CDATA[<h1 id="9-Auto-Speech-Recognition-语音转文字"><a href="#9-Auto-Speech-Recognition-语音转文字" class="headerlink" title="9. Auto Speech Recognition - 语音转文字"></a>9. Auto Speech Recognition - 语音转文字</h1><p>Spoken language understanding is a difficult task.The goal of <strong>Automatic speech recognition（ASR）</strong>is to address this this task computationally by building system  that <strong>map from an acoustic signal to a string of word</strong>.And <strong>Automatic speech understanding(ASU)</strong> extends this goal to understand more than just words,also sentences.</p><p>影响语音转文字系统性能表现的几个参数：</p><ul><li>需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。</li><li>speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。</li><li>声音质量：apparently，噪音少识别起来容易。</li><li>讲话者的类型：apparently，native speaker识别起来容易，日本口音难</li></ul><p>本章节阐述：</p><p>主要聚焦于大词汇量连续篇幅的语音识别问题（LVCSR : Large vocabulary continuous speech recognition）。</p><p>LVCSR主要使用的范式是HMM模型。本章涉及的核心知识在之前章节均有提及：第七章的音素，第五六章的贝叶斯法则，HMM模型，维特比算法，BW前向算法，第四章的N-gram模型和困惑度。</p><p>本章将介绍HMM-based的speech-recognizer、信号处理技术如何分离MFCC特征、高斯音学模型、维特比算法训练ASR模型的步骤（embedded training）。第十章会接着介绍ASR的其他细节。</p><p><strong>9.1)语音识别系统架构</strong></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/ApplicationFrameHost_tFCT614otB.png" alt=""></p><p><strong>9.3</strong>）<strong>从waveform中提取MFCC feature</strong></p><p>1.把音波变成观察矩阵</p><p>首先把音波分帧，每帧25ms，两帧之间重叠10ms。分帧后音波变成了一小段一小段的，因为波形在时域上几乎没有描述能力，因此必须对波形做MFCC提取。根据人耳朵的生理特征，把每一个波形变换成一个多维向量，可以简单理解为这个向量提取了这帧语音的内容信息，这个过程就是声学特征提取。</p><p>因此，声音就成了一个十二行,N列的一个矩阵，称之为观察矩阵，这里N是总帧数。如下图，每一个帧都用12维的向量表示，色块颜色的深浅表示向量值的大小。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_W2LnNViUEa.png" alt=""></p><p>如何把这个矩阵变成文本？首先介绍两个概念：</p><ul><li>音素：单词的发音由音素构成（常见的英语用音素是CMU的39音素表构成，汉语由声母+韵母构成）</li><li>状态：这里可理解为比音素更细致的语音单位。通常把音素划分成3个状态。</li></ul><p>语音识别总体是如何工作的？</p><ul><li>把帧识别成状态（难点）</li><li>状态组合成音素</li><li>音素组合成单词</li></ul><p>如下图所示，竖条代表一个帧，若干个帧组成一个状态，三个状态组合成一个音素。若干个音素组合成一个单词。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_rMS54NmxEe.png" alt=""></p><p>那么每个帧对应哪个状态呢？可以看某个帧对应哪个状态的概率最大，这个帧就属于哪个状态。如下所示，这个帧在S3上的条件概率最大，所以就判断这个帧属于S3状态。这个条件概率在“高斯声学模型”中查阅的。这个模型里边训练了一大堆参数，通过这些参数，就可以知道帧对应状态的概率。训练参数的过程（<strong>embedding training</strong>）需要用到巨大的语音数据，具体过程这里省略。</p><p>这样做有一个问题，每帧都会对应一个状态号，最后整个语音都会得到一堆乱七八糟的状态号。假设语音有1000帧，就会有1000个状态号和333个音素，111个单词，但是其实1000帧就是25秒，30个单词左右，说明这里每个帧一个状态号的分配方式有问题，前后交叠有大量重复。其实相邻帧应该有相同的状态号才合理，因为每帧很短。</p><p>解决这个合理给帧分配状态号的问题，可使用HMM模型，一共两步;</p><ul><li>构建一个状态网络</li><li>从状态网络中寻找与声音最匹配的路径</li></ul><p>这样就把输出的结果限定在了刚才搭建的状态网络中，只要网络搭建的足够大，就可以包含任意文本路径，但是这个网络搭建的越大，就会越稀释，想达到比较好的准确率就很难。所以要根据任务特点，合理选择网络大小。</p><p>搭建状态网络，就是从单词级网络展开成音素网络，再展开成状态网络，语音识别其实就是在状态网络中搜索一条最佳路径，语音对应的这条路径是概率最大的路径。这其实也就是得知<strong>输出结果</strong>“语音，求解他的<strong>隐藏状态</strong>“状态”，是HMM的decoding问题，使用维特比算法（路径搜索的维特比算法是，概率一种动态规划的剪枝算法）可解。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_TjYucmLpiT.png" alt=""></p><p>这里有三个累积概率，分别是：</p><ul><li>观察概率：每帧和每个状态转移的概率（高斯声学模型得知）</li><li>转移概率：每个状态转移到自身和下个状态的概率（高斯声学模型得知）</li><li>语言概率：根据语言统计规律得到的规律（语言模型N-gram etc得知）</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>3.课程</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>3.课程/SpeechAndLanguageProcessing_Dic</title>
     <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_Dic/"/>
     <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_Dic/</url>
@@ -2605,25 +2699,6 @@
       <tag>NLP</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>3.课程/SpeechAndLanguageProcessing_9 - Automatic Speech Recognition</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/</url>
-    
-    <content type="html"><![CDATA[<h1 id="9-Auto-Speech-Recognition-语音转文字"><a href="#9-Auto-Speech-Recognition-语音转文字" class="headerlink" title="9. Auto Speech Recognition - 语音转文字"></a>9. Auto Speech Recognition - 语音转文字</h1><p>Spoken language understanding is a difficult task.The goal of <strong>Automatic speech recognition（ASR）</strong>is to address this this task computationally by building system  that <strong>map from an acoustic signal to a string of word</strong>.And <strong>Automatic speech understanding(ASU)</strong> extends this goal to understand more than just words,also sentences.</p><p>影响语音转文字系统性能表现的几个参数：</p><ul><li>需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。</li><li>speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。</li><li>声音质量：apparently，噪音少识别起来容易。</li><li>讲话者的类型：apparently，native speaker识别起来容易，日本口音难</li></ul><p>本章节阐述：</p><p>主要聚焦于大词汇量连续篇幅的语音识别问题（LVCSR : Large vocabulary continuous speech recognition）。</p><p>LVCSR主要使用的范式是HMM模型。本章涉及的核心知识在之前章节均有提及：第七章的音素，第五六章的贝叶斯法则，HMM模型，维特比算法，BW前向算法，第四章的N-gram模型和困惑度。</p><p>本章将介绍HMM-based的speech-recognizer、信号处理技术如何分离MFCC特征、高斯音学模型、维特比算法训练ASR模型的步骤（embedded training）。第十章会接着介绍ASR的其他细节。</p><p><strong>9.1)语音识别系统架构</strong></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/ApplicationFrameHost_tFCT614otB.png" alt=""></p><p><strong>9.3</strong>）<strong>从waveform中提取MFCC feature</strong></p><p>1.把音波变成观察矩阵</p><p>首先把音波分帧，每帧25ms，两帧之间重叠10ms。分帧后音波变成了一小段一小段的，因为波形在时域上几乎没有描述能力，因此必须对波形做MFCC提取。根据人耳朵的生理特征，把每一个波形变换成一个多维向量，可以简单理解为这个向量提取了这帧语音的内容信息，这个过程就是声学特征提取。</p><p>因此，声音就成了一个十二行,N列的一个矩阵，称之为观察矩阵，这里N是总帧数。如下图，每一个帧都用12维的向量表示，色块颜色的深浅表示向量值的大小。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_W2LnNViUEa.png" alt=""></p><p>如何把这个矩阵变成文本？首先介绍两个概念：</p><ul><li>音素：单词的发音由音素构成（常见的英语用音素是CMU的39音素表构成，汉语由声母+韵母构成）</li><li>状态：这里可理解为比音素更细致的语音单位。通常把音素划分成3个状态。</li></ul><p>语音识别总体是如何工作的？</p><ul><li>把帧识别成状态（难点）</li><li>状态组合成音素</li><li>音素组合成单词</li></ul><p>如下图所示，竖条代表一个帧，若干个帧组成一个状态，三个状态组合成一个音素。若干个音素组合成一个单词。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_rMS54NmxEe.png" alt=""></p><p>那么每个帧对应哪个状态呢？可以看某个帧对应哪个状态的概率最大，这个帧就属于哪个状态。如下所示，这个帧在S3上的条件概率最大，所以就判断这个帧属于S3状态。这个条件概率在“高斯声学模型”中查阅的。这个模型里边训练了一大堆参数，通过这些参数，就可以知道帧对应状态的概率。训练参数的过程（<strong>embedding training</strong>）需要用到巨大的语音数据，具体过程这里省略。</p><p>这样做有一个问题，每帧都会对应一个状态号，最后整个语音都会得到一堆乱七八糟的状态号。假设语音有1000帧，就会有1000个状态号和333个音素，111个单词，但是其实1000帧就是25秒，30个单词左右，说明这里每个帧一个状态号的分配方式有问题，前后交叠有大量重复。其实相邻帧应该有相同的状态号才合理，因为每帧很短。</p><p>解决这个合理给帧分配状态号的问题，可使用HMM模型，一共两步;</p><ul><li>构建一个状态网络</li><li>从状态网络中寻找与声音最匹配的路径</li></ul><p>这样就把输出的结果限定在了刚才搭建的状态网络中，只要网络搭建的足够大，就可以包含任意文本路径，但是这个网络搭建的越大，就会越稀释，想达到比较好的准确率就很难。所以要根据任务特点，合理选择网络大小。</p><p>搭建状态网络，就是从单词级网络展开成音素网络，再展开成状态网络，语音识别其实就是在状态网络中搜索一条最佳路径，语音对应的这条路径是概率最大的路径。这其实也就是得知<strong>输出结果</strong>“语音，求解他的<strong>隐藏状态</strong>“状态”，是HMM的decoding问题，使用维特比算法（路径搜索的维特比算法是，概率一种动态规划的剪枝算法）可解。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/chrome_TjYucmLpiT.png" alt=""></p><p>这里有三个累积概率，分别是：</p><ul><li>观察概率：每帧和每个状态转移的概率（高斯声学模型得知）</li><li>转移概率：每个状态转移到自身和下个状态的概率（高斯声学模型得知）</li><li>语言概率：根据语言统计规律得到的规律（语言模型N-gram etc得知）</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>3.课程</category>
-      
-    </categories>
-    
     
   </entry>
   
@@ -2875,6 +2950,25 @@
   
   
   <entry>
+    <title>3.课程/SpeechAndLanguageProcessing_11 - Computational Phonology</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_11%20-%20Computational%20Phonology/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_11%20-%20Computational%20Phonology/</url>
+    
+    <content type="html"><![CDATA[<h1 id="11-Computational-Phonology"><a href="#11-Computational-Phonology" class="headerlink" title="11. Computational Phonology"></a>11. Computational Phonology</h1><p>本章较艰涩，对NLP发文帮助不大，Skip，以后需用再补。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>3.课程</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>3.课程/SpeechAndLanguageProcessing_10 - Automatic Speech RecongnitionAdvanced Topics</title>
     <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/"/>
     <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/</url>
@@ -2899,25 +2993,6 @@
     <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_12%20-%2016,17%20-%2021%E8%AF%AD%E6%B3%95%E5%AD%A6%EF%BC%8C%E8%AF%AD%E4%B9%89%E8%AF%AD%E7%94%A8%E5%AD%A6/</url>
     
     <content type="html"><![CDATA[<h1 id="12-16语法学，17-21语义语用学"><a href="#12-16语法学，17-21语义语用学" class="headerlink" title="12 - 16语法学，17 - 21语义语用学"></a>12 - 16语法学，17 - 21语义语用学</h1><p>以上几章主要侧重于对英语这门语言本身的讲解，对发表论文帮助不大。先跳过，回头需用再补。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>3.课程</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>3.课程/SpeechAndLanguageProcessing_11 - Computational Phonology</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_11%20-%20Computational%20Phonology/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_11%20-%20Computational%20Phonology/</url>
-    
-    <content type="html"><![CDATA[<h1 id="11-Computational-Phonology"><a href="#11-Computational-Phonology" class="headerlink" title="11. Computational Phonology"></a>11. Computational Phonology</h1><p>本章较艰涩，对NLP发文帮助不大，Skip，以后需用再补。</p>]]></content>
     
     
     <categories>
@@ -3170,11 +3245,11 @@
   
   
   <entry>
-    <title>1.科研/1 - B学科调研结论</title>
-    <link href="undefined2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20B%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E7%BB%93%E8%AE%BA/"/>
-    <url>2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20B%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E7%BB%93%E8%AE%BA/</url>
+    <title>1.科研/1 - A学科调研资料库</title>
+    <link href="undefined2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20A%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E8%B5%84%E6%96%99%E5%BA%93/"/>
+    <url>2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20A%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E8%B5%84%E6%96%99%E5%BA%93/</url>
     
-    <content type="html"><![CDATA[<h1 id="1-学科调研结论"><a href="#1-学科调研结论" class="headerlink" title="1.学科调研结论"></a>1.学科调研结论</h1><h3 id="简要结论"><a href="#简要结论" class="headerlink" title="简要结论"></a><strong>简要结论</strong></h3><p>经过对上文阅读列表+论文库的调研，得出如下结论，可以开始选题。</p><ul><li>近年来,我感兴趣的关于_<strong>____</strong>的研究方向,全球呈现_<strong><strong>_趋势,其中较多的论文来自\</strong></strong>国家\地区,发表相关论文的研究机构有_<strong>__</strong>.蓝海领域比较新，容易出成果，我选择的这个方向是否是蓝海领域_<strong>____</strong>.</li><li>为了充分了解这个领域目前的发展状况，需要如下几个方面的调研：方法方面，是否有一套比较清晰的数学体系和机器学习体系_<strong><strong>；数据方面，有没有一个大家公认的标准训练集和测试集__</strong></strong>；研究团队，是否有著名团队和人士参加_<strong>__</strong>。如果以上几个方面的调研结论不是太清晰，作为初学者可能不要轻易进入。</li><li>全球的研究人员主要从_<strong>___</strong>等领域对课题进行研究,同时我们也注意到_<strong>__</strong>等领域的研究可能会给我们带来不一样的视角和灵感</li><li>相关课题的研究成果目前主要发表在_<strong>___</strong>等期刊上,在相关研究领域中,_____等几位学者有较多的论文产出.</li><li>影响力较高的几篇论文分别来自于_<strong>__</strong>(国家/地区)的_<strong><em>(机构)的___</em></strong>学者</li><li>近半年来_<strong><strong>__</strong></strong>方向引起了较多科研人员的关注</li><li>选择_<strong>___</strong>综述文章作为快速了解这个课题的切入点</li><li>最新的研究进展指出,该研究方向_<strong>_____</strong></li></ul><h3 id="BackGround："><a href="#BackGround：" class="headerlink" title="BackGround："></a><strong>BackGround：</strong></h3><p>自然语言处理（简称NLP），是研究计算机处理人类语言的一门技术，包括：</p><p>1.<strong>句法语义分析</strong>：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。</p><p>2.<strong>信息抽取</strong>：从给定文本中抽取重要的信息，比如，时间、地点、人物、事件、原因、结果、数字、日期、货币、专有名词等等。通俗说来，就是要了解谁在什么时候、什么原因、对谁、做了什么事、有什么结果。涉及到实体识别、时间抽取、因果关系抽取等关键技术。</p><p>3.<strong>文本挖掘</strong>（或者文本数据挖掘）：包括文本聚类、分类、信息抽取、摘要、情感分析以及对挖掘的信息和知识的可视化、交互式的表达界面。目前主流的技术都是基于统计机器学习的。</p><p>4.<strong>机器翻译</strong>：把输入的源语言文本通过自动翻译获得另外一种语言的文本。根据输入媒介不同，可以细分为文本翻译、语音翻译、手语翻译、图形翻译等。机器翻译从最早的基于规则的方法到二十年前的基于统计的方法，再到今天的基于神经网络（编码-解码）的方法，逐渐形成了一套比较严谨的方法体系。</p><p>5.<strong>信息检索</strong>：对大规模的文档进行索引。可简单对文档中的词汇，赋之以不同的权重来建立索引，也可利用1，2，3的技术来建立更加深层的索引 。在查询的时候，对输入的查询表达式比如一个检索词或者一个句子进行分析，然后在索引里面查找匹配的候选文档，再根据一个排序机制把候选文档排序，最后输出排序得分最高的文档。</p><p>6.<strong>问答系统</strong>： 对一个自然语言表达的问题，由问答系统给出一个精准的答案。需要对自然语言查询语句进行某种程度的语义分析，包括实体链接、关系识别，形成逻辑表达式，然后到知识库中查找可能的候选答案并通过一个排序机制找出最佳的答案。</p><p>7.<strong>对话系统</strong>：系统通过一系列的对话，跟用户进行聊天、回答、完成某一项任务。涉及到用户意图理解、通用聊天引擎、问答引擎、对话管理等技术。此外，为了体现上下文相关，要具备多轮对话能力。同时，为了体现个性化，要开发用户画像以及基于用户画像的个性化回复。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-阅读列表-文献库"><a href="#1-阅读列表-文献库" class="headerlink" title="1.阅读列表+文献库"></a>1.阅读列表+文献库</h1><p>想当GrandMaster，<strong>以下提到的所有材料都绕不过去</strong>。在还没入行时间紧迫的情况下，须有所取舍。具体取舍规则办法见2 - 计划.md</p><h2 id="阅读列表"><a href="#阅读列表" class="headerlink" title="阅读列表"></a>阅读列表</h2><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>CS224N - 自然语言处理</td><td></td></tr><tr><td>CS229 - 机器学习（核心课）</td><td></td></tr><tr><td>CS229A - 机器学习应用课，数学少，应用多</td><td></td></tr><tr><td>CS231N - 计算机视觉</td><td></td></tr><tr><td>CS230 - 专注深度学习，只包含一点点机器学习（which最难的那一部分）</td><td></td></tr><tr><td>CS221 - AI导论</td><td></td></tr><tr><td>CS228 - 概率图模型</td><td></td></tr><tr><td><a href="https://www.zhihu.com/org/ji-qi-zhi-xin-65/activities" target="_blank" rel="noopener">机器之心</a></td><td></td></tr><tr><td><a href="https://zhuanlan.zhihu.com/paperweekly" target="_blank" rel="noopener">PaperWeekly</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/B2ocJ1Y2evLwVkG5FrUz5A" target="_blank" rel="noopener">NeurIPS 2019公布获奖论文</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/SxOKHRbTJdzlBNfHos-TOA" target="_blank" rel="noopener">深度学习所需数学知识</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/RlgX2GErySe5rAUAvveLdQ" target="_blank" rel="noopener">EE转CS成功案例</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/F4zQHesEGWLcBLGwYrmg3w" target="_blank" rel="noopener">Jeff Dean谈2020机器学习趋势</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/P0MXhMBjt41WflAMGtFr-g" target="_blank" rel="noopener">从Word2Vec到BERT </a>   done</td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/uaBRgRp0Yue4MtC2B-8VJA" target="_blank" rel="noopener">kaggle竞赛宝典</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/bSsmaOzQYzJ_7RjnzS804g" target="_blank" rel="noopener">NIPS2019</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/-rrj3jusoFAqt6gjuP9y6w" target="_blank" rel="noopener">斯坦福2019全球AI报告</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/XMcX1FQ3yDIAgvwsfEJ3yQ" target="_blank" rel="noopener">2020学术会议list</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/E04x_tqWPaQ4CSWfGVbnTw" target="_blank" rel="noopener">因果推演</a></td><td></td></tr><tr><td><a href="https://zhuanlan.zhihu.com/p/77357304" target="_blank" rel="noopener">ACL2019知识图谱总结</a></td><td></td></tr><tr><td>概率论与数理统计</td><td></td></tr><tr><td>线性代数</td><td></td></tr><tr><td>高等数学</td><td></td></tr><tr><td><strong>优化理论</strong></td><td></td></tr><tr><td><strong>Bubeck：《Convex Optimization: Algorithms and Complexity》</strong></td><td></td></tr><tr><td>Bottou、Curtis和Nocedal：《Optimization Methods for Large-Scale Machine Learning》</td><td></td></tr><tr><td>知识图谱</td><td></td></tr><tr><td>Ian Goodfellow&amp;Yoshua Bengio&amp;Aaron Courville：DeepLearning</td><td></td></tr><tr><td><strong>nlp基石之书：speech+and+language+processing</strong></td><td></td></tr><tr><td>Manning：Introduction to Information Retrieval</td><td></td></tr><tr><td>Neural Network Methods for Natural Language Processing</td><td></td></tr><tr><td><strong>PRML：模式识别与机器学习</strong></td><td></td></tr><tr><td>周志华：《机器学习》</td><td></td></tr><tr><td><strong>李航：《统计学习方法》</strong></td><td></td></tr><tr><td>人工智能：一种现代的方法</td><td></td></tr><tr><td>数学之美</td><td></td></tr><tr><td>网络、群体与市场（中文版）</td><td></td></tr><tr><td>EMNLP2018_如何写NLP代码</td><td></td></tr><tr><td>刘洋_写论文的技术细节</td><td></td></tr><tr><td></td><td></td></tr><tr><td>理想国</td><td></td></tr><tr><td>苏格拉底自辩篇</td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table><h2 id="对阅读列表的阐述-刘洋"><a href="#对阅读列表的阐述-刘洋" class="headerlink" title="对阅读列表的阐述 - 刘洋"></a>对阅读列表的阐述 - 刘洋</h2><p><strong>1、了解NLP的最基本知识</strong>：Jurafsky和Martin的Speech and Language Processing是领域内的经典教材，里面包含了NLP的基础知识、语言学扫盲知识、基本任务以及解决思路。阅读此书会接触到很多NLP的最基本任务和知识，比如tagging, 各种parsing，coreference, semantic role labeling等等等等。这对于全局地了解NLP领域有着极其重要的意义。书里面的知识并不需要烂熟于心，但是刷上一两遍，起码对于NLP任务有基本认识，下次遇到了知道去哪里找还是非常有意义的。另外 Chris Manning 的 introduction to information retrieval 也是一本可以扫一下盲的书，当然我认为依然不需要记住所有细节，但轮廓需要了解。IR里面的很多基本算法跟NLP有不少的重合。说说我自己曾经走过的弯路。Stanford NLP的qualification考试的一部分就是选一些jurafsky 和 manning书里面的一些chapter来读，然后老师来问相关问题。开始我一直对里面的东西懒得看，所以qualification考试一拖再拖。但博士最后一年没办法拖的时候，才发现如果早知道这些东西，博士早年可以少走很多弯路。</p><p>为什么了解NLP基础知识的重要，我给大家举几个例子。<br>最近跟同学一起做语言模型 language modeling相关的事情，很多同学用LSTM或者transformers做language model随手就能实现，但是实现一个 bigram 或者 trigram的language model（LM）却因为里面的OOV的平滑问题卡了大半天（熟悉的同学可能知道，需要拉普拉斯平滑或者更sophisticated的Kneser-Ney平滑）。为什么bigram 或者 trigram的LM很重要呢？去做一个语言模型的问题，实现深度模型之前，第一步其实就要去写一个 bigram 或者 trigram的LM。为什么呢？ 因为这些N-gram模型实现简单，并且robust。通过这样简单的实现，可以告诉你这个数据集的LM模型的下限。这样我们心里会有数，神经网络模型至少不应该比这个模型差的。神经网络模型因为其超参数、梯度爆炸等问题，有时候我们不太容易决定是真的模型不行、参数没调好还是代码有bug。那么通过N-gram LM的给出的下限，我们就可以直观地知道神经网络是有bug还是没调好参数。</p><p>第二个例子就是涉及发文章了，不知道有没有同学想过，BERT里面训练LM的随机替换为什么就使结果变好，随机替换是什么鬼，怎么结果就好了。其实在BERT之前，斯坦福的吴恩达组的Ziang Xie的 Data Noising as Smoothing in Neural Network Language Models ICLR2017（<a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.02573.pdf">https://arxiv.org/pdf/1703.02573.pdf</a>） 就首次提出了此方法，而且给出了理论解释。这种random替换其实本质上属于language modeling里面基于interpolation的平滑方式， 而基于interpolation的LM平滑，就躺在jurafsky那本书的第3.4.3节。</p><p>\2. <strong>了解早年经典的NLP模型以及论文</strong>：相比简单粗暴的神经网络模型，早年的NLP算法确实比较繁琐复杂，但里面确实有很多早年学者在硬件条件艰苦情况下的智慧结晶。熟悉了这些模型，可以在现在神经网络里面融会贯通。去年在人民大学做seminar。Seminar有大概30-40位同学参加。Seminar中，我问了一个问题，有谁知道机器翻译中的IBM模型大概是干嘛的，举手的同学大概有五分之一。我再问，谁能来手写（或者大概手写）一下IBM model1，一个人都没有。仅仅从基于IBM模型的Hierarchical Phrase-based MT, 近几年就有很多篇引用量很高的文章是基于里面的思想的。例子数不胜数： </p><p>1) chris dyer 组的<a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1601.01085">Incorporating structural alignment biases into an attentional neural translation model</a> (NAACL16) 提出用双向attention做neural机器翻译的约束项，意思是如果在英语翻译法语生成的target中的一个法语词attend到了一个source中的英语词，那么反过来，法语翻译英文 target中相同这个英语词应该也attend到source中的这个英语词。其实这个思想就是完完全全相似 Percy Liang 曾经的成名作之一，早在NAACL06年 Alignment by Agreement，大家通过题目的意思就可以猜到文章的内容，正向翻译与反向翻译中的 对齐(alignment) 要 一致(agree)。如今做neural MT的同学，有多少同学读过Percy的这篇大作呢 （大家知道Percy最多的应该是Squad吧）。</p><p>2) 处理对话系统的无聊回复，用反向概率p(source|target)做reranking现在应该已经是标配。再比如Rico Sennrich的成名作之一将Monolingual data 跟seq2seq 模型结合。其实这连个思想在phrase-base MT 里面早就被广发的使用。Neural之前的MT，需要对一个大的N-best list用MERT做 reranking， 反向概率 p(source|target) 以及语言模型概率 p(target)是reranking中feature的标配。</p><p>3) Harvard NLP组, Sam Wiseman 和Alex 发表的EMNLP16 best paper runner-up, Sequence-to-Sequence Learning as Beam-Search Optimization, 基本上传承了Daume´ III and Daniel Marcu 2005年的 LaSO模型，将其思想adapt到neural里面。</p><p>如果再准本溯源，诞生于neural MT的attention，不就是IBM模型的神经网络版本嘛。</p><p>\3. <strong>了解机器学习的基本模型：</strong>神经网络的简单暴力并且有效。但是从科研的角度讲，熟悉基本的机器学习算法是必修课。比如吴恩达的 machine learning就是必要之选。记得前段时间我面试一个小伙子，一看就是很聪明的同学，而且很短的时间就有fvg一篇NAACL在投。我就问小伙子，EM算法是什么，小伙子说没有听说过EM，而且自己的科研也用不到EM。我认为这其实是一个挺大的误区。当我想起我自己，曾经就吃过很多类似的亏。因为早期数学基础偏弱，也没有决心恶补一下数学，所以早年每次看到跟variational inference相关的算法就头大，这种偏科持续了很久，限制了科研的广度。相比粗暴的神经网络，CRF等模型的inference确实相对复杂（当年我自己也看了很多次才彻底搞明白）。但搞懂这些，是一个NLP researcher的基本素养。Pattern Recognition and Machine Learning那本书，尤其是某些小节确实比较难（又暴露了数学基础差的事实），即便是只是为了过一遍，也需要很强的耐力才能看完，更不用说完全看懂了。我自己也曾经半途而废很多次，如今依然有很多章节是不太懂的。但是其中的很多基础chapter，我认为还是很值得一读的。其实可以组成那种两三个人的学习小组，不需要有太雄伟的目标，用个一年哪怕两年的时间，把几个重要的chapter 过一遍。</p><p>NLP相对是应用科学，并不是特别的数学。但是我们天天用的算法的基本数学逻辑我认为还是需要搞懂，比如dropout, 比如天天用到的优化(SGD, momentum, adaboost, adagrad)，比如各种 batch, layer normalization。这样其实可以省去很多浪费的时间，磨刀不误砍柴工。这些年来，在帮同学调bug的过程中，我至少遇见过3-5个同学 training 的时候开dropout, test 的时候没有对每个cell用 (1-dropout)去 scale （大家不要笑，这是真的）。然后画出dropout曲线就是 dropout 值越大，结果越差。在讨论的时候，同学一脸茫然并且不清楚test时候需要scale。其实本质就是并不了解dropout背后的数学原理。</p><p><strong>4. 多看NLP其他子领域的论文</strong>：NLP有很多子领域，MT，信息抽取，parsing，tagging，情感分析，MRC等等。多多熟悉其他子领域的进展是必要的。其实不同子领域所运用的模型不会相差太大。但是最开始看不熟悉领域的问题可能会有一点难，原因是对问题的formalization不是很了解。这可能就需要多花一些时间，多找懂的同学去问。其实了解不同问题的formalization也是对领域知识最好的扩充。</p><p><strong>5. 了解 CV和data mining领域的基本重大进展</strong>：当熟悉了上面所说的点之后（当然可能至少也需要一年的时间）。熟悉CV领域的基本任务、基本算法我认为对于打开科研视野很重要。但是不可否认，因为领域不用，写作风格、术语表达相差很大，又因为缺乏背景知识（文章中会省略一些基础知识，默认大家都懂。但是跨领域的人可能不懂），第一次想读懂跨领域的文章其实并不容易。我就出现过竟然在讨论班上直接把faster-RCNN讲错了的情况，以为自己看懂了，然后就讲错了（至今昱先天天还在因为这个事情调侃我）。不过重要的是，NLP领域里面一些重要的文章其实或多或少借鉴了CV里面的思想，当然也同样出现CV借鉴NLP的情况。NLP神经网络可视化、可解释性的研究，时间上还是落后于CV里面对CNN的可视化。所以很多工作大量借鉴了CV里面的类似工作。NLP运用GAN其实也是借鉴CV的。其实两个领域很多是很相通的。比如，如果不考虑question query, vision里面detection中的 region proposal（在一个大的图片背景下找一个特定区域）, 大家想是不是跟MRC里面的 span extraction （在一大堆文字里面找一个span）有异曲同工之妙。更不用说image caption generation与sequence-to-sequence模型了，本质上几乎没什么太大的区别。强化学习在生成领域generation，发完了MT(Ranzato et al., ICLR2016)再发 image caption generation, 再回到summarization. Actor-critic 模型也是类似的，还是很多做generation diversity的文章。因为跨领域不好懂，所以第一次推荐看tutorial, 如果有 sudo code 的tutorial那就更好了。另外看看扫盲课的视频，比如Stanford CS231n也是个好办法。另外，一个NLP组里面有一个很懂CV的人也很重要（拜谢昱先）， and vise versa。<br>graph embedding近两年崛起于data mining领域。目测会在（或者已经在）NLP的不少任务得到广泛应用。想到几年前，deep walk借鉴了word2vec, 开始在data mining领域发迹，然后似乎又要轮转回NLP了。</p><p><strong>6.如何快速了解某个领域研究进展</strong></p><p>最后简单说一下快速了解某领域研究进展的经验。你会发现，搜索引擎是查阅文献的重要工具，尤其是谷歌提供的Google Scholar，由于其庞大的索引量，将是我们披荆斩棘的利器。</p><p>当需要了解某个领域，如果能找到一篇该领域的最新研究综述，就省劲多了。最方便的方法还是在Google Scholar中搜索“领域名称 + survey / review / tutorial / 综述”来查找。也有一些出版社专门出版各领域的综述文章，例如NOW Publisher出版的Foundations and Trends系列，Morgan &amp; Claypool Publisher出版的Synthesis Lectures on Human Language Technologies系列等。它们发表了很多热门方向的综述，如文档摘要、情感分析和意见挖掘、学习排序、语言模型等。</p><p>如果方向太新还没有相关综述，一般还可以查找该方向发表的最新论文，阅读它们的“相关工作”章节，顺着列出的参考文献，就基本能够了解相关研究脉络了。当然，还有很多其他办法，例如去<a href="https://link.zhihu.com/?target=http%3A//videolectures.net">http://videolectures.net</a>上看著名学者在各大学术会议或暑期学校上做的tutorial报告，去直接咨询这个领域的研究者，等等。</p><h2 id="文献库在Endnote中构建完成"><a href="#文献库在Endnote中构建完成" class="headerlink" title="文献库在Endnote中构建完成"></a>文献库在Endnote中构建完成</h2>]]></content>
     
     
     <categories>
@@ -3195,11 +3270,11 @@
   
   
   <entry>
-    <title>1.科研/1 - A学科调研资料库</title>
-    <link href="undefined2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20A%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E8%B5%84%E6%96%99%E5%BA%93/"/>
-    <url>2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20A%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E8%B5%84%E6%96%99%E5%BA%93/</url>
+    <title>1.科研/1 - B学科调研结论</title>
+    <link href="undefined2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20B%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E7%BB%93%E8%AE%BA/"/>
+    <url>2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20B%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E7%BB%93%E8%AE%BA/</url>
     
-    <content type="html"><![CDATA[<h1 id="1-阅读列表-文献库"><a href="#1-阅读列表-文献库" class="headerlink" title="1.阅读列表+文献库"></a>1.阅读列表+文献库</h1><p>想当GrandMaster，<strong>以下提到的所有材料都绕不过去</strong>。在还没入行时间紧迫的情况下，须有所取舍。具体取舍规则办法见2 - 计划.md</p><h2 id="阅读列表"><a href="#阅读列表" class="headerlink" title="阅读列表"></a>阅读列表</h2><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>CS224N - 自然语言处理</td><td></td></tr><tr><td>CS229 - 机器学习（核心课）</td><td></td></tr><tr><td>CS229A - 机器学习应用课，数学少，应用多</td><td></td></tr><tr><td>CS231N - 计算机视觉</td><td></td></tr><tr><td>CS230 - 专注深度学习，只包含一点点机器学习（which最难的那一部分）</td><td></td></tr><tr><td>CS221 - AI导论</td><td></td></tr><tr><td>CS228 - 概率图模型</td><td></td></tr><tr><td><a href="https://www.zhihu.com/org/ji-qi-zhi-xin-65/activities" target="_blank" rel="noopener">机器之心</a></td><td></td></tr><tr><td><a href="https://zhuanlan.zhihu.com/paperweekly" target="_blank" rel="noopener">PaperWeekly</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/B2ocJ1Y2evLwVkG5FrUz5A" target="_blank" rel="noopener">NeurIPS 2019公布获奖论文</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/SxOKHRbTJdzlBNfHos-TOA" target="_blank" rel="noopener">深度学习所需数学知识</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/RlgX2GErySe5rAUAvveLdQ" target="_blank" rel="noopener">EE转CS成功案例</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/F4zQHesEGWLcBLGwYrmg3w" target="_blank" rel="noopener">Jeff Dean谈2020机器学习趋势</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/P0MXhMBjt41WflAMGtFr-g" target="_blank" rel="noopener">从Word2Vec到BERT </a>   done</td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/uaBRgRp0Yue4MtC2B-8VJA" target="_blank" rel="noopener">kaggle竞赛宝典</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/bSsmaOzQYzJ_7RjnzS804g" target="_blank" rel="noopener">NIPS2019</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/-rrj3jusoFAqt6gjuP9y6w" target="_blank" rel="noopener">斯坦福2019全球AI报告</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/XMcX1FQ3yDIAgvwsfEJ3yQ" target="_blank" rel="noopener">2020学术会议list</a></td><td></td></tr><tr><td><a href="https://mp.weixin.qq.com/s/E04x_tqWPaQ4CSWfGVbnTw" target="_blank" rel="noopener">因果推演</a></td><td></td></tr><tr><td><a href="https://zhuanlan.zhihu.com/p/77357304" target="_blank" rel="noopener">ACL2019知识图谱总结</a></td><td></td></tr><tr><td>概率论与数理统计</td><td></td></tr><tr><td>线性代数</td><td></td></tr><tr><td>高等数学</td><td></td></tr><tr><td><strong>优化理论</strong></td><td></td></tr><tr><td><strong>Bubeck：《Convex Optimization: Algorithms and Complexity》</strong></td><td></td></tr><tr><td>Bottou、Curtis和Nocedal：《Optimization Methods for Large-Scale Machine Learning》</td><td></td></tr><tr><td>知识图谱</td><td></td></tr><tr><td>Ian Goodfellow&amp;Yoshua Bengio&amp;Aaron Courville：DeepLearning</td><td></td></tr><tr><td><strong>nlp基石之书：speech+and+language+processing</strong></td><td></td></tr><tr><td>Manning：Introduction to Information Retrieval</td><td></td></tr><tr><td>Neural Network Methods for Natural Language Processing</td><td></td></tr><tr><td><strong>PRML：模式识别与机器学习</strong></td><td></td></tr><tr><td>周志华：《机器学习》</td><td></td></tr><tr><td><strong>李航：《统计学习方法》</strong></td><td></td></tr><tr><td>人工智能：一种现代的方法</td><td></td></tr><tr><td>数学之美</td><td></td></tr><tr><td>网络、群体与市场（中文版）</td><td></td></tr><tr><td>EMNLP2018_如何写NLP代码</td><td></td></tr><tr><td>刘洋_写论文的技术细节</td><td></td></tr><tr><td></td><td></td></tr><tr><td>理想国</td><td></td></tr><tr><td>苏格拉底自辩篇</td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table><h2 id="对阅读列表的阐述-刘洋"><a href="#对阅读列表的阐述-刘洋" class="headerlink" title="对阅读列表的阐述 - 刘洋"></a>对阅读列表的阐述 - 刘洋</h2><p><strong>1、了解NLP的最基本知识</strong>：Jurafsky和Martin的Speech and Language Processing是领域内的经典教材，里面包含了NLP的基础知识、语言学扫盲知识、基本任务以及解决思路。阅读此书会接触到很多NLP的最基本任务和知识，比如tagging, 各种parsing，coreference, semantic role labeling等等等等。这对于全局地了解NLP领域有着极其重要的意义。书里面的知识并不需要烂熟于心，但是刷上一两遍，起码对于NLP任务有基本认识，下次遇到了知道去哪里找还是非常有意义的。另外 Chris Manning 的 introduction to information retrieval 也是一本可以扫一下盲的书，当然我认为依然不需要记住所有细节，但轮廓需要了解。IR里面的很多基本算法跟NLP有不少的重合。说说我自己曾经走过的弯路。Stanford NLP的qualification考试的一部分就是选一些jurafsky 和 manning书里面的一些chapter来读，然后老师来问相关问题。开始我一直对里面的东西懒得看，所以qualification考试一拖再拖。但博士最后一年没办法拖的时候，才发现如果早知道这些东西，博士早年可以少走很多弯路。</p><p>为什么了解NLP基础知识的重要，我给大家举几个例子。<br>最近跟同学一起做语言模型 language modeling相关的事情，很多同学用LSTM或者transformers做language model随手就能实现，但是实现一个 bigram 或者 trigram的language model（LM）却因为里面的OOV的平滑问题卡了大半天（熟悉的同学可能知道，需要拉普拉斯平滑或者更sophisticated的Kneser-Ney平滑）。为什么bigram 或者 trigram的LM很重要呢？去做一个语言模型的问题，实现深度模型之前，第一步其实就要去写一个 bigram 或者 trigram的LM。为什么呢？ 因为这些N-gram模型实现简单，并且robust。通过这样简单的实现，可以告诉你这个数据集的LM模型的下限。这样我们心里会有数，神经网络模型至少不应该比这个模型差的。神经网络模型因为其超参数、梯度爆炸等问题，有时候我们不太容易决定是真的模型不行、参数没调好还是代码有bug。那么通过N-gram LM的给出的下限，我们就可以直观地知道神经网络是有bug还是没调好参数。</p><p>第二个例子就是涉及发文章了，不知道有没有同学想过，BERT里面训练LM的随机替换为什么就使结果变好，随机替换是什么鬼，怎么结果就好了。其实在BERT之前，斯坦福的吴恩达组的Ziang Xie的 Data Noising as Smoothing in Neural Network Language Models ICLR2017（<a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.02573.pdf">https://arxiv.org/pdf/1703.02573.pdf</a>） 就首次提出了此方法，而且给出了理论解释。这种random替换其实本质上属于language modeling里面基于interpolation的平滑方式， 而基于interpolation的LM平滑，就躺在jurafsky那本书的第3.4.3节。</p><p>\2. <strong>了解早年经典的NLP模型以及论文</strong>：相比简单粗暴的神经网络模型，早年的NLP算法确实比较繁琐复杂，但里面确实有很多早年学者在硬件条件艰苦情况下的智慧结晶。熟悉了这些模型，可以在现在神经网络里面融会贯通。去年在人民大学做seminar。Seminar有大概30-40位同学参加。Seminar中，我问了一个问题，有谁知道机器翻译中的IBM模型大概是干嘛的，举手的同学大概有五分之一。我再问，谁能来手写（或者大概手写）一下IBM model1，一个人都没有。仅仅从基于IBM模型的Hierarchical Phrase-based MT, 近几年就有很多篇引用量很高的文章是基于里面的思想的。例子数不胜数： </p><p>1) chris dyer 组的<a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1601.01085">Incorporating structural alignment biases into an attentional neural translation model</a> (NAACL16) 提出用双向attention做neural机器翻译的约束项，意思是如果在英语翻译法语生成的target中的一个法语词attend到了一个source中的英语词，那么反过来，法语翻译英文 target中相同这个英语词应该也attend到source中的这个英语词。其实这个思想就是完完全全相似 Percy Liang 曾经的成名作之一，早在NAACL06年 Alignment by Agreement，大家通过题目的意思就可以猜到文章的内容，正向翻译与反向翻译中的 对齐(alignment) 要 一致(agree)。如今做neural MT的同学，有多少同学读过Percy的这篇大作呢 （大家知道Percy最多的应该是Squad吧）。</p><p>2) 处理对话系统的无聊回复，用反向概率p(source|target)做reranking现在应该已经是标配。再比如Rico Sennrich的成名作之一将Monolingual data 跟seq2seq 模型结合。其实这连个思想在phrase-base MT 里面早就被广发的使用。Neural之前的MT，需要对一个大的N-best list用MERT做 reranking， 反向概率 p(source|target) 以及语言模型概率 p(target)是reranking中feature的标配。</p><p>3) Harvard NLP组, Sam Wiseman 和Alex 发表的EMNLP16 best paper runner-up, Sequence-to-Sequence Learning as Beam-Search Optimization, 基本上传承了Daume´ III and Daniel Marcu 2005年的 LaSO模型，将其思想adapt到neural里面。</p><p>如果再准本溯源，诞生于neural MT的attention，不就是IBM模型的神经网络版本嘛。</p><p>\3. <strong>了解机器学习的基本模型：</strong>神经网络的简单暴力并且有效。但是从科研的角度讲，熟悉基本的机器学习算法是必修课。比如吴恩达的 machine learning就是必要之选。记得前段时间我面试一个小伙子，一看就是很聪明的同学，而且很短的时间就有fvg一篇NAACL在投。我就问小伙子，EM算法是什么，小伙子说没有听说过EM，而且自己的科研也用不到EM。我认为这其实是一个挺大的误区。当我想起我自己，曾经就吃过很多类似的亏。因为早期数学基础偏弱，也没有决心恶补一下数学，所以早年每次看到跟variational inference相关的算法就头大，这种偏科持续了很久，限制了科研的广度。相比粗暴的神经网络，CRF等模型的inference确实相对复杂（当年我自己也看了很多次才彻底搞明白）。但搞懂这些，是一个NLP researcher的基本素养。Pattern Recognition and Machine Learning那本书，尤其是某些小节确实比较难（又暴露了数学基础差的事实），即便是只是为了过一遍，也需要很强的耐力才能看完，更不用说完全看懂了。我自己也曾经半途而废很多次，如今依然有很多章节是不太懂的。但是其中的很多基础chapter，我认为还是很值得一读的。其实可以组成那种两三个人的学习小组，不需要有太雄伟的目标，用个一年哪怕两年的时间，把几个重要的chapter 过一遍。</p><p>NLP相对是应用科学，并不是特别的数学。但是我们天天用的算法的基本数学逻辑我认为还是需要搞懂，比如dropout, 比如天天用到的优化(SGD, momentum, adaboost, adagrad)，比如各种 batch, layer normalization。这样其实可以省去很多浪费的时间，磨刀不误砍柴工。这些年来，在帮同学调bug的过程中，我至少遇见过3-5个同学 training 的时候开dropout, test 的时候没有对每个cell用 (1-dropout)去 scale （大家不要笑，这是真的）。然后画出dropout曲线就是 dropout 值越大，结果越差。在讨论的时候，同学一脸茫然并且不清楚test时候需要scale。其实本质就是并不了解dropout背后的数学原理。</p><p><strong>4. 多看NLP其他子领域的论文</strong>：NLP有很多子领域，MT，信息抽取，parsing，tagging，情感分析，MRC等等。多多熟悉其他子领域的进展是必要的。其实不同子领域所运用的模型不会相差太大。但是最开始看不熟悉领域的问题可能会有一点难，原因是对问题的formalization不是很了解。这可能就需要多花一些时间，多找懂的同学去问。其实了解不同问题的formalization也是对领域知识最好的扩充。</p><p><strong>5. 了解 CV和data mining领域的基本重大进展</strong>：当熟悉了上面所说的点之后（当然可能至少也需要一年的时间）。熟悉CV领域的基本任务、基本算法我认为对于打开科研视野很重要。但是不可否认，因为领域不用，写作风格、术语表达相差很大，又因为缺乏背景知识（文章中会省略一些基础知识，默认大家都懂。但是跨领域的人可能不懂），第一次想读懂跨领域的文章其实并不容易。我就出现过竟然在讨论班上直接把faster-RCNN讲错了的情况，以为自己看懂了，然后就讲错了（至今昱先天天还在因为这个事情调侃我）。不过重要的是，NLP领域里面一些重要的文章其实或多或少借鉴了CV里面的思想，当然也同样出现CV借鉴NLP的情况。NLP神经网络可视化、可解释性的研究，时间上还是落后于CV里面对CNN的可视化。所以很多工作大量借鉴了CV里面的类似工作。NLP运用GAN其实也是借鉴CV的。其实两个领域很多是很相通的。比如，如果不考虑question query, vision里面detection中的 region proposal（在一个大的图片背景下找一个特定区域）, 大家想是不是跟MRC里面的 span extraction （在一大堆文字里面找一个span）有异曲同工之妙。更不用说image caption generation与sequence-to-sequence模型了，本质上几乎没什么太大的区别。强化学习在生成领域generation，发完了MT(Ranzato et al., ICLR2016)再发 image caption generation, 再回到summarization. Actor-critic 模型也是类似的，还是很多做generation diversity的文章。因为跨领域不好懂，所以第一次推荐看tutorial, 如果有 sudo code 的tutorial那就更好了。另外看看扫盲课的视频，比如Stanford CS231n也是个好办法。另外，一个NLP组里面有一个很懂CV的人也很重要（拜谢昱先）， and vise versa。<br>graph embedding近两年崛起于data mining领域。目测会在（或者已经在）NLP的不少任务得到广泛应用。想到几年前，deep walk借鉴了word2vec, 开始在data mining领域发迹，然后似乎又要轮转回NLP了。</p><p><strong>6.如何快速了解某个领域研究进展</strong></p><p>最后简单说一下快速了解某领域研究进展的经验。你会发现，搜索引擎是查阅文献的重要工具，尤其是谷歌提供的Google Scholar，由于其庞大的索引量，将是我们披荆斩棘的利器。</p><p>当需要了解某个领域，如果能找到一篇该领域的最新研究综述，就省劲多了。最方便的方法还是在Google Scholar中搜索“领域名称 + survey / review / tutorial / 综述”来查找。也有一些出版社专门出版各领域的综述文章，例如NOW Publisher出版的Foundations and Trends系列，Morgan &amp; Claypool Publisher出版的Synthesis Lectures on Human Language Technologies系列等。它们发表了很多热门方向的综述，如文档摘要、情感分析和意见挖掘、学习排序、语言模型等。</p><p>如果方向太新还没有相关综述，一般还可以查找该方向发表的最新论文，阅读它们的“相关工作”章节，顺着列出的参考文献，就基本能够了解相关研究脉络了。当然，还有很多其他办法，例如去<a href="https://link.zhihu.com/?target=http%3A//videolectures.net">http://videolectures.net</a>上看著名学者在各大学术会议或暑期学校上做的tutorial报告，去直接咨询这个领域的研究者，等等。</p><h2 id="文献库在Endnote中构建完成"><a href="#文献库在Endnote中构建完成" class="headerlink" title="文献库在Endnote中构建完成"></a>文献库在Endnote中构建完成</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-学科调研结论"><a href="#1-学科调研结论" class="headerlink" title="1.学科调研结论"></a>1.学科调研结论</h1><h3 id="简要结论"><a href="#简要结论" class="headerlink" title="简要结论"></a><strong>简要结论</strong></h3><p>经过对上文阅读列表+论文库的调研，得出如下结论，可以开始选题。</p><ul><li>近年来,我感兴趣的关于_<strong>____</strong>的研究方向,全球呈现_<strong><strong>_趋势,其中较多的论文来自\</strong></strong>国家\地区,发表相关论文的研究机构有_<strong>__</strong>.蓝海领域比较新，容易出成果，我选择的这个方向是否是蓝海领域_<strong>____</strong>.</li><li>为了充分了解这个领域目前的发展状况，需要如下几个方面的调研：方法方面，是否有一套比较清晰的数学体系和机器学习体系_<strong><strong>；数据方面，有没有一个大家公认的标准训练集和测试集__</strong></strong>；研究团队，是否有著名团队和人士参加_<strong>__</strong>。如果以上几个方面的调研结论不是太清晰，作为初学者可能不要轻易进入。</li><li>全球的研究人员主要从_<strong>___</strong>等领域对课题进行研究,同时我们也注意到_<strong>__</strong>等领域的研究可能会给我们带来不一样的视角和灵感</li><li>相关课题的研究成果目前主要发表在_<strong>___</strong>等期刊上,在相关研究领域中,_____等几位学者有较多的论文产出.</li><li>影响力较高的几篇论文分别来自于_<strong>__</strong>(国家/地区)的_<strong><em>(机构)的___</em></strong>学者</li><li>近半年来_<strong><strong>__</strong></strong>方向引起了较多科研人员的关注</li><li>选择_<strong>___</strong>综述文章作为快速了解这个课题的切入点</li><li>最新的研究进展指出,该研究方向_<strong>_____</strong></li></ul><h3 id="BackGround："><a href="#BackGround：" class="headerlink" title="BackGround："></a><strong>BackGround：</strong></h3><p>自然语言处理（简称NLP），是研究计算机处理人类语言的一门技术，包括：</p><p>1.<strong>句法语义分析</strong>：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。</p><p>2.<strong>信息抽取</strong>：从给定文本中抽取重要的信息，比如，时间、地点、人物、事件、原因、结果、数字、日期、货币、专有名词等等。通俗说来，就是要了解谁在什么时候、什么原因、对谁、做了什么事、有什么结果。涉及到实体识别、时间抽取、因果关系抽取等关键技术。</p><p>3.<strong>文本挖掘</strong>（或者文本数据挖掘）：包括文本聚类、分类、信息抽取、摘要、情感分析以及对挖掘的信息和知识的可视化、交互式的表达界面。目前主流的技术都是基于统计机器学习的。</p><p>4.<strong>机器翻译</strong>：把输入的源语言文本通过自动翻译获得另外一种语言的文本。根据输入媒介不同，可以细分为文本翻译、语音翻译、手语翻译、图形翻译等。机器翻译从最早的基于规则的方法到二十年前的基于统计的方法，再到今天的基于神经网络（编码-解码）的方法，逐渐形成了一套比较严谨的方法体系。</p><p>5.<strong>信息检索</strong>：对大规模的文档进行索引。可简单对文档中的词汇，赋之以不同的权重来建立索引，也可利用1，2，3的技术来建立更加深层的索引 。在查询的时候，对输入的查询表达式比如一个检索词或者一个句子进行分析，然后在索引里面查找匹配的候选文档，再根据一个排序机制把候选文档排序，最后输出排序得分最高的文档。</p><p>6.<strong>问答系统</strong>： 对一个自然语言表达的问题，由问答系统给出一个精准的答案。需要对自然语言查询语句进行某种程度的语义分析，包括实体链接、关系识别，形成逻辑表达式，然后到知识库中查找可能的候选答案并通过一个排序机制找出最佳的答案。</p><p>7.<strong>对话系统</strong>：系统通过一系列的对话，跟用户进行聊天、回答、完成某一项任务。涉及到用户意图理解、通用聊天引擎、问答引擎、对话管理等技术。此外，为了体现上下文相关，要具备多轮对话能力。同时，为了体现个性化，要开发用户画像以及基于用户画像的个性化回复。</p>]]></content>
     
     
     <categories>
@@ -3314,11 +3389,11 @@
   
   
   <entry>
-    <title>0.文章/Java_7.反射</title>
-    <link href="undefined2020/02/24/0.%E6%96%87%E7%AB%A0/Java_7.%E5%8F%8D%E5%B0%84/"/>
-    <url>2020/02/24/0.%E6%96%87%E7%AB%A0/Java_7.%E5%8F%8D%E5%B0%84/</url>
+    <title>0.文章/Java_6.jetty和tomcat</title>
+    <link href="undefined2020/02/24/0.%E6%96%87%E7%AB%A0/Java_6.jetty%E5%92%8Ctomcat/"/>
+    <url>2020/02/24/0.%E6%96%87%E7%AB%A0/Java_6.jetty%E5%92%8Ctomcat/</url>
     
-    <content type="html"><![CDATA[<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><ul><li><p>反射的定义</p><ul><li>行状态中,能知道任何一个类的属性和方法</li><li>能调用任何一个对象的属性和方法</li><li>这种动态获取信息以及动态调用对象方法的功能称谓java的反射机制</li></ul></li><li><p>反射的用途</p><ul><li>第三方应用开发时,会遇到某个类的变量或方法是私有的,只对系统应用开放,这时候就利用java的反射机制通过反射来获取所需要的私有成员或者方法.</li></ul></li><li><p>反射的相关类</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1204_15_056.png" alt=""></p><ul><li><p>class类</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1204_22_961.png" alt=""></p></li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="7-jetty和tomcat"><a href="#7-jetty和tomcat" class="headerlink" title="7.jetty和tomcat"></a>7.jetty和tomcat</h1><p>1.Jetty是什么</p><p>​    jetty是一个开源的HTTP服务器和Servlet引擎,可以为JSP和Servlet提供运行时环境,相对与Tomcat,,jetty更加轻量级,更加简易和灵活</p><p>2.jetty特点</p><ul><li>异步,支持更高的并发量</li><li>灵活,更加轻量,更容易定制,更高的资源利用率</li><li>Jetty采用默认的NIO模型,jetty很好地支持长链接</li></ul><p>3.应用场景</p><ul><li>企业级应用tomcat占据了绝对优势</li><li>jetty默认使用NIO,在轻量级的,保持长连接的场景下使用很有优势,比如客服的聊天</li></ul><p>4.jetty原理</p><ul><li>提供了两种handlder<ul><li>handlerWrapper<ul><li>可以将一个Handler委托给另一个类执行,将handler加载到jetty中就是通过handler委托给server执行的</li></ul></li><li>handlerCollection<ul><li>将多个handler组装成handler链,可以方便地做扩展</li></ul></li></ul></li></ul><p>2.tomcat</p><p>为了服务器生成动态页面,需要运行java Servlet,那么就需要提供Servlet容器</p><p>Tomcat正式支持运行Servlet/JSP应用程序的容器(Container),运行在JVM中    </p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1202_11_172.png" alt=""></p>]]></content>
     
     
     <categories>
@@ -3330,9 +3405,9 @@
     
     <tags>
       
-      <tag>java</tag>
+      <tag>jetty</tag>
       
-      <tag>反射</tag>
+      <tag>tomcat</tag>
       
     </tags>
     
@@ -3366,11 +3441,11 @@
   
   
   <entry>
-    <title>0.文章/Java_6.jetty和tomcat</title>
-    <link href="undefined2020/02/24/0.%E6%96%87%E7%AB%A0/Java_6.jetty%E5%92%8Ctomcat/"/>
-    <url>2020/02/24/0.%E6%96%87%E7%AB%A0/Java_6.jetty%E5%92%8Ctomcat/</url>
+    <title>0.文章/Java_7.反射</title>
+    <link href="undefined2020/02/24/0.%E6%96%87%E7%AB%A0/Java_7.%E5%8F%8D%E5%B0%84/"/>
+    <url>2020/02/24/0.%E6%96%87%E7%AB%A0/Java_7.%E5%8F%8D%E5%B0%84/</url>
     
-    <content type="html"><![CDATA[<h1 id="7-jetty和tomcat"><a href="#7-jetty和tomcat" class="headerlink" title="7.jetty和tomcat"></a>7.jetty和tomcat</h1><p>1.Jetty是什么</p><p>​    jetty是一个开源的HTTP服务器和Servlet引擎,可以为JSP和Servlet提供运行时环境,相对与Tomcat,,jetty更加轻量级,更加简易和灵活</p><p>2.jetty特点</p><ul><li>异步,支持更高的并发量</li><li>灵活,更加轻量,更容易定制,更高的资源利用率</li><li>Jetty采用默认的NIO模型,jetty很好地支持长链接</li></ul><p>3.应用场景</p><ul><li>企业级应用tomcat占据了绝对优势</li><li>jetty默认使用NIO,在轻量级的,保持长连接的场景下使用很有优势,比如客服的聊天</li></ul><p>4.jetty原理</p><ul><li>提供了两种handlder<ul><li>handlerWrapper<ul><li>可以将一个Handler委托给另一个类执行,将handler加载到jetty中就是通过handler委托给server执行的</li></ul></li><li>handlerCollection<ul><li>将多个handler组装成handler链,可以方便地做扩展</li></ul></li></ul></li></ul><p>2.tomcat</p><p>为了服务器生成动态页面,需要运行java Servlet,那么就需要提供Servlet容器</p><p>Tomcat正式支持运行Servlet/JSP应用程序的容器(Container),运行在JVM中    </p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1202_11_172.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><ul><li><p>反射的定义</p><ul><li>行状态中,能知道任何一个类的属性和方法</li><li>能调用任何一个对象的属性和方法</li><li>这种动态获取信息以及动态调用对象方法的功能称谓java的反射机制</li></ul></li><li><p>反射的用途</p><ul><li>第三方应用开发时,会遇到某个类的变量或方法是私有的,只对系统应用开放,这时候就利用java的反射机制通过反射来获取所需要的私有成员或者方法.</li></ul></li><li><p>反射的相关类</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1204_15_056.png" alt=""></p><ul><li><p>class类</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1204_22_961.png" alt=""></p></li></ul></li></ul>]]></content>
     
     
     <categories>
@@ -3382,9 +3457,9 @@
     
     <tags>
       
-      <tag>jetty</tag>
+      <tag>java</tag>
       
-      <tag>tomcat</tag>
+      <tag>反射</tag>
       
     </tags>
     
@@ -3420,6 +3495,31 @@
   
   
   <entry>
+    <title>0.文章/Java_4.表链接</title>
+    <link href="undefined2020/02/24/0.%E6%96%87%E7%AB%A0/Java_4.%E8%A1%A8%E9%93%BE%E6%8E%A5/"/>
+    <url>2020/02/24/0.%E6%96%87%E7%AB%A0/Java_4.%E8%A1%A8%E9%93%BE%E6%8E%A5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="5-表链接"><a href="#5-表链接" class="headerlink" title="5.表链接"></a>5.表链接</h1><h3 id="5-1外链接"><a href="#5-1外链接" class="headerlink" title="5.1外链接"></a>5.1外链接</h3><p>外链接就是A B两个表,以左右链接的方式选择一个主表,然后附表加入主表的过程</p><p>AB两个表的图示</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1200_09_795.png" alt=""></p><ul><li><p>左外链接</p><ul><li><p>select * from TableA left join TableB on TableA.id=TableB.id</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1200_22_998.png" alt=""></p></li></ul></li></ul><ul><li><p>右外链接</p><ul><li><p>select * from TableA right join TableB on TableA.id=TableB.id</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1200_37_538.png" alt=""></p></li></ul></li></ul><ul><li><p>全外链接</p><ul><li><p>select * from TableA full join TableB on TableA.id=TableB.id</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1200_52_073.png" alt=""></p></li></ul></li><li><p>内链接</p><ul><li><p>select * from TableA JOIN TableB on TableA.id=TableB.id</p><p>结果是只链接两者共有的数据</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1201_00_326.png" alt=""></p></li></ul></li></ul><ul><li><p>交叉链接</p><ul><li><p>select * from TableA cross join TableB</p></li><li><p>结果是两个表以基础序号为乘积的笛卡尔积的排列</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1201_26_633.png" alt=""></p></li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>文章</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>表连接</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>0.文章/Java_3.泛型</title>
     <link href="undefined2020/02/24/0.%E6%96%87%E7%AB%A0/Java_3.%E6%B3%9B%E5%9E%8B/"/>
     <url>2020/02/24/0.%E6%96%87%E7%AB%A0/Java_3.%E6%B3%9B%E5%9E%8B/</url>
@@ -3439,31 +3539,6 @@
       <tag>java</tag>
       
       <tag>泛型</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>0.文章/Java_4.表链接</title>
-    <link href="undefined2020/02/24/0.%E6%96%87%E7%AB%A0/Java_4.%E8%A1%A8%E9%93%BE%E6%8E%A5/"/>
-    <url>2020/02/24/0.%E6%96%87%E7%AB%A0/Java_4.%E8%A1%A8%E9%93%BE%E6%8E%A5/</url>
-    
-    <content type="html"><![CDATA[<h1 id="5-表链接"><a href="#5-表链接" class="headerlink" title="5.表链接"></a>5.表链接</h1><h3 id="5-1外链接"><a href="#5-1外链接" class="headerlink" title="5.1外链接"></a>5.1外链接</h3><p>外链接就是A B两个表,以左右链接的方式选择一个主表,然后附表加入主表的过程</p><p>AB两个表的图示</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1200_09_795.png" alt=""></p><ul><li><p>左外链接</p><ul><li><p>select * from TableA left join TableB on TableA.id=TableB.id</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1200_22_998.png" alt=""></p></li></ul></li></ul><ul><li><p>右外链接</p><ul><li><p>select * from TableA right join TableB on TableA.id=TableB.id</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1200_37_538.png" alt=""></p></li></ul></li></ul><ul><li><p>全外链接</p><ul><li><p>select * from TableA full join TableB on TableA.id=TableB.id</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1200_52_073.png" alt=""></p></li></ul></li><li><p>内链接</p><ul><li><p>select * from TableA JOIN TableB on TableA.id=TableB.id</p><p>结果是只链接两者共有的数据</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1201_00_326.png" alt=""></p></li></ul></li></ul><ul><li><p>交叉链接</p><ul><li><p>select * from TableA cross join TableB</p></li><li><p>结果是两个表以基础序号为乘积的笛卡尔积的排列</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1201_26_633.png" alt=""></p></li></ul></li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>文章</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>表连接</tag>
       
     </tags>
     
@@ -3747,31 +3822,6 @@
   
   
   <entry>
-    <title>0.概念/NLP_支持向量机</title>
-    <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/"/>
-    <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</url>
-    
-    <content type="html"><![CDATA[<h1 id="支持向量机SVM"><a href="#支持向量机SVM" class="headerlink" title="支持向量机SVM"></a>支持向量机SVM</h1><h3 id="9-1SVM的优化目标"><a href="#9-1SVM的优化目标" class="headerlink" title="9.1SVM的优化目标"></a>9.1SVM的优化目标</h3><p>从逻辑回归展示如何一点点修改得到本质上的支持向量机</p><ul><li><p>逻辑回归的假设函数<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1448_37_663.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1449_13_463.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1449_43_262.png" alt=""></p></li></ul><h3 id="9-2核函数"><a href="#9-2核函数" class="headerlink" title="9.2核函数"></a>9.2核函数</h3><p>对支持向量机算法做一些修改,以构造复杂的非线性分类器</p><p>我们用”核函数”来达到此目的</p><p>问题的提出:</p><p>使用高级数的多项式模型来解决无法使用直线进行分割的分类问题,如何确定模式中的每一项的参数?<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1450_05_097.png" alt=""></p><p>支持向量机的假设函数和代价函数</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1450_25_811.png" alt=""></p><h3 id="9-3-SVM的使用"><a href="#9-3-SVM的使用" class="headerlink" title="9.3 SVM的使用"></a>9.3 SVM的使用</h3><p>不建议自己写代码求解参数θ,就像没有人会写代码自己去求解平方根一样,可以直接调用现有的库</p><p>除了高斯核函数之外还有其他核函数可以用:</p><p>多项式核函数（<strong>Polynomial Kerne</strong>l）</p><p>字符串核函数（<strong>String kernel</strong>）</p><p>卡方核函数（ <strong>chi-square kernel</strong>）</p><p>直方图交集核函数（<strong>histogram intersection kernel</strong>）</p><p>等等</p><p>SVM模型 和 逻辑回归模型之间的取舍:</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1450_36_327.png" alt=""></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>概念</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>SVM</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>0.概念/NLP_判定模型和生成模型</title>
     <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/"/>
     <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E5%88%A4%E5%AE%9A%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/</url>
@@ -3791,6 +3841,31 @@
       <tag>判定模型</tag>
       
       <tag>生成模型</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0.概念/NLP_支持向量机</title>
+    <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/"/>
+    <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</url>
+    
+    <content type="html"><![CDATA[<h1 id="支持向量机SVM"><a href="#支持向量机SVM" class="headerlink" title="支持向量机SVM"></a>支持向量机SVM</h1><h3 id="9-1SVM的优化目标"><a href="#9-1SVM的优化目标" class="headerlink" title="9.1SVM的优化目标"></a>9.1SVM的优化目标</h3><p>从逻辑回归展示如何一点点修改得到本质上的支持向量机</p><ul><li><p>逻辑回归的假设函数<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1448_37_663.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1449_13_463.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1449_43_262.png" alt=""></p></li></ul><h3 id="9-2核函数"><a href="#9-2核函数" class="headerlink" title="9.2核函数"></a>9.2核函数</h3><p>对支持向量机算法做一些修改,以构造复杂的非线性分类器</p><p>我们用”核函数”来达到此目的</p><p>问题的提出:</p><p>使用高级数的多项式模型来解决无法使用直线进行分割的分类问题,如何确定模式中的每一项的参数?<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1450_05_097.png" alt=""></p><p>支持向量机的假设函数和代价函数</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1450_25_811.png" alt=""></p><h3 id="9-3-SVM的使用"><a href="#9-3-SVM的使用" class="headerlink" title="9.3 SVM的使用"></a>9.3 SVM的使用</h3><p>不建议自己写代码求解参数θ,就像没有人会写代码自己去求解平方根一样,可以直接调用现有的库</p><p>除了高斯核函数之外还有其他核函数可以用:</p><p>多项式核函数（<strong>Polynomial Kerne</strong>l）</p><p>字符串核函数（<strong>String kernel</strong>）</p><p>卡方核函数（ <strong>chi-square kernel</strong>）</p><p>直方图交集核函数（<strong>histogram intersection kernel</strong>）</p><p>等等</p><p>SVM模型 和 逻辑回归模型之间的取舍:</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1450_36_327.png" alt=""></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>概念</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SVM</tag>
       
     </tags>
     
@@ -3930,33 +4005,6 @@
   
   
   <entry>
-    <title>3.课程/CS229_10.聚类Clustering</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_10.%E8%81%9A%E7%B1%BBClustering/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_10.%E8%81%9A%E7%B1%BBClustering/</url>
-    
-    <content type="html"><![CDATA[<h1 id="10-聚类Clustering"><a href="#10-聚类Clustering" class="headerlink" title="10.聚类Clustering"></a>10.聚类Clustering</h1><h2 id="10-1无监督学习简介"><a href="#10-1无监督学习简介" class="headerlink" title="10.1无监督学习简介"></a>10.1无监督学习简介</h2><p>无监督学习是让计算机学习无标签数据,而不是之前的标签数据</p><p>如图就是聚类问题<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1451_06_446.png" alt=""></p><p>左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统</p><h2 id="10-2-K-mean-K均值算法"><a href="#10-2-K-mean-K均值算法" class="headerlink" title="10.2 K-mean (K均值算法)"></a>10.2 K-mean (K均值算法)</h2><p>K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组</p><ul><li><p>K-均值是一个迭代算法</p><ul><li><p>设想我们将数据聚集成n组,选择k个随机的点为聚类中心</p></li><li><p>对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类</p></li><li><p>然后开始迭代:</p><ul><li>每次计算一个组的平均值,将中心点移动到平均值的位置</li><li>如此反复几次中心点的位置就不再变化</li><li>如下图所示<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1451_27_402.png" alt=""></li></ul></li></ul></li></ul><h2 id="10-3优化目标"><a href="#10-3优化目标" class="headerlink" title="10.3优化目标"></a>10.3优化目标</h2><p>K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和</p><p>因此K均值的代价函数为:</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1451_42_387.png" alt=""></p><h2 id="10-4随机初始化"><a href="#10-4随机初始化" class="headerlink" title="10.4随机初始化"></a>10.4随机初始化</h2><p>在运行k均值算法之前,需要随机初始化所有的聚类中心点</p><p>1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量</p><p>2.随机选择K个训练实例,然后令K个聚类中心等于他们</p><p>K-均值算法的一个问题在于,他可能停留在某个局部最小值处,这取决于初始化的位置(类似于梯度下降算法的初始位置选取),为了解决此问题,可以多次运行K-均值算法,每次都随机初始化,然后比较各自结果,选取最小的值,当然如果K值较大结果不会有明显改善</p><h2 id="10-5选择聚类数"><a href="#10-5选择聚类数" class="headerlink" title="10.5选择聚类数"></a>10.5选择聚类数</h2><p>聚类的数量一般是人工选取,这时候需要思考运用K-均值算法聚类的动机是什么,最好能服务于该目标的聚类数</p><p>聚类数量选择的时候有个肘部法则,例如K值设置为1,2,3,4,5的时候发现3的效果最好,更多或者更少都不行,像人的肘关节那样有个拐点,通常这个肘部就是最优的点</p><p>比如T恤制造可以选择S,M,L三个尺码也可以选择 S,M,L,XL,XXL五个尺码一样,K选3还是5取决于具体的业务场景</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1451_56_417.png" alt=""></p><h2 id="10-6聚类的衡量指标"><a href="#10-6聚类的衡量指标" class="headerlink" title="10.6聚类的衡量指标"></a>10.6聚类的衡量指标</h2><ol><li><p>均一性:P</p><p>可以认为是正确率(每个聚簇中正确分类的样本数占该聚簇总样本数的比例和)</p></li><li><p>完整性:r</p><p>类似于召回率，同类别样本被归类到相同簇中，则满足完整性;每个聚簇中正确分类的样本数占该 类型的总样本数比例的和</p></li><li><p>V-measure:均一性和完整性的加权</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1452_07_748.png" alt=""></p></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>3.课程</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>机器学习</tag>
-      
-      <tag>聚类</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>3.课程/CS229_2.正规方程</title>
     <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/"/>
     <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_2.%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/</url>
@@ -3976,6 +4024,33 @@
       <tag>机器学习</tag>
       
       <tag>正规方程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>3.课程/CS229_10.聚类Clustering</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_10.%E8%81%9A%E7%B1%BBClustering/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS229_10.%E8%81%9A%E7%B1%BBClustering/</url>
+    
+    <content type="html"><![CDATA[<h1 id="10-聚类Clustering"><a href="#10-聚类Clustering" class="headerlink" title="10.聚类Clustering"></a>10.聚类Clustering</h1><h2 id="10-1无监督学习简介"><a href="#10-1无监督学习简介" class="headerlink" title="10.1无监督学习简介"></a>10.1无监督学习简介</h2><p>无监督学习是让计算机学习无标签数据,而不是之前的标签数据</p><p>如图就是聚类问题<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1451_06_446.png" alt=""></p><p>左上第一张图是市场分割,就是根据数据库里沉淀的客户信息来对客户分类,做知识图谱和推荐系统</p><h2 id="10-2-K-mean-K均值算法"><a href="#10-2-K-mean-K均值算法" class="headerlink" title="10.2 K-mean (K均值算法)"></a>10.2 K-mean (K均值算法)</h2><p>K均值是最普及的一个聚类算法,算法接受一个数据集,将数据聚类为不同的组</p><ul><li><p>K-均值是一个迭代算法</p><ul><li><p>设想我们将数据聚集成n组,选择k个随机的点为聚类中心</p></li><li><p>对数据集中的每个数据,按照距离k个中心点的距离,将其与距离最近的点关联起来,与这个点聚为一类</p></li><li><p>然后开始迭代:</p><ul><li>每次计算一个组的平均值,将中心点移动到平均值的位置</li><li>如此反复几次中心点的位置就不再变化</li><li>如下图所示<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1451_27_402.png" alt=""></li></ul></li></ul></li></ul><h2 id="10-3优化目标"><a href="#10-3优化目标" class="headerlink" title="10.3优化目标"></a>10.3优化目标</h2><p>K-均值的优化目标就是最小化所有的数据点与其关联的聚类中心点之间的距离之和</p><p>因此K均值的代价函数为:</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1451_42_387.png" alt=""></p><h2 id="10-4随机初始化"><a href="#10-4随机初始化" class="headerlink" title="10.4随机初始化"></a>10.4随机初始化</h2><p>在运行k均值算法之前,需要随机初始化所有的聚类中心点</p><p>1.选择K &lt; m ,即聚类中心点的个数要小于所有训练集实例的数量</p><p>2.随机选择K个训练实例,然后令K个聚类中心等于他们</p><p>K-均值算法的一个问题在于,他可能停留在某个局部最小值处,这取决于初始化的位置(类似于梯度下降算法的初始位置选取),为了解决此问题,可以多次运行K-均值算法,每次都随机初始化,然后比较各自结果,选取最小的值,当然如果K值较大结果不会有明显改善</p><h2 id="10-5选择聚类数"><a href="#10-5选择聚类数" class="headerlink" title="10.5选择聚类数"></a>10.5选择聚类数</h2><p>聚类的数量一般是人工选取,这时候需要思考运用K-均值算法聚类的动机是什么,最好能服务于该目标的聚类数</p><p>聚类数量选择的时候有个肘部法则,例如K值设置为1,2,3,4,5的时候发现3的效果最好,更多或者更少都不行,像人的肘关节那样有个拐点,通常这个肘部就是最优的点</p><p>比如T恤制造可以选择S,M,L三个尺码也可以选择 S,M,L,XL,XXL五个尺码一样,K选3还是5取决于具体的业务场景</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1451_56_417.png" alt=""></p><h2 id="10-6聚类的衡量指标"><a href="#10-6聚类的衡量指标" class="headerlink" title="10.6聚类的衡量指标"></a>10.6聚类的衡量指标</h2><ol><li><p>均一性:P</p><p>可以认为是正确率(每个聚簇中正确分类的样本数占该聚簇总样本数的比例和)</p></li><li><p>完整性:r</p><p>类似于召回率，同类别样本被归类到相同簇中，则满足完整性;每个聚簇中正确分类的样本数占该 类型的总样本数比例的和</p></li><li><p>V-measure:均一性和完整性的加权</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1452_07_748.png" alt=""></p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>3.课程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>机器学习</tag>
+      
+      <tag>聚类</tag>
       
     </tags>
     
@@ -4061,31 +4136,6 @@
   
   
   <entry>
-    <title>3.课程/CS224n_8 - RNN和语言模式</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/</url>
-    
-    <content type="html"><![CDATA[<h1 id="Lecture8-RNN和语言模式"><a href="#Lecture8-RNN和语言模式" class="headerlink" title="Lecture8 RNN和语言模式"></a>Lecture8 RNN和语言模式</h1><p>本节讲简单的循环神经网络模型，这个模型家族是大多数人现在在实际训练环境中使用的。</p><p> 概览：</p><p>1.传统的语言模型</p><p>2.RNNs</p><p>3.语言模型建模来驱动循环神经网络（RNN）</p><p>4.重要的训练时的问题和技巧</p><p>​    梯度消失问题</p><p>​    梯度爆炸问题</p><p>5.用于队列处理的RNN</p><p>6.双向深度RNN</p><h4 id="1-传统的语言模型和现在的词向量模型对比"><a href="#1-传统的语言模型和现在的词向量模型对比" class="headerlink" title="1. 传统的语言模型和现在的词向量模型对比"></a>1. 传统的语言模型和现在的词向量模型对比</h4><p>传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1423_54_634.png" alt=""></p><p>如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。</p><p>如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效。</p><p>我们发明了很多种不同的途径来规避这些问题。例如由于4元统计模型出现频率过低根本不使用4-gram。那么我会尝试使用3元统计模型，或者再没有充足的计数，则会再次退而求其次，在上下文大小范围内使用较少的字组预估概率。但总的来说没如果你希望至少获取存储的3元或者4元统计模型的话，相关的内存需求会非常非常大。</p><p>通过深度学习模型和传统nlp模型进行大量比较，自然会注意到上述现象。而这些模型大都围绕着特定类别的字组进行计数。通常模型越强大，内存的需求会增长地更快。</p><h4 id="2-RNN"><a href="#2-RNN" class="headerlink" title="2.RNN"></a>2.RNN</h4><p>我们目前回避这种内存需求爆炸的问题的方法是，RNN，循环神经网络。</p><p>循环神经网络在不同时间步长之间绑定相应的权重，在你通过这条路径时，其实你在使用同一个线性和非线性的层，至少从理论层面上来说，我们可以根据所有前序字组来进行预测。如此以来，内存需求只会取决于字词的数量规模，而不受我们想依据的序列长度的影响。也就是十万就是十万，没有十万的平方或者立方。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0918_21_529.png" alt=""></p><p>假设我们有一个词汇向量表x,假设这些词汇向量均是固定的，我们在后续环节中放宽此假设并将其去除。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0927_58_435.png" alt=""></p><p>紧接着，计算每个时间步长的隐状态，这个步骤中我们只有两个线性层和矩阵向量结果：W（hh）和W（hx）。我们会把这个两个矩阵相加。</p><p>其中x[t]是在第t个时间步长中出现的字组向量。 </p><p>如上这个公式将时间步长t-1和t处的词汇向量串联起来。同时也将这两个矩阵串联起来。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0928_11_626.png" alt=""></p><p>我们可以将h(t)用作特征向量或者作为softmax函数分类层的输入，来获取概率输出（比如所有字组的概率）。</p><p>几个矩阵W的含义：</p><p>我们通常使用上标来识别现存的矩阵，W（hh）表示本W是输入h（t-1）后计算出的隐层h；W（hx）表示刚计算的h层有一个h_x,h_x将x映射到已有的相同向量空间。 </p><p>x[t]是第t个时间步长出现的字组向量。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0933_51_156.png" alt=""></p><p>如下就是在特异指标j的约束下，下一个特定字组的概率。所有前序字组本质上都是该大规模输出向量的第j个元素。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0934_34_205.png" alt=""></p><h4 id="3-探究梯度消失-爆炸问题"><a href="#3-探究梯度消失-爆炸问题" class="headerlink" title="3.探究梯度消失/爆炸问题"></a>3.探究梯度消失/爆炸问题</h4><p>训练上文讲的循环神经网络事实上是一件非常困难的事情，这也是后边的课程我们会引入更优质的神经网络的原因。</p><p>下文是对困难的描述</p><p>基本上我们是让每个时间步长上相同的矩阵相乘，这可以看作是一个在所有时间步长上反复方法某些特定模式的过程。在理想情况下，我们很乐意看到多个时间步长中的输入值可以在后续的时间步长中继续修正我们一直努力预测的目标字组。尝试对W求导，如果你只有两三个字组序列的话，这将会是一项非常行之有效的训练，在正向传播过程中，我们想成了每个时间步长上相同的矩阵，而在反向传播期间我们也同样要这样做，我们必须时刻记住增量、空中讯号、以及各种梯度方向的全局元素。本质上讲，每个时间步长上的全局元素都会通过这个网络向后流动。所以当我们处理交叉熵损失函数时 ，通常会利用导数，我们需要回过头重新传播增量。第一个接近输出值的时间步长就会有效执行更新操作。并且字组向量也有可能得到合理的更新。</p><p>随着时间的推移，你的讯号有可能变得过于强烈或者过于微弱。这就是所谓的梯度消失问题。随着时间的推移，你尝试在时间步长t处发送空中讯号，但由于此前已经存在很多时间步长，这样你就会遭遇梯度消失问题。</p><ul><li><p>简化的RNN模型来研究爆炸/消失问题。h(t)剥离西格玛，yt剥离softmax</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1019_48_100.png" alt=""></p></li></ul><ul><li><p>所有时间步长中的误差W是分步误差的加和，如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1028_39_394.png" alt=""></p></li></ul><ul><li><p>接下来我们要核算的是总误差的时间标记t中的元素，我们只需要核算单个时间步长以及单个时间步长上的单向误差。而现在即使计算也需要我们有一个非常大的链式求导法则。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1031_02_913.png" alt=""></p><ul><li><p>主要分析这个求导法则中的第三项</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1859_39_756.png" alt=""></p></li><li><p>记住ht的定义</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1900_20_207.png" alt=""></p></li><li><p>基本上每个方向的前序时间步长的ht的偏导数都已经给出，为了计算ht的所有偏导数，又要使用链式求导法则。如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1905_20_004.png" alt=""></p></li><li><p>这就意味着向量相对于另一个向量的偏导数是存在的。其实假如我们可以灵活运用反向传播的定义，那就没必要再进行实际计算。实际上，在将计算与流程图以及增量信息有效结合之前，我们并不需要计算清楚这些雅克比矩阵，但是为了分析其中的数学问题，我们还是需要计算所有的导数。</p><p>每一个方向的ht的偏导数都是一个雅克比矩阵</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1907_42_256.png" alt=""></p></li></ul></li></ul><p>  这么多雅克比行列式最终得到的结果也相当大，为了简化它，我们可以设定一个上限。相对于hj我们还要设定h的导数。事实上，在这一系列简单定义的基础上，所有的h都可以通过这种方式来计算。我们还可以设定矩阵的范数上限，这个上限就是这些方程的乘积。也就是Wt，我们可以将其算作一个已知的对角线，而非元素级结果。一般情况下，我们会将元素归置到一个较大矩阵的对角线上，在0路径中一切都是非对角线分布的。接下来我们将两个范数相乘，并将beta_W和beta_h定义为上限.那么每一个数值和单个标量，都能达到自身的最大值。</p><p>  <img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1918_58_863.png" alt=""></p><p>  已知W我们可轻松算出W的任意一种范数。我们只需要一个矩阵就可以计算出一个矩阵范数，当把这些范数全部列出来后，我们就发现这些雅克比行列式的上限实际上被用作这些元素的乘积。就其上限beta而言，假如我们定义了所有元素，那就等于拥有了计算t-k幂的乘积beta。所以序列越长t值越大。它真的取决于测试的t值究竟是变大还是变小。例如当前矩阵范数就是上述范数，那就意味着你已经控制了该范数。在开始训练之前，你将等待矩阵W,初始化为一些小的随机值，如果将其初始化为一个范数大于1的矩阵，那么在反向传播过程中，时间序列就会变得更长，由于你采用了大于1的值，最终你会得到一个爆发的梯度。例如数值为100，但现有的范数只有两个，那么在该梯度的上限就在这两个范数到100之间。反之亦然，假如在开始的时候，你将矩阵W初始化为一群小的随机值，那么W的范数就会小于1，那么最终ht发送到hk的最终梯度可能会缩小为一个十分小的数值，差不多是第100个范数的一半。总体来讲，这一过程不会有任何误差。同时这一过程也不会有误差讯号，随着时间推移，梯度消失或者爆炸也会越来越严重。</p><p>  假如现有的梯度面临激增或者突然减少，是否意味着较远的数组最较近的数组有较大影响呢？答案是，当梯度激增或者突减时，在短时间内你便无法获得数字。这些数字并非字面意义上的数字，因为他们的数值实在太大了，我们根本无法计算。因此上述问题并非实际问题，我们必须设法回归。事实证明，梯度爆炸问题的确包含一些很强势的非法入侵，相比这些梯度消失问题，解决这些非法入侵问题其实要简单的多。</p><p>  <img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1931_18_003.png" alt=""></p><p>  在语言模型或者问答模型的情况下，一些时间序列间隔较大的语句，通常在预测下一个词是什么的时候不被考虑进去，这是梯度消失问题的一种。我们通过如下一个语言建模的例子来了解梯度消失问题。</p><p>  Jane walk into the room,John walked in too,It was late in the day,Jane said hi to ___.</p><p>  人类会觉得几乎概率是100%的下一个单词应该是John，但是现在每个单词都有词向量，你需要将他们全部输入到隐状态上，然后进行计算。接下来会希望模型可以筛选出一个特定的模型，在该模式中，一个人遇见另一个人，然后两个人互相问好，然后介绍姓名等等等等。但是实际上你无法命令模型将中间这个错误讯号收回，你需要手动修改隐状态，将John这个答案设置为较高的概率。中间的这个it was late in the day是一个打乱了时间序列的句子。</p><h4 id="4-python笔记本演示简单的梯度消失问题"><a href="#4-python笔记本演示简单的梯度消失问题" class="headerlink" title="4.python笔记本演示简单的梯度消失问题"></a>4.python笔记本演示简单的梯度消失问题</h4><p>展示的时候用的是一个简单的两层神经网络，并没有用完整的周期性实体网络。在这个网络中会看到从顶部开始的误差，会随着你在网络中的搜索，梯度范数已经会变得越来越小了。如下的方程能解释这个现象，这两个方程在代码中也得到体现。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1311_03_191.png" alt=""></p><p>代码对数学公式的实现格式非常规整，值得好好学习。</p><pre><code>小结:1.传统语言模型是使用条件概率公式，遍历前n-1个词汇，预测第n个词汇出现的概率。这种方式cost太大2.后来改进，根据1-gram，2-gram，3-gram模型预测下一个词出现概率。本质还是使用条件概率公式，这种方式内存开销仍然太大。3.为了解决开销问题，引入RNN网络，RNN定义由上文方程式和图片清晰定义。4.RNN又有新的麻烦，就是梯度爆炸or消失问题。因为RNN基本上就是在时间序列上连续传导特定的模式，随着时间的积累这种模式一定会变得过于强烈或者过于微弱。</code></pre>]]></content>
-    
-    
-    <categories>
-      
-      <category>3.课程</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>NLP</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>3.课程/CS224n_6 - 依存分析</title>
     <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_6%20-%20%E4%BE%9D%E5%AD%98%E5%88%86%E6%9E%90/"/>
     <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_6%20-%20%E4%BE%9D%E5%AD%98%E5%88%86%E6%9E%90/</url>
@@ -4136,11 +4186,11 @@
   
   
   <entry>
-    <title>3.课程/CS224n_4 - wordWindow和神经网络</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_4%20-%20wordWindow%E5%92%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_4%20-%20wordWindow%E5%92%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <title>3.课程/CS224n_8 - RNN和语言模式</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_8%20-%20RNN%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%BC%8F/</url>
     
-    <content type="html"><![CDATA[<h1 id="Lecture4-wordWindow和神经网络"><a href="#Lecture4-wordWindow和神经网络" class="headerlink" title="Lecture4  wordWindow和神经网络"></a>Lecture4  wordWindow和神经网络</h1><h4 id="1-分类背景知识"><a href="#1-分类背景知识" class="headerlink" title="1.分类背景知识"></a>1.分类背景知识</h4><p>对分类的直觉感受是什么？在机器学习领域，在还没有达到深度学习领域的情况下，我们通常将分类理解为简单的逻辑回归，也就是定义一个简单的决策边界。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1417_17_117.png" alt=""></p><h4 id="2-窗口分类"><a href="#2-窗口分类" class="headerlink" title="2.窗口分类"></a>2.窗口分类</h4><p>在一般的机器学习中，我们假设输入是固定的。输入X都是固定的，我们只训练<strong>参数</strong>W，也就是softmax的权值，然后计算给定输入X时输出Y的概率。<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1417_27_826.png" alt=""></p><h4 id="3-交叉熵"><a href="#3-交叉熵" class="headerlink" title="3.交叉熵"></a>3.交叉熵</h4><p>我们假设正确类别的概率为1，其余的概率为0.举个例子，假设共有5个类别，正确类别是中间的第三个，那么第三个的概率为1，其他都是0.我们把理想的概率定义为p，softmax计算的概率为q，这里给出了交叉熵的定义，就是对所有类别的求和<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1417_43_174.png" alt=""></p><p>正则化项：里边包含的参数θ如果是标准逻辑回归中的矩阵W，实际上目标函数加入这个正则化项的目的就是是为了鼓励模型中的所有权值尽可能地小。</p><p>可以假设你想要一个贝叶斯模型，你可以有一个先验的高斯分布，理想情况下这些参数的值都很小，但是如果没有这个正则化项，通常情况下你得到的模型参数会爆炸，他会越来越过拟合。如果没有正则化项，我们会专注于如何拟合我们的模型。</p><p>通常的机器学习优化就是只优化模型的参数W，也就是softmax分类器的参数，因为参数众多，所以每次的更新和梯度会特别小。通常我们只有两三个类别，但是词向量的维度是上百。例如我们有三个类别，和100维的词向量，这样我们就有300个参数。在深度学习中，我们有相当惊人的词向量，而且实际上我们不仅仅是学习softmax分类器，还有词向量，我们可以反向传播到词向量。我们每次更新词向量的时候，必须意识到词向量通常都巨大。例如你的词有300个维度，你的词典中有10000个单词，突然你有如此巨大的参数集，在这种情况下，你很有可能会过拟合。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1417_53_374.png" alt=""></p><p><strong>小数据集训练容易过拟合</strong></p><p>我们想对单个词做积极还是消极的分类，我们的训练测试集中包含了单词TV，telly，television。假设这三个单词是在一个评价刚上映电影的语境中（说一个上线的电影适合在电视上放），那么这种评价通常是消极的。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1418_09_632.png" alt=""></p><p>在开始的时候，这三个词汇在向量空间中很接近，我们用word2vec或者glove向量学习，我们在非常大的语料库上训练这些词向量，他学习到这三个单词经常出现在相似的上下文中，所以他们在向量空间中很接近，现在我们要在更小的情感数据集中训练，只包含了TV和telly，不包括television，当我们重新训练这两个向量的时候会发生什么？</p><p>结果是他们发生了变化，把情感分类的结果显示出来，你会看到telly和tv移动到向量空间的其他位置，而television还停留在原来的位置。这就是向量在小数据集上的过拟合问题。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1418_22_424.png" alt=""></p><p>我们实际上会把这个词汇错误分类，因为他们三个词汇其实是一个意思。</p><p>what does it mean？</p><p>这里的关键信息是，如果你只有小训练数据集，不要训练词向量。（深入模型在小数据上容易过拟合）</p><h4 id="4-窗口分类的例子：命名实体识别4分类问题"><a href="#4-窗口分类的例子：命名实体识别4分类问题" class="headerlink" title="4.窗口分类的例子：命名实体识别4分类问题"></a>4.窗口分类的例子：命名实体识别4分类问题</h4><p>问题：将语料库中的单词分为如下四类：地点，人名，组织，其他</p><p>思路：训练一个softmax模型，然后用一个窗口把他们前后的单词链接起来</p><p>目的：给中心词Paris分类</p><p>中心词巴黎周围的步长是2，这就构成了一个五维的窗口向量，每一维都是一个单独的词向量，比如【I love Paris very much】。我们能想到的最简单的窗口分类器就是将这五个词向量拼接放入softmax分类器中，五个词构成了softmax分类器的分母，分子是一个单词paris。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1418_34_641.png" alt=""></p><p>参数解释：</p><p>x是窗口，W矩阵是参数。</p><p>代价函数J(θ)中，F（yi）是参数W和X的交叉熵。</p><p>如何更新词向量X？X是五个词构成的窗口，X深入在softmax中。直接回答就是我们可以多次求导。</p><p>y尖 为softmax概率向量，也就是对所有四个分类的归一化的得分或概率，比如（0.9,0.05,0.05,0）.那么分类结果就是第一个（比如是地点）</p><p>其实我们是想更新pairs这个词的向量，而不是整个窗口，窗口只是一个中间步骤，所以其实我们做的是更新和计算关于词向量的每个元素的导数，最终他会变得很简单（类似于梯度下降）。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1418_42_262.png" alt=""></p><p>softmax只会给我们线性决策边界，如左图。而神经网络可以给我们复杂的决策边界，通常会work的更好，如右图。</p><pre><code>定义了窗口分类和交叉熵，用一个实例实现了窗口分类，其实就是对softmax的应用。窗口分类只能给出直线边界，没有神经网络的复杂边界好用，本节课还提到了神经网络的基本概念，为了解耦把神经网络的概念剪切到CS229的相关文章里边去了。</code></pre>]]></content>
+    <content type="html"><![CDATA[<h1 id="Lecture8-RNN和语言模式"><a href="#Lecture8-RNN和语言模式" class="headerlink" title="Lecture8 RNN和语言模式"></a>Lecture8 RNN和语言模式</h1><p>本节讲简单的循环神经网络模型，这个模型家族是大多数人现在在实际训练环境中使用的。</p><p> 概览：</p><p>1.传统的语言模型</p><p>2.RNNs</p><p>3.语言模型建模来驱动循环神经网络（RNN）</p><p>4.重要的训练时的问题和技巧</p><p>​    梯度消失问题</p><p>​    梯度爆炸问题</p><p>5.用于队列处理的RNN</p><p>6.双向深度RNN</p><h4 id="1-传统的语言模型和现在的词向量模型对比"><a href="#1-传统的语言模型和现在的词向量模型对比" class="headerlink" title="1. 传统的语言模型和现在的词向量模型对比"></a>1. 传统的语言模型和现在的词向量模型对比</h4><p>传统语言模型中，理想情况下预测一个语序是根据前n-1个词出现的条件概率下，第n个词出现的概率。实际中这么做不可行，一个是语序有无限多个，而且计算每一个w(n)都要把之前所有的词都遍历一遍这个成本太大了。<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1423_54_634.png" alt=""></p><p>如上条件概率公式也就是表示在词语w1出现的条件下，w2出现的概率是由在整个语料库中的count(w1,w2)/count(w1)决定的。</p><p>如果我想提高精度，将预测w1的工作加上了w2和w3.那么我就需要统计出语料库中，所有三元组三三组合出现的概率，假设物料库有10万个词，那么这个统计和存储的工作量就是10万的三次方。要求有140G的内存仅仅用来存放1260亿的记号语料库计算所有的计数。所以从内存的角度看，这种方法非常低效。</p><p>我们发明了很多种不同的途径来规避这些问题。例如由于4元统计模型出现频率过低根本不使用4-gram。那么我会尝试使用3元统计模型，或者再没有充足的计数，则会再次退而求其次，在上下文大小范围内使用较少的字组预估概率。但总的来说没如果你希望至少获取存储的3元或者4元统计模型的话，相关的内存需求会非常非常大。</p><p>通过深度学习模型和传统nlp模型进行大量比较，自然会注意到上述现象。而这些模型大都围绕着特定类别的字组进行计数。通常模型越强大，内存的需求会增长地更快。</p><h4 id="2-RNN"><a href="#2-RNN" class="headerlink" title="2.RNN"></a>2.RNN</h4><p>我们目前回避这种内存需求爆炸的问题的方法是，RNN，循环神经网络。</p><p>循环神经网络在不同时间步长之间绑定相应的权重，在你通过这条路径时，其实你在使用同一个线性和非线性的层，至少从理论层面上来说，我们可以根据所有前序字组来进行预测。如此以来，内存需求只会取决于字词的数量规模，而不受我们想依据的序列长度的影响。也就是十万就是十万，没有十万的平方或者立方。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0918_21_529.png" alt=""></p><p>假设我们有一个词汇向量表x,假设这些词汇向量均是固定的，我们在后续环节中放宽此假设并将其去除。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0927_58_435.png" alt=""></p><p>紧接着，计算每个时间步长的隐状态，这个步骤中我们只有两个线性层和矩阵向量结果：W（hh）和W（hx）。我们会把这个两个矩阵相加。</p><p>其中x[t]是在第t个时间步长中出现的字组向量。 </p><p>如上这个公式将时间步长t-1和t处的词汇向量串联起来。同时也将这两个矩阵串联起来。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0928_11_626.png" alt=""></p><p>我们可以将h(t)用作特征向量或者作为softmax函数分类层的输入，来获取概率输出（比如所有字组的概率）。</p><p>几个矩阵W的含义：</p><p>我们通常使用上标来识别现存的矩阵，W（hh）表示本W是输入h（t-1）后计算出的隐层h；W（hx）表示刚计算的h层有一个h_x,h_x将x映射到已有的相同向量空间。 </p><p>x[t]是第t个时间步长出现的字组向量。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0933_51_156.png" alt=""></p><p>如下就是在特异指标j的约束下，下一个特定字组的概率。所有前序字组本质上都是该大规模输出向量的第j个元素。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_0934_34_205.png" alt=""></p><h4 id="3-探究梯度消失-爆炸问题"><a href="#3-探究梯度消失-爆炸问题" class="headerlink" title="3.探究梯度消失/爆炸问题"></a>3.探究梯度消失/爆炸问题</h4><p>训练上文讲的循环神经网络事实上是一件非常困难的事情，这也是后边的课程我们会引入更优质的神经网络的原因。</p><p>下文是对困难的描述</p><p>基本上我们是让每个时间步长上相同的矩阵相乘，这可以看作是一个在所有时间步长上反复方法某些特定模式的过程。在理想情况下，我们很乐意看到多个时间步长中的输入值可以在后续的时间步长中继续修正我们一直努力预测的目标字组。尝试对W求导，如果你只有两三个字组序列的话，这将会是一项非常行之有效的训练，在正向传播过程中，我们想成了每个时间步长上相同的矩阵，而在反向传播期间我们也同样要这样做，我们必须时刻记住增量、空中讯号、以及各种梯度方向的全局元素。本质上讲，每个时间步长上的全局元素都会通过这个网络向后流动。所以当我们处理交叉熵损失函数时 ，通常会利用导数，我们需要回过头重新传播增量。第一个接近输出值的时间步长就会有效执行更新操作。并且字组向量也有可能得到合理的更新。</p><p>随着时间的推移，你的讯号有可能变得过于强烈或者过于微弱。这就是所谓的梯度消失问题。随着时间的推移，你尝试在时间步长t处发送空中讯号，但由于此前已经存在很多时间步长，这样你就会遭遇梯度消失问题。</p><ul><li><p>简化的RNN模型来研究爆炸/消失问题。h(t)剥离西格玛，yt剥离softmax</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1019_48_100.png" alt=""></p></li></ul><ul><li><p>所有时间步长中的误差W是分步误差的加和，如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1028_39_394.png" alt=""></p></li></ul><ul><li><p>接下来我们要核算的是总误差的时间标记t中的元素，我们只需要核算单个时间步长以及单个时间步长上的单向误差。而现在即使计算也需要我们有一个非常大的链式求导法则。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1031_02_913.png" alt=""></p><ul><li><p>主要分析这个求导法则中的第三项</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1859_39_756.png" alt=""></p></li><li><p>记住ht的定义</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1900_20_207.png" alt=""></p></li><li><p>基本上每个方向的前序时间步长的ht的偏导数都已经给出，为了计算ht的所有偏导数，又要使用链式求导法则。如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1905_20_004.png" alt=""></p></li><li><p>这就意味着向量相对于另一个向量的偏导数是存在的。其实假如我们可以灵活运用反向传播的定义，那就没必要再进行实际计算。实际上，在将计算与流程图以及增量信息有效结合之前，我们并不需要计算清楚这些雅克比矩阵，但是为了分析其中的数学问题，我们还是需要计算所有的导数。</p><p>每一个方向的ht的偏导数都是一个雅克比矩阵</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1907_42_256.png" alt=""></p></li></ul></li></ul><p>  这么多雅克比行列式最终得到的结果也相当大，为了简化它，我们可以设定一个上限。相对于hj我们还要设定h的导数。事实上，在这一系列简单定义的基础上，所有的h都可以通过这种方式来计算。我们还可以设定矩阵的范数上限，这个上限就是这些方程的乘积。也就是Wt，我们可以将其算作一个已知的对角线，而非元素级结果。一般情况下，我们会将元素归置到一个较大矩阵的对角线上，在0路径中一切都是非对角线分布的。接下来我们将两个范数相乘，并将beta_W和beta_h定义为上限.那么每一个数值和单个标量，都能达到自身的最大值。</p><p>  <img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1918_58_863.png" alt=""></p><p>  已知W我们可轻松算出W的任意一种范数。我们只需要一个矩阵就可以计算出一个矩阵范数，当把这些范数全部列出来后，我们就发现这些雅克比行列式的上限实际上被用作这些元素的乘积。就其上限beta而言，假如我们定义了所有元素，那就等于拥有了计算t-k幂的乘积beta。所以序列越长t值越大。它真的取决于测试的t值究竟是变大还是变小。例如当前矩阵范数就是上述范数，那就意味着你已经控制了该范数。在开始训练之前，你将等待矩阵W,初始化为一些小的随机值，如果将其初始化为一个范数大于1的矩阵，那么在反向传播过程中，时间序列就会变得更长，由于你采用了大于1的值，最终你会得到一个爆发的梯度。例如数值为100，但现有的范数只有两个，那么在该梯度的上限就在这两个范数到100之间。反之亦然，假如在开始的时候，你将矩阵W初始化为一群小的随机值，那么W的范数就会小于1，那么最终ht发送到hk的最终梯度可能会缩小为一个十分小的数值，差不多是第100个范数的一半。总体来讲，这一过程不会有任何误差。同时这一过程也不会有误差讯号，随着时间推移，梯度消失或者爆炸也会越来越严重。</p><p>  假如现有的梯度面临激增或者突然减少，是否意味着较远的数组最较近的数组有较大影响呢？答案是，当梯度激增或者突减时，在短时间内你便无法获得数字。这些数字并非字面意义上的数字，因为他们的数值实在太大了，我们根本无法计算。因此上述问题并非实际问题，我们必须设法回归。事实证明，梯度爆炸问题的确包含一些很强势的非法入侵，相比这些梯度消失问题，解决这些非法入侵问题其实要简单的多。</p><p>  <img src="http://bqlab-pic.test.upcdn.net/pic/20191208_1931_18_003.png" alt=""></p><p>  在语言模型或者问答模型的情况下，一些时间序列间隔较大的语句，通常在预测下一个词是什么的时候不被考虑进去，这是梯度消失问题的一种。我们通过如下一个语言建模的例子来了解梯度消失问题。</p><p>  Jane walk into the room,John walked in too,It was late in the day,Jane said hi to ___.</p><p>  人类会觉得几乎概率是100%的下一个单词应该是John，但是现在每个单词都有词向量，你需要将他们全部输入到隐状态上，然后进行计算。接下来会希望模型可以筛选出一个特定的模型，在该模式中，一个人遇见另一个人，然后两个人互相问好，然后介绍姓名等等等等。但是实际上你无法命令模型将中间这个错误讯号收回，你需要手动修改隐状态，将John这个答案设置为较高的概率。中间的这个it was late in the day是一个打乱了时间序列的句子。</p><h4 id="4-python笔记本演示简单的梯度消失问题"><a href="#4-python笔记本演示简单的梯度消失问题" class="headerlink" title="4.python笔记本演示简单的梯度消失问题"></a>4.python笔记本演示简单的梯度消失问题</h4><p>展示的时候用的是一个简单的两层神经网络，并没有用完整的周期性实体网络。在这个网络中会看到从顶部开始的误差，会随着你在网络中的搜索，梯度范数已经会变得越来越小了。如下的方程能解释这个现象，这两个方程在代码中也得到体现。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191209_1311_03_191.png" alt=""></p><p>代码对数学公式的实现格式非常规整，值得好好学习。</p><pre><code>小结:1.传统语言模型是使用条件概率公式，遍历前n-1个词汇，预测第n个词汇出现的概率。这种方式cost太大2.后来改进，根据1-gram，2-gram，3-gram模型预测下一个词出现概率。本质还是使用条件概率公式，这种方式内存开销仍然太大。3.为了解决开销问题，引入RNN网络，RNN定义由上文方程式和图片清晰定义。4.RNN又有新的麻烦，就是梯度爆炸or消失问题。因为RNN基本上就是在时间序列上连续传导特定的模式，随着时间的积累这种模式一定会变得过于强烈或者过于微弱。</code></pre>]]></content>
     
     
     <categories>
@@ -4166,6 +4216,31 @@
     <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_2,-%20%E6%B3%A8%E9%87%8A%E4%B9%8Bsoftmax/</url>
     
     <content type="html"><![CDATA[<h1 id="softmax"><a href="#softmax" class="headerlink" title="softmax"></a>softmax</h1><p><strong>定义：</strong></p><p>假如有一个数组V，Vi表示V中的第i个元素，这个元素的softmax值如下，也就是该元素的指数值和所有元素指数值之和的比值。softmax通常希望特征对概率的影响是乘性的。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191215_1105_33_496.png" alt=""></p><p><strong>softmax VS k个二元分类器</strong>：<br>如果你在开发一个音乐分类的应用，需要对k种类型的音乐进行识别，那么是选择使用 softmax 分类器呢，还是使用 logistic 回归算法建立 k 个独立的二元分类器呢？<br>这一选择取决于你的类别之间是否互斥，例如，如果你有四个类别的音乐，分别为：古典音乐、乡村音乐、摇滚乐和爵士乐，那么你可以假设每个训练样本只会被打上一个标签（即：一首歌只能属于这四种音乐类型的其中一种），此时你应该使用类别数 k = 4 的softmax回归。（如果在你的数据集中，有的歌曲不属于以上四类的其中任何一类，那么你可以添加一个“其他类”，并将类别数 k 设为5。）<br>如果你的四个类别如下：人声音乐、舞曲、影视原声、流行歌曲，那么这些类别之间并不是互斥的。例如：一首歌曲可以来源于影视原声，同时也包含人声 。这种情况下，使用4个二分类的 logistic 回归分类器更为合适。这样，对于每个新的音乐作品 ，我们的算法可以分别判断它是否属于各个类别。<br>现在我们来看一个计算视觉领域的例子，你的任务是将图像分到三个不同类别中。(i) 假设这三个类别分别是：室内场景、户外城区场景、户外荒野场景。你会使用sofmax回归还是 3个logistic 回归分类器呢？ (ii) 现在假设这三个类别分别是室内场景、黑白图片、包含人物的图片，你又会选择 softmax 回归还是多个 logistic 回归分类器呢？<br>在第一个例子中，三个类别是互斥的，因此更适于选择softmax回归分类器 。而在第二个例子中，建立三个独立的 logistic回归分类器更加合适。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>3.课程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>NLP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>3.课程/CS224n_4 - wordWindow和神经网络</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_4%20-%20wordWindow%E5%92%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_4%20-%20wordWindow%E5%92%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Lecture4-wordWindow和神经网络"><a href="#Lecture4-wordWindow和神经网络" class="headerlink" title="Lecture4  wordWindow和神经网络"></a>Lecture4  wordWindow和神经网络</h1><h4 id="1-分类背景知识"><a href="#1-分类背景知识" class="headerlink" title="1.分类背景知识"></a>1.分类背景知识</h4><p>对分类的直觉感受是什么？在机器学习领域，在还没有达到深度学习领域的情况下，我们通常将分类理解为简单的逻辑回归，也就是定义一个简单的决策边界。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1417_17_117.png" alt=""></p><h4 id="2-窗口分类"><a href="#2-窗口分类" class="headerlink" title="2.窗口分类"></a>2.窗口分类</h4><p>在一般的机器学习中，我们假设输入是固定的。输入X都是固定的，我们只训练<strong>参数</strong>W，也就是softmax的权值，然后计算给定输入X时输出Y的概率。<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1417_27_826.png" alt=""></p><h4 id="3-交叉熵"><a href="#3-交叉熵" class="headerlink" title="3.交叉熵"></a>3.交叉熵</h4><p>我们假设正确类别的概率为1，其余的概率为0.举个例子，假设共有5个类别，正确类别是中间的第三个，那么第三个的概率为1，其他都是0.我们把理想的概率定义为p，softmax计算的概率为q，这里给出了交叉熵的定义，就是对所有类别的求和<img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1417_43_174.png" alt=""></p><p>正则化项：里边包含的参数θ如果是标准逻辑回归中的矩阵W，实际上目标函数加入这个正则化项的目的就是是为了鼓励模型中的所有权值尽可能地小。</p><p>可以假设你想要一个贝叶斯模型，你可以有一个先验的高斯分布，理想情况下这些参数的值都很小，但是如果没有这个正则化项，通常情况下你得到的模型参数会爆炸，他会越来越过拟合。如果没有正则化项，我们会专注于如何拟合我们的模型。</p><p>通常的机器学习优化就是只优化模型的参数W，也就是softmax分类器的参数，因为参数众多，所以每次的更新和梯度会特别小。通常我们只有两三个类别，但是词向量的维度是上百。例如我们有三个类别，和100维的词向量，这样我们就有300个参数。在深度学习中，我们有相当惊人的词向量，而且实际上我们不仅仅是学习softmax分类器，还有词向量，我们可以反向传播到词向量。我们每次更新词向量的时候，必须意识到词向量通常都巨大。例如你的词有300个维度，你的词典中有10000个单词，突然你有如此巨大的参数集，在这种情况下，你很有可能会过拟合。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1417_53_374.png" alt=""></p><p><strong>小数据集训练容易过拟合</strong></p><p>我们想对单个词做积极还是消极的分类，我们的训练测试集中包含了单词TV，telly，television。假设这三个单词是在一个评价刚上映电影的语境中（说一个上线的电影适合在电视上放），那么这种评价通常是消极的。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1418_09_632.png" alt=""></p><p>在开始的时候，这三个词汇在向量空间中很接近，我们用word2vec或者glove向量学习，我们在非常大的语料库上训练这些词向量，他学习到这三个单词经常出现在相似的上下文中，所以他们在向量空间中很接近，现在我们要在更小的情感数据集中训练，只包含了TV和telly，不包括television，当我们重新训练这两个向量的时候会发生什么？</p><p>结果是他们发生了变化，把情感分类的结果显示出来，你会看到telly和tv移动到向量空间的其他位置，而television还停留在原来的位置。这就是向量在小数据集上的过拟合问题。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1418_22_424.png" alt=""></p><p>我们实际上会把这个词汇错误分类，因为他们三个词汇其实是一个意思。</p><p>what does it mean？</p><p>这里的关键信息是，如果你只有小训练数据集，不要训练词向量。（深入模型在小数据上容易过拟合）</p><h4 id="4-窗口分类的例子：命名实体识别4分类问题"><a href="#4-窗口分类的例子：命名实体识别4分类问题" class="headerlink" title="4.窗口分类的例子：命名实体识别4分类问题"></a>4.窗口分类的例子：命名实体识别4分类问题</h4><p>问题：将语料库中的单词分为如下四类：地点，人名，组织，其他</p><p>思路：训练一个softmax模型，然后用一个窗口把他们前后的单词链接起来</p><p>目的：给中心词Paris分类</p><p>中心词巴黎周围的步长是2，这就构成了一个五维的窗口向量，每一维都是一个单独的词向量，比如【I love Paris very much】。我们能想到的最简单的窗口分类器就是将这五个词向量拼接放入softmax分类器中，五个词构成了softmax分类器的分母，分子是一个单词paris。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1418_34_641.png" alt=""></p><p>参数解释：</p><p>x是窗口，W矩阵是参数。</p><p>代价函数J(θ)中，F（yi）是参数W和X的交叉熵。</p><p>如何更新词向量X？X是五个词构成的窗口，X深入在softmax中。直接回答就是我们可以多次求导。</p><p>y尖 为softmax概率向量，也就是对所有四个分类的归一化的得分或概率，比如（0.9,0.05,0.05,0）.那么分类结果就是第一个（比如是地点）</p><p>其实我们是想更新pairs这个词的向量，而不是整个窗口，窗口只是一个中间步骤，所以其实我们做的是更新和计算关于词向量的每个元素的导数，最终他会变得很简单（类似于梯度下降）。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1418_42_262.png" alt=""></p><p>softmax只会给我们线性决策边界，如左图。而神经网络可以给我们复杂的决策边界，通常会work的更好，如右图。</p><pre><code>定义了窗口分类和交叉熵，用一个实例实现了窗口分类，其实就是对softmax的应用。窗口分类只能给出直线边界，没有神经网络的复杂边界好用，本节课还提到了神经网络的基本概念，为了解耦把神经网络的概念剪切到CS229的相关文章里边去了。</code></pre>]]></content>
     
     
     <categories>
@@ -4261,11 +4336,11 @@
   
   
   <entry>
-    <title>3.课程/CS224n_14 - 问答系统</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_14%20-%20%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_14%20-%20%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/</url>
+    <title>3.课程/CS224n_15 - NLP的问题和可能性架构</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_15%20-%20NLP%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E5%8F%AF%E8%83%BD%E6%80%A7%E6%9E%B6%E6%9E%84/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_15%20-%20NLP%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E5%8F%AF%E8%83%BD%E6%80%A7%E6%9E%B6%E6%9E%84/</url>
     
-    <content type="html"><![CDATA[<h1 id="Lecture14-问答系统"><a href="#Lecture14-问答系统" class="headerlink" title="Lecture14 - 问答系统"></a>Lecture14 - 问答系统</h1><h3 id="1-实现问答系统的联合模型：动态记忆网络"><a href="#1-实现问答系统的联合模型：动态记忆网络" class="headerlink" title="1.实现问答系统的联合模型：动态记忆网络"></a>1.实现问答系统的联合模型：动态记忆网络</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1049_47_393.png" alt=""></p><p>从下边开始看，输入都是词向量，比如word2vec或者glove之类。基本会有一个循环的神经序列模型，比如GRU,他为每个输入单词计算一个隐藏层。</p><p>在右下角的问题模块中也有处理问题的GRU,用于计算输入的问题的向量。</p><p>以右下角输入的问题为例，“足球在哪里？”我们会认为足球被提及的事实的这个问题储存在上一次GRU隐藏层的某个地方，我们称之为Q，我们使用Q从本质引发所有潜在输入的注意力机制，每当有一个特定的句子被强烈关注，我们将把这个句子作为另一个GRU的输入，那就是情节记忆模块。基本上只要有上图蓝色的线存在，那基本就是一种循环的神经网络序列模型。所以基本上，一个问题促发一个注意力机制。遍历所有输入的所有隐藏层，现在基本上说这个事实似乎与这个问题有关。基本上说，一个问题引发一个注意力机制，然后遍历所有输入的所有隐藏层，也就是说在输入模块，我们认为最后一次提到“足球”肯定和现在问的问题是相关的，于是GRU的隐藏层捕捉到了这一点，然后经过上边的记忆模块中的GRU（fliter）过滤，现在只聚合与当前问题相关的句子。 图上方记忆模块的第三条线，这个是GRU的最后隐藏层。对于下一次迭代，发现“joho put down the football”，然后不知道john在哪，所以我们现在已经存储在这个向量m中，为了回答现在的问题，他似乎是相关的，模型会再一次自己学习所有这些东西，然后会注意到所有提及john或者足球的每一个事实。在这种情况下，这些都是现实的数字，然后很容易发现“john去了走廊”和“john去了卧室“的句子，然后提到这两个句子的注意力值，然后在右上角的回答模块输出回答。 </p><p>问题：上图上方的情节记忆模块的两个不同轨道是什么？实际上，这些轨道是输入的完全镜像。因此在情节记忆模块中总是有很多时间步骤，因为输入中有时间步骤，但是模型可以用分类器来决定或者只是靠固定次数的输入。介于2到5之间，每次它结束时，他都会注意输入中的各种句子，取决于问题是什么以及它迄今为止在前一时间步骤或者一个情节中的相关事实方面聚集在一起。所以在这里，我们再次回顾一下第一次的输入，储存关于john和足球的情节，那么第二次，我们现在也要关注john的事实，所有再由直觉，第一句，我问足球在哪里？在这种情况下，john移动了卧室这一句似乎与提问并没有任何关系，所以你必须做传递推理，这种传递推理能力，只有你在信息中有很多次传递时才能得到。</p><h3 id="2-组件剖析"><a href="#2-组件剖析" class="headerlink" title="2.组件剖析"></a>2.组件剖析</h3><p>为了定义模块，我们得将整个体系结构进行端到端的约束。我们基本上只有一个标准GRU,你只需要给它一个输入序列，一个问题和一个答案，现在从这个答案开始我们基本上会在一开始就会犯错，然后就会有很高的交叉熵误差，那么在这里我们基本上可以通过所有这些向量反向传播，通过所有的方式进入单词向量，我们可以训练整个系统，这真的是深度学习的力量。</p><p><strong>input模块：</strong></p><p>输入模块是标准的GRU，我们实际上会使每个句子的最后一个隐藏状态明确地被访问，我们已经在第二次迭代中做了一个改进，把它换成了双向GRU。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1223_27_097.png" alt=""></p><p><strong>question模块：</strong></p><p>问题模块同样是一个标准GRU,这里我们有称之为v_t的单词向量，q_t是GTU模型接受vt和上一个q_(t-1)之后的输出。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1225_26_291.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1225_48_410.png" alt=""></p><p><strong>情节记忆模块的第一条线</strong></p><p>这个模块带有注意力机制，示意图如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1226_48_307.png" alt=""></p><p>隐藏状态如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1227_07_348.png" alt=""></p><p>首先定义g的关注机制，g只是一个标量数字（代表我是否应该注意第i句话？）这里h的上标表示迭代次数。这里的主要想法是我们在标准GRU之上有一个全局gate，“g”。这个全局gate会说整句话都非常重要或者整句话都不重要，当然并不是所有的隐藏状态都有自己的大门。也就是说，g（i，t）代表的第i个句子和第t个情节，通过整个输入是0，我们要做的就是基本上完全复制h向量，没有计算和更新。比如上文举得例子，比如找的是足球，足球和john有关，其他人比如mary就和足球无关。然后和mary有联系的话语就被标记成0.</p><p>那么如何计算g？</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1244_54_642.png" alt=""></p><p>其实非常简单直接，首先用句子部分之间的一些简单相似性来计算这个向量z，这又是每句话结束时候的隐藏层，计算组z之后进行简单装配和e和sum就OK了。</p><p>关于计算z的详解：</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1245_37_692.png" alt=""></p><p>第一项si * q是如何标识产出</p><p>第二项si * m(t - 1)是 在记忆中的句子、问题与记忆状态下的每个句子之间的乘法交互作用。</p><p>第三和第四项是简单的向量相似度量度。</p><p>举例：我在si处输入，在这里捕捉关于john的fact。但是其实我们问题是关于足球，所以在第一次迭代中，m（0）也刚刚初始化为这个问题，不会添加任何东西吗，因为我们还没有完成整个输入。基本上在隐藏状态里，我们希望能捕捉到一些约翰走到走廊的一些事实，所以|si - q|这一项，也就是si和q之间的相似性不会太高，然后我们把|si - m|这个长特征向量插入这g（it）个双层神经网络，所以g(it)的值会非常小，但是在第二次迭代中，基本上链接了john，足球，和走廊。现在在m隐藏层下有一些关于john和足球的fact，现在这种相似性可以通过注意力机制来获得，然后下次给这个句子分配多一些注意力。</p><p><strong>情节记忆模块的第二和第三条线</strong></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1250_01_915.png" alt=""></p><p>第二第三条线也是GRU,但是是一个不会有很多时间步骤的GRU，基本是一个从一个记忆状态到下一个记忆状态，并在最右侧聚集的GRU。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Lecture15-NLP的问题和可能性架构"><a href="#Lecture15-NLP的问题和可能性架构" class="headerlink" title="Lecture15 - NLP的问题和可能性架构"></a>Lecture15 - NLP的问题和可能性架构</h1><h3 id="1-NLP问题"><a href="#1-NLP问题" class="headerlink" title="1.NLP问题"></a>1.NLP问题</h3><p>视觉研究以前在深度学习中占主导地位，但是三巨头Yann LeCun,Geoff Hinton,Yoshua Bengio都把他们的研究方向转向NLP(也就是说深度学习三巨头的研究方向有风向标的意义)</p><p>Bengio在采访中表示，实验论证深度学习技术应用与新应用的可能性，这些新应用包括了计算机视觉，对话系统，虚拟助手，语音识别，NLP,机器翻译以及其他应用。</p><p>这世界上有太多不同的语言现象和相对应的任务要完成，所以解决NLP问题不能像解决计算机视觉那样，某个人构建出一个足够复杂的深度神经网络就vans了.NLP问题们并不同源，不能说解决了其中一个，就可以宣布全部解决。</p><p>在传统NLP问题中丢失了的东西：</p><p>将现在和过去对比是一件很有趣的事情，在70和80年代的那批从事NLP研究的人员里，他们有着非常崇高的目标，他们想要达到人类级别的语言理解能力，但是他们最终达到的是非常骨感的现实。</p><p>不论上述对比的结果如何，我们现在所处的环境，我们能比他们当时更好地实现目标，但是，达到目标的途径却开始变得不那么明朗。作为实践，我们可以在这个语料数据上运行一个LSTM,然后将这个模型取得很好的性能表现，然后感觉这似乎就已经是极限了。</p><p>老师采用Peter Norvig的博士论文作为例子，Norvig是谷歌的研究主管，距离他发表这篇博士论文到现在已经过去32年了，他的论文的题目叫做，一种关于文本理解的推论的统一理论。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1955_43_230.png" alt=""></p><p>他的论文实际上在讲NLP和语言理解的内容，但是在他的论文里，只有很少的篇幅在分析自然语言，他举得例子都是很小儿科的语句，比如A给了B一个自行车，C想要它，于是B又给了C都是这样的话。</p><p>80年代的人处理自然语言的观点和现在截然相反，当时的人们都认为唯一的方法是，拥有可用于推理的知识库，他在论文的第四页写到，一个合适的知识库，是做出正确推理的先决条件，这不过是说，我们需要在事实之间建立推理关系，以此来理解较复杂的指代问题。当时他非常依赖知识库，但是后来20年里大家发现其实有很多自然语言是可以仅仅通过文本的组成而不需要任何知识库就可以进行处理的。</p><p>在他的论文里，他列举了6种推理形式试图去建立一个包含这些种类的自然语言理解理论。然后能实现在一篇简单的童话故事中推理。</p><p>第一种推理形式是阐述，就是处理如何连接各个单词实体，这里的例子是john拿出一个存钱罐，因为他需要去买礼物，也就是需要对这些单词实体做上下文的阐述。</p><p>第二是指代消解，也就是处理好指针和内存的关系，这种方法之前已经讲过，这个现在已经能被很好地处理。</p><p>第三种是解释语言中的隐喻和抽象，比如Laker队kill了Yeekoins，这里的kill并不是杀死，而是把yeekinos队打败了。Norvig另有一篇论文去讲述人们如何去衍生这些抽象解释。第三种我们一直以来没有考虑太多，但实际上这是很重要的一部分，具体化是可以让你解决如何将一个大致上的描述，转变为更具体的形态。比如有人驾车出游，那么在自动驾驶技术成熟之前，你一定能推测出有人在开车。这就是具体化，能够让你在有一定的常识的基础上，做出更加合理的推论。</p><p>在Norvig的论文中，他们当年没有一个良好的语法分析器供他们使用，他们当时手动把句子拆开，我们现在的parser发展已经很不错了，这就是progress。</p><p>在自然语言处理的方面还有很多事情需要完成，一方面，在过去的几年中，NLP领域和其他各种领域一样，都度过了一段激动人心的时期，很多系统取得了非常好的效果，值得注意的是双向LSTM正在占领自然语言处理领域，因为你可以在任何任务上尝试他们。你可以把双向LSTM用作注意力机制，他也可以成为你的天然语言分析器。</p><p>另一个令人激动的事情是这些神经方法，赋予了语言生成这一新生任务，生成对话，机翻，等等，这些任务在2000-2010之间还停滞不前，但是现在，我们有了这些令人惊叹的语言模型，我们有了各种的方式去配置他们，我们可以进行很棒的语言生成，这些领域最近都活跃了起来。</p><p>从科学上来讲，这是很有趣的一段时间，因为大多数的NLP任务都可以假设我们需要建立独有的语言表示体系并且来使用他们进行进一步分析，所以我们需要语法表示，我们想要使用语义框架去表示语言中的事件与关联，同时还需要建立详尽的有地方特色的知识表示方式。</p><p>当下的工作能显示出很多现在的情况，我们能建立端到端的深度学习系统，但是对于那些地方语言特色的表示，这些系统运行的并不好。另一方面，我们在很多事情上并没有触及到问题的本质，其中之一就是我们现在还在停留在使用很原始的方法来构建和得到记忆或者知识，的确现在已经有了很多关于LSTM的工作，但其实这里边的记忆都是非常短时的记忆，它并不是我们人类在脑子里的模型，能够存储生活中很多年积累的经验那种模型，我们人类还能在需要的时候将这些经验灵活地调动和组织起来，而LSTM能做的就只是线性扫描：最后100个单词发生了什么事诸如此类。</p><p>另外还显得不足的方面是，我们并没有什么模型能够使我们让目标或者计划公式化，比如在一组人类的有意义的对话里边，你有一些计划和目标需要达成，但是在自然语言处理中，还不能对这个目标或者计划公式化（我理解为不能建模）。</p><p>还有一个有待提高的领域是语际关系，一旦我们需要处理单个的句子，句子的结构通常很清晰，我们可以直接加工，但是我们一旦尝试解释句子或者从句之间的关系，或者说出他们之间这样的原因，我们就不能很好地处理。</p><p>我们想要实现借助常识实现阐述，以目前的能力，是没有办法造出这样的深度学习系统的。</p><h3 id="2-树形结构"><a href="#2-树形结构" class="headerlink" title="2.树形结构"></a>2.树形结构</h3><p>如下，通过树形结构把文章拆分为小块，红色为保守派观点，灰色是中性表达，蓝色是自由派观点，通过各种组合最后得到的还是自由派的观点。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_2041_50_770.png" alt=""></p><p>另一个例子也是使用树形结构去分析文章的意识形态是偏保守还是自由</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_2042_35_003.png" alt=""></p><p>如下是树形循环神经网络，它在理论上很吸引人，特别是如果你没有一亿个单词作为训练集加以训练，从经验上来看，他是很有竞争力的。但是他的缺陷就是非常慢。大多数这种网络都需要外部分析器。</p><p>树形结构的运算表现非常之差的原因是他们没有适应GPU上的批处理运算，而批处理运算恰恰是让深度学习模型能够高效训练的核心原因。如果你有一个序列模型，一个序列模型只能有一种结构，假如你的结构就是从左往右这样，你开始循环计算每一个单词的隐藏属性，这种结构你能在序列模型中使用一堆句子（最好长度相仿），然后在序列模型中运行并锁定步长，这样做效率真的很高。但是如果你在TreesRNN网络中训练，又使用这种特定的结构，他每一句的结构都不同，这就削弱了你进行批处理计算的能力。因为你每句句子都要构造出不同的结构单元。</p>]]></content>
     
     
     <categories>
@@ -4286,11 +4361,11 @@
   
   
   <entry>
-    <title>3.课程/CS224n_15 - NLP的问题和可能性架构</title>
-    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_15%20-%20NLP%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E5%8F%AF%E8%83%BD%E6%80%A7%E6%9E%B6%E6%9E%84/"/>
-    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_15%20-%20NLP%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E5%8F%AF%E8%83%BD%E6%80%A7%E6%9E%B6%E6%9E%84/</url>
+    <title>3.课程/CS224n_14 - 问答系统</title>
+    <link href="undefined2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_14%20-%20%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/"/>
+    <url>2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_14%20-%20%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/</url>
     
-    <content type="html"><![CDATA[<h1 id="Lecture15-NLP的问题和可能性架构"><a href="#Lecture15-NLP的问题和可能性架构" class="headerlink" title="Lecture15 - NLP的问题和可能性架构"></a>Lecture15 - NLP的问题和可能性架构</h1><h3 id="1-NLP问题"><a href="#1-NLP问题" class="headerlink" title="1.NLP问题"></a>1.NLP问题</h3><p>视觉研究以前在深度学习中占主导地位，但是三巨头Yann LeCun,Geoff Hinton,Yoshua Bengio都把他们的研究方向转向NLP(也就是说深度学习三巨头的研究方向有风向标的意义)</p><p>Bengio在采访中表示，实验论证深度学习技术应用与新应用的可能性，这些新应用包括了计算机视觉，对话系统，虚拟助手，语音识别，NLP,机器翻译以及其他应用。</p><p>这世界上有太多不同的语言现象和相对应的任务要完成，所以解决NLP问题不能像解决计算机视觉那样，某个人构建出一个足够复杂的深度神经网络就vans了.NLP问题们并不同源，不能说解决了其中一个，就可以宣布全部解决。</p><p>在传统NLP问题中丢失了的东西：</p><p>将现在和过去对比是一件很有趣的事情，在70和80年代的那批从事NLP研究的人员里，他们有着非常崇高的目标，他们想要达到人类级别的语言理解能力，但是他们最终达到的是非常骨感的现实。</p><p>不论上述对比的结果如何，我们现在所处的环境，我们能比他们当时更好地实现目标，但是，达到目标的途径却开始变得不那么明朗。作为实践，我们可以在这个语料数据上运行一个LSTM,然后将这个模型取得很好的性能表现，然后感觉这似乎就已经是极限了。</p><p>老师采用Peter Norvig的博士论文作为例子，Norvig是谷歌的研究主管，距离他发表这篇博士论文到现在已经过去32年了，他的论文的题目叫做，一种关于文本理解的推论的统一理论。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1955_43_230.png" alt=""></p><p>他的论文实际上在讲NLP和语言理解的内容，但是在他的论文里，只有很少的篇幅在分析自然语言，他举得例子都是很小儿科的语句，比如A给了B一个自行车，C想要它，于是B又给了C都是这样的话。</p><p>80年代的人处理自然语言的观点和现在截然相反，当时的人们都认为唯一的方法是，拥有可用于推理的知识库，他在论文的第四页写到，一个合适的知识库，是做出正确推理的先决条件，这不过是说，我们需要在事实之间建立推理关系，以此来理解较复杂的指代问题。当时他非常依赖知识库，但是后来20年里大家发现其实有很多自然语言是可以仅仅通过文本的组成而不需要任何知识库就可以进行处理的。</p><p>在他的论文里，他列举了6种推理形式试图去建立一个包含这些种类的自然语言理解理论。然后能实现在一篇简单的童话故事中推理。</p><p>第一种推理形式是阐述，就是处理如何连接各个单词实体，这里的例子是john拿出一个存钱罐，因为他需要去买礼物，也就是需要对这些单词实体做上下文的阐述。</p><p>第二是指代消解，也就是处理好指针和内存的关系，这种方法之前已经讲过，这个现在已经能被很好地处理。</p><p>第三种是解释语言中的隐喻和抽象，比如Laker队kill了Yeekoins，这里的kill并不是杀死，而是把yeekinos队打败了。Norvig另有一篇论文去讲述人们如何去衍生这些抽象解释。第三种我们一直以来没有考虑太多，但实际上这是很重要的一部分，具体化是可以让你解决如何将一个大致上的描述，转变为更具体的形态。比如有人驾车出游，那么在自动驾驶技术成熟之前，你一定能推测出有人在开车。这就是具体化，能够让你在有一定的常识的基础上，做出更加合理的推论。</p><p>在Norvig的论文中，他们当年没有一个良好的语法分析器供他们使用，他们当时手动把句子拆开，我们现在的parser发展已经很不错了，这就是progress。</p><p>在自然语言处理的方面还有很多事情需要完成，一方面，在过去的几年中，NLP领域和其他各种领域一样，都度过了一段激动人心的时期，很多系统取得了非常好的效果，值得注意的是双向LSTM正在占领自然语言处理领域，因为你可以在任何任务上尝试他们。你可以把双向LSTM用作注意力机制，他也可以成为你的天然语言分析器。</p><p>另一个令人激动的事情是这些神经方法，赋予了语言生成这一新生任务，生成对话，机翻，等等，这些任务在2000-2010之间还停滞不前，但是现在，我们有了这些令人惊叹的语言模型，我们有了各种的方式去配置他们，我们可以进行很棒的语言生成，这些领域最近都活跃了起来。</p><p>从科学上来讲，这是很有趣的一段时间，因为大多数的NLP任务都可以假设我们需要建立独有的语言表示体系并且来使用他们进行进一步分析，所以我们需要语法表示，我们想要使用语义框架去表示语言中的事件与关联，同时还需要建立详尽的有地方特色的知识表示方式。</p><p>当下的工作能显示出很多现在的情况，我们能建立端到端的深度学习系统，但是对于那些地方语言特色的表示，这些系统运行的并不好。另一方面，我们在很多事情上并没有触及到问题的本质，其中之一就是我们现在还在停留在使用很原始的方法来构建和得到记忆或者知识，的确现在已经有了很多关于LSTM的工作，但其实这里边的记忆都是非常短时的记忆，它并不是我们人类在脑子里的模型，能够存储生活中很多年积累的经验那种模型，我们人类还能在需要的时候将这些经验灵活地调动和组织起来，而LSTM能做的就只是线性扫描：最后100个单词发生了什么事诸如此类。</p><p>另外还显得不足的方面是，我们并没有什么模型能够使我们让目标或者计划公式化，比如在一组人类的有意义的对话里边，你有一些计划和目标需要达成，但是在自然语言处理中，还不能对这个目标或者计划公式化（我理解为不能建模）。</p><p>还有一个有待提高的领域是语际关系，一旦我们需要处理单个的句子，句子的结构通常很清晰，我们可以直接加工，但是我们一旦尝试解释句子或者从句之间的关系，或者说出他们之间这样的原因，我们就不能很好地处理。</p><p>我们想要实现借助常识实现阐述，以目前的能力，是没有办法造出这样的深度学习系统的。</p><h3 id="2-树形结构"><a href="#2-树形结构" class="headerlink" title="2.树形结构"></a>2.树形结构</h3><p>如下，通过树形结构把文章拆分为小块，红色为保守派观点，灰色是中性表达，蓝色是自由派观点，通过各种组合最后得到的还是自由派的观点。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_2041_50_770.png" alt=""></p><p>另一个例子也是使用树形结构去分析文章的意识形态是偏保守还是自由</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_2042_35_003.png" alt=""></p><p>如下是树形循环神经网络，它在理论上很吸引人，特别是如果你没有一亿个单词作为训练集加以训练，从经验上来看，他是很有竞争力的。但是他的缺陷就是非常慢。大多数这种网络都需要外部分析器。</p><p>树形结构的运算表现非常之差的原因是他们没有适应GPU上的批处理运算，而批处理运算恰恰是让深度学习模型能够高效训练的核心原因。如果你有一个序列模型，一个序列模型只能有一种结构，假如你的结构就是从左往右这样，你开始循环计算每一个单词的隐藏属性，这种结构你能在序列模型中使用一堆句子（最好长度相仿），然后在序列模型中运行并锁定步长，这样做效率真的很高。但是如果你在TreesRNN网络中训练，又使用这种特定的结构，他每一句的结构都不同，这就削弱了你进行批处理计算的能力。因为你每句句子都要构造出不同的结构单元。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Lecture14-问答系统"><a href="#Lecture14-问答系统" class="headerlink" title="Lecture14 - 问答系统"></a>Lecture14 - 问答系统</h1><h3 id="1-实现问答系统的联合模型：动态记忆网络"><a href="#1-实现问答系统的联合模型：动态记忆网络" class="headerlink" title="1.实现问答系统的联合模型：动态记忆网络"></a>1.实现问答系统的联合模型：动态记忆网络</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1049_47_393.png" alt=""></p><p>从下边开始看，输入都是词向量，比如word2vec或者glove之类。基本会有一个循环的神经序列模型，比如GRU,他为每个输入单词计算一个隐藏层。</p><p>在右下角的问题模块中也有处理问题的GRU,用于计算输入的问题的向量。</p><p>以右下角输入的问题为例，“足球在哪里？”我们会认为足球被提及的事实的这个问题储存在上一次GRU隐藏层的某个地方，我们称之为Q，我们使用Q从本质引发所有潜在输入的注意力机制，每当有一个特定的句子被强烈关注，我们将把这个句子作为另一个GRU的输入，那就是情节记忆模块。基本上只要有上图蓝色的线存在，那基本就是一种循环的神经网络序列模型。所以基本上，一个问题促发一个注意力机制。遍历所有输入的所有隐藏层，现在基本上说这个事实似乎与这个问题有关。基本上说，一个问题引发一个注意力机制，然后遍历所有输入的所有隐藏层，也就是说在输入模块，我们认为最后一次提到“足球”肯定和现在问的问题是相关的，于是GRU的隐藏层捕捉到了这一点，然后经过上边的记忆模块中的GRU（fliter）过滤，现在只聚合与当前问题相关的句子。 图上方记忆模块的第三条线，这个是GRU的最后隐藏层。对于下一次迭代，发现“joho put down the football”，然后不知道john在哪，所以我们现在已经存储在这个向量m中，为了回答现在的问题，他似乎是相关的，模型会再一次自己学习所有这些东西，然后会注意到所有提及john或者足球的每一个事实。在这种情况下，这些都是现实的数字，然后很容易发现“john去了走廊”和“john去了卧室“的句子，然后提到这两个句子的注意力值，然后在右上角的回答模块输出回答。 </p><p>问题：上图上方的情节记忆模块的两个不同轨道是什么？实际上，这些轨道是输入的完全镜像。因此在情节记忆模块中总是有很多时间步骤，因为输入中有时间步骤，但是模型可以用分类器来决定或者只是靠固定次数的输入。介于2到5之间，每次它结束时，他都会注意输入中的各种句子，取决于问题是什么以及它迄今为止在前一时间步骤或者一个情节中的相关事实方面聚集在一起。所以在这里，我们再次回顾一下第一次的输入，储存关于john和足球的情节，那么第二次，我们现在也要关注john的事实，所有再由直觉，第一句，我问足球在哪里？在这种情况下，john移动了卧室这一句似乎与提问并没有任何关系，所以你必须做传递推理，这种传递推理能力，只有你在信息中有很多次传递时才能得到。</p><h3 id="2-组件剖析"><a href="#2-组件剖析" class="headerlink" title="2.组件剖析"></a>2.组件剖析</h3><p>为了定义模块，我们得将整个体系结构进行端到端的约束。我们基本上只有一个标准GRU,你只需要给它一个输入序列，一个问题和一个答案，现在从这个答案开始我们基本上会在一开始就会犯错，然后就会有很高的交叉熵误差，那么在这里我们基本上可以通过所有这些向量反向传播，通过所有的方式进入单词向量，我们可以训练整个系统，这真的是深度学习的力量。</p><p><strong>input模块：</strong></p><p>输入模块是标准的GRU，我们实际上会使每个句子的最后一个隐藏状态明确地被访问，我们已经在第二次迭代中做了一个改进，把它换成了双向GRU。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1223_27_097.png" alt=""></p><p><strong>question模块：</strong></p><p>问题模块同样是一个标准GRU,这里我们有称之为v_t的单词向量，q_t是GTU模型接受vt和上一个q_(t-1)之后的输出。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1225_26_291.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1225_48_410.png" alt=""></p><p><strong>情节记忆模块的第一条线</strong></p><p>这个模块带有注意力机制，示意图如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1226_48_307.png" alt=""></p><p>隐藏状态如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1227_07_348.png" alt=""></p><p>首先定义g的关注机制，g只是一个标量数字（代表我是否应该注意第i句话？）这里h的上标表示迭代次数。这里的主要想法是我们在标准GRU之上有一个全局gate，“g”。这个全局gate会说整句话都非常重要或者整句话都不重要，当然并不是所有的隐藏状态都有自己的大门。也就是说，g（i，t）代表的第i个句子和第t个情节，通过整个输入是0，我们要做的就是基本上完全复制h向量，没有计算和更新。比如上文举得例子，比如找的是足球，足球和john有关，其他人比如mary就和足球无关。然后和mary有联系的话语就被标记成0.</p><p>那么如何计算g？</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1244_54_642.png" alt=""></p><p>其实非常简单直接，首先用句子部分之间的一些简单相似性来计算这个向量z，这又是每句话结束时候的隐藏层，计算组z之后进行简单装配和e和sum就OK了。</p><p>关于计算z的详解：</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1245_37_692.png" alt=""></p><p>第一项si * q是如何标识产出</p><p>第二项si * m(t - 1)是 在记忆中的句子、问题与记忆状态下的每个句子之间的乘法交互作用。</p><p>第三和第四项是简单的向量相似度量度。</p><p>举例：我在si处输入，在这里捕捉关于john的fact。但是其实我们问题是关于足球，所以在第一次迭代中，m（0）也刚刚初始化为这个问题，不会添加任何东西吗，因为我们还没有完成整个输入。基本上在隐藏状态里，我们希望能捕捉到一些约翰走到走廊的一些事实，所以|si - q|这一项，也就是si和q之间的相似性不会太高，然后我们把|si - m|这个长特征向量插入这g（it）个双层神经网络，所以g(it)的值会非常小，但是在第二次迭代中，基本上链接了john，足球，和走廊。现在在m隐藏层下有一些关于john和足球的fact，现在这种相似性可以通过注意力机制来获得，然后下次给这个句子分配多一些注意力。</p><p><strong>情节记忆模块的第二和第三条线</strong></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191214_1250_01_915.png" alt=""></p><p>第二第三条线也是GRU,但是是一个不会有很多时间步骤的GRU，基本是一个从一个记忆状态到下一个记忆状态，并在最右侧聚集的GRU。</p>]]></content>
     
     
     <categories>
@@ -4336,9 +4411,9 @@
   
   
   <entry>
-    <title>0.概念/NLP_注意力机制Attenion</title>
-    <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion/"/>
-    <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion/</url>
+    <title>0.概念/NLP_注意力机制Attenion概览</title>
+    <link href="undefined2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E6%A6%82%E8%A7%88/"/>
+    <url>2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E6%A6%82%E8%A7%88/</url>
     
     <content type="html"><![CDATA[<h1 id="Attention注意力机制"><a href="#Attention注意力机制" class="headerlink" title="Attention注意力机制"></a>Attention注意力机制</h1><h4 id="什么是attention？"><a href="#什么是attention？" class="headerlink" title="什么是attention？"></a>什么是attention？</h4><p>根据数据对当前任务的重要性维持的权重数组。</p><p>CV举例，如下图所示，要预测的对象是黄框 - 狗子的左耳朵，那么对人类来说，预测重要的信息就是红框中的狗子的右耳朵和狗眼睛还有狗鼻子，这些东西可以判断出这是一只狗子，通过右耳朵和眼睛可以对左耳朵进行定位。<br>attention机制模仿人类的认知框架，着重注意红框中的有用信息，忽略例如背景等不重要的信息。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1053_55_520.png" alt=""></p><p>NLP举例，如下图，对词和词之间的关系，分配不同的注意力等级。green修饰apple，eat和apple只见也构成谓宾关系，于是他们都被分类了强注意力，而eat和green没有只见关系，于是只被分配了弱注意力(数组中的权重值低)。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1040_45_963.png" alt=""></p><p>进一步讲，注意力机制其实就是表示重要性的<strong>权重向量</strong>，比如上图识别狗子特征，发现嘴巴和鼻子这一块特别重要，于是就提高了权重值全部设置为1，可以全部采集，而其他不重要的地方比如背景之类就设置为0或者很小的数字，这样就降低了采集的强度。<br>为了预测图像中的元素或者句子中的单词，我们使用注意力权重来估计其他元素与其相关的强度。并将注意力权重加权的值的总和作为最终预测的目标的一个特征。</p><h4 id="attention计算步骤："><a href="#attention计算步骤：" class="headerlink" title="attention计算步骤："></a>attention计算步骤：</h4><ul><li>计算其他元素与待预测元素的相关性权重（狗鼻子和狗耳朵，背景和狗耳朵之间的权重），这一步拿到的是一批浮点数。</li><li>根据相关性权重对其他元素进行加权求和。也就是狗鼻子乘以0.9,背景乘以0.1，然后做加权求和。 </li></ul><h4 id="seq2seq问题"><a href="#seq2seq问题" class="headerlink" title="seq2seq问题"></a>seq2seq问题</h4><p>就是对于一个输入序列，我们需要将其转化为一个新的输出序列，其中输入输出序列可以是任何长度。典型的seq2seq问题包括了机器翻译，问答系统，语音识别等问题。<br>经典的seq2seq模型：Encoder-Decoder框架，这个框架的好处就是并没有把所有的输入都一视同仁的处理，而是按照词语和词语之间的关系分配不同的注意力。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1040_59_649.png" alt=""></p><p> Encoder，decoder，上下文向量之间的关系， 注意力机制的好处：<br> 如下图，是一个机器翻译的任务场景，英语输入，汉语输出。she和她相关，吃和eat相关，苹果和apple相关，理想的情况是刚才罗列的三个词组对分别都用定制的上下文向量，而没有注意力机制的时候这一段话中每一个相关的词语对都公用一套上下文向量，效果可想而后。引入注意力机制后就可以定制每一个中文词语和分别每一个英语词组的注意力高低值。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_30_521.png" alt=""></p><p>如下是seq2seq的另一个框架（Bahdanau 2015），输入source，输出target，在souce和target之间是Attention层，source和target与attention层通信的介质是Encoder和decoder。Encoder是一个双向RNN，decoder是一个动态的上下文向量+带状态的RNN。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_15_437.png" alt=""><br>之前没有注意力机制的时候，模型和上图也类似，无外乎是拿出Encoder里边的双向RNN的正向最后一个向量和反向第一个向量拼接，然后做一个maxpooling。</p><p>有了注意力机制后，如下图，2015模型中的注意力层：每一个a(t,n)都是一个输出值对应全部输入值的权重组。比如她和she的atn值是0.8，她和is的atn值就是0.03。而且这个注意力层的参数的初始化和确定都是通过简单的前馈神经网络。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1041_42_379.png" alt=""></p><p>另一个seq2seq中应用注意力机制的图片实例：在cs224n上有提到过，其实就是源头语言和目标语言之间的每一个单词互相建立二维数组，然后给出他们之间的相关性。如图，1992和1992强相关，和其他任何单词都不相关，was signed这个过去时态的sign也和法语中的相应过去时态的sign强相关，和其他词不相关。</p><h4 id="注意力机制的来源（改进机翻）"><a href="#注意力机制的来源（改进机翻）" class="headerlink" title="注意力机制的来源（改进机翻）"></a>注意力机制的来源（改进机翻）</h4><p>如果我们使用一个固定维数的向量Y来表示输入，也就是编码器的最后一个输入状态，而整个解码过程我们都依赖这个Y在，这样做的话翻译的效果仅在短句上表现的好，长句子表现较差。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1145_18_548.png" alt=""></p><p>所以人们想到了一种注意力机制的解决方案，这种方案最早在计算机视觉方向被提出：</p><p>与其使用编码器的最后一个隐状态Y生成目标语句，不如直接使用编码过程中所有的隐层编码向量，也就是所有源对应的隐层状态来进行翻译工作。这样以来这些源状态成为了类似于随机存储器的东西，后边的神经网络可以根据翻译的需要访问他们。如下图所示，这样以来我们除了有了LSTM的增强记忆，同时还有了按需访问的记忆长度长的多的架构。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1150_06_551.png" alt=""></p><p>如下是注意力模型示意图，注意力机制就是手动维持了目标语言和源头语言中的每一个单词的两两相关关系。相关性强的在完成目标任务时会被分配更多资源。<br><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1042_09_370.png" alt=""></p><p>下面要预测的单词应该去访问之前状态层（蓝色）的哪个内存单元？</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1201_08_059.png" alt=""></p><p>现行做法是使用上一层的状态来作为注意力机制的判别标准。具体做法是使用结合上一层的状态和当前隐层的元素来生成一个分数(后边会详细解释),把得到的分数丢给softmax函数，返回一个概率分布权重,根据这个概率分布来决定注意力的分配。softmax函数示意图如下</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1209_30_771.png" alt=""></p><p>在此之后，我们将编码器所有的隐层状态根据注意力机制给出的权重将其组合起来，具体来说，拿到编码器的每一个隐层的状态（蓝色块），和注意力机制给出的权重，然后求它的加权和，这个加权和就上下文向量。这样我们子在预测下一个词的时候就可以不是简单地使用最后一个隐层状态作为预测的标准，而是用到了编码器的全部隐层状态信息。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_09_050.png" alt=""></p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1213_22_190.png" alt=""></p><p>具体如何得到这个分数（被喂给softmax的那个分数）？</p><p>如下图所示，使用单层神经网络，就像LSTM内部那些普通神经网络一样，我们这里使用了两个隐层状态的拼接，做一次矩阵乘法后再通过一次tan函数变换。其中第二个双线性注意力函数相当成功，在两个点乘之间插入了一个矩阵W，这种矩阵实际上学习到了如何将不同权重分配到点乘的不同部分。这是实现注意力机制的想法之一，这样可以使ht和hs之间产生某种交互。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1221_22_000.png" alt=""></p><p>对于简单的注意力模型，有一个注意力函数覆盖了整个源编码，并且将此函数的输出作为权重，这是一个简单的函数容易学习，也是一个连续可微的模型，但是如果序列过长，其计算的复杂度就令人头疼，因为如果你从反向传播算法的角度来考虑，你需要每时每刻将误差传递到所有位置。因此人们开始寻求局部注意力模型，也就是每次只将注意力放到一部分状态的模型，这更像是从记忆里检索出某些事物的概念。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1226_17_470.png" alt=""></p><p> 如下红线演示了不带注意力的模型，在短句子上表现不错，长句子down很快。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1230_53_670.png" alt=""></p><p><strong>注意力机制在计算机视觉中的idea</strong></p><p>如下图演示，注意力在不同的地方，得到的输出不同，比如鸟儿，数次，背景等等。</p><p><img src="http://bqlab-pic.test.upcdn.net/pic/20191210_1234_55_097.png" alt=""></p>]]></content>
     

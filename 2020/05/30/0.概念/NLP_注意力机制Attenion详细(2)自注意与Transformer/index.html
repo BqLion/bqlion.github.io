@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>0.概念/NLP_注意力机制Attenion详细(2)自注意与Transformer ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 五月 30日 2020, 12:46 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      9 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="Attention注意力机制详解"><a href="#Attention注意力机制详解" class="headerlink" title="Attention注意力机制详解"></a>Attention注意力机制详解</h1><p>Attention详解分三篇文章：</p>
+<ol>
+<li>Seq2seq问题中RNN与Attention的结合</li>
+<li>抛弃RNN的self-Attention模型和Transformer架构</li>
+<li>Attention和Transformer在NLP和CV问题上的应用</li>
+</ol>
+<p>主要参考资料是Yoshua Bengio组的论文、谷歌研究组的论文、Tensor2Tensor的文档、斯坦福NLP讲义</p>
+<h2 id="第二部分：自注意力和transformer"><a href="#第二部分：自注意力和transformer" class="headerlink" title="第二部分：自注意力和transformer"></a>第二部分：自注意力和transformer</h2><p>上文讲解了早期注意力机制与RNN结合，在机器翻译中的效果。RNN由于其顺序结构训练速度常常受到限制。既然注意力机制模型本身可以看到全局信息，那么一个自然的思路是我们能不能去掉RNN，仅仅依赖Attention注意力模型呢？这样训练既可以并行化，同时也拥有全局信息。</p>
+<p>本文就讲解Transformer模型，which仅仅依赖于Attention架构。</p>
+<p>代码部分的讲解是Tensor2Tensor的源代码</p>
+<h4 id="整体模型架构和工作原理"><a href="#整体模型架构和工作原理" class="headerlink" title="整体模型架构和工作原理"></a>整体模型架构和工作原理</h4><p>如下例句是“I arrived at the bank after crossing the river”.这里的bank指的是河岸还是银行呢，这里就需要联系上下文，因为看到river，所以很大概率是河岸的意思。在RNN中就需要一步步按顺序处理从bank到river之间的所有词语，当他们距离较远的时候RNN的效果很差，顺序处理的效率也很低。</p>
+<p>自注意力机制则利用了注意力机制，计算每个单词与每个单词之间的关系，bank和river两个词就有很高的attention分数，利用这个attention分数就得到一个加权表示矩阵。将这个矩阵放进几层前馈神经网络中，就会得到新的表示。这一表示很好的考虑到了上下文信息。</p>
+<p>如下图所示，encoder读入输入数据，利用层层叠加的自注意力机制对每一个单词得到了新的考虑了上下文信息的表征。decoder也利用类似的自注意力机制，他不仅看之前的输出，还看encoder的输出。</p>
+<p><img src="https://pic4.zhimg.com/v2-b1b7cd5637f7c844510fd460e0e2c807_b.jpg" alt=""></p>
+<p>Transformer整体架构图：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200529_1352_31_533.png" alt=""></p>
+<p>其中的多头注意力就是多个self-attention的结合，每个head学习到了在不同表示空间中的特征。两个head学习到的Attention的侧重点略有不同，这样给了模型更大的容量，如下图所示</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200529_1354_52_288.png" alt=""></p>
+<h4 id="模型详解"><a href="#模型详解" class="headerlink" title="模型详解"></a>模型详解</h4><p>self-attention的结构概览如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200529_1356_13_480.png" alt=""></p>
+<p>对于self-attention来说，Query，Key，Value三个矩阵，均来自同一个输入。当前词作为搜索的query，去和句子中的所有词的key去匹配，看看相关度有多高。</p>
+<p>匹配的具体操作就是Q与K点乘，然后为了防止结果过大，将结果除以根号下（dk），dk是query和key向量的维度。然后再用softmax操作将其结果归一化为概率分布。然后再乘以矩阵V就得到权重求和的表示。该操作的数学表示：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1144_21_571.png" alt=""></p>
+<p><strong>矩阵计算过程的详细图示</strong></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1156_31_300.png" alt=""></p>
+<p>可见，thinking这个单词的q矩阵依次和本句中的每一个k矩阵相乘得到2个scores，然后经过divide和softmax，最终得到两个V矩阵，V1和V2。最终输出两个Z矩阵。</p>
+<p>Q、K、V三个矩阵之间的关系表示如下：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1216_41_389.png" alt=""></p>
+<p>加上多头注意力的详细表示：</p>
+<p>如下，QKV矩阵的表意不变，只是根据不同的多头注意力表示，相同的词汇embedding有不同的QKV矩阵，于是得到不同的Z矩阵，最终将几个Z矩阵整合在一起，输出一个Z矩阵。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1218_58_732.png" alt=""></p>
+<p><strong>如上介绍的就是基本的多头注意力单元。对于encoder来说，就是这些基本单元的叠加。</strong>其中key，query，value均是来自前一层encoder的输出。也就是每一个encoder的每一个位置都可以注意到之前一层encoder的所有位置</p>
+<h4 id="decoder"><a href="#decoder" class="headerlink" title="decoder"></a><strong>decoder</strong></h4><p>decoder有两个和encoder不同的地方。</p>
+<ul>
+<li><p>第一级的Masked Multi-head</p>
+<p>第一级的decoder的key，query，value均来自前一层encoder的输出但是加上了masked操作，也就是我们只能注意到已经翻译出来的词语，因为正处于翻译过程中所以不知道下一个输出词语是什么，下一个输出词语是我们后来才会推测到的。</p>
+</li>
+<li><p>第二级的Multi-head Attention不仅接受前一级的输出，还接受encoder的输出。</p>
+<p>第二级的multi-head attention layer，它的query来自于之前一级的decoder层的输出，但是key和value来自于encoder这使得decoder的每一个位置都能注意到序列的每一个位置。</p>
+</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>k和v的来源是相同的</li>
+<li>q在encoder以及第一级deocder中与k，v来源相同</li>
+<li>在encoder-decoder attention layer中k，v来源不同</li>
+</ul>
+<p><strong>Position encoding模块</strong></p>
+<p>如下，因为该模型中没有recurrence或者convolution操作，所以没有明确的关于单词在源句子中的相对或者绝对信息。为了更好的让模型学习位置信息，添加了position encoding模块，将其叠加在word embedding上。attention is all you need的论文中，采用了三角函数encoding的方式。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1238_01_831.png" alt=""></p>
+<p><strong>Add &amp;  Norm模块</strong></p>
+<p>其中add代表Residual Connection残余连接，是为了解决多层神经网络训练困难的问题。通过将前一层的信息无差的传递到下一层，这样可以有效的关注差异部分。这种方法在图像处理结构比如ResNet等中常常用到。</p>
+<p>norm代表Layer Normalization，是对层的激活值的归一化。可以减速训练使得模型更快的收敛。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1243_08_020.png" alt=""></p>
+<h4 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h4><p>本文主要的代码详解部分是<strong>common_attention library</strong>和调用此libraray的<strong>Transformer模型</strong>。</p>
+<p>首先来看common_attention libraray 中的multihead-attention method，这里为了简化省去了很多argument和logic，集中注意主要logic。并且以单一head为例加入了自己的comment。</p>
+<pre><code class="python">def multihead_attention(query_antecedent,
+                        memory_antecedent,
+                        ...):
+
+&quot;&quot;&quot;可以输入、输出的带多头缩放点积结果的注意力transformer模型
+参数：
+    query_antecedent: a tensor with shape[batch,length_q,channels]
+    memory_antecedent: a tensor with shape[batch,length_m,chaneels]or None
+    ...
+返回：
+    The result of the attention transformation.The output shape is                 [batch_size,length_q,hidden_dim]。
+...
+&quot;&quot;&quot;
+
+# 计算 Q,K,V矩阵
+q,k,v = compute_qkv(query_antecedent,memory_antecedent,...)
+# 计算dot_product的attention
+x = dot_product_attention(q,k,v...)
+x = commmon_layers.dense(x,...)
+return x</code></pre>
+<p>下面将讲解上文代码中提到的compute_qkv和dot_product_attention函数,其中compute_qkv函数定义如下</p>
+<pre><code class="python">def compute_qkv(query_antecedant,
+                memory_antecedant,
+                ...):
+&quot;&quot;&quot;compute query,key and value.参数是查询队列和内存的先行项，返回的是qkv矩阵
+Args:
+  query_antecedent: a Tensor with shape [batch, length_q, channels]
+  memory_antecedent: a Tensor with shape [batch, length_m, channels]
+  ...
+Returns:
+  q, k, v : [batch, length, depth] tensors
+&quot;&quot;&quot;
+# 如果这里的memory_antecedant是None，他就会被设置成和query_antecedent一样，encoder的自注意力self-# attention调用memory_antecedent传进去的就是None。
+
+if memory_antecedent is None:
+ memory_antecedent  = query_antecedent
+q = compute_attention_component(
+    query_antecedent,
+    ...)
+# 注意k，v均来自于memory_antecedent
+k = compute_attention_component(
+    memory_antecedent,
+    ...)
+v = compute_attention_component(
+    memory_antecedent,
+    ...)
+return q,k,v
+
+
+def compute_attention_component(antecedent,
+                                ...)
+&quot;&quot;&quot;Compute attention compoenet(query,key or value)
+Args:
+    antecedent: a Tensor with shape(batch,length,channels)
+    name:a string specifying scope name
+    ...
+Returns:
+    C :[bathc,length,depth]tensor
+&quot;&quot;&quot;
+
+return common_layer.dense(antecedent,...)
+</code></pre>
+<p>其中的点乘dot_product_attention定义为</p>
+<pre><code class="python">def dot_product_attention(q,
+                          k,
+                          v,
+                          ...):
+&quot;&quot;&quot;Dot - product attention
+Args:
+    q: Tensor with shape[...,length_q,depth_k].
+    k: Tensor with shape[...,length_kv,depth_k]
+    v: Tensor with shape[...,length_kv,depth_v]
+returns：
+    Tensor with shape[...,length_q,depth_V]
+&quot;&quot;&quot;
+
+# 计算Q，K的矩阵乘积
+logits = tf.matmul(q,k,transpose_b = Ture)
+# softmax归一化
+weights = tf.nn.softmax(logits,name = &quot;attention_weights&quot;)
+# 与V相乘得到加权表示的结果Z矩阵
+return tf.matmul(weight,v)
+
+</code></pre>
+<p>这里的步骤和上图这里对应：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200530_1439_58_330.png" alt=""></p>
+<p><strong>Transformer中的 encoder和 decoder调用 multihead_attention的方法如下：</strong></p>
+<h4 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h4><pre><code class="python">def transformer_encoder(encoder_input,
+                        hparams,
+                        ...):
+  &quot;&quot;&quot;A stack of transformer layers.
+  Args:
+    encoder_input: a Tensor
+    hparams: hyperparameters for model
+    ...
+  Returns:
+    y: a Tensors
+  &quot;&quot;&quot;
+  x = encoder_input
+  with tf.variable_scope(name):
+    for layer in range(hparams.num_encoder_layers or hparams.num_hidden_layers):
+      with tf.variable_scope(&quot;layer_%d&quot; % layer):
+        with tf.variable_scope(&quot;self_attention&quot;):
+          # layer_preprocess及layer_postprocess包含了一些layer normalization
+          # 及residual connection, dropout等操作。
+          y = common_attention.multihead_attention(
+              common_layers.layer_preprocess(x, hparams),
+              #这里注意encoder memory_antecedent设置为None
+              None,
+              ...)
+          x = common_layers.layer_postprocess(x, y, hparams)
+        with tf.variable_scope(&quot;ffn&quot;):
+          # 前馈神经网络部分。
+          y = transformer_ffn_layer(
+              common_layers.layer_preprocess(x, hparams),
+              hparams,
+              ...)
+          x = common_layers.layer_postprocess(x, y, hparams)
+    return common_layers.layer_preprocess(x, hparams)</code></pre>
+<h4 id="decoder-1"><a href="#decoder-1" class="headerlink" title="decoder"></a>decoder</h4><pre><code class="python">def transformer_decoder(decoder_input,
+                        encoder_output,
+                        hparams,
+                        ...):
+  &quot;&quot;&quot;A stack of transformer layers.
+  Args:
+    decoder_input: a Tensor
+    encoder_output: a Tensor
+    hparams: hyperparameters for model
+    ...
+  Returns:
+    y: a Tensors
+  &quot;&quot;&quot;
+  x = decoder_input
+  with tf.variable_scope(name):
+    for layer in range(hparams.num_decoder_layers or hparams.num_hidden_layers):
+      layer_name = &quot;layer_%d&quot; % layer
+      with tf.variable_scope(layer_name):
+        with tf.variable_scope(&quot;self_attention&quot;):
+          # decoder一级memory_antecedent设置为None
+          y = common_attention.multihead_attention(
+              common_layers.layer_preprocess(x, hparams),
+              None,
+              ...)
+          x = common_layers.layer_postprocess(x, y, hparams)
+        if encoder_output is not None:
+          with tf.variable_scope(&quot;encdec_attention&quot;):
+            # decoder二级memory_antecedent设置为encoder_output
+            y = common_attention.multihead_attention(
+                common_layers.layer_preprocess(x, hparams),
+                encoder_output,
+                ...)
+            x = common_layers.layer_postprocess(x, y, hparams)
+        with tf.variable_scope(&quot;ffn&quot;):
+          y = transformer_ffn_layer(
+              common_layers.layer_preprocess(x, hparams),
+              hparams,
+              ...)
+          x = common_layers.layer_postprocess(x, y, hparams)
+    return common_layers.layer_preprocess(x, hparams)
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>完全不依赖RNN结构的仅仅利用attention机制的transformer由于其并行性和全局信息的有效处理，使得其在机翻任务中有较好的表现，此后在NLP和CV问题中attention和transformer也逐步得到广泛应用。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%A6%82%E5%BF%B5">概念</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6">注意力机制</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "0.概念/NLP_注意力机制Attenion详细(2)自注意与Transformer&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

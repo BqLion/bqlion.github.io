@@ -136,77 +136,24 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/08/0.%E6%A6%82%E5%BF%B5/Python_Pandas_apply_series/">
-        <p class="h4 index-header">0.概念/Python_Pandas_apply_series</p>
+      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+        <p class="h4 index-header">4.安装调试记录/更新图床+截屏工作流</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Pandas_SeriesSeries数据包括：一列数据和一列index组成。和字典非常相似
-创建空的series
-import numpy as np
-import pandas as pd
-S1 = pd.Series()
-S1    
-Series([],dtype:float64)
-指定value和index的值
-S2=pd.Series([1,3,5,7,9],index=[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;])
-S2
-a    1
-b    3
-c    5
-d    7
-e    9
-dtype: int64
-S2.values
-array([1, 3, 5, 7, 9])
-S2.index
-Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&#39;object&#39;)
-Pandas处理series的方法:map,apply数据由如下代码模拟生成
-boolean=[True,F</div>
-        </div>
-      </a>
+          <div class="index-text mb-1">1.七牛云的试用域名只能用一个月，过期后要用自己已备案的域名。不管是否有备案域名所有已上传图片都要改链接，坑。
+2.改用sm.ms图床，username:bqlion,email:398703917@qq.com,password:8
+3.sm.ms限流，改用又拍云。
+4.又拍云的shareX配置信息如下，密码用又拍云操作员控制台生成。
 
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-08&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
+4.shareX简直神器。可以取代Snipaste+mpic。
+5.ShareX更改快捷键：
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/07/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Lamada%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-        <p class="h4 index-header">0.概念/技术_Lamada表达式</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Python中lamada函数的概念lamada函数就是个匿名函数，即定义即用，省去了起名字等等环节，使用方便快捷。
-不用lamada函数的例子
-def f(x):
-return x**2
-print f(4)
-使用lamada函数的例子：
-g = lambda x : x**2
-print g(4)
-lamada用例
-# lamada语句中，冒号前是参数，可以有多个，用逗号隔开。冒号后是返回值，lamada语句构建的其实是一个函数对象
-
-&gt;&gt;&gt; foo = [2, 18, 9, 22, 17, 24, 8, 12, 27]
-&gt;&gt;&gt; print filter(lambda x: x % 3 == 0, foo)
-[18, 9, 24, 12, 27]
-&gt;&gt;&gt; print map(lambda x: x * 2 + 10, foo)
-[14, 46, 28, 54, 44, 58, 26, 34, 64]
-&gt;&gt;&gt; print reduce(lambda x, y: x + y, foo)
-139
+捕捉矩形区域为F1
+设置“上传至”为FTP，
+动作设置-高级设置 - after upload - chipboardContentFormat  - 修改为![]($result)
 
 </div>
         </div>
@@ -214,7 +161,7 @@ lamada用例
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
         
@@ -226,32 +173,28 @@ lamada用例
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/05/2.%E6%AF%94%E8%B5%9B/Google_QA_%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%83%A8%E5%88%86/">
-        <p class="h4 index-header">2.比赛/Google_QA_数据处理部分</p>
+      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/win%E5%AE%89%E8%A3%85linux%E5%AD%90%E7%B3%BB%E7%BB%9F/">
+        <p class="h4 index-header">4.安装调试记录/win安装linux子系统</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">数据处理部分总体代码如下，各个程序块在pycharm中分开运行，用#%%分割。
-上来是import部分，然后是数据清洗和构建embedding矩阵等。
-import numpy as np
-#numpy是主要用于数组计算，线性代数，傅里叶变换等。
-import pandas as pd
-#pandas基于numpy，可以处理高纬数据
-from sklearn.manifold import TSNE
-# sklearn是机器学习中常用的第三方模块，对常见的机器学习算法进行了封装，包括回归、降维、分类、聚类,sklearn.manifold是流形学习，非
-# 线性降维的手段。最简单的降维手段是随机投影，但是会导致结构丢失,manifold learning是一种类似主成分分析(PCA)的线性框架，不会错失数据结构中的非线性项  ，TSNE提供了一种画图方式，让高维的数据降低为二维画出来
-import seaborn as sns
-# 基于matplotlib的画图工具
-import glob
-# glob是查找模块。支持空格 ，问号？，方括号[]这三个通配符。空格代表0个或者多个字符，问</div>
+          <div class="index-text mb-1">1.安装​    win10设置-针对开发者人员-勾选开发人员模式
+​    控制面板-程序-程序和功能-启动或关闭windows功能-勾选适用于linux的windows子系统
+​    windows appstore下载ubuntu
+2.优化​    备份源路径文件sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+​    编辑源路径文件sudo vim  /etc/apt/sources.list
+​    切换镜像源    vim删除当前文件所有内容：ggdG
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse 
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main r</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
         
@@ -263,24 +206,102 @@ import glob
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/04/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%90%8D%E7%9A%84%E6%96%B9%E5%BC%8F/">
-        <p class="h4 index-header">4.安装调试记录/批量修改文件后缀名的方式</p>
+      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/TF%E5%92%8CpyTorch%E5%AE%89%E8%A3%85/">
+        <p class="h4 index-header">4.安装调试记录/TF和pyTorch安装</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">新建一个.txt文档，输入：
-ren *.java *.md
-保存
-将文件后缀名改成.bat,双击运行
+          <div class="index-text mb-1">安装pytorch记录conda create -n kag1
+conda install -n kag1 pytorch==1.2.0 torchvision==0.4.0 cudatoolkit=10.0 -c pytorch
+如果报http000链接不上anaconda就挂vpn
+速度太慢下载不动在输入y之前关vpn
+安装TensorFlow记录TensorFlow，cuda，cudnn，python版本对应关系  
+win:
+ 
+环境变量:
+
+安装cuda9:
+
+不安装PhysX因为已存在,Visual Studio Intergration也不安装，不然会报错。如下图所示
+
+cmd输入nvcc -V 检测是否成功
+安装cudnn7
+
+需要账号密码398730@ / 字母和数字间有:
+将解压包中三个文件夹拖入CUDA根目录下即可
+tensorflow安装：
+Anaconda prompt
+conda create -n tensorflow pip python=3.5
+pip install –upgrade –ignore-installed tensorflow_gpu=</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/ShadowSocks%E5%9C%A8AWS%E6%90%AD%E6%A2%AF%E5%AD%90/">
+        <p class="h4 index-header">4.安装调试记录/ShadowSocks在AWS搭梯子</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">ShadowSocks在AWS搭梯子注册AWS账号，启动新的实例。
+配置安全组，给实例增加端口，点击添加规则（类型：自定义TCP规则，协议：默认TCP，端口：8989，来源：任何位置）
+下载密钥对
+下载putty，把密钥放在putty根目录里
+打开puttygen，选择Type of key to generate为RSA
+点击puttygen里边的load，文件类型改成所有文件，打开putty根目录里的密钥
+点save private key,弹出是否不要密码地保存私钥点”是”
+打开putty，Connection页面，seconds between keepalives填写10。
+打开putty，第一页HostName填写user_name@public_dns_name，也就是
+ec2-user@ec2-18-191-169-15.us-east-2.compute.amazonaws.computty - connection - ssh - auth - browser,选中刚才生成的pkk文件，点击open，即可连上实例。
+sudo yum install python-p</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/Docker%E5%9C%A8AWS%E6%90%AD%E6%A2%AF%E5%AD%90/">
+        <p class="h4 index-header">4.安装调试记录/Docker在AWS搭梯子</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">使用Docker在AWS上搭梯子1.在aws上安装dockersudo apt-get update
 </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-04&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
         
         
         
@@ -292,338 +313,14 @@ ren *.java *.md
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/02/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E4%BF%AE%E6%94%B9pip%E6%BA%90/">
-        <p class="h4 index-header">4.安装调试记录/修改pip源</p>
+      <a href="/2020/02/24/test/">
+        <p class="h4 index-header">test</p>
         
         
           
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">
-将pip切换回国内源pip国内的一些镜像
-  阿里云 http://mirrors.aliyun.com/pypi/simple/  中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/  豆瓣(douban) http://pypi.douban.com/simple/  清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/  中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
-修改源方法：
-临时使用：可以在使用pip的时候在后面加上-i参数，指定pip源eg: pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple   –trusted-host  pypi.tuna.tsinghua.edu.cn
-永久修改：linux:修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
-[global]
-index-url = https://pypi.tuna.tsinghua</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-02&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_Transformer/">
-        <p class="h4 index-header">0.概念/NLP_Transformer</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Transformer总览图：
-
-Transformer由编码器和解码器构成，如下：
-
-1.编码器详解编码器有两层（前馈神经网络层，自注意力层）。
-像大部分NLP应用一样，Transformer首先将每个输入单词通过词嵌入算法转换为词向量。每个单词都被嵌入为512维的向量，下图使用方框表示这些向量。
-
-词嵌入只发生在最下面那个编码器中，然后这个编码器会输出一个向量列表，列表中的每个向量大小都是512维。向量列表的大小是可以调节的超参数–一般被设置为最长句子的长度。每个编码器的输入输出格式都相同。
-
-开始编码的时候，将列表中的向量传递到自注意力层进行处理，然后传到到前馈神经网络层，然后将输出结果传递到下一层。
-2.自注意力机制详解(其实就是维持了一个关于句子本身的二维数组)宏观角度看，比如翻译一个句子，“The animal didn`t cross the street because it was too tired”，it指代什么？对于人类来说，指代的是animal不是street，很容易但是对于计算机来说这就是一个复杂的问题。
-当模型处理“it”这个单词的时候，自注意力机制会允许</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_BERT/">
-        <p class="h4 index-header">0.概念/NLP_BERT</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Bert 概念1.全景介绍BERT是一种深度学习模型，他是Transformer的双向编码器表示，在维基百科和Books Corpus上预训练过，运用于特定任务时只需要微调即可。
-他的效果很好，在很多NLP任务中都有最近进展，包括问答系统（Squad）和自然语言推理（MNLI）任务。
-BERT改变了NLP的格局。跑一个在大量未标记数据集上训练的模型，在11个单独的NLP任务中仅仅通过不同的微调，就可以分别得到11个最新的结果，这种表现只有BERT可以做到。
-BERT还启发了TransformerXL,GPT-2,XLNet,ERNIE2.0,RoBERTa等等。
-2.什么是BERT?1.基本上是堆叠在一起的一堆Transformer encoders，注意仅仅是Transformer encoders不是整个Transformer架构。双向性的概念十分重要，是BERT和其前身OpenAL GPT的关键区别，BERT是双向的因为他在自我注意层的两个方向上都执行自我注意。
-2.要注意的是BERT在维基百科（25亿词）和Books Corpus（8亿词）上的预训练非常重要，因为模型在一个大的</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_1-%E6%A6%82%E8%BF%B0/">
-        <p class="h4 index-header">3.课程/网络_1-概述</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.计算机网络概述1.1局域网​        覆盖范围小（１００ｍ）,自己花钱买设备,贷款固定
-​        接入层的交换机们星形连接到汇聚层交换机,这样分散IO
-​        接入层交换机们不该串联,不然最后一台交换机那里IO压力太大
-1.2Internet和广域网​    Internet ISP :有自己的机房,对网民提供internet访问
-　广域网：距离较远，花钱租带宽，
-1.3 数据包和数据帧在一个计算机想把数据发给另一个计算机时,需要在发送信息里携带ip地址和mac地址,其中ip地址是最终目地,mac地址是下一跳的目的地,ip地址不变,mac地址每次经过路由器都刷新.下一跳的目的地由迪杰斯特拉或其他寻路算法确定.
-1.4 OSI参考模型 应用层:所有能产生网络流量的程序
-表示层:在传输之前是否进行加密或压缩处理
-会话层:查木马,netstat -n
-传输层:可靠传输,流量控制,不可靠传输
-网络层:负责选择最佳路径,规划ip地址
-数据链路层:帧的开始和结束,透明传输,差错校验
-物理层:接口标准,电器标准,如何在物理链路层上传输的更快
-
-osi参考模型对网络排错指导</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_2-%E7%89%A9%E7%90%86%E5%B1%82/">
-        <p class="h4 index-header">3.课程/网络_2-物理层</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.物理层2.1物理层的基本概念物理层解决如何在链接各种计算机的传输媒体上传输数据比特流。
-物理层的主要任务描述：确定传输媒体的接口的一些特性。例如：
-
-机械特性：接口形状，大小，引线数目
-
-
-电器特性：电压范围
-
-功能特性，过程特性等
-
-
-2.2数据通信的基本模型
-相关术语：
-
-数据：运送消息的实体
-信号：数据的电器或电磁表现
-模拟信号：消息的参数取值是连续的
-数字信号：消息的参数取值是离散的
-
-
-
-信道信道一般表示向一个方向传送信息的媒体，我们常说的信道往往包含了一条发送信息的信道和一条接受信息的信道
-单向信道：信息只能单向流动
-双向交替信道：信息可双向流动，但不能同时流动
-双向同时信道：信息科双向，同时流动
-基带信号和带通信号
-基带信号：来自信源的信号，像计算机输出的各种代表文字和图像的信号都属于基带信号，我们说话的声波也是基带信号
-
-基带数字信号的几种调制方法
-
-
-
-
-带通信号：把基带信号进行载波调制后，把信号的频率范围搬到较高的频段以便在信道中传输
-
-在传输范围较大的时候，计算机网络必须通过带通信号传输
-
-
-
-曼彻斯特编码：由低到高是0，高到低是1
-
-差分曼彻斯特编码
-
-
-2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BD%91%E7%BB%9C_3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
-        <p class="h4 index-header">3.课程/网络_3-数据链路层</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">3.数据链路层3.0概述数据链路层使用的信道主要有以下两类
-
-点对点信道
-这种信道使用一对一的点对点通信方式
-
-
-广播信道
-这种信道使用一对多的广播通信方式，因此过程较为复杂，广播信道上的链接主机很多，因此必须使用专门的共享信道协议来协调这些数据的转发
-
-
-
-3.1 数据链路和帧链路是一条无源的点到点的物理线路，中间没有任何的其他交换节点。数据链路是除了物理线路之外，还得有通信协议来控制这些数据的传输，若把实现了这些协议的软硬件加到链路上，就构成了数据链路。
-现在最常用的办法是使用适配器（网卡）来实现这些协议的硬件和软件，一般的适配器都包括了数据链路层和物理层这两层的功能。
-数据链路层传输的是帧。
-
-三个基本问题
-
-封装成帧
-透明传输
-差错控制
-
-
-封装成帧：
-
-在一段数据的前后分别打上首部和尾部，首部尾部可以确定帧的界限。
-
-
-透明传输问题：
-
-类似于我想在markdown文件中打出[]()字符缺被误以为是超连接一样，需要在[]()字符之前加上转义字符\。
-
-
-CRC差错检测
-传输过程中可能出现比特差错，1变成0或者0变成1。一段时间内传输错误的比特与总比特比值称谓误码率。为保证数据</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95_1_%E6%A6%82%E8%AE%BA/">
-        <p class="h4 index-header">3.课程/统计学习方法_1_概论</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.概论介绍基本概念，是对全书的概括。
-首先叙述统计学习的定义、研究对象和方法，然后叙述监督学习。
-然后提出统计学习方法的三要素：模型，策略和算法。
-介绍模型选择，包括正则化、交叉验证和学习的泛化能力。
-介绍生成模型和判别模型
-介绍监督学习方法的应用： 分类问题，标注问题，回归问题。
-1.1统计学习定义
-统计学习是关于计算机基于数据构建概率统计模型并运用模型对数据进行预测和分析的学科。
-统计学习是概率论，统计学，信息论，计算理论，最优化理论，计算机科学等领域的交叉学科。在发展中逐步有了自己的理论体系和方法论。
-目的
-统计学习用于对未知数据预测和分析。
-对数据的预测可以使计算机更加智能化/计算机的性能提升。
-对数据的分析可以使人们获取新的知识。
-方法
-统计学习的方法是基于数据构建统计模型进而对数据进行预测和分析，统计学习由监督学习，半监督学习，无监督学习和强化学习等组成。
-本书主要讨论的是监督学习，这种情况统计学习的方法可以概括如下：
-从给定的有限的训练数据集出发（training set）,假设数据是独立同分布产生的；
-假设要学习的模型属于某个函数的集合，称为假设空间。
-把模型应用于某</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95_2_%E6%84%9F%E7%9F%A5%E6%9C%BA/">
-        <p class="h4 index-header">3.课程/统计学习方法_2_感知机</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.感知机感知机是二分类的线性分类模型，输入是实例的特征向量，输出是分类结果（-1,1）。
-感知机对应输入空间（特征空间）中将实例划为正副两类的分离超平面。
-工作原理是导入基于误分类的损失函数，利用梯度下降法岁损失函数极小化。
-感知机1957年提出，是神经网络和SVM的基础。
-本章先介绍感知机的模型，然后叙述学习策略，然后是算法（原始和对偶形式）。
-2.1感知机模型感知机模型是f(x) = sign(w.x + b).
-其中sign是如下的函数
-
-也就是一个一元一次方程（直线）作为超平面的分类函数。
-
-2.2感知机学习策略假设训练集是可分的，感知机的学习目的就是确定一个超平面把训练集分开。
-为了找出这个超平面，就要确定感知机模型的参数w和b。
-损失函数怎么定？定为错分类点到超平面的总距离w。（如上图）
-某个点到超平面的距离怎么求？如下图，||w||是w的范数。
-
-损失函数的正式定义；
-
-2.3感知机的学习算法随机梯度下降法
 </div>
         </div>
       </a>
@@ -642,14 +339,1041 @@ CRC差错检测
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E7%89%B9%E5%BE%81%E5%80%BC&%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97/">
-        <p class="h4 index-header">3.课程/线性代数_特征值&amp;特征向量计算</p>
+      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/SpringBoot_%E8%AE%BA%E5%9D%9B%E9%A1%B9%E7%9B%AE%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        <p class="h4 index-header">0.文章/SpringBoot_论坛项目知识点</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">特征值特 &amp; 特征向量省略理论部分，一个例子讲清：
+          <div class="index-text mb-1">SpringBootHelloWorldProject Struct1.controller–控制页面组织数据
+2.model–按照数据库的数据结构设置的对象
+3.mapper–mybatis控制model对数据库的crud
+4.service：组装数据库中不同的表格（mapper）
+5.dto：类和类之间传输数据
+4.html – 控制前端页面的装修
+5.migrate–flyway控制数据库的版本
+mybatis持久层框架，java操作数据库的工具
+通常在mapper文件夹中使用
+@Mapper
+public interface UserMapper {
+    @Insert(&quot;insert into user(name,account_id,token,gmt_create,gmt_modified) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified})&quot;)
+    void insert(User user);
+
+@Select(&quot;select * from user </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_RestfulApi%E7%BC%96%E7%A8%8B/">
+        <p class="h4 index-header">0.概念/技术_RestfulApi编程</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.相关概念RESTful API:可重新表达的状态迁移的API
+在这种编程风格里，所有东西都是资源，每个资源带有唯一全局定位符（URL），对URL的操作（POST,DELETE,PUT,GET）实现对资源的增删改查。所有操作都是无状态的，不要使用session。
+1.1 RESTful API URI示例
+URL: http://somehost/tvseries
+
+GET /tvseries 获取电视剧列表
+
+POST /tvseries 创建一个新电视剧
+
+GET /tvseries/101 创建编号为101的电视剧信息
+
+PUT /tvseries/101 修改编号为101的电视剧信息
+
+DELETE /tvseries/101 删除编号为101的电视剧
+
+GET /tvseries/101/characters 获取编号为101的电视剧的人物列表
+
+
+
+POST /authorization 登录
+
+DELETE /authorization退出
+
+
+1.2 Spring Boot简介
+大量使用注解，自动配置，无需配置xml
+自带嵌入式web服务器
+带系统监控功能，便于开发
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Flink_%E6%AF%94%E8%B5%9B%E6%80%9D%E8%B7%AF/">
+        <p class="h4 index-header">0.文章/Flink_比赛思路</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">flink思路:
+tpcds
+
+sql
+
+parser and validator   –&gt;把sql构建为operator expression tree
+
+adapter                                    –&gt;包含不同数据源
+
+model                              –&gt;数据源物理属性
+schema                            –&gt;在model中找到的关于数据格式和布局的定义
+schema factory              –&gt;从model中获得源数据信息,构建schema
+
+
+优化器optimizer                  —-&gt;优化器的组件是可扩展的(关系算子,规则,cost模型,数据)
+
+planner rule                  —&gt;to transform operator expression tree 
+metadata providers
+planner engines                </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Flink_%E8%B0%83%E5%8F%82%E8%AE%B0%E5%BD%95/">
+        <p class="h4 index-header">0.文章/Flink_调参记录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">jm内存 + tm内存 = 26分别是[2,24]  [4,22],[3+25]要挂
+每个tm的slot :1 – 8 ,[1,8,4,2]    
+并发度: 1-9,[3,7,1,5] 
+打包命令:
+cp ~/.m2/repository/org/apache/parquet/parquet-column/1.8.2/parquet-column-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-hadoop/1.8.2/parquet-hadoop-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-common/1.8.2/parquet-common-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-encoding/1.8.2/parquet-encoding-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/SpringBoot_Debug%E8%AE%B0%E5%BD%95/">
+        <p class="h4 index-header">4.安装调试记录/SpringBoot_Debug记录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">0.问题解决记录0.1链接不上下文远程数据库–建立本地数据库，修改了application-dev.yml,
+  datasource:
+#    url: jdbc:mysql://127.0.0.1:3306/libingteam?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC
+##    url: jdbc:log4jdbc:mysql://120.78.150.152:3306/checky?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC
+#    username: root
+#    password: 123456
+0.2链接本地数据库之后时区报错报错信息如下
+The server time zone value &#39;�й���׼ʱ��&#39; is unrecognized or represents more than one time zone
+–参考之前数据库配置，在配置语句最后加上?use</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Flink_Calcite/">
+        <p class="h4 index-header">0.文章/Flink_Calcite</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Apache Calcitecalcite是数据库的解析器+优化器。
+数据库的三大组件：
+
+解析器
+
+执行引擎
+
+优化器—–&gt;数据库把关系表达式转换为执行计划的组件,决定数据库性能
+
+基于规则的优化器
+
+根据规则优化关系表达式,产生最终执行计划
+只认规则,对数据不敏感,易局部优全局差
+
+
+基于代价的优化器
+
+根据规则优化关系表达式,产生多个执行计划,计算各计划cost,择优而动
+
+灵活智能,多被采用
+
+
+
+
+
+
+Calcite优化器是:
+
+基于代价的优化器
+组件有：
+JDBC Client
+JDBC Server
+SQL Parser and validator
+Operator Expression 
+Query Optimizer
+两个插拔组件
+Metadata provider
+Pluginable Rules
+
+
+
+
+
+
+
+
+
+
+Calcite理解
+是编程框架，因为有可插拔的优化rules，有对接底层数据源的Adaptor模式
+是工具库，因为flink把它嵌入自身的sql处理流程中
+
+
+
+优化器Optimizer的三个元件
+planner rule            </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Flink_%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">
+        <p class="h4 index-header">0.文章/Flink_培训笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.1为什么要学习Apache FLink讲师:陈守元 阿里巴巴高级产品专家 
+
+概念
+
+framework框架定义:只写业务逻辑,其他交给框架就可以执行
+
+有状态流计算
+当前的计算需根据之前沉淀的数据进行,沉淀的数据就是状态
+
+例如select操作就是无状态的,进来–计算–输出–下一个
+例如计算一个小时内某商品的点击量就是有状态的计算
+例如机器学习的训练等操作就是有状态的计算
+
+
+四层flink API                (越往下越贴近底层)
+
+SQL
+Table  Api(dynamic tables)
+DataStream Aip(streams,windows)
+ProcessFunction(event,time,state)
+
+
+flink和storm对比
+
+fllink把含状态的计算完全抽象在了系统中,storm想要含状态计算需要在引擎外套reddis或Hbase     
+
+
+Batch analytics
+
+处理批数据时提到类似mapreduce        
+
+
+学习方法
+
+先实践再理论。尝试构建复杂的Flink Application项目
+性学习更适</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_hadoop/">
+        <p class="h4 index-header">0.概念/技术_hadoop</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">hadoop
+大数据概念
+无法在一定时间范围内用常规的工具进行捕捉管理和处理数据的集合
+需要用新的处理模式才能有更强的决策力洞察力的海量高增长的多样化的信息资产
+
+
+mysql:只能储存千万条数据,不能搭建大量的集群.处理海量数据时速度极慢
+
+
+MapReduce定义
+是一个分布式运算程序的编程框架
+是用户基于hadoop的数据分析应用的核心框架
+Mapreduce核心功能是将用户编写的业务逻辑代码和自带默认组件整合成一个完整的分布式运算程序,并发运行在一个hadoop集群上
+
+
+MapReduce优点
+易于编程
+简单实现一些接口,就可以完成一个分布式程序,跟写一个串行程序一样
+
+
+扩展性
+计算资源得不到满足时,增加机器扩展计算能力
+
+
+高容错性
+其中一台机器down了,可把上边的计算任务转移到其他节点上去,不至于导致任务失败
+
+
+适合PB级数据的离线处理
+
+
+MapReduce缺点
+不擅长实时计算
+不能像mysql一样在毫秒内返回计算结果
+
+
+不擅长流式计算
+流计算的输入数据是动态的,MapReduce输入数据是静态的.这由MapReduce自身的设计特点决定
+不擅长做DAG有向图计</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_维特比算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">维特比算法HMMs的解码算法为Viterbi算法，如图8.5所示。作为动态规划的一个实例，维特比类似于动态规划最小距离算法。维特比算法是一个通用的求序列最短路径的动态规划算法，维特比算法可以将HMM的状态序列作为一个整体来考虑，求给定观测序列O条件下，最可能出现的对应的状态序列  ,即  要最大化，从后向前计算的
+用于寻找最优标签序列的维特比算法。给定一个观察序列和一个HMM λ= (A;B)，算法通过HMM返回状态路径，该状态路径为观察序列分配最大似然值。
+维特比算法首先建立一个概率矩阵( ) )，每个观察  有一列，状态图中的每个状态有一行。因此，在单个组合自动机中，每个列都有一个用于每个状态  的单元。图8.6显示了这个格子的直觉，因为Janet will back the bill这句话。
+网格的每个单元格 表示在看到第一个t观察值并且在给定HMM λ的情况下经过最可能的状态序列  之后HMM处于状态j的概率。 每个单元  的值通过递归地获取可能导致我们到达该单元的最可能路径来计算。 形式上，每个cell表达概率:
+
+我们通过对所有可能的先前状态序列  取最大值来表示最可能的路</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_动态规划</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">动态规划1. 贪心策略的不足先来看看生活中经常遇到的事吧——假设您是个土豪，身上带了足够的1、5、10、20、50、100元面值的钞票。现在您的目标是凑出某个金额w，需要用到尽量少的钞票。
+依据生活经验，我们显然可以采取这样的策略：能用100的就尽量用100的，否则尽量用50的……依次类推。在这种策略下，666=6×100+1×50+1×10+1×5+1×1，共使用了10张钞票。
+这种策略称为“贪心”：假设我们面对的局面是“需要凑出w”，贪心策略会尽快让w变得更小。能让w少100就尽量让它少100，这样我们接下来面对的局面就是凑出w-100。长期的生活经验表明，贪心策略是正确的。
+贪心策略的翻车
+但是，如果我们换一组钞票的面值，贪心策略就也许不成立了。如果一个奇葩国家的钞票面额分别是1、5、11，那么我们在凑出15的时候，贪心策略会出错：15=1×11+4×1    （贪心策略使用了5张钞票）15=3×5               （正确的策略，只用3张钞票）为什么会这样呢？贪心策略错在了哪里？
+鼠目寸光刚刚已经说过，贪心策略的纲领是：“尽量使接下来面对的w更小”。这样，贪心策略在w</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM&HEMM&CRF%E7%9A%84%E6%AF%94%E8%BE%83/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM&amp;HEMM&amp;CRF的比较</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">HMM，HEMM,CRF的比较6.6.1)CRF的优点:
+
+CRF没有HMM 那样严格的独立性假设条件，因此可以容纳任意的上下文内容。特征设计灵活。—— 与HMM比较。
+
+由于CRF计算全局最优输出节点的条件概率，它还克服了最大熵马尔科夫模型标记偏置的问题（label-bias）。  —— 与MEMM的比较
+
+CRF是在给定需要标记的观察序列的条件下，计算整个标记序列的联合概率分布。而不是在给定当前状态的条件下，定义一个状态的状态分布。 ——与ME的比较
+
+
+  CRF缺点：
+
+训练代价大，复杂度高
+
+6.6.2）CRF解决的问题：
+HMM模型中存在两个假设，一是输出观察值之间严格独立，二是状态转移过程中当前状态只与前一状态有关（一阶马尔科夫模型）。
+MEMM模型克服了观察值之间严格独立产生的问题，但是由于状态之间的假设理论，使得该模型存在标注偏置问题。
+CRF模型解决了标注偏置问题，去除了HMM中两个不合理的假设，当然，模型相应的变得更复杂了。
+6.6.3）HMM模型，最大熵模型，CRF模型的优劣
+HMM模型将标注看做是马尔科夫链，一阶马尔科夫链式针对相邻标注的关系进行建模，其中每个</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM&HEMM&CRF%E7%9A%84%E6%AF%94%E8%BE%83pt2/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM&amp;HEMM&amp;CRF的比较pt2</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.1.1 概览在统计概率图（probability graph models）中，参考宗成庆老师的书，是这样的体系结构（个人非常喜欢这种类型的图）：
+
+在概率图模型中，数据(样本)由公式  建模表示： 
+
+ 表示节点，即随机变量（放在此处的，可以是一个token或者一个label），具体地，用  为随机变量建模，注意  现在是代表了一批随机变量（想象对应一条sequence，包含了很多的token），  为这些随机变量的分布；
+ 表示边，即概率依赖关系。具体咋理解，还是要在后面结合HMM或CRF的graph具体解释。
+
+2.1.2 有向图 vs. 无向图上图可以看到，贝叶斯网络（信念网络）都是有向的，马尔科夫网络无向。所以，贝叶斯网络适合为有单向依赖的数据建模，马尔科夫网络适合实体之间互相依赖的建模。具体地，他们的核心差异表现在如何求  ，即怎么表示  这个的联合概率。
+1. 有向图
+对于有向图模型，这么求联合概率： 
+举个例子，对于下面的这个有向图的随机变量(注意，这个图我画的还是比较广义的)：
+
+应该这样表示他们的联合概率:
+
+应该很好理解吧。
+2. 无向图
+对于无向图，我看资料</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM_马尔科夫链</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">马尔科夫链马尔可夫链是一个模型，告诉我们关于随机变量序列的概率，状态。每个状态都可以从某个集合中获取值。 这些集合可以是单词，标签或代表任何东西的符号，例如天气。 下图左边是天气转换，右边是生成句子的单词序列。
+
+考虑状态变量  ,HMM核心假设是:当预测未来时，过去并不重要，重要的是现在。
+
+上图显示了一个马尔可夫链，用于为一系列天气事件分配概率，其中词汇表包括HOT, COLD,和 WARM，状态表示为图中的节点，转换以其概率表示为边。 转换是概率：离开给定状态的弧的值必须总和为1。上图右边用于为单词序列  分配一个概率，他其实是一个bigram的语言模型，每条边表示概率  。
+在形式上，马尔可夫链由以下组件指定:
+
+
+ ，N个状态的集合
+A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概率  ,  
+ ，状态上的初始概率分布(某一时刻的所有可能的隐藏状态的分布(可能性))。是马尔可夫链从状态i开始的概率。一些状态j可能有  ，这意味着它们不可能是初始状态。  
+
+马尔科夫链模型的状态转移矩阵收敛到的稳定概率分布与我们的初始状态概率分布无关：如果我们得到了这个稳定</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_EM%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_EM算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">EM算法2.1 基础知识2.1.1 凸函数设是定义在实数域上的函数，如果对于任意的实数，都有： 那么是凸函数。若不是单个实数，而是由实数组成的向量，此时，如果函数的 Hesse 矩阵是半正定的，即 是凸函数。特别地，如果  或者   ，称为严格凸函数。
+2.1.2 Jensen不等式如下图，如果函数  是凸函数，  是随机变量，有 0.5 的概率是 a，有 0.5 的概率是 b，  的期望值就是 a 和 b 的中值了那么： 其中， ，这里 a 和 b 的权值为 0.5,    与 a 的权值相等， 与 b 的权值相等。
+特别地，如果函数   是严格凸函数，当且仅当：   (即随机变量是常量) 时等号成立。
+
+注：若函数    是凹函数，Jensen不等式符号相反。
+2.1.3 期望对于离散型随机变量 X 的概率分布为   ，数学期望   为： 
+ 是权值，满足两个条件   。
+若连续型随机变量X的概率密度函数为  ，则数学期望  为： 设 ， 若  是离散型随机变量，则： 若    是连续型随机变量，则：  
+2.2 EM算法的推导对于  个相互独立的样本  ，对应的隐含数据  ，此时</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM_三个问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">HMM的三个核心问题的解本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。
+1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别有如下递进定义
+
+将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个网络
+若该网络是有向无环图，则称这个网络为贝叶斯网络
+如果这个图退化成线性链的方式，则得到马尔科夫模型，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是马尔科夫过程。
+若上述网络是无向的，则是无向图模型，又称马尔科夫随机场或者马尔科夫网络。
+若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。
+如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
+
+2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM_马尔科夫模型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">隐性马尔可夫模型(HMM):1. 什么样的问题需要HMM模型首先我们来看看什么样的问题可以用HMM模型。使用HMM模型时我们的问题一般有这两个特征：
+​    １）我们的问题是基于序列的，比如时间序列，或者状态序列。
+​    ２）我们的问题中有两类数据，一类序列数据是可以观测到的，即观测序列；而另一类数据是不能观察到        的，即隐藏状态序列，简称状态序列。（Hidden state）
+有了这两个特征，那么这个问题一般可以用HMM模型来尝试解决。这样的问题在实际生活中是很多的。比如：我现在在打字写博客，我在键盘上敲出来的一系列字符就是观测序列，而我实际想写的一段话就是隐藏序列，输入法的任务就是从敲入的一系列字符尽可能的猜测我要写的一段话，并把最可能的词语放在最前面让我选择，这就可以看做一个HMM模型了。再举一个，我在和你说话，我发出的一串连续的声音就是观测序列，而我实际要表达的一段话就是状态序列，你大脑的任务，就是从这一串连续的声音中判断出我最可能要表达的话的内容。
+2. HMM模型的定义
+
+Q是各个状态，图示的节点
+
+A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_3_%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91/">
+        <p class="h4 index-header">0.概念/NLP_SLP_3_一阶逻辑</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">概念：一阶逻辑（first order logic）一阶二阶这类的词, 一是表达量化的程度, 二是表达逻辑系统多有表达能力. 
+
+0阶逻辑： 每一个字母就代表一个命题, 所以命题逻辑只能表达句子之间的关系, 比如“p&amp;q”, “if p then q”等等的真值如何从p和q的真值中计算出来.
+1阶逻辑则引入了两个量词, 即universal quantifier(倒A，所有)和existential quantifier(倒E，存在), 并且加入了一阶谓词和individual variables（变量）和individual constants（常量）. 这些导致一阶逻辑可以量化individuals in the domain. 比如经典的
+
+
+三段论就可以被一阶逻辑表达：For all x, Hx-&gt;MxHs-—Ms
+
+其中for all x就是量化了所有individuals, 即domain里的任意一对象, 用individual variable x来表示. Hx则是表示x属于H(Human)这个谓词的extension, Mx表示x属于M(Mortal)的e</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/">
+        <p class="h4 index-header">0.概念/NLP_SLP_5_FSD状态传感器</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">状态传感器FST概念状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。
+他是一种类似于字典树/自动机的数据结构。
+转自豆瓣-巴扎黑
+有限状态转移机在自然语言处理上的应用
+原文地址：
+http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/
+在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。
+首先，先来大概的了解一下有限状态机（FSM）
+有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FST%E7%8A%B6%E6%80%81%E6%9C%BA/">
+        <p class="h4 index-header">0.概念/NLP_SLP_5_FST状态机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">状态机概念FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。
+
+作者：陈天
+链接：https://zhuanlan.zhihu.com/p/28142401
+来源：知乎
+在谈论一般意义的状态机时，我们先看看有限状态机，Finite State Machine，简称 FSM。
+在计算理论（Theory of computation）中，FSM 是一切的基础，也是能力最为有限的机器。在其能力之上是 CFL（Context Free Language），然后是 Turing Machine。
+FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。对于一个字符串是否以 \0 结尾（C 语言的字符串结构），FSM 可以给出答案。
+CFL 是一切编程语言的基础。你写的一段 python 代码是否语法正确，CFL 能够给出答案。
+Turing Machine 就是我们日常用各种算法写代码解决各种问题的基础。不较真地说，JVM 就是一个 Turing Machine。
+再往上，就是未知的世界 —— Turing Machine 也解决不了的问题。
+如果你工作多年</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_9 - Automatic Speech Recognition</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
+影响语音转文字系统性能表现的几个参数：
+
+需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
+speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
+声音质量：apparently，噪音少识别起来容易。
+讲话者的类型：apparently，nat</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_Dic/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_Dic</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+
+
+
+
+
+
+
+Phonetics
+语音学
+
+
+Phonology
+音韵学
+
+
+Morphology
+形态学
+
+
+orthographic
+正字法
+
+
+Syntax
+语法
+
+
+Pragmatics
+语用学
+
+
+Semantics
+语义学
+
+
+Ambiguity
+一词多义，模棱两可
+
+
+Dative pronoun
+与格代词
+
+
+Possessive pronoun
+所有格代词
+
+
+part-of-speech
+词性
+
+
+lexical disambiguation
+词义消歧
+
+
+speech act interpretation
+言语行为解释
+
+
+regular grammars
+正则文法
+
+
+critical role
+关键角色
+
+
+crucial
+重要的
+
+
+symbolic
+象征的
+
+
+stochastic
+随机的
+
+
+retrieval
+检索
+
+
+corpora
+语料库
+
+
+finite-state automaton
+有限状态自动机
+
+
+punctuation
+标点符号
+
+
+appendix
+附录
+
+
+Disjunction
+析取
+
+
+Precedence
+优先级
+
+
+Sym</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
+自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_8%20-%20Speech%20Synthesis/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_8 - Speech Synthesis</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8. Speech Synthesis - 语音合成（文字转语音）Speech Synthesis detail is as following:
+
+本单元讲解如何将文本转换成语音，主要分成如下四个任务：
+
+text normalization  文本标准化
+phonetic analysis 语音分析（把token化的词汇转换成音标）
+prosodic analysis 韵律分析( 把音标组成的集合拼凑地和谐一点)
+
+
+waveform synthesis 波形合成（让拼凑好的音标们-IR转wave-发音）
+
+8.1) Text NormalizationText normalization was combined as follwoing:
+
+sentence tokenization
+non-standard words
+homograph disambiguation
+
+8.1.1)Sentence tokenizationtokenization理解为把句子拆分成小块（token），token之间可以是被空格键分隔，也可以是被句号，逗号，或者单纯是被语义分隔，被token化</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_7%20-%20Phonetics/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_7 - Phonetics</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.Phonetics(语音学) – 本章对研究帮助不大，跳过A speech recognition system needs to have a pronunciation for every word it can recognize,and a text-to-speech system needs to have a pronunciation for every word it can say.
+
+In this chapter,we introduces phonetic alphabets音标字母 for describing these pronunciations.
+
+Then we introduces two main areas of phonetics, articulatory phonetics发音语音学,and acoustic phonetics声学语音学。
+
+Also briefly touch on phonology音韵学
+
+
+7.1）Speech sounds and phonetic transciption
+音标表格如下：
 
 </div>
         </div>
@@ -669,15 +1393,308 @@ CRC差错检测
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5/">
-        <p class="h4 index-header">3.课程/线性代数_正交矩阵</p>
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_6%20-%20HMM%20&%20HEMM/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_6 - HMM &amp; HEMM</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">正交矩阵如果一个矩阵乘以它自己的转置矩阵等于E（单位阵），则称为正交矩阵。
+          <div class="index-text mb-1">6.Hidden Markov and Maximum Entropy Models（HMM,MEMM）HMM and HEMM are both sequence classifiers.
+Sequence classifier or sequence labeler is a model whose job is to assign some label or class to each unit in a sequence.The FST we studied in Chapter 3 is a kind of non-probabilisitic sequence classifier.
+We have seen on important sequence classification task:POS tagging.
+This chapter is roughtly divided into 2 section:HMM , MEMM.
+6.1) Markov Chains - 马尔科夫链 - 详见概念6 - 马尔科夫链
+6.2)The Hidden Markov Model</div>
+        </div>
+      </a>
 
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_5%20-%20Part-of-Speech%20Tagging/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_5 - Part-of-Speech Tagging</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">5.Part-of-Speech TaggingIntroduce three algorithms:
+
+rule-based tagging
+HMM tagging
+transformation-based tagging
+
+词性标注是一项消歧任务，很多情况下词具有多于一个的意思，我们的工作是为这种情况找到正确的标签。
+5.2）Tagset for EnglishThere are 3 different tagset.
+
+45-tag Penn Treebank tagset
+61-tag C5 tagset
+87-tag tagset 
+
+
+Small Tagset:
+
+
+
+Middle Tagset
+
+
+
+Large Tagset
+
+
+
+5.3) Part-of-Speech TaggingSometimes,tagging can be difficult（unambiguous）,For example ,book is ambiguous.Book can be a noun as a read book,or be a verb, as booking a hotel.</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_4%20-%20N-Grams/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_4 - N-Grams</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4 - N-GramsN-gram is a language model,is a N-token sequence of words.
+1.the way to calculate conditional probability.For example,how can we calculate P(the|its water is so transparent that) ?
+Method1): counting 2 sentences
+Counting the times of “its water is so transparent that the” and “its water is so transparent that” in the whole corpus.It works sometime,but language is creative,many sentences is not exist.
+ 
+Method2): chain rule of probability,then use method 1.
+
+notice that:
+
+means  P(w1w2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_3%20-%20Word%20&%20Transducers/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_3 - Word &amp; Transducers</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">3.Word &amp; Transducers3.1)Word
+Before processing, words in speech should be Stemming、lemmatization and tokenization.
+Tokenization means put”New York”in one word,separate “I`m” into “I” and “am”。
+Using FSA to build Stemming net of words
+
+3.2)FST : Finite state transducers.
+I define it my way:
+If you input “aa”,”b”will be output,and the state in still “q0”,if you input “b”,”a or b”will out put,state will be “q1”.For example,if you input “aa aa b a”，output is “b b a ba”.
+
+Defination with details </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_23%20-%20QA/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_23 - QA</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">23 - Question Answering and Summarization本章介绍基于事实的回答问题系统+文章的总结系统。如果我们查找的是结构化的数据，可用上一章介绍的信息提取算法来词查找。如果查找的是非结构化的信息，则需要用本章介绍的“回答问题系统”处理，非结构化信息的查找就是一种“使用非正式的单词或句子”来表达查找需求的场景，这种场景下客户通常期望能返回一些回答or一些文本，或something in between。
+第一个session介绍向量空间模型，第二个session介绍基于事实的一问一答系统。第六个session介绍基于句子的总结系统/基于注意力机制的总结系统。
+23.1 Information Retrieval 信息检索术语定义
+文档document指的是一个有索引的，可被检索系统直接定位的最小单元，对应到web就是一个网页
+集合collection指的是一系列用来满足用户需求的文档documents
+term指的是一个词汇元素。
+query指的是一系列terms
+
+词向量空间
+词义相近的在向量空间中距也近，概念在CS224N中学过了。空间和点积的直观图如下</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_24%20-%20%E5%AF%B9%E8%AF%9Dagent/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_24 - 对话agent</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">24 - Dialogue and Conversational Agents这一章介绍问答助手的基本结构+算法。Session24.1介绍人类对话的基本概念，如对话的交替，表达技巧，grounding，对话结构等。Session24.2介绍口语系统的组件和评价标准。Session24.5和Session24.6介绍信息状态架构和马尔科夫对话代理模型，以及高阶话题如BDI范式（belief - desire -intention）信念 - 渴望 - 意图范式。
+24.1 人类对话的Properties24.1.1 Turns and turn-talking人类对话的模式是一个人说完了之后另一人说，交替进行，通常情况下，两人对话的重叠部分不超过5%。两个人交替间的停顿时间在100ms左右。为了实现这种模式，人类对话通常有如下三个规律来规范交替的进行，非常显而易见。
+
+通常一个比正常情况更长的听读怒会有额外的表达效果，如下所示一个长停顿代表了不想积极回应问题。
+
+24.1.2 Language as Action:Speech Acts 语言是会产生后果的行动语言能对现实世界产生具体影响</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_22%20-%20Information%20Extraction/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_22 - Information Extraction</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">22 - Information Extraction本章主要概念：
+
+NER：命名实体识别
+relation detection and classification：关系检测与分类
+event detection and classification：事件检测与分类
+temporal expression recognition：事件表达式识别
+template filling：模板填充
+
+22.1)NER : 命名实体识别命名实体识别分类的举例
+
+22.1.2）NER as Sequence Labeling
+标准的命名实体识别的步骤是使用word-by-word sequence labeling任务。其实进行NER的方法与第五章的POS tagging和十三章的syntactic chunking方法相同。
+PS：提一下第五章的POS tagging：使用的还是HMM base 的 维特比算法（decoding）。
+
+问题的本质如下所示，观察到句子/词语，猜测对应的词性/NER类型。也就是观察到结果，猜测其隐状态。
+
+
+具体的 word-by-word IOB-style t</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_2%20-%20Regular%20expressions%20and%20automata/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_2 - Regular expressions and automata</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2 - Regular expressions and automata2.2) Relationship between FSA and RE
+Any regular expression(RE) can be implemented as a finite state automata(FSA),symmetrically,any finite-state automata can be described with a regular expression.
+Both RE and FSA can be used to describe regular languages:
+
+Using FSA to understand sheep talk
+sheep language can be defined as any string from the following set:
+baa!
+baaaa!
+baaaaa!
+baaaaaa!
+baaaaaaa!
+baaaaaaaa!
+baaaaaaaaa!
+…
+Sheep language can be described as fol</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_11%20-%20Computational%20Phonology/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_11 - Computational Phonology</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">11. Computational Phonology本章较艰涩，对NLP发文帮助不大，Skip，以后需用再补。
 </div>
         </div>
       </a>
@@ -696,215 +1713,25 @@ CRC差错检测
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0_%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
-        <p class="h4 index-header">3.课程/线性代数_奇异值分解</p>
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_10 - Automatic Speech RecongnitionAdvanced Topics</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">奇异值分解1.应用：影像压缩2.应用：过滤噪声
-左图是原始图片。右图是经过SVD分解处理的图片，丢失了一些精确度，但是呈现效果更好，很可能丢失的精确度恰好是噪声。
-具体做法是我们对15*25的矩阵做奇异值分解（SVD），然后得到如下15个特征值，其中前三个特征是比较重要，为了压缩数据和过滤噪声，我们只取前三个特征值，后边的全部丢弃。
+          <div class="index-text mb-1">10. Auto Speech Recognition Advanced Topic ：语音转文字进阶话题之前企图对输入的语音转换成音素的处理办法是：构建一个由全体语言组成的HMM状态网络，然后在网络中采用维特比算法进行全局搜索。这种算法太expensive了。
+改进思路是采用多路编码的decoding技术，使用新的上下文相关声学模型(triphone)。本章还会介绍判别训练(discriminative training)和模型的一些变体；
+10.1）多路编码decoding : N-Best List and Lattices
+首先，维特比算法在进行对语音输入的decoding的时候，有如下两个问题：
 
+在应对一词多音/一音多词的语言时，维特比算法表现很差
+维特比算法很难take advantage of 复杂的语言模型：2-gram还行，3-gram就不行了。因为3-gram violates the dynamic programming invariant
 
-5.计算例子​    
+改进如上两个问题的思路有：
 
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/%E7%8E%8B%E5%A8%81%E5%BB%89%E5%AF%B9%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%9A%84%E8%A6%81%E6%B1%82/">
-        <p class="h4 index-header">5.杂谈/王威廉对博士生的要求</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Hiring PhD students
-Q: What’s your research interest? 
-A: My research interests are in the broad areas of Artificial Intelligence. I am particular interested in Machine Learning and Natural Language Processing. More specifically, I am passionate about statistical relational learning, learning to reason, information extraction, multimodality, social media, and spoken language processing. Currently, I’m interested in deep learning methods for natural language processing, multimodal computing, and </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/%E7%8E%8B%E9%98%BF-%E7%94%B3%E8%AF%B7phd%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">5.杂谈/王阿-申请phd思路</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">我是如何申请到phd的转载自知乎–王阿的阿
-谢谢你们。
-在这篇经验贴里，我会告诉你我当时申请时面临的处境、我的决策过程，以及申请当中各个环节最精华的经验和技巧，我都毫无保留地贡献在这里了。
-读完这篇文章，除了我介绍的各种申请技巧以外，我希望能让你认识到申请过程中决策和心态的重要意义：
-
-想成功申请美国的PhD，除了自己软硬件要出色，还有很重要的一点是对自己的定位，包括认识到自己的目标、兴趣以及自己的长处和缺陷。不论你是申请哪个学科的PhD，请重点关注我做决策时的思考内容和思考方向，这也许会对你有所启发。
-心理韧性、抗打击能力也是申请成功的一个重要因素。如果你知道GradCafe这个北美grad school申请论坛，你会发现上面有很多人诉说自己第二次、第三次才申请成功的经历。我就是其中一员。
-
-我的故事是这样婶儿的……
-2017一整年是我这辈子最难熬的一年，这一年我第一次（也只申请了这一次）申请美国的临床心理学PhD（clinical psychology），申了13所学校。2017年的头四个月陆续收到13封拒信，无一录取，甚至连一个面试都没有。当时的我：
-
-已经在纽约市生活了三年；
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/996%20-%20%E8%B6%85%E6%97%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%82%E5%8C%96%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">5.杂谈/996 - 超时工作的异化问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">996 - 超时工作与异化问题1.感性认识我国现阶段各行业超时工作现象十分普遍，有的互联网公司晚上十一二点整个大楼还灯火通明，有的公司虽然晚上按时下班，但回家后仍然要求有工作输出，很多岗位还要求7*24小时on call。
-我前些年所在的公司就有制度要求员工每月加班22天以上才算考核达标，而我经常需要加班27天才能完成工作，每晚九点离开公司后经一小时通勤才能到家，洗洗漱漱刚好十一点上床，十二点入睡，第二天早上6点50分起床后经过一小时通勤抵达公司，在公司门口的快餐店里缩着身子与其他同事挤在餐桌上潦草进食后便赶往工位，开始一天的埋头苦干。算上通勤时间，我的工作强度是7107。高强度劳动和了无希望所积累的疲劳深入骨髓，在此期间我感到生命力与灵魂的飞速流逝。
-深夜的华为大楼
-
-早上五点半排队等公交上班的年轻人
-
-2.八小时工作制的来由八小时工作制国家法律规定的工作日长度为8小时的工作制度。目前世界各国普遍实行八小时工作制。正常一天工作时间为早上九点至下午五点为8小时。
-理论起源
-八小时工作制最早由社会主义者罗伯特·欧文于1817年8月提出。他还发明了一个口号， “8小时劳动， 8小时休闲， </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/5.%E6%9D%82%E8%B0%88/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/">
-        <p class="h4 index-header">5.杂谈/博士这五年-李沐</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">转自知乎-李沐
-前言12年8月提着一个行李箱降落在匹兹堡机场。没找住的地方，也不知道CMU应该怎么去。对未来一片迷茫，但充满乐观。 现在，刚完成了博士期间最后的一场报告，在同样的机场，不过是在等待离开的航班。
-回想过去的五年，是折腾的五年，也是自我感悟和提升的五年。这里我尝试记录这五年主要做过的事情和其中的感想，希望对大家有所启发。
-第0年：3/11-8/12我第一次申请美国的博士是在11年，但拿到的offer并没有特别合适的导师，于是就北上投奔文渊去了。 我当时在百度商务搜索部门做广告的点击预估。具体是使用机器学习来预测一个广告是不是会被用户点击。 这时候离“大数据”这个词流行还有两年，但百度那时候的数据即使现在来看仍然是大的。我的任务是如何高效的利用数百台机器快速的在数十T的数据上训练出模型。
-当时产品用的算法基于LBFGS，我于是想是不是可以换个收敛更快的算法。没几天就找到个不错 。但实现上发现了各种问题，包括性能，收敛，和稳定性。而且那时有的就是一个裸的Linux和很老版本的GCC，什么都是需要从头开始写。花了大量时间做系统优化，算法改动，和线上实验，最后一年后在整个广告流量上</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%90%9C%E7%B4%A2_A%5B%E6%98%9F%E5%8F%B7%5D%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">3.课程/数据结构_搜索_A[星号]寻路算法</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A*寻路算法算法要解决的问题：
-在有障碍的格子地图上已知终点和起点，横走代价小于斜走，求由始到终代价最小的路径。
-F = G + H 
-总代价  = 到起点的格子数 + 到终点的曼哈顿距离
-算法描述：
-
-初始节点即为当前节点，放入open列表
-
-初始节点从open列表移除，放入close列表
-
-
-
-当前格子周围八个格子用如下三选一方式处理:
-
-若在close列表中，忽略
-若不在open/close列表中，加入open列表，并将当前格子设为它的父节点
-若在open列表中，计算这个格子经过当前格子的F值，如果F值更小，更新之，并将当前格子设为它的新父节点。
-
-
-把当前格子从open列表拿入close列表；
-设置刚才加入open列表中F值最小的格子为当前格子。
-
-
-
-重复3.4.两步，知道找到终点，随后按照父节点顺序回溯，找到最优路径
-
-不需要更新F值的图示
-
-
-
-
-
-
-
-
-
-需要更新F值的图示
-
-
-小结：
-A*寻路算法需要对每个格子维持三个状态值：总代价，到起点的距离，到终点的距离。下一步如何选择由总代价值指导。通常比DFS和BFS更高效。
-</div>
+改进维特比算法，将原本只返回单一值，变成返回多值。以改进一词多音的问题。
+使用其他的的d</div>
         </div>
       </a>
 
@@ -922,7 +1749,7 @@ A*寻路算法需要对每个格子维持三个状态值：总代价，到起点
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
