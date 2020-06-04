@@ -136,6 +136,240 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93_%E6%A6%82%E8%AE%BA/">
+        <p class="h4 index-header">3.课程/数据库_概论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.数据库的四个基本概念
+数据语义
+
+“93”的语义
+可以是年龄
+也可以是班级人数
+
+
+
+
+
+
+数据和自然语言
+
+自然语言可以通过上下文完整描述事物
+
+数据是计算机的记录:
+
+(李明,男,199005,江苏南京,计算机,自行车协会)
+记录不能完整表达事物内容,因缺少语义(列信息)
+
+
+
+
+
+
+
+什么是数据库
+长期储存在计算机内,有组织的,可共享的大量数据集合
+
+
+为什么要建立数据库
+可收集所需的大量数据,然后进一步加工处理,转换为有用的知识
+
+
+数据库的基本特征
+数据按照一定的数据模型(结构)存储,组织,描述
+冗余度小,可扩展
+数据独立性高
+
+
+什么是数据库管理系统DBMS
+位于用户和操作系统之间的一层数据管理软件
+基础软件,也是一层服务
+
+
+DBMS的用途
+科学的组织和存储数据,高效的获取和维护数据 
+
+
+DBMS的主要功能
+数据定义功能
+提供数据定义语言DDL
+定于数据库中的数据对象
+
+
+数据组织/存储/管理
+管理数据
+确定数据在存储级别上的结构和存取方式
+实现数据之间的联系
+提供多种存储方法提高存储效率
+
+
+数据操纵功能
+增删改查
+提供数据操纵语言(DML)
+关系代数
+关系演算
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/">
+        <p class="h4 index-header">4.安装调试记录/网站部署记录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.获取root权限-sudo passwd
+-su root
+2.云主机安装git-yum update
+-yum install git
+-mkdir App
+-cd App
+3.云主机与github建立sshkey连接返回：Permissiondenied (publickey)，fatal:Could not read from remote repository.
+cd ~/.ssh ls  //查看是否有ssh key
+ssh-keygen -t rsa -C “youremail@example.com“    //一路回车
+ssh -v git@github.com 
+ssh-agent -s
+ssh-add ~/.ssh/ github new SSH KEY
+ssh -T git@github.com
+若出错：“Could not open a connection to your authentication agent”
+eval `ssh-agent -s``
+ssh-add ~/.ssh/id_rsa，
+github new SSH KEY
+4.克隆项目，安</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%87%8D%E8%A3%85Git%E5%92%8C%E5%8D%9A%E5%AE%A2/">
+        <p class="h4 index-header">4.安装调试记录/重装Git和博客</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">重装Git和博客：Git下载安装git.exe，官网速度慢就从腾讯下载
+git bash
+
+git config –global user.name “yubin（自定义用户名）”
+
+git config –global user.email “488459564@qq.com（自定义邮箱）”
+
+ssh-keygen -t rsa -C “你的邮箱”　
+三个回车
+
+
+在C:\users\bqlion\.ssh找到公钥，复制，粘贴到github里的new sshkey中
+git clone git@github.com::BqLion/_post.git
+推送时若报转义问题：warning: LF will be replaced by CRLF in 字典树.md.The file will have its original line endings in your working directory
+输入git config –global core.autocrlf false解决
+hexo下载安装node：https://nodejs.org/en/download/
+检查是否</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/">
+        <p class="h4 index-header">4.安装调试记录/博客建站记录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">windows环境下使用hexo搭建博客记录搭建步骤
+购买域名
+
+github创建个人仓库
+
+安装node.js
+
+安装hexo
+
+推送网站
+
+域名解析
+
+更换主题
+
+更改配置
+
+发布文章
+
+使用图床
+
+
+1.域名购买godaddy.com: 域名很全但价格较高，首年年费均价￥60左右,往后每年续费￥120左右。
+阿里云：价格适中但个性化后缀较少,cc后缀域名无法备案
+namesilo.com: 域名较全,价格最低,bqlab.cc十年￥280,最终在此购买。 
+2.github创建仓库仓库名命名为bqlion.github.io，亲测改成其他域名网站不能正常访问，
+3.安装node.js下载地址：https://nodejs.org/en/download/
+安装完成后检测是否成功：node -v
+检测npm是否一起安装成功: npm - v
+4.安装hexo创建名为bqlion.github.io的文件夹，在这里打开cmd命令行
+输入
+npm install -g hexo-cli初始化博客
+hexo bqlion.github.io检查网站雏形
+cd bqlion.github.</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E6%9B%B4%E6%96%B0%E5%9B%BE%E5%BA%8A+%E6%88%AA%E5%B1%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
         <p class="h4 index-header">4.安装调试记录/更新图床+截屏工作流</p>
         
@@ -431,6 +665,35 @@ DELETE /authorization退出
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Flink_%E8%B0%83%E5%8F%82%E8%AE%B0%E5%BD%95/">
+        <p class="h4 index-header">0.文章/Flink_调参记录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">jm内存 + tm内存 = 26分别是[2,24]  [4,22],[3+25]要挂
+每个tm的slot :1 – 8 ,[1,8,4,2]    
+并发度: 1-9,[3,7,1,5] 
+打包命令:
+cp ~/.m2/repository/org/apache/parquet/parquet-column/1.8.2/parquet-column-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-hadoop/1.8.2/parquet-hadoop-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-common/1.8.2/parquet-common-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-encoding/1.8.2/parquet-encoding-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Flink_%E6%AF%94%E8%B5%9B%E6%80%9D%E8%B7%AF/">
         <p class="h4 index-header">0.文章/Flink_比赛思路</p>
         
@@ -457,35 +720,6 @@ schema factory              –&gt;从model中获得源数据信息,构建schema
 planner rule                  —&gt;to transform operator expression tree 
 metadata providers
 planner engines                </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Flink_%E8%B0%83%E5%8F%82%E8%AE%B0%E5%BD%95/">
-        <p class="h4 index-header">0.文章/Flink_调参记录</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">jm内存 + tm内存 = 26分别是[2,24]  [4,22],[3+25]要挂
-每个tm的slot :1 – 8 ,[1,8,4,2]    
-并发度: 1-9,[3,7,1,5] 
-打包命令:
-cp ~/.m2/repository/org/apache/parquet/parquet-column/1.8.2/parquet-column-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-hadoop/1.8.2/parquet-hadoop-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-common/1.8.2/parquet-common-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/parquet/parquet-encoding/1.8.2/parquet-encoding-1.8.2.jar ./lib/cp ~/.m2/repository/org/apache/</div>
         </div>
       </a>
 
@@ -739,19 +973,19 @@ MapReduce缺点
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">0.概念/NLP_SLP_6_维特比算法</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_动态规划</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">维特比算法HMMs的解码算法为Viterbi算法，如图8.5所示。作为动态规划的一个实例，维特比类似于动态规划最小距离算法。维特比算法是一个通用的求序列最短路径的动态规划算法，维特比算法可以将HMM的状态序列作为一个整体来考虑，求给定观测序列O条件下，最可能出现的对应的状态序列  ,即  要最大化，从后向前计算的
-用于寻找最优标签序列的维特比算法。给定一个观察序列和一个HMM λ= (A;B)，算法通过HMM返回状态路径，该状态路径为观察序列分配最大似然值。
-维特比算法首先建立一个概率矩阵( ) )，每个观察  有一列，状态图中的每个状态有一行。因此，在单个组合自动机中，每个列都有一个用于每个状态  的单元。图8.6显示了这个格子的直觉，因为Janet will back the bill这句话。
-网格的每个单元格 表示在看到第一个t观察值并且在给定HMM λ的情况下经过最可能的状态序列  之后HMM处于状态j的概率。 每个单元  的值通过递归地获取可能导致我们到达该单元的最可能路径来计算。 形式上，每个cell表达概率:
-
-我们通过对所有可能的先前状态序列  取最大值来表示最可能的路</div>
+          <div class="index-text mb-1">动态规划1. 贪心策略的不足先来看看生活中经常遇到的事吧——假设您是个土豪，身上带了足够的1、5、10、20、50、100元面值的钞票。现在您的目标是凑出某个金额w，需要用到尽量少的钞票。
+依据生活经验，我们显然可以采取这样的策略：能用100的就尽量用100的，否则尽量用50的……依次类推。在这种策略下，666=6×100+1×50+1×10+1×5+1×1，共使用了10张钞票。
+这种策略称为“贪心”：假设我们面对的局面是“需要凑出w”，贪心策略会尽快让w变得更小。能让w少100就尽量让它少100，这样我们接下来面对的局面就是凑出w-100。长期的生活经验表明，贪心策略是正确的。
+贪心策略的翻车
+但是，如果我们换一组钞票的面值，贪心策略就也许不成立了。如果一个奇葩国家的钞票面额分别是1、5、11，那么我们在凑出15的时候，贪心策略会出错：15=1×11+4×1    （贪心策略使用了5张钞票）15=3×5               （正确的策略，只用3张钞票）为什么会这样呢？贪心策略错在了哪里？
+鼠目寸光刚刚已经说过，贪心策略的纲领是：“尽量使接下来面对的w更小”。这样，贪心策略在w</div>
         </div>
       </a>
 
@@ -769,19 +1003,19 @@ MapReduce缺点
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-        <p class="h4 index-header">0.概念/NLP_SLP_6_动态规划</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_维特比算法</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">动态规划1. 贪心策略的不足先来看看生活中经常遇到的事吧——假设您是个土豪，身上带了足够的1、5、10、20、50、100元面值的钞票。现在您的目标是凑出某个金额w，需要用到尽量少的钞票。
-依据生活经验，我们显然可以采取这样的策略：能用100的就尽量用100的，否则尽量用50的……依次类推。在这种策略下，666=6×100+1×50+1×10+1×5+1×1，共使用了10张钞票。
-这种策略称为“贪心”：假设我们面对的局面是“需要凑出w”，贪心策略会尽快让w变得更小。能让w少100就尽量让它少100，这样我们接下来面对的局面就是凑出w-100。长期的生活经验表明，贪心策略是正确的。
-贪心策略的翻车
-但是，如果我们换一组钞票的面值，贪心策略就也许不成立了。如果一个奇葩国家的钞票面额分别是1、5、11，那么我们在凑出15的时候，贪心策略会出错：15=1×11+4×1    （贪心策略使用了5张钞票）15=3×5               （正确的策略，只用3张钞票）为什么会这样呢？贪心策略错在了哪里？
-鼠目寸光刚刚已经说过，贪心策略的纲领是：“尽量使接下来面对的w更小”。这样，贪心策略在w</div>
+          <div class="index-text mb-1">维特比算法HMMs的解码算法为Viterbi算法，如图8.5所示。作为动态规划的一个实例，维特比类似于动态规划最小距离算法。维特比算法是一个通用的求序列最短路径的动态规划算法，维特比算法可以将HMM的状态序列作为一个整体来考虑，求给定观测序列O条件下，最可能出现的对应的状态序列  ,即  要最大化，从后向前计算的
+用于寻找最优标签序列的维特比算法。给定一个观察序列和一个HMM λ= (A;B)，算法通过HMM返回状态路径，该状态路径为观察序列分配最大似然值。
+维特比算法首先建立一个概率矩阵( ) )，每个观察  有一列，状态图中的每个状态有一行。因此，在单个组合自动机中，每个列都有一个用于每个状态  的单元。图8.6显示了这个格子的直觉，因为Janet will back the bill这句话。
+网格的每个单元格 表示在看到第一个t观察值并且在给定HMM λ的情况下经过最可能的状态序列  之后HMM处于状态j的概率。 每个单元  的值通过递归地获取可能导致我们到达该单元的最可能路径来计算。 形式上，每个cell表达概率:
+
+我们通过对所有可能的先前状态序列  取最大值来表示最可能的路</div>
         </div>
       </a>
 
@@ -920,39 +1154,6 @@ A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_EM%E7%AE%97%E6%B3%95/">
-        <p class="h4 index-header">0.概念/NLP_SLP_6_EM算法</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">EM算法2.1 基础知识2.1.1 凸函数设是定义在实数域上的函数，如果对于任意的实数，都有： 那么是凸函数。若不是单个实数，而是由实数组成的向量，此时，如果函数的 Hesse 矩阵是半正定的，即 是凸函数。特别地，如果  或者   ，称为严格凸函数。
-2.1.2 Jensen不等式如下图，如果函数  是凸函数，  是随机变量，有 0.5 的概率是 a，有 0.5 的概率是 b，  的期望值就是 a 和 b 的中值了那么： 其中， ，这里 a 和 b 的权值为 0.5,    与 a 的权值相等， 与 b 的权值相等。
-特别地，如果函数   是严格凸函数，当且仅当：   (即随机变量是常量) 时等号成立。
-
-注：若函数    是凹函数，Jensen不等式符号相反。
-2.1.3 期望对于离散型随机变量 X 的概率分布为   ，数学期望   为： 
- 是权值，满足两个条件   。
-若连续型随机变量X的概率密度函数为  ，则数学期望  为： 设 ， 若  是离散型随机变量，则： 若    是连续型随机变量，则：  
-2.2 EM算法的推导对于  个相互独立的样本  ，对应的隐含数据  ，此时</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
         <p class="h4 index-header">0.概念/NLP_SLP_6_HMM_三个问题</p>
         
@@ -971,6 +1172,39 @@ A =  ,一个转移概率矩阵A，每个  代表从状态i移动到状态j的概
 如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
 
 2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_EM%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_EM算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">EM算法2.1 基础知识2.1.1 凸函数设是定义在实数域上的函数，如果对于任意的实数，都有： 那么是凸函数。若不是单个实数，而是由实数组成的向量，此时，如果函数的 Hesse 矩阵是半正定的，即 是凸函数。特别地，如果  或者   ，称为严格凸函数。
+2.1.2 Jensen不等式如下图，如果函数  是凸函数，  是随机变量，有 0.5 的概率是 a，有 0.5 的概率是 b，  的期望值就是 a 和 b 的中值了那么： 其中， ，这里 a 和 b 的权值为 0.5,    与 a 的权值相等， 与 b 的权值相等。
+特别地，如果函数   是严格凸函数，当且仅当：   (即随机变量是常量) 时等号成立。
+
+注：若函数    是凹函数，Jensen不等式符号相反。
+2.1.3 期望对于离散型随机变量 X 的概率分布为   ，数学期望   为： 
+ 是权值，满足两个条件   。
+若连续型随机变量X的概率密度函数为  ，则数学期望  为： 设 ， 若  是离散型随机变量，则： 若    是连续型随机变量，则：  
+2.2 EM算法的推导对于  个相互独立的样本  ，对应的隐含数据  ，此时</div>
         </div>
       </a>
 
@@ -1123,37 +1357,6 @@ Turing Machine 就是我们日常用各种算法写代码解决各种问题的�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_9 - Automatic Speech Recognition</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
-影响语音转文字系统性能表现的几个参数：
-
-需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
-speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
-声音质量：apparently，噪音少识别起来容易。
-讲话者的类型：apparently，nat</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_Dic/">
         <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_Dic</p>
         
@@ -1287,6 +1490,37 @@ Sym</div>
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_9 - Automatic Speech Recognition</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
+影响语音转文字系统性能表现的几个参数：
+
+需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
+speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
+声音质量：apparently，噪音少识别起来容易。
+讲话者的类型：apparently，nat</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_%E6%80%BB%E7%BB%93/">
         <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_总结</p>
         
@@ -1296,6 +1530,43 @@ Sym</div>
         <div class="index-excerpt" >
           <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
 自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_7%20-%20Phonetics/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_7 - Phonetics</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.Phonetics(语音学) – 本章对研究帮助不大，跳过A speech recognition system needs to have a pronunciation for every word it can recognize,and a text-to-speech system needs to have a pronunciation for every word it can say.
+
+In this chapter,we introduces phonetic alphabets音标字母 for describing these pronunciations.
+
+Then we introduces two main areas of phonetics, articulatory phonetics发音语音学,and acoustic phonetics声学语音学。
+
+Also briefly touch on phonology音韵学
+
+
+7.1）Speech sounds and phonetic transciption
+音标表格如下：
+
 </div>
         </div>
       </a>
@@ -1339,43 +1610,6 @@ non-standard words
 homograph disambiguation
 
 8.1.1)Sentence tokenizationtokenization理解为把句子拆分成小块（token），token之间可以是被空格键分隔，也可以是被句号，逗号，或者单纯是被语义分隔，被token化</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_7%20-%20Phonetics/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_7 - Phonetics</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.Phonetics(语音学) – 本章对研究帮助不大，跳过A speech recognition system needs to have a pronunciation for every word it can recognize,and a text-to-speech system needs to have a pronunciation for every word it can say.
-
-In this chapter,we introduces phonetic alphabets音标字母 for describing these pronunciations.
-
-Then we introduces two main areas of phonetics, articulatory phonetics发音语音学,and acoustic phonetics声学语音学。
-
-Also briefly touch on phonology音韵学
-
-
-7.1）Speech sounds and phonetic transciption
-音标表格如下：
-
-</div>
         </div>
       </a>
 
@@ -1474,40 +1708,6 @@ Large Tagset
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_4%20-%20N-Grams/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_4 - N-Grams</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">4 - N-GramsN-gram is a language model,is a N-token sequence of words.
-1.the way to calculate conditional probability.For example,how can we calculate P(the|its water is so transparent that) ?
-Method1): counting 2 sentences
-Counting the times of “its water is so transparent that the” and “its water is so transparent that” in the whole corpus.It works sometime,but language is creative,many sentences is not exist.
- 
-Method2): chain rule of probability,then use method 1.
-
-notice that:
-
-means  P(w1w2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_3%20-%20Word%20&%20Transducers/">
         <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_3 - Word &amp; Transducers</p>
         
@@ -1525,6 +1725,40 @@ I define it my way:
 If you input “aa”,”b”will be output,and the state in still “q0”,if you input “b”,”a or b”will out put,state will be “q1”.For example,if you input “aa aa b a”，output is “b b a ba”.
 
 Defination with details </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_4%20-%20N-Grams/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_4 - N-Grams</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4 - N-GramsN-gram is a language model,is a N-token sequence of words.
+1.the way to calculate conditional probability.For example,how can we calculate P(the|its water is so transparent that) ?
+Method1): counting 2 sentences
+Counting the times of “its water is so transparent that the” and “its water is so transparent that” in the whole corpus.It works sometime,but language is creative,many sentences is not exist.
+ 
+Method2): chain rule of probability,then use method 1.
+
+notice that:
+
+means  P(w1w2</div>
         </div>
       </a>
 
@@ -1589,149 +1823,6 @@ query指的是一系列terms
 通常一个比正常情况更长的听读怒会有额外的表达效果，如下所示一个长停顿代表了不想积极回应问题。
 
 24.1.2 Language as Action:Speech Acts 语言是会产生后果的行动语言能对现实世界产生具体影响</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_22%20-%20Information%20Extraction/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_22 - Information Extraction</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">22 - Information Extraction本章主要概念：
-
-NER：命名实体识别
-relation detection and classification：关系检测与分类
-event detection and classification：事件检测与分类
-temporal expression recognition：事件表达式识别
-template filling：模板填充
-
-22.1)NER : 命名实体识别命名实体识别分类的举例
-
-22.1.2）NER as Sequence Labeling
-标准的命名实体识别的步骤是使用word-by-word sequence labeling任务。其实进行NER的方法与第五章的POS tagging和十三章的syntactic chunking方法相同。
-PS：提一下第五章的POS tagging：使用的还是HMM base 的 维特比算法（decoding）。
-
-问题的本质如下所示，观察到句子/词语，猜测对应的词性/NER类型。也就是观察到结果，猜测其隐状态。
-
-
-具体的 word-by-word IOB-style t</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_2%20-%20Regular%20expressions%20and%20automata/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_2 - Regular expressions and automata</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2 - Regular expressions and automata2.2) Relationship between FSA and RE
-Any regular expression(RE) can be implemented as a finite state automata(FSA),symmetrically,any finite-state automata can be described with a regular expression.
-Both RE and FSA can be used to describe regular languages:
-
-Using FSA to understand sheep talk
-sheep language can be defined as any string from the following set:
-baa!
-baaaa!
-baaaaa!
-baaaaaa!
-baaaaaaa!
-baaaaaaaa!
-baaaaaaaaa!
-…
-Sheep language can be described as fol</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_11%20-%20Computational%20Phonology/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_11 - Computational Phonology</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">11. Computational Phonology本章较艰涩，对NLP发文帮助不大，Skip，以后需用再补。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_10 - Automatic Speech RecongnitionAdvanced Topics</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">10. Auto Speech Recognition Advanced Topic ：语音转文字进阶话题之前企图对输入的语音转换成音素的处理办法是：构建一个由全体语言组成的HMM状态网络，然后在网络中采用维特比算法进行全局搜索。这种算法太expensive了。
-改进思路是采用多路编码的decoding技术，使用新的上下文相关声学模型(triphone)。本章还会介绍判别训练(discriminative training)和模型的一些变体；
-10.1）多路编码decoding : N-Best List and Lattices
-首先，维特比算法在进行对语音输入的decoding的时候，有如下两个问题：
-
-在应对一词多音/一音多词的语言时，维特比算法表现很差
-维特比算法很难take advantage of 复杂的语言模型：2-gram还行，3-gram就不行了。因为3-gram violates the dynamic programming invariant
-
-改进如上两个问题的思路有：
-
-改进维特比算法，将原本只返回单一值，变成返回多值。以改进一词多音的问题。
-使用其他的的d</div>
         </div>
       </a>
 

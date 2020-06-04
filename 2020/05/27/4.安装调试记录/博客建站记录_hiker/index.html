@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    913 字
+                    968 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -192,15 +192,22 @@
 <h4 id="1-域名购买"><a href="#1-域名购买" class="headerlink" title="1.域名购买"></a>1.域名购买</h4><p>godaddy.com: 域名很全但价格较高，首年年费均价￥60左右,往后每年续费￥120左右。</p>
 <p>阿里云：价格适中但个性化后缀较少,cc后缀域名无法备案</p>
 <p>namesilo.com: 域名较全,价格最低,bqlab.cc十年￥280,最终在此购买。 </p>
-<h4 id="2-github创建仓库"><a href="#2-github创建仓库" class="headerlink" title="2.github创建仓库"></a>2.github创建仓库</h4><p>仓库名命名为bqlion.github.io，亲测改成其他域名网站不能正常访问，</p>
+<p>在namesilo.com中的Domain manager中将域名DNS服务器修改为：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200527_1251_11_908.png" alt=""></p>
+<p>ns1.alidns.com</p>
+<p>ns2.alidns.com</p>
+<h4 id="2-github创建仓库"><a href="#2-github创建仓库" class="headerlink" title="2.github创建仓库"></a>2.github创建仓库</h4><p>仓库名命名为fuzzypw.github.io，亲测改成其他域名网站不能正常访问，</p>
+<p>settings，设置custom domain,输入fuzzy.pw</p>
 <h4 id="3-安装node-js"><a href="#3-安装node-js" class="headerlink" title="3.安装node.js"></a>3.安装node.js</h4><p>下载地址：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
 <p>安装完成后检测是否成功：node -v</p>
 <p>检测npm是否一起安装成功: npm - v</p>
-<h4 id="4-安装hexo"><a href="#4-安装hexo" class="headerlink" title="4.安装hexo"></a>4.安装hexo</h4><p>创建名为bqlion.github.io的文件夹，在这里打开cmd命令行</p>
+<h4 id="4-安装hexo"><a href="#4-安装hexo" class="headerlink" title="4.安装hexo"></a>4.安装hexo</h4><p>注册网易云邮箱，<a href="mailto:fuzzypw@163.com">fuzzypw@163.com</a>,ma</p>
+<p>注册github，fuzzypw，<a href="mailto:fuzzypw@163.com">fuzzypw@163.com</a>，MA：</p>
+<p>创建名为fuzzypw.github.io的文件夹，在这里打开cmd命令行</p>
 <p>输入</p>
 <pre><code>npm install -g hexo-cli</code></pre><p>初始化博客</p>
-<pre><code>hexo init bqlion.github.io</code></pre><p>检查网站雏形</p>
-<pre><code>cd bqlion.github.io
+<pre><code>hexo init fuzzypw.github.io</code></pre><p>检查网站雏形</p>
+<pre><code>cd fuzzypw.github.io
 
 hexo new test_my_site
 
@@ -228,7 +235,7 @@ IPhexo clean     #清除缓存，若是网页正常情况下可以忽略这条�
 <p>打开_config.yml，修改最后几行为：</p>
 <pre><code>deploy:
 type: git
-repo: https://github.com/yuxuanart/yuxuanart.github.io
+repo: https://github.com/fuzzypw/fuzzypw.github.io
 branch: master</code></pre><p>其实就是给 hexo d这个命令做配置，让hexo知道要把blog部署在哪个位置</p>
 <p>安装git部署插件</p>
 <pre><code>npm install hexo-deployer-git --save</code></pre><p>分别输入三条命令（清理，生成，部署）</p>
@@ -236,26 +243,27 @@ branch: master</code></pre><p>其实就是给 hexo d这个命令做配置，让h
 hexo g 
 hexo d</code></pre><p>到这里博客就上线了</p>
 <h4 id="6-域名解析"><a href="#6-域名解析" class="headerlink" title="6.域名解析"></a>6.域名解析</h4><p>登录<a href="https://www.dnspod.cn/" target="_blank" rel="noopener">https://www.dnspod.cn/</a></p>
-<p>阿里云在添加两条yuxuan.art中添加两条记录</p>
+<p>阿里云在添加两条fuzzy.pw中添加两条记录</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1217_10_817.png" alt=""></p>
 <p>第一条记录值是yuxuanart.github.io，第二条记录值是yuxuanart.github.io的ip</p>
 <p>ip地址获取方法是打开cmd</p>
-<pre><code>ping yuxuanart.github.io</code></pre><p>点开github之前创建的仓库，点settings，设置custom domain,输入bqlab.cc</p>
-<p>在namesilo.com中的Domain manager中将域名DNS服务器修改为：</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200527_1251_11_908.png" alt=""></p>
-<p>ns1.alidns.com</p>
-<p>ns2.alidns.com</p>
-<p>在blog根目录/source文件夹里创建记事本，内容就是自己的网址</p>
-<pre><code>yuxuan.art</code></pre><p>退出保存为CNAME,注意保存为所有文件而不是txt文件</p>
+<pre><code>ping fuzzy.github.io</code></pre><p>在blog根目录/source文件夹里创建记事本，内容就是自己的网址</p>
+<pre><code>fuzzy.pw</code></pre><p>退出保存为CNAME,注意保存为所有文件而不是txt文件</p>
 <p>然后输入</p>
 <pre><code class="bash">hexo clean
 hexo g
 hexo d</code></pre>
 <p>fatal  :  yuxuanart deny了bqlion的登入</p>
-<pre><code>git config --global user.name yuxuanart
-git config --global user.email yuxuanart@126.com</code></pre><h4 id="7-更换主题"><a href="#7-更换主题" class="headerlink" title="7.更换主题"></a>7.更换主题</h4><p>我使用的hiker主题，参照<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener">https://github.com/fluid-dev/hexo-theme-fluid</a>设置</p>
-<p>_config.yml修改红框主题为fliud</p>
+<pre><code>git config --global user.name fuzzypw
+git config --global user.email fuzzypw@163.com
+
+git config --global credential.helper wincred
+git credential-manager uninstall</code></pre><h4 id="7-更换主题"><a href="#7-更换主题" class="headerlink" title="7.更换主题"></a>7.更换主题</h4><p>根目录 - theme，git bash</p>
+<pre><code>git clone https://github.com/iTimeTraveler/hexo-theme-hiker.git themes/hiker</code></pre><p>​    </p>
+<p>hexo根目录下的 _config.yml修改红框主题为hiker</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1217_43_784.png" alt=""></p>
+<p>8.添加文章缩略图：</p>
+<p>根目录 -  config.yml - #writing - post_asset_folder :True</p>
 <h4 id="9-发布文章"><a href="#9-发布文章" class="headerlink" title="9.发布文章"></a>9.发布文章</h4><p>可直接把.md文件拖进_post目录，注意在每个.md文件头部插入yml块，输入如下内容配置好标签和分类</p>
 <pre><code>categories:
 - 算法
@@ -271,6 +279,9 @@ tags:
 <p>hexo g</p>
 <p>hexo d</p>
 <p>hexo new &lt;title&gt;</p>
+<ol start="12">
+<li><h4 id="解决文章插入不显示在首页的问题"><a href="#解决文章插入不显示在首页的问题" class="headerlink" title="解决文章插入不显示在首页的问题"></a>解决文章插入不显示在首页的问题</h4></li>
+</ol>
 
             <hr>
           </div>
