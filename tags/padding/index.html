@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>0.文章/NLP_从RNN到Transformer和Bert的代码实现 ~ 刘秉乾的技术博客 :)</title>
+  <title>标签 - padding ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -38,7 +38,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 90vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -109,41 +109,6 @@
             </span>
 
             
-              <br>
-              
-                <p class="mt-3">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期日, 五月 31日 2020, 11:01 上午
-                </p>
-              
-
-              <p>
-                
-                  
-                  &nbsp;<i class="far fa-chart-bar"></i>
-                  <span class="post-count">
-                    267 字
-                  </span>&nbsp;
-                
-
-                
-                  
-                  &nbsp;<i class="far fa-clock"></i>
-                  <span class="post-count">
-                      1 分钟
-                  </span>&nbsp;
-                
-
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
-                  <span id="busuanzi_container_page_pv">
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>&nbsp;
-                
-              </p>
-            
           </div>
 
           
@@ -158,125 +123,35 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 1 篇文章</p>
+  <hr>
+  
+    
       
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          <div class="markdown-body">
-            <h1 id="从0构建：RNN-WE-LSTM-amp-GRU-SEQ2SEQ-Attention-Transformer-BERT"><a href="#从0构建：RNN-WE-LSTM-amp-GRU-SEQ2SEQ-Attention-Transformer-BERT" class="headerlink" title="从0构建：RNN - WE - LSTM&amp;GRU - SEQ2SEQ - Attention - Transformer - BERT"></a>从0构建：RNN - WE - LSTM&amp;GRU - SEQ2SEQ - Attention - Transformer - BERT</h1><p>本文是阅读Kaggle玩家Mr_KnowNothing在toxic比赛下写的Notebook所做的学习笔记。</p>
-<p>本文如标题所示，包括如下几个内容：</p>
-<ul>
-<li>Simple RNN</li>
-<li>Word Embedding</li>
-<li>LSTM</li>
-<li>GRU</li>
-<li>Bi - Directional RNN</li>
-<li>Encoder - Decoder Model (Seq2Seq)</li>
-<li>Attention Models</li>
-<li>Transformers - Attention is all you need</li>
-<li>BERT</li>
-</ul>
-<p>每个内容都由如下四个部分构成：</p>
-<ul>
-<li>基本概览</li>
-<li>深入理解：一些对他们有深入理解的超链接（视频和文章）</li>
-<li>code实现</li>
-<li>code讲解</li>
-</ul>
-<p>本文是baseline性质，目标并不是为了获得高LB分数。</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><pre><code class="python">import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-from tqdm import tqdm
-from sklearn.model_selection import train_test_split
-import tensorflow as tf
-from keras.models import Sequential
-from keras.layers.recurrent import LSTM, GRU,SimpleRNN
-from keras.layers.core import Dense, Activation, Dropout
-from keras.layers.embeddings import Embedding
-from keras.layers.normalization import BatchNormalization
-from keras.utils import np_utils
-from sklearn import preprocessing, decomposition, model_selection, metrics, pipeline
-from keras.layers import GlobalMaxPooling1D, Conv1D, MaxPooling1D, Flatten, Bidirectional, SpatialDropout1D
-from keras.preprocessing import sequence, text
-from keras.callbacks import EarlyStopping
+      <p class="h5">2020</p>
+    
+    <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_CNN_padding%E5%A1%AB%E5%85%85/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">0.概念/NLP_CNN_padding填充</span>
+      <span style="float: right;">06-05</span>
+    </a>
+  
+</div>
 
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-%matplotlib inline
-from plotly import graph_objs as go
-import plotly.express as px
-import plotly.figure_factory as ff</code></pre>
-
-            <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
-                
-                  <a class="hover-with-bg" href="/categories/%E6%96%87%E7%AB%A0">文章</a>
-                  &nbsp;
-                
-              </span>&nbsp;&nbsp;
-            
-            
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/Transformer">Transformer</a>
-                
-                  <a class="hover-with-bg" href="/tags/RNN">RNN</a>
-                
-                  <a class="hover-with-bg" href="/tags/LSTM">LSTM</a>
-                
-                  <a class="hover-with-bg" href="/tags/GRU">GRU</a>
-                
-                  <a class="hover-with-bg" href="/tags/BiRNN">BiRNN</a>
-                
-                  <a class="hover-with-bg" href="/tags/Seq2seq">Seq2seq</a>
-                
-                  <a class="hover-with-bg" href="/tags/Attention">Attention</a>
-                
-                  <a class="hover-with-bg" href="/tags/BERT">BERT</a>
-                
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="d-none d-lg-block col-lg-2 toc-container">
-      
-  <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
-    <div id="tocbot"></div>
-  </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-  </div>
-</div>
-
     
   </main>
 
@@ -349,11 +224,6 @@ import plotly.figure_factory as ff</code></pre>
 
 
 
-  
-    <script src="/lib/tocbot/tocbot.min.js" ></script>
-  
-  <script src="/js/post.js" ></script>
-
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -394,7 +264,7 @@ import plotly.figure_factory as ff</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "0.文章/NLP_从RNN到Transformer和Bert的代码实现&nbsp;",
+        "标签 - padding&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

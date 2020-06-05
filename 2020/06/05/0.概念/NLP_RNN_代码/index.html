@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>标签 - RNN ~ 刘秉乾的技术博客 :)</title>
+  <title>0.概念/NLP_RNN_代码 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -38,7 +38,7 @@
 
 
 <body>
-  <header style="height: 90vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -109,6 +109,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 六月 5日 2020, 1:41 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    379 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -123,47 +158,110 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 3 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_RNN_%E4%BB%A3%E7%A0%81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">0.概念/NLP_RNN_代码</span>
-      <span style="float: right;">06-05</span>
-    </a>
-  
-    
-    <a href="/2020/05/31/0.%E6%96%87%E7%AB%A0/Kaggk_toxic_%E4%BB%8ERNN%E5%88%B0Transformer%E5%92%8CBert%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">0.文章/Kaggk_toxic_从RNN到Transformer和Bert的代码实现</span>
-      <span style="float: right;">05-31</span>
-    </a>
-  
-    
-    <a href="/2020/05/18/0.%E6%A6%82%E5%BF%B5/NLP_RNN%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">0.概念/NLP_RNN循环神经网络</span>
-      <span style="float: right;">05-18</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="RNN代码实现与注释"><a href="#RNN代码实现与注释" class="headerlink" title="RNN代码实现与注释"></a>RNN代码实现与注释</h1><p>RNN - recurrent neural network - 循环神经网络，如概念文章所描述，是一个擅长处理序列化数据的网络。</p>
+<p>在这个网络中，上一个步骤的输出是下一个步骤的输入，在传统的神经网络中，所有的输入-输出都是彼此的依赖项。</p>
+<p>但是在预测下一个词的业务场景中，预测单词需要记住之前的所有词，所以RNN就很适用于这种情况with a help of hidden layer。</p>
+<p>这篇代码记录源于kaggle toxic比赛的notebook，代码是有上下文的，代码的上文就是对比赛的train和validate和test数据进行了必要的处理，切分等操作，如下</p>
+<pre><code class="python">xtrain, xvalid, ytrain, yvalid = train_test_split(train.comment_text.values, train.toxic.values, 
+                                                  stratify=train.toxic.values, 
+                                                  random_state=42, 
+                                                  test_size=0.2, shuffle=True)</code></pre>
+<p>数据经过了清洗，切分，现在是xtrian,xvalid的形态。</p>
+<p>数据令牌化，然后将text转换为seq，并进行padding</p>
+<pre><code class="python"># using keras tokenizer here
+token = text.Tokenizer(num_words=None)
+max_len = 1500
 
-              </div>
-            </div>
+token.fit_on_texts(list(xtrain) + list(xvalid))
+xtrain_seq = token.texts_to_sequences(xtrain)
+xvalid_seq = token.texts_to_sequences(xvalid)
+
+#zero pad the sequences
+xtrain_pad = sequence.pad_sequences(xtrain_seq, maxlen=max_len)
+xvalid_pad = sequence.pad_sequences(xvalid_seq, maxlen=max_len)
+
+word_index = token.word_index</code></pre>
+<p>模型的建立、编译</p>
+<pre><code class="python">%%time
+with strategy.scope():
+    # A simpleRNN without any pretrained embeddings and one dense layer
+    model = Sequential()
+    model.add(Embedding(len(word_index) + 1,
+                     300,
+                     input_length=max_len))
+    model.add(SimpleRNN(100))
+    model.add(Dense(1, activation=&#39;sigmoid&#39;))
+    model.compile(loss=&#39;binary_crossentropy&#39;, optimizer=&#39;adam&#39;, metrics=[&#39;accuracy&#39;])
+
+model.summary()</code></pre>
+<p>【out】：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200605_1459_56_526.png" alt=""></p>
+<p>模型在数据集和训练集上的拟合</p>
+<pre><code class="python">model.fit(xtrain_pad, ytrain, nb_epoch=5, batch_size=64*strategy.num_replicas_in_sync) #Multiplying by Strategy to run on TPU&#39;s</code></pre>
+<p>【out】:</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%A6%82%E5%BF%B5">概念</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/RNN">RNN</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E4%BB%A3%E7%A0%81">代码</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -236,6 +334,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -276,7 +379,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - RNN&nbsp;",
+        "0.概念/NLP_RNN_代码&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

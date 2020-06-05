@@ -136,6 +136,107 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_CNN_padding%E5%A1%AB%E5%85%85/">
+        <p class="h4 index-header">0.概念/NLP_CNN_padding填充</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">padding填充padding的CV解释当卷积操作用于图像处理中时，因为卷积窗口总是从图片的左上角滑到右下角，在这个过程中，图片的四条边界区域总是不能位于卷积窗口的中心，于是产生了信息损失，于是将图片的四周填充上空白，这样卷积窗口滑动的时候就能收集到边界的完整信息，如下图所示：
+
+padding的nlp解释通常在业务场景中，CNN网络处理语言文字的时候并不是一次只处理一句话（一条向量），而是成批量的处理例如64句话（64*向量维）的矩阵。因为向量有长有短，矩阵又必须是长方形，于是在缺口的地方都填充上0。
+tips：如果将向量的长度进行排序后再批量放到不同的矩阵中，这样不同的矩阵就有不同的大小，减少了对0的处理（本质是浪费）可以提高性能。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-05&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_RNN_%E4%BB%A3%E7%A0%81/">
+        <p class="h4 index-header">0.概念/NLP_RNN_代码</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">RNN代码实现与注释RNN - recurrent neural network - 循环神经网络，如概念文章所描述，是一个擅长处理序列化数据的网络。
+在这个网络中，上一个步骤的输出是下一个步骤的输入，在传统的神经网络中，所有的输入-输出都是彼此的依赖项。
+但是在预测下一个词的业务场景中，预测单词需要记住之前的所有词，所以RNN就很适用于这种情况with a help of hidden layer。
+这篇代码记录源于kaggle toxic比赛的notebook，代码是有上下文的，代码的上文就是对比赛的train和validate和test数据进行了必要的处理，切分等操作，如下
+xtrain, xvalid, ytrain, yvalid = train_test_split(train.comment_text.values, train.toxic.values, 
+                                                  stratify=train.toxic.values, 
+                            </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-05&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/04/0.%E6%A6%82%E5%BF%B5/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_ConfusedMatrix_%E5%87%86%E7%A1%AE%E7%8E%87&%E5%8F%AC%E5%9B%9E%E7%8E%87&ROC&AUC/">
+        <p class="h4 index-header">0.概念/机器学习_ConfusedMatrix_准确率&amp;召回率&amp;ROC&amp;AUC</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Confused Matrix如何衡量一个机器学习模型的效果？不能只看准确率，因为准确率这个评价标准不足以全面评价模型。
+先看两个失败的分类模型：
+假如意大利展开了新冠肺炎排查行动，暂不管具体是如何排查，输出结果的数学模型是:
+
+把所有人的检测结果都输出为“没有肺炎”，这个时候假设10000个样本，只有2个人得了，准确率高达99.98%，但是这个模型就是个废物，把目的完全丢弃了。
+把所有人的检测结果都输出为“有肺炎”，这样能确保阳性样本检出率为100%，但是对所有人都采取隔离措施浪费巨大。这种检测手段也是废物。
+
+几个定义：
+上述检测肺炎的例子中，携带病毒为阳性（有敌机，有怀孕），不携带病毒为阴性（气球，无敌机，没怀孕）。把confused matrix画出来如下所示：
+
+更生动的例子：
+
+召回率和准确率一般来说，阳性的例子是检测目标。如果FN假阴性太多，就说这个模型的召回率很低，自然风险控制能力很差（放走了病毒携带者/敌机）。
+
+如果FP假阳性太多，我们就说这种方法的准确率很低，把大量正常人隔离，对假目标比如气球发射导弹。自然这种方法很浪费。
+
+如下所示，召回率（recall）是左侧</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-04&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/06/04/0.%E6%A6%82%E5%BF%B5/Python_keras_layer%E6%A6%82%E5%86%B5/">
         <p class="h4 index-header">0.概念/Python_keras_layer概况</p>
         
@@ -248,15 +349,24 @@ model.add(Activation(&#39;relu&#39;))
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/31/0.%E6%96%87%E7%AB%A0/NLP_%E4%BB%8ERNN%E5%88%B0Transformer%E5%92%8CBert%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
-        <p class="h4 index-header">0.文章/NLP_从RNN到Transformer和Bert的代码实现</p>
+      <a href="/2020/05/31/0.%E6%96%87%E7%AB%A0/Kaggk_toxic_%E4%BB%8ERNN%E5%88%B0Transformer%E5%92%8CBert%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+        <p class="h4 index-header">0.文章/Kaggk_toxic_从RNN到Transformer和Bert的代码实现</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">从0构建：RNN - WE - LSTM&amp;GRU - SEQ2SEQ - Attention - Transformer - BERT本文是阅读Kaggle玩家Mr_KnowNothing在toxic比赛下写的Notebook所做的学习笔记。
-本文如标题所示，包括如下几个内容：
+          <div class="index-text mb-1">从0构建：RNN - WE - LSTM&amp;GRU - SEQ2SEQ - Attention - Transformer - BERTTOXIC比赛阐述目的：
+测试集来源于wiki讨论区（多语言），输出测试集中每一条评论是否为有毒评论（有毒输1，没毒输0）。
+训练集：
+前两次比赛的英文数据。
+注意点：
+
+有毒是情感分析中专门的一类，要查阅文献了解研究前沿
+测试集是跨语言的，怎么处理跨语言。是五种语言分别建模还是都翻译成英语？
+Jigsaw的API Perspective可以使用越来越多的语言为有毒评论分类提供服务。据他们自己所说，去年一年该领域从最新的模型创新中获得了令人印象深刻的多语言功能。包括few- and zero-shot learning。
+
+Mr_KnowNothing的Notebook笔记本文如标题所示，包括如下几个内容：
 
 Simple RNN
 Word Embedding
@@ -265,19 +375,7 @@ GRU
 Bi - Directional RNN
 Encoder - Decoder Model (Seq2Seq)
 Attention Models
-Transformers - Attention is all you need
-BERT
-
-每个内容都由如下四个部分构成：
-
-基本概览
-深入理解：一些对他们有深入理解的超链接（视频和文章）
-code实现
-code讲解
-
-本文是baseline性质，目标并不是为了获得高LB分数。
-准备工作import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_c</div>
+Transformers </div>
         </div>
       </a>
 
@@ -1556,95 +1654,6 @@ mnist 数据集有张图片作为训练数据，张图片作为测试数据。�
 训练 10 个Epoch后，模型权重更新的次数： 
 不同Epoch的训练，其实用的是同一个训练集的数据。第1个Epoch和第10个Epoch虽然用的都是训练集的图片，但是对模型的权重更新值却是完全不同的。因为不同Epoch的模型处于代价函数空间上的不同位置，模型的训练代越靠后，越接近谷底，其代价越小。
 总共完成30000次迭代，相当于完成了个Epoch
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/0.%E6%A6%82%E5%BF%B5/NLP_epoch/">
-        <p class="h4 index-header">0.概念/NLP_epoch</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Epoch定义训练集的所有数据对模型进行了一次完整训练，称为“一代训练”（epoch）。
-也就是说所有训练样本在神经网络中都进行了一次正向传播和一次反向传播。
-为什么要进行多于一次的epoch？神经网络中传递完整的数据集一次是不够的，而且我们需要将完整的数据集在同样的神经网络中传递多次。
-但是因为使用的是有限的数据集，并且使用一个迭代过程也就是梯度下降来优化学习过程。如下图所示，随着epoch的增加，神经网络的权重更新次数也在增加，曲线从欠拟合变成了过拟合。所以需要选择合适的epoch。
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B1%A0%E5%8C%96/">
-        <p class="h4 index-header">0.概念/NLP_池化</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">池化池化是什么卷积之后往往是池化操作，which可以降低卷积输出的特征向量，避免过拟合。
-以最大池化max pooling为例：整个图像被分为不重叠的若干小块，每个小块内取最大的数字，然后保持原平面结构，得出output。
-
-​    
-池化的作用感受到不变性，增大感受野。
-减小下一层的输入大小，减小计算量和参数个数，降维。
-如上图，第一行是卷积，第二行是池化。经过这两行操作，“横折”这个点，不论做平移旋转或者伸缩，都有相同的输出。于是
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/0.%E6%A6%82%E5%BF%B5/NLP_%E5%8D%B7%E7%A7%AF/">
-        <p class="h4 index-header">0.概念/NLP_卷积</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">卷积机器学习中的卷积操作的核心就是“对应相乘”。feature和原图的各部位分别相乘相加求均值，把原图遍历一道，便得到结果。如下所示，采用不同的卷积核可得到不同的结果图。
-
 </div>
         </div>
       </a>

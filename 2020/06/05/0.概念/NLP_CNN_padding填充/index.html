@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>标签 - RNN ~ 刘秉乾的技术博客 :)</title>
+  <title>0.概念/NLP_CNN_padding填充 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -38,7 +38,7 @@
 
 
 <body>
-  <header style="height: 90vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -109,6 +109,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 六月 5日 2020, 2:01 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    264 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -123,47 +158,75 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 3 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_RNN_%E4%BB%A3%E7%A0%81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">0.概念/NLP_RNN_代码</span>
-      <span style="float: right;">06-05</span>
-    </a>
-  
-    
-    <a href="/2020/05/31/0.%E6%96%87%E7%AB%A0/Kaggk_toxic_%E4%BB%8ERNN%E5%88%B0Transformer%E5%92%8CBert%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">0.文章/Kaggk_toxic_从RNN到Transformer和Bert的代码实现</span>
-      <span style="float: right;">05-31</span>
-    </a>
-  
-    
-    <a href="/2020/05/18/0.%E6%A6%82%E5%BF%B5/NLP_RNN%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">0.概念/NLP_RNN循环神经网络</span>
-      <span style="float: right;">05-18</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="padding填充"><a href="#padding填充" class="headerlink" title="padding填充"></a>padding填充</h1><h4 id="padding的CV解释"><a href="#padding的CV解释" class="headerlink" title="padding的CV解释"></a>padding的CV解释</h4><p>当卷积操作用于图像处理中时，因为卷积窗口总是从图片的左上角滑到右下角，在这个过程中，图片的四条边界区域总是不能位于卷积窗口的中心，于是产生了信息损失，于是将图片的四周填充上空白，这样卷积窗口滑动的时候就能收集到边界的完整信息，如下图所示：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200605_1405_49_378.png" alt=""></p>
+<h4 id="padding的nlp解释"><a href="#padding的nlp解释" class="headerlink" title="padding的nlp解释"></a>padding的nlp解释</h4><p>通常在业务场景中，CNN网络处理语言文字的时候并不是一次只处理一句话（一条向量），而是成批量的处理例如64句话（64*向量维）的矩阵。因为向量有长有短，矩阵又必须是长方形，于是在缺口的地方都填充上0。</p>
+<p>tips：如果将向量的长度进行排序后再批量放到不同的矩阵中，这样不同的矩阵就有不同的大小，减少了对0的处理（本质是浪费）可以提高性能。</p>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%A6%82%E5%BF%B5">概念</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/CNN">CNN</a>
+                
+                  <a class="hover-with-bg" href="/tags/padding">padding</a>
+                
+                  <a class="hover-with-bg" href="/tags/stride">stride</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -236,6 +299,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -276,7 +344,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - RNN&nbsp;",
+        "0.概念/NLP_CNN_padding填充&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,
