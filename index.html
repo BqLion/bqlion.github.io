@@ -136,6 +136,264 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/11/0.%E6%A6%82%E5%BF%B5/NLP_Bert%E7%A0%94%E7%A9%B6_WordEmbedding/">
+        <p class="h4 index-header">0.概念/NLP_Bert研究_WordEmbedding</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">BERT研究_WordEmbedding本session目的：如下，省略掉Transformer以下所有的模型的冗长发展史直接从Transformer学起。毕竟LSTM也是从更简单的模型发展来的，无限dive一下就到牛三去了。有所取舍cannot agree more。
+RNN 和 LSTM都是原始模型，在他们的基础之上改进除了双向LSTM，后边的Attention可以称之为带有注意力的LSTM,其实也就是LSTM的爆改模型。而Transformer则是在Attention之上的更进一步的改装模型。
+作者提出观点：希望能够直接认识Transformer和之上的bert，省略掉下面冗长的历史（我同意，毕竟LSTM和RNN也是从别的更原始的数学模型改装来的，无限往下细化就没有尽头了。）
+
+ChrisMcCormickAI认为了解新算法的一般方法
+直接找教程、博客文章、原始paper来看。不要硬刚code那样可读性太差。
+直接看原始paper，不要无限延伸到其他基础模型。（作者直接调出了bert的paper）
+
+
+BERT - word embeddingBERT是一个pre-trained</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-11&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/10/0.%E6%A6%82%E5%BF%B5/NLP_GRU_%E4%BB%A3%E7%A0%81_toxic_kaggle/">
+        <p class="h4 index-header">0.概念/NLP_GRU_代码_toxic_kaggle</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1"></div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-10&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/09/0.%E6%A6%82%E5%BF%B5/NLP_LSTM_kaggle_toxic%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+        <p class="h4 index-header">0.概念/NLP_LSTM_kaggle_toxic代码实现</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LSTM模型在kaggle_toxic比赛中的代码实现embedding_matrix = np.zeros((len(word_index) + 1, 300))
+for word, i in tqdm(word_index.items()):
+    embedding_vector = embeddings_index.get(word)
+    if embedding_vector is not None:
+        embedding_matrix[i] = embedding_vector
+%%time
+with strategy.scope():
+
+    # A simple LSTM with glove embeddings and one dense layer
+    model = Sequential()
+    model.add(Embedding(len(word_index) + 1,
+                     300,
+                     weights=[embedding_matrix],
+    </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-09&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/07/0.%E6%96%87%E7%AB%A0/%E9%9D%92%E5%B7%A5%E5%A7%94%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E7%9B%B4%E6%92%AD%E7%AC%94%E8%AE%B0/">
+        <p class="h4 index-header">0.文章/青工委论文分享直播笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">青工委论文分享直播笔记1.青工委是国内很强的NLP的学术团体，有刘洋刘知远这种大牛成员。
+2.青工委隶属于CIPSC，中国中文信息学会网站：http://www.cipsc.org.cn/
+3.认可度高的会议：ACL,IJCAI,SIGIR,AAAI,EMNLP&amp;CIKM:（中了自然有组织找上门）
+4.青工委2020学术活动list：
+
+5.青工委学术活跃委员与合作单位list
+
+
+6.研究前沿：
+
+
+对话系统和信息抽取是热点研究方向
+情感分析都是sentence-level和基于文本推理的
+
+7.机器学习的新的轮子
+
+8.多语言模型是热点（落地意义大）
+
+mBERT Probing
+9.多语言论文有29篇：
+
+10.多语言学习论文选读
+从结果上来说，有监督学习的效果比无监督学习的效果好。有监督和无监督的2020代表性论文分别是：
+
+无监督学习：
+UniTrans
+Unsupverised Domain Adaptation
+
+
+有监督学习：
+Bilingual Paraphrase Generation
+Multilingual Word Sense Disambiguati</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-07&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/06/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_WordEmbedding%E4%BB%A3%E7%A0%81/">
+        <p class="h4 index-header">0.概念/NLP_词向量_WordEmbedding代码</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Word_embedding 代码自己定义各个单词的维度是一个工作量巨大、需要深入理解语言内核的工作，而且本工作有很强的复用性。于是不必自己在每一个project中定义各个单词的维度然后算出整个语料库的向量表示，完全可以使用前人算好的结果，比如Glove vector：http://www-nlp.stanford.edu/data/glove.840B.300d.zip 。
+其他的选项还有word2vec或者fasttext。
+kaggle multi-toxic比赛中用到了glove-840b-300d的word embedding人，如下，读入840-300d的模型，遍历所有的line，输出embedding向量的个数。
+# load the GloVe vectors in a dictionary:
+
+embeddings_index = {}
+f = open(&#39;/kaggle/input/glove840b300dtxt/glove.840B.300d.txt&#39;,&#39;r&#39;,encoding=&#39;utf-8&#39;)
+for line </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-06&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/06/0.%E6%A6%82%E5%BF%B5/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_%E8%AE%AD%E7%BB%83%E9%9B%86&%E6%B5%8B%E8%AF%95%E9%9B%86&%E9%AA%8C%E8%AF%81%E9%9B%86&%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1/">
+        <p class="h4 index-header">0.概念/机器学习_训练集&amp;测试集&amp;验证集&amp;无偏估计</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">训练集&amp;测试集&amp;验证集
+训练集trian set： 是用来拟合模型的数据集，因为是整体样本数据的一部分，所以虽然他规模最大但是仍然存在有偏估计的问题。
+测试集test set：最终模型训练好后，用来提供相对于trian+valid set
+validation set：提供相对于训练集的无偏估计的数据集
+
+无偏估计：
+当样本分布的平均值等于总体样本的平均值的时候这个估计就是无偏估计。
+比如全市十万名小学生的考试成绩的期望（平均值）是60分，那么部分差的小学的平均值就是45分，这个估计就是有偏估计；对全市所有的小学分别随机抽取出100个样本，这个样本的平均值就是60分，和总体十万个样本的平均值相同，这个估计就是无偏估计。
+train set 毕竟是整体样本的一部分，不是严格的分层取样所以必然存在有偏估计，validation set就是在train和test上都平均取样的set，解决了有偏估计的问题。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-06&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/06/0.%E6%A6%82%E5%BF%B5/NLP_LSTM_input&outputShape/">
+        <p class="h4 index-header">0.概念/NLP_LSTM_input&amp;outputShape</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LSTM （RNN）的输入输出形状辨析
+在Keras 的LSTM模型中，LSTM的input形状总是一个三维的向量(input_dim,batch_size,time_steps)，如下所示。
+建立模型的代码：
+model = keras.models.Sequential()
+model.add(keras.layer.LSTM(units=3,input_shape=(2,10)))
+关于模型summary输出的代码:
+model = keras.models.Sequential()
+model.add(keras.layers.LSTM(units=3,input_shape(2,10),return_sequences=False))
+model.summary()
+
+因为不知道batch_size,所以output shape第一个参数为none，其实应该是(batch_size,3)
+总结
+LSTM的输入总是一个3D矩阵（batch_size,dim,seq_len）
+LSTM的输出是一个2D或者3D矩阵（根据return_sequences不同而有所不同）
+If ret</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-06&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_CNN_padding%E5%A1%AB%E5%85%85/">
         <p class="h4 index-header">0.概念/NLP_CNN_padding填充</p>
         
@@ -165,8 +423,8 @@ tips：如果将向量的长度进行排序后再批量放到不同的矩阵中�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_RNN_%E4%BB%A3%E7%A0%81/">
-        <p class="h4 index-header">0.概念/NLP_RNN_代码</p>
+      <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_RNN_%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+        <p class="h4 index-header">0.概念/NLP_RNN_代码实现</p>
         
         
           
@@ -751,25 +1009,22 @@ GRU模型GRU模型的主要思想是，我们希望能够保存一些记忆，�
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">LSTMLSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。
+          <div class="index-text mb-1">LSTMLSTM是什么？GRU可以在序列中学习较长的序列连接，另一种允许你很好的处理长距离序列连接的模型就是LSTM—长短时记忆单元，这个模型比GRU更加强大。
+LSTM原始论文中采取了大量的篇幅来分析梯度消失的原因，吴恩达不建议读原始论文来了解LSTM的细节。
+控制LSTM行为的核心等式
+
+ct，at是维持的状态值（时时更新），u，f，o分别是更新门，遗忘门，输出门。
+LSTM的内部结构图：
+
+Runtime LSTM结构图：
+
+如上的红线表示了通过适当地设置了更新们和遗忘门后，一些数据可以长效地被记住的过程。（从左到右一直被维持着。）
 朴素RNN与展开是一种处理序列数据的神经网络，某单词根据上下文变化而有不同含义这种任务就适合交给RNN来做。
 
 RNN在时序上展开
 
 LSTM与RNN结构对比长短期记忆（Long short-term memory, LSTM）是一种特殊的RNN，主要是为了解决长序列训练过程中的梯度消失和梯度爆炸问题。简单来说，就是相比普通的RNN，LSTM能够在更长的序列中有更好的表现。
-LSTM结构和普通RNN的对比图如下，LSTM有两个传输状态，分别是cell state ct 和 hidden state ht，一般ct改变的很慢，通常是上一个ct加上一些数值。不同的时序下ht改变很快。
-而RNN只有一个传输状态也就是ht，对应于LSTM中的ct。 
-
-LSTM的一胞三门两终态
-输入门，基本上决定了关心当前向量的强度，或者说当前的cell或者当前输入的词能起多少作用
-公式：
-
-示意图：
-
-
-
-
-遗忘门，是一种分离机制，告诉cell有些时候需要忘记信息或者保留信息。这种情况看起来可能有一些</div>
+LSTM结构和普通RNN的对比图如下，LSTM有两个传输状态，分别是cell</div>
         </div>
       </a>
 
@@ -914,39 +1169,20 @@ seaborn.set_context(context=&quot;ta</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/15/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_Word_embedding%E8%AF%A6%E8%A7%A3/">
-        <p class="h4 index-header">0.概念/NLP_词向量_Word_embedding详解</p>
+      <a href="/2020/05/15/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_WordEmbedding%E8%AF%A6%E8%A7%A3/">
+        <p class="h4 index-header">0.概念/NLP_词向量_WordEmbedding详解</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Word_embedding之前词语数字化表示的几种思路和问题，以及WE的提出：
+          <div class="index-text mb-1">Word_embedding独热码的缺点：
+它只考虑了单个单词在向量中的作用，而没有考虑词语与词语之间的关系。
+如下，有一个训练好的语言模型，要对“I want a glass of orange  ____”进行识别，并预测接下来的词，那么独热码就不能知道apple 和 orange之间的词义相近性，于是不能在算法习得了I want a glass of orange juice之后，泛化地预测 I want a glass of apple juice，这是因为orange和apple在独热码中的编码是完全随机的，并没有因为词性相近就结构也相近，456和6257的位置并没有章法（随机或者按照词频分布），并且由于独热码的结构特殊性，任何两个独热向量相乘的结果都是0。
+特征化表示：
+所以自然地，我们使用这些词的特征化表示，比如把性别作为一个维度来度量这些词，男的是-1，女的是1，然后king就可以是-0.95,queen就是0.97，橘子和苹果就是基本性别中性的词。另一个维度是有多高贵，明显king和queen是高贵的词而apple和orange的高贵属性为接近0的数字。
 
-独热码离散表示：红橙黄绿青蓝紫大卡车和红橙黄绿青蓝紫中卡车是2 * 7 = 14个对象
-
-
-构建特征的分布式表示：红橙黄绿青蓝紫大卡车和红橙黄绿青蓝紫中卡车是7 + 2 = 9个对象
-
-
-
-
-邻接词的分布式表示：
-
-
-离散表示太稀疏，使用一个词附近的词分布式表示是不错的折中方案。
-WE的概念图（同义相近）：
-
-WE的目标：把单词转换为数字（向量）。
-这种转换是必要的，因为深度神经网络等技术都只能处理连续值的向量，不能处理文本和字符串。
-把单词变成向量还有如下两个好处：
-
-降维：更高效的表示方法
-上下文相似性：更有表达力的表示方法
-
-词向量的训练方法:
-使用语料库和模型训练词向量，把嵌入矩阵embedding matrix当成模型参数的一部分，通过词语词之间的共现矩阵或者上下文关系来优化模型参数，最终得到的矩阵就是所有词的词向量。最初的词向量都是随机初始化的，后边采用标准训练和优化。
-</div>
+如下是对词</div>
         </div>
       </a>
 
@@ -1374,293 +1610,6 @@ transformer组件
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-28&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/28/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/Chrome%20OS%E5%88%9D%E5%A7%8B%E5%8C%96%E6%93%8D%E4%BD%9C/">
-        <p class="h4 index-header">4.安装调试记录/Chrome OS初始化操作</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Chrome OS初始化操作0.进入开发者模式，esc + f３ + 电源，then ctrl + D 
-1.参见“共享代理文章”，用手机和电脑开启代理共享，chromebook连上wifi，登陆谷歌账号，不断重试，连接google play（这一步非常耗时）。
-2.安装包管理工具crew  Ctrl + Alt +t  curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
-3.安装ssr  在主流的apk网站上下载并安装ssr，登陆amytelecom，将信息复制到ssr中，删除无关的免费节点。
-4.安装马克飞象，印象笔记
-5.setting中安装linux，打开linux命令行输入sudo apt install vim-gtk3安装gvim
-6.用gvim打开rsa_pub，在linux中连接github，将post项目拉下来
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-28&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/23/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/chromebook%E4%BB%A3%E7%90%86%E5%85%B1%E4%BA%AB/">
-        <p class="h4 index-header">4.安装调试记录/chromebook代理共享</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.下载ssr
-2.google免费ssr节点，复制粘贴。连接ssr，右键ssr图标-选项设置-允许来自局域网的连接。
-3.电脑连接手机热点，电脑打                          开热点共享，chromebook连接电脑发射的热点
-4.电脑win+R,cmd,ipconfig,得到如下所示ip信息
-
-5.chromebook点击所连接wifi热点，点击热点详情-连接类型-手动配置代理-输入上图ip，端口号是1080（详见第2条中允许来自局域网连接的按钮周围的端口信息）。
-6.登录，done。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-23&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/21/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_SST/">
-        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_SST</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment_Analysis SSTSST项目基本信息
-SST斯坦福链接
-SST工作展示蓝色是正面情绪，黄色是负面，灰色是中性情绪。叶子节点的merge原理暂时未知。They said it would be great这句话下边都是正面情绪，直到跟节点的they才恢复为中性情绪，因为they said其实不能反映出作者的 bias。
-而后边接上的they were wrong明显是负面，然后merge后总体就是负面情绪了。这个总体的判断要比直接把一句话拆开按照各个单词的正负性简单sum要靠谱很多。
-
-verse vesa
-
-Readers讲解
-In [5]、In [6]中的train_reader参数详解
-
-
-
-
-meaning
-
-
-
-class_func=sst.binary_class_func
-二分类问题
-
-
-class_func=sst.ternary_class_func
-三分类问题
-
-
-class_func=None
-五分类问题
-
-
-核心类 ： nltk.tree.Tree输入一个tree：
-
-循环打印各个subtree：
-
-输出tree的lable和subtre</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-21&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/19/0.%E6%96%87%E7%AB%A0/python_env_kag1_yml/">
-        <p class="h4 index-header">0.文章/python_env_kag1_yml</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">environment_ymlname: kag1
-channels:
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
-  - defaults
-dependencies:
-  - absl-py=0.9.0=py37_0
-  - astor=0.7.1=py_0
-  - attrs=19.3.0=py_0
-  - boto=2.49.0=py_0
-  - boto3=1.12.11=py_0
-  - botocore=1.15.11</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/19/0.%E6%96%87%E7%AB%A0/python_%E7%8E%AF%E5%A2%83%E8%BF%81%E7%A7%BB/">
-        <p class="h4 index-header">0.文章/python_环境迁移</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">python环境迁移copy from：WenShan`s blog
-Conda 是著名的包管理器和虚拟环境管理器。
-在配置完项目环境，并编写和测试代码后，您可能希望将其移至另一台计算机。
-Conda 提供了多种保存和移动环境的方法。
-Clone在本地，conda 可以方便地创建环境的快照或者备份：
-1 conda create --name snapshot --clone myenv Spec List如果需要在具有 相同操作系统 的计算机之间复制环境，则可以生成 spec list。
-生成 spec list 文件：
-1 conda list --explicit &gt; spec-list.txt 重现环境：
-1 conda create  --name python-course --file spec-list.txt Environment.yml也可以使用 -export 选项生成一个 environment.yml 文件，以在 不同的平台和操作系统之间 复现项目环境。 spec list 文件和 environment.yml 文件之间的区别在于： environm</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-19&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/18/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_%E6%9D%90%E6%96%99%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/">
-        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_材料和预处理</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment Analysis阅读材料和数据预处理核心阅读材料
-
-情感分析各子领域合适的切入点。他们入选的原因是位置合适以及有公开数据集
-
-常用情感分析数据库
-
-lexica
-
-preprocessingpreprocessing ： tokenizing
-
-preprocessing : 词干化stemming
-
-porter stemming演示
-
-兰开斯特stemming演示
-
-wordNet stemming演示
-
-preprocessing:  POS tagging
-有些英文单词的sentiment只能通过pos来确定。
-
-需要注意的是即使有些单词的pos tagging一模一样仍然会有相反的sentiment
-
-preprocessing : 简单情感标记和推荐阅读
-
-简单负面情绪标记示例
-
-推荐阅读
-
-负面情绪标记带来的性能提升
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-18&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/08/0.%E6%A6%82%E5%BF%B5/NLP_batchsize/">
-        <p class="h4 index-header">0.概念/NLP_batchsize</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">BatchSize机器学习训练中，把数据集分割成若干个batch，每个batch的大小叫做batchsize。
-对batchsize、epoch、iteration的举例：
-mnist 数据集有张图片作为训练数据，张图片作为测试数据。假设现在选择 Batch_Size = 对模型进行训练。迭代次。
-
-每个 Epoch 要训练的图片数量：(训练集上的所有图像)
-训练集具有的 Batch 个数： 
-每个 Epoch 需要完成的 Batch 个数：
-每个 Epoch 具有的 Iteration 个数：（完成一个Batch训练，相当于参数迭代一次）
-每个 Epoch 中发生模型权重更新的次数：
-训练 10 个Epoch后，模型权重更新的次数： 
-不同Epoch的训练，其实用的是同一个训练集的数据。第1个Epoch和第10个Epoch虽然用的都是训练集的图片，但是对模型的权重更新值却是完全不同的。因为不同Epoch的模型处于代价函数空间上的不同位置，模型的训练代越靠后，越接近谷底，其代价越小。
-总共完成30000次迭代，相当于完成了个Epoch
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-08&nbsp;&nbsp;
         
         
         

@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>0.概念/NLP_RNN_代码 ~ 刘秉乾的技术博客 :)</title>
+  <title>0.概念/NLP_词向量_WordEmbedding详解 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期五, 六月 5日 2020, 1:41 下午
+                  星期五, 五月 15日 2020, 12:06 中午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    379 字
+                    689 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -167,47 +167,39 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="RNN代码实现与注释"><a href="#RNN代码实现与注释" class="headerlink" title="RNN代码实现与注释"></a>RNN代码实现与注释</h1><p>RNN - recurrent neural network - 循环神经网络，如概念文章所描述，是一个擅长处理序列化数据的网络。</p>
-<p>在这个网络中，上一个步骤的输出是下一个步骤的输入，在传统的神经网络中，所有的输入-输出都是彼此的依赖项。</p>
-<p>但是在预测下一个词的业务场景中，预测单词需要记住之前的所有词，所以RNN就很适用于这种情况with a help of hidden layer。</p>
-<p>这篇代码记录源于kaggle toxic比赛的notebook，代码是有上下文的，代码的上文就是对比赛的train和validate和test数据进行了必要的处理，切分等操作，如下</p>
-<pre><code class="python">xtrain, xvalid, ytrain, yvalid = train_test_split(train.comment_text.values, train.toxic.values, 
-                                                  stratify=train.toxic.values, 
-                                                  random_state=42, 
-                                                  test_size=0.2, shuffle=True)</code></pre>
-<p>数据经过了清洗，切分，现在是xtrian,xvalid的形态。</p>
-<p>数据令牌化，然后将text转换为seq，并进行padding</p>
-<pre><code class="python"># using keras tokenizer here
-token = text.Tokenizer(num_words=None)
-max_len = 1500
-
-token.fit_on_texts(list(xtrain) + list(xvalid))
-xtrain_seq = token.texts_to_sequences(xtrain)
-xvalid_seq = token.texts_to_sequences(xvalid)
-
-#zero pad the sequences
-xtrain_pad = sequence.pad_sequences(xtrain_seq, maxlen=max_len)
-xvalid_pad = sequence.pad_sequences(xvalid_seq, maxlen=max_len)
-
-word_index = token.word_index</code></pre>
-<p>模型的建立、编译</p>
-<pre><code class="python">%%time
-with strategy.scope():
-    # A simpleRNN without any pretrained embeddings and one dense layer
-    model = Sequential()
-    model.add(Embedding(len(word_index) + 1,
-                     300,
-                     input_length=max_len))
-    model.add(SimpleRNN(100))
-    model.add(Dense(1, activation=&#39;sigmoid&#39;))
-    model.compile(loss=&#39;binary_crossentropy&#39;, optimizer=&#39;adam&#39;, metrics=[&#39;accuracy&#39;])
-
-model.summary()</code></pre>
-<p>【out】：</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200605_1459_56_526.png" alt=""></p>
-<p>模型在数据集和训练集上的拟合</p>
-<pre><code class="python">model.fit(xtrain_pad, ytrain, nb_epoch=5, batch_size=64*strategy.num_replicas_in_sync) #Multiplying by Strategy to run on TPU&#39;s</code></pre>
-<p>【out】:</p>
+            <h1 id="Word-embedding"><a href="#Word-embedding" class="headerlink" title="Word_embedding"></a>Word_embedding</h1><p><strong>独热码的缺点：</strong></p>
+<p>它只考虑了单个单词在向量中的作用，而没有考虑词语与词语之间的关系。</p>
+<p>如下，有一个训练好的语言模型，要对“I want a glass of orange  ____”进行识别，并预测接下来的词，那么独热码就不能知道apple 和 orange之间的词义相近性，于是<strong>不能在算法习得了I want a glass of orange juice之后，泛化地预测 I want a glass of apple juice</strong>，这是因为orange和apple在独热码中的编码是完全随机的，并没有因为词性相近就结构也相近，456和6257的位置并没有章法（随机或者按照词频分布），并且由于独热码的结构特殊性，任何两个独热向量相乘的结果都是0。</p>
+<p><strong>特征化表示</strong>：</p>
+<p>所以自然地，我们使用这些词的特征化表示，比如把性别作为一个维度来度量这些词，男的是-1，女的是1，然后king就可以是-0.95,queen就是0.97，橘子和苹果就是基本性别中性的词。另一个维度是有多高贵，明显king和queen是高贵的词而apple和orange的高贵属性为接近0的数字。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200606_1446_47_334.png" alt=""></p>
+<p>如下是对词语进行300个维度的向量建模后，投射到1维平面上的示意图：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200606_1448_54_156.png" alt=""></p>
+<p>之前词语数字化表示的几种思路和问题，以及WE的提出：</p>
+<ul>
+<li><p>独热码离散表示：红橙黄绿青蓝紫<strong>大卡车</strong>和红橙黄绿青蓝紫<strong>中卡车</strong>是2 * 7 = 14个对象</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200508_1453_28_279.png" alt=""></p>
+</li>
+<li><p>构建特征的分布式表示：红橙黄绿青蓝紫<strong>大卡车</strong>和红橙黄绿青蓝紫<strong>中卡车</strong>是7 + 2 = 9个对象</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200508_1454_02_846.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li>邻接词的分布式表示：</li>
+</ul>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200329_1534_13_274.png" alt=""></p>
+<p>离散表示太稀疏，使用一个词附近的词分布式表示是不错的折中方案。</p>
+<p>WE的概念图（同义相近）：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200508_1428_00_244.png" alt=""></p>
+<p>WE的目标：把单词转换为数字（向量）。</p>
+<p>这种转换是必要的，因为深度神经网络等技术都只能处理连续值的向量，不能处理文本和字符串。</p>
+<p>把单词变成向量还有如下两个好处：</p>
+<ul>
+<li>降维：更高效的表示方法</li>
+<li>上下文相似性：更有表达力的表示方法</li>
+</ul>
+<p>词向量的训练方法:</p>
+<p>使用语料库和模型训练词向量，把嵌入矩阵embedding matrix当成模型参数的一部分，通过词语词之间的共现矩阵或者上下文关系来优化模型参数，最终得到的矩阵就是所有词的词向量。最初的词向量都是随机初始化的，后边采用标准训练和优化。</p>
 
             <hr>
           </div>
@@ -227,9 +219,7 @@ model.summary()</code></pre>
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/RNN">RNN</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E4%BB%A3%E7%A0%81">代码</a>
+                  <a class="hover-with-bg" href="/tags/Word_Embedding">Word_Embedding</a>
                 
               </span>
             
@@ -379,7 +369,7 @@ model.summary()</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "0.概念/NLP_RNN_代码&nbsp;",
+        "0.概念/NLP_词向量_WordEmbedding详解&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

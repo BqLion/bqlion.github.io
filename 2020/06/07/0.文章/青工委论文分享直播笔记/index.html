@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>0.概念/NLP_词向量_Word_embedding详解 ~ 刘秉乾的技术博客 :)</title>
+  <title>0.文章/青工委论文分享直播笔记 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期五, 五月 15日 2020, 12:06 中午
+                  星期日, 六月 7日 2020, 1:07 下午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    344 字
+                    309 字
                   </span>&nbsp;
                 
 
@@ -167,31 +167,48 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Word-embedding"><a href="#Word-embedding" class="headerlink" title="Word_embedding"></a>Word_embedding</h1><p>之前词语数字化表示的几种思路和问题，以及WE的提出：</p>
+            <h1 id="青工委论文分享直播笔记"><a href="#青工委论文分享直播笔记" class="headerlink" title="青工委论文分享直播笔记"></a>青工委论文分享直播笔记</h1><p>1.青工委是国内很强的NLP的学术团体，有刘洋刘知远这种大牛成员。</p>
+<p>2.青工委隶属于CIPSC，中国中文信息学会网站：<a href="http://www.cipsc.org.cn/" target="_blank" rel="noopener">http://www.cipsc.org.cn/</a></p>
+<p>3.认可度高的会议：ACL,IJCAI,SIGIR,AAAI,EMNLP&amp;CIKM:（中了自然有组织找上门）</p>
+<p>4.青工委2020学术活动list：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1045_21_493.png" alt=""></p>
+<p>5.青工委学术活跃委员与合作单位list</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200607_1322_47_244.png" alt=""></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200607_1323_09_075.png" alt=""></p>
+<p>6.研究前沿：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1017_13_550.png" alt=""></p>
 <ul>
-<li><p>独热码离散表示：红橙黄绿青蓝紫<strong>大卡车</strong>和红橙黄绿青蓝紫<strong>中卡车</strong>是2 * 7 = 14个对象</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200508_1453_28_279.png" alt=""></p>
+<li>对话系统和信息抽取是热点研究方向</li>
+<li>情感分析都是sentence-level和基于文本推理的</li>
+</ul>
+<p>7.机器学习的新的轮子</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1021_52_451.png" alt=""></p>
+<p>8.多语言模型是热点（落地意义大）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1023_31_698.png" alt=""></p>
+<p>mBERT Probing</p>
+<p>9.多语言论文有29篇：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1025_08_394.png" alt=""></p>
+<p>10.多语言学习论文选读</p>
+<p>从结果上来说，有监督学习的效果比无监督学习的效果好。有监督和无监督的2020代表性论文分别是：</p>
+<ul>
+<li>无监督学习：<ul>
+<li>UniTrans</li>
+<li>Unsupverised Domain Adaptation</li>
+</ul>
 </li>
-<li><p>构建特征的分布式表示：红橙黄绿青蓝紫<strong>大卡车</strong>和红橙黄绿青蓝紫<strong>中卡车</strong>是7 + 2 = 9个对象</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200508_1454_02_846.png" alt=""></p>
+<li>有监督学习：<ul>
+<li>Bilingual Paraphrase Generation</li>
+<li>Multilingual Word Sense Disambiguation</li>
+</ul>
 </li>
+<li>还有七篇机器翻译的论文</li>
 </ul>
-<ul>
-<li>邻接词的分布式表示：</li>
-</ul>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200329_1534_13_274.png" alt=""></p>
-<p>离散表示太稀疏，使用一个词附近的词分布式表示是不错的折中方案。</p>
-<p>WE的概念图（同义相近）：</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200508_1428_00_244.png" alt=""></p>
-<p>WE的目标：把单词转换为数字（向量）。</p>
-<p>这种转换是必要的，因为深度神经网络等技术都只能处理连续值的向量，不能处理文本和字符串。</p>
-<p>把单词变成向量还有如下两个好处：</p>
-<ul>
-<li>降维：更高效的表示方法</li>
-<li>上下文相似性：更有表达力的表示方法</li>
-</ul>
-<p>词向量的训练方法:</p>
-<p>使用语料库和模型训练词向量，把嵌入矩阵embedding matrix当成模型参数的一部分，通过词语词之间的共现矩阵或者上下文关系来优化模型参数，最终得到的矩阵就是所有词的词向量。最初的词向量都是随机初始化的，后边采用标准训练和优化。</p>
+<p>11.少样本学习和无样本学习的2020代表性论文如下（重要趋势，在kaggle上也被提及）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1033_19_661.png" alt=""></p>
+<p>12.Transfer learning</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1034_40_207.png" alt=""></p>
+<p>13.自然语言生成：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1036_25_669.png" alt=""></p>
 
             <hr>
           </div>
@@ -202,7 +219,7 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/%E6%A6%82%E5%BF%B5">概念</a>
+                  <a class="hover-with-bg" href="/categories/%E6%96%87%E7%AB%A0">文章</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -211,7 +228,9 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/Word_Embedding">Word_Embedding</a>
+                  <a class="hover-with-bg" href="/tags/%E9%9D%92%E5%B7%A5%E5%A7%94">青工委</a>
+                
+                  <a class="hover-with-bg" href="/tags/NLP">NLP</a>
                 
               </span>
             
@@ -361,7 +380,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "0.概念/NLP_词向量_Word_embedding详解&nbsp;",
+        "0.文章/青工委论文分享直播笔记&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    632 字
+                    0 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      1 分钟
                   </span>&nbsp;
                 
 
@@ -167,162 +167,7 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p><img src="https://pic1.zhimg.com/v2-5ad8ddc664115133c73a40cb0c9662b0_r.jpg" alt="preview"></p>
-<pre><code>#%%
-
-# This Python 3 environment comes with many helpful analytics libraries installed
-# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
-# For example, here&#39;s several helpful packages to load
-
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-
-# Input data files are available in the read-only &quot;../input/&quot; directory
-# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
-
-import os
-for dirname, _, filenames in os.walk(&#39;/kaggle/input&#39;):
-    for filename in filenames:
-        print(os.path.join(dirname, filename))
-
-# You can write up to 5GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using &quot;Save &amp; Run All&quot; 
-# You can also write temporary files to /kaggle/temp/, but they won&#39;t be saved outside of the current session
-
-#%%
-
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-from tqdm import tqdm
-from sklearn.model_selection import train_test_split
-import tensorflow as tf
-from keras.models import Sequential
-from keras.layers.recurrent import LSTM, GRU,SimpleRNN
-from keras.layers.core import Dense, Activation, Dropout
-from keras.layers.embeddings import Embedding
-from keras.layers.normalization import BatchNormalization
-from keras.utils import np_utils
-from sklearn import preprocessing, decomposition, model_selection, metrics, pipeline
-from keras.layers import GlobalMaxPooling1D, Conv1D, MaxPooling1D, Flatten, Bidirectional, SpatialDropout1D
-from keras.preprocessing import sequence, text
-from keras.callbacks import EarlyStopping
-
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-%matplotlib inline
-from plotly import graph_objs as go
-import plotly.express as px
-import plotly.figure_factory as ff
-
-#%%
-
-# Detect hardware, return appropriate distribution strategy
-try:
-    # TPU detection. No parameters necessary if TPU_NAME environment variable is
-    # set: this is always the case on Kaggle.
-    tpu = tf.distribute.cluster_resolver.TPUClusterResolver()
-    print(&#39;Running on TPU &#39;, tpu.master())
-except ValueError:
-    tpu = None
-
-if tpu:
-    tf.config.experimental_connect_to_cluster(tpu)
-    tf.tpu.experimental.initialize_tpu_system(tpu)
-    strategy = tf.distribute.experimental.TPUStrategy(tpu)
-else:
-    # Default distribution strategy in Tensorflow. Works on CPU and single GPU.
-    strategy = tf.distribute.get_strategy()
-
-print(&quot;REPLICAS: &quot;, strategy.num_replicas_in_sync)
-
-#%%
-
-train = pd.read_csv(&#39;/kaggle/input/jigsaw-multilingual-toxic-comment-classification/jigsaw-toxic-comment-train.csv&#39;)
-validation = pd.read_csv(&#39;/kaggle/input/jigsaw-multilingual-toxic-comment-classification/validation.csv&#39;)
-test = pd.read_csv(&#39;/kaggle/input/jigsaw-multilingual-toxic-comment-classification/test.csv&#39;)
-
-#%%
-
-train.drop([&#39;severe_toxic&#39;,&#39;obscene&#39;,&#39;threat&#39;,&#39;insult&#39;,&#39;identity_hate&#39;],axis=1,inplace=True)
-
-#%%
-
-ls
-
-#%%
-
-cd ..
-
-#%%
-
-ls
-
-#%%
-
-train.head()
-
-#%%
-
-train = train.loc[:12000,:]
-train.shape
-
-#%%
-
-train[&#39;comment_text&#39;].apply(lambda x:len(str(x).split())).max()
-
-#%%
-
-def roc_auc(predictions,target):
-    &#39;&#39;&#39;
-    This methods returns the AUC Score when given the Predictions
-    and Labels
-    &#39;&#39;&#39;
-
-    fpr, tpr, thresholds = metrics.roc_curve(target, predictions)
-    roc_auc = metrics.auc(fpr, tpr)
-    return roc_auc
-
-#%%
-
-xtrain, xvalid, ytrain, yvalid = train_test_split(train.comment_text.values, train.toxic.values, 
-                                                  stratify=train.toxic.values, 
-                                                  random_state=42, 
-                                                  test_size=0.2, shuffle=True)
-
-#%%
-
-# using keras tokenizer here
-token = text.Tokenizer(num_words=None)
-max_len = 1500
-
-token.fit_on_texts(list(xtrain) + list(xvalid))
-xtrain_seq = token.texts_to_sequences(xtrain)
-xvalid_seq = token.texts_to_sequences(xvalid)
-
-#zero pad the sequences
-xtrain_pad = sequence.pad_sequences(xtrain_seq, maxlen=max_len)
-xvalid_pad = sequence.pad_sequences(xvalid_seq, maxlen=max_len)
-
-word_index = token.word_index
-
-#%%
-
-%%time
-with strategy.scope():
-    # A simpleRNN without any pretrained embeddings and one dense layer
-    model = Sequential()
-    model.add(Embedding(len(word_index) + 1,
-                     300,
-                     input_length=max_len))
-    model.add(SimpleRNN(100))
-    model.add(Dense(1, activation=&#39;sigmoid&#39;))
-    model.compile(loss=&#39;binary_crossentropy&#39;, optimizer=&#39;adam&#39;, metrics=[&#39;accuracy&#39;])
-
-model.summary()
-
-#%%
-
-model.fit(xtrain_pad, ytrain, nb_epoch=5, batch_size=64*strategy.num_replicas_in_sync) #Multiplying by Strategy to run on TPU&#39;s</code></pre>
+            
             <hr>
           </div>
           <br>

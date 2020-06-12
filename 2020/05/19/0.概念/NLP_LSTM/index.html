@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    4.6k 字
+                    4.8k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      15 分钟
+                      16 分钟
                   </span>&nbsp;
                 
 
@@ -167,7 +167,16 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><p>LSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。</p>
+            <h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><h4 id="LSTM是什么？"><a href="#LSTM是什么？" class="headerlink" title="LSTM是什么？"></a>LSTM是什么？</h4><p>GRU可以在序列中学习较长的序列连接，另一种允许你很好的处理长距离序列连接的模型就是LSTM—长短时记忆单元，这个模型比GRU更加强大。</p>
+<p>LSTM原始论文中采取了大量的篇幅来分析梯度消失的原因，吴恩达不建议读原始论文来了解LSTM的细节。</p>
+<p>控制LSTM行为的核心等式</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1114_10_871.png" alt=""></p>
+<p>ct，at是维持的状态值（时时更新），u，f，o分别是更新门，遗忘门，输出门。</p>
+<p>LSTM的内部结构图：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1118_38_902.png" alt=""></p>
+<p>Runtime LSTM结构图：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200609_1122_36_842.png" alt=""></p>
+<p>如上的红线表示了通过适当地设置了更新们和遗忘门后，一些数据可以长效地被记住的过程。（从左到右一直被维持着。）</p>
 <h4 id="朴素RNN与展开"><a href="#朴素RNN与展开" class="headerlink" title="朴素RNN与展开"></a><strong>朴素RNN</strong>与展开</h4><p>是一种处理序列数据的神经网络，某单词根据上下文变化而有不同含义这种任务就适合交给RNN来做。</p>
 <p><img src="http://bqlab-pic.test.upcdn.net/pic/20191207_1429_27_198.png" alt=""></p>
 <p>RNN在时序上展开</p>
