@@ -136,6 +136,229 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/25/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB-1.2%E7%89%B9%E5%BE%81%E7%9F%A2%E9%87%8F%E4%B8%8E%E7%89%B9%E5%BE%81%E7%A9%BA%E9%97%B4/">
+        <p class="h4 index-header">模式识别-1.2特征矢量与特征空间</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.2特征矢量与特征空间特征矢量对于一个分析对象的n个特征量测量值分别为（x1,x2,x3,x4,x5,x6,x7,……xn），他们构成一个n维特征矢量Xn。X是原对象的一种数学抽象，用来代表原对象，即是原对象的模式。
+特征空间对某对象的分类识别是对其模式也就是对其特征矢量进行分类。
+各种不同取值的X的全体构成的n维空间被成为特征空间。
+随机变量由于量测系统随机因素的影响以及同类不同对象的特征本身就是在特征空间中散布的，同一个对象或同一类对象的特征量测量是随机变量。（对人体这个对象的特征量测量—查血做b超等都是随机变量。量测系统–医学仪器，以及人体这个大样本的特征，都是在特征空间中均匀散布的）。
+1.3随机矢量的描述
+
+完全一类模式的类概率密度函数：
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-25&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/25/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB-1.1%E7%BB%AA%E8%AE%BA/">
+        <p class="h4 index-header">模式识别-1.1绪论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.1概论模式识别的发展前景：1.智能化
+2.机器学习
+3.知识发现
+模式识别的基本方法：
+模式识别的主流技术
+
+统计模式识别
+其中统计模式识别是本课程的主要学习内容。它直接利用各类的分布特征，或隐含地利用概率密度函数、后验概率等概念进行分类识别。基本的技术有聚类分析、判别类域代数界面法、统计决策法、最邻近法等。
+
+结构模式识别
+结构模式识别是将对象分解为若干个基本单元，结构关系可以用字符串或者图来表示。类似于nlp中对句子的文法分析来进行pos tagging
+
+模糊模式识别
+将模式或者模式类作为模糊集，将其属性转换为隶属度，应用隶属函数、模糊关系或者模糊推理进行分类识别
+
+人工神经网络方法
+由大量简单的基本神经元相连接所构成的非线性动态系统。在自学习、自组织、联想以及容错等方面能力强。能用于联想、识别和决策。
+
+
+模式识别的基本原则
+没有免费午餐定理
+丑小鸭定理
+最小描述原理
+
+1.没有免费午餐定理
+一般来说，要想提高某方面的性能，那么随之而来的是更大的代价。
+比如在一个模式识别的session中可以用两种方法解，分别是简单的线性感知机方法（只适用于线性可分），另一种是位置函数法，</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-25&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/22/3.%E8%AF%BE%E7%A8%8B/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB_2_%E8%81%9A%E7%B1%BB%E6%A6%82%E8%AE%BA/">
+        <p class="h4 index-header">3.课程/模式识别_2_聚类概论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">#
+2.聚类分析聚类分析方法的有效性
+选取不当，则分类无效，如下（比如测量是否有肺炎，参数却选取身高体重而非体温肺片）
+
+
+
+特征选取不足，如下只选择X2作为特征，只能切分出w1，w2和w3无法分出
+
+
+
+特征选择过多可能无益反而有害，增加分析负担并且让分析效果变差
+    
+
+
+聚类应用的四个基本方向
+减少数据
+数据量过大，使得数据处理十分费力，可以采用聚类分析的方法将数据分成几组可判断的聚类来处理，然后被分开的每一个类被看成是独立的实体来对待。从这个角度看，数据被压缩了。例如我在做toxic比赛的时候，各种毒性评论分别来自于不同的网站，如果嫌数据量过大，就可以把数据按照不同的网站来源做聚类分离，以减小数据的处理压力.
+
+假说生成
+在这种情况下，为了推导出数据性质的一些假说，对数据集进行聚类分析。
+因此，这里使用聚类作为建立假说的方法，然后使用其他数据集验证这些假说。
+
+假说检验
+利用聚类分析来验证指定假说的有效性。
+例如，大公司往往在海外投资这个假说需要被验证是否正确，就要对大公司按照规模、海外活跃度、成功完成项目的能力等进行聚类分析。从而来支持这个假说。
+
+基于分组的预测
+对现有</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-22&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/20/3.%E8%AF%BE%E7%A8%8B/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB_1_%E6%A6%82%E8%AE%BA/">
+        <p class="h4 index-header">3.课程/模式识别_1_概论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">#
+1.统计模式识别与句法模式识别基本概念统计模式识别统计模式识别是目前的模式识别中最重要的一种方法，他的理论基础是概率论和数理统计。
+主要方法是线性或者非线性分类，贝叶斯决策，和聚类分析。
+主要优点：
+
+比较成熟
+有一定的抗噪声能力
+模式识别基元能力强
+
+主要缺点：
+
+对结构复杂的模式抽取特征困难
+不能反应模式的结构特征，难以描述模式的性质
+难以从整体角度考虑识别问题
+
+句法（结构）模式识别句法模式识别又称结构方法或者语言学方法，是模式识别方法的一种。利用结构特征识别基元，然后用基元识别小模式，然后识别大的模式。这种从小往大组装的模式识别方法通常采用树形结构实现，如下是采用结构特征识别基元然后组装为模式的示例：
+
+
+句法模式识别就是在学习过程中，确定基元与基元之间的关系，识别出景物的方法。
+在判决过程中，首先提取基元，识别基元之间的连接关系，使用推断的文法规则做句法分析。若分析成立，则景物属于相应的类型。
+句法模式识别的基本方法理论基础：形式语言，自动机技术
+主要方法：自动机技术，CYK剖析算法，Early算法，转移图法
+句法模式识别的主要优点
+识别方便，可以从简单的基元开始
+能够反</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-20&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/16/1.%E7%A7%91%E7%A0%94/%E9%98%85%E8%AF%BB%E5%AD%A6%E8%80%85%E4%B8%AA%E4%BA%BA%E5%85%A8%E9%83%A8%E8%AE%BA%E6%96%87%E7%9A%84%E6%96%B9%E6%B3%95/">
+        <p class="h4 index-header">1.科研/阅读学者个人全部论文的方法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">阅读学者个人全部论文的方法读人为什么要读人？零散的阅读文献，不能把握一个领域整体发展的脉络。很多时候一个领域的发展是由为数不多的几个科学家或者几个实验室推动的。如果对这些实验室的文章进行系统性的梳理，那么就会在相关领域的发展脉络上有更加深刻的理解。而且通过对这个实验室未来发展方向的预测，这对于我们布局以后的科研方向有很好的促进作用。
+以生物界David R Liu为例，演示如何系统性读人，大体分为三个方面：
+
+系统性搜寻文章
+文章的阅读与归类
+文章的分析和思考
+
+1.1系统性搜寻文章首先找到这个学者的谷歌学术个人首页。个人首页上的文章有两种排序方式，分别是按照引用量排序和按照哦时间序列排序。本文作者推荐使用时间倒序查阅，从当下一直阅读到第一篇博士文章的发表。如下：
+
+谷歌学术镜像站：https://ac.scmor.com/
+然后将文章全部下载下来，可以通过endnote，readcube，mendeley等软件实现对文献的管理，作者平常用的是readcube，which will自动标注文章的相关信息。
+如下是readcube的示意图：
+
+但是readcube不是免费的，遂下载men</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-16&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/06/11/0.%E6%A6%82%E5%BF%B5/NLP_Bert%E7%A0%94%E7%A9%B6_WordEmbedding/">
         <p class="h4 index-header">0.概念/NLP_Bert研究_WordEmbedding</p>
         
@@ -1414,202 +1637,6 @@ CS224N解读词袋的训练模型如下。
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-12&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/08/0.%E6%96%87%E7%AB%A0/NLP_%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/">
-        <p class="h4 index-header">0.文章/NLP_词袋模型应用</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">词袋模型的应用1.引入训练数据
-import pandas as pd
-train = pd.read_csv(&quot;labeledTrainData.tsv&quot;, header=0,delimiter=&quot;\t&quot;, quoting=3)
-2.确定引入数据是否正确 – 看一下shape和列标签
-&gt;&gt;&gt; train.shape
-(25000, 3)
-
-&gt;&gt;&gt; train.columns.values
-array([id, sentiment, review], dtype=object)
-3.glipise
-print train[&quot;review&quot;][0]
-4.用beautiful soap清洗掉HTML标签
-# Import BeautifulSoup into your workspace
-from bs4 import BeautifulSoup             
-
-# Initialize the BeautifulSoup object on a single movie revie</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-08&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/07/0.%E6%96%87%E7%AB%A0/NLP_%E4%BB%8EWordEmbedding%E5%88%B0Bert/">
-        <p class="h4 index-header">0.文章/NLP_从WordEmbedding到Bert</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">从Word embedding到Bert：A brief history of nlp pre-train modelWord embeddingLM做word embedding –&gt; 使用的工具是word2vec –&gt; word2vec的训练方法：CBOW 和 SKIP - GRAM
-word embedding的问题：无法解决一词多义。
-​                                                两种不同的上下文信息经过word2vec都会预测相同的单词bank，因为同一个单词占                                                用的是同一行的参数空间。所以WE无法区分一词多义。
-ELMO为解决WE一词多义问题，提出ELMO，其思路是事先用LM学好 一个单词的word embedding，后边根据上下文动态调整。WE是静态，ELMO是动态，所以ELMO可以解决一词多义问题。
-ELMO工作方式分为两段，分别是利用语言模型进行预训练和做下游任务时将预训练网络中提取对应单词的网络的各层的wor</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/07/2.%E6%AF%94%E8%B5%9B/Toxic_%E6%80%9D%E8%B7%AF/">
-        <p class="h4 index-header">2.比赛/Toxic_思路</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">思路ToDoList
-
-
-
-
-
-
-
-bpe
-跨语言编码
-
-
-XLM-R + ERNIE
-kaggle最热跨语言模型 + 注入特定知识toxic
-
-
-transformer
-特征抽取器(模型)要向匹配问题领域的特点去修改
-
-
-lstm
-transformer组件
-
-
-
-
-
-
-
-
-
-
-选择正确的特征抽取器解决情感分类问题，从模型角度讲，最重要的是特征抽取器的能力。以前是研发人员设计抽取哪些特征，现在都是端到端的抽取，也就是特征抽取器Transformer自动抽取。根据今日阅读知乎和github上的观点，不要使用RNN和CNN，应该采用更加先进的Transformer。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/07/3.%E8%AF%BE%E7%A8%8B/CS224n_9%20-%20%E6%9C%BA%E7%BF%BB/">
-        <p class="h4 index-header">3.课程/CS224n_9 - 机翻</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">机翻对于机器翻译这种任务，你可以抛弃那些考虑规则的想法。情感分析类任务也许可以建立词汇的正面或者负面表格，然后根据这些词汇的词性进一步延伸出其他规则或系统，但是翻译类问题baseline一般都是基于统计的，因为没有人可以遍历一门语言翻译为另一门语言时所有的规则和异常语言。
-我们总是倾向于使用相当庞大的语料库，我们通常称为平行语料库。在平行语料库中，很多相同的段落平行地以多种语言表达。最经典的平行语料库应该就是圣经了。
-基于统计的机翻模型介绍
-源语言是法语，目标语言是英语，利用贝叶斯准则的概率公式,也就是后验概率 = 显先验概率*似然，然后除以边缘概率。这里的边缘概率可以是源语言。其中p(f|e)是翻译模型，p(e)是语言模型，语言模型也就是我们试图计算更长序列概率的那个模型。
-
-如下是机器翻译模型的工作流程：首先翻译模型会把一个法语句子基于统计列出一系列可能的英语选项。然后使用语言模型，在这些选项里找一个简单流畅的句子。
-
-其中的一个模块，翻译模型中，第一件要做的事情是匹配两种语言的单词，匹配所面临的困难使用法语英语互译来展示。其实英法是相似度很高的语言，换成其他相似度低的语言则难度会</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-07&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/28/3.%E8%AF%BE%E7%A8%8B/CS224u_Sentiment_Analysis_%E6%9C%89%E7%9B%91%E7%9D%A3%E7%9A%84%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90.md/">
-        <p class="h4 index-header">3.课程/CS224u_Sentiment_Analysis_有监督的情感分析.md</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Sentiment_Analysis_有监督的情感分析.md
-如上所示，phi函数就是上篇介绍的feature function，提供的功能就是把tree转换成字典。
-
-如上所示，fit model函数提供将数据x和y fit进指定模型（逻辑回归）中的功能。
-
-然后使用上节介绍的sst.experiment函数（三个参数）分别是路径，feature函数和fit函数。
-这样设计的好处就是实现了类的分离，如果需要改写feature函数或者fit函数，直接在本体里边修改就好。
-超参数的搜索与确定超参数的基本原理：超参数是模型的优化过程之外的“settings”。有如下几个例子：
-
-超参数搜索实例
-
-如上，In[4] 的 fit_softmax_with_crossvalidation函数，就是搜索超参数的函数。basemod是逻辑回归，给他加上了搜索空间：c,罚函数，等，然后调用系统工具箱里的utils.fit_classifier_with_crossvalidation就可以得到搜索结果。当然这个搜索的过程耗时较长。
-然后把得到的函数放进experiment函数中开始实验。因为得到的函数</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-28&nbsp;&nbsp;
         
         
         
