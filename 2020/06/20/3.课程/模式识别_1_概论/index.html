@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    482 字
+                    174 字
                   </span>&nbsp;
                 
 
@@ -167,36 +167,22 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p>#</p>
-<h1 id="1-统计模式识别与句法模式识别基本概念"><a href="#1-统计模式识别与句法模式识别基本概念" class="headerlink" title="1.统计模式识别与句法模式识别基本概念"></a>1.统计模式识别与句法模式识别基本概念</h1><h2 id="统计模式识别"><a href="#统计模式识别" class="headerlink" title="统计模式识别"></a>统计模式识别</h2><p>统计模式识别是目前的模式识别中最重要的一种方法，他的理论基础是概率论和数理统计。</p>
-<p>主要方法是线性或者非线性分类，贝叶斯决策，和聚类分析。</p>
-<p>主要优点：</p>
+            <h1 id="1-模式识别概论"><a href="#1-模式识别概论" class="headerlink" title="1.模式识别概论"></a>1.模式识别概论</h1><p>本节内容概览：</p>
 <ul>
-<li>比较成熟</li>
-<li>有一定的抗噪声能力</li>
-<li>模式识别基元能力强</li>
+<li>什么是模式识别</li>
+<li>模式识别的应用</li>
+<li>模式识别系统的结构</li>
 </ul>
-<p>主要缺点：</p>
-<ul>
-<li>对结构复杂的模式抽取特征困难</li>
-<li>不能反应模式的结构特征，难以描述模式的性质</li>
-<li>难以从整体角度考虑识别问题</li>
-</ul>
-<h2 id="句法（结构）模式识别"><a href="#句法（结构）模式识别" class="headerlink" title="句法（结构）模式识别"></a>句法（结构）模式识别</h2><p>句法模式识别又称结构方法或者语言学方法，是模式识别方法的一种。利用结构特征识别基元，然后用基元识别小模式，然后识别大的模式。这种从小往大组装的模式识别方法通常采用树形结构实现，如下是采用结构特征识别基元然后组装为模式的示例：</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200622_1248_39_561.png" alt=""></p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200622_1250_25_246.png" alt=""></p>
-<p>句法模式识别就是在学习过程中，确定基元与基元之间的关系，识别出景物的方法。</p>
-<p>在判决过程中，首先提取基元，识别基元之间的连接关系，使用推断的文法规则做句法分析。若分析成立，则景物属于相应的类型。</p>
-<h4 id="句法模式识别的基本方法"><a href="#句法模式识别的基本方法" class="headerlink" title="句法模式识别的基本方法"></a>句法模式识别的基本方法</h4><p>理论基础：形式语言，自动机技术</p>
-<p>主要方法：自动机技术，CYK剖析算法，Early算法，转移图法</p>
-<h4 id="句法模式识别的主要优点"><a href="#句法模式识别的主要优点" class="headerlink" title="句法模式识别的主要优点"></a>句法模式识别的主要优点</h4><ul>
-<li>识别方便，可以从简单的基元开始</li>
-<li>能够反应出模式的结构特征</li>
-<li>对图像畸变的抗干扰能力比较强</li>
-</ul>
-<h4 id="主要缺点"><a href="#主要缺点" class="headerlink" title="主要缺点"></a>主要缺点</h4><ul>
-<li>存在干扰及噪声时，抽取特征基元困难，且易失误</li>
-</ul>
+<h3 id="什么是模式识别"><a href="#什么是模式识别" class="headerlink" title="什么是模式识别"></a>什么是模式识别</h3><p>定义：利用计算机模仿人脑对世界各种事物进行描述、分类、判断、识别的过程    </p>
+<p>目标：用计算机实现具有感知、识别、理解、自学习和自适应能力的灵活和智能的机器</p>
+<h3 id="模式识别的应用"><a href="#模式识别的应用" class="headerlink" title="模式识别的应用"></a>模式识别的应用</h3><p>如下图，要分辨图中人物的性别</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200714_1550_02_012.png" alt=""></p>
+<p>医学影像分类：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200714_1550_26_297.png" alt=""></p>
+<p>语音识别系统中波形转换为音素：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200714_1550_55_857.png" alt=""></p>
+<p>是否决定贷款的二分类问题（其实就是机器学习中的分类问题）</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200714_1551_51_974.png" alt=""></p>
 
             <hr>
           </div>
