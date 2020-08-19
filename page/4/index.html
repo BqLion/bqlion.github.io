@@ -136,19 +136,192 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-        <p class="h4 index-header">0.概念/NLP_SLP_6_动态规划</p>
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_hadoop/">
+        <p class="h4 index-header">0.概念/技术_hadoop</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">动态规划1. 贪心策略的不足先来看看生活中经常遇到的事吧——假设您是个土豪，身上带了足够的1、5、10、20、50、100元面值的钞票。现在您的目标是凑出某个金额w，需要用到尽量少的钞票。
-依据生活经验，我们显然可以采取这样的策略：能用100的就尽量用100的，否则尽量用50的……依次类推。在这种策略下，666=6×100+1×50+1×10+1×5+1×1，共使用了10张钞票。
-这种策略称为“贪心”：假设我们面对的局面是“需要凑出w”，贪心策略会尽快让w变得更小。能让w少100就尽量让它少100，这样我们接下来面对的局面就是凑出w-100。长期的生活经验表明，贪心策略是正确的。
-贪心策略的翻车
-但是，如果我们换一组钞票的面值，贪心策略就也许不成立了。如果一个奇葩国家的钞票面额分别是1、5、11，那么我们在凑出15的时候，贪心策略会出错：15=1×11+4×1    （贪心策略使用了5张钞票）15=3×5               （正确的策略，只用3张钞票）为什么会这样呢？贪心策略错在了哪里？
-鼠目寸光刚刚已经说过，贪心策略的纲领是：“尽量使接下来面对的w更小”。这样，贪心策略在w</div>
+          <div class="index-text mb-1">hadoop
+大数据概念
+无法在一定时间范围内用常规的工具进行捕捉管理和处理数据的集合
+需要用新的处理模式才能有更强的决策力洞察力的海量高增长的多样化的信息资产
+
+
+mysql:只能储存千万条数据,不能搭建大量的集群.处理海量数据时速度极慢
+
+
+MapReduce定义
+是一个分布式运算程序的编程框架
+是用户基于hadoop的数据分析应用的核心框架
+Mapreduce核心功能是将用户编写的业务逻辑代码和自带默认组件整合成一个完整的分布式运算程序,并发运行在一个hadoop集群上
+
+
+MapReduce优点
+易于编程
+简单实现一些接口,就可以完成一个分布式程序,跟写一个串行程序一样
+
+
+扩展性
+计算资源得不到满足时,增加机器扩展计算能力
+
+
+高容错性
+其中一台机器down了,可把上边的计算任务转移到其他节点上去,不至于导致任务失败
+
+
+适合PB级数据的离线处理
+
+
+MapReduce缺点
+不擅长实时计算
+不能像mysql一样在毫秒内返回计算结果
+
+
+不擅长流式计算
+流计算的输入数据是动态的,MapReduce输入数据是静态的.这由MapReduce自身的设计特点决定
+不擅长做DAG有向图计</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/0.%E6%96%87%E7%AB%A0/Flink_Calcite/">
+        <p class="h4 index-header">0.概念/0.文章/Flink_Calcite</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Apache Calcitecalcite是数据库的解析器+优化器。
+数据库的三大组件：
+
+解析器
+
+执行引擎
+
+优化器—–&gt;数据库把关系表达式转换为执行计划的组件,决定数据库性能
+
+基于规则的优化器
+
+根据规则优化关系表达式,产生最终执行计划
+只认规则,对数据不敏感,易局部优全局差
+
+
+基于代价的优化器
+
+根据规则优化关系表达式,产生多个执行计划,计算各计划cost,择优而动
+
+灵活智能,多被采用
+
+
+
+
+
+
+Calcite优化器是:
+
+基于代价的优化器
+组件有：
+JDBC Client
+JDBC Server
+SQL Parser and validator
+Operator Expression 
+Query Optimizer
+两个插拔组件
+Metadata provider
+Pluginable Rules
+
+
+
+
+
+
+
+
+
+
+Calcite理解
+是编程框架，因为有可插拔的优化rules，有对接底层数据源的Adaptor模式
+是工具库，因为flink把它嵌入自身的sql处理流程中
+
+
+
+优化器Optimizer的三个元件
+planner rule            </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/0.%E6%96%87%E7%AB%A0/Flink_%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">
+        <p class="h4 index-header">0.概念/0.文章/Flink_培训笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.1为什么要学习Apache FLink讲师:陈守元 阿里巴巴高级产品专家 
+
+概念
+
+framework框架定义:只写业务逻辑,其他交给框架就可以执行
+
+有状态流计算
+当前的计算需根据之前沉淀的数据进行,沉淀的数据就是状态
+
+例如select操作就是无状态的,进来–计算–输出–下一个
+例如计算一个小时内某商品的点击量就是有状态的计算
+例如机器学习的训练等操作就是有状态的计算
+
+
+四层flink API                (越往下越贴近底层)
+
+SQL
+Table  Api(dynamic tables)
+DataStream Aip(streams,windows)
+ProcessFunction(event,time,state)
+
+
+flink和storm对比
+
+fllink把含状态的计算完全抽象在了系统中,storm想要含状态计算需要在引擎外套reddis或Hbase     
+
+
+Batch analytics
+
+处理批数据时提到类似mapreduce        
+
+
+学习方法
+
+先实践再理论。尝试构建复杂的Flink Application项目
+性学习更适</div>
         </div>
       </a>
 
@@ -179,6 +352,36 @@
 网格的每个单元格 表示在看到第一个t观察值并且在给定HMM λ的情况下经过最可能的状态序列  之后HMM处于状态j的概率。 每个单元  的值通过递归地获取可能导致我们到达该单元的最可能路径来计算。 形式上，每个cell表达概率:
 
 我们通过对所有可能的先前状态序列  取最大值来表示最可能的路</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_动态规划</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">动态规划1. 贪心策略的不足先来看看生活中经常遇到的事吧——假设您是个土豪，身上带了足够的1、5、10、20、50、100元面值的钞票。现在您的目标是凑出某个金额w，需要用到尽量少的钞票。
+依据生活经验，我们显然可以采取这样的策略：能用100的就尽量用100的，否则尽量用50的……依次类推。在这种策略下，666=6×100+1×50+1×10+1×5+1×1，共使用了10张钞票。
+这种策略称为“贪心”：假设我们面对的局面是“需要凑出w”，贪心策略会尽快让w变得更小。能让w少100就尽量让它少100，这样我们接下来面对的局面就是凑出w-100。长期的生活经验表明，贪心策略是正确的。
+贪心策略的翻车
+但是，如果我们换一组钞票的面值，贪心策略就也许不成立了。如果一个奇葩国家的钞票面额分别是1、5、11，那么我们在凑出15的时候，贪心策略会出错：15=1×11+4×1    （贪心策略使用了5张钞票）15=3×5               （正确的策略，只用3张钞票）为什么会这样呢？贪心策略错在了哪里？
+鼠目寸光刚刚已经说过，贪心策略的纲领是：“尽量使接下来面对的w更小”。这样，贪心策略在w</div>
         </div>
       </a>
 
@@ -653,16 +856,20 @@ Sym</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_%E6%80%BB%E7%BB%93/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_总结</p>
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_9 - Automatic Speech Recognition</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
-自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
-</div>
+          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
+影响语音转文字系统性能表现的几个参数：
+
+需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
+speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
+声音质量：apparently，噪音少识别起来容易。
+讲话者的类型：apparently，nat</div>
         </div>
       </a>
 
@@ -680,20 +887,16 @@ Sym</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_9 - Automatic Speech Recognition</p>
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_总结</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
-影响语音转文字系统性能表现的几个参数：
-
-需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
-speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
-声音质量：apparently，噪音少识别起来容易。
-讲话者的类型：apparently，nat</div>
+          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
+自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
+</div>
         </div>
       </a>
 
@@ -1110,6 +1313,32 @@ Sheep language can be described as fol</div>
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_12%20-%2016,17%20-%2021%E8%AF%AD%E6%B3%95%E5%AD%A6%EF%BC%8C%E8%AF%AD%E4%B9%89%E8%AF%AD%E7%94%A8%E5%AD%A6/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_12 - 16,17 - 21语法学，语义语用学</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">12 - 16语法学，17 - 21语义语用学以上几章主要侧重于对英语这门语言本身的讲解，对发表论文帮助不大。先跳过，回头需用再补。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/">
         <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_10 - Automatic Speech RecongnitionAdvanced Topics</p>
         
@@ -1129,32 +1358,6 @@ Sheep language can be described as fol</div>
 
 改进维特比算法，将原本只返回单一值，变成返回多值。以改进一词多音的问题。
 使用其他的的d</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_12%20-%2016,17%20-%2021%E8%AF%AD%E6%B3%95%E5%AD%A6%EF%BC%8C%E8%AF%AD%E4%B9%89%E8%AF%AD%E7%94%A8%E5%AD%A6/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_12 - 16,17 - 21语法学，语义语用学</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">12 - 16语法学，17 - 21语义语用学以上几章主要侧重于对英语这门语言本身的讲解，对发表论文帮助不大。先跳过，回头需用再补。
-</div>
         </div>
       </a>
 
@@ -1316,6 +1519,35 @@ conda config –add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/%E8%AF%AD%E8%A8%80%E5%AD%A6%E8%8D%90%E4%B9%A6/">
+        <p class="h4 index-header">1.科研/语言学荐书</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">语言学方向书籍推荐–Serena Gao首先，做nlp不一定要很懂语言学，也不一定要跟语言学扯上关系。nlp可以仅是data mining，features engineering, 也的确有很多work目前在用文本或者对话做为数据集，然后用统计学方法实现目的，比如deep learning 。在某些任务上统计学模型功不可没，比如machine translation, speech recognition, question answering, etc. 
+如果题主只是对nlp的应用感兴趣，想泛泛了解一下目前进展的话，以上几个回答已经非常详细了，我接下来的回答可以不用看。许多主流大公司目前的力度都在deep learning, 学好nlp基本知识，做工程就够了(当然你还需要cs的background)， 语言学的东西不用太深入研究。
+————————————-3.17 update——————————-
+看了一下其他答案，大家的讨论和见解都很有趣，上来更新一点。
+大多数人对nlp和语言学联系的了解，在于认为rule-based的nlp就是基于语言学。的确rule-based是语言学</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/WebScience%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/">
         <p class="h4 index-header">1.科研/WebScience讲座笔记</p>
         
@@ -1370,35 +1602,6 @@ https://www.clarivate.com.cn/e-clarivate/wos_video_wos_research.htm
 
 左侧功能栏:
 review是学科综述</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/%E8%AF%AD%E8%A8%80%E5%AD%A6%E8%8D%90%E4%B9%A6/">
-        <p class="h4 index-header">1.科研/语言学荐书</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">语言学方向书籍推荐–Serena Gao首先，做nlp不一定要很懂语言学，也不一定要跟语言学扯上关系。nlp可以仅是data mining，features engineering, 也的确有很多work目前在用文本或者对话做为数据集，然后用统计学方法实现目的，比如deep learning 。在某些任务上统计学模型功不可没，比如machine translation, speech recognition, question answering, etc. 
-如果题主只是对nlp的应用感兴趣，想泛泛了解一下目前进展的话，以上几个回答已经非常详细了，我接下来的回答可以不用看。许多主流大公司目前的力度都在deep learning, 学好nlp基本知识，做工程就够了(当然你还需要cs的background)， 语言学的东西不用太深入研究。
-————————————-3.17 update——————————-
-看了一下其他答案，大家的讨论和见解都很有趣，上来更新一点。
-大多数人对nlp和语言学联系的了解，在于认为rule-based的nlp就是基于语言学。的确rule-based是语言学</div>
         </div>
       </a>
 
@@ -1537,198 +1740,6 @@ NLP学术会议（甚至包括期刊）论文已经形成比较固定的结构�
 摘要：用100-200词简介研究任务与挑战、解决思路与方法、实验效果与结论。
 介绍：用1页左右篇幅，比摘要更详细地介绍研究任务、已有方法、主要挑战、解决思路、具体方法、实验结果。
 相关工作：用0.5-1页左右篇幅介绍</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20A%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E8%B5%84%E6%96%99%E5%BA%93/">
-        <p class="h4 index-header">1.科研/1 - A学科调研资料库</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.阅读列表+文献库想当GrandMaster，以下提到的所有材料都绕不过去。在还没入行时间紧迫的情况下，须有所取舍。具体取舍规则办法见2 - 计划.md
-阅读列表
-
-
-
-
-
-
-
-CS224N - 自然语言处理
-
-
-
-CS229 - 机器学习（核心课）
-
-
-
-CS229A - 机器学习应用课，数学少，应用多
-
-
-
-CS231N - 计算机视觉
-
-
-
-CS230 - 专注深度学习，只包含一点点机器学习（which最难的那一部分）
-
-
-
-CS221 - AI导论
-
-
-
-CS228 - 概率图模型
-
-
-
-机器之心
-
-
-
-PaperWeekly
-
-
-
-NeurIPS 2019公布获奖论文
-
-
-
-深度学习所需数学知识
-
-
-
-EE转CS成功案例
-
-
-
-Jeff Dean谈2020机器学习趋势
-
-
-
-从Word2Vec到BERT    done
-
-
-
-kaggle竞赛宝典
-
-
-
-NIPS2019
-
-
-
-斯坦福2019全球AI报告
-
-
-
-2020学术会议list
-
-
-
-因果推演
-
-
-
-ACL2019知识图谱总结
-
-
-
-概率论与数理统计
-
-
-
-线性代数
-
-
-
-高等数学
-
-
-
-优化理论
-
-
-
-Bubeck</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20B%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E7%BB%93%E8%AE%BA/">
-        <p class="h4 index-header">1.科研/1 - B学科调研结论</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.学科调研结论简要结论经过对上文阅读列表+论文库的调研，得出如下结论，可以开始选题。
-
-近年来,我感兴趣的关于_____的研究方向,全球呈现__趋势,其中较多的论文来自\国家\地区,发表相关论文的研究机构有___.蓝海领域比较新，容易出成果，我选择的这个方向是否是蓝海领域_____.
-为了充分了解这个领域目前的发展状况，需要如下几个方面的调研：方法方面，是否有一套比较清晰的数学体系和机器学习体系_；数据方面，有没有一个大家公认的标准训练集和测试集__；研究团队，是否有著名团队和人士参加___。如果以上几个方面的调研结论不是太清晰，作为初学者可能不要轻易进入。
-全球的研究人员主要从____等领域对课题进行研究,同时我们也注意到___等领域的研究可能会给我们带来不一样的视角和灵感
-相关课题的研究成果目前主要发表在____等期刊上,在相关研究领域中,_____等几位学者有较多的论文产出.
-影响力较高的几篇论文分别来自于___(国家/地区)的_(机构)的___学者
-近半年来___方向引起了较多科研人员的关注
-选择____综述文章作为快速了解这个课题的切入点
-最新的研究进展指出,该研究方向__</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/2%20-%20%E8%AE%A1%E5%88%92/">
-        <p class="h4 index-header">1.科研/2 - 计划</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">计划比赛 -  改进模型 - 得奖 - 阅读论文 - 写作论文
-比赛得奖同时也是进入行业的必要条件
-进入行业是了解行业和理解科研的必要条件
-</div>
         </div>
       </a>
 

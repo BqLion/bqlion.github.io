@@ -136,6 +136,119 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_5%20-%20%E9%A1%B9%E7%9B%AE%E5%BB%BA%E8%AE%AE/">
+        <p class="h4 index-header">3.课程/CS224n_5 - 项目建议</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture5 项目建议1.一层神经网络过渡到多层神经网络
+2.项目建议老师推荐的文章和会议
+
+1.定义你的任务：
+例如：summarization
+2.定义数据集：
+最好使用现成的数据集，因为他们已经有baselines
+3.建立baseline
+他可以是一个非常简单的一元线性回归，然后在你的训练数据集上计算你的评价标准，看看模型是过拟合还是欠拟合
+4.选做题：自己发明新的模型
+首先，你需要做好以上说的几个步骤.
+
+然后你需要知道已经存在的模型上有哪些问题。然后你就可以设计出自己的模型。如果你想要这样做的话，你真的需要和你的导师和其他研究者保持沟通，除非你自己就是研究者并且已经获得了博士文凭。
+
+你需要实现你的模型，然后根据你的新点子去对它快速迭代。（也许在某个位置新加一层？然后看看他起不起作用？）
+
+那么在迭代的过程中，拥有足够多的的软件工程技能来配置高效的实验框架，从而能收集到这些结果就很重要。
+
+建议从一个和你的真实想法比起来相对容易很多的模型做起。先把简单模型建立起来。然后逐步尝试更复杂的模型。
+
+对于终极任务：summarization任务。
+
+一开始你可能尝试一些非常简</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_Word2vec/">
+        <p class="h4 index-header">0.概念/NLP_词向量_Word2vec</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Word2Vecfrom笔记ofCS224N
+这节课深入语言的底层，做一些向量和计算，这节课提到的数学是后边内容的基础。这节课将用很慢的速度来仔细讲解一些基础，以便大家可以使用神经网络来学习词语表征这样的简单任务。
+1.语言学和NLP对词语释义的不同做法语言学用如下词典释义来解释“meaning”这个词的意思
+
+the idea that is represented by a word,phrase,etc
+the idea that i person wants to express by using words,signs,etc
+the idea that is expressed in a work of writing,art,etc
+
+NLP同义词描述词汇
+如下图左侧，用一段代码演示nltk如何抓取wordnet中”panda“这个词的分类信息，panda是一种肉食动物，一种有胎盘的哺乳动物，再往上上溯可抽象为动物，物体，物理实体等等。
+如下图右侧，抓取“good“的同义词，这里显示的就是wordnet的答案。
+
+同义词描述词汇本义毕竟是离散的方法，会有如下的问题：
+
+同</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_16%20-%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9C%A8NLP%E4%B8%AD%E7%9A%84%E9%99%90%E5%88%B6/">
+        <p class="h4 index-header">3.课程/CS224n_16 - 深度学习在NLP中的限制</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Lecture16 - 深度学习在NLP中的限制对于语言，如果你想要一个合适的语言系统，你可能需要一些对于输入的情感理解，在逻辑上推理某些事实，在数据库中检索一些事实，或者基于数据库中的逻辑原因，再做一些内存检索。还有一些时候，你需要对谈论的内容做一些奖励。在现实世界中这些过程是由很多不同的成分组成的。我们想要一个更好的理解语言的系统，理想情况下这个系统应该包括很多内容，以一种更科学的方式呈现。
+现在联合多任务学习仍然非常困难，迄今为止，人们谈论多任务学习时，他们假设有一个源任务和一个目标任务，他们希望神经网络在源任务的预训练可以加强另一个目标任务的表现。就我而言，理想的情况是让他们共同训练，而不是分开训练不同的解码器。例如不同语言中，不同的分类问题。理想情况下，我们只有一个很大的不同种类的数据集，我们想根据输入来预测，他们有完全一样的解码器，但是很多时候人们做多任务学习的时候他们只是共享低层的参数，共同训练他们，但是不能共享高层的参数。
+也就是说，在自然语言处理的过程中，我们通常只是共享了词向量，我们没有共享其他高层的比如LSTM层，这种层能解决更多的任务，其实计算机视觉在这方面有挺</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/CS224n_15%20-%20NLP%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E5%8F%AF%E8%83%BD%E6%80%A7%E6%9E%B6%E6%9E%84/">
         <p class="h4 index-header">3.课程/CS224n_15 - NLP的问题和可能性架构</p>
         
