@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>0.文章/NLP_从WordEmbedding到Bert ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期四, 五月 7日 2020, 2:36 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="从Word-embedding到Bert：A-brief-history-of-nlp-pre-train-model"><a href="#从Word-embedding到Bert：A-brief-history-of-nlp-pre-train-model" class="headerlink" title="从Word embedding到Bert：A brief history of nlp pre-train model"></a>从Word embedding到Bert：A brief history of nlp pre-train model</h1><h2 id="Word-embedding"><a href="#Word-embedding" class="headerlink" title="Word embedding"></a>Word embedding</h2><p><strong>LM</strong>做<strong>word embedding</strong> –&gt; 使用的工具是<strong>word2vec</strong> –&gt; <strong>word2vec</strong>的训练方法：<strong>CBOW</strong> 和 <strong>SKIP - GRAM</strong></p>
+<p><strong>word embedding</strong>的问题：无法解决一词多义。</p>
+<p>​                                                两种不同的上下文信息经过<strong>word2vec</strong>都会预测相同的单词bank，因为同一个单词占                                                用的是同一行的参数空间。所以WE无法区分一词多义。</p>
+<h2 id="ELMO"><a href="#ELMO" class="headerlink" title="ELMO"></a>ELMO</h2><p>为解决WE一词多义问题，提出ELMO，其思路是事先用LM学好 一个单词的word embedding，后边根据上下文动态调整。WE是静态，ELMO是动态，所以ELMO可以解决一词多义问题。</p>
+<p>ELMO工作方式分为两段，分别是<strong>利用语言模型进行预训练</strong>和做下游任务时<strong>将预训练网络中提取对应单词的网络的各层的word embedding作为新特征补充</strong>到下游任务中。</p>
+<p>阶段一 ：<strong>预训练</strong></p>
+<p>如图，网络结构是<strong>双层双向LSTM</strong>,训练任务是<strong>根据上下文正确预测中间的单词</strong>。下图左边用于输入context-before右边输入context-after。<br>通过大量语料做语言模型任务就能训练好这个网络。<br>训练好后，输入一个新的句子“Sen”，可得到关于它的三个embedding：<br>                                                                                底层的<strong>单词的word embedding</strong>，<br>                                                                                第一层双向LSTM中对应单词位置的embedding包含<strong>句法信息</strong><br>                                                                                第二层双向LSTM中对应单词位置的embedding包含<strong>语义信息</strong></p>
+<p>也就是说ELMO不仅训练了单词的word embedding，还训练了双层双向的LSTM网络结构（这个包含了句法和语义信息的两层embedding是解决一词多义问题的重要推手）。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1519_00_500.png" alt=""></p>
+<p>阶段二 ：<strong>将阶段一训练的embedding作为新特征补充到下游任务中</strong></p>
+<p>比如下游任务是QA，对于问句X，先把X丢进阶段一训练好的ELMO网络中，这样就可以得到关于X的三个embedding，然后给这三个embedding分别学习一个权重值，然后三个embedding加权求和成为一个embedding。然后将这个embedding作为X在自己任务中的那个网络的输入。以此，实现了对下游任务的特征补充。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1519_22_092.png" alt=""></p>
+<p>ELMO的问题：</p>
+<p>1.LSTM抽取特征的能力要远远弱于Transformer</p>
+<p>2.双向融合特征的拼接方式导致了特征融合能力偏弱</p>
+<h2 id="GPT-Generative-pre-training"><a href="#GPT-Generative-pre-training" class="headerlink" title="GPT - Generative pre training"></a>GPT - Generative pre training</h2><p>GPT也是采用两段过程，第一阶段是语言模型预训练，第二阶段是使用fine - tuning解决下游任务。</p>
+<p>这个模型和ELMO类似，只是把特征提取器从RNN换成了更强的Transformer，但是此模型的缺点是在训练的时候只考虑了上文而未考虑下文，败笔。</p>
+<p>预训练：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1522_49_144.png" alt=""></p>
+<p>使用：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1526_37_530.png" alt=""></p>
+<p>GPT的缺点：单向语言模型。</p>
+<h2 id="Bert"><a href="#Bert" class="headerlink" title="Bert"></a>Bert</h2><p>Bert的结构和GPT以及ELMO大同小异，都是两阶段模型：<strong>语言模型预训练</strong> &amp; <strong>Fine-tuning模式解决下游任务</strong>。</p>
+<p>Bert比GPT强在使用了双向语言模型、语言模型的数据规模比较大。</p>
+<p>两阶段工作图示：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1530_10_632.png" alt=""></p>
+<p>Bert改造四种下游任务：</p>
+<ul>
+<li>句子关系类（POS tagging，NER）：和GPT类似，每局加上一个起始和终结符号，句子间加上分隔符。输出的时候把第一个起始符号对应的Transformer最后一层位置上面串接一个softmax分类层即可。</li>
+<li>分类问题（sentiment，文本分类）：和GPT一样，每一句增加起始和结束符号。把第一个起始符号对应的Transformer最后一层位置上面串接一个softmax分类层即可。</li>
+<li>序列标注文图：输入部分和单句分类是一样的，只需要输出部分Transformer最后一层每个单词对应位置都进行分类即可。</li>
+<li>生成类任务：bert暂无现成方案，但是理论上改装也不难，例如机翻或者QA任务，只要附着在S2S上，编解码器是深度Transformer即可。</li>
+</ul>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1531_21_288.png" alt=""></p>
+<h2 id="Bert-Word2vec-ELMO-GPT之间的关系"><a href="#Bert-Word2vec-ELMO-GPT之间的关系" class="headerlink" title="Bert,Word2vec,ELMO,GPT之间的关系"></a>Bert,Word2vec,ELMO,GPT之间的关系</h2><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200507_1539_47_580.png" alt=""></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%96%87%E7%AB%A0">文章</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/WordEmbedding">WordEmbedding</a>
+                
+                  <a class="hover-with-bg" href="/tags/Bert">Bert</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "0.文章/NLP_从WordEmbedding到Bert&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

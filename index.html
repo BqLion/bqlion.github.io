@@ -136,8 +136,986 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/19/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_5_%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86/">
-        <p class="h4 index-header">3.课程/文献管理与信息分析_5_文献管理</p>
+      <a href="/2020/09/03/2.%E6%AF%94%E8%B5%9B/kaggle%E8%AF%BE%E7%A8%8B_4_%E5%A4%84%E7%90%86%E4%B8%A2%E5%A4%B1%E6%95%B0%E6%8D%AE/">
+        <p class="h4 index-header">2.比赛/kaggle课程_4_处理丢失数据</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">处理丢失数据missing values丢失数据通常以缺失、特殊符号、异常值（-999等）呈现。丢失数据通常是有价值的，因为你可以去推断数据丢失的原因。
+处理丢失数据的三种常用方法
+-999，-1，etc
+mean，median
+尝试重构数据
+
+第一种办法最简单，直接把缺失数据替换成另一类数据，此方法缺点是模型的线性网络会受损。
+第二种办法替换为中位数，通常对线性模型和神经网络很管用，但是树形结构的模型很难选择中位数。
+第三种办法在下图这种连续的温度时间序列中可以通过观察附近点来补全。但是很多复杂场景中，根本理不出补全逻辑。
+
+如下是只能处理数字的模型的缺失填充方案：全部置为-999：
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-03&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/09/03/2.%E6%AF%94%E8%B5%9B/kaggle%E8%AF%BE%E7%A8%8B_3_%E7%B1%BB%E5%88%AB%E3%80%81%E6%95%B0%E5%AD%97%E3%80%81%E6%97%B6%E9%97%B4%E3%80%81%E4%BD%8D%E7%BD%AE%E7%89%B9%E5%BE%81/">
+        <p class="h4 index-header">2.比赛/kaggle课程_3_类别、数字、时间、位置特征</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">类别、数字、时间、位置特征类别特征如下是泰坦尼克是否生还的数据，除了常见的性别、年龄、是否有兄弟姐妹等特征外，还有一个不太引人注目的特征：Pclass，它代表的是票的类型，分为一、二、三、等仓，。
+
+用类别特征做特征生成 ：几个类别特征之间的特征交互
+如下所示，将几个特征交互到了一起，这种方式仅对线性模型和knn有用，对树模型无用。
+
+时间特征和位置特征
+时间特征的有趣之处在与他与数据本身无关。
+时间特征分为两种，一种是时刻（Periodicty），一种是现在距离一个特定事件发生时间的相对时间（Time since）。
+时间特征是有用的，因为它可以帮助捕捉到数据中的pattern。
+时间特征举例：
+
+位置特征位置特征在房地产定价上有很大用处，如下所示
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-03&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/09/01/2.%E6%AF%94%E8%B5%9B/kaggle%E8%AF%BE%E7%A8%8B_2_%E7%89%B9%E5%BE%81%E9%A2%84%E5%A4%84%E7%90%86%E3%80%81%E7%BC%A9%E6%94%BE%E3%80%81%E7%89%B9%E5%BE%81%E7%94%9F%E6%88%90/">
+        <p class="h4 index-header">2.比赛/kaggle课程_2_特征预处理、缩放、特征生成</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">特征预处理、缩放、特征生成总而言之，特征的预处理与特征的生成与你将要使用的模型息息相关
+本节课核心topics：
+
+Features preprocessing
+Feature generation
+Their dependence on a model type
+
+预处理介绍大多时候，我们可以用特征来fit自己的model，并期待他获得很好的结果。为了提高模型的质量，很多feature都有独特的最适合自己的预处理手段。
+例如线性模型需要将feature线性化
+也就是说，feature的预处理取决于我们将要使用的模型，如下举例所示，target输出对pclass这个特征有非线性的依赖，pclass = 1 or 3的时候，target是1，否则是0。这种依赖关系是非线性的，但是由于模型本身是线性的，所以需要对pclass这个特征做预处理。
+例如随机深林模型完全不需要做feature预处理
+scaling特征缩放如果绿色数据点是待定点，而对他使用的分类算法是离他最近的点是什么类他就是什么类的话，待定点就与他最近点高度相关。
+如下所示，特征经过不同倍数的scaling（0倍、10倍、100</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-01&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/31/2.%E6%AF%94%E8%B5%9B/kaggle%E8%AF%BE%E7%A8%8B_1_%E4%BB%8B%E7%BB%8D/">
+        <p class="h4 index-header">2.比赛/kaggle课程_1_介绍</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">课程大纲
+竞赛结构一般来说，竞赛的内容各不相同，有的是要求你处理文本，有的是要求你处理图像，有的是要求你预测未来广告的收益。但是其实他们的结构都是相同的，如下所示：
+
+Data
+数据是主办方给我们的培训材料，我们需要使用data来产生我们的解决方案。
+数据的展示形式各不相同，有的是csv数据，有的是txt文件，有的是图片或者数据库格式
+数据通常有描述性文字，告诉你哪些特征可以被提取
+有时可以使用额外的数据集来提高模型性能表现，比如CV分类问题如果使用现有独立数据集性能表现会大大提升
+
+
+Model
+我们在竞赛中建立的就是模型
+最好不要把模型看成是特定的算法，而是一些把数据转换为答案的东西
+模型要有两个特征：是可重复的以及给出最好的预测结果的
+事实上，模型包含了大量的算法、手工制作的特征、利用了各种library，是庞大包含了各种组件的，如下
+
+
+
+Submission
+为了和其他人比较模型的优劣，我们需要将预测结果发送到服务器。通常你只需要提交结果而不需要来源和模型。
+
+
+Evaluation
+评价函数是一种输入是（你的答案+正确答案）输出是（评价分数）的函数。通常情况下，有很多这样的</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-31&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/31/6.%E8%8B%B1%E8%AF%AD/%E6%89%98%E7%A6%8F%E5%90%AC%E5%8A%9B_%E6%9D%B0%E5%93%A5_1/">
+        <p class="h4 index-header">6.英语/托福听力_杰哥_1</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LECTURE 1本次课程大纲：
+
+新政听力概况
+听力系统提升
+直播课程大纲
+核心理论概述
+讲座1精讲（中心逻辑精听法）
+
+新政听力概况基本是上午九点开考，考试顺序为：阅读、听力、休息、口语、写作。
+听力分为加试3个sections和非加试两个sections两种情况。加试就是五篇文章，非加试就是七篇文章。加试是下图中两个1+1中随机一个算分另一个不算分。
+
+对话的图片：
+
+讲座的图片：
+
+听力系统提升
+
+直播课大纲
+如何听：如何听文章，文章该用什么样的思路去分析（1篇lecture）
+题目分析：考试是有设计的，只有懂了文章思路和考试设计思路，才能知道笔记往哪个方向记。所以第二次课主要讲文章和题目设计方向的理论（2篇lecture）
+如何记笔记：懂了文章思路和题目选项后，了解如何记笔记（2篇lecture）
+讲对话部分（3篇对话）
+讲lecture部分（2篇lecture）
+
+所讲题目全部是新政之后的真题
+核心理论概述 - 中心逻辑精听法中心是中心句，比如lecture中的”Today let`s talk about math”中的math就是中心句。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-31&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/31/6.%E8%8B%B1%E8%AF%AD/%E6%89%98%E7%A6%8F%E5%8F%A3%E8%AF%AD_fancy_4_task1/">
+        <p class="h4 index-header">6.英语/托福口语_fancy_4_task1</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">TASK1独立题，因为没有给定信息依托需要自己发挥，所以其实比task234都要难。通常题型是二选一的模式：A or B或者同意 or 不同意。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-31&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/30/6.%E8%8B%B1%E8%AF%AD/%E6%89%98%E7%A6%8F%E5%8F%A3%E8%AF%AD_fancy_3_task4/">
+        <p class="h4 index-header">6.英语/托福口语_fancy_3_task4</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">TASK4 : 无阅读lecture核心考察点仍然是：理解、记录、转述
+TASK3 结构
+第一段是背景段，讲这篇文章的中心，以听懂为主。他的作用和TASK2的阅读段一样，让你弄清楚下一段在干嘛。如果第一段没听懂你就不太能弄清楚接下来的结构
+所以要把第一段的主旨句记下来
+
+
+第二段是对第一段的第一个概念的解释
+第三段是对第一段的第二个概念的解释
+
+速记策略：第一段的总结内容很可能出现在屏幕上，所以在平时练习要把第一段的主旨句记下来，考试的时候第一段就不记了。而第二段和第三段都是主题 - 例子 - 结果的结构，记录结构如下所示。
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-30&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/29/6.%E8%8B%B1%E8%AF%AD/%E6%89%98%E7%A6%8F%E5%8F%A3%E8%AF%AD_fancy_2_task3_lecture/">
+        <p class="h4 index-header">6.英语/托福口语_fancy_2_task3_lecture</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">task3 : lecture例题一先给出一段阅读材料，然后播放老师上lecture，lecture的内容就是对阅读材料的拓展和实例化。最后针对lecture的内容提问。
+阅读材料
+
+听力文稿
+
+速记笔记
+
+例题二阅读
+
+速记笔记：
+
+文稿：
+
+注意：在练习阶段，如果发现不能听记同步，就慢慢来，一段一段听，别一次听完。例题三
+文稿
+
+练习策略：
+1.阅读要练习速记
+2.听力如果听不懂就多背文稿
+3.听力不能速记就分段听分段记
+4.正音问题跟读解决
+5.连词成句问题读文稿解决</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-29&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/28/6.%E8%8B%B1%E8%AF%AD/%E6%89%98%E7%A6%8F%E5%8F%A3%E8%AF%AD_fancy_1_task2_policy/">
+        <p class="h4 index-header">6.英语/托福口语_fancy_1_task2_policy</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">TASK2 : POLICY课程安排一共五次课，内容分别是：
+
+TASK2（校园综合题)
+TASK3（学术讲座题）
+TASK4（学术讲座题）
+TASK4 TASK3的实验题（学术讲座实验题）
+TASK1(独立题)
+
+五次课中会随机穿插一些语音语调和改善他们的小知识
+每次课后有作业
+托福口语从2006到2019年从来没有进行过改革，2019年8月后进行了改革，题目的数量有调整，题型没变。
+之所以不在第一节课就学习TASK1是因为需要在上task1之前把资料中的语料库背熟。
+评分标准
+表达能力Delivery
+
+Clear and fluid speech
+Good pronunciation
+Nature pace
+Good intonation
+
+表达能力的核心就是流畅、无口音、语调好。以中文类比，你在讲中文的时候不可能注意自己的每个词的语音语调，所以只能自平常通过跟读的方式来打磨自己的语音语调。
+
+
+
+语言能力Language use
+
+Grammar
+Vocabulary
+
+语言能力的核心是语法和词汇，但是与表达能力同理，你在讲话的时候不可能注意concentrate后边接on还是</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-28&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/28/Untitled/">
+        <p class="h4 index-header">Untitled</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1"></div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-28&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/24/6.%E8%8B%B1%E8%AF%AD/%E6%89%98%E7%A6%8F%E5%8F%A3%E8%AF%AD_fiona_02_TASK3_policy/">
+        <p class="h4 index-header">6.英语/托福口语_fiona_02_TASK3_policy</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">TASK3任务三可能是一个学院的policy或者学生的一个proposal，先是一段材料告诉你学院的policy或学生的proposal是什么，然后开始一段对话，对话中一般是一男一女，发表他们对这个政策是支持还是反对。
+如下是task3的笔记结构，做口语的笔记的时候要注意如下两点：
+
+框架信息
+
+原文逻辑
+
+
+
+
+先把policy记下来，然后记那个男/女是同意还是反对
+然后记R1/R2,这里是学院的政策的分论点，然后记L1/L2，这里是学生的评论。
+例题
+
+笔记示例
+
+例题2
+
+
+TASK3 掌握结构化的笔记方法后，再来说就会心中有数很多。</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/23/6.%E8%8B%B1%E8%AF%AD/%E6%89%98%E7%A6%8F%E5%8F%A3%E8%AF%AD_fiona_01_TAKS1_%E5%9B%9E%E7%AD%94%E7%BB%93%E6%9E%84%E4%B8%8E%E8%AF%84%E5%88%86%E6%A0%87%E5%87%86/">
+        <p class="h4 index-header">6.英语/托福口语_fiona_01_TAKS1_回答结构与评分标准</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">TASK1_回答结构与评分标准TASK1题型
+Agree or disagree
+问你所有十六岁一下的小孩都必须得去学校，你同意不同意？
+
+
+
+二选一
+some people prefer to do A,others prefer to do B, what`s your opinion?
+
+
+
+suggestion部分
+学校做出了一个新政策，比如给本学院的学生们开设了一个自习室，问你的suggestion是什么
+
+
+一般考察模式是机器读完材料后，给你15秒的准备时间，然后给你45秒的时间作答。                                                                                                                                                                                                                                                         </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-23&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/23/6.%E8%8B%B1%E8%AF%AD/%E6%89%98%E7%A6%8F%E5%8F%A3%E8%AF%AD_fiona_%E7%9B%B4%E6%92%AD1/">
+        <p class="h4 index-header">6.英语/托福口语_fiona_直播1</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">口语题型
+二选一 ：出一个题目，然后给你三个选项，让你用英语回答哪个选项是正确的？
+A/D : 放一段听力，然后问你同意还是不同意？为什么？
+政策题 ：说现在学校出了一个新政策，所有的同学都必须走读，问你觉得这个政策是否是一个good idea？为什么？
+小作文 ： 给了一段材料，看完了之后问你的想法是什么？问法比较灵活。
+解决思路是如果能在五秒钟之内想到提前准备好的段子就用套用段子。否则就只能freestyle。
+常见段子如下：
+题目问啥我爱啥（天文）
+图书馆学习安静好（图书馆）
+参加比赛得奖棒（比赛）
+论文布置立马写（论文）
+合作社交踢足球（足球）
+打工赚钱买买买（打工）
+种树汽车爱环保（环保）
+口语补充素材（TPO素材活学活用）
+
+
+
+
+
+A/D题型讲解如下，题目问高中生毕业后上大学之前，gap一年是否是个好主意？
+
+
+亮明观点并重复题目。重复题目的好处是给自己一些反应和缓解紧张的时间，而且能让干货少一些。
+Well I think it`s a good idea for students to take a year off before entering college.
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-23&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/23/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_13_%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">3.课程/文献管理与信息分析_13_总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">13.总结
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-23&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/22/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_12_%E6%80%9D%E7%BB%B4%E6%96%B9%E6%B3%95/">
+        <p class="h4 index-header">3.课程/文献管理与信息分析_12_思维方法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">12.思维方法常见的思维误区
+只从自己的角度去思考——只从片面的角度去思考
+恶果是容易产生对抗性思维，易陷入争论，缺乏建设性和创新
+
+
+情绪会影响思维的效率，无法跳出情绪的干扰
+同时考虑太多因素，导致思维混乱
+天马行空会更有创造力
+有序的思维工作方式并不会扼杀灵感及创造力，反而会助长灵感和创造力的产生
+
+
+
+流程化的思考是更高效的思维方式所有的思考方式，基本都是提供一个框架，让你按照一套流程来进行思考，避免混乱，有序进行。
+比如SWOT分析法，如下，它可以帮我理清当下的现状。
+
+鱼刺图分析法，多用于对失败的复盘（在我看来就是一个序列化的二维广度优先问题搜索）
+
+从六个角度考虑问题
+
+学习思维方法的必要性
+学会思考，实现条理化，系统化，流程化
+换位思考，全面思考，化解冲突
+真实的生活中，每个问题都是多解的，而不是确定的
+
+六顶思考帽详解六顶思考帽其实是一种平行和流程化的思维方法
+平行思维是一个管理我们思维本身的一种方法
+将我们的思维从不同的侧面和角度进行分解，分别进行考虑，而不是同时考虑很多因素
+将我们平时同时从不同的维度考虑问题变成每次只从一个角度考虑问题。
+
+
+白帽：代表信息与资料，</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-22&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/22/1.%E7%A7%91%E7%A0%94%E5%91%A8%E6%8A%A5/%E7%A7%91%E7%A0%94%E5%91%A8%E6%8A%A520200823/">
+        <p class="h4 index-header">1.科研周报/科研周报20200823</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">20200823手上的工作：
+
+
+
+
+进度：
+
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-22&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/22/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_11_%E9%AB%98%E6%95%88%E5%AD%A6%E4%B9%A0/">
+        <p class="h4 index-header">3.课程/文献管理与信息分析_11_高效学习</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">11.高效学习问题通常是怎样被解决的
+自己知道如何解决的
+别人知道如何解决的 —— 如何找到别人或者别人的方案
+别人不知道怎么解决的 —— 如何创新
+
+主要讨论第二类问题。其实一个人面临的问题，95%都会有人知道怎么该解决。这也是今天课程的主要讨论内容。
+如果自己看书，其实比较难以找到别人的现成答案。入门是一定要有人带的。所以在实验室里，其实是有传承的， 会有人带路。
+starter太重要了。
+
+编程领域的starter是小熊，健身的starter是尤，没有他们我不可能入门。
+
+科研还没有starter，放下虚荣与骄傲，快去找starter。
+
+95%的问题都有现成解决方案，不要自己去重复创新
+面对全新问题时，如何思考？
+这个问题如何解决，该从哪里着手解决？（依赖个人经验）
+谁会知道如何解决这个问题？（求助外部牛人）
+哪个实验室掌握了这项技能（求助外部牛人）
+95%的问题都有人知道如何解决
+
+多借鉴，少创新
+
+不是不鼓励创新，是不鼓励做无意义的创新
+
+不要什么问题都尝试自己创新去解决，那是一种愚蠢的做法，不符合”省时省钱爽“的原则。
+
+世界不需要重复发明轮子。有没有遇到过无从下手的问题</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-22&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/22/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_10_%E5%A6%82%E4%BD%95%E9%80%89%E9%A2%98/">
+        <p class="h4 index-header">3.课程/文献管理与信息分析_10_如何选题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">10.如何选题现在是本学科的第三部分，前两部分分别是快速学习和高效科研，如下。
+
+博士成长的几个阶段
+起步
+学习基础知识和试验技能
+可以独立开展一些试验
+
+
+成长
+能够围绕问题，设计试验，找到解决方案
+
+
+独立
+提出问题，并独立解决
+
+
+
+选题做什么课题都会消耗你的青春，一定别做烂课题。所以如何知道什么是好课题什么是烂课题呢？需要回答下面三个问题：
+
+如何选题
+判断标准是什么
+未来的趋势
+
+科研选题中的省时省钱爽
+
+技术形研究不用说
+基础性研究长远来说也是要实现省时省钱爽
+不推荐me too模式的选题
+
+科研选题依赖于你的知识积累
+
+如果对一个领域缺乏了解，不可能找到合适的选题
+大量的信息输入才会有好的信息输出
+所以信息很重要，本课程的初衷也就是：高效搜集信息
+
+*江雷院士总结的“原创科研选题的八大原则”    * 
+
+教科书和文献上的东西不一定全是对的
+对以往的科学研究的挑战
+总结前人或自己的研究成果，提出普适规律
+研制新功能仪器
+解决人民生活/国民经济/国防建设重大需求的关键技术（关注政府工作报告，发现很多机会）
+科学研究过程中偶然发现的东西
+探究新理论方法，也就是现有试验无法探测</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-22&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/22/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_9_%E5%A4%A7%E4%BD%9C%E4%B8%9A/">
+        <p class="h4 index-header">3.课程/文献管理与信息分析_9_大作业</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">9.大作业作业目的：
+
+帮你快速熟悉一个研究放向
+熟悉相应工具
+
+调研思路：
+
+了解该领域研究放向的基本知识
+搜索引擎查找网页、新闻、视频、书籍等
+
+了解该领域的研究前沿
+申请指南、专家、自然基金、全球资助项目情况
+结题报告等
+
+了解大牛的方向
+​    国际学术会议特邀报告人、会议主席、高产作者分析
+
+文献数据库分析发展态势
+
+文献数据库建立、二分法快速阅读
+
+思维导图整理
+
+
+作业过程中可用网站
+
+搜索申请指南、科技新闻、视频、书籍、图片
+hotpaper（近年高引文章）
+自然科学基金资助项目
+国家发布的科研课题申请指南
+海研全球科研项目数据库
+跟踪牛人实验室（高产、高影响力、首席、特邀报告人）
+参加学术会议
+
+
+这门课我四天看完，输入的信息很多很多，要想融会贯通这些信息，一是要整理md笔记，二是要有所结果的输出。
+
+应该以“岩土力学中的判岩与模式识别（cv）的交叉”或者“用模式识别技术时时识别蹦迪现场的气氛引爆点，从而有利于dj控制现场情绪”，这种源于生活又想当然的课题入手，做一番调研。</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-22&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/21/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_8_%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E3%80%81%E9%98%85%E8%AF%BB%E3%80%81%E8%BE%93%E5%87%BA/">
+        <p class="h4 index-header">3.课程/文献管理与信息分析_8_文献管理、阅读、输出</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8.文献的管理、阅读、输出如何管理文献：使用EndnoteEndnote有批量自动下载的功能
+
+注意不要过量下载
+WOS可以批量输出文献，如下所示，搜索完后点击导出-EndnoteDesktop
+
+然后在输出界面中选择RIS格式，如下
+
+谷歌学术也是可以输出到endnote的，如下
+
+如何筛选文献
+通过阅读–二分法
+根据引文–HISTCITE
+根据数据库分析结果
+
+几种方法的简单辨析
+
+不推荐复杂检索式
+
+复杂检索式条件太多，容易漏掉很多重要的文献。
+很多有价值的文献未必包含你搜索的关键词
+交叉学科的文献容易被大量遗漏
+
+
+数据的分析功能是可以使用的，在之前的笔记中有详细记载
+
+检索后人工筛选：二分法
+
+这个是老师重点推荐的方法。如果你每看一篇论文，都要分成三类（看，不看，待定）已经几个方向（应用，理论，结合等），就会加大分类工作量，所以改成二分法。
+二分法就是改成每次只分两类，减少判断决策时间，分成需要进一步阅读的和不需要看的。
+二分法实际操作过程（十分重要）
+有价值的和不确定的保留，无价值的丢弃
+看论文的摘要，然后有价值和不确定的保留，无价值丢弃
+挑选出来的文献，在endnote里</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-21&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/21/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_7_%E6%96%87%E7%8C%AE%E6%A3%80%E7%B4%A2(%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3%E9%99%8C%E7%94%9F%E9%A2%86%E5%9F%9F)_%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D/">
+        <p class="h4 index-header">3.课程/文献管理与信息分析_7_文献检索(快速了解陌生领域)_重中之重</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.快速信息检索思路老师举了自己最近的需求作为快速检索的示例                                                                                                                                                                                                                                                                                                         
+
+第一个问题，是比价大的宏观问题，是老师现在所处阶段关心的问题。是老师自己在这个领域已经耕耘多年，希望能从总体上把握一下学科的发展方向，真正做一些开创性的工作。
+
+第二个问题，是了解一个具体设备解决一个具体问题的当下进展和前景，以及有什么好研究的（切入点在哪），是各位研究生所处的阶段关心的问题。
+
+第三个问题是在一个具体的课题里找idea。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-21&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/20/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_6_HistCite_%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D/">
+        <p class="h4 index-header">3.课程/文献管理与信息分析_6_HistCite_重中之重</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">6.HistCiteHistCite
+
+快速绘制出一个领域的发展脉络
+快速锁定某个领域的重要文献
+快速锁定某个领域的重要科学家和机构
+洞察某个领域的最新进展
+找出关键词变化过的领域的重要文献
+
+使用步骤：
+
+首先打开WOS，数据库选择WOS核心合集。
+
+
+
+搜索关键词，在功能栏点击，导出数据，保存为其他文件格式，如下
+
+注意导出每次只能导出500条文献，记得选择是全纪录参考文献，保存为纯文本格式文件，如下。
+
+
+
+
+数据整理，把wos下载的数据用记事本或写字板打开，将第一行FN Clarivate Analytics Web of Science换成
+FN Thomson Reuters Web of Knowledge，然后保存后方可用HistCite导入
+导入步骤如下所示，File - Add File - 浏览
+
+
+作图分析
+如下所示，点Tools，Graph Maker
+
+
+读图
+如下，因为图片是根据时间序列做的，21很大，一看就是这个领域的开创性工作。354也不小，又是近些年的文章，而且引用了大量的文章，一看就是综述。
+
+
+
+HistCite操作示例
+在WOS中搜索感兴趣的研</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-20&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/19/3.%E8%AF%BE%E7%A8%8B/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90_5_%E8%B0%83%E7%A0%94%E8%8E%B7%E5%8F%96%E5%88%86%E6%9E%90%E6%96%87%E7%8C%AE/">
+        <p class="h4 index-header">3.课程/文献管理与信息分析_5_调研获取分析文献</p>
         
         
           
@@ -151,9 +1129,12 @@
 获得重要文献的方法如下图所示，可以找专家或者师兄要，也可以在数据库网站上自己检索分析，也可以利用文献软件进行分析。
 
 ​    
-基于数据库和软件对文章进行分析数据库的分析功能之前提到过，软件的分析也大同小异。用到的时候再查。
+基于数据库和软件对文章进行分析数据库的分析功能之前提到过，的分析也大同小异。用到的时候再查。
 基于引文分析软件的分析这其实是文件计量学的范畴。通过对文章之间的互相引用的分析来得出这个领域发展趋势的结论。
-</div>
+
+Cited References  越查越深，寻找源头
+Times Cited   越查越新，追踪进展
+Related Reco</div>
         </div>
       </a>
 
@@ -354,6 +1335,7 @@ Site:   org;
 https://www.ece.nus.edu.sg/lv/about.html
 有提到两个CV界受尊重的比赛：
 Pascal voc,ImageNet
+
 </div>
         </div>
       </a>
@@ -438,8 +1420,8 @@ ets官网里面
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/30/5.%E6%9D%82%E8%B0%88/%E5%81%A5%E8%BA%AB%E8%AE%A1%E5%88%92/">
-        <p class="h4 index-header">5.杂谈/健身计划</p>
+      <a href="/2020/07/30/%E5%81%A5%E8%BA%AB%E8%AE%A1%E5%88%92/">
+        <p class="h4 index-header">健身计划</p>
         
         
           
@@ -858,853 +1840,6 @@ BERT - word embeddingBERT是一个pre-trained</div>
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-10&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/09/0.%E6%A6%82%E5%BF%B5/NLP_LSTM_kaggle_toxic%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
-        <p class="h4 index-header">0.概念/NLP_LSTM_kaggle_toxic代码实现</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">LSTM模型在kaggle_toxic比赛中的代码实现embedding_matrix = np.zeros((len(word_index) + 1, 300))
-for word, i in tqdm(word_index.items()):
-    embedding_vector = embeddings_index.get(word)
-    if embedding_vector is not None:
-        embedding_matrix[i] = embedding_vector
-%%time
-with strategy.scope():
-
-    # A simple LSTM with glove embeddings and one dense layer
-    model = Sequential()
-    model.add(Embedding(len(word_index) + 1,
-                     300,
-                     weights=[embedding_matrix],
-    </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-09&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/07/0.%E6%A6%82%E5%BF%B5/0.%E6%96%87%E7%AB%A0/%E9%9D%92%E5%B7%A5%E5%A7%94%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E7%9B%B4%E6%92%AD%E7%AC%94%E8%AE%B0/">
-        <p class="h4 index-header">0.概念/0.文章/青工委论文分享直播笔记</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">青工委论文分享直播笔记1.青工委是国内很强的NLP的学术团体，有刘洋刘知远这种大牛成员。
-2.青工委隶属于CIPSC，中国中文信息学会网站：http://www.cipsc.org.cn/
-3.认可度高的会议：ACL,IJCAI,SIGIR,AAAI,EMNLP&amp;CIKM:（中了自然有组织找上门）
-4.青工委2020学术活动list：
-
-5.青工委学术活跃委员与合作单位list
-
-
-6.研究前沿：
-
-
-对话系统和信息抽取是热点研究方向
-情感分析都是sentence-level和基于文本推理的
-
-7.机器学习的新的轮子
-
-8.多语言模型是热点（落地意义大）
-
-mBERT Probing
-9.多语言论文有29篇：
-
-10.多语言学习论文选读
-从结果上来说，有监督学习的效果比无监督学习的效果好。有监督和无监督的2020代表性论文分别是：
-
-无监督学习：
-UniTrans
-Unsupverised Domain Adaptation
-
-
-有监督学习：
-Bilingual Paraphrase Generation
-Multilingual Word Sense Disambiguati</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-07&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/06/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_WordEmbedding%E4%BB%A3%E7%A0%81/">
-        <p class="h4 index-header">0.概念/NLP_词向量_WordEmbedding代码</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Word_embedding 代码自己定义各个单词的维度是一个工作量巨大、需要深入理解语言内核的工作，而且本工作有很强的复用性。于是不必自己在每一个project中定义各个单词的维度然后算出整个语料库的向量表示，完全可以使用前人算好的结果，比如Glove vector：http://www-nlp.stanford.edu/data/glove.840B.300d.zip 。
-其他的选项还有word2vec或者fasttext。
-kaggle multi-toxic比赛中用到了glove-840b-300d的word embedding人，如下，读入840-300d的模型，遍历所有的line，输出embedding向量的个数。
-# load the GloVe vectors in a dictionary:
-
-embeddings_index = {}
-f = open(&#39;/kaggle/input/glove840b300dtxt/glove.840B.300d.txt&#39;,&#39;r&#39;,encoding=&#39;utf-8&#39;)
-for line </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-06&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/06/0.%E6%A6%82%E5%BF%B5/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_%E8%AE%AD%E7%BB%83%E9%9B%86&%E6%B5%8B%E8%AF%95%E9%9B%86&%E9%AA%8C%E8%AF%81%E9%9B%86&%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1/">
-        <p class="h4 index-header">0.概念/机器学习_训练集&amp;测试集&amp;验证集&amp;无偏估计</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">训练集&amp;测试集&amp;验证集
-训练集trian set： 是用来拟合模型的数据集，因为是整体样本数据的一部分，所以虽然他规模最大但是仍然存在有偏估计的问题。
-测试集test set：最终模型训练好后，用来提供相对于trian+valid set
-validation set：提供相对于训练集的无偏估计的数据集
-
-无偏估计：
-当样本分布的平均值等于总体样本的平均值的时候这个估计就是无偏估计。
-比如全市十万名小学生的考试成绩的期望（平均值）是60分，那么部分差的小学的平均值就是45分，这个估计就是有偏估计；对全市所有的小学分别随机抽取出100个样本，这个样本的平均值就是60分，和总体十万个样本的平均值相同，这个估计就是无偏估计。
-train set 毕竟是整体样本的一部分，不是严格的分层取样所以必然存在有偏估计，validation set就是在train和test上都平均取样的set，解决了有偏估计的问题。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-06&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/06/0.%E6%A6%82%E5%BF%B5/NLP_LSTM_input&outputShape/">
-        <p class="h4 index-header">0.概念/NLP_LSTM_input&amp;outputShape</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">LSTM （RNN）的输入输出形状辨析
-在Keras 的LSTM模型中，LSTM的input形状总是一个三维的向量(input_dim,batch_size,time_steps)，如下所示。
-建立模型的代码：
-model = keras.models.Sequential()
-model.add(keras.layer.LSTM(units=3,input_shape=(2,10)))
-关于模型summary输出的代码:
-model = keras.models.Sequential()
-model.add(keras.layers.LSTM(units=3,input_shape(2,10),return_sequences=False))
-model.summary()
-
-因为不知道batch_size,所以output shape第一个参数为none，其实应该是(batch_size,3)
-总结
-LSTM的输入总是一个3D矩阵（batch_size,dim,seq_len）
-LSTM的输出是一个2D或者3D矩阵（根据return_sequences不同而有所不同）
-If ret</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-06&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_CNN_padding%E5%A1%AB%E5%85%85/">
-        <p class="h4 index-header">0.概念/NLP_CNN_padding填充</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">padding填充padding的CV解释当卷积操作用于图像处理中时，因为卷积窗口总是从图片的左上角滑到右下角，在这个过程中，图片的四条边界区域总是不能位于卷积窗口的中心，于是产生了信息损失，于是将图片的四周填充上空白，这样卷积窗口滑动的时候就能收集到边界的完整信息，如下图所示：
-
-padding的nlp解释通常在业务场景中，CNN网络处理语言文字的时候并不是一次只处理一句话（一条向量），而是成批量的处理例如64句话（64*向量维）的矩阵。因为向量有长有短，矩阵又必须是长方形，于是在缺口的地方都填充上0。
-tips：如果将向量的长度进行排序后再批量放到不同的矩阵中，这样不同的矩阵就有不同的大小，减少了对0的处理（本质是浪费）可以提高性能。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-05&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/05/0.%E6%A6%82%E5%BF%B5/NLP_RNN_%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
-        <p class="h4 index-header">0.概念/NLP_RNN_代码实现</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">RNN代码实现与注释RNN - recurrent neural network - 循环神经网络，如概念文章所描述，是一个擅长处理序列化数据的网络。
-在这个网络中，上一个步骤的输出是下一个步骤的输入，在传统的神经网络中，所有的输入-输出都是彼此的依赖项。
-但是在预测下一个词的业务场景中，预测单词需要记住之前的所有词，所以RNN就很适用于这种情况with a help of hidden layer。
-这篇代码记录源于kaggle toxic比赛的notebook，代码是有上下文的，代码的上文就是对比赛的train和validate和test数据进行了必要的处理，切分等操作，如下
-xtrain, xvalid, ytrain, yvalid = train_test_split(train.comment_text.values, train.toxic.values, 
-                                                  stratify=train.toxic.values, 
-                            </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-05&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/04/0.%E6%A6%82%E5%BF%B5/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_ConfusedMatrix_%E5%87%86%E7%A1%AE%E7%8E%87&%E5%8F%AC%E5%9B%9E%E7%8E%87&ROC&AUC/">
-        <p class="h4 index-header">0.概念/机器学习_ConfusedMatrix_准确率&amp;召回率&amp;ROC&amp;AUC</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Confused Matrix如何衡量一个机器学习模型的效果？不能只看准确率，因为准确率这个评价标准不足以全面评价模型。
-先看两个失败的分类模型：
-假如意大利展开了新冠肺炎排查行动，暂不管具体是如何排查，输出结果的数学模型是:
-
-把所有人的检测结果都输出为“没有肺炎”，这个时候假设10000个样本，只有2个人得了，准确率高达99.98%，但是这个模型就是个废物，把目的完全丢弃了。
-把所有人的检测结果都输出为“有肺炎”，这样能确保阳性样本检出率为100%，但是对所有人都采取隔离措施浪费巨大。这种检测手段也是废物。
-
-几个定义：
-上述检测肺炎的例子中，携带病毒为阳性（有敌机，有怀孕），不携带病毒为阴性（气球，无敌机，没怀孕）。把confused matrix画出来如下所示：
-
-更生动的例子：
-
-召回率和准确率一般来说，阳性的例子是检测目标。如果FN假阴性太多，就说这个模型的召回率很低，自然风险控制能力很差（放走了病毒携带者/敌机）。
-
-如果FP假阳性太多，我们就说这种方法的准确率很低，把大量正常人隔离，对假目标比如气球发射导弹。自然这种方法很浪费。
-
-如下所示，召回率（recall）是左侧</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-04&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/04/0.%E6%A6%82%E5%BF%B5/Python_keras_layer%E6%A6%82%E5%86%B5/">
-        <p class="h4 index-header">0.概念/Python_keras_layer概况</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Keras_Layerkeras的层包括：
-常用层，卷积层，池化层，局部连接层，递归层，嵌入层，高级激活层，规范层，噪声层，包装层，and，也可以编写自己的层。
-对于层的通用操作
-layer.get_weights()  #返回该层的权重
-layer.set_weigths(weights) #将权重加到该层
-config = layer.get_config() #保存该层的配置
-layer =  layer_from_config(config) # 加载一个配置到该层
-
-#如果该层不是共享层而是一个计算节点，那么可以通过如下方法获得输入、输出张量。输入和输出张量的形状
-layer.input
-layer.output
-layer.input_shape
-layer.output_shape
-
-#如果该层有多个计算节点。可以使用下面的方法
-layer.get_input_at(node_index)
-layer.get_output_at(node_index)
-layer.get_input_shape_at(node_index)
-layer.get_output_shape_</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-04&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/01/0.%E6%A6%82%E5%BF%B5/Python_Keras_Dense_activation_dropout/">
-        <p class="h4 index-header">0.概念/Python_Keras_Dense_activation_dropout</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Keras_常用层常用层对应于core模块，core内部定义了一系列的常用的网络层，包括全连接层和激活层等等。
-Dense层keras.layers.core.Dense(units, activation=None, use_bias=True, kernel_initializer=&#39;glorot_uniform&#39;, bias_initializer=&#39;zeros&#39;, kernel_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, bias_constraint=None)
-Dense层就是常用的全连接层，实现的运算是output = activation(dot(input,kernel)+bias)其中activation是逐元素计算的激活函数，kernel是本层的权值矩阵，bias是偏置向量，只有当use_bias=True才会添加。
-如果本层的输入的数据的维度大于2，则会先被压缩成与kernel相匹配的大小。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-01&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/01/0.%E6%A6%82%E5%BF%B5/Python_Keras_Sequential/">
-        <p class="h4 index-header">0.概念/Python_Keras_Sequential</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Keras_Sequential开始使用模型顺序模型是多个网络层的线性堆叠。
-用户可以通过网络层的实例的列表传递给Sequential的构造器，来创建一个Sequential模型。
-from keras.model import Sequential
-from keras.layers import Dense,Activation
-
-model = Sequential([
-    Dense(32,input_Shape=(784,)),
-    Activation(&#39;relu&#39;),
-    Dense(10),
-    Activation(&#39;softmax&#39;),
-])
-也可以使用简单的.add()方法将各层添加到模型中
-model = Sequential()
-model.add(Dense(32,input_dim=784))
-model.add(Activation(&#39;relu&#39;))
-指定输入数据的尺寸模型需要知道输入尺寸，于是模型的第一层需要明确地被输入数据尺寸（其他层不需要因为可以推测出数据尺寸）。输出尺寸的工作有以下几</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-01&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/31/0.%E6%A6%82%E5%BF%B5/0.%E6%96%87%E7%AB%A0/Kaggk_toxic_%E4%BB%8ERNN%E5%88%B0Transformer%E5%92%8CBert%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
-        <p class="h4 index-header">0.概念/0.文章/Kaggk_toxic_从RNN到Transformer和Bert的代码实现</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">从0构建：RNN - WE - LSTM&amp;GRU - SEQ2SEQ - Attention - Transformer - BERTTOXIC比赛阐述目的：
-测试集来源于wiki讨论区（多语言），输出测试集中每一条评论是否为有毒评论（有毒输1，没毒输0）。
-训练集：
-前两次比赛的英文数据。
-注意点：
-
-有毒是情感分析中专门的一类，要查阅文献了解研究前沿
-测试集是跨语言的，怎么处理跨语言。是五种语言分别建模还是都翻译成英语？
-Jigsaw的API Perspective可以使用越来越多的语言为有毒评论分类提供服务。据他们自己所说，去年一年该领域从最新的模型创新中获得了令人印象深刻的多语言功能。包括few- and zero-shot learning。
-
-Mr_KnowNothing的Notebook笔记本文如标题所示，包括如下几个内容：
-
-Simple RNN
-Word Embedding
-LSTM
-GRU
-Bi - Directional RNN
-Encoder - Decoder Model (Seq2Seq)
-Attention Models
-Transformers </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-31&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/30/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E8%AF%A6%E7%BB%86(3)%E5%BA%94%E7%94%A8%E4%B8%8E%E6%94%B9%E8%BF%9B/">
-        <p class="h4 index-header">0.概念/NLP_注意力机制Attenion详细(3)应用与改进</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Attention注意力机制详解（应用）Attention详解分三篇文章：
-
-Seq2seq问题中RNN与Attention的结合
-抛弃RNN的self-Attention模型和Transformer架构
-Attention和Transformer在NLP和CV问题上的应用
-
-主要参考资料是Yoshua Bengio组的论文、谷歌研究组的论文、Tensor2Tensor的文档、斯坦福NLP讲义
-NLP:Universal Transformer：此模型结合了transformer结构和RNN中循环归纳的特点，使得transformer结构能够适应更多的NLU问题。改进的结构如下图，主要是引入了Transition Function，我们可以对attention进行多次循环，这一机制被应用到QA，主语推测谓语，缺失单词填充，数字字符串处理等问题中。
-
-BERT:双向Transformer结构，下图是bert与单向Transformer结构的OpenAI GPT、双向独立LSTM的ElMo对比。
-
-CV : 从略</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-30&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/30/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E8%AF%A6%E7%BB%86(2)%E8%87%AA%E6%B3%A8%E6%84%8F%E4%B8%8ETransformer/">
-        <p class="h4 index-header">0.概念/NLP_注意力机制Attenion详细(2)自注意与Transformer</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Attention注意力机制详解Attention详解分三篇文章：
-
-Seq2seq问题中RNN与Attention的结合
-抛弃RNN的self-Attention模型和Transformer架构
-Attention和Transformer在NLP和CV问题上的应用
-
-主要参考资料是Yoshua Bengio组的论文、谷歌研究组的论文、Tensor2Tensor的文档、斯坦福NLP讲义
-第二部分：自注意力和transformer上文讲解了早期注意力机制与RNN结合，在机器翻译中的效果。RNN由于其顺序结构训练速度常常受到限制。既然注意力机制模型本身可以看到全局信息，那么一个自然的思路是我们能不能去掉RNN，仅仅依赖Attention注意力模型呢？这样训练既可以并行化，同时也拥有全局信息。
-本文就讲解Transformer模型，which仅仅依赖于Attention架构。
-代码部分的讲解是Tensor2Tensor的源代码
-整体模型架构和工作原理如下例句是“I arrived at the bank after crossing the river”.这里的bank指的是河岸还是银行呢，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-30&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/28/0.%E6%A6%82%E5%BF%B5/NLP_%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6Attenion%E8%AF%A6%E7%BB%86(1)%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%B8%8ERNN/">
-        <p class="h4 index-header">0.概念/NLP_注意力机制Attenion详细(1)注意力与RNN</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Attention注意力机制详解Attention详解分三篇文章：
-
-Seq2seq问题中RNN与Attention的结合
-抛弃RNN的self-Attention模型和Transformer架构
-Attention和Transformer在NLP和CV问题上的应用
-
-主要参考资料是Yoshua Bengio组的论文、谷歌研究组的论文、Tensor2Tensor的文档、斯坦福NLP讲义
-第一部分 ：Seq2seq问题中RNN与Attention的结合RNN结构的局限在机翻任务场景中，之前的NMT模型（neural machine translation）中，通常的配置是encoder - decoder结构。即encoder读取输入的句子将其转换成定长向量，然后decoder再将这个向量翻译成相应的目标语言的文字。
-通常encoder和decoder都采用RNN结构（例如 gated RNN : LSTM &amp;&amp; GRU)。如下图所示，我们采用encoder RNN将输入语句信息总结到最后一个隐向量中，并将其作为decoder的初始向量。然后decoder会将其解码为目标</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-28&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/27/3.%E8%AF%BE%E7%A8%8B/%E6%B8%85%E5%8D%8E%E8%AF%BE%E8%A1%A8/">
-        <p class="h4 index-header">3.课程/清华课表</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">计算机科学与技术系 00240013 计算机辅助设计技术基础 3 学分 48 学时 Fundamentals of Computer Aided Design 本课程坚持基础知识与实践相结合的指导思想，在学习计算机辅助设计的基础知识的同时,学习三维动画软 件的操作与使用。基础知识包括：图形变换、自由曲线曲面造型技术、三维几何造型、真实感图形。应用 软件：3DSMAX 2013 软件的操作。这两部分内容是有机联系的，基础知识对理解 3DSMAX 软件中的基本概 念提供帮助；通过 3DSMAX 软件的操作与实践，能够更好地理解有关基本概念并学习到一门很实用的技术 （三维造型与动画）。本课程的授课特点：1）基础知识课在教室；三维动画课在机房，主要采用案例的教 学方法，边学边练。2） 基础知识与软件学习交错安排。在一学期 16 周中，三维动画课 8 周，基础知识课 6 周，优秀动画作业课堂交流 1 周，节假日 1 周。课程成绩 100 分，由平时成绩（大约 40 分）和大实验作 业（大约 60 分）组成。平时作业主要由课后作业及出勤情况确定；大实验作业题目自选，鼓励多人合作。 提供三维动画软件</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-27&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/27/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95_hiker/">
-        <p class="h4 index-header">4.安装调试记录/博客建站记录_hiker</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">windows环境下使用hexo搭建hiker博客记录搭建步骤
-购买域名
-
-github创建个人仓库
-
-安装node.js
-
-安装hexo
-
-推送网站
-
-域名解析
-
-更换主题
-
-更改配置
-
-发布文章
-
-使用图床
-
-
-1.域名购买godaddy.com: 域名很全但价格较高，首年年费均价￥60左右,往后每年续费￥120左右。
-阿里云：价格适中但个性化后缀较少,cc后缀域名无法备案
-namesilo.com: 域名较全,价格最低,bqlab.cc十年￥280,最终在此购买。 
-在namesilo.com中的Domain manager中将域名DNS服务器修改为：
-
-ns1.alidns.com
-ns2.alidns.com
-2.github创建仓库仓库名命名为fuzzypw.github.io，亲测改成其他域名网站不能正常访问，
-settings，设置custom domain,输入fuzzy.pw
-3.安装node.js下载地址：https://nodejs.org/en/download/
-安装完成后检测是否成功：node -v
-检测npm是否一起安装成功: npm - v
-4.安装h</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-27&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/25/2.%E6%AF%94%E8%B5%9B/%E6%8C%87%E5%AF%BC_%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87&%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9&%E8%B6%85%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE/">
-        <p class="h4 index-header">2.比赛/指导_性能指标&amp;模型选择&amp;超参数设置</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">性能指标 &amp; 模型选择 &amp; 超参数设置已经知道了常用的模型和训练方法。本文主要记录实际应用中对应特定场景选择哪种模型、如何通过收集模型的反馈结果改善模型。
-有时候并不需要采用最新最复杂的模型，而是深入理解一些通用的模型，并更好的实际应用到我们处理的具体问题上去。
-（和健身同理，卧推后加夹胸超级组、肩推往头顶夹等高端技巧，但训练效果不好；基础动作（屈伸）练扎实，改善基本问题（脊椎旋转、肩胛骨不稳）后，做简单的推肩10kg和侧平举2kg都觉得酸的要死）。
-XLM-R就是fancy的训练技巧，基本的LSTM等理解透彻就是基本功扎实后的简单动作。
-孰优孰劣pretty obvious
-性能指标准确率与召回率
-例如罕见病识别问题，我们只需要设计一个模型将所有的样本的结果都判定为“否”，就可以得到99.99%的准确率，但是无意义。于是在不同的场景下对模型的性能指标有不同定义。
-准确率与召回率是两个重要的性能指标。
-其中准确率 真正例 / (真正例 + 假正例)是模型作出正例判断时的正确率
-召回率是 真正例 / (真正例 + 假反例) 是对于所有实际上正确的例，模型检测到的比率
-通常</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-25&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/25/2.%E6%AF%94%E8%B5%9B/%E6%8C%87%E5%AF%BC_%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/">
-        <p class="h4 index-header">2.比赛/指导_特征提取与特征选择</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">特征提取与特征选择这两者的效果是一样的，都是试图去减少特征数据集中的属性（特征）的数目，但是两者采用的方法不同，
-特征提取的方法是通过属性之间的关系，通过组合不同的属性得到新的属性，改变了特征空间
-特征选择的方法是选择出特征集的子集，是一种包含的关系，没有改变特征空间
-1.2特征提取的主要方法PCA,LDA,SVD等
-1.3特征选择的主要方法1.fliter方法
-对每个特征打分，即给出每一维的特征赋予权重，该权重代表了特征的重要性，然后根据权重排序。
-主要的方法：卡方，信息增益，相关系数
-2.Wrapper方法
-主要思想：将子集的选择看成一个搜索寻优问题，生成不同的组合，对组合进行评论
-可看做一个优化问题，有很多优化算法可供使用
-尤其是启发式算法GA，PSO,DE,ABC等等
-主要方法：递归特征消除方法
-3.Embedded方法
-主要思想：在模型既定的情况下，学习出对提高模型准确性最好的属性，即在确定模型的过程中，挑选出哪些对模型训练有重要意义的属性
-主要方法：正则化，如岭回归就是在回归的基础上加上了正则化项
-1.4总结1.特征提取是从杂乱无章的世界中，去到更高的世界俯瞰原有世界，这时</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-25&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/25/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Storm/">
-        <p class="h4 index-header">0.概念/技术_Storm</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Stormstorm是一个Apache顶级开源项目,用于流计算
-流式计算
-
-实时获取/传输/计算/展示数据
-代表技术:Flume实时获取,KAFKA实时存储,Storm实时计算,Redis实时缓存,mysql实时存储
-
-批计算
-
-批量获取/传输数据
-代表技术:sqoop导入数据,HDFS存储数据,MapReduce计算数据,Hive计算数据
-
-storm和hadoop的区别:
-
-storm用于流计算,数据用网络传进来,处理过的数据放在内存中
-hadoop用于批计算,处理的数据保存在文件存放系统中
-
-storm和hadoop的相同点:
-
-编程模型类似
-storm                     hadoop
-Nimbus                JobTracker
-Supervisor         TaskTracker
-Worker                  child
-topology              job
-spout/bolt           mapper/reducer
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-25&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/19/0.%E6%A6%82%E5%BF%B5/NLP_GRU/">
-        <p class="h4 index-header">0.概念/NLP_GRU</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Gated RNN : GRULSTM和GRU这两个重要的深度学习模型，几乎所有能看到的所有深度学习论文都是以这两个模型为基础。
-GRU模型GRU模型的主要思想是，我们希望能够保存一些记忆，能够捕获一些较长的依赖，需要有一个模型去学习何时以及如何去做，同时还得允许错误消息流转。基于输入，这些流转会向不同的方向以不同的强度传递。
-对GRU的介绍从标准的RNN开始
-循环神经网络RNN基本上直接计算下一步的隐层，同样的，之前的隐状态会回归给向量，我们不是去计算GRU数值，而是先要计算其中各个门，这些门和h(t)一样，就是一些连续的隐状态长度一致的向量。这些门包括更新门和重置门。
-计算更新门时主要是基于当前输入的词向量和隐藏状态
-
-计算重置门方法类似但是使用的是不同的权重
-
-通过一个直观例子来认识重置门的作用：
-
-详细分析上图的公式和重置门的作用：假如这是一个语义的情感分析任务，前边都是对一个电影长篇累牍的剧情讨论，最后一句话是it`s a really boring movie.那么其实只要最后这个boring就OK了，前边的都可以舍弃。所以这里重置门就可以置为0，把计算累计的东西都清理掉，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-19&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/19/0.%E6%A6%82%E5%BF%B5/NLP_LSTM/">
-        <p class="h4 index-header">0.概念/NLP_LSTM</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">LSTMLSTM是什么？GRU可以在序列中学习较长的序列连接，另一种允许你很好的处理长距离序列连接的模型就是LSTM—长短时记忆单元，这个模型比GRU更加强大。
-LSTM原始论文中采取了大量的篇幅来分析梯度消失的原因，吴恩达不建议读原始论文来了解LSTM的细节。
-控制LSTM行为的核心等式
-
-ct，at是维持的状态值（时时更新），u，f，o分别是更新门，遗忘门，输出门。
-LSTM的内部结构图：
-
-Runtime LSTM结构图：
-
-如上的红线表示了通过适当地设置了更新们和遗忘门后，一些数据可以长效地被记住的过程。（从左到右一直被维持着。）
-朴素RNN与展开是一种处理序列数据的神经网络，某单词根据上下文变化而有不同含义这种任务就适合交给RNN来做。
-
-RNN在时序上展开
-
-LSTM与RNN结构对比长短期记忆（Long short-term memory, LSTM）是一种特殊的RNN，主要是为了解决长序列训练过程中的梯度消失和梯度爆炸问题。简单来说，就是相比普通的RNN，LSTM能够在更长的序列中有更好的表现。
-LSTM结构和普通RNN的对比图如下，LSTM有两个传输状态，分别是cell</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-19&nbsp;&nbsp;
         
         
         
