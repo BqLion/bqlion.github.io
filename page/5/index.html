@@ -136,6 +136,441 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM&HEMM&CRF%E7%9A%84%E6%AF%94%E8%BE%83pt2/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM&amp;HEMM&amp;CRF的比较pt2</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.1.1 概览在统计概率图（probability graph models）中，参考宗成庆老师的书，是这样的体系结构（个人非常喜欢这种类型的图）：
+
+在概率图模型中，数据(样本)由公式  建模表示： 
+
+ 表示节点，即随机变量（放在此处的，可以是一个token或者一个label），具体地，用  为随机变量建模，注意  现在是代表了一批随机变量（想象对应一条sequence，包含了很多的token），  为这些随机变量的分布；
+ 表示边，即概率依赖关系。具体咋理解，还是要在后面结合HMM或CRF的graph具体解释。
+
+2.1.2 有向图 vs. 无向图上图可以看到，贝叶斯网络（信念网络）都是有向的，马尔科夫网络无向。所以，贝叶斯网络适合为有单向依赖的数据建模，马尔科夫网络适合实体之间互相依赖的建模。具体地，他们的核心差异表现在如何求  ，即怎么表示  这个的联合概率。
+1. 有向图
+对于有向图模型，这么求联合概率： 
+举个例子，对于下面的这个有向图的随机变量(注意，这个图我画的还是比较广义的)：
+
+应该这样表示他们的联合概率:
+
+应该很好理解吧。
+2. 无向图
+对于无向图，我看资料</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM_三个问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">HMM的三个核心问题的解本文首先对马尔科夫过程、隐形马尔科夫模型等概念做一次梳理性阐述，然后对HMM的三大问题依次给出解法。
+1.马尔科夫网络，马尔科夫模型，马尔科夫过程，贝叶斯网络的区别有如下递进定义
+
+将随机变量为节点，若两个随机变量相关或者不独立，则将两者链接一条边；若给定若干随机变量，则形成一个有向图，即构成一个网络
+若该网络是有向无环图，则称这个网络为贝叶斯网络
+如果这个图退化成线性链的方式，则得到马尔科夫模型，因为每个节点都是随机变量，将其看成各个时刻或空间的相关变化，以随机过程的视角，则可以看成是马尔科夫过程。
+若上述网络是无向的，则是无向图模型，又称马尔科夫随机场或者马尔科夫网络。
+若给定某些条件，研究这个马尔科夫随机场，则得到条件随机场。
+如果使用条件随机场解决标注问题，并且进一步将条件随机场中的网络拓扑变成线性的，则得到线性链条件随机场
+
+2.马尔科夫模型2.1马尔科夫过程马尔科夫过程是一类随机过程，他的原始模型马尔科夫链，由俄罗斯数学家A.A.马尔科夫提出，该过程有如下性质：在已知现在的条件下，他未来的演变过程不依赖于他过去的状态。例如森林中动物的数量演变过程，液</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_HMM_%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_HMM_马尔科夫模型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">隐性马尔可夫模型(HMM):1. 什么样的问题需要HMM模型首先我们来看看什么样的问题可以用HMM模型。使用HMM模型时我们的问题一般有这两个特征：
+​    １）我们的问题是基于序列的，比如时间序列，或者状态序列。
+​    ２）我们的问题中有两类数据，一类序列数据是可以观测到的，即观测序列；而另一类数据是不能观察到        的，即隐藏状态序列，简称状态序列。（Hidden state）
+有了这两个特征，那么这个问题一般可以用HMM模型来尝试解决。这样的问题在实际生活中是很多的。比如：我现在在打字写博客，我在键盘上敲出来的一系列字符就是观测序列，而我实际想写的一段话就是隐藏序列，输入法的任务就是从敲入的一系列字符尽可能的猜测我要写的一段话，并把最可能的词语放在最前面让我选择，这就可以看做一个HMM模型了。再举一个，我在和你说话，我发出的一串连续的声音就是观测序列，而我实际要表达的一段话就是状态序列，你大脑的任务，就是从这一串连续的声音中判断出我最可能要表达的话的内容。
+2. HMM模型的定义
+
+Q是各个状态，图示的节点
+
+A是状态转换矩阵，是各个状态不变/互相转换的概率，图示边</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_6_EM%E7%AE%97%E6%B3%95/">
+        <p class="h4 index-header">0.概念/NLP_SLP_6_EM算法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">EM算法2.1 基础知识2.1.1 凸函数设是定义在实数域上的函数，如果对于任意的实数，都有： 那么是凸函数。若不是单个实数，而是由实数组成的向量，此时，如果函数的 Hesse 矩阵是半正定的，即 是凸函数。特别地，如果  或者   ，称为严格凸函数。
+2.1.2 Jensen不等式如下图，如果函数  是凸函数，  是随机变量，有 0.5 的概率是 a，有 0.5 的概率是 b，  的期望值就是 a 和 b 的中值了那么： 其中， ，这里 a 和 b 的权值为 0.5,    与 a 的权值相等， 与 b 的权值相等。
+特别地，如果函数   是严格凸函数，当且仅当：   (即随机变量是常量) 时等号成立。
+
+注：若函数    是凹函数，Jensen不等式符号相反。
+2.1.3 期望对于离散型随机变量 X 的概率分布为   ，数学期望   为： 
+ 是权值，满足两个条件   。
+若连续型随机变量X的概率密度函数为  ，则数学期望  为： 设 ， 若  是离散型随机变量，则： 若    是连续型随机变量，则：  
+2.2 EM算法的推导对于  个相互独立的样本  ，对应的隐含数据  ，此时</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_3_%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91/">
+        <p class="h4 index-header">0.概念/NLP_SLP_3_一阶逻辑</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">概念：一阶逻辑（first order logic）一阶二阶这类的词, 一是表达量化的程度, 二是表达逻辑系统多有表达能力. 
+
+0阶逻辑： 每一个字母就代表一个命题, 所以命题逻辑只能表达句子之间的关系, 比如“p&amp;q”, “if p then q”等等的真值如何从p和q的真值中计算出来.
+1阶逻辑则引入了两个量词, 即universal quantifier(倒A，所有)和existential quantifier(倒E，存在), 并且加入了一阶谓词和individual variables（变量）和individual constants（常量）. 这些导致一阶逻辑可以量化individuals in the domain. 比如经典的
+
+
+三段论就可以被一阶逻辑表达：For all x, Hx-&gt;MxHs-—Ms
+
+其中for all x就是量化了所有individuals, 即domain里的任意一对象, 用individual variable x来表示. Hx则是表示x属于H(Human)这个谓词的extension, Mx表示x属于M(Mortal)的e</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FSD%E7%8A%B6%E6%80%81%E4%BC%A0%E6%84%9F%E5%99%A8/">
+        <p class="h4 index-header">0.概念/NLP_SLP_5_FSD状态传感器</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">状态传感器FST概念状态传感器是有限状态机的一种。有限状态机适合处理正则语言，有限状态传感器适合处理正则关系。
+他是一种类似于字典树/自动机的数据结构。
+转自豆瓣-巴扎黑
+有限状态转移机在自然语言处理上的应用
+原文地址：
+http://infolocata.com/mirovia/finite-state-transducers-for-natural-language-processing/
+在自然语言处理中，经常会遇到一些针对某些内容法则做出修改的操作，比如说：如果c的后面紧接x的话，则把c变为b，FST则是基于这些规则上的mathematical操作，比如说把若干个规则整合成一个single pass或mega rule，这样做呢，就可以很有效的提高rule-based system的效率。
+首先，先来大概的了解一下有限状态机（FSM）
+有限状态机呢就是一个由一堆状态（当然啦，有限的嘛），还有一堆转移条件组成的‘鸡’。英文定义是这样的：a FSM is an abstract mathematical model of computation that is capable of</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_SLP_5_FST%E7%8A%B6%E6%80%81%E6%9C%BA/">
+        <p class="h4 index-header">0.概念/NLP_SLP_5_FST状态机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">状态机概念FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。
+
+作者：陈天
+链接：https://zhuanlan.zhihu.com/p/28142401
+来源：知乎
+在谈论一般意义的状态机时，我们先看看有限状态机，Finite State Machine，简称 FSM。
+在计算理论（Theory of computation）中，FSM 是一切的基础，也是能力最为有限的机器。在其能力之上是 CFL（Context Free Language），然后是 Turing Machine。
+FSM 解决一个输入序列，经过 FSM，最终停留在什么状态这样一个问题。对于一个字符串是否以 \0 结尾（C 语言的字符串结构），FSM 可以给出答案。
+CFL 是一切编程语言的基础。你写的一段 python 代码是否语法正确，CFL 能够给出答案。
+Turing Machine 就是我们日常用各种算法写代码解决各种问题的基础。不较真地说，JVM 就是一个 Turing Machine。
+再往上，就是未知的世界 —— Turing Machine 也解决不了的问题。
+如果你工作多年</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_Dic/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_Dic</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+
+
+
+
+
+
+
+Phonetics
+语音学
+
+
+Phonology
+音韵学
+
+
+Morphology
+形态学
+
+
+orthographic
+正字法
+
+
+Syntax
+语法
+
+
+Pragmatics
+语用学
+
+
+Semantics
+语义学
+
+
+Ambiguity
+一词多义，模棱两可
+
+
+Dative pronoun
+与格代词
+
+
+Possessive pronoun
+所有格代词
+
+
+part-of-speech
+词性
+
+
+lexical disambiguation
+词义消歧
+
+
+speech act interpretation
+言语行为解释
+
+
+regular grammars
+正则文法
+
+
+critical role
+关键角色
+
+
+crucial
+重要的
+
+
+symbolic
+象征的
+
+
+stochastic
+随机的
+
+
+retrieval
+检索
+
+
+corpora
+语料库
+
+
+finite-state automaton
+有限状态自动机
+
+
+punctuation
+标点符号
+
+
+appendix
+附录
+
+
+Disjunction
+析取
+
+
+Precedence
+优先级
+
+
+Sym</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">自然语言是表达者对某状态(state)[比如“饥饿”]的编码(encode)[比如“我饿了,I`m hungry,Я голоден”],接收者会对这段音波/文字进行解码(decode)来揣测表达者的状态(state)。
+自然语言处理是对state转换、code、encode/decode过程的一系列数学建模，通常基于规则+机器学习的模型效果不错。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_9%20-%20Automatic%20Speech%20Recognition/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_9 - Automatic Speech Recognition</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">9. Auto Speech Recognition - 语音转文字Spoken language understanding is a difficult task.The goal of Automatic speech recognition（ASR）is to address this this task computationally by building system  that map from an acoustic signal to a string of word.And Automatic speech understanding(ASU) extends this goal to understand more than just words,also sentences.
+影响语音转文字系统性能表现的几个参数：
+
+需要转换的词汇量：如果只是判断对错/数字，容易。判断词汇库是整体英语，难。
+speech的流畅度：如果是切分好的单个单词，容易。流畅长篇幅对话，难。
+声音质量：apparently，噪音少识别起来容易。
+讲话者的类型：apparently，nat</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_8%20-%20Speech%20Synthesis/">
         <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_8 - Speech Synthesis</p>
         
@@ -161,6 +596,43 @@ non-standard words
 homograph disambiguation
 
 8.1.1)Sentence tokenizationtokenization理解为把句子拆分成小块（token），token之间可以是被空格键分隔，也可以是被句号，逗号，或者单纯是被语义分隔，被token化</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_7%20-%20Phonetics/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_7 - Phonetics</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">7.Phonetics(语音学) – 本章对研究帮助不大，跳过A speech recognition system needs to have a pronunciation for every word it can recognize,and a text-to-speech system needs to have a pronunciation for every word it can say.
+
+In this chapter,we introduces phonetic alphabets音标字母 for describing these pronunciations.
+
+Then we introduces two main areas of phonetics, articulatory phonetics发音语音学,and acoustic phonetics声学语音学。
+
+Also briefly touch on phonology音韵学
+
+
+7.1）Speech sounds and phonetic transciption
+音标表格如下：
+
+</div>
         </div>
       </a>
 
@@ -259,40 +731,6 @@ Large Tagset
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_4%20-%20N-Grams/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_4 - N-Grams</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">4 - N-GramsN-gram is a language model,is a N-token sequence of words.
-1.the way to calculate conditional probability.For example,how can we calculate P(the|its water is so transparent that) ?
-Method1): counting 2 sentences
-Counting the times of “its water is so transparent that the” and “its water is so transparent that” in the whole corpus.It works sometime,but language is creative,many sentences is not exist.
- 
-Method2): chain rule of probability,then use method 1.
-
-notice that:
-
-means  P(w1w2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_3%20-%20Word%20&%20Transducers/">
         <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_3 - Word &amp; Transducers</p>
         
@@ -310,6 +748,40 @@ I define it my way:
 If you input “aa”,”b”will be output,and the state in still “q0”,if you input “b”,”a or b”will out put,state will be “q1”.For example,if you input “aa aa b a”，output is “b b a ba”.
 
 Defination with details </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_4%20-%20N-Grams/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_4 - N-Grams</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">4 - N-GramsN-gram is a language model,is a N-token sequence of words.
+1.the way to calculate conditional probability.For example,how can we calculate P(the|its water is so transparent that) ?
+Method1): counting 2 sentences
+Counting the times of “its water is so transparent that the” and “its water is so transparent that” in the whole corpus.It works sometime,but language is creative,many sentences is not exist.
+ 
+Method2): chain rule of probability,then use method 1.
+
+notice that:
+
+means  P(w1w2</div>
         </div>
       </a>
 
@@ -498,32 +970,6 @@ Sheep language can be described as fol</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_12%20-%2016,17%20-%2021%E8%AF%AD%E6%B3%95%E5%AD%A6%EF%BC%8C%E8%AF%AD%E4%B9%89%E8%AF%AD%E7%94%A8%E5%AD%A6/">
-        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_12 - 16,17 - 21语法学，语义语用学</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">12 - 16语法学，17 - 21语义语用学以上几章主要侧重于对英语这门语言本身的讲解，对发表论文帮助不大。先跳过，回头需用再补。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_10%20-%20Automatic%20Speech%20RecongnitionAdvanced%20Topics/">
         <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_10 - Automatic Speech RecongnitionAdvanced Topics</p>
         
@@ -543,6 +989,32 @@ Sheep language can be described as fol</div>
 
 改进维特比算法，将原本只返回单一值，变成返回多值。以改进一词多音的问题。
 使用其他的的d</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/3.%E8%AF%BE%E7%A8%8B/SpeechAndLanguageProcessing_12%20-%2016,17%20-%2021%E8%AF%AD%E6%B3%95%E5%AD%A6%EF%BC%8C%E8%AF%AD%E4%B9%89%E8%AF%AD%E7%94%A8%E5%AD%A6/">
+        <p class="h4 index-header">3.课程/SpeechAndLanguageProcessing_12 - 16,17 - 21语法学，语义语用学</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">12 - 16语法学，17 - 21语义语用学以上几章主要侧重于对英语这门语言本身的讲解，对发表论文帮助不大。先跳过，回头需用再补。
+</div>
         </div>
       </a>
 
@@ -704,64 +1176,6 @@ conda config –add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/%E8%AF%AD%E8%A8%80%E5%AD%A6%E8%8D%90%E4%B9%A6/">
-        <p class="h4 index-header">1.科研/语言学荐书</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">语言学方向书籍推荐–Serena Gao首先，做nlp不一定要很懂语言学，也不一定要跟语言学扯上关系。nlp可以仅是data mining，features engineering, 也的确有很多work目前在用文本或者对话做为数据集，然后用统计学方法实现目的，比如deep learning 。在某些任务上统计学模型功不可没，比如machine translation, speech recognition, question answering, etc. 
-如果题主只是对nlp的应用感兴趣，想泛泛了解一下目前进展的话，以上几个回答已经非常详细了，我接下来的回答可以不用看。许多主流大公司目前的力度都在deep learning, 学好nlp基本知识，做工程就够了(当然你还需要cs的background)， 语言学的东西不用太深入研究。
-————————————-3.17 update——————————-
-看了一下其他答案，大家的讨论和见解都很有趣，上来更新一点。
-大多数人对nlp和语言学联系的了解，在于认为rule-based的nlp就是基于语言学。的确rule-based是语言学</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%9B%86%5BDone%5D/">
-        <p class="h4 index-header">1.科研/深度学习论文集[Done]</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1 深度学习历史和基础1.0 书籍█[0] Bengio, Yoshua, Ian J. Goodfellow, and Aaron Courville. “Deep learning.” An MIT Press book. (2015). [pdf] (Ian Goodfellow 等大牛所著的教科书，乃深度学习圣经。你可以同时研习这本书以及以下论文) ★★★★★
-地址：https://github.com/HFTrader/DeepLearningBook/raw/master/DeepLearningBook.pdf
-1.1 调查█[1] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. “Deep learning.” Nature 521.7553 (2015): 436-444. [pdf] (三巨头做的调查)  ★★★★★
-地址：http://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf
-1.2 深度置信网络 (DBN，深度学习前夜的里程碑)█[2] Hinto</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/WebScience%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/">
         <p class="h4 index-header">1.科研/WebScience讲座笔记</p>
         
@@ -833,23 +1247,18 @@ review是学科综述</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/4%20-%20%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1/">
-        <p class="h4 index-header">1.科研/4 - 模型设计</p>
+      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/%E8%AF%AD%E8%A8%80%E5%AD%A6%E8%8D%90%E4%B9%A6/">
+        <p class="h4 index-header">1.科研/语言学荐书</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">模型设计确定进入____领域后，如何快速学会第一个技能？仔细研究一般现有的主要工具，流派和方法，先入门。我的建议是：找到一个开源项目，比如机器翻译或者深度学习的项目。理解开源项目的任务，编译通过该项目发布的示范程序，得到与项目示范程序一致的结果。然后再深入理解开源项目示范程序的算法。自己编程实现一下这个示范程序的算法。再按照项目提供的标准测试集测试自己实现的程序。如果输出的结果与项目中出现的结果不一致，就要仔细查验自己的程序，反复修改，直到结果与示范程序基本一致。如果还是不行，就大胆给项目的作者写信请教。在此基础上，再看看自己能否进一步完善算法或者实现，取得比示范程序更好的结果。
-如何改进别人的模型
-反复阅读本领域最新发表的文章，多阅读本领域牛人发表的文章。在深入了解已有工作的基础上，探讨还有没有一些地方可以推翻、改进、综合、迁移。注意做实验的时候，不要贪多，每次实验只需要验证一个想法。
-
-每次实验之后必须要进行分析存在的错误，找出原因。
-
-
-
-对成功的实验，进一步探讨如何改进算法。注意实验数据必须是业界公认的数据。
-与已有的算法进行比较，体会能够得出比较一般性的结论。如果有，则去写一</div>
+          <div class="index-text mb-1">语言学方向书籍推荐–Serena Gao首先，做nlp不一定要很懂语言学，也不一定要跟语言学扯上关系。nlp可以仅是data mining，features engineering, 也的确有很多work目前在用文本或者对话做为数据集，然后用统计学方法实现目的，比如deep learning 。在某些任务上统计学模型功不可没，比如machine translation, speech recognition, question answering, etc. 
+如果题主只是对nlp的应用感兴趣，想泛泛了解一下目前进展的话，以上几个回答已经非常详细了，我接下来的回答可以不用看。许多主流大公司目前的力度都在deep learning, 学好nlp基本知识，做工程就够了(当然你还需要cs的background)， 语言学的东西不用太深入研究。
+————————————-3.17 update——————————-
+看了一下其他答案，大家的讨论和见解都很有趣，上来更新一点。
+大多数人对nlp和语言学联系的了解，在于认为rule-based的nlp就是基于语言学。的确rule-based是语言学</div>
         </div>
       </a>
 
@@ -867,23 +1276,18 @@ review是学科综述</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/7%20-%20%E8%AE%BA%E6%96%87%E7%BB%93%E6%9E%84/">
-        <p class="h4 index-header">1.科研/7 - 论文结构</p>
+      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%9B%86%5BDone%5D/">
+        <p class="h4 index-header">1.科研/深度学习论文集[Done]</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">7.论文结构学术研究是一项系统工程
-在这个系统工程中，论文的作用则是，向学术界同行清晰准确地描述成果的创新点、技术思路、算法细节和验证结果。明白这一点，才能正确的对待论文写作：一项乏善可陈的工作，很难通过写作变得众星捧月；一项充满创新的成果，却有可能因为糟糕的写作而无法向审稿人准确传递重要价值所在，延误成果发表。
-
-
-一篇NLP论文的典型结构
-NLP学术会议（甚至包括期刊）论文已经形成比较固定的结构。绝大部分论文由以下六大部分构成：摘要（Abstract）、介绍（Introduction）、相关工作（Related Work）、方法（Method）、实验（Experiment）、结论（Conclusion）。少数论文会根据创新成果形式不同而略有不同，例如提出新数据集的论文，可能会把Method部分调整为Dataset的标注与分析，但不影响论文整体构成。每个部分作用不同：
-
-摘要：用100-200词简介研究任务与挑战、解决思路与方法、实验效果与结论。
-介绍：用1页左右篇幅，比摘要更详细地介绍研究任务、已有方法、主要挑战、解决思路、具体方法、实验结果。
-相关工作：用0.5-1页左右篇幅介绍</div>
+          <div class="index-text mb-1">1 深度学习历史和基础1.0 书籍█[0] Bengio, Yoshua, Ian J. Goodfellow, and Aaron Courville. “Deep learning.” An MIT Press book. (2015). [pdf] (Ian Goodfellow 等大牛所著的教科书，乃深度学习圣经。你可以同时研习这本书以及以下论文) ★★★★★
+地址：https://github.com/HFTrader/DeepLearningBook/raw/master/DeepLearningBook.pdf
+1.1 调查█[1] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. “Deep learning.” Nature 521.7553 (2015): 436-444. [pdf] (三巨头做的调查)  ★★★★★
+地址：http://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf
+1.2 深度置信网络 (DBN，深度学习前夜的里程碑)█[2] Hinto</div>
         </div>
       </a>
 
@@ -942,17 +1346,23 @@ ML派坐落美利坚合众山中，百年来武学奇才辈出，隐然成江湖
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/2%20-%20%E8%AE%A1%E5%88%92/">
-        <p class="h4 index-header">1.科研/2 - 计划</p>
+      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/4%20-%20%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1/">
+        <p class="h4 index-header">1.科研/4 - 模型设计</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">计划比赛 -  改进模型 - 得奖 - 阅读论文 - 写作论文
-比赛得奖同时也是进入行业的必要条件
-进入行业是了解行业和理解科研的必要条件
-</div>
+          <div class="index-text mb-1">模型设计确定进入____领域后，如何快速学会第一个技能？仔细研究一般现有的主要工具，流派和方法，先入门。我的建议是：找到一个开源项目，比如机器翻译或者深度学习的项目。理解开源项目的任务，编译通过该项目发布的示范程序，得到与项目示范程序一致的结果。然后再深入理解开源项目示范程序的算法。自己编程实现一下这个示范程序的算法。再按照项目提供的标准测试集测试自己实现的程序。如果输出的结果与项目中出现的结果不一致，就要仔细查验自己的程序，反复修改，直到结果与示范程序基本一致。如果还是不行，就大胆给项目的作者写信请教。在此基础上，再看看自己能否进一步完善算法或者实现，取得比示范程序更好的结果。
+如何改进别人的模型
+反复阅读本领域最新发表的文章，多阅读本领域牛人发表的文章。在深入了解已有工作的基础上，探讨还有没有一些地方可以推翻、改进、综合、迁移。注意做实验的时候，不要贪多，每次实验只需要验证一个想法。
+
+每次实验之后必须要进行分析存在的错误，找出原因。
+
+
+
+对成功的实验，进一步探讨如何改进算法。注意实验数据必须是业界公认的数据。
+与已有的算法进行比较，体会能够得出比较一般性的结论。如果有，则去写一</div>
         </div>
       </a>
 
@@ -970,23 +1380,23 @@ ML派坐落美利坚合众山中，百年来武学奇才辈出，隐然成江湖
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20B%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E7%BB%93%E8%AE%BA/">
-        <p class="h4 index-header">1.科研/1 - B学科调研结论</p>
+      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/7%20-%20%E8%AE%BA%E6%96%87%E7%BB%93%E6%9E%84/">
+        <p class="h4 index-header">1.科研/7 - 论文结构</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.学科调研结论简要结论经过对上文阅读列表+论文库的调研，得出如下结论，可以开始选题。
+          <div class="index-text mb-1">7.论文结构学术研究是一项系统工程
+在这个系统工程中，论文的作用则是，向学术界同行清晰准确地描述成果的创新点、技术思路、算法细节和验证结果。明白这一点，才能正确的对待论文写作：一项乏善可陈的工作，很难通过写作变得众星捧月；一项充满创新的成果，却有可能因为糟糕的写作而无法向审稿人准确传递重要价值所在，延误成果发表。
 
-近年来,我感兴趣的关于_____的研究方向,全球呈现__趋势,其中较多的论文来自\国家\地区,发表相关论文的研究机构有___.蓝海领域比较新，容易出成果，我选择的这个方向是否是蓝海领域_____.
-为了充分了解这个领域目前的发展状况，需要如下几个方面的调研：方法方面，是否有一套比较清晰的数学体系和机器学习体系_；数据方面，有没有一个大家公认的标准训练集和测试集__；研究团队，是否有著名团队和人士参加___。如果以上几个方面的调研结论不是太清晰，作为初学者可能不要轻易进入。
-全球的研究人员主要从____等领域对课题进行研究,同时我们也注意到___等领域的研究可能会给我们带来不一样的视角和灵感
-相关课题的研究成果目前主要发表在____等期刊上,在相关研究领域中,_____等几位学者有较多的论文产出.
-影响力较高的几篇论文分别来自于___(国家/地区)的_(机构)的___学者
-近半年来___方向引起了较多科研人员的关注
-选择____综述文章作为快速了解这个课题的切入点
-最新的研究进展指出,该研究方向__</div>
+
+一篇NLP论文的典型结构
+NLP学术会议（甚至包括期刊）论文已经形成比较固定的结构。绝大部分论文由以下六大部分构成：摘要（Abstract）、介绍（Introduction）、相关工作（Related Work）、方法（Method）、实验（Experiment）、结论（Conclusion）。少数论文会根据创新成果形式不同而略有不同，例如提出新数据集的论文，可能会把Method部分调整为Dataset的标注与分析，但不影响论文整体构成。每个部分作用不同：
+
+摘要：用100-200词简介研究任务与挑战、解决思路与方法、实验效果与结论。
+介绍：用1页左右篇幅，比摘要更详细地介绍研究任务、已有方法、主要挑战、解决思路、具体方法、实验结果。
+相关工作：用0.5-1页左右篇幅介绍</div>
         </div>
       </a>
 
@@ -1134,37 +1544,51 @@ Bubeck</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Git/">
-        <p class="h4 index-header">0.概念/技术_Git</p>
+      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/2%20-%20%E8%AE%A1%E5%88%92/">
+        <p class="h4 index-header">1.科研/2 - 计划</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Git1.四个区域Workplace : 工作区，自己的电脑存放代码的地方
-Index，Stage ： 暂存区，存放临时的改动，事实上它是一个文件，保存即将提交到文件列表的信息
-Repository  :  仓库区（版本库），存放数据的地方，有所有提交版本的地方，其中head指向最新放入仓库的版本
-Remote ：远程仓库，托管代码的服务器，可以简单理解为项目组的一台用于远程数据交换的电脑
-四者关系如下
+          <div class="index-text mb-1">计划比赛 -  改进模型 - 得奖 - 阅读论文 - 写作论文
+比赛得奖同时也是进入行业的必要条件
+进入行业是了解行业和理解科研的必要条件
+</div>
+        </div>
+      </a>
 
-2.常用命令常用
-# 本地推至暂存区
-git add .
-# 删除暂存区/分支，但本地保留文件（不被版本控制）
-git rm --cached file_path
-# 为本地代码切换版本
-git checkout
-# 暂存区代码推至版本库
-git commit -m &quot;提交说明&quot;
-# 移除暂存区文件
-git reset HEAD 文件名
-# 去掉上次的提交(变成add前状态)
-git reset HEAD^
-# 去掉上次的提交(变成commit前状态)
-git reset --soft HEAD^
-# 显示当前git配置
-git config --lsit
-# 编</div>
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/1.%E7%A7%91%E7%A0%94/1%20-%20B%E5%AD%A6%E7%A7%91%E8%B0%83%E7%A0%94%E7%BB%93%E8%AE%BA/">
+        <p class="h4 index-header">1.科研/1 - B学科调研结论</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.学科调研结论简要结论经过对上文阅读列表+论文库的调研，得出如下结论，可以开始选题。
+
+近年来,我感兴趣的关于_____的研究方向,全球呈现__趋势,其中较多的论文来自\国家\地区,发表相关论文的研究机构有___.蓝海领域比较新，容易出成果，我选择的这个方向是否是蓝海领域_____.
+为了充分了解这个领域目前的发展状况，需要如下几个方面的调研：方法方面，是否有一套比较清晰的数学体系和机器学习体系_；数据方面，有没有一个大家公认的标准训练集和测试集__；研究团队，是否有著名团队和人士参加___。如果以上几个方面的调研结论不是太清晰，作为初学者可能不要轻易进入。
+全球的研究人员主要从____等领域对课题进行研究,同时我们也注意到___等领域的研究可能会给我们带来不一样的视角和灵感
+相关课题的研究成果目前主要发表在____等期刊上,在相关研究领域中,_____等几位学者有较多的论文产出.
+影响力较高的几篇论文分别来自于___(国家/地区)的_(机构)的___学者
+近半年来___方向引起了较多科研人员的关注
+选择____综述文章作为快速了解这个课题的切入点
+最新的研究进展指出,该研究方向__</div>
         </div>
       </a>
 
@@ -1206,6 +1630,54 @@ Pattern Recognition and Machine Learning
    *构建文献库时遇到的困难：flood。目前资料：知识图谱80 + 深度学习100 + 生物医学CRF70 + ACL660 = 910篇论文，以及7本大部头。这还不包括所谓的5年survery100 + 三年顶会3000共约3100篇论文。 *
    我需要的：迅速了解整个学科发展大致现状，选择自己感兴趣的+有前途做的人少的领域迅速构建论文库精读切入
    初步解决方案：控制工作量，看优质survey，大部头只挑一本看，其余当工具书</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Git/">
+        <p class="h4 index-header">0.概念/技术_Git</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Git1.四个区域Workplace : 工作区，自己的电脑存放代码的地方
+Index，Stage ： 暂存区，存放临时的改动，事实上它是一个文件，保存即将提交到文件列表的信息
+Repository  :  仓库区（版本库），存放数据的地方，有所有提交版本的地方，其中head指向最新放入仓库的版本
+Remote ：远程仓库，托管代码的服务器，可以简单理解为项目组的一台用于远程数据交换的电脑
+四者关系如下
+
+2.常用命令常用
+# 本地推至暂存区
+git add .
+# 删除暂存区/分支，但本地保留文件（不被版本控制）
+git rm --cached file_path
+# 为本地代码切换版本
+git checkout
+# 暂存区代码推至版本库
+git commit -m &quot;提交说明&quot;
+# 移除暂存区文件
+git reset HEAD 文件名
+# 去掉上次的提交(变成add前状态)
+git reset HEAD^
+# 去掉上次的提交(变成commit前状态)
+git reset --soft HEAD^
+# 显示当前git配置
+git config --lsit
+# 编</div>
         </div>
       </a>
 
@@ -1306,576 +1778,11 @@ create index index_birthday_and_user_name on user_info(birthday,user_name);   //
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Java_6.jetty%E5%92%8Ctomcat/">
-        <p class="h4 index-header">0.文章/Java_6.jetty和tomcat</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">7.jetty和tomcat1.Jetty是什么
-​    jetty是一个开源的HTTP服务器和Servlet引擎,可以为JSP和Servlet提供运行时环境,相对与Tomcat,,jetty更加轻量级,更加简易和灵活
-2.jetty特点
-
-异步,支持更高的并发量
-灵活,更加轻量,更容易定制,更高的资源利用率
-Jetty采用默认的NIO模型,jetty很好地支持长链接
-
-3.应用场景
-
-企业级应用tomcat占据了绝对优势
-jetty默认使用NIO,在轻量级的,保持长连接的场景下使用很有优势,比如客服的聊天
-
-4.jetty原理
-
-提供了两种handlder
-handlerWrapper
-可以将一个Handler委托给另一个类执行,将handler加载到jetty中就是通过handler委托给server执行的
-
-
-handlerCollection
-将多个handler组装成handler链,可以方便地做扩展
-
-
-
-
-
-2.tomcat
-为了服务器生成动态页面,需要运行java Servlet,那么就需要提供Servlet容器
-Tomcat正式支持运行Servlet/JSP应用程序</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Java_7.%E5%8F%8D%E5%B0%84/">
-        <p class="h4 index-header">0.文章/Java_7.反射</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">反射
-反射的定义
-
-行状态中,能知道任何一个类的属性和方法
-能调用任何一个对象的属性和方法
-这种动态获取信息以及动态调用对象方法的功能称谓java的反射机制
-
-
-反射的用途
-
-第三方应用开发时,会遇到某个类的变量或方法是私有的,只对系统应用开放,这时候就利用java的反射机制通过反射来获取所需要的私有成员或者方法.
-
-
-反射的相关类
-
-
-class类
-
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Java_2.ClassLoader/">
-        <p class="h4 index-header">0.文章/Java_2.ClassLoader</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.ClassLoader类加载器classloader作用:
-
-负责将class加载到JVM中
-审查每个类由谁加载
-将class字节码重新编译成JVM统一要求的对象格式
-
-2.1类加载时机与过程类从被加载到虚拟机内存开始,到卸载出内存为止,整个生命周期包括了七个部分:
-加载,验证,准备,解析,初始化,使用,卸载
-
-如下几种情况会对类进行初始化
-
-创建类的实例
-对类进行反射调用
-当初始化类,发现父类没有没初始化
-jvm启动,用户指定一个要执行的主类,虚拟机会先初始化这个主类
-java.lang.invoke.MethodHandle实例最后的解析结果REF_getstatic,REF_putstatic,REF_invokeStatic的方法句柄，并且这个方法句柄所对应的类没有进行初始化，则需要先出触发其初始化。
-
-2.2类加载器的双亲委派模型
-
-双亲委派模型好处
-
-避免重复加载,当父类已经加载了该类的时候,就没有必要classloader再加载一次考虑到安全因素，我们试想一下，如果不使用这种委托模式，那我们就可以随时使用自定义的String来动态替代java核心api中定义的类型，这</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Java_3.%E6%B3%9B%E5%9E%8B/">
-        <p class="h4 index-header">0.文章/Java_3.泛型</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">泛型泛型就是扩展了方法的适用范围:
-例子:
-原本有一个SUM(y) = (a + b)的两元素相加的方法
-
-在两数字相加或两字符串拼接的场景下本来都可以用它
-
-但是如果y提前规定了数据类型就不能用了,两个场景必有其一要重写
-
-这时候使用泛型,&lt;T&gt;当做占位符,就可以实现代码复用了 
-
-
-之所以不用Object实现参数的任意化是因为要做显式的强制转换,这种转换是要求开发者对实际参数可预知的情况下进行的,而很多时候开发者不能预知程序运行时有哪样的类型需要强转
-如果强转错误,程序员也无从得知,是一个安全隐患
-引入泛型不用object后所有任意化的参数类型都是隐式自动进行的,保证了效率和安全性
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Java_4.%E8%A1%A8%E9%93%BE%E6%8E%A5/">
-        <p class="h4 index-header">0.文章/Java_4.表链接</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">5.表链接5.1外链接外链接就是A B两个表,以左右链接的方式选择一个主表,然后附表加入主表的过程
-AB两个表的图示
-
-
-左外链接
-
-select * from TableA left join TableB on TableA.id=TableB.id
-
-
-
-
-
-
-右外链接
-
-select * from TableA right join TableB on TableA.id=TableB.id
-
-
-
-
-
-
-全外链接
-
-select * from TableA full join TableB on TableA.id=TableB.id
-
-
-
-
-内链接
-
-select * from TableA JOIN TableB on TableA.id=TableB.id
-结果是只链接两者共有的数据
-
-
-
-
-
-
-交叉链接
-
-select * from TableA cross join TableB
-
-结果是两个表以基础序号为乘积的笛卡尔积的排列
-
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%92%8C%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
-        <p class="h4 index-header">0.概念/NLP_知识图谱和推荐系统</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.知识图谱知识图谱是语义网络semantic network的知识库，可理解为理解为多关系图，多关系图一般包含多种类型的节点和边。
-知识图谱的场景
-
-社交网络，人和公司都可以是实体，人是节点，公司是节点的集合，人与人之间的关系是边，边可以是朋友也可是同事等，关系可以是单向也可以是双向的
-
-数据库是结构化数据，网页是非结构化数据，处理非结构化数据是信息抽取的难点。
-四个难点
-
-实体命名识别  
-关系抽取()
-实体统一(武汉,江城)
-指代消解  (it)
-
-知识图谱的存储方式
-RDF
-
-存储三元组(triple)
-推理引擎
-W3C标准
-易于发布数据,多为学术界场景
-
-2.推荐系统评分预测:系统预测用户对电影的评分,根据此给用户推荐,这种是显示反馈
-还有一种是点击率预测,新闻类应用中,根据用户点击某概率来优化推荐方案,这种场景下用户反馈信息的行为特征,而不能反映用户的喜爱成都,这是隐式反馈
-传统的推系统只能使用用户和物品的历史交互信息,作为输入,有两个问题:
-用户和物品之间的交互信息是非常稀疏的,几万个电影只看了几个可能过拟合,
-或者新用户没有看过电影,这问题也叫冷启动问题
-解决冷启动问题</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/%E6%8A%80%E6%9C%AF_Docker/">
-        <p class="h4 index-header">0.概念/技术_Docker</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">DockerDocker是个虚拟机，主要运行在linux上，和VMware Workstation Pro有很多相似的地方。
-
-镜像，是创建虚拟机之前需要下载的系统镜像文件，比如iso和img文件等
-容器，是正在运行中的虚拟机
-tar文件，就是镜像的压缩文件，压缩传送解压缩安装
-dockerfile，配置文件，写完后通过docker bulid指令将dockerfile构建成一个镜像
-仓库，类似于github，和镜像是pull和push的关系，里边有做好的ubuntu，mysql，tomcat镜像等
-
-基本操作安装docker
-docker pull nginx : 从仓库下载nginx
-docker images : 查看本地镜像
-docker run -d -p 80:80 nginx 后台将镜像运行为容器nginx，端口映射80-80
-docker ps查看正在运行的容器有哪些，例如它会输出正在运行的容器是nginx，id是92a68b3fe02e
-docker exec -it 92,进入运行的id开头是92的容器
-cd /usr/share/nginx/html/,进入ngi</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%96%87%E7%AB%A0/Java_1.JVM,%E6%96%B9%E6%B3%95%E5%8C%BA,%E5%A0%86/">
-        <p class="h4 index-header">0.文章/Java_1.JVM,方法区,堆</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">JVM
-JAVA虚拟机的生命周期
-java虚拟机用于执行java程序,一个java程序对应一个虚拟机
-java虚拟机总是开始于一个main方法,返回void,接受一个args[]参数
-main()方法是程序的起点,他被执行的线程初始化为程序的初始线程
-java中的线程分两种
-守护线程daemon:java虚拟机自己使用的,比如垃圾回收
-非守护线程:non-daemon:包含main()方法的初始线程不是守护线程
-
-
-
-
-
-
-运行时数据区域
-
-
-1.程序计数器
-内存空间小,线程私有,字节码解释器就是依赖程序计数器工作的:改变计数器的值来选取下一条需要执行的指令,分支,循环,跳转,异常处理等.
-如果线程正在执行一个java方法,这个计数器就记录正在执行的虚拟机字节码地址.
-如果这个方法是native方法,则计数器的值为underfined
-
-
-程序计数器这个区域是java虚拟机中唯一没有规定任何OutOfMemoryError情况的区域
-
-
-2.java虚拟机栈
-线程私有,生命周期和线程一致
-线程(thread)
-是操作系统能够进行运算调度的最小单位
-被包含在进程中,是进程的实际运作单位
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_D3NER/">
-        <p class="h4 index-header">0.概念/NLP_D3NER</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">D3NER:biomedical named entity recognition using CRF-biLSTM improved with fine-tuned embedding of various linguistic information找有代码的论文读，复现作者的工作
-1.标题D3NER:一种使用[被精细调整过”多种语言信息embedding”所提升性能的条件随机场-双向长短时记忆网络]的生物医学命名实体识别工具
-
-embedding
-
-CRF
-
-biLSTM
-均另起文章讨论
-
-
-2.abstract2.1Motivation
-生物医学命名实体识别技术,是从生物医学文本信息(unstructured text)中提取知识的先决条件,最近LSTM网络被应用到这个问题上,表现很好,不过我们有更改进的地方.
-2.2Result
-我们使用D3NER,一种使用了CRF+biLSTM网络+精调语言信息embedding的生物医学命名实体识别技术
-D3NER和同方向的七种实体识别技术做了充分对比,结论是性能确实有提高
-3.Introduction
-特征工程做NER
-Named En</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_CRF%E6%9D%A1%E4%BB%B6%E9%9A%8F%E6%9C%BA%E5%9C%BA/">
-        <p class="h4 index-header">0.概念/NLP_CRF条件随机场</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">条件随机场
-概率统计图概览
-
-
-马尔科夫假设/马尔科夫性
-
-马尔科夫假设
-马尔科夫链  里的  总是只受  一个人的影响。马尔科夫假设这里相当于就是个2-gram。
-马尔科夫过程
-在一个过程中，每个状态的转移只依赖于前n个状态
-
-
-
-
-马尔科夫性
-马尔科夫性是保证或者判断概率图是否为概率无向图的条件
-成对性
-局部性
-全局性
-
-
-
-
-
-
-条件随机场定义
-
-条件随机场是在给定的随机变量 （具体，对应观测序列  ）条件下，随机变量  （具体，对应隐状态序列  的马尔科夫随机场。
-广义的CRF的定义是： 满足  的马尔科夫随机场叫做条件随机场（CRF）
-条件随机场是一种特殊的马尔科夫随机场
-马尔科夫随机场
-首先我们有无向图G=(V,E)， 图G中每个节点v上都有一个随机变量y，这样所有的节点上的随机变量就构成一组随机变量Y，图G上有联合概率分布P(Y)。边e表示相邻节点的变量存在某种神秘的联系。
-图G上的随机变量Y满足马尔科夫性，即两个不相邻的节点上的随机变量yi，yj条件独立。这就是马尔科夫随机场。
-
-
-
-
-CRF建模公式
-
-
-CRF特征函数
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/24/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_n-gram/">
-        <p class="h4 index-header">0.概念/NLP_词向量_n-gram</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">n-gram语言模型1.Statistical Language Model
-在自然语言处理中的一个基本问题,如何计算一段文本序列在某某种语言下出现的概率?
-例子
-
-我经常会去图书馆＿＿＿？
-预测该句后面的词，我们通常会根据已有的语料的上下文，来统计预测这句话可以填某个词汇的概率，将最大的概率作为结果返回
-
-
-机器翻译中,I like  Tomc so much,将单词逐个翻译—-{我,喜欢,汤姆,非常},这个集合中的字词排列组合成句子,然后用语言模型去计算组成句子概率的大小,概率越大越流畅
-
-2.n-gram语言模型
-理解:
-n-gram语言模型的思想,可以追溯到香农的问题:给定一串字母,比如”for ex”,下一个最可能出现的字母是什么?从训练语料中,我们可以通过极大似然估计的方法,得到N个概率分布,是”a”的概率是0.4,是”b”的概率是0.0001,是c的概率是….,and 别忘记约束条件:所有N个概率的分布总和为1
-如下图,运用条件概率和乘法公式推倒:
-直接这么计算比较困难,需要引入马尔科夫假设,即,一个item的出现,只与前m个items有关,m = 0时,就是unigra</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-24&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

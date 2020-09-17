@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>2.比赛/kaggle课程_2_特征预处理、缩放、特征生成 ~ 刘秉乾的技术博客 :)</title>
+  <title>2.比赛/kaggle课程_1.3_类别、数字、时间、位置特征 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期二, 九月 1日 2020, 2:54 下午
+                  星期四, 九月 3日 2020, 12:41 下午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    923 字
+                    255 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      1 分钟
                   </span>&nbsp;
                 
 
@@ -167,39 +167,20 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="特征预处理、缩放、特征生成"><a href="#特征预处理、缩放、特征生成" class="headerlink" title="特征预处理、缩放、特征生成"></a>特征预处理、缩放、特征生成</h1><p>总而言之，特征的预处理与特征的生成与你将要使用的模型息息相关</p>
-<p>本节课核心topics：</p>
-<ol>
-<li>Features preprocessing</li>
-<li>Feature generation</li>
-<li>Their dependence on a model type</li>
-</ol>
-<h3 id="预处理介绍"><a href="#预处理介绍" class="headerlink" title="预处理介绍"></a>预处理介绍</h3><p>大多时候，我们可以用特征来fit自己的model，并期待他获得很好的结果。为了提高模型的质量，很多feature都有独特的最适合自己的预处理手段。</p>
-<p><strong>例如线性模型需要将feature线性化</strong></p>
-<p>也就是说，feature的预处理取决于我们将要使用的模型，如下举例所示，target输出对pclass这个特征有非线性的依赖，pclass = 1 or 3的时候，target是1，否则是0。这种依赖关系是非线性的，但是由于模型本身是线性的，所以需要对pclass这个特征做预处理。</p>
-<p><strong>例如随机深林模型完全不需要做feature预处理</strong></p>
-<h3 id="scaling特征缩放"><a href="#scaling特征缩放" class="headerlink" title="scaling特征缩放"></a>scaling特征缩放</h3><p>如果绿色数据点是待定点，而对他使用的分类算法是离他最近的点是什么类他就是什么类的话，待定点就与他最近点高度相关。</p>
-<p>如下所示，特征经过不同倍数的scaling（0倍、10倍、100000倍）后，离他最近的点各不相同。所以<strong>scaling可以非常影响线性模型的性能表现，而树模型不怎么受到特征缩放的影响。</strong>从另一个角度讲，scaling参数是一个重要的、需要被优化的超参数。有些特征天生较大比如场地面积，有些特征比较小比如人的年龄，但是当他们同时作用在模型中时，大的必然会对模型造成比较大的影响，于是需要将所有的特征都缩放在[0,1]的区间中。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200902_1258_33_239.png" alt=""></p>
-<p>在实际使用时，可以使用sklearn.preprocessing.MinMaxScaler把所有的特征都缩放至[0,1]的区间里，MinMaxScaler的具体数学公式如下：</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1131_52_531.png" alt=""></p>
-<h3 id="异常值处理之outliers"><a href="#异常值处理之outliers" class="headerlink" title="异常值处理之outliers"></a>异常值处理之outliers</h3><p>如下橙色线是比较准确的模型线，但是由于右下角的离群点导致模型线会向右下偏离。处理这种离群点的办法之一是使用<strong>计算上下界然后剪切</strong>的方法。如右图所示，直接做柱状图显得很离散，通过percentile计算出上下界然后clip之后，分布就变得均匀多了</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1141_39_128.png" alt=""></p>
-<h3 id="异常值处理之rank"><a href="#异常值处理之rank" class="headerlink" title="异常值处理之rank"></a>异常值处理之rank</h3><p>rank会将数据点做排序。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1152_26_070.png" alt=""></p>
-<p>当然rank也可以在使用了对数或者开平方之后进行处理，这样可以使得数据更加平滑。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1154_54_642.png" alt=""></p>
-<p>以上的处理总会有一种可以使得你的神经网络更加高效。</p>
-<h3 id="特征生成"><a href="#特征生成" class="headerlink" title="特征生成"></a>特征生成</h3><p>好的特征可以使模型的训练更加简单和有效。</p>
-<p>如何提前设计并生成特征？我们可以使用<strong>先验知识</strong>来设计，也可以使用<strong>EDA(数据探索性分析)</strong>来构建特征。要想在比赛中出彩，好的EDA+直觉必不可少。</p>
-<p><strong>先验知识构建特征举例</strong></p>
-<p>例一：房价</p>
-<p>如图，如果已知房总价和房子大小，根据先验知识，构建一个<strong>总价/房子大小=房价</strong>的特征。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1225_33_435.png" alt=""></p>
-<p>例二：植被覆盖水平和水源距离的关系</p>
-<p>如下，横坐标是植被和水源的直线距离，纵坐标是植被和水源的垂直落差，于是出于对距离的物理空间理解，构建出一个<strong>横坐标平方+纵坐标平方 再开根号</strong>的特征，也就是<strong>直线距离</strong>。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1228_53_454.png" alt=""></p>
-<h3 id="创造力和数据理解是生成优质特征的关键"><a href="#创造力和数据理解是生成优质特征的关键" class="headerlink" title="创造力和数据理解是生成优质特征的关键"></a>创造力和数据理解是生成优质特征的关键</h3>
+            <h1 id="类别、数字、时间、位置特征"><a href="#类别、数字、时间、位置特征" class="headerlink" title="类别、数字、时间、位置特征"></a>类别、数字、时间、位置特征</h1><h3 id="类别特征"><a href="#类别特征" class="headerlink" title="类别特征"></a>类别特征</h3><p>如下是泰坦尼克是否生还的数据，除了常见的性别、年龄、是否有兄弟姐妹等特征外，还有一个不太引人注目的特征：<strong>Pclass</strong>，它代表的是票的类型，分为一、二、三、等仓，。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1347_22_599.png" alt=""></p>
+<p><strong>用类别特征做特征生成 ：几个类别特征之间的特征交互</strong></p>
+<p>如下所示，将几个特征交互到了一起，这种方式仅对线性模型和knn有用，对树模型无用。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1531_43_241.png" alt=""></p>
+<h3 id="时间特征和位置特征"><a href="#时间特征和位置特征" class="headerlink" title="时间特征和位置特征"></a>时间特征和位置特征</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1646_42_037.png" alt=""></p>
+<p>时间特征的有趣之处在与他与数据本身无关。</p>
+<p>时间特征分为两种，一种是时刻（Periodicty），一种是现在距离一个特定事件发生时间的相对时间（Time since）。</p>
+<p>时间特征是有用的，因为它可以帮助捕捉到数据中的<strong>pattern</strong>。</p>
+<p>时间特征举例：</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1655_08_999.png" alt=""></p>
+<h3 id="位置特征"><a href="#位置特征" class="headerlink" title="位置特征"></a>位置特征</h3><p>位置特征在房地产定价上有很大用处，如下所示</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1656_08_054.png" alt=""></p>
+
             <hr>
           </div>
           <br>
@@ -368,7 +349,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "2.比赛/kaggle课程_2_特征预处理、缩放、特征生成&nbsp;",
+        "2.比赛/kaggle课程_1.3_类别、数字、时间、位置特征&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

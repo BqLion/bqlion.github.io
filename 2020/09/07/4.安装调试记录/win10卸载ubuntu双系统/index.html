@@ -15,7 +15,7 @@
   <meta name="description" content="desc">
   <meta name="author" content="LiuBingqian">
   <meta name="keywords" content="">
-  <title>2.比赛/kaggle课程_3_类别、数字、时间、位置特征 ~ 刘秉乾的技术博客 :)</title>
+  <title>4.安装调试记录/win10卸载ubuntu双系统 ~ 刘秉乾的技术博客 :)</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期四, 九月 3日 2020, 12:41 下午
+                  星期一, 九月 7日 2020, 7:46 晚上
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    255 字
+                    182 字
                   </span>&nbsp;
                 
 
@@ -167,20 +167,23 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="类别、数字、时间、位置特征"><a href="#类别、数字、时间、位置特征" class="headerlink" title="类别、数字、时间、位置特征"></a>类别、数字、时间、位置特征</h1><h3 id="类别特征"><a href="#类别特征" class="headerlink" title="类别特征"></a>类别特征</h3><p>如下是泰坦尼克是否生还的数据，除了常见的性别、年龄、是否有兄弟姐妹等特征外，还有一个不太引人注目的特征：<strong>Pclass</strong>，它代表的是票的类型，分为一、二、三、等仓，。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1347_22_599.png" alt=""></p>
-<p><strong>用类别特征做特征生成 ：几个类别特征之间的特征交互</strong></p>
-<p>如下所示，将几个特征交互到了一起，这种方式仅对线性模型和knn有用，对树模型无用。</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1531_43_241.png" alt=""></p>
-<h3 id="时间特征和位置特征"><a href="#时间特征和位置特征" class="headerlink" title="时间特征和位置特征"></a>时间特征和位置特征</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1646_42_037.png" alt=""></p>
-<p>时间特征的有趣之处在与他与数据本身无关。</p>
-<p>时间特征分为两种，一种是时刻（Periodicty），一种是现在距离一个特定事件发生时间的相对时间（Time since）。</p>
-<p>时间特征是有用的，因为它可以帮助捕捉到数据中的<strong>pattern</strong>。</p>
-<p>时间特征举例：</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1655_08_999.png" alt=""></p>
-<h3 id="位置特征"><a href="#位置特征" class="headerlink" title="位置特征"></a>位置特征</h3><p>位置特征在房地产定价上有很大用处，如下所示</p>
-<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200903_1656_08_054.png" alt=""></p>
-
+            <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h3 id="使用工具删除分区"><a href="#使用工具删除分区" class="headerlink" title="使用工具删除分区"></a>使用工具删除分区</h3><p>下载diskgenius工具，<a href="https://www.diskgenius.cn/download.php" target="_blank" rel="noopener">https://www.diskgenius.cn/download.php</a></p>
+<p>打开工具 - 选择磁盘 - 删除 - 保存，如下</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200907_1954_19_630.png" alt=""></p>
+<h3 id="删除启动引导项"><a href="#删除启动引导项" class="headerlink" title="删除启动引导项"></a>删除启动引导项</h3><p>win + r ，cmd</p>
+<p>在cmd中输入如下代码</p>
+<pre><code>diskpart
+list disk</code></pre><p>选择安装盘，我这里是0</p>
+<pre><code>select disk 0
+list partition</code></pre><p>选择系统分区，一般windows EFI系统分区都是260MB的那个，为它分配新的盘符</p>
+<pre><code>select partition 1
+assign letter=J</code></pre><p>此时，Windows + E打开我的电脑，就会有刚刚分配的盘符。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200907_2002_06_720.png" alt=""></p>
+<p>因为权限不够，所以只能搜索记事本 - 管理员权限运行 - 文件 - 打开  - 打开J盘 - 打开EFI文件夹- 删除Ubuntu文件夹</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200907_2003_26_707.png" alt=""></p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200907_2003_37_990.png" alt=""></p>
+<p>返回命令行，删除刚刚分配的盘符</p>
+<pre><code>remove letter=J</code></pre>
             <hr>
           </div>
           <br>
@@ -190,7 +193,7 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/2.%E6%AF%94%E8%B5%9B">2.比赛</a>
+                  <a class="hover-with-bg" href="/categories/4.%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95">4.安装调试记录</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -199,7 +202,7 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/kaggle">kaggle</a>
+                  <a class="hover-with-bg" href="/tags/linux">linux</a>
                 
               </span>
             
@@ -349,7 +352,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "2.比赛/kaggle课程_3_类别、数字、时间、位置特征&nbsp;",
+        "4.安装调试记录/win10卸载ubuntu双系统&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

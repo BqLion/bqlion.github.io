@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <link rel="icon" type="image/png" href="http://bqlab-pic.test.upcdn.net/myicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="desc">
+  <meta name="author" content="LiuBingqian">
+  <meta name="keywords" content="">
+  <title>2.比赛/kaggle课程_4.3_构建Pipeline实用建议pt2 ~ 刘秉乾的技术博客 :)</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LiuBingqian`s Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">所有文章</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://bqlab-pic.test.upcdn.net/archive.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 九月 12日 2020, 5:24 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    841 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      2 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="一种用了一百多次的pipeline"><a href="#一种用了一百多次的pipeline" class="headerlink" title="一种用了一百多次的pipeline"></a>一种用了一百多次的pipeline</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200912_1731_31_142.png" alt=""></p>
+<ol>
+<li>花一天的时间去理解你要解决的问题是什么，需要补相关领域知识</li>
+<li>花两天的时间做EDA，生成初级特征，并认识特征都是什么。<ul>
+<li>构建一个合适的交叉验证策略（后边会演示为什么这是非常重要的）</li>
+</ul>
+</li>
+<li>从<strong>现在到距离比赛结束还剩三四天</strong>期间所有时间用于<strong>特征工程，建模</strong>。<ul>
+<li>红框注释：在开始本项工作之后的头一周，不要看别人的讨论，隔绝与外界的联系，这样可以使得你发现别人未必能发现的东西，这种东西会让你gain，毕竟别人的东西就在那里，你回头再看也不迟</li>
+</ul>
+</li>
+<li>最后的三四天ensembling</li>
+</ol>
+<pre><code>以下是对上文展示的每个阶段的深化讲解。</code></pre><h3 id="广泛地理解你所解决的问题是什么"><a href="#广泛地理解你所解决的问题是什么" class="headerlink" title="广泛地理解你所解决的问题是什么"></a>广泛地理解你所解决的问题是什么</h3><ul>
+<li><p>首先，这个问题是什么类型的问题？如果是图像识别问题，那么图片中呈现的物体是什么物体？是鸟还是人？如果是文本分类问题，那么是谁写了什么样的文本？是毒性评论还是赞美的话？</p>
+</li>
+<li><p>其次，了解处理的数据规模有多大，需要多少计算资源？（cpu，gpu，内存，硬盘），做好相应准备。通常语音与图片的处理会很吃资源。</p>
+</li>
+<li><p>其次，需要准备好合适的软件（TF,sklearn，Lightbgm，xgboost），通常TF+Keras在处理图像和声音和文字分类的问题上表现很好，你也可以用它们处理任何问题。</p>
+</li>
+<li><p>表现的测试指标metrics是什么？metrics可以是均方差也可以是标准差也可以是AUC等等。确定了测试标准，同时找到类似的数据，就可以将现成的解决方案集成进来。省时省力避免重复造轮子。</p>
+</li>
+</ul>
+<h3 id="EDA"><a href="#EDA" class="headerlink" title="EDA"></a>EDA</h3><ul>
+<li><p>第一件事情是将训练集和测试集中的所有特征都列出来，然后检查他们之间的相似度有多高。如果训练集和测试集之间有明显的差异，那这就是一个需要被解决的问题，通常会删除这个特征或者通过别的数学方法去修改构建。不然测试集与训练集的差异会导致后边模型出问题。</p>
+</li>
+<li><p>将特征与<strong>目标变量</strong>以及特征与<strong>时间</strong>之间的关系绘制出来，这样能给你提供特征能在多大的程度上影响目标以及特征的时间特点等直觉认识。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200912_1755_30_153.png" alt=""></p>
+</li>
+<li><p>寻找随着特征的变化，目标值的变化是否有规律可循</p>
+<ul>
+<li>一阶导数是否同号？二阶导数是否同号？等等</li>
+</ul>
+</li>
+</ul>
+<h3 id="选择一个交叉验证策略"><a href="#选择一个交叉验证策略" class="headerlink" title="选择一个交叉验证策略"></a>选择一个交叉验证策略</h3><ul>
+<li>时间序列验证：如果数据是时间相关的，就要按照时间序列来验证</li>
+<li>分层验证</li>
+<li>随机验证（Random K-fold）</li>
+</ul>
+<h3 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h3><p>如下是常见任务的特征工程分类，记下来之后随后在特定比赛中使用。比如，图像分类中，扫描，旋转，CNN等都是常见特征，参考类似比赛是数据科学碗。</p>
+<p><img src="http://bqlab-pic.test.upcdn.net/pic/20200913_1300_36_987.png" alt=""></p>
+<h3 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h3><p>如下是常见任务的常见模型</p>
+<p><img src="C:%5CUsers%5CLiuBingqian%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200913130518170.png" alt="image-20200913130518170"></p>
+<h3 id="Ensembling"><a href="#Ensembling" class="headerlink" title="Ensembling"></a>Ensembling</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200913_1308_33_644.png" alt=""></p>
+<h3 id="如何确定最终提交文件"><a href="#如何确定最终提交文件" class="headerlink" title="如何确定最终提交文件"></a>如何确定最终提交文件</h3><p><img src="http://bqlab-pic.test.upcdn.net/pic/20200913_1312_15_198.png" alt=""></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/kaggle">kaggle</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "2.比赛/kaggle课程_4.3_构建Pipeline实用建议pt2&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
