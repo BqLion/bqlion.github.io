@@ -136,6 +136,81 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/15/test/">
+        <p class="h4 index-header">test</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.熟悉课题组最近毕业的学生的发文情况（知网，web of science）
+2.磨样，基础课补课
+3.写专利
+4.水果摊小程序
+魏学长方差数据
+5.805,5.792,5.807,5.808,5.801,5.796,5.802,5.797,5.804,5.811
+0.00003
+
+5.788,5.805,5.782,5.811,5.806,5.795,5.812,5.807,5.809,5.799
+0.00009
+
+5.814,5.807,5.789,5.796,5.807,5.811,5.813,5.809,5.804,5.813
+0.00006
+
+5.788,5.796,5.804,5.809,5.799,5.805,5.809,5.811,5.787,5.803
+0.00007
+
+5.811,5.817,5.812,5.807,5.801,5.806,5.795,5.794,5.806,5.808
+0.00005
+
+5.807,5.798,5.792,5.788,5.786,5.809,5.810,5.808,5.805,5.802
+0.00007
+
+5.811,5.815,5</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-15&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/08/6.%E8%8B%B1%E8%AF%AD/GER_%E5%86%99%E4%BD%9C/">
+        <p class="h4 index-header">6.英语/GER_写作</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">写作是输出。
+GRE写作考察的是批判性思维和议论文写作的能力。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-08&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/07/30/6.%E8%8B%B1%E8%AF%AD/GRE_%E5%8F%A5%E5%86%85%E5%8F%A5%E9%97%B4%E5%85%B3%E7%B3%BB/">
         <p class="h4 index-header">6.英语/GRE_句内句间关系</p>
         
@@ -1600,74 +1675,6 @@ seaborn.set_context(context=&quot;ta</div>
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-15&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/14/0.%E6%A6%82%E5%BF%B5/NLP_%E8%AF%8D%E5%90%91%E9%87%8F_SkipGram/">
-        <p class="h4 index-header">0.概念/NLP_词向量_SkipGram</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">skip-gram算法详解Skip-gram算法是word2vec模型中两大生成词向量算法中的一个。
-生成词汇向量的skip-gram算法的中心思想：给定中心词汇，预测单词们出现在它周围的概率，最终确定的这些单词们，要使概率分布值最大化。
-如下，中心词是banking，Skip - gram会尝试去预测它一定范围内（m window）的上下文词汇。
-
-Skip-gram的损失函数损失函数J`(θ)表示的是：一串很长的文本比如整个维基百科（which has足够长的词汇序列和足够多的词汇和真正的行文）然后遍历文本中的所有位置，对于每个位置，我们都会定义一个围绕输入词汇的大小为2m的窗口，窗口包括前后各m个单词，把每个词汇和周围的窗口的p(周围每一个词|中心词)都连乘起来。
-这就是一个有监督学习，目标是使损失函数最小化，手段是通过对训练集的training动态调整模型的超参数们(窗口大小，容差系数等).
-
-损失函数plus : 计算机中大量连乘容易误差累计和误差消失，给上边的损失函数整体套上log，将连乘转换为带log的连加。如下
-要不是高中学的明白根本肝不到这里……answer the </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-14&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/13/0.%E6%96%87%E7%AB%A0/NLP_word2vec%E5%BA%94%E7%94%A8/">
-        <p class="h4 index-header">0.文章/NLP_word2vec应用</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">word2vec应用读取数据import pandas as pd
-
-# Read data from files 
-train = pd.read_csv( &quot;labeledTrainData.tsv&quot;, header=0, 
- delimiter=&quot;\t&quot;, quoting=3 )
-test = pd.read_csv( &quot;testData.tsv&quot;, header=0, delimiter=&quot;\t&quot;, quoting=3 )
-unlabeled_train = pd.read_csv( &quot;unlabeledTrainData.tsv&quot;, header=0, 
- delimiter=&quot;\t&quot;, quoting=3 )
-
-# Verify the number of reviews that were read (100,000 in total)
-print (&quot;Read %d labeled train reviews, %d labeled test</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-13&nbsp;&nbsp;
         
         
         
